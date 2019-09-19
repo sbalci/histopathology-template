@@ -1,0 +1,8 @@
+
+```{r}
+library(readxl)
+mydata <- read_excel(here::here("data", "EÇ TEZ son.xlsx"))
+# View(mydata)
+```
+
+

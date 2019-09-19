@@ -1,0 +1,104 @@
+# Save Final Data  {.appendix}  
+
+saved data after analysis to `mydata.xlsx`.
+
+```{r save final data}
+
+save.image(file = here::here("data", "mydata_work_space.RData"))
+
+readr::write_rds(x = mydata, path = here::here("data", "mydata_afteranalysis.rds"))
+
+saveRDS(object = mydata, file = here::here("data", "mydata.rds"))
+
+writexl::write_xlsx(mydata, here::here("data", "mydata.xlsx"))
+
+paste0(rownames(file.info(here::here("data", "mydata.xlsx"))), " : ", file.info(here::here("data", "mydata.xlsx"))$ctime)
+
+```
+
+
+\pagebreak
+
+
+# Final Data Summary {.appendix}  
+
+
+```{r summarytools 1, eval=FALSE, include=FALSE}
+# summarytools::view(summarytools::dfSummary(x = mydata
+#                                            , style = "markdown"))
+```
+
+
+```{r summarytools, eval=FALSE, error=FALSE, warning=FALSE, include=FALSE}
+# mydata %>% select(
+#     -c(
+#         rapor_yil,
+#         rapor_no,
+#         protokol_no,
+#         istek_tarihi,
+#         nux_yada_met_varsa_tarihi,
+#         son_hastane_vizit_tarihi,
+#         Outcome
+#     )
+# ) -> finalSummary
+# 
+# summarytools::view(summarytools::dfSummary(x = finalSummary
+#                                            , style = "markdown"))
+```
+
+
+\pagebreak
+
+
+
+# Software and Libraries Used {.appendix}  
+
+```{r citation}
+citation()
+```
+
+The jamovi project (2019). jamovi. (Version 0.9) [Computer Software]. Retrieved from https://www.jamovi.org.
+R Core Team (2018). R: A Language and envionment for statistical computing. [Computer software]. Retrieved from https://cran.r-project.org/.
+Fox, J., & Weisberg, S. (2018). car: Companion to Applied Regression. [R package]. Retrieved from https://cran.r-project.org/package=car.
+
+
+```{r library citation as report, results='asis'}
+report::cite_packages(session = sessionInfo())
+```
+
+
+```{r library citations}
+citation("tidyverse")
+citation("readxl")
+citation("janitor")
+citation("report")
+citation("finalfit")
+# citation("ggstatplot")
+```
+
+
+
+\pagebreak
+
+# Session Info {.appendix} 
+
+```{r session info}
+sessionInfo()
+```
+
+
+
+\pagebreak
+
+
+
+# Notes {.appendix}  
+
+Last update on `r Sys.time()`  
+
+Serdar Balci, MD, Pathologist  
+drserdarbalci@gmail.com  
+https://rpubs.com/sbalci/CV   
+
+
+

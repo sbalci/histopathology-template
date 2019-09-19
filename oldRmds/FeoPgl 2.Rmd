@@ -1,0 +1,880 @@
+---
+title: "Feokromositoma Paraganglioma"
+description: |
+  Ulusal 2019.
+author:
+  - name: Pelin Bağcı 
+    url: 
+    affiliation: MD Pathologist
+    affiliation_url: 
+  - name: Beyza Keskin 
+    url: 
+    affiliation: MD Pathologist
+    affiliation_url: 
+date: "`r Sys.Date()`"
+header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+output: 
+  pdf_document: 
+    fig_caption: yes
+    highlight: kate
+    number_sections: yes
+    toc: yes
+    latex_engine: lualatex
+    toc_depth: 5
+  redoc::redoc:
+    highlight_outputs: TRUE
+    margins: 1 
+    line_numbers: FALSE 
+  distill::distill_article:
+    toc: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, comment = NA)
+```
+
+
+```{r load library}
+source("R/loadLibrary.R")
+```
+
+
+
+```{r load data, error=FALSE, message=FALSE, warning=FALSE, collapse=TRUE}
+pass <- readxl::read_excel("data/FeoPgl.xlsx",
+                           sheet = "PASS")
+
+pass <- janitor::clean_names(pass) %>%
+  janitor::remove_empty(c("rows", "cols"))
+
+pass <-  pass %>%
+  rename(skorPASS = toplam_skor)
+
+
+gapp <- read_excel("data/FeoPgl.xlsx",
+                   sheet = "GAPP", na = "n/a")
+
+gapp <- janitor::clean_names(gapp) %>%
+  janitor::remove_empty(c("rows", "cols"))
+
+gapp <-  gapp %>%
+  rename(skorGAPP = toplam_skor)
+
+
+histomorphology <- readxl::read_excel("data/FeoPgl.xlsx",
+                                      sheet = "histomorphology", na = "n/a")
+
+histomorphology <- janitor::clean_names(histomorphology) %>%
+  janitor::remove_empty(c("rows", "cols"))
+
+clinical <- readxl::read_excel("data/FeoPgl.xlsx",
+                               sheet = "clinical", na = "n/a")
+
+clinical <- janitor::clean_names(clinical) %>%
+  janitor::remove_empty(c("rows", "cols"))
+
+```
+
+
+
+
+
+```{r combine data}
+
+feopgl <- pass %>% 
+    left_join(gapp, by = "bx_numarasi") %>% 
+    left_join(histomorphology, by = "bx_numarasi") %>% 
+    left_join(clinical, by = "bx_numarasi")
+
+
+```
+
+
+
+
+```{r recode variables}
+
+# data %>% 
+#   #rowwise will make sure the sum operation will occur on each row
+#   #then a simple sum(..., na.rm=TRUE) is enough to result in what you need
+#   mutate(sum = sum(a,b,c, na.rm=TRUE))
+
+
+feopgl <- feopgl %>% 
+    rowwise() %>%
+  mutate(
+    modifiyeGAPP = sum(buyuk_duzensiz_yuvalanma,
+                       psodorozet,
+                       hucre_150_0_150_250_1_250_2,
+                       komedonekroz,
+                       damar_veya_kapsul_inv,
+                       # ki67_percent_1_0_percent_1_3_1_percent_3_2,
+                       na.rm = TRUE) 
+    )
+
+feopgl <- tibble::as_tibble(feopgl)
+
+# feopgl %>%
+#   select(bx_numarasi, buyuk_duzensiz_yuvalanma,
+#                        psodorozet,
+#                        hucre_150_0_150_250_1_250_2,
+#                        komedonekroz,
+#                        damar_veya_kapsul_inv, ki67_percent_1_0_percent_1_3_1_percent_3_2,
+#                        skorGAPP, modifiyeGAPP) %>% 
+#   View(title = "modifiyeGAPP")
+
+
+## Recoding feopgl$vaskuler_patern_anomalileri into feopgl$vaskuler_patern_anomalileri_rec
+feopgl$vaskuler_patern_anomalileri_rec <- recode(feopgl$vaskuler_patern_anomalileri,
+               "tm merkezinde kavernöz damar anomalileri" = "1",
+               "tm santralinde kalın vasküler septalar" = "1")
+feopgl$vaskuler_patern_anomalileri_rec <- as.numeric(feopgl$vaskuler_patern_anomalileri_rec)
+
+## Recoding feopgl$cs into feopgl$cs_rec
+feopgl$cs_rec <- recode(feopgl$cs,
+               "fragmante" = "1",
+               "rüptüre" = "1")
+feopgl$cs_rec <- as.numeric(feopgl$cs_rec)
+
+
+## Recoding feopgl$tani into feopgl$tani_rec
+feopgl$tani_rec <- recode(feopgl$tani,
+               "Nöroendokrin tümör" = "Feokromositoma",
+               "PARAGANGLİOMA" = "Paraganglioma",
+               "İntravasküler paraganglioma (glomus jugulare tümörü)" = "Paraganglioma",
+               "Paraganglioma (\"Carotid body\" tümör)" = "Paraganglioma",
+               "Multiple feokromasitoma" = "Feokromositoma",
+               "Paraganglioma (karotid body tümörü)" = "Paraganglioma",
+               "Feokromasitoma" = "Feokromositoma",
+               "FEOKROMOSİTOMA" = "Feokromositoma",
+               "Multipl feokromositoma" = "Feokromositoma")
+feopgl$tani_rec <- factor(feopgl$tani_rec)
+
+
+## Recoding feopgl$cinsiyet into feopgl$cinsiyet_rec
+feopgl$cinsiyet_rec <- recode(feopgl$cinsiyet,
+               "e" = "Erkek",
+               "K" = "Kadin",
+               "k" = "Kadin",
+               "E" = "Erkek")
+feopgl$cinsiyet_rec <- factor(feopgl$cinsiyet_rec)
+
+## Recoding feopgl$tumor_lokalizasyonu into feopgl$tumor_lokalizasyonu_rec
+feopgl$tumor_lokalizasyonu_rec <- recode(feopgl$tumor_lokalizasyonu,
+               "paraaortal" = "Batin",
+               "timpanik" = "Servikal",
+               "sol karotis bifurkasyonu" = "Servikal",
+               "pankreas başı ve duodenom komşuluğunda" = "Batin",
+               "ince barsak" = "Batin",
+               "batın içi kitle" = "Batin",
+               "sağ foramen jugulare" = "Servikal",
+               "karotis bifürkasyonu" = "Servikal",
+               "sol boyun CCA bifurkasyonu" = "Servikal",
+               "retroperiton" = "Batin",
+               "sol alt kadran kitle" = "Batin",
+               "sol boyun" = "Servikal",
+               "her 2 iliak arter ortasında batın içi kitle" = "Batin")
+feopgl$tumor_lokalizasyonu_rec <- factor(feopgl$tumor_lokalizasyonu_rec)
+
+
+
+feopgl$tumor_lokalizasyonu_rec <- as.character(feopgl$tumor_lokalizasyonu_rec)
+feopgl$tumor_lokalizasyonu_rec[feopgl$tani_rec == "Feokromositoma"] <- "Adrenal"
+
+## Reordering feopgl$tumor_lokalizasyonu_rec
+feopgl$tumor_lokalizasyonu_rec <- factor(feopgl$tumor_lokalizasyonu_rec, levels=c("Servikal", "Batin", "Adrenal"))
+
+```
+
+
+
+
+```{r select columns}
+# çıkarılan klinik veriler var onlar daha sonra eklenebilir
+
+
+feopgl <- feopgl %>%
+  select(
+    bx_numarasi,
+    DiffuzBuyume = diffuz_buyume,
+    KonfluenNekroz = konfluen_nekroz,
+    ArtmisHucresellik = artmis_hucresellik,
+    Monotonluk = monotonluk,
+    igsilesme,
+    Mitoz = mitoz,
+    AtipikMitoz = atipik_mitoz,
+    AdipozDokuUzanim = adipoz_dokuya_uzanim,
+    Vaskulerinvazyon = vi,
+    Kapsulinvazyon = ki,
+    pleomorfizm,
+    hiperkromazi,
+    skorPASS,
+    BuyukDuzensizYuvalanma = buyuk_duzensiz_yuvalanma,
+    psodorozet,
+    HucreSayisi = hucre_150_0_150_250_1_250_2,
+    komedonekroz,
+    DamarKapsulinvazyonu = damar_veya_kapsul_inv,
+    ki67_gr = ki67_percent_1_0_percent_1_3_1_percent_3_2,
+    # epinefrin_veya_norepinefrin,
+    # hormon = norepinefrin_veya_norepinefrin_dopamin,
+    skorGAPP,
+    modifiyeGAPP,
+    CevreSurrenal = cevre_surrenal,
+    # MedullerHiperplaziNodul = meduller_hiperplazi_nodul,
+    DejeneratifDegisiklik = dejeneratif_degisiklik,
+    NukleerPsodoinkluzyon = nukleer_psodoinkluzyon,
+    HyalenGlobul = hyalen_globul,
+    BerrakHucre = berrak_hucre,
+    LipofuskinMelanin = lipofuskin_melanin,
+    GanglionHucresi = ganglion_hucresi,
+    SmallCell = small_cell,
+    VaskulerPaternAnomalisi = vaskuler_patern_anomalileri_rec,
+    SustantakulerHucre = sustantakuler_hucre,
+    CerrahiSinir = cs_rec,
+    # Kromogranin = kromo,
+    # th,
+    # diger,
+    # x17,
+    # isim,
+    # tc,
+    Tani = tani_rec,
+    Lokalizasyon = tumor_lokalizasyonu_rec,
+    yas,
+    Cinsiyet = cinsiyet_rec,
+    # metabolitler_yuksek_olanlar_kirmizi,
+    # x10,
+    # sikayet,
+    cap
+    # pra,
+    # aldosteron,
+    # acth,
+    # deksametazon,
+    # kortizol,
+    # yorum,
+    # x18,
+    # survi
+  )
+
+```
+
+
+
+# Descriptive Statistics
+
+```{r select columns for descriptive statistics}
+frequencyColumns <- feopgl %>% 
+    select(-c("bx_numarasi", "DejeneratifDegisiklik", "yas", "cap"))
+
+```
+
+
+
+```{r generating code for descriptive statistics, include=FALSE}
+magicfor::magic_for()
+for (i in 1:length(names(frequencyColumns))) {
+    y <- paste0("```{r ", names(frequencyColumns)[i], "}
+frequencyColumns %>% 
+  janitor::tabyl(", names(frequencyColumns)[i], ") %>%
+  adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```", "\n", "\n")
+    put(y)
+}
+
+writeLines(magicfor::magic_result_as_vector(), "R/_generatedCode_frequencyColumns.Rmd")
+magicfor::magic_free()
+```
+
+
+```{r frequencyColumns, child='R/_generatedCode_frequencyColumns.Rmd'}
+
+```
+
+
+
+```{r Yas Descriptives, layout="l-body-outset"}
+jmv::descriptives(
+    data = feopgl,
+    vars = yas,
+    hist = TRUE,
+    dens = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE,
+    missing = FALSE,
+    mode = TRUE,
+    sd = TRUE,
+    sw = TRUE)
+```
+
+
+
+```{r Cap Descriptives, layout="l-body-outset"}
+jmv::descriptives(
+    data = feopgl,
+    vars = cap,
+    hist = TRUE,
+    dens = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE,
+    missing = FALSE,
+    mode = TRUE,
+    sd = TRUE,
+    sw = TRUE)
+```
+
+
+
+
+\pagebreak
+
+
+# Histomorfolojik özelliklerin birbiri ile korelasyonu
+
+```{r}
+# https://neuropsychology.github.io/psycho.R/2018/05/20/correlation.html
+```
+
+
+
+```{r eval=FALSE, include=FALSE}
+gg <- ggplot(feopgl,
+             aes(x = , y = )
+             ) +
+    geom_point() +
+    geom_count() +
+    geom_smooth(method="lm", se = TRUE)
+plot(gg)
+```
+
+
+
+```{r eval=FALSE, include=FALSE}
+gg <- ggplot(feopgl,
+             aes(x = , y = )
+             ) +
+    geom_point() +
+    geom_count() +
+    geom_smooth(method="lm", se = TRUE)
+plot(gg)
+```
+
+
+## PASS vs modifiye GAPP
+
+
+
+```{r PASS vs modifiye GAPP}
+cor <- feopgl  %>%
+    select(
+      skorPASS,
+      modifiyeGAPP
+      ) %>%
+  psycho::correlation(
+            # method = "pearson"
+            method = "spearman"
+            # method = "kendall"
+              )
+```
+
+
+---
+
+```{r eval=FALSE, include=FALSE, results="asis"}
+cor %>%
+    report::to_values()
+```
+
+---
+
+\newpage
+\blandscape
+
+
+```{r correlation matrix PASS vs modifiye GAPP}
+summary(cor) %>% 
+  knitr::kable(format = "latex") %>% 
+  kableExtra::kable_styling(latex_options="scale_down", )
+```
+
+
+\pagebreak
+
+```{r correlation graph PASS vs modifiye GAPP}
+plot(cor)
+```
+
+
+\elandscape
+
+\newpage
+
+
+```{r save correlation result PASS vs modifiyeGAPP, results='asis'}
+write(
+capture.output(
+print(cor)
+),
+"correlationPASSmodifiyeGAPP.txt")
+paste0(rownames(file.info("correlationPASSmodifiyeGAPP.txt")), " : ", file.info("correlationPASSmodifiyeGAPP.txt")$ctime)
+```
+
+saved report after analysis to `correlationPASSmodifiyeGAPP.txt`.
+
+
+
+
+
+
+\pagebreak
+
+
+
+
+
+## PASS vs others
+
+
+```{r PASS vs others}
+cor <- feopgl  %>%
+  select(
+    skorPASS,
+    BuyukDuzensizYuvalanma,
+    HucreSayisi,
+    komedonekroz,
+    DamarKapsulinvazyonu,
+    ki67_gr,
+    NukleerPsodoinkluzyon,
+    HyalenGlobul,
+    BerrakHucre,
+    LipofuskinMelanin,
+    SmallCell,
+    VaskulerPaternAnomalisi,
+    SustantakulerHucre,
+    CerrahiSinir,
+    Lokalizasyon,
+    yas,
+    Cinsiyet,
+    cap
+  ) %>%
+  psycho::correlation(# method = "pearson"
+    method = "spearman"
+    # method = "kendall"
+  )
+```
+
+
+---
+
+```{r eval=FALSE, include=FALSE, results="asis"}
+cor %>%
+    report::to_values()
+```
+
+---
+
+\newpage
+\blandscape
+
+
+```{r correlation matrix PASS}
+summary(cor) %>% 
+  knitr::kable(format = "latex") %>% 
+  kableExtra::kable_styling(latex_options="scale_down", )
+```
+
+
+\pagebreak
+
+```{r correlation graph}
+plot(cor)
+```
+
+
+\elandscape
+
+\newpage
+
+
+```{r save correlation result PASS, results='asis'}
+write(
+capture.output(
+print(cor)
+),
+"correlationPASS.txt")
+paste0(rownames(file.info("correlationPASS.txt")), " : ", file.info("correlationPASS.txt")$ctime)
+```
+
+saved report after analysis to `correlationPASS.txt`.
+
+
+
+
+
+
+\pagebreak
+
+
+
+## Modifiye GAPP vs others
+
+
+```{r Modifiye GAPP vs others}
+cor <- feopgl  %>%
+  select(
+    modifiyeGAPP,
+    DiffuzBuyume,
+    KonfluenNekroz,
+    ArtmisHucresellik,
+    Monotonluk,
+    igsilesme,
+    Mitoz,
+    AtipikMitoz,
+    AdipozDokuUzanim,
+    Vaskulerinvazyon,
+    Kapsulinvazyon,
+    pleomorfizm,
+    hiperkromazi,
+    NukleerPsodoinkluzyon,
+    HyalenGlobul,
+    BerrakHucre,
+    LipofuskinMelanin,
+    SmallCell,
+    VaskulerPaternAnomalisi,
+    SustantakulerHucre,
+    CerrahiSinir,
+    Lokalizasyon,
+    yas,
+    Cinsiyet,
+    cap
+  ) %>%
+  psycho::correlation(# method = "pearson"
+    method = "spearman"
+    # method = "kendall"
+  )
+```
+
+
+---
+
+```{r eval=FALSE, include=FALSE, results="asis"}
+cor %>%
+    report::to_values()
+```
+
+---
+
+\newpage
+\blandscape
+
+
+```{r correlation matrix GAPP}
+summary(cor) %>% 
+  knitr::kable(format = "latex") %>% 
+  kableExtra::kable_styling(latex_options="scale_down", )
+```
+
+
+\pagebreak
+
+```{r correlation graph GAPP}
+plot(cor)
+```
+
+
+\elandscape
+
+\newpage
+
+
+```{r save correlation result modidifye GAPP, results='asis'}
+write(
+capture.output(
+print(cor)
+),
+"correlationmodifiyeGAPP.txt")
+paste0(rownames(file.info("correlationmodifiyeGAPP.txt")), " : ", file.info("correlationmodifiyeGAPP.txt")$ctime)
+```
+
+saved report after analysis to `correlationmodifiyeGAPP.txt`.
+
+
+
+
+
+
+
+
+
+\pagebreak
+
+
+
+# Feokromositoma vs Paraganglioma
+
+
+```{r tani degiskenler}
+dependent_tani <- "Tani"
+explanatory_tani1 <- c("DiffuzBuyume",
+                      "KonfluenNekroz",
+                      "ArtmisHucresellik",
+                      "Monotonluk",
+                      "igsilesme",
+                      "Mitoz",
+                      "AtipikMitoz",
+                      "AdipozDokuUzanim",
+                      "Vaskulerinvazyon",
+                      "Kapsulinvazyon",
+                      "pleomorfizm",
+                      "hiperkromazi",
+                      "skorPASS")
+
+explanatory_tani2 <- c("BuyukDuzensizYuvalanma",
+                       "HucreSayisi",
+                       "komedonekroz",
+                       "DamarKapsulinvazyonu",
+                       "ki67_gr",
+                       "modifiyeGAPP")
+
+explanatory_tani3 <-  c("NukleerPsodoinkluzyon",
+                       "HyalenGlobul",
+                       "BerrakHucre",
+                       "LipofuskinMelanin",
+                       "GanglionHucresi",
+                       "SmallCell",
+                       "VaskulerPaternAnomalisi",
+                       "SustantakulerHucre",
+                       "CerrahiSinir",
+                       "yas",
+                       "Cinsiyet",
+                       "cap")
+
+```
+
+
+```{r tani crosstable1, message=FALSE, warning=FALSE}
+
+feopgl %>%
+  summary_factorlist(dependent_tani, explanatory_tani1,
+  p = TRUE, add_dependent_label = TRUE) -> t_tani1
+
+knitr::kable(t_tani1, row.names = FALSE, align = c("l", "l", "r", "r", "r"))
+```
+
+
+\pagebreak
+
+
+```{r ggstatplot skorPASS, error=FALSE, warning=FALSE}
+
+feopgl$skorPASS2 <- as.numeric(as.character(feopgl$skorPASS))
+
+feopgl %>% 
+    ggstatsplot::ggbetweenstats(data = ., y = skorPASS2, x = Tani ,plot.type = "boxviolin")
+```
+
+
+
+
+
+\pagebreak
+
+
+```{r tani crosstable2, , message=FALSE, warning=FALSE}
+
+feopgl %>%
+  summary_factorlist(dependent_tani, explanatory_tani2,
+  p = TRUE, add_dependent_label = TRUE) -> t_tani2
+
+knitr::kable(t_tani2, row.names = FALSE, align = c("l", "l", "r", "r", "r"))
+```
+
+
+\pagebreak
+
+
+
+```{r ggstatplot modifiyeGAPP, error=FALSE, warning=FALSE}
+
+feopgl$modifiyeGAPP2 <- as.numeric(as.character(feopgl$modifiyeGAPP))
+
+feopgl %>% 
+    ggstatsplot::ggbetweenstats(data = ., y = modifiyeGAPP2, x = Tani ,plot.type = "boxviolin")
+```
+
+
+
+
+
+
+\pagebreak
+
+
+```{r tani crosstable3, message=FALSE, warning=FALSE}
+feopgl %>%
+  summary_factorlist(dependent_tani, explanatory_tani3,
+  p = TRUE, add_dependent_label = TRUE) -> t_tani3
+
+knitr::kable(t_tani3, row.names = FALSE, align = c("l", "l", "r", "r", "r"))
+```
+
+
+\pagebreak
+
+
+# Lokalizasyona Göre
+
+```{r lokalizasyon degiskenler}
+dependent_lokal <- "Lokalizasyon"
+
+explanatory_lokal1 <- c("DiffuzBuyume",
+                      "KonfluenNekroz",
+                      "ArtmisHucresellik",
+                      "Monotonluk",
+                      "igsilesme",
+                      "Mitoz",
+                      "AtipikMitoz",
+                      "AdipozDokuUzanim",
+                      "Vaskulerinvazyon",
+                      "Kapsulinvazyon",
+                      "pleomorfizm",
+                      "hiperkromazi",
+                      "skorPASS")
+
+explanatory_lokal2 <- c("BuyukDuzensizYuvalanma",
+                       "HucreSayisi",
+                       "komedonekroz",
+                       "DamarKapsulinvazyonu",
+                       "ki67_gr",
+                       "modifiyeGAPP")
+
+explanatory_lokal3 <-  c("NukleerPsodoinkluzyon",
+                       "HyalenGlobul",
+                       "BerrakHucre",
+                       "LipofuskinMelanin",
+                       "GanglionHucresi",
+                       "SmallCell",
+                       "VaskulerPaternAnomalisi",
+                       "SustantakulerHucre",
+                       "CerrahiSinir",
+                       "yas",
+                       "Cinsiyet",
+                       "cap")
+```
+
+
+```{r crosstable lokal1, message=FALSE, warning=FALSE}
+feopgl %>%
+  summary_factorlist(dependent_lokal, explanatory_lokal1,
+  p = TRUE, add_dependent_label = TRUE) -> t_lokal1
+
+knitr::kable(t_lokal1, row.names = FALSE, align = c("l", "l", "r", "r", "r"))
+```
+
+\pagebreak
+
+
+```{r ggstatplot skorPASS lokalizasyon, error=FALSE, warning=FALSE}
+
+feopgl$skorPASS2 <- as.numeric(as.character(feopgl$skorPASS))
+
+feopgl %>% 
+    ggstatsplot::ggbetweenstats(data = ., y = skorPASS2, x = Lokalizasyon ,plot.type = "boxviolin")
+```
+
+
+
+
+
+\pagebreak
+
+
+
+```{r crosstable lokal2, message=FALSE, warning=FALSE}
+feopgl %>%
+  summary_factorlist(dependent_lokal, explanatory_lokal2,
+  p = TRUE, add_dependent_label = TRUE) -> t_lokal2
+
+knitr::kable(t_lokal2, row.names = FALSE, align = c("l", "l", "r", "r", "r"))
+```
+
+
+\pagebreak
+
+
+```{r ggstatplot modifiyeGAPP lokalizasyon, error=FALSE, warning=FALSE}
+
+feopgl$modifiyeGAPP2 <- as.numeric(as.character(feopgl$modifiyeGAPP))
+
+feopgl %>% 
+    ggstatsplot::ggbetweenstats(data = ., y = modifiyeGAPP2, x = Lokalizasyon ,plot.type = "boxviolin")
+```
+
+
+\pagebreak
+
+
+```{r crosstable lokal3, message=FALSE, warning=FALSE}
+feopgl %>%
+  summary_factorlist(dependent_lokal, explanatory_lokal3,
+  p = TRUE, add_dependent_label = TRUE) -> t_lokal3
+
+knitr::kable(t_lokal3, row.names = FALSE, align = c("l", "l", "r", "r", "r"))
+```
+
+
+# inspectdf
+
+
+```{r eval=FALSE, include=FALSE}
+inspectdf::inspect_types(feopgl)
+inspectdf::inspect_types(feopgl) %>% 
+  inspectdf::show_plot()
+```
+
+
+```{r eval=FALSE, include=FALSE}
+inspect_mem(feopgl)
+# %>% show_plot
+
+inspect_na(feopgl)
+
+```
+
+```{r}
+dataForCor <- frequencyColumns %>% 
+  select(explanatory_tani1)
+
+inspectdf::inspect_cor(dataForCor)
+
+inspectdf::inspect_cor(dataForCor) %>% 
+  inspectdf::show_plot()
+```
+
+
+```{r}
+inspectdf::inspect_num(dataForCor) %>% show_plot()
+```
+
+```{r}
+inspectdf::inspect_cat(dataForCor)
+```
+
+
+
+
+
+<!-- footer  -->
+
+
+```{r footer,  child='R/_footer.Rmd'}
+```
+
+
+
+

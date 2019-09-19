@@ -1,0 +1,52 @@
+# Cross Tables
+
+## finalfit
+
+```{r}
+library(finalfit)
+```
+
+
+```{r}
+dependent <- c("Lauren",
+               "CD44",
+               "Her2",
+               "MMR2",
+                 "TumorPDL1gr1",
+                 "TumorPDL1gr5",
+                 "inflPDL1gr1",
+                 "inflPDL1gr5"
+                 )
+
+explanatory <- c("Cinsiyet",
+                 "Yas",
+                 # "TumorYerlesimi",
+                 "TumorCapi",
+                 "Lauren",
+                 "Grade",
+                 "T_stage",
+                 # "N_stage",
+                 # "M_stage",
+                 "CD44",
+                 "Her2",
+                 "MMR2",
+                 "TumorPDL1gr1",
+                 "TumorPDL1gr5",
+                 "inflPDL1gr1",
+                 "inflPDL1gr5",
+                 "LVI",
+                 "PNI",
+                 "LenfNoduMetastazi")
+```
+
+
+
+```{r include=FALSE}
+source(here::here("R", "generatingCodeForCrossTables.R"))
+```
+
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCrossTables.Rmd')}
+```
+

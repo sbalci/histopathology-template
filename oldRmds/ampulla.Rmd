@@ -1,0 +1,607 @@
+---
+title: "Ampulla Tumors"
+description: |
+  Analysis for DIPC  
+  Analysis for pT1
+author:
+  - name:  Serdar
+    url: https://www.serdarbalci.com/
+    affiliation: serdarbalci.com
+    affiliation_url: https://www.serdarbalci.com/
+date: "`r Sys.Date()`"
+output: 
+    distill::distill_article:
+      toc: true
+      toc_depth: 3
+---
+
+
+
+<style>
+    body .main-container {
+        max-width: 90%;
+    }
+</style>
+
+
+```{r setup global chunk settings, include=FALSE}
+knitr::opts_chunk$set(comment = NA, include = TRUE, echo = FALSE)
+```
+
+
+```{r library}
+library(tidyverse)
+library(foreign)
+library(tidylog)
+library(janitor)
+```
+
+---
+
+```{r read data}
+mydata <- read.spss("ampulla-data-forTstage-multivariate-20Sep2014 for USCAP2016 presentation.sav", use.value.labels = TRUE, to.data.frame = TRUE)
+```
+
+
+```{r}
+# VariableLabels <- as.data.frame(attr(mydata, "variable.labels"))
+# VariableLabels$original <- rownames(VariableLabels)
+
+```
+
+
+```{r}
+# VariableLabels$colname <- VariableLabels$original
+# VariableLabels$label[VariableLabels$label ==""] <- NA 
+# VariableLabels$colname[!is.na(VariableLabels$label)] <- as.vector(VariableLabels$label[!is.na(VariableLabels$label)])
+```
+
+
+```{r}
+# names(mydata) <- VariableLabels$colname
+```
+
+```{r filter data, include=FALSE}
+ampulla <- mydata %>%
+     filter(includeinadenocastudy == "amp adenoca")
+```
+
+
+# DIPC
+
+```{r include=FALSE}
+ampulla %>% 
+  tabyl(FINAL_TYPE_2013_gr) %>% 
+  adorn_pct_formatting(digits = 0, affix_sign = TRUE) %>%
+  adorn_totals(where = "row") %>%
+    knitr::kable()
+```
+
+
+
+```{r recode histotype}
+## Recoding ampulla$FINAL_TYPE_2013_gr into ampulla$DIPCvsOthers
+ampulla$DIPCvsOthers <- recode(ampulla$FINAL_TYPE_2013_gr,
+               "             " = NA_character_,
+               "adenosquamous" = "Others",
+               "DIPC         " = "DIPC",
+               "glandular    " = "Others",
+               "medullary    " = "Others",
+               "mucinous\nDIPC" = "DIPC",
+               "mucinous     " = "Others",
+               "others       " = "Others")
+
+```
+
+
+```{r}
+ampulla %>% 
+  tabyl(FINAL_TYPE_2013_gr, DIPCvsOthers) %>% 
+  adorn_totals(where = c("row", "col"))
+```
+
+
+```{r}
+# glimpse(ampulla)
+```
+
+```{r}
+## Recoding ampulla$GENDER into ampulla$Gender
+ampulla$Gender <- recode(ampulla$GENDER,
+               "      " = NA_character_)
+```
+
+
+```{r}
+# sum(as.numeric(ampulla$Overall_Tumor_Size_in_mm) < as.numeric(ampulla$Size_of_invasion_in_mm), na.rm = TRUE)
+ampulla$Size_of_invasion_in_mm[is.na(ampulla$Size_of_invasion_in_mm)] <- ampulla$Overall_Tumor_Size_in_mm[is.na(ampulla$Size_of_invasion_in_mm)]
+
+# ampulla$Size_of_invasion_in_mm == 40 & ampulla$Overall_Tumor_Size_in_mm == 70
+
+ampulla$Size_of_invasion_in_mm <- as.numeric(as.character(ampulla$Size_of_invasion_in_mm))
+
+ampulla$Overall_Tumor_Size_in_mm <- as.numeric(as.character(ampulla$Overall_Tumor_Size_in_mm))
+
+ampulla$Size_of_invasion_in_mm[ampulla$SURGPATHNO == "642145"] <- 70
+
+ampulla$Ndenomin <- as.numeric(as.character(ampulla$Ndenomin))
+
+# View(ampulla %>% select(Ndenomin, Ndenomin2))
+
+# ampulla$Ninnumerator2 <- as.numeric(as.character(ampulla$Ninnumerator))
+
+# View(ampulla %>% select(Ninnumerator, Ninnumerator2))
+
+ampulla$Ninnumerator <- as.numeric(as.character(ampulla$Ninnumerator))
+
+
+```
+
+
+
+
+# tangram
+
+output in seperate file
+
+```{r cross table tangram}
+# cat(names(ampulla), sep = "[1]+ \n")
+# 
+library(tangram)
+summary.cell_fraction <- function(object, ...) { paste0('%', object['percentage']) }
+assignInNamespace("summary.cell_fraction", summary.cell_fraction, "tangram")
+
+CaprazTabloDIPC <- tangram::html5(
+tangram::tangram(DIPCvsOthers ~ 
+Gender[1]+ 
+AGE[1]+ 
+Site_Specific_Classification[1]+ 
+Overall_Tumor_Size_in_mm[1]+ 
+Size_of_invasion_in_mm[1]+ 
+Perineural_Invasion[1]+ 
+Lymphovascular_Invasion[1]+ 
+SurgicalMargin[1]+ 
+MetastaticLymphNodes[1]+ 
+T_AJCC2010_gr[1]+ 
+T_gr[1]
+
+, ampulla),
+      fragment=TRUE, inline="nejm.css", caption = "Ampulla Tumors: DIPC vs Others", id="Tablo")
+
+
+write(CaprazTabloDIPC, "CaprazTabloDIPC.html")
+
+```
+
+
+<!-- # jsmodule -->
+
+<!-- ```{r} -->
+<!-- # jsBasicGadget(ampulla) -->
+<!-- ``` -->
+
+
+
+
+# finalfit
+
+```{r}
+library(finalfit)
+library(dplyr)
+```
+
+```{r}
+dependent <- "DIPCvsOthers"
+explanatory <- c("Gender", "AGE", "Site_Specific_Classification", "Overall_Tumor_Size_in_mm", "Size_of_invasion_in_mm", "Perineural_Invasion", "Lymphovascular_Invasion", "SurgicalMargin", "MetastaticLymphNodes", "T_AJCC2010_gr", "T_gr")
+
+```
+
+
+```{r crosstable}
+ampulla %>%
+  summary_factorlist(dependent, explanatory,
+  p=TRUE, add_dependent_label=TRUE) -> t1
+
+knitr::kable(t1, row.names=FALSE, align=c("l", "l", "r", "r", "r"))
+```
+
+# jmv
+
+```{r descriptives1, layout="l-body-outset"}
+jmv::descriptives(
+    data = ampulla,
+    vars = vars("AGE", "Size_of_invasion_in_mm", "Ninnumerator"),
+    splitBy = "DIPCvsOthers",
+    mean = TRUE, 
+    median = TRUE,
+    freq = TRUE,
+    hist = TRUE,
+    dens = TRUE,
+    bar = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE,
+    mode = TRUE,
+    sum = TRUE,
+    sd = TRUE,
+    variance = TRUE,
+    range = TRUE,
+    se = TRUE,
+    skew = TRUE,
+    kurt = TRUE,
+    quart = TRUE,
+    pcEqGr = TRUE)
+```
+
+
+```{r}
+ampulla %>% 
+  filter(DIPCvsOthers == "DIPC") %>% 
+  select(Ninnumerator)
+
+  
+```
+
+
+
+
+```{r descriptives 2, layout="l-body-outset"}
+jmv::descriptives(
+    data = ampulla,
+    vars = vars("Gender", "Site_Specific_Classification",  "Perineural_Invasion", "Lymphovascular_Invasion"),
+    splitBy = "DIPCvsOthers",
+    mean = FALSE,
+    median = FALSE,
+    min = FALSE,
+    max = FALSE,
+    freq = TRUE,
+    hist = TRUE,
+    dens = TRUE,
+    bar = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE
+    )
+```
+
+
+```{r descriptives3, layout="l-body-outset"}
+jmv::descriptives(
+    data = ampulla,
+    vars = vars("SurgicalMargin", "MetastaticLymphNodes", "T_AJCC2010_gr", "T_gr"),
+    splitBy = "DIPCvsOthers",
+    mean = FALSE,
+    median = FALSE,
+    min = FALSE,
+    max = FALSE,
+    freq = TRUE,
+    hist = TRUE,
+    dens = TRUE,
+    bar = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE
+    )
+```
+
+
+
+
+
+
+
+# Cox proportional hazards: survival::coxph()
+Of the form: survival::coxph(dependent ~ explanatory)
+
+```{r}
+## Recoding ampulla$LastKnownOutcome into ampulla$status
+ampulla$status <- recode(ampulla$LastKnownOutcome,
+               "alive" = "0",
+               "dead" = "1")
+ampulla$status <- as.numeric(as.character(ampulla$status))
+
+
+ampulla$time <- ampulla$SurvivalMonths_fromampulla_survival_12_Feb_2014
+```
+
+
+
+```{r}
+library(finalfit)
+library(survival)
+explanatoryS <- c("DIPCvsOthers", "Gender", "AGE", "Site_Specific_Classification", "Overall_Tumor_Size_in_mm", "Size_of_invasion_in_mm", "Perineural_Invasion", "Lymphovascular_Invasion", "SurgicalMargin", "MetastaticLymphNodes", "T_AJCC2010_gr", "T_gr")
+dependentS = "Surv(time, status)"
+ampulla %>%
+  finalfit(dependentS, explanatoryS) -> t6
+
+knitr::kable(t6, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r"))
+```
+
+
+<!-- ```{r} -->
+<!-- ampulla %>% -->
+<!--   hr_plot(dependentS, explanatoryS, dependent_label = "Survival") -->
+<!-- ``` -->
+
+
+
+# Kaplan-Meier
+
+
+```{r}
+explanatoryKM1 <-  c("DIPCvsOthers")
+dependentKM1 <-  "Surv(time, status)"
+ampulla %>%
+  surv_plot(dependentKM1, explanatoryKM1, 
+  xlab="Time (months)", pval=TRUE, legend = "none")
+```
+
+
+
+```{r}
+## Recoding ampulla$FINAL_TYPE_2013_gr_2 into ampulla$DIPCvsOtherTumors
+ampulla$DIPCvsOtherTumors <- recode(ampulla$FINAL_TYPE_2013_gr_2,
+               "Glandular-MI" = "Glandular-I",
+               "Glandular-MPB" = "Glandular-PB",
+               "Glandular-Other" = NA_character_,
+               "Nonglandular-DIPC" = "DIPC",
+               "Nonglandular-Mucinous" = NA_character_,
+               "Nonglandular-Medullary" = NA_character_,
+               "Nonglandular-Adenosquamous" = NA_character_,
+               "Nonglandular-Other" = NA_character_)
+
+```
+
+
+
+
+```{r}
+library(finalfit)
+library(survival)
+explanatoryS2 <- c("DIPCvsOtherTumors")
+dependentS2 = "Surv(time, status)"
+ampulla %>%
+  finalfit(dependentS2, explanatoryS2) -> t7
+
+knitr::kable(t7, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r"))
+```
+
+```{r pairwise survival}
+survminer::pairwise_survdiff(formula = Surv(time, status) ~ DIPCvsOtherTumors, data = ampulla, p.adjust.method = "BH")
+```
+
+
+
+```{r}
+explanatoryKM2 <-  c("DIPCvsOtherTumors")
+dependentKM2 <-  "Surv(time, status)"
+ampulla %>%
+  surv_plot(dependentKM2, explanatoryKM2, 
+  xlab="Time (months)", pval=TRUE, legend = "none")
+```
+
+
+# 1-3-5 yr survival
+
+```{r include=FALSE}
+library(survival)
+km <- with(ampulla, Surv(time, status))
+head(km,80)
+plot(km)
+```
+
+
+```{r}
+km_fit <- survfit(Surv(time, status) ~ DIPCvsOtherTumors, data = ampulla)
+km_fit
+```
+
+```{r}
+# broom::tidy(km_fit)
+```
+
+
+
+```{r 1-3-5-yr survival}
+summary(km_fit, times = c(12,36,60))
+```
+
+
+---
+
+```{r}
+saveRDS(ampulla, "ampulla.RDS")
+```
+
+
+
+
+---
+
+  # T1aN0 cases vs T1 Node positive cases
+
+
+
+```{r}
+ampullaT1N <- readRDS("ampulla.RDS")
+
+ampullaT1N <- ampullaT1N %>% 
+  filter(includeinadenocastudy == "amp adenoca")
+```
+
+```{r}
+## Recoding ampullaT1N$LN_tumor_status into ampullaT1N$LN_tumor_status
+ampullaT1N$LN_tumor_status <- recode(ampullaT1N$LN_tumor_status,
+               "       " = NA_character_)
+
+```
+
+
+
+```{r}
+ampullaT1N %>% 
+  filter(T_AJCC2010_gr == "T1") %>% 
+  select(Size_of_invasion_in_mm) %>% 
+  summary()
+```
+
+
+```{r}
+ampullaT1N <- ampullaT1N %>% 
+  mutate(
+    stageT1N = case_when(
+      T_AJCC2010_gr == "T1" & Ninnumerator == 0        ~ "T1N0",
+      T_AJCC2010_gr == "T1" & Ninnumerator %in% c(1:3) ~ "T1N1",
+      T_AJCC2010_gr == "T1" & Ninnumerator > 3         ~ "T1N2"
+    )
+  )
+```
+
+```{r}
+table(ampullaT1N$stageT1N)
+```
+
+```{r}
+ampullaT1N <- ampullaT1N %>% 
+  mutate(
+    stageT1N = case_when(
+      T_AJCC2010_gr == "T1" & Ninnumerator == 0        ~ "T1N0",
+      T_AJCC2010_gr == "T1" & Ninnumerator %in% c(1:3) ~ "T1Npositive",
+      T_AJCC2010_gr == "T1" & Ninnumerator > 3         ~ "T1Npositive"
+    )
+  )
+
+## Recoding ampullaT1N$stageT1N
+ampullaT1N$stageT1N <- factor(ampullaT1N$stageT1N)
+
+
+```
+
+```{r}
+table(ampullaT1N$stageT1N)
+```
+
+
+# finalfit T1
+
+```{r}
+library(finalfit)
+library(dplyr)
+```
+
+```{r}
+dependentT1 <- "stageT1N"
+explanatoryT1 <- c("Gender", "AGE", "Site_Specific_Classification", "Overall_Tumor_Size_in_mm", "Size_of_invasion_in_mm", "Perineural_Invasion", "Lymphovascular_Invasion", "SurgicalMargin", "MetastaticLymphNodes")
+
+```
+
+
+```{r crosstable pT1}
+ampullaT1N %>%
+  summary_factorlist(dependentT1, explanatoryT1,
+  p=TRUE, add_dependent_label=TRUE) -> t2
+
+knitr::kable(x = t2, caption = "pT1 cases", row.names=FALSE, align = c("l", "l", "r", "r", "r"))
+```
+
+
+
+
+# Kaplan-Meier pT1
+
+
+```{r}
+explanatoryKMpT1 <-  c("stageT1N")
+dependentKMpT1 <-  "Surv(time, status)"
+ampullaT1N %>%
+  surv_plot(dependentKMpT1, explanatoryKMpT1, 
+  xlab="Time (months)", pval=TRUE, legend = "none")
+```
+
+
+
+# 1-3-5 yr survival pT1
+
+```{r include=FALSE}
+library(survival)
+km_pT1 <- with(ampullaT1N, Surv(time, status))
+head(km_pT1)
+plot(km_pT1)
+```
+
+
+```{r}
+km_pT1_fit <- survfit(Surv(time, status) ~ stageT1N, data = ampullaT1N)
+km_pT1_fit
+```
+
+```{r 1-3-5-yr survival pT1}
+summary(km_pT1_fit, times = c(12,36,60))
+```
+
+
+```{r}
+unclass(summary(km_pT1_fit, times = c(12,36,60)))$table
+
+
+summary(arsenal::tableby(stageT1N ~ Surv(time, status), data = ampullaT1N))
+
+
+capture.output(
+summary(km_pT1_fit, times = c(12,36,60))
+)
+
+
+```
+
+```{r}
+unclass(summary(km_pT1_fit))$table[,"median"][1]
+unclass(summary(km_pT1_fit))$table[,"median"][2]
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+# library(haven)
+# ampulla <- read_sav("ampulla-data-forTstage-multivariate-20Sep2014 for USCAP2016 presentation.sav", )
+
+# View(ampulla)
+```
+
+```{r}
+# ampulla <- ampulla %>%
+#     filter(includeinadenocastudy == "amp adenoca")
+```
+
+
+
+
+
+```{r}
+# ampulla$SurvivalMonths_fromampulla_survival_12_Feb_2014 <- as.numeric(ampulla$SurvivalMonths_fromampulla_survival_12_Feb_2014)
+
+```
+
+```{r}
+# library(survival)
+# km_fit <- survfit(Surv(SurvivalMonths_fromampulla_survival_12_Feb_2014, LastKnownOutcome) ~ 1, data = ampulla)
+# 
+# km_fit
+```
+

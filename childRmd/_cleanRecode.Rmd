@@ -1,0 +1,291 @@
+
+
+```{r}
+mydata <- janitor::clean_names(mydata)
+```
+
+
+```{r}
+## Recoding mydata$cinsiyet into mydata$Cinsiyet
+mydata$Cinsiyet <- recode(mydata$cinsiyet,
+               "K" = "Kadin",
+               "E" = "Erkek")
+mydata$Cinsiyet <- factor(mydata$Cinsiyet)
+```
+
+```{r}
+## Recoding mydata$tumor_yerlesimi into mydata$TumorYerlesimi
+mydata$TumorYerlesimi <- recode(mydata$tumor_yerlesimi,
+               "proksimal" = "Proksimal",
+               "distal" = "Distal",
+               "yaygın" = "Yaygin",
+               "gö bileşke" = "GEJ",
+               "antrum" = "Antrum")
+mydata$TumorYerlesimi <- factor(mydata$TumorYerlesimi)
+
+## Reordering mydata$TumorYerlesimi
+mydata$TumorYerlesimi <- factor(mydata$TumorYerlesimi, levels=c("GEJ", "Proksimal", "Antrum", "Distal", "Yaygin"))
+```
+
+
+```{r}
+## Recoding mydata$histolojik_alt_tip into mydata$HistolojikAltTip
+mydata$HistolojikAltTip <- recode(mydata$histolojik_alt_tip,
+               "medüller benzeri" = "meduller benzeri")
+mydata$HistolojikAltTip <- factor(mydata$HistolojikAltTip)
+
+```
+
+
+```{r}
+## Recoding mydata$lauren_siniflamasi into mydata$Lauren
+mydata$Lauren <- recode(mydata$lauren_siniflamasi,
+               "diffüz" = "diffuse",
+               "???" = "medullary")
+mydata$Lauren <- factor(mydata$Lauren)
+
+```
+
+```{r}
+## Recoding mydata$histolojik_derece into mydata$Grade
+mydata$Grade <- recode(mydata$histolojik_derece,
+               "az diferansiye" = "az",
+               "iyi diferansiye" = "iyi",
+               "orta diferansiye" = "orta")
+mydata$Grade <- factor(mydata$Grade)
+
+## Reordering mydata$Grade
+mydata$Grade <- factor(mydata$Grade, levels=c("iyi", "orta", "az"))
+```
+
+
+
+
+```{r recode TNM stage}
+mydata$Tstage <- stringr::str_match(mydata$patolojik_evre, paste('(.+)', "N", sep=''))[,2]
+
+mydata$Nstage <- paste0("N",
+    stringr::str_match(mydata$patolojik_evre, paste( "N", '(.+)', "M", sep=''))[,2]
+    )
+
+mydata$Mstage <- paste0("M", 
+    stringr::str_match(mydata$patolojik_evre, paste("M", '(.+)', sep=''))[,2]
+)
+```
+
+
+```{r recode TNM2}
+mydata <- mydata %>% 
+    mutate(
+        T_stage = case_when(
+            grepl(pattern = "T1", x = .$Tstage) == TRUE ~ "T1",
+            grepl(pattern = "T2", x = .$Tstage) == TRUE ~ "T2",
+            grepl(pattern = "T3", x = .$Tstage) == TRUE ~ "T3",
+            grepl(pattern = "T4", x = .$Tstage) == TRUE ~ "T4",
+            TRUE ~ "Tx"
+        )
+    ) %>% 
+mutate(
+        N_stage = case_when(
+            grepl(pattern = "N0", x = .$Nstage) == TRUE ~ "N0",
+            grepl(pattern = "N1", x = .$Nstage) == TRUE ~ "N1",
+            grepl(pattern = "N2", x = .$Nstage) == TRUE ~ "N2",
+            grepl(pattern = "N3", x = .$Nstage) == TRUE ~ "N3",
+            TRUE ~ "Nx"
+        )
+    ) %>% 
+mutate(
+        M_stage = case_when(
+            grepl(pattern = "M0", x = .$Mstage) == TRUE ~ "M0",
+            grepl(pattern = "M1", x = .$Mstage) == TRUE ~ "M1",
+            TRUE ~ "Mx"
+        )
+    )
+
+
+```
+
+
+
+
+
+```{r}
+## Recoding mydata$cd44_oran into mydata$CD44
+mydata$CD44 <- recode(mydata$cd44_oran,
+               "2" = "positive",
+               "0" = "negative",
+               "1" = "negative",
+               "3" = "positive")
+mydata$CD44 <- factor(mydata$CD44)
+
+```
+
+```{r}
+## Recoding mydata$her2_skor into mydata$Her2
+mydata$Her2 <- recode(mydata$her2_skor,
+               "+3" = "3",
+               "+1" = "1",
+               "+2" = "2")
+mydata$Her2 <- factor(mydata$Her2)
+## Reordering mydata$Her2
+mydata$Her2 <- factor(mydata$Her2, levels=c("0", "1", "2", "3"))
+```
+
+
+```{r}
+## Recoding mydata$msi into mydata$MMR
+mydata$MMR <- recode(mydata$msi,
+               "MSS" = "pMMR",
+               "MSİ(PMS2,MLH1)" = "dMMR(PMS2,MLH1)",
+               "MSİ(MSH2,MSH6)" = "dMMR(MSH2,MSH6)",
+               "MSİ(PMS2)" = "dMMR(PMS2)")
+mydata$MMR <- factor(mydata$MMR)
+
+## Recoding mydata$msi into mydata$MMR2
+mydata$MMR2 <- recode(mydata$msi,
+               "MSS" = "pMMR",
+               "MSİ(PMS2,MLH1)" = "dMMR",
+               "MSİ(MSH2,MSH6)" = "dMMR",
+               "MSİ(PMS2)" = "dMMR")
+mydata$MMR2 <- factor(mydata$MMR2)
+
+
+```
+
+
+```{r}
+mydata <- mydata %>% 
+    mutate(
+TumorPDL1gr1 = case_when(
+        t_pdl1 < 1 ~ "kucuk1",
+        t_pdl1 >= 1 ~ "buyukesit1"
+    )
+    ) %>% 
+mutate(
+TumorPDL1gr5 = case_when(
+        t_pdl1 < 5 ~ "kucuk5",
+        t_pdl1 >= 5 ~ "buyukesit5"
+    )
+    )   %>% 
+mutate(
+inflPDL1gr1 = case_when(
+        i_pdl1 < 1 ~ "kucuk1",
+        i_pdl1 >= 1 ~ "buyukesit1"
+    )
+    ) %>% 
+mutate(
+inflPDL1gr5 = case_when(
+        i_pdl1 < 5 ~ "kucuk5",
+        i_pdl1 >= 5 ~ "buyukesit5"
+    )
+    )
+
+```
+
+```{r}
+## Recoding mydata$lvi into mydata$LVI
+mydata$LVI <- recode(mydata$lvi,
+               "var" = "Var",
+               "yok" = "Yok")
+mydata$LVI <- factor(mydata$LVI)
+## Reordering mydata$LVI
+mydata$LVI <- factor(mydata$LVI, levels=c("Yok", "Var"))
+```
+
+
+```{r}
+## Recoding mydata$pni into mydata$PNI
+mydata$PNI <- recode(mydata$pni,
+               "var" = "Var",
+               "yok" = "Yok")
+mydata$PNI <- factor(mydata$PNI)
+## Reordering mydata$PNI
+mydata$PNI <- factor(mydata$PNI, levels=c("Yok", "Var"))
+```
+
+
+```{r}
+## Recoding mydata$ln into mydata$LenfNoduMetastazi
+mydata$LenfNoduMetastazi <- recode(mydata$ln,
+               "var" = "Var",
+               "yok" = "Yok")
+mydata$LenfNoduMetastazi <- factor(mydata$LenfNoduMetastazi)
+## Reordering mydata$LenfNoduMetastazi
+mydata$LenfNoduMetastazi <- factor(mydata$LenfNoduMetastazi, levels=c("Yok", "Var"))
+```
+
+
+```{r}
+mydata$sontarih <- janitor::excel_numeric_to_date(as.numeric(mydata$olum_tarihi))
+```
+
+
+```{r}
+mydata$Outcome <- "Dead"
+mydata$Outcome[mydata$olum_tarihi == "yok"] <- "Alive"
+```
+
+
+```{r select columns}
+# cat(names(mydata), sep = ",\n")
+
+mydata <- mydata %>% 
+    select(
+# sira_no,
+# no,
+# x3,
+# hasta_biyopsi_no,
+# cinsiyet,
+        Cinsiyet,
+        Yas = hasta_yasi,
+        TumorYerlesimi,
+        TumorCapi = tumor_capi,
+HistolojikAltTip,
+Lauren,
+Grade,
+TNM = patolojik_evre,
+Tstage,
+T_stage,
+Nstage,
+N_stage,
+Mstage,
+M_stage,
+CD44,
+Her2,
+MMR,
+MMR2,
+TumorPDL1gr1,
+TumorPDL1gr5,
+inflPDL1gr1,
+inflPDL1gr5,
+LVI,
+PNI,
+LenfNoduMetastazi,
+Outcome,        
+# tumor_yerlesimi,
+
+# histolojik_alt_tip,
+# lauren_siniflamasi,
+# histolojik_derece,
+# cd44_oran,
+# cd44_intense,
+# her2_skor,
+# msi,
+# t_pdl1,
+# i_pdl1,
+# lvi,
+# pni,
+# ln,
+CerrahiTarih = cerrahi_tarih,
+# olum_tarihi,
+genel_sagkalim,
+SonTarih = sontarih
+    )
+
+```
+
+
+
+
+
+

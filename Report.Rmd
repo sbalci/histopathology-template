@@ -1,0 +1,86 @@
+---
+title: "Data Report"
+description: |
+  Data Report  
+  Data Report
+author:
+  - name: Serdar
+    url: https://www.serdarbalci.com/
+    affiliation: serdarbalci.com
+    affiliation_url: https://www.serdarbalci.com/
+date: "`r Sys.Date()`"
+header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+output: 
+  pdf_document: 
+    fig_caption: yes
+    highlight: kate
+    number_sections: yes
+    toc: yes
+    latex_engine: lualatex
+    toc_depth: 5
+  redoc::redoc:
+    highlight_outputs: TRUE
+    margins: 1 
+    line_numbers: FALSE 
+  distill::distill_article:
+    toc: true
+---
+
+
+```{r header, child = here::here('childRmd', '_header.Rmd')}
+```
+
+
+```{r importData, child = here::here('childRmd', '_importData.Rmd')}
+```
+
+
+```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')}
+```
+
+
+
+```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
+```
+
+
+\newpage
+\blandscape
+
+```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')}
+```
+
+\elandscape
+
+
+```{r ggstatplots, child = here::here('childRmd', '_ggstatplots.Rmd')}
+```
+
+
+
+<!-- ```{r hypothesisTests, child = here::here('childRmd', '_hypothesisTests.Rmd')} -->
+<!-- ``` -->
+
+\newpage
+\blandscape
+
+```{r survival, child = here::here('childRmd', '_survival.Rmd')}
+```
+
+\elandscape
+
+
+```{r header, child = here::here('childRmd', '_footer.Rmd')}
+```
+
+
+\pagebreak
+
+
+
+\newpage
+
+

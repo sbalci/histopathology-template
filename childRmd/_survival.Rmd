@@ -1,0 +1,94 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r define survival time}
+mydata$int <- lubridate::interval(
+  lubridate::ymd(mydata$CerrahiTarih),
+  lubridate::ymd(mydata$SonTarih)
+  )
+mydata$OverallTime <- lubridate::time_length(mydata$int, "month")
+mydata$OverallTime <- round(mydata$OverallTime, digits = 1)
+```
+
+
+```{r}
+mydata$OverallTime <- mydata$genel_sagkalim
+```
+
+
+```{r}
+## Recoding mydata$Outcome into mydata$Outcome2
+mydata$Outcome2 <- recode(mydata$Outcome,
+               "Alive" = "0",
+               "Dead" = "1")
+mydata$Outcome2 <- as.numeric(mydata$Outcome2)
+
+```
+
+
+
+# Survival Analysis
+
+```{r}
+library(survival)
+km <- with(mydata, Surv(OverallTime, Outcome2))
+# head(km,80)
+# plot(km)
+```
+
+
+
+```{r}
+dependentKM <-  "Surv(OverallTime, Outcome2)"
+
+explanatoryKM <- c("Lauren",
+               "CD44",
+               "Her2",
+               "MMR2",
+                 "TumorPDL1gr1",
+                 "TumorPDL1gr5",
+                 "inflPDL1gr1",
+                 "inflPDL1gr5",
+               "Cinsiyet",
+                 "TumorYerlesimi",
+                 "Grade",
+                 "T_stage",
+                 "N_stage",
+                 "M_stage",
+                 "LVI",
+                 "PNI",
+                 "LenfNoduMetastazi")
+```
+
+
+```{r include=FALSE}
+source(here::here("R", "generatingCodeForSurvival.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', "generatedCodeSurvival.Rmd")}
+```
+
+
+
+
+
+
+
+
+# Multivariate
+
+```{r Multivariate Analysis, eval=FALSE, include=FALSE}
+# library(finalfit)
+# library(survival)
+# explanatoryMultivariate2 <- c("yas", "gender", "cap", "MetastaticLN", "SurgicalMargin", "LVI", "PNI", "yogun", "yaygin")
+# dependentMultivariate2 <-  "Surv(time, Outcome)"
+# 
+# masco_pannet %>%
+#   finalfit(dependentMultivariate2, explanatoryMultivariate2) -> tMultivariate2
+# 
+# knitr::kable(tMultivariate2, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r"))
+```

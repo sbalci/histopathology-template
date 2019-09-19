@@ -1,0 +1,283 @@
+# Plots
+
+## Categorical Variables
+
+
+```{r}
+dependent <- c("Lauren",
+               "CD44",
+               "Her2",
+               "MMR2",
+                 "TumorPDL1gr1",
+                 "TumorPDL1gr5",
+                 "inflPDL1gr1",
+                 "inflPDL1gr5"
+                 )
+
+explanatory <- c("Cinsiyet",
+                 # "TumorYerlesimi",
+                 "Lauren",
+                 "Grade",
+                 "T_stage",
+                 "N_stage",
+                 "M_stage",
+                 "CD44",
+                 "Her2",
+                 "MMR2",
+                 "TumorPDL1gr1",
+                 "TumorPDL1gr5",
+                 "inflPDL1gr1",
+                 "inflPDL1gr5",
+                 "LVI",
+                 "PNI",
+                 "LenfNoduMetastazi")
+```
+
+
+
+
+```{r}
+mydataCategorical <- mydata %>% 
+    select(-Yas,
+           -TumorCapi,
+           -CerrahiTarih,
+           -genel_sagkalim,
+           -SonTarih,
+           -TNM
+    )
+```
+
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- explanatory[1]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[2]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[3]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[4]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[5]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[6]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[7]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[8]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[9]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[10]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[11]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[12]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[13]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[14]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[15]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+```{r include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[16]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```
+
+
+
+
+<!-- ## Continious Variables -->
+
+
+<!-- ```{r} -->
+<!-- mydataContinious <- mydata %>%  -->
+<!--     select( -->
+<!--         Yas, -->
+<!--         TumorCapi -->
+<!--     ) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r include=FALSE} -->
+<!-- source(here::here("R", "generatingCodeForContiniousPlots.R")) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeContiniousPlots.Rmd')} -->
+<!-- ``` -->
+
+
+

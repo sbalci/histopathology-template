@@ -1,0 +1,1799 @@
+---
+title: "Endoskopik Ve Kolonoskopik Biyopsilerin Rutin İncelemesinde Kesit Sayısının Tanıya Etkisi"
+author: "Burcu Saka, Gülbanu Canbaloğlu Erkan, Gökhan Baysoy"
+date: "`r format(Sys.Date())`"
+output:
+  word_document: 
+    fig_caption: yes
+    highlight: kate
+    keep_md: yes
+  html_document: 
+    keep_md: yes
+  html_notebook:
+    fig_caption: yes
+    highlight: kate
+    theme: readable
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width = 12, fig.height = 8, fig.path = 'Figs/', echo = FALSE, warning = FALSE, message = FALSE, error = FALSE, eval = TRUE, tidy = TRUE, comment = NA)
+```
+
+
+```{r library, include=FALSE}
+library(tidyverse)
+```
+
+---
+
+
+# Amaç
+
+> Gastrointestinal sistem (GİS) biyopsilerinin(bx) incelemesinde, kesit sayısı ve yöntemi standardize olmayıp, tartışma konusudur. Bu amaçla seri kesit(sk) ile elde edilen 2 lam arasında; tanı farkı olup olmadığı, fark var ise klinik önemi ve farklılığa neden olan faktörler araştırılmıştır. 
+
+
+Gastrointestinal sistem biyopsilerinin patolojik incelemesi için kaç kesit yapılması gerektiği tartışma konusudur. Tek lam üzerine kaç kesit alınacağı yanısıra kaç lam kesit hazırlanması gerektiği konusunda net bir bilgi yoktur. Bu çalışmada ilk lamda konulan tanı ile ikinci lamda konulan tanılar arasında bir fark olup olmadığı, fark varsa bu farklılığın ne kadar önemli olduğu ortaya konulmaya çalışılmıştır.  
+
+---
+
+> Çalışmamıza, Ocak-Haziran 2018 tarihleri boyunca tek gözlemci tarafından değerlendirilen tüm bxler dahil edilmiş, kurumumuzdaki rutin inceleme yöntemiyle değerlendirilmiştir. Buna göre; bxler ≤4parça/1 kasetlenmiştir. Her lamda 8 kesit olacak şekilde, 3,5 mikron kalınlığında, 2 lam sk hazırlanmıştır. Hasta yaşı, cinsiyeti, bx lokalizasyonu, parça&kaset sayısı, en büyük parçanın çapı, 1. ve 2. lam için tanılar not edilmiştir. Tanılar; lezyonsuz, nonneoplastik lezyonlu ve neoplastik olarak gruplanmıştır. Mide bxlerinde, aktvite, intestinal metaplazi(İm), lenfoid agregat(La) ve atrofi de not edilmiştir. Tanı farkı oranları McNemar Ki-Kare testi ile karşılaştırılmıştır. 
+
+
+# Materyal ve Metod
+Kurumumuzda rutin olarak 2 lama 8'er kesit alınmaktadır.
+Ocak-Haziran 2018 tarihleri arasında bölümümüze gelen gastorintestinal sistem biyopsilerinden ikişer lam kesit alındı. İlk lam tanısı konulduktan sonra ikinci lam incelendi ve tanılar ayrı ayrı not edildi. DEğişen tanılar ve değişen tanının klinik olarak önemli olup olmadığı not edildi. Biyopsilerin boyutları ve alındıkları yerler kaydedildi. Tanılardaki değişim oranları McNemar Ki-Kare testi ile karşılaştırıldı. 
+
+---
+
+# Anket sonuçları
+
+```{r}
+library(readxl)
+merkez_sonuc<- read_excel("merkezlerin sonuçları.xlsx")
+# View(merkez_sonuc)
+# cat(names(merkez_sonuc))
+```
+
+
+<!-- ## `r colnames(merkez_sonuc)[1]` -->
+
+`r dim(merkez_sonuc)[2]` merkezden anket yoluyla bilgi toplandı.
+
+<!-- `r names(merkez_sonuc)[2]` -->
+
+İlk kasetteki parça sayısı ortanca
+`r median(merkez_sonuc$'1 kasetteki parça sayısı')`
+(en az
+`r min(merkez_sonuc$'1 kasetteki parça sayısı')`
+; en fazla `r max(merkez_sonuc$'1 kasetteki parça sayısı')`
+). 
+
+Sadece H&E ile boyanan minimum kesit sayısı ortanca 
+`r median(merkez_sonuc$'SADECE HE KESİT min')`
+(en az
+`r min(merkez_sonuc$'SADECE HE KESİT min')`
+; en fazla `r max(merkez_sonuc$'SADECE HE KESİT min')`
+).
+
+Sadece H&E ile boyanan maksimum kesit sayısı ortanca 
+`r median(merkez_sonuc$'SADECE HE KESİT max')`
+(en az
+`r min(merkez_sonuc$'SADECE HE KESİT max')`
+; en fazla `r max(merkez_sonuc$'SADECE HE KESİT max')`
+).
+
+Özel boya dahil minimum kesit sayısı ortanca 
+`r median(merkez_sonuc$'ÖZEL BOYA DAHİL KESİT min')`
+(en az
+`r min(merkez_sonuc$'ÖZEL BOYA DAHİL KESİT min')`
+; en fazla `r max(merkez_sonuc$'ÖZEL BOYA DAHİL KESİT min')`
+).
+
+Özel boya dahil maksimum kesit sayısı ortanca 
+`r median(merkez_sonuc$'ÖZEL BOYA DAHİL KESİT max')`
+(en az
+`r min(merkez_sonuc$'ÖZEL BOYA DAHİL KESİT max')`
+; en fazla `r max(merkez_sonuc$'ÖZEL BOYA DAHİL KESİT max')`
+).
+
+Giemsa'daki kesit sayısı ortanca 
+`r median(merkez_sonuc$'GİEMSADaki kesit sayısı')`
+(en az
+`r min(merkez_sonuc$'GİEMSADaki kesit sayısı')`
+; en fazla `r max(merkez_sonuc$'GİEMSADaki kesit sayısı')`
+).
+
+PAS'daki kesit sayısı ortanca 
+`r median(merkez_sonuc$'PASdaki kesit sayısı')`
+(en az
+`r min(merkez_sonuc$'PASdaki kesit sayısı')`
+; en fazla `r max(merkez_sonuc$'PASdaki kesit sayısı')`
+).
+
+
+---
+
+<!-- # aylara göre tablolar -->
+
+```{r aylari oku, include=FALSE}
+ocak <- read_excel("ocak.xlsx")
+subat <- read_excel("subat.xlsx")
+mart <- read_excel("mart.xlsx")
+nisan <- read_excel("nisan.xlsx")
+mayis <- read_excel("mayis.xlsx", sheet = "Sheet")
+haziran <- read_excel("haziran.xlsx")
+```
+
+
+```{r}
+# write(names(ocak), "ocaknames.txt")
+
+names(ocak) <- c("RaporNo", "Hasta", "cinsiyet", "Yas", "ozp_parca", "ozp_kaset", "ozp_cap", "ozp_tani", "ozp_kod", "ozd_parca", "ozd_kaset", "ozd_cap", "ozd_tani", "ozd_kod", "fundus_parca", "fundus_kaset", "fundus_cap", "fundus_aktivite", "fundus_im", "fundus_atrofi", "fundus_lenfoid", "antrum_parca", "antrum_kaset", "antrum_cap", "antrum_aktivite", "antrum_im", "antrum_atrofi", "antrum_lenfoid", "rektum_parca", "rektum_kaset", "rektum_cap", "rektum_tani", "rektum_kod", "duod_parca", "duod_kaset", "duod_cap", "duod_tani", "duod_kod", "ileum_parca", "ileum_kaset", "ileum_cap", "ileum_tani", "ileum_kod", "cekum_parca", "cekum_kaset", "cekum_cap", "cekum_tani", "cekum_kod", "cikan_parca", "cikan_kaset", "cikan_cap", "cikan_tani", "cikan_kod", "transvers_parca", "transvers_kaset", "transvers_cap", "transvers_tani", "transvers_kod", "sigmoid_parca", "sigmoid_kaset", "sigmoid_cap", "sigmoid_tani", "sigmoid_kod", "inen_parca", "inen_kaset", "inen_cap", "inen_tani", "inen_kod")
+```
+
+```{r}
+# write(names(subat), "subatnames.txt")
+
+names(subat) <- c("RaporNo", "Hasta", "cinsiyet", "Yas", "ozp_parca", "ozp_kaset", "ozp_cap", "ozp_tani", "ozp_kod", "ozd_parca", "ozd_kaset", "ozd_cap", "ozd_tani", "ozd_kod", "fundus_parca", "fundus_kaset", "fundus_cap", "fundus_aktivite", "fundus_im", "fundus_atrofi", "fundus_lenfoid", "antrum_parca", "antrum_kaset", "antrum_cap", "antrum_aktivite", "antrum_im", "antrum_atrofi", "antrum_lenfoid", "rektum_parca", "rektum_kaset", "rektum_cap", "rektum_tani", "rektum_kod", "duod_parca", "duod_kaset", "duod_cap", "duod_tani", "duod_kod", "ileum_parca", "ileum_kaset", "ileum_cap", "ileum_tani", "ileum_kod", "cekum_parca", "cekum_kaset", "cekum_cap", "cekum_tani", "cekum_kod", "cikan_parca", "cikan_kaset", "cikan_cap", "cikan_tani", "cikan_kod", "transvers_parca", "transvers_kaset", "transvers_cap", "transvers_tani", "transvers_kod", "sigmoid_parca", "sigmoid_kaset", "sigmoid_cap", "sigmoid_tani", "sigmoid_kod", "inen_parca", "inen_kaset", "inen_cap", "inen_tani", "inen_kod")
+```
+
+```{r}
+# write(names(mart), "martnames.txt")
+
+names(mart) <- c("RaporNo", "Hasta", "cinsiyet", "Yas", "ozp_parca", "ozp_kaset", "ozp_cap", "ozp_tani", "ozp_kod", "ozd_parca", "ozd_kaset", "ozd_cap", "ozd_tani", "ozd_kod", "fundus_parca", "fundus_kaset", "fundus_cap", "fundus_aktivite", "fundus_im", "fundus_atrofi", "fundus_lenfoid", "antrum_parca", "antrum_kaset", "antrum_cap", "antrum_aktivite", "antrum_im", "antrum_atrofi", "antrum_lenfoid", "rektum_parca", "rektum_kaset", "rektum_cap", "rektum_tani", "rektum_kod", "duod_parca", "duod_kaset", "duod_cap", "duod_tani", "duod_kod", "ileum_parca", "ileum_kaset", "ileum_cap", "ileum_tani", "ileum_kod", "cekum_parca", "cekum_kaset", "cekum_cap", "cekum_tani", "cekum_kod", "cikan_parca", "cikan_kaset", "cikan_cap", "cikan_tani", "cikan_kod", "transvers_parca", "transvers_kaset", "transvers_cap", "transvers_tani", "transvers_kod", "sigmoid_parca", "sigmoid_kaset", "sigmoid_cap", "sigmoid_tani", "sigmoid_kod", "inen_parca", "inen_kaset", "inen_cap", "inen_tani", "inen_kod")
+```
+
+
+```{r, include=FALSE}
+# write(names(nisan), "nisannames.txt")
+
+names(nisan) <- c("RaporNo", "Hasta", "cinsiyet", "Yas", "ozp_parca", "ozp_kaset", "ozp_cap", "ozp_tani", "ozp_kod", "ozd_parca", "ozd_kaset", "ozd_cap", "ozd_tani", "ozd_kod", "fundus_parca", "fundus_kaset", "fundus_cap", "fundus_aktivite", "fundus_im", "fundus_atrofi", "fundus_lenfoid", "antrum_parca", "antrum_kaset", "antrum_cap", "antrum_aktivite", "antrum_im", "antrum_atrofi", "antrum_lenfoid", "rektum_parca", "rektum_kaset", "rektum_cap", "rektum_tani", "rektum_kod", "duod_parca", "duod_kaset", "duod_cap", "duod_tani", "duod_kod", "ileum_parca", "ileum_kaset", "ileum_cap", "ileum_tani", "ileum_kod", "cekum_parca", "cekum_kaset", "cekum_cap", "cekum_tani", "cekum_kod", "cikan_parca", "cikan_kaset", "cikan_cap", "cikan_tani", "cikan_kod", "transvers_parca", "transvers_kaset", "transvers_cap", "transvers_tani", "transvers_kod", "sigmoid_parca", "sigmoid_kaset", "sigmoid_cap", "sigmoid_tani", "sigmoid_kod", "inen_parca", "inen_kaset", "inen_cap", "inen_tani", "inen_kod")
+
+nisan$ozp_parca <- as.numeric(nisan$ozp_parca)
+nisan$duod_kod <- as.numeric(nisan$duod_kod)
+
+
+```
+
+
+```{r}
+# write(names(mayis), "mayisnames.txt")
+
+names(mayis) <- c("RaporNo", "Hasta", "cinsiyet", "Yas", "ozp_parca", "ozp_kaset", "ozp_cap", "ozp_tani", "ozp_kod", "ozd_parca", "ozd_kaset", "ozd_cap", "ozd_tani", "ozd_kod", "fundus_parca", "fundus_kaset", "fundus_cap", "fundus_aktivite", "fundus_im", "fundus_atrofi", "fundus_lenfoid", "antrum_parca", "antrum_kaset", "antrum_cap", "antrum_aktivite", "antrum_im", "antrum_atrofi", "antrum_lenfoid", "rektum_parca", "rektum_kaset", "rektum_cap", "rektum_tani", "rektum_kod", "duod_parca", "duod_kaset", "duod_cap", "duod_tani", "duod_kod", "ileum_parca", "ileum_kaset", "ileum_cap", "ileum_tani", "ileum_kod", "cekum_parca", "cekum_kaset", "cekum_cap", "cekum_tani", "cekum_kod", "cikan_parca", "cikan_kaset", "cikan_cap", "cikan_tani", "cikan_kod", "transvers_parca", "transvers_kaset", "transvers_cap", "transvers_tani", "transvers_kod", "sigmoid_parca", "sigmoid_kaset", "sigmoid_cap", "sigmoid_tani", "sigmoid_kod", "inen_parca", "inen_kaset", "inen_cap", "inen_tani", "inen_kod")
+
+```
+
+
+```{r}
+write(names(haziran), "hazirannames.txt")
+
+names(haziran) <- c("RaporNo", "Hasta", "cinsiyet", "Yas", "ozp_parca", "ozp_kaset", "ozp_cap", "ozp_tani", "ozp_kod", "ozd_parca", "ozd_kaset", "ozd_cap", "ozd_tani", "ozd_kod", "fundus_parca", "fundus_kaset", "fundus_cap", "fundus_aktivite", "fundus_im", "fundus_atrofi", "fundus_lenfoid", "antrum_parca", "antrum_kaset", "antrum_cap", "antrum_aktivite", "antrum_im", "antrum_atrofi", "antrum_lenfoid", "rektum_parca", "rektum_kaset", "rektum_cap", "rektum_tani", "rektum_kod", "duod_parca", "duod_kaset", "duod_cap", "duod_tani", "duod_kod", "ileum_parca", "ileum_kaset", "ileum_cap", "ileum_tani", "ileum_kod", "cekum_parca", "cekum_kaset", "cekum_cap", "cekum_tani", "cekum_kod", "cikan_parca", "cikan_kaset", "cikan_cap", "cikan_tani", "cikan_kod", "transvers_parca", "transvers_kaset", "transvers_cap", "transvers_tani", "transvers_kod", "sigmoid_parca", "sigmoid_kaset", "sigmoid_cap", "sigmoid_tani", "sigmoid_kod", "inen_parca", "inen_kaset", "inen_cap", "inen_tani", "inen_kod")
+
+```
+
+
+
+```{r aylara ait verileri birlestir}
+veri <- bind_rows(ocak, subat, mart, nisan, mayis, haziran)
+```
+
+
+---
+
+# Hasta özellikleri
+
+**Hasta özellikleri**
+
+948 hasta,
+472 Erkek
+476 Kadın
+Yaş: ortalama 46.24 +/- 18.13
+(min:2, max: 93)
+
+```{r hasta demografisi, warning=FALSE}
+dim(veri)
+table(veri$cinsiyet)
+summary(as.numeric(veri$Yas))
+sd(as.numeric(veri$Yas), na.rm = TRUE)
+```
+
+
+
+---
+
+
+<!-- # lokalizasyona göre tablolar -->
+
+
+```{r lokalizasyonlara göre verilerin oragnizasyonu}
+ozp <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           ozp_parca, ozp_kaset, ozp_cap, ozp_tani, ozp_kod) %>% 
+    filter(!is.na(ozp_parca) | !is.na(ozp_kaset) | !is.na(ozp_cap) | !is.na(ozp_tani) | !is.na(ozp_kod)
+    ) %>% 
+    rename(parca = ozp_parca, kaset = ozp_kaset, cap = ozp_cap, tani = ozp_tani, kod = ozp_kod)
+
+
+ozd <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           ozd_parca, ozd_kaset, ozd_cap, ozd_tani, ozd_kod) %>% 
+    filter(!is.na(ozd_parca) | !is.na(ozd_kaset) | !is.na(ozd_cap) | !is.na(ozd_tani) | !is.na(ozd_kod)) %>% 
+    rename(parca = ozd_parca, kaset = ozd_kaset, cap = ozd_cap, tani = ozd_tani, kod = ozd_kod)
+
+
+fundus <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           fundus_parca, fundus_kaset, fundus_cap, fundus_aktivite, fundus_im, fundus_atrofi, fundus_lenfoid) %>% 
+    filter(
+        !is.na(fundus_parca) |
+        !is.na(fundus_kaset) |
+        !is.na(fundus_cap) |
+        !is.na(fundus_aktivite) |
+        !is.na(fundus_im) |
+        !is.na(fundus_atrofi) |
+        !is.na(fundus_lenfoid)
+    ) %>% 
+    rename(
+        parca = fundus_parca, kaset = fundus_kaset, cap = fundus_cap, aktivite = fundus_aktivite, im = fundus_im, atrofi = fundus_atrofi, lenfoid = fundus_lenfoid
+    )
+
+
+
+
+antrum <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           antrum_parca, antrum_kaset, antrum_cap, antrum_aktivite, antrum_im, antrum_atrofi, antrum_lenfoid) %>% 
+    filter(
+        !is.na(antrum_parca) |
+        !is.na(antrum_kaset) |
+        !is.na(antrum_cap) |
+        !is.na(antrum_aktivite) |
+        !is.na(antrum_im) |
+        !is.na(antrum_atrofi) |
+        !is.na(antrum_lenfoid)
+    ) %>% 
+    rename(
+        parca = antrum_parca, kaset = antrum_kaset, cap = antrum_cap, aktivite = antrum_aktivite, im = antrum_im, atrofi = antrum_atrofi, lenfoid = antrum_lenfoid
+    )
+
+
+
+rektum <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           rektum_parca, rektum_kaset, rektum_cap, rektum_tani, rektum_kod) %>% 
+    filter(
+        !is.na(rektum_parca) |
+        !is.na(rektum_kaset) |
+        !is.na(rektum_cap) |
+        !is.na(rektum_tani) |
+        !is.na(rektum_kod)
+    ) %>% 
+    rename(parca = rektum_parca, kaset = rektum_kaset, cap = rektum_cap, tani = rektum_tani, kod = rektum_kod)
+
+
+
+duod <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           duod_parca, duod_kaset, duod_cap, duod_tani, duod_kod) %>% 
+    filter(
+        !is.na(duod_parca) |
+        !is.na(duod_kaset) |
+        !is.na(duod_cap) |
+        !is.na(duod_tani) |
+        !is.na(duod_kod)
+    ) %>% 
+    rename(parca = duod_parca, kaset = duod_kaset, cap = duod_cap, tani = duod_tani, kod = duod_kod)
+
+
+ileum <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           ileum_parca, ileum_kaset, ileum_cap, ileum_tani, ileum_kod
+)  %>% 
+    filter(
+        !is.na(ileum_parca) |
+        !is.na(ileum_kaset) |
+        !is.na(ileum_cap) |
+        !is.na(ileum_tani) |
+        !is.na(ileum_kod)
+    ) %>% 
+    rename(parca = ileum_parca, kaset = ileum_kaset, cap = ileum_cap, tani = ileum_tani, kod = ileum_kod)
+
+
+cekum <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           cekum_parca, cekum_kaset, cekum_cap, cekum_tani, cekum_kod
+)  %>% 
+    filter(
+        !is.na(cekum_parca) |
+        !is.na(cekum_kaset) |
+        !is.na(cekum_cap) |
+        !is.na(cekum_tani)|
+        !is.na(cekum_kod)
+    ) %>% 
+    rename(parca = cekum_parca, kaset = cekum_kaset, cap = cekum_cap, tani = cekum_tani, kod = cekum_kod)
+
+
+cikan <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           cikan_parca, cikan_kaset, cikan_cap, cikan_tani, cikan_kod
+)  %>% 
+    filter(
+        !is.na(cikan_parca) |
+        !is.na(cikan_kaset) |
+        !is.na(cikan_cap) |
+        !is.na(cikan_tani)|
+        !is.na(cikan_kod)
+    ) %>% 
+    rename(parca = cikan_parca, kaset = cikan_kaset, cap = cikan_cap, tani = cikan_tani, kod = cikan_kod)
+
+
+transvers <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           transvers_parca, transvers_kaset, transvers_cap, transvers_tani, transvers_kod
+)  %>% 
+    filter(
+        !is.na(transvers_parca) |
+        !is.na(transvers_kaset) |
+        !is.na(transvers_cap) |
+        !is.na(transvers_tani)|
+        !is.na(transvers_kod)
+    ) %>% 
+    rename(parca = transvers_parca, kaset = transvers_kaset, cap = transvers_cap, tani = transvers_tani, kod = transvers_kod)
+
+
+sigmoid <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           sigmoid_parca, sigmoid_kaset, sigmoid_cap, sigmoid_tani, sigmoid_kod
+)  %>% 
+    filter(
+        !is.na(sigmoid_parca) |
+        !is.na(sigmoid_kaset) |
+        !is.na(sigmoid_cap) |
+        !is.na(sigmoid_tani)|
+        !is.na(sigmoid_kod)
+    ) %>% 
+    rename(parca = sigmoid_parca, kaset = sigmoid_kaset, cap = sigmoid_cap, tani = sigmoid_tani, kod = sigmoid_kod)
+
+
+inen <- veri %>% 
+    select(RaporNo, Hasta, cinsiyet, Yas,
+           inen_parca, inen_kaset, inen_cap, inen_tani, inen_kod
+)  %>% 
+    filter(
+        !is.na(inen_parca) |
+        !is.na(inen_kaset) |
+        !is.na(inen_cap) |
+        !is.na(inen_tani)|
+        !is.na(inen_kod)
+    ) %>% 
+    rename(parca = inen_parca, kaset = inen_kaset, cap = inen_cap, tani = inen_tani, kod = inen_kod)
+
+```
+
+
+---
+
+<!-- ozp, ozd -->
+<!-- ÖZOFAGUS İÇİN:  -->
+<!-- 1,3,4,7,9: LEZYON  -->
+<!-- 2 VE 5: NEOPLAZİ -->
+<!-- 6: NORMAL  -->
+<!-- SANIRIM ÖZEFAGUSTA 8 KODUNU ATLAMIŞIM.  -->
+
+
+```{r recode ozp ozd kod, include=FALSE}
+table(ozp$kod)
+
+## Recoding ozp$kod into ozp$kod_gr
+ozp$kod_rec <- recode(ozp$kod,
+               "2" = "neoplastik",
+               "6" = "normal",
+               "4" = "lezyon",
+               "3" = "lezyon",
+               "5" = "neoplastik",
+               "7" = "lezyon")
+
+table(ozp$kod_rec)
+
+table(ozd$kod)
+
+## Recoding ozd$kod into ozd$kod_gr
+ozd$kod_rec <- recode(ozd$kod,
+               "1" = "lezyon",
+               "4" = "lezyon",
+               "3" = "lezyon",
+               "6" = "normal",
+               "9" = "lezyon",
+               "2" = "neoplastik",
+               "5" = "neoplastik")
+
+
+table(ozd$kod_rec)
+
+
+```
+
+
+<!-- duod -->
+<!-- DUODENUM İÇİN:  -->
+<!-- 1,3,4,5,6,7,8,9. LEZYON  -->
+<!-- 2. LEZYONSUZ (NORMAL)  -->
+
+
+```{r recode duodenum kod, include=FALSE}
+table(duod$kod)
+
+## Recoding duod$kod into duod$kod_rec
+duod$kod_rec <- as.character(duod$kod)
+duod$kod_rec <- fct_recode(duod$kod_rec,
+               "normal" = "2",
+               "lezyon" = "7",
+               "lezyon" = "6",
+               "lezyon" = "5",
+               "lezyon" = "4",
+               "lezyon" = "3",
+               "lezyon" = "8",
+               "lezyon" = "9",
+               "lezyon" = "1")
+
+
+table(duod$kod_rec)
+
+```
+
+ 
+
+
+
+<!-- ileum, -->
+<!-- İLEUM İÇİN:  -->
+<!-- 1,2,3,4,5,6: LEZYON  -->
+<!-- 7: NORMAL  -->
+
+
+```{r recode ileum kod, include=FALSE}
+table(ileum$kod)
+
+
+## Recoding ileum$kod into ileum$kod_rec
+ileum$kod_rec <- recode(ileum$kod,
+               "1" = "lezyon",
+               "4" = "lezyon",
+               "7" = "normal",
+               "2" = "lezyon",
+               "3" = "lezyon",
+               "5" = "lezyon")
+
+
+
+table(ileum$kod_rec)
+
+```
+
+
+
+
+<!-- cekum, cikan, transvers, sigmoid, inen, rektum -->
+
+<!-- SORU 2) KOLONLAR İÇİN:  -->
+<!-- 1,2,3. NEOPLASTİK  -->
+<!-- 4,5,6,8,9. LEZYON   -->
+<!-- 7. LEZYONSUZ (NORMAL)  -->
+
+
+```{r recode cekum kod, include=FALSE}
+table(cekum$kod)
+
+## Recoding cekum$kod into cekum$kod_rec
+cekum$kod_rec <- recode(cekum$kod,
+               "4" = "lezyon",
+               "2" = "neoplastik",
+               "7" = "normal",
+               "5" = "lezyon",
+               "8" = "lezyon",
+               "1" = "neoplastik",
+               "3" = "neoplastik",
+               "6" = "lezyon",
+               "9" = "lezyon")
+
+table(cekum$kod_rec)
+
+```
+
+
+```{r recode cikan kod, include=FALSE}
+table(cikan$kod)
+
+## Recoding cikan$kod into cikan$kod_rec
+cikan$kod_rec <- recode(cikan$kod,
+               "4" = "lezyon",
+               "2" = "neoplastik",
+               "7" = "normal",
+               "5" = "lezyon",
+               "8" = "lezyon",
+               "1" = "neoplastik",
+               "3" = "neoplastik",
+               "6" = "lezyon",
+               "9" = "lezyon")
+
+table(cikan$kod_rec)
+
+
+```
+
+
+```{r recode transvers, include=FALSE}
+table(transvers$kod)
+
+## Recoding transvers$kod into transvers$kod_rec
+transvers$kod_rec <- recode(transvers$kod,
+                            "4" = "lezyon",
+                            "2" = "neoplastik",
+                            "7" = "normal",
+                            "5" = "lezyon",
+                            "8" = "lezyon",
+                            "1" = "neoplastik",
+                            "3" = "neoplastik",
+                            "6" = "lezyon",
+                            "9" = "lezyon",
+                            "0" = "normal")
+
+table(transvers$kod_rec)
+
+
+```
+
+
+```{r recode inen, include=FALSE}
+table(inen$kod)
+
+## Recoding inen$kod into inen$kod_rec
+inen$kod_rec <- recode(inen$kod,
+                            "4" = "lezyon",
+                            "2" = "neoplastik",
+                            "7" = "normal",
+                            "5" = "lezyon",
+                            "8" = "lezyon",
+                            "1" = "neoplastik",
+                            "3" = "neoplastik",
+                            "6" = "lezyon",
+                            "9" = "lezyon")
+
+
+table(inen$kod_rec)
+
+
+
+```
+
+
+```{r recode sigmoid, include=FALSE}
+table(sigmoid$kod)
+
+## Recoding sigmoid$kod into sigmoid$kod_rec
+sigmoid$kod_rec <- recode(sigmoid$kod,
+                            "4" = "lezyon",
+                            "2" = "neoplastik",
+                            "7" = "normal",
+                            "5" = "lezyon",
+                            "8" = "lezyon",
+                            "1" = "neoplastik",
+                            "3" = "neoplastik",
+                            "6" = "lezyon",
+                            "9" = "lezyon",
+                            "0" = "normal")
+
+
+table(sigmoid$kod_rec)
+
+
+```
+
+
+
+
+```{r recode rektum, include=FALSE}
+table(rektum$kod)
+
+## Recoding rektum$kod into rektum$kod_rec
+rektum$kod_rec <- recode(rektum$kod,
+                            "4" = "lezyon",
+                            "2" = "neoplastik",
+                            "7" = "normal",
+                            "5" = "lezyon",
+                            "8" = "lezyon",
+                            "1" = "neoplastik",
+                            "3" = "neoplastik",
+                            "6" = "lezyon",
+                            "9" = "lezyon",
+                            "0" = "normal")
+
+
+table(rektum$kod_rec)
+
+
+```
+
+
+
+
+
+---
+
+
+<!-- # lokalizasyona göre birleşik veri -->
+
+```{r degismeyenleri birlestirme, include=FALSE}
+
+veri2 <- bind_rows(ozp, ozd, antrum, fundus, duod, ileum, cekum, cikan, transvers, sigmoid, inen, rektum, .id = "id")
+
+## Recoding veri2$id into veri2$id_rec
+veri2$lokalizasyon <- recode(veri2$id,
+               "1" = "ozp",
+               "2" = "ozd",
+               "3" = "antrum",
+               "4" = "fundus",
+               "5" = "duod",
+               "6" = "ileum",
+               "7" = "cekum",
+               "8" = "cikan",
+               "9" = "transvers",
+               "10" = "sigmoid",
+               "11" = "inen",
+               "12" = "rektum")
+veri2$lokalizasyon <- factor(veri2$lokalizasyon)
+
+## Reordering veri2$lokalizasyon
+veri2$lokalizasyon <- factor(veri2$lokalizasyon, levels=c("ozp", "ozd", "fundus", "antrum", "duod", "ileum", "cekum", "cikan", "transvers", "inen", "sigmoid", "rektum"))
+
+
+veri2$kod_rec <- factor(veri2$kod_rec)
+
+## Reordering veri2$kod_rec
+veri2$kod_rec <- factor(veri2$kod_rec, levels=c("normal", "lezyon", "neoplastik"))
+
+
+veri2$Yas <- as.numeric(veri2$Yas)
+
+```
+
+
+
+```{r recode tanilar, include=FALSE}
+## Recoding veri2$tani into veri2$tani_gr
+veri2$tani_gr <- recode(veri2$tani,
+               "6" = "lezyon",
+               "skuamöz papillom" = "lezyon",
+               "NORMAL" = "normal",
+               "HÖ" = "lezyon",
+               "MELANOZİS" = "lezyon",
+               "RE" = "lezyon",
+               "REFLÜ" = "lezyon",
+               "KANDİDA" = "lezyon",
+               "GRANÜLER HC Lİ TM" = "neoplastik",
+               "glikojenik akantoz" = "lezyon",
+               "eozinoflik özefajit" = "lezyon",
+               "normal" = "normal",
+               "ferlü" = "lezyon",
+               "kandia" = "lezyon",
+               "kandida" = "lezyon",
+               "papillom" = "lezyon",
+               "hö" = "lezyon",
+               "SCC" = "neoplastik",
+               "shiperplazi" = "lezyon",
+               "kandida özefajiti" = "lezyon",
+               "hdözefajit" = "lezyon",
+               "apopitoz ve eonun eşlik ettiği özefajit" = "lezyon",
+               "şaö" = "lezyon",
+               "özefajit" = "lezyon",
+               "barrett" = "lezyon",
+               "feh, grn dokusu" = "lezyon",
+               "be" = "lezyon",
+               "km" = "lezyon",
+               "nor" = "normal",
+               "rejen" = "lezyon",
+               "reflü" = "lezyon",
+               "kol met" = "lezyon",
+               "şiddetliö" = "lezyon",
+               "reflü özefajit" = "lezyon",
+               "özefait" = "lezyon",
+               "adenoca" = "neoplastik",
+               "BÖ" = "lezyon",
+               "ŞAÖ" = "lezyon",
+               "reaktif" = "lezyon",
+               "rej" = "lezyon",
+               "konj" = "lezyon",
+               "sp" = "lezyon",
+               "mukozal eozinofili" = "lezyon",
+               "iela" = "lezyon",
+               "pd" = "lezyon",
+               "FAD" = "lezyon",
+               "ML" = "lezyon",
+               "KPD" = "lezyon",
+               "AKD" = "lezyon",
+               "ml" = "lezyon",
+               "kpd" = "lezyon",
+               "gvhd" = "lezyon",
+               "akpd" = "lezyon",
+               "lenfanjiektaz" = "lezyon",
+               "no" = "lezyon",
+               "fad" = "lezyon",
+               "aml" = "lezyon",
+               "ak" = "lezyon",
+               "akd" = "lezyon",
+               "gastrik heterotopi" = "lezyon",
+               "kd" = "lezyon",
+               "EO" = "lezyon",
+               "lenf" = "lezyon",
+               "gastrik heteroptopi" = "lezyon",
+               "scc" = "neoplastik",
+               "iel" = "lezyon",
+               "not" = "normal",
+               "nr" = "normal",
+               "fai" = "lezyon",
+               "LH" = "lezyon",
+               "ülserleşen ai" = "lezyon",
+               "AKİ" = "lezyon",
+               "ai" = "lezyon",
+               "ki" = "lezyon",
+               "aki" = "lezyon",
+               "lh" = "lezyon",
+               "aileit" = "lezyon",
+               "eozinofili" = "lezyon",
+               "fai, eo" = "lezyon",
+               "norm" = "normal",
+               "dakk" = "lezyon",
+               "aktif kronik kolit" = "lezyon",
+               "TA" = "neoplastik",
+               "EOZ" = "lezyon",
+               "AKGRANÜLOMATÖZ" = "lezyon",
+               "fak" = "lezyon",
+               "ta" = "neoplastik",
+               "ssp" = "neoplastik",
+               "tva" = "neoplastik",
+               "va" = "neoplastik",
+               "melanozis7" = "lezyon",
+               "gr ak" = "lezyon",
+               "melanozis" = "lezyon",
+               "ta, hp" = "neoplastik",
+               "oak" = "lezyon",
+               "seyrek apopitoz" = "lezyon",
+               "granülom" = "lezyon",
+               "akk" = "lezyon",
+               "kronik kolit" = "lezyon",
+               "OAK" = "lezyon",
+               "AKK" = "lezyon",
+               "REJEN" = "lezyon",
+               "ssa" = "neoplastik",
+               "gr a k" = "lezyon",
+               "kkolit" = "lezyon",
+               "kollajenöz kolit" = "lezyon",
+               "apopitoz" = "lezyon",
+               "ta ve tva" = "neoplastik",
+               "lpda lenfoid agrgat" = "lezyon",
+               "hp" = "lezyon",
+               "akk, aopitoz" = "lezyon",
+               "hak" = "lezyon",
+               "MUKOZAL EOZİNOFİLİ" = "lezyon",
+               "0" = "normal",
+               "lpdala" = "lezyon",
+               "FAK" = "lezyon",
+               "TVA" = "neoplastik",
+               "ŞAK" = "lezyon",
+               "tsa" = "neoplastik",
+               "eo" = "lezyon",
+               "AK" = "lezyon",
+               "KGK" = "lezyon",
+               "SSP, HP" = "neoplastik",
+               "ta, tva" = "neoplastik",
+               "fakk" = "lezyon",
+               "iskemik" = "lezyon",
+               "malignite" = "neoplastik",
+               "DAKK" = "lezyon",
+               "HP" = "lezyon",
+               "KRONİK KOLİYT" = "lezyon",
+               "LENOİD POLİP" = "lezyon",
+               "REP" = "lezyon",
+               "PJP? HP?" = "neoplastik",
+               "İNF POLİP" = "lezyon",
+               "nornal" = "normal",
+               "melanozis koli" = "lezyon",
+               "gr" = "lezyon",
+               "apopitoz,akk" = "lezyon",
+               "tva, ta" = "neoplastik",
+               "intramukozal" = "neoplastik",
+               "sesil serrated polip" = "neoplastik",
+               "şakk" = "lezyon",
+               "adenokarsinom" = "neoplastik",
+               "NOR" = "normal",
+               "srüs" = "lezyon",
+               "pjp" = "lezyon",
+               "parakeratoz" = "lezyon",
+               "iel" = "lezyon",
+               "not"= "lezyon",
+               "nr"= "normal",
+               "inf polip"= "lezyon")
+```
+
+
+
+
+
+```{r mide tanilarini olustur, include=FALSE}
+veri2$tani_gr[veri2$aktivite == 1 & is.na(veri2$tani_gr)] <- "lezyon"
+veri2$tani_gr[veri2$im == 1 & is.na(veri2$tani_gr)] <- "lezyon"
+veri2$tani_gr[veri2$atrofi == 1 & is.na(veri2$tani_gr)] <- "lezyon"
+veri2$tani_gr[veri2$lenfoid == 1 & is.na(veri2$tani_gr)] <- "lezyon"
+
+veri2$tani_gr[veri2$aktivite == 0 & veri2$im == 0 & veri2$atrofi == 0  & veri2$lenfoid == 0 & is.na(veri2$tani_gr)] <- "normal"
+
+veri2$tani_gr[veri2$aktivite != 0 & is.na(veri2$tani_gr)] <- "lezyon"
+
+veri2$tani_gr[is.na(veri2$tani_gr)] <- "normal"
+
+# sum(is.na(veri2$tani_gr))
+
+# table(veri2$tani_gr) %>% 
+#     addmargins()
+
+```
+
+
+<!-- Toplam `r length(veri2$tani_gr)` olgunun -->
+<!-- `r scales::percent(sum(veri2$tani_gr == "lezyon")/length(veri2$tani_gr))` lezyon, -->
+<!-- `r scales::percent(sum(veri2$tani_gr == "neoplastik")/length(veri2$tani_gr))` neoplastik, -->
+<!-- `r scales::percent(sum(veri2$tani_gr == "normal")/length(veri2$tani_gr))` normaldir. -->
+
+
+```{r tanilari lezyon normal diye grupla, include=FALSE}
+## Recoding veri2$tani_gr into veri2$tani_gr2
+veri2$tani_gr2 <- recode(veri2$tani_gr,
+               "neoplastik" = "lezyon")
+
+table(veri2$tani_gr2) %>%
+    addmargins()
+
+```
+
+
+
+```{r mide tanilarini kod_rec sütununa aktar, include=FALSE}
+# table(veri2$kod_rec, veri2$lokalizasyon)
+
+veri2$kod_rec[veri2$lokalizasyon == "fundus" & veri2$tani_gr == "normal" & is.na(veri2$kod_rec)] <- "normal"
+
+veri2$kod_rec[veri2$lokalizasyon == "fundus" & veri2$tani_gr == "lezyon" & is.na(veri2$kod_rec)] <- "lezyon"
+
+veri2$kod_rec[veri2$lokalizasyon == "fundus" & veri2$tani_gr == "neoplastik" & is.na(veri2$kod_rec)] <- "neoplastik"
+
+veri2$kod_rec[veri2$lokalizasyon == "antrum" & veri2$tani_gr == "normal" & is.na(veri2$kod_rec)] <- "normal"
+
+veri2$kod_rec[veri2$lokalizasyon == "antrum" & veri2$tani_gr == "lezyon" & is.na(veri2$kod_rec)] <- "lezyon"
+
+veri2$kod_rec[veri2$lokalizasyon == "antrum" & veri2$tani_gr == "neoplastik" & is.na(veri2$kod_rec)] <- "neoplastik"
+
+veri2$kod_rec[is.na(veri2$kod_rec)] <- "normal"
+
+```
+
+
+```{r, include=FALSE}
+table(veri2$kod_rec, veri2$lokalizasyon)
+```
+
+
+
+```{r kod rec 2 olustur, include=FALSE}
+## Recoding veri2$kod_rec into veri2$kod_rec2
+veri2$kod_rec2 <- recode(veri2$kod_rec,
+               "neoplastik" = "lezyon")
+
+## Reordering veri2$kod_rec2
+veri2$kod_rec2 <- factor(veri2$kod_rec2, levels=c("normal", "lezyon"))
+
+```
+
+
+
+
+
+---
+
+# Sonuçlar
+
+
+**tanı değişikliği olmayan olgular**
+
+
+```{r tani degisikligi olmayanlarda ilk tani ikinci tani sutunlarini olustur, include=FALSE}
+veri2$ilktani <- NA
+veri2$ikincitani <- NA
+veri2$ilktani[veri2$kod_rec == "lezyon"] <- "lezyon"
+veri2$ikincitani[veri2$kod_rec == "lezyon"] <- "lezyon"
+veri2$ilktani[veri2$kod_rec == "normal"] <- "normal"
+veri2$ikincitani[veri2$kod_rec == "normal"] <- "normal"
+veri2$ilktani[veri2$kod_rec == "neoplastik"] <- "neoplastik"
+veri2$ikincitani[veri2$kod_rec == "neoplastik"] <- "neoplastik"
+
+veri2$ilktani2[veri2$kod_rec == "lezyon"] <- "lezyon"
+veri2$ikincitani2[veri2$kod_rec == "lezyon"] <- "lezyon"
+veri2$ilktani2[veri2$kod_rec == "normal"] <- "normal"
+veri2$ikincitani2[veri2$kod_rec == "normal"] <- "normal"
+veri2$ilktani2[veri2$kod_rec == "neoplastik"] <- "lezyon"
+veri2$ikincitani2[veri2$kod_rec == "neoplastik"] <- "lezyon"
+
+
+table(veri2$ilktani, veri2$ikincitani, dnn = c("ilk tanı", "ikinci tanı")) %>% 
+     addmargins()
+
+table(veri2$ilktani2, veri2$ikincitani2, dnn = c("ilk tanı", "ikinci tanı")) %>% 
+     addmargins()
+
+```
+
+`r 758 + 209 + 782` biyopside tanı değişikliği izlenmemiştir.
+
+
+**tanı değişikliği olan olgular**
+
+```{r}
+library(readxl)
+degisenler <- read_excel("yeni kesit ile değişen biyopsi listesi .xlsx")
+names(degisenler) <- c("RaporNo", "Hasta", "cinsiyet", "Yas", "lokalizasyon", "parca", "kaset", "cap", "degisim_sekli", "degisen_bulgu", "degisim_onem")
+
+degisenler$RaporNo <- as.character(degisenler$RaporNo)
+
+```
+
+
+
+
+```{r, include=FALSE}
+
+# Bu 2000 biyopsinin içinden yaklaşık 40 tanesinde birinci ve ikinci kesit arasında farklılık oldu , farklılıkları ayrı bir excel ile gönderiyorum ( bu 40 vaka, 2000 biyopsiyi içeren excelde de var, farklı vakalar değil)
+# C) İkinci kesit ve birinci kesit arasında fark olan biyopsileri ve değişiklik bilgisini içeren excel (bu biyopsiler 6 aylık excelin içinde de var, bu excel sadece değişim olanları içeriyor) 
+
+
+which(veri2$RaporNo %in% paste(degisenler$RaporNo, "/2018", sep = ""))
+
+```
+
+
+
+```{r}
+# newdata <- veri2[(veri2$RaporNo %in% paste(degisenler$RaporNo, "/2018", sep = "")), ]
+
+newdata <- veri2[!(veri2$RaporNo %in% paste(degisenler$RaporNo, "/2018", sep = "")), ]
+
+```
+
+
+
+```{r, include=TRUE}
+
+degisenler$ilktani <- NA
+degisenler$ikincitani <- NA
+degisenler$ilktani[degisenler$degisim_sekli == "eklendi"] <- "normal"
+degisenler$ikincitani[degisenler$degisim_sekli == "eklendi"] <- "lezyon"
+degisenler$ilktani[degisenler$degisim_sekli == "kayboldu"] <- "lezyon"
+degisenler$ikincitani[degisenler$degisim_sekli == "kayboldu"] <- "normal"
+
+table(degisenler$ilktani, degisenler$ikincitani, dnn = c("ilk tanı", "ikinci tanı")) %>% 
+    addmargins()
+
+```
+
+
+`r 7+31` biyopside tanı değişikliği izlenmiştir.
+Bunların `r scales::percent(7/(7+31))` 'inde ilk camda izlenen lezyon ikinci camda kaybolmuştur.
+`r scales::percent(31/(7+31))` ise ilk camda lezyon izlenmemesine rağmen ikinci camda lezyon ortaya çıkmıştır.
+
+
+```{r degisenler icin tani ve kod gruplarini olustur}
+
+degisenler$degisen_bulgu_rec <- recode(degisenler$degisen_bulgu,
+               "granülom" = "lezyon",
+               "aktivite" = "lezyon",
+               "intestinal metaplazi" = "lezyon",
+               "ta" = "neoplastik",
+               "lenfoid agregat" = "lezyon",
+               "hp" = "lezyon",
+               "lenfoid agregat ve aktivite" = "lezyon",
+               "intestinal metaplazi ve atrofi" = "lezyon",
+               "reflü" = "lezyon",
+               "kronik ileit" = "lezyon",
+               "atrofi" = "lezyon")
+
+degisenler$tani_gr <- NA
+degisenler$tani_gr2 <- NA
+degisenler$kod_rec <- NA
+degisenler$kod_rec2 <- NA
+degisenler$ilktani <- NA
+degisenler$ikincitani <- NA
+
+
+degisenler$tani_gr[which(degisenler$degisen_bulgu_rec == "neoplastik")] <- "neoplastik"
+degisenler$tani_gr[which(degisenler$degisen_bulgu_rec == "lezyon")] <- "lezyon"
+
+degisenler$tani_gr2[which(degisenler$degisen_bulgu_rec == "neoplastik")] <- "lezyon"
+degisenler$tani_gr2[which(degisenler$degisen_bulgu_rec == "lezyon")] <- "lezyon"
+
+
+degisenler$kod_rec[which(degisenler$degisen_bulgu_rec == "neoplastik")] <- "neoplastik"
+degisenler$kod_rec[which(degisenler$degisen_bulgu_rec == "lezyon")] <- "lezyon"
+
+degisenler$kod_rec2[which(degisenler$degisen_bulgu_rec == "neoplastik")] <- "lezyon"
+degisenler$kod_rec2[which(degisenler$degisen_bulgu_rec == "lezyon")] <- "lezyon"
+
+
+degisenler$ilktani[degisenler$degisim_sekli == "eklendi"] <- "normal"
+degisenler$ikincitani[degisenler$degisim_sekli == "eklendi" & degisenler$degisen_bulgu_rec == "neoplastik"] <- "neoplastik"
+degisenler$ikincitani[degisenler$degisim_sekli == "eklendi" & degisenler$degisen_bulgu_rec == "lezyon"] <- "lezyon"
+
+degisenler$ilktani[degisenler$degisim_sekli == "kayboldu" & degisenler$degisen_bulgu_rec == "neoplastik"] <- "neoplastik"
+degisenler$ilktani[degisenler$degisim_sekli == "kayboldu"& degisenler$degisen_bulgu_rec == "lezyon"] <- "lezyon"
+degisenler$ikincitani[degisenler$degisim_sekli == "kayboldu"] <- "normal"
+
+
+```
+
+
+
+---
+
+
+
+```{r degisen ve degismeyen olgulari birlestir tumveri olustur, include=FALSE}
+tumveri <- bind_rows(newdata, degisenler, .id = "id")
+```
+
+
+
+
+```{r tanilarin listesi, include=TRUE}
+
+table(tumveri$kod_rec) %>% addmargins()
+
+```
+
+
+```{r tanilarin listesi 2, include=TRUE}
+table(tumveri$kod_rec2) %>% addmargins()
+```
+
+
+```{r, include=FALSE}
+table(tumveri$ilktani, tumveri$ikincitani) %>% 
+    addmargins()
+```
+
+
+
+```{r recode ilk tani ikinci tani}
+## Recoding tumveri$ilktani into tumveri$ilktani_rec
+tumveri$ilktani_rec <- recode(tumveri$ilktani,
+               "normal" = "0",
+               "lezyon" = "1",
+               "neoplastik" = "2")
+tumveri$ilktani_rec <- factor(tumveri$ilktani_rec,
+                              levels = c("0","1","2"), 
+                              labels = c("normal", "lezyon", "neoplastik")
+                              )
+
+## Recoding tumveri$ikincitani into tumveri$ikincitani_rec
+
+tumveri$ikincitani_rec <- recode(tumveri$ikincitani,
+               "normal" = "0",
+               "lezyon" = "1",
+               "neoplastik" = "2")
+tumveri$ikincitani_rec <- factor(tumveri$ikincitani_rec,
+                              levels = c("0","1", "2"), 
+                              labels = c("normal", "lezyon", "neoplastik")
+                              )
+
+
+## Recoding tumveri$ilktani into tumveri$ilktani_rec
+tumveri$ilktani_rec2 <- recode(tumveri$ilktani,
+               "normal" = "0",
+               "lezyon" = "1",
+               "neoplastik" = "1")
+tumveri$ilktani_rec2 <- factor(tumveri$ilktani_rec,
+                              levels = c("0","1"), 
+                              labels = c("normal", "lezyon")
+                              )
+
+## Recoding tumveri$ikincitani into tumveri$ikincitani_rec
+
+tumveri$ikincitani_rec2 <- recode(tumveri$ikincitani,
+               "normal" = "0",
+               "lezyon" = "1",
+               "neoplastik" = "1")
+tumveri$ikincitani_rec2 <- factor(tumveri$ikincitani_rec,
+                              levels = c("0","1"), 
+                              labels = c("normal", "lezyon")
+                              )
+```
+
+
+
+*ilk kesit tanısı ile ikinci kesit tanısının karşılaştırılması (sayı)*
+
+```{r ilk kesit tanisi ile ikinci kesit tanisinin karsilastirilmesi sayi, include=TRUE}
+
+table(tumveri$ilktani_rec, tumveri$ikincitani_rec, dnn = c("ilk tanı", "ikinci tanı")) %>%
+    addmargins()
+```
+
+*ilk kesit tanısı ile ikinci kesit tanısının karşılaştırılması (yüzde)*
+
+```{r ilk kesit tanisi ile ikinci kesit tanisinin karsilastirilmesi yuzde, include=TRUE}
+
+table(tumveri$ilktani_rec, tumveri$ikincitani_rec, dnn = c("ilk tanı", "ikinci tanı")) %>%
+    prop.table() %>% 
+    addmargins() %>% 
+    round(2)
+    
+```
+
+`r 799 + 712 + 204` biyopsi
+
+768 ( `r scales::percent(768/(799 + 712 + 204))` ) olguda her iki kesitte de histopatolojik bulgu saptanmamıştır.
+Bunların içinde 31 ( `r scales::percent(31/799)` ) olguda ilk kesit normal iken ikinci kesitte lezyon izlenmiştir. Bunlardan 1'i yeni ortaya çıkan tübüler adenomdur. 
+
+706 ( `r scales::percent(706/(799 + 712 + 204))` ) olguda her iki kesitte de benign lezyon saptanmıştır.
+Bunların içinde 6 ( `r scales::percent(6/712)` ) olguda ilk kesitte benign lezyon varken ikinci kesitte bu lezyonlar kaybolmuştur.
+
+203 ( `r scales::percent(203/(799 + 712 + 204))` ) olguda her iki kesitte de neoplastik lezyon saptanmıştır.
+Bunların içinde 1 ( `r scales::percent(1/204)` ) olguda ilk kesitte tübüler adenom varken ikinci kesitte bu lezyon kaybolmuştur.
+
+`r scales::percent(209/(758 + 209 + 782))` 'inde hem ilk hem de ikinci lamlarda neoplazi mevcuttur.
+`r scales::percent(782/(758 + 209 + 782))` örnekte ise hem ilk hem de ikinci lamda belirgin histopatolojik bulgu saptanmamıştır.
+
+
+```{r}
+## Recoding tumveri$lokalizasyon into tumveri$lokalizasyon_rec
+tumveri$lokalizasyon <- recode(tumveri$lokalizasyon,
+               "sigmoid kolon" = "sigmoid",
+               "özefagus alt uç" = "ozd",
+               "terminal ileum" = "ileum",
+               "inen kolon" = "inen")
+
+## Reordering tumveri$lokalizasyon
+tumveri$lokalizasyon <- factor(tumveri$lokalizasyon, levels = c("ozp", "ozd", "antrum", "korpus", "fundus", "duod", "ileum", "cekum", "cikan", "transvers", "sigmoid", "inen", "rektum"))
+
+```
+
+
+**Lokalizasyonlara göre biyopsi sonuçlarının dağılımı**
+
+```{r}
+
+# table(veri2$kod_rec, veri2$lokalizasyon) %>% addmargins()
+
+table(tumveri$lokalizasyon, tumveri$kod_rec) %>% addmargins()
+
+```
+
+
+```{r}
+table(tumveri$lokalizasyon, tumveri$kod_rec2) %>% addmargins()
+```
+
+```{r ilk tani ve ikinci tani rec 2, include=FALSE}
+table(tumveri$ilktani_rec)
+
+## Recoding tumveri$ilktani_rec into tumveri$ilktani_rec2
+tumveri$ilktani_rec2 <- recode(tumveri$ilktani_rec,
+               "neoplastik" = "lezyon")
+
+## Reordering tumveri$ilktani_rec2
+tumveri$ilktani_rec2 <- factor(tumveri$ilktani_rec2, levels=c("normal", "lezyon"))
+
+table(tumveri$ilktani_rec2)
+
+
+
+table(tumveri$ikincitani_rec)
+
+## Recoding tumveri$ikincitani_rec into tumveri$ikincitani_rec2
+tumveri$ikincitani_rec2 <- recode(tumveri$ikincitani_rec,
+               "neoplastik" = "lezyon")
+
+## Reordering tumveri$ilktani_rec2
+tumveri$ikincitani_rec2 <- factor(tumveri$ikincitani_rec2, levels=c("normal", "lezyon"))
+
+
+table(tumveri$ikincitani_rec2)
+
+
+```
+
+
+```{r ilk kesit tani grubu ile ikinci kesit tani grubu karsilastirmasi, include=TRUE}
+table(tumveri$ilktani_rec2, tumveri$ikincitani_rec2, dnn = c("ilk tanı", "ikinci tanı")) %>%
+    addmargins()
+```
+
+
+
+```{r ilk kesit tani grubu ile ikinci kesit tani grubu karsilastirmasi yuzde, include=TRUE}
+table(tumveri$ilktani_rec2, tumveri$ikincitani_rec2, dnn = c("ilk tanı", "ikinci tanı")) %>%
+    prop.table() %>% 
+    addmargins() %>% 
+    round(2)
+    
+```
+
+
+
+**İlk kesit ile ikinci kesit arasındaki değişimin istatistiksel olarak karşılaştırılması**
+
+```{r McNemar test, include=TRUE}
+
+jmv::contTablesPaired(
+    data = tumveri,
+    rows = "ilktani_rec2",
+    cols = "ikincitani_rec2",
+    chiSqCorr = TRUE,
+    exact = TRUE,
+    pcRow = TRUE
+    )
+
+```
+
+ilk kesitinde patoloji saptanmayan 799 olgunun 31'inde (%4) ikinci kesitte lezyon çıkarken, ilk kesitinde patoloji saptanan 916 olgunun 7'sinde (%0.8) ikinci kesitte lezyon izlenmemiştir.  Tanılardaki bu değişiklikler arasındaki fark anlamlıdır (McNemar Test, p< 0.001)
+
+
+
+```{r include=FALSE}
+tablom <- matrix(c(768, 31, 7, 909), ncol=2, byrow=T)
+mcnemar.test(tablom)
+```
+
+
+
+```{r include=FALSE}
+mcnemar.test(tumveri$ilktani_rec2, tumveri$ikincitani_rec2, correct = FALSE)
+```
+
+
+**değişikliklerin önemi**
+
+İlk kesitte patoloji izlenmeyip ikinci kesitte lezyon çıkan 31 olgunun `r scales::percent(14/(14+17))` tanıdaki değişim klinik olarak önemli değilken, 
+`r scales::percent(17/(14+17))` tanıdaki değişim klinik olarak önemlidir.
+
+
+```{r degisikliklerin onemi, include=TRUE}
+table(tumveri$degisim_onem[which(tumveri$ilktani_rec2 =="normal" & tumveri$ikincitani_rec2 == "lezyon")]) %>% 
+    addmargins()
+```
+
+**Klinik olarak önemli olan tanılar şunlardır:** 
+
+```{r klinik onemli, include=TRUE}
+onemli <- which(tumveri$degisim_onem == "var")
+onemlibulgu <- tumveri$degisen_bulgu[onemli]
+
+onemlibulgu <- as.data.frame(onemlibulgu)
+
+jmv::descriptives(data = onemlibulgu,
+                  vars = "onemlibulgu",
+                  freq = TRUE,
+                  n = TRUE,
+                  missing = FALSE,
+                  mean = FALSE,
+                  median = FALSE,
+                  min = FALSE,
+                  max = FALSE)
+
+```
+
+**Klinik olarak önemli olan tanıların lokalizasyona göre dağılımı:** 
+
+
+```{r klinik onem lokalizasyona gore, include=FALSE}
+table(tumveri$lokalizasyon[onemli]) %>% addmargins()
+```
+
+
+```{r klinik onem varligi lokalizasyona gore, include=TRUE}
+table(tumveri$lokalizasyon, tumveri$degisim_onem, dnn = c("lokalizasyon", "önemli değişim")) %>% 
+    addmargins()
+```
+
+
+**Tanılardaki değişim şekli**
+
+```{r tanilardaki degisim sekli, include=TRUE}
+## Recoding tumveri$degisim_sekli into tumveri$degisim_sekli_rec
+tumveri$degisim_sekli_rec <- recode(tumveri$degisim_sekli,
+               .missing = "yok")
+tumveri$degisim_sekli_rec <- factor(tumveri$degisim_sekli_rec)
+
+## Reordering tumveri$degisim_sekli_rec
+tumveri$degisim_sekli_rec <- factor(tumveri$degisim_sekli_rec, levels=c("yok", "kayboldu", "eklendi"))
+
+table(tumveri$degisim_sekli_rec)
+
+```
+
+
+*Tanılarda degişim var mı*
+
+```{r tanilarda degisim var mi, include=TRUE}
+## Recoding tumveri$degisim_sekli_rec into tumveri$degisim_varligi
+tumveri$degisim_varligi <- recode(tumveri$degisim_sekli_rec,
+               "kayboldu" = "var",
+               "eklendi" = "var")
+
+## Reordering tumveri$degisim_varligi
+tumveri$degisim_varligi <- factor(tumveri$degisim_varligi, levels=c("yok", "var"))
+
+table(tumveri$degisim_varligi)
+
+```
+
+
+**tanı değişikliği olan olguların lokalizasyona göre dağılımı**
+
+
+```{r tani degisikligi seklinin lokalizasyona gore dagilimi, include=TRUE}
+table(tumveri$lokalizasyon, tumveri$degisim_sekli_rec)
+```
+
+
+Tanı değişikliği olma durumu (_değişim yok, lezyon kayboldu, lezyon eklendi_) ve değişikliğin klinik olarak öneminin,
+cinsiyet, yaş, tanı kodu, parça sayısı, kaset sayısı ve lezyon çapı açısından bir ilişkisi saptanmamıştır.
+
+
+
+<!-- ```{r include=FALSE} -->
+<!-- table(tumveri[is.na(tumveri$kod_rec2),]$degisen_bulgu) -->
+<!-- ``` -->
+
+
+
+**Parça, kaset ve çapların tanımlayıcı istatistikleri**
+
+
+
+```{r kaset sayisi duzelt}
+tumveri$kaset[which(tumveri$kaset < 1)] <- NA
+```
+
+
+
+
+```{r parca kaset cap, include=TRUE}
+jmv::descriptives(data = tumveri,
+                  vars = c("parca", "kaset", "cap"),
+                  n = TRUE,
+                  mean = TRUE,
+                  median = TRUE,
+                  sd = TRUE,
+                  min = TRUE,
+                  max = TRUE
+)
+```
+
+
+
+
+```{r include=FALSE}
+jmv::contTables(
+    data = tumveri,
+    rows = "kod_rec2",
+    cols = "degisim_sekli_rec", 
+    chiSq = FALSE,
+    pcRow = TRUE,
+    pcCol = TRUE)
+
+```
+
+
+**Lezyon, Neoplastik ve Normal tanılardaki değişim yönü**
+
+```{r, include=TRUE}
+jmv::contTables(
+    data = tumveri,
+    rows = "ilktani",
+    cols = "degisim_sekli_rec", 
+    chiSq = FALSE,
+    pcRow = TRUE,
+    pcCol = TRUE)
+
+```
+
+Neoplastik olup tanısı değişen 2 olgu mevcuttur. Tübüler adenomlardan biri kesitte ortaya çıkmışken, diğeri kesitte kaybolmuştur. 
+
+```{r include=FALSE}
+tumveri[(tumveri$tani_gr == "neoplastik" & tumveri$degisim_sekli_rec != "yok"), ]
+
+```
+
+
+
+
+**Tanı değişikliği olma durumu ile cinsiyetin karşılaştırılması:** 
+
+
+
+```{r, include=TRUE}
+jmv::contTables(
+    data = tumveri,
+    rows = "cinsiyet",
+    cols = "degisim_sekli_rec", 
+    chiSq = TRUE,
+    pcRow = TRUE,
+    pcCol = TRUE)
+
+```
+
+
+
+
+**Tanı değişikliği olma durumu ile parça sayısının karşılaştırılması:** 
+
+
+```{r, include = TRUE}
+
+jmv::anova(
+    data = tumveri,
+    dep = "parca",
+    factors = "degisim_sekli_rec",
+    descStats = TRUE
+    # ,
+    #  plotHAxis = "degisim_sekli_rec" 
+    )
+
+
+
+jmv::anovaNP(
+    data = tumveri,
+    deps = "parca",
+    group = "degisim_sekli_rec"
+    # ,
+    # pairs = TRUE
+    )
+
+
+
+
+```
+
+```{r recode lokalizasyon, include=FALSE}
+## Recoding tumveri$lokalizasyon into tumveri$lokalizasyon_rec
+tumveri$lokalizasyon_rec <- recode(tumveri$lokalizasyon,
+               "ozp" = "ozefagus",
+               "ozd" = "ozefagus",
+               "antrum" = "mide",
+               "korpus" = "mide",
+               "fundus" = "mide",
+               "duod" = "incebarsak",
+               "ileum" = "incebarsak",
+               "cekum" = "kolon",
+               "cikan" = "kolon",
+               "transvers" = "kolon",
+               "sigmoid" = "kolon",
+               "inen" = "kolon",
+               "rektum" = "kolon")
+
+## Reordering tumveri$lokalizasyon_rec
+tumveri$lokalizasyon_rec <- factor(tumveri$lokalizasyon_rec, levels=c("ozefagus", "mide", "incebarsak", "kolon"))
+
+
+```
+
+
+```{r lokalizasyon parca kaset cap, include = TRUE}
+
+# names(tumveri)
+
+jmv::anova(
+    data = tumveri,
+    dep = "parca",
+    factors = "lokalizasyon_rec",
+    descStats = TRUE
+    # ,
+    #  plotHAxis = "degisim_sekli_rec" 
+    )
+
+
+
+jmv::anovaNP(
+    data = tumveri,
+    deps = "parca",
+    group = "lokalizasyon_rec"
+    # ,
+    # pairs = TRUE
+    )
+
+jmv::anova(
+    data = tumveri,
+    dep = "kaset",
+    factors = "lokalizasyon_rec",
+    descStats = TRUE
+    # ,
+    #  plotHAxis = "degisim_sekli_rec" 
+    )
+
+
+
+jmv::anovaNP(
+    data = tumveri,
+    deps = "kaset",
+    group = "lokalizasyon_rec"
+    # ,
+    # pairs = TRUE
+    )
+
+
+jmv::anova(
+    data = tumveri,
+    dep = "cap",
+    factors = "lokalizasyon_rec",
+    descStats = TRUE
+    # ,
+    #  plotHAxis = "degisim_sekli_rec" 
+    )
+
+
+
+jmv::anovaNP(
+    data = tumveri,
+    deps = "cap",
+    group = "lokalizasyon_rec"
+    # ,
+    # pairs = TRUE
+    )
+
+
+```
+
+
+
+**Tanı değişkliği ile bx lokalizasyonu arası ilişki** 
+
+
+```{r Tani degisikligi ile lokalizasyon, include=TRUE}
+jmv::contTables(
+    data = tumveri,
+    rows = "lokalizasyon_rec",
+    cols = "degisim_varligi", 
+    chiSq = TRUE,
+    pcRow = TRUE,
+    pcCol = TRUE)
+```
+
+
+
+
+**Tanı değişikliği olma durumu ile kaset sayısının karşılaştırılması:** 
+
+
+```{r, include = TRUE}
+
+jmv::anova(
+    data = tumveri,
+    dep = "kaset",
+    factors = "degisim_sekli_rec",
+    # postHoc = list(
+        # "degisim_sekli_rec"),
+    descStats = TRUE
+    # , plotHAxis = "degisim_sekli_rec" 
+)
+
+```
+
+**Tanı değişikliği olma durumu ile çapın karşılaştırılması:** 
+
+
+```{r, include = TRUE}
+
+jmv::anova(
+    data = tumveri,
+    dep = "cap",
+    factors = "degisim_sekli_rec",
+    # postHoc = list(
+        # "degisim_sekli_rec"),
+    descStats = TRUE
+    # , plotHAxis = "degisim_sekli_rec" 
+)
+
+```
+
+**Tanı değişikliği olma durumu ile yaşın karşılaştırılması:** 
+
+
+```{r, include = TRUE}
+
+jmv::anova(
+    data = tumveri,
+    dep = "Yas",
+    factors = "degisim_sekli_rec",
+    # postHoc = list(
+        # "degisim_sekli_rec"),
+    descStats = TRUE
+    # , plotHAxis = "degisim_sekli_rec" 
+)
+
+```
+
+
+
+**Tanı değişikliğinin önemi ile cinsiyetin karşılaştırılması:**
+
+
+```{r, include=TRUE}
+jmv::contTables(
+    data = tumveri,
+    rows = "cinsiyet",
+    cols = "degisim_sekli_rec", 
+    chiSq = TRUE,
+    pcRow = TRUE,
+    pcCol = TRUE)
+```
+
+
+**Tanı değişikliğinin önemi ile parça sayısının karşılaştırılması:**
+
+
+```{r, include = TRUE}
+jmv::ttestIS(
+    data = tumveri,
+    vars = "parca",
+    group = "degisim_onem",
+    mann = TRUE,
+    # norm = TRUE,
+    # eqv = TRUE,
+    desc = TRUE
+    # , plots = TRUE
+    )
+```
+
+**Tanı değişikliğinin önemi ile kaset sayısının karşılaştırılması:**
+
+```{r, include = TRUE}
+jmv::ttestIS(
+    data = tumveri,
+    vars = "kaset",
+    group = "degisim_onem",
+    mann = TRUE,
+    # norm = TRUE,
+    # eqv = TRUE,
+    desc = TRUE
+    # ,plots = TRUE
+    )
+```
+
+**Tanı değişikliğinin önemi ile çapın karşılaştırılması:**
+
+
+```{r, include = TRUE}
+jmv::ttestIS(
+    data = tumveri,
+    vars = "cap",
+    group = "degisim_onem",
+    mann = TRUE,
+    # norm = TRUE,
+    # eqv = TRUE,
+    desc = TRUE
+    # ,
+    # plots = TRUE
+    )
+```
+
+
+**Tanı değişikliğinin önemi ile yaşın karşılaştırılması:**
+
+```{r, include = TRUE}
+jmv::ttestIS(
+    data = tumveri,
+    vars = "Yas",
+    group = "degisim_onem",
+    mann = TRUE,
+    # norm = TRUE,
+    # eqv = TRUE,
+    desc = TRUE
+    # ,
+    # plots = TRUE
+    )
+```
+
+
+
+
+**Klinik önemi olan bir tanıyı yakalamak için kaç hastaya fazladan ikinci kesiti kesiyoruz ?**
+
+
+***********
+
+1715 biyopsi içerisinde ilk cam tanısında patoloji saptanmayıp, ikinci camda patoloji saptanan ve klinik olarak tanı değişimin önemli olduğu 16 hasta mevcuttur. Bu grup hastaların `r scales::percent(round(16/1715, 3))` azını oluşturmaktadır. 1 hastada önemli tanı değişikliği için `r round(1715/15)` fazladan kesit incelenmektedir.   
+
+
+```{r include=FALSE}
+# dim(tumveri)
+table(tumveri$degisim_onem[which(tumveri$ilktani_rec=="normal" & tumveri$ikincitani_rec == "lezyon")]) %>% 
+    addmargins()
+```
+
+
+```{r include=FALSE}
+length(which(tumveri$ilktani_rec=="normal" & tumveri$ikincitani_rec == "lezyon" & tumveri$degisim_onem == "var"))
+
+# dim(tumveri)
+
+```
+
+
+---
+
+> 948 hastaya(E/K=1) ait, 1715 bx (özofagus:98, mide:940, duodenum:150, terminal ileum: 57, kolon:470) değerlendirilmiştir. Hasta yaşı 46+/-18(2-93)’dir. Ortalama parça sayısı 2,54, kaset sayısı 1,18, biyopsi çapı ise 0,39 cm’dir. Biyopsilerin .. sı normale yakın histolojide olup, .. sı nonneoplastik , …sı neoplastik lezyon içermektedir.  Mideye ait biyopsilerinde aktvite, İm, La varlığı ve atrofi yüzdeleri sırasıyla …………. İlk kesiti lezyonsuz olan 792 bxnin 31’inde(%3,9) lezyon eklenirken, lezyonlu 923 bxnin 7’sinde(%0.8) kaybolmuştur(p< 0.001). Bxlerin 1677 (%97,7)’sinde (lezyonlu/lezyonsuz: 1,25) tanı değişmemiştir. Tanısı değişen 38 bxnin, %18,4’ ünde 1. lamda izlenen bulgu kaybolurken, %81,6’ sında ise yeni bir bulgu eklenmiştir. Eklenen bulguların %54,8’inin klinik önemi olup, granülom(n=1), im(n=14), atrofi (n=1), LA(n=4), pilorik metaplazi(n=1), tubuler adenom(n=2) ve hiperplastik polip(n=1) şeklindedir. Tanı değişikliği saptama ile cinsiyet, yaş, tanı grubu, parça&kaset sayısı ve bx çapı açısından bir ilişki saptanmamıştır. 
+
+
+---
+
+
+> Çalışmamızda sk ile klinik yönetimi etkileyen değişiklik, vakaların %1’inden azında tesbit edilmiştir. Lezyonlu ve lezyonsuz olgular karşılaştırıldığında, istatistiksel olarak anlamlı bir fark saptanmış, lezyonsuz bxlerin %4’ünde lezyon eklenirken, lezyonların %1’inin kaybolduğu görülmüştür.  
+
+
+
+# Tartışma
+
+
+
+```{r references}
+PMID_29944023 <- RefManageR::ReadPubMed("29944023", database = "PubMed")
+cit_29944023 <- paste0(PMID_29944023$title, " ", PMID_29944023$journal, " ", "PMID: https://www.ncbi.nlm.nih.gov/pubmed/?term=", PMID_29944023$eprint, " ", "doi: https://doi.org/", PMID_29944023$doi)
+```
+
+
+
+- Fazla lam ve kesit alınması maaliyeti arttırdığı gibi, laboratuvarda teknisyenlere ve değerlendirme sırasında patologlara ek iş yükü oluşturmaktadır.
+
+- Sadece kolon biyopsilerini irdeleyen bir çalışma, erkek cinsiyeti ve çıkan kolonu daha çok kesit yapmak için anlamlı bulmuş.
+
+- İkinci kesiti yapmaya gerek var mı?
+
+İkinci kesiti yapmaya değer mi? Bu tabii maliyeti de işe katınca içinden çıkılması zor soru ama,
+
+Hangi tanıda değer? Bazı tanılara ve biyopsi lokalizasyonlarına dikkat çeken yazılar var.
+
+örneğin; bloktaki parça sayısı 2 den fazlaysa, boyutu 3 mmden büyükse, antrumda intestinal metaplazi için, ya da çekumda tubuler adenom tanısını yakalamak için terminal ileumda aktiviteyi yakalamak için ikinci lama ihtiyaç var/ ya da daha çok ihtiyaç var.
+
+
+- Upfront Levels for Colon “Polyps” Necessary? A Pragmatic Review^[`r cit_29944023`]
+
+- ..
+
+---
+
+```{r write final data}
+writexl::write_xlsx(tumveri, "tumveri.xlsx")
+```
+
+
+---
+
+
+```{r view summary}
+library(summarytools)
+view(dfSummary(veri2))
+```
+
+
+---
+
+![](summary1.png)
+
+---
+
+![](summary2.png)
+
+
+---
+
+
+![](summary3.png)
+
+---

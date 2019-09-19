@@ -1,0 +1,18 @@
+
+<style>
+    body .main-container {
+        max-width: 90%;
+    }
+</style>
+
+
+```{r setup global chunk settings, include=FALSE}
+knitr::opts_chunk$set(comment = NA, echo = FALSE)
+```
+
+
+```{r load library, include=FALSE}
+source(file = here::here("R", "loadLibrary.R"))
+```
+
+
