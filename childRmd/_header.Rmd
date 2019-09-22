@@ -6,8 +6,8 @@
 </style>
 
 
-```{r setup global chunk settings, include=FALSE}
-knitr::opts_chunk$set(comment = NA, echo = FALSE)
+```{r setup global chunk settings}
+knitr::opts_chunk$set(comment = NA, include = FALSE)
 ```
 
 

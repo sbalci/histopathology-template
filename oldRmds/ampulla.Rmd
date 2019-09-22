@@ -371,7 +371,6 @@ survminer::pairwise_survdiff(formula = Surv(time, status) ~ DIPCvsOtherTumors, d
 ```
 
 
-
 ```{r}
 explanatoryKM2 <-  c("DIPCvsOtherTumors")
 dependentKM2 <-  "Surv(time, status)"

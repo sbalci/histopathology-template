@@ -4,7 +4,7 @@ output:
   html_document: default
 ---
 
-```{r define survival time}
+```{r define survival time, eval=FALSE, include=FALSE}
 mydata$int <- lubridate::interval(
   lubridate::ymd(mydata$CerrahiTarih),
   lubridate::ymd(mydata$SonTarih)
@@ -14,12 +14,12 @@ mydata$OverallTime <- round(mydata$OverallTime, digits = 1)
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 mydata$OverallTime <- mydata$genel_sagkalim
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$Outcome into mydata$Outcome2
 mydata$Outcome2 <- recode(mydata$Outcome,
                "Alive" = "0",
@@ -32,7 +32,7 @@ mydata$Outcome2 <- as.numeric(mydata$Outcome2)
 
 # Survival Analysis
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 library(survival)
 km <- with(mydata, Surv(OverallTime, Outcome2))
 # head(km,80)
@@ -41,7 +41,7 @@ km <- with(mydata, Surv(OverallTime, Outcome2))
 
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 dependentKM <-  "Surv(OverallTime, Outcome2)"
 
 explanatoryKM <- c("Lauren",
@@ -64,7 +64,7 @@ explanatoryKM <- c("Lauren",
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 source(here::here("R", "generatingCodeForSurvival.R"))
 ```
 
@@ -75,20 +75,30 @@ source(here::here("R", "generatingCodeForSurvival.R"))
 
 
 
+# Pairwise comparison
+
+```{r eval=FALSE, include=FALSE}
+survminer::pairwise_survdiff(formula = Surv(time, Outcome) ~ ShellAnteriorOnly, 
+                             data = mydata,
+                             p.adjust.method = "BH")
+```
 
 
 
 
-# Multivariate
+
+# Multivariate Analysis Survival
+
 
 ```{r Multivariate Analysis, eval=FALSE, include=FALSE}
-# library(finalfit)
-# library(survival)
-# explanatoryMultivariate2 <- c("yas", "gender", "cap", "MetastaticLN", "SurgicalMargin", "LVI", "PNI", "yogun", "yaygin")
-# dependentMultivariate2 <-  "Surv(time, Outcome)"
-# 
-# masco_pannet %>%
-#   finalfit(dependentMultivariate2, explanatoryMultivariate2) -> tMultivariate2
-# 
-# knitr::kable(tMultivariate2, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r"))
+library(finalfit)
+library(survival)
+explanatoryMultivariate <- explanatoryKM
+dependentMultivariate <- dependentKM
+
+mydata %>%
+  finalfit(dependentMultivariate, explanatoryMultivariate) -> tMultivariate
+
+knitr::kable(tMultivariate, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r"))
 ```
+

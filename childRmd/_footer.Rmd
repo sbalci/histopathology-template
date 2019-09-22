@@ -2,7 +2,7 @@
 
 saved data after analysis to `mydata.xlsx`.
 
-```{r save final data}
+```{r save final data, eval=FALSE, include=FALSE}
 
 save.image(file = here::here("data", "mydata_work_space.RData"))
 
@@ -53,7 +53,7 @@ paste0(rownames(file.info(here::here("data", "mydata.xlsx"))), " : ", file.info(
 
 # Software and Libraries Used {.appendix}  
 
-```{r citation}
+```{r citation, eval=FALSE, include=FALSE}
 citation()
 ```
 
@@ -62,12 +62,12 @@ R Core Team (2018). R: A Language and envionment for statistical computing. [Com
 Fox, J., & Weisberg, S. (2018). car: Companion to Applied Regression. [R package]. Retrieved from https://cran.r-project.org/package=car.
 
 
-```{r library citation as report, results='asis'}
+```{r library citation as report, results='asis', eval=FALSE, include=FALSE}
 report::cite_packages(session = sessionInfo())
 ```
 
 
-```{r library citations}
+```{r library citations, eval=FALSE, include=FALSE}
 citation("tidyverse")
 citation("readxl")
 citation("janitor")
@@ -82,7 +82,7 @@ citation("finalfit")
 
 # Session Info {.appendix} 
 
-```{r session info}
+```{r session info, eval=FALSE, include=FALSE}
 sessionInfo()
 ```
 

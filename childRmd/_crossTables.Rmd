@@ -2,12 +2,12 @@
 
 ## finalfit
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 library(finalfit)
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 dependent <- c("Lauren",
                "CD44",
                "Her2",
@@ -41,12 +41,12 @@ explanatory <- c("Cinsiyet",
 
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 source(here::here("R", "generatingCodeForCrossTables.R"))
 ```
 
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCrossTables.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCrossTables.Rmd'), eval=FALSE, include=FALSE}
 ```
 

@@ -1,11 +1,17 @@
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 mydata <- janitor::clean_names(mydata)
 ```
 
 
 ```{r}
+glimpse(mydata)
+```
+
+
+
+```{r, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 ## Recoding mydata$cinsiyet into mydata$Cinsiyet
 mydata$Cinsiyet <- recode(mydata$cinsiyet,
                "K" = "Kadin",
@@ -13,7 +19,7 @@ mydata$Cinsiyet <- recode(mydata$cinsiyet,
 mydata$Cinsiyet <- factor(mydata$Cinsiyet)
 ```
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$tumor_yerlesimi into mydata$TumorYerlesimi
 mydata$TumorYerlesimi <- recode(mydata$tumor_yerlesimi,
                "proksimal" = "Proksimal",
@@ -28,7 +34,7 @@ mydata$TumorYerlesimi <- factor(mydata$TumorYerlesimi, levels=c("GEJ", "Proksima
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$histolojik_alt_tip into mydata$HistolojikAltTip
 mydata$HistolojikAltTip <- recode(mydata$histolojik_alt_tip,
                "medüller benzeri" = "meduller benzeri")
@@ -37,7 +43,7 @@ mydata$HistolojikAltTip <- factor(mydata$HistolojikAltTip)
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$lauren_siniflamasi into mydata$Lauren
 mydata$Lauren <- recode(mydata$lauren_siniflamasi,
                "diffüz" = "diffuse",
@@ -46,7 +52,7 @@ mydata$Lauren <- factor(mydata$Lauren)
 
 ```
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$histolojik_derece into mydata$Grade
 mydata$Grade <- recode(mydata$histolojik_derece,
                "az diferansiye" = "az",
@@ -61,7 +67,7 @@ mydata$Grade <- factor(mydata$Grade, levels=c("iyi", "orta", "az"))
 
 
 
-```{r recode TNM stage}
+```{r recode TNM stage, eval=FALSE, include=FALSE}
 mydata$Tstage <- stringr::str_match(mydata$patolojik_evre, paste('(.+)', "N", sep=''))[,2]
 
 mydata$Nstage <- paste0("N",
@@ -74,7 +80,7 @@ mydata$Mstage <- paste0("M",
 ```
 
 
-```{r recode TNM2}
+```{r recode TNM2, eval=FALSE, include=FALSE}
 mydata <- mydata %>% 
     mutate(
         T_stage = case_when(
@@ -109,7 +115,7 @@ mutate(
 
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$cd44_oran into mydata$CD44
 mydata$CD44 <- recode(mydata$cd44_oran,
                "2" = "positive",
@@ -120,7 +126,7 @@ mydata$CD44 <- factor(mydata$CD44)
 
 ```
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$her2_skor into mydata$Her2
 mydata$Her2 <- recode(mydata$her2_skor,
                "+3" = "3",
@@ -132,7 +138,7 @@ mydata$Her2 <- factor(mydata$Her2, levels=c("0", "1", "2", "3"))
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$msi into mydata$MMR
 mydata$MMR <- recode(mydata$msi,
                "MSS" = "pMMR",
@@ -153,7 +159,7 @@ mydata$MMR2 <- factor(mydata$MMR2)
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 mydata <- mydata %>% 
     mutate(
 TumorPDL1gr1 = case_when(
@@ -182,7 +188,7 @@ inflPDL1gr5 = case_when(
 
 ```
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$lvi into mydata$LVI
 mydata$LVI <- recode(mydata$lvi,
                "var" = "Var",
@@ -193,7 +199,7 @@ mydata$LVI <- factor(mydata$LVI, levels=c("Yok", "Var"))
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$pni into mydata$PNI
 mydata$PNI <- recode(mydata$pni,
                "var" = "Var",
@@ -204,7 +210,7 @@ mydata$PNI <- factor(mydata$PNI, levels=c("Yok", "Var"))
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 ## Recoding mydata$ln into mydata$LenfNoduMetastazi
 mydata$LenfNoduMetastazi <- recode(mydata$ln,
                "var" = "Var",
@@ -215,18 +221,18 @@ mydata$LenfNoduMetastazi <- factor(mydata$LenfNoduMetastazi, levels=c("Yok", "Va
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 mydata$sontarih <- janitor::excel_numeric_to_date(as.numeric(mydata$olum_tarihi))
 ```
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 mydata$Outcome <- "Dead"
 mydata$Outcome[mydata$olum_tarihi == "yok"] <- "Alive"
 ```
 
 
-```{r select columns}
+```{r select columns, eval=FALSE, include=FALSE}
 # cat(names(mydata), sep = ",\n")
 
 mydata <- mydata %>% 

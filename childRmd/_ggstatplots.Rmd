@@ -3,7 +3,7 @@
 ## Categorical Variables
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 dependent <- c("Lauren",
                "CD44",
                "Her2",
@@ -36,7 +36,7 @@ explanatory <- c("Cinsiyet",
 
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 mydataCategorical <- mydata %>% 
     select(-Yas,
            -TumorCapi,
@@ -49,18 +49,18 @@ mydataCategorical <- mydata %>%
 
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- explanatory[1]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
 source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[2]
@@ -68,12 +68,12 @@ dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
 source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[3]
@@ -82,12 +82,12 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[4]
@@ -96,11 +96,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[5]
@@ -109,11 +109,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[6]
@@ -122,11 +122,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[7]
@@ -135,11 +135,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[8]
@@ -148,11 +148,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[9]
@@ -161,11 +161,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[10]
@@ -174,11 +174,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[11]
@@ -187,11 +187,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[12]
@@ -200,11 +200,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[13]
@@ -213,11 +213,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[14]
@@ -225,11 +225,11 @@ dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
 source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[15]
@@ -238,11 +238,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[16]
@@ -251,7 +251,7 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 

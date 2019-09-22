@@ -73,7 +73,7 @@ output:
 \elandscape
 
 
-```{r header, child = here::here('childRmd', '_footer.Rmd')}
+```{r footer, child = here::here('childRmd', '_footer.Rmd')}
 ```
 
 
@@ -82,5 +82,10 @@ output:
 
 
 \newpage
+
+
+```{r}
+source(file = here::here("R", "gitUpdateCommitPush.R"))
+```
 
 

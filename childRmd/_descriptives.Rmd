@@ -1,7 +1,7 @@
 # Descriptive Statistics
 
 
-```{r, results='asis'}
+```{r, results='asis', eval=FALSE, include=FALSE}
 library(arsenal)
 tab1 <- tableby(~ Cinsiyet + 
 Yas + 
@@ -39,7 +39,7 @@ summary(tab1)
 
 ## Categorical Variables
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 mydataCategorical <- mydata %>% 
     select(-Yas,
            -TumorCapi,
@@ -52,19 +52,19 @@ mydataCategorical <- mydata %>%
 
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 source(here::here("R", "generatingCodeForDescriptiveStatistics.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeDescriptives.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeDescriptives.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
 ## Continious Variables
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 mydataContinious <- mydata %>% 
     select(
         Yas,
@@ -74,13 +74,13 @@ mydataContinious <- mydata %>%
 
 
 
-```{r include=FALSE}
+```{r include=FALSE, eval=FALSE, include=FALSE}
 source(here::here("R", "generatingCodeForContinious.R"))
 ```
 
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeContinious.Rmd')}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeContinious.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
