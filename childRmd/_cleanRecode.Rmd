@@ -2,6 +2,7 @@
 
 ```{r, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 mydata <- janitor::clean_names(mydata)
+cat(names(mydata), sep = ",\n")
 ```
 
 

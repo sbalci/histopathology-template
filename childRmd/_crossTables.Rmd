@@ -1,6 +1,5 @@
 # Cross Tables
 
-## finalfit
 
 ```{r, eval=FALSE, include=FALSE}
 library(finalfit)

@@ -11,7 +11,9 @@ mydata %>%
                        total_col = TRUE,
                        p = TRUE,
                        add_dependent_label = TRUE,
-                       catTest = catTestfisher) -> table
+                       na_include=FALSE
+                       # catTest = catTestfisher
+                       ) -> table
 
 knitr::kable(table, row.names = FALSE, align = c('l', 'l', 'r', 'r', 'r'))
 ```", "\n", "\n", "\\pagebreak","\n")
