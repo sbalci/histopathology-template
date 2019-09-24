@@ -1,0 +1,2239 @@
+---
+title: "Kolon Adenom"
+output:
+  pdf_document: 
+    latex_engine: xelatex
+  html_notebook: 
+    fig_caption: yes
+  html_document:
+    df_print: paged
+---
+
+
+
+```{r setup global_options chunk settings, include=FALSE}
+knitr::opts_chunk$set(fig.width = 12, fig.height = 8, 
+                      # fig.path = 'figures/',
+                      echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE,
+                      # error = FALSE,
+                      # eval = TRUE, 
+                      # tidy = TRUE,
+                      comment = NA
+                      # cache = TRUE,
+                      # include = FALSE,
+                      
+                      )
+```
+
+
+
+```{r library, echo=FALSE}
+suppressMessages(library("tidyverse"))
+suppressMessages(library("foreign"))
+suppressMessages(library("janitor"))
+suppressMessages(library("summarytools"))
+```
+
+<!-- ``` -->
+<!-- jmv, tangram, finalfit, summarytools, ggstatplot, readxl, saverds, -->
+<!-- ``` -->
+
+# Methods
+
+Sonuçlar sürekli değişkenler için ortalama, ortanca, standart sapma, en düşük ve en büyük değerler olarak, kategorik değişkenler için sayı ve yüzde olarak verildi.
+
+Son tanıya göre 4 gruba ayrılan olgularda sürekli değişkenlerdeki farklılık Kruskall-Wallis testi ile, kategorik değişkenlerdeki oranlar arasındaki farklılık Pearson Ki-kare testi ile değerlendirildi.
+
+İstatistik analizler R version 3.5.1 programı ve tangram paketi ile yapıldı. p<0.05 değeri anlamlı olarak kabul edildi.
+
+R Core Team (2018). R: A language and
+  environment for statistical computing. R
+  Foundation for Statistical Computing,
+  Vienna, Austria. URL
+  https://www.R-project.org/.
+
+Shawn Garbett (2018). tangram: The Grammar
+  of Tables. R package version 0.4.
+  https://CRAN.R-project.org/package=tangram
+
+
+
+
+All results were presented as mean and standard deviation(SD) for continuous
+variables and as number and percentage for categorical variables. Normality of Numerical
+variables was tested by Kolmogorov-Smirnov test. Numerical data with normal distribution
+was analyzed by Independent Samples t test while data with skewed distribution were
+analyzed by Mann Whitney U test. Categorical variables were presented as percentages and
+analyzed by Chi-square test.
+The one-way analysis of variance (ANOVA) is used to determine any statistically
+significant differences among more than two independent (unrelated) groups for normal
+distribution.and Kruskal-Wallis is used to describe for abnormal distribution One-way
+ANOVA and Kruskal-Wallis test is used to assess for significant differences on a continuous
+dependent variable by a categorical independent variable for more than two groups,(Normal
+and abnormal distribution, respectively). Tukey test was used to compare the differences
+between the parametric variables. Dwass-Steel-Critchlow-Fligner test was used to compare
+the differences between the non-parametric variables for differences between the groups.
+Pearson Chi-Square test was used to compare the differences between categorical variables.
+Pearson(normal distribution) and Spearman(abnormal distribution) correlation analysis was
+used to evaluate the relationship between variables.
+
+All the statistical analyses were performed by using Jamovi project (2018). jamovi
+(Version 0.9) [Computer Software]. Retrieved from (https://www.jamovi.org) ve JASP Team
+(2018). JASP (Version 0.9)[Computer software]. A p values &lt;0.05 was determined for the
+statistically significance.
+
+
+
+# data upload
+
+```{r veri yukle}
+library(readxl)
+adenom <- read_excel(here::here("istatistik için  excel son tez23.08.2019- Kopya (3).xlsx"), col_types = "text")
+
+
+adenom <- adenom %>% 
+    filter(!is.na(`biyopsi no`))
+
+# adenom <- map_df(adenom, as.character)
+# View(adenom)
+
+adenom <- adenom %>% janitor::clean_names()
+
+```
+
+
+<!-- ```{r make names, eval=FALSE, include=FALSE} -->
+<!-- #turkce karakter donusumu -->
+<!-- to.plain <- function(s) { -->
+
+<!-- # 1 character substitutions -->
+<!-- old1 <- "çğşıüöÇĞŞİÖÜ" -->
+<!-- new1 <- "cgsiuocgsiou" -->
+<!-- s1 <- chartr(old1, new1, s) -->
+
+<!-- # 2 character substitutions -->
+<!-- old2 <- c("œ", "ß", "æ", "ø") -->
+<!-- new2 <- c("oe", "ss", "ae", "oe") -->
+<!-- s2 <- s1 -->
+<!-- for(i in seq_along(old2)) s2 <- gsub(old2[i], new2[i], s2, fixed = TRUE) -->
+
+<!-- s2 -->
+<!-- } -->
+
+<!-- names(adenom) <- to.plain(make.names(tolower(names(adenom)))) -->
+
+<!-- ``` -->
+
+
+# data recode
+
+```{r}
+
+## Recoding adenom$ilk.tani.ta.tva.1.sa.2.tsa.3 into adenom$ilktani
+adenom$ilktani <- fct_recode(adenom$ilk_tani_ta_tva_1_sa_2_tsa_3,
+               "TATVA" = "1",
+               "SA" = "2",
+               "TSA" = "3")
+
+## Reordering adenom$ilktani
+adenom$ilktani <- factor(adenom$ilktani, levels=c("TATVA", "SA", "TSA"))
+
+```
+
+
+```{r}
+## Recoding adenom$son.tani.ta.tva.1.sa.2.tsa.3.hibrid.4 into adenom$sontani
+adenom$sontani <- fct_recode(adenom$son_tani_ta_tva_1_sa_2_tsa_3_hibrid_4,
+                             "TATVA" = "1",
+               "SA" = "2",
+               "TSA" = "3",
+               "Hibrid" = "4"
+               
+                         )
+
+## Reordering adenom$sontani
+adenom$sontani <- factor(adenom$sontani, levels=c("TATVA", "SA", "TSA", "Hibrid"))
+
+```
+
+
+```{r}
+adenom$yas <- as.numeric(as.character(adenom$yas))
+```
+
+```{r}
+## Recoding adenom$cinsiyet.erkek into adenom$cinsiyet
+adenom$cinsiyet <- fct_recode(adenom$cinsiyet_erkek,
+               "Erkek" = "1",
+               "Kadin" = "0")
+
+```
+
+
+```{r}
+adenom$cap <- as.numeric(as.character(adenom$cap_cm))
+```
+
+
+```{r}
+adenom$makro <- NA
+adenom$makro[adenom$sapli == 1] <- "sapli"
+adenom$makro[adenom$sesil == 1] <- "sesil"
+```
+
+
+```{r}
+## Recoding adenom$lokalizasyon.sag.sol into adenom$lokalizasyon
+adenom$lokalizasyon <- fct_recode(adenom$lokalizasyon_sag_sol,
+               "Sol" = "1",
+               "Sag" = "0")
+
+
+```
+
+
+```{r}
+## Recoding adenom$tubuler.yapi into adenom$tubuleryapi
+adenom$tubuleryapi <- fct_recode(adenom$tubuler_yapi,
+               "kucuk10" = "0",
+               "10-25" = "1",
+               "25-75" = "2",
+               "buyuk75" = "3"
+               )
+
+
+## Reordering adenom$tubuleryapi
+adenom$tubuleryapi <- factor(adenom$tubuleryapi, levels=c("kucuk10", "10-25", "25-75", "buyuk75"))
+
+```
+
+
+```{r}
+## Recoding adenom$villoz.yapi into adenom$villozyapi
+adenom$villozyapi <- fct_recode(adenom$villoz_yapi,
+"kucuk10" = "0",
+               "10-25" = "1",
+               "25-75" = "2",
+               "buyuk75" = "3"
+                            )
+
+## Reordering adenom$villozyapi
+adenom$villozyapi <- factor(adenom$villozyapi, levels=c("kucuk10", "10-25", "25-75", "buyuk75"))
+```
+
+
+```{r}
+## Recoding adenom$tabanda.musinoz.hiperplazi into adenom$tabandamusinozhiperplazi
+adenom$tabandamusinozhiperplazi <- fct_recode(adenom$tabanda_musinoz_hiperplazi,
+"kucuk10" = "0",
+               "10-25" = "1",
+               "25-75" = "2",
+               "buyuk75" = "3"
+                                          )
+
+## Reordering adenom$tabandamusinozhiperplazi
+adenom$tabandamusinozhiperplazi <- factor(adenom$tabandamusinozhiperplazi, levels=c("kucuk10", "10-25", "25-75", "buyuk75"))
+```
+
+
+```{r}
+adenom$yuzeydemusinozhiperplazi <- fct_recode(adenom$yuzeyde_musinoz_hiperplazi,
+    "kucuk10" = "0",
+               "10-25" = "1",
+               "25-75" = "2",
+               "buyuk75" = "3"
+                                              )
+
+
+adenom$yuzeydemusinozhiperplazi <- factor(adenom$yuzeydemusinozhiperplazi, levels=c("kucuk10", "10-25", "25-75", "buyuk75"))
+```
+
+
+```{r}
+adenom$Serrasyon <- fct_recode(adenom$serrasyon,
+"kucuk10" = "0",
+               "10-25" = "1",
+               "25-75" = "2",
+               "buyuk75" = "3"
+                               )
+
+
+adenom$Serrasyon <- factor(adenom$Serrasyon, levels=c("kucuk10", "10-25", "25-75", "buyuk75"))
+```
+
+
+```{r}
+adenom$ektopikkript <- fct_recode(adenom$ektopik_kript,
+               "kucuk10" = "0",
+               "10-25" = "1",
+               "25-75" = "2",
+               "buyuk75" = "3")
+                                  
+adenom$ektopikkript <- factor(adenom$ektopikkript, levels=c("kucuk10", "10-25", "25-75", "buyuk75"))
+```
+
+
+```{r}
+adenom$eozinofiliksitoplazma <- fct_recode(adenom$eozinofilik_sitoplazma,
+    "kucuk10" = "0",
+               "10-25" = "1",
+               "25-75" = "2",
+               "buyuk75" = "3")
+                                           
+adenom$eozinofiliksitoplazma <- factor(adenom$eozinofiliksitoplazma, levels=c("kucuk10", "10-25", "25-75", "buyuk75"))
+```
+
+
+```{r}
+adenom$selendernuve <- fct_recode(adenom$selender_nuve,
+             "kucuk10" = "0",
+               "10-25" = "1",
+               "25-75" = "2",
+               "buyuk75" = "3")
+                                  
+adenom$selendernuve <- factor(adenom$selendernuve, levels=c("kucuk10", "10-25", "25-75", "buyuk75"))
+```
+
+
+```{r}
+## Recoding adenom$adenomatoz.displazi.var.yok. into adenom$adenomatozdisplazi
+adenom$adenomatozdisplazi <- fct_recode(adenom$adenomatoz_displazi_var_yok,
+               "yok" = "0",
+               "var" = "1")
+
+
+adenom$adenomatozdisplazi <- factor(adenom$adenomatozdisplazi, levels=c("yok", "var"))
+
+
+```
+
+
+```{r}
+## Recoding adenom$serrated.displazi.var.yok. into adenom$serrateddisplazi
+adenom$serrateddisplazi <- fct_recode(adenom$serrated_displazi_var_yok,
+              "yok" = "0",
+               "var" = "1")
+                                  
+## Reordering adenom$serrateddisplazi
+adenom$serrateddisplazi <- factor(adenom$serrateddisplazi, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$lowgradeAD <- fct_recode(adenom$lowgrade_ad_v_y,
+               "yok" = "0",
+               "var" = "1")
+                            
+
+adenom$lowgradeAD <- factor(adenom$lowgradeAD, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$highgradeAD <- fct_recode(adenom$highgrade_ad_v_y,
+              "yok" = "0",
+               "var" = "1")
+                             
+
+adenom$highgradeAD <- factor(adenom$highgradeAD, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$lowgradeSD <- fct_recode(adenom$lowgrade_sd_v_y,
+               "yok" = "0",
+               "var" = "1")
+                            
+
+adenom$lowgradeSD <- factor(adenom$lowgradeSD, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$highgradeSD <- fct_recode(adenom$highgrade_sd_v_y,
+              "yok" = "0",
+               "var" = "1")
+                             
+
+adenom$highgradeSD <- factor(adenom$highgradeSD, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+# adenom$invasiveca <- fct_recode(adenom$invasive.ca,
+#                "0" = "yok",
+#                "1" = "var")
+# adenom$invasiveca <- factor(adenom$invasiveca)
+# 
+# 
+# adenom$invasiveca <- factor(adenom$invasiveca, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$tabandagenisleme <- fct_recode(adenom$tabanda_genisleme,
+              "yok" = "0",
+               "var" = "1")
+                                  
+
+adenom$tabandagenisleme <- factor(adenom$tabandagenisleme, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$filiformyapi <- fct_recode(adenom$filiform_yapi,
+              "yok" = "0",
+               "var" = "1")
+                              
+adenom$filiformyapi <- factor(adenom$filiformyapi, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+## Recoding adenom$braf into adenom$BRAF
+adenom$BRAF <- fct_recode(adenom$braf,
+               "yok" = "0",
+               "var" = "1")
+
+## Reordering adenom$BRAF
+adenom$BRAF <- factor(adenom$BRAF, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$KRAS <- fct_recode(adenom$kras,
+               "yok" = "0",
+               "var" = "1")
+
+adenom$KRAS <- factor(adenom$KRAS, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$NRAS <- fct_recode(adenom$nras,
+               "yok" = "0",
+               "var" = "1")
+
+                          
+adenom$NRAS <- factor(adenom$NRAS, levels=c("yok", "var"))
+
+```
+
+
+
+```{r}
+adenom$MSI <- fct_recode(adenom$msi,
+"yok" = "0",
+               "var" = "1")
+
+adenom$MSI <- factor(adenom$MSI, levels=c("yok", "var"))
+
+```
+
+
+```{r}
+adenom$Metilasyon <- fct_recode(adenom$metilasyon,
+"yok" = "0",
+               "var" = "1")
+
+                                
+adenom$Metilasyon <- factor(adenom$Metilasyon, levels=c("yok", "var"))
+
+```
+
+
+
+```{r}
+# adenom$biyopsi.no[which(is.na(adenom$cinsiyet))]
+# adenom$biyopsi.no[which(is.na(adenom$filiform.yapi))]
+
+adenom$cinsiyet[which(is.na(adenom$cinsiyet))] <- "Erkek"
+
+adenom$filiform_yapi[which(is.na(adenom$filiform_yapi))] <- "1"
+
+adenom$filiformyapi[which(is.na(adenom$filiformyapi))] <- "var"
+
+adenom$makro[which(is.na(adenom$makro))] <- "sesil"
+
+```
+
+
+```{r summary after recode}
+# library(summarytools)
+# summarytools::view(summarytools::dfSummary(adenom))
+```
+
+
+
+
+```{r select relevant columns}
+adenom2 <- adenom %>% 
+    select(
+        cinsiyet,
+        yas,
+        ilktani,
+        sontani,
+        cap,
+        makro,
+        lokalizasyon,
+        tubuleryapi,
+        villozyapi,
+        tabandamusinozhiperplazi,
+        yuzeydemusinozhiperplazi,
+        Serrasyon,
+        ektopikkript,
+        eozinofiliksitoplazma,
+        selendernuve,
+        adenomatozdisplazi,
+        serrateddisplazi,
+        lowgradeAD,
+        highgradeAD,
+        lowgradeSD,
+        highgradeSD,
+        # invasiveca,
+        tabandagenisleme,
+        filiformyapi,
+        BRAF,
+        KRAS,
+        NRAS,
+        MSI,
+        Metilasyon
+    )
+```
+
+
+
+```{r summarytools adenom2}
+library(summarytools)
+view(dfSummary(adenom2))
+```
+
+
+```{r tangram adenom2, include=FALSE}
+library(tangram)
+
+summary.cell_fraction <- function(object, ...) { paste0('%', object['percentage']) }
+assignInNamespace("summary.cell_fraction", summary.cell_fraction, "tangram")
+
+
+write(
+    html5(tangram(sontani ~ cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi + 
+                      tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + Serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme + 
+                      filiformyapi +
+                      BRAF + KRAS + NRAS + MSI + Metilasyon,
+                  adenom2),
+      fragment=TRUE, inline="nejm.css", caption = "Adenom2 Original Data", id="tbl3"),
+    
+    "CrossTable_originaldata.html"
+)
+
+
+```
+
+
+
+
+
+
+
+
+# var yok (kucuk25, buyuk25) karşılaştırması için gruplama
+
+
+
+```{r}
+# var yok (kucuk25) karşılaştırması için gruplama
+
+adenomVarYok <- adenom2
+
+
+recode_present_absent <- function(x, ...) {
+  recode(x,
+               "kucuk10" = "yok",
+               "10-25" = "yok",
+               "25-75" = "var",
+               "buyuk75" = "var")  
+}
+
+
+adenomVarYok$tubuleryapi <- recode_present_absent(adenomVarYok$tubuleryapi)
+
+# table(adenomVarYok$tubuleryapi, adenomVarYok$tubuleryapi2)
+
+adenomVarYok$villozyapi <- recode_present_absent(adenomVarYok$villozyapi)
+
+adenomVarYok$tabandamusinozhiperplazi <- recode_present_absent(adenomVarYok$tabandamusinozhiperplazi)
+
+adenomVarYok$yuzeydemusinozhiperplazi <- recode_present_absent(adenomVarYok$yuzeydemusinozhiperplazi)
+
+adenomVarYok$Serrasyon4lu <- adenomVarYok$Serrasyon
+adenomVarYok$Serrasyon <- recode_present_absent(adenomVarYok$Serrasyon)
+
+adenomVarYok$ektopikkript4lu <- adenomVarYok$ektopikkript
+adenomVarYok$ektopikkript <- recode_present_absent(adenomVarYok$ektopikkript)
+
+adenomVarYok$eozinofiliksitoplazma <- recode_present_absent(adenomVarYok$eozinofiliksitoplazma)
+
+adenomVarYok$selendernuve4lu <- adenomVarYok$selendernuve
+adenomVarYok$selendernuve <- recode_present_absent(adenomVarYok$selendernuve)
+
+```
+
+```{r summarytools adenomVarYok}
+library(summarytools)
+view(dfSummary(adenomVarYok))
+```
+
+
+```{r tangram adenomVarYok, include=FALSE}
+library(tangram)
+
+summary.cell_fraction <- function(object, ...) { paste0('%', object['percentage']) }
+assignInNamespace("summary.cell_fraction", summary.cell_fraction, "tangram")
+
+
+write(
+    html5(tangram(sontani ~ cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi + 
+                      tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + Serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme + 
+                      filiformyapi +
+                      BRAF + KRAS + NRAS + MSI + Metilasyon,
+                  adenomVarYok),
+      fragment=TRUE, inline="nejm.css", caption = "Adenom Grouped <25 vs >25", id="tbl3"),
+    
+    "CrossTable_groupeddata.html"
+)
+
+
+```
+
+
+
+
+<!-- --- -->
+
+<!-- # 0-10 yok (0 yok) diğerleri var (kucuk25, 25-75, buyuk75) -->
+
+
+
+
+<!-- ```{r} -->
+<!-- # var yok karşılaştırması için gruplama -->
+
+<!-- adenomVarYok <- adenom2 -->
+
+
+<!-- recode_az_var <- function(x, ...) { -->
+<!--   recode(x, -->
+<!--          "kucuk10" = "yok", -->
+<!--                "10-25" = "var", -->
+<!--                "25-75" = "var", -->
+<!--                "buyuk75" = "var")   -->
+<!-- } -->
+
+
+<!-- adenomVarYok$tubuleryapi2 <- recode_az_var(adenomVarYok$tubuleryapi) -->
+
+<!-- # table(adenomVarYok$tubuleryapi, adenomVarYok$tubuleryapi2) -->
+
+<!-- adenomVarYok$villozyapi2 <- recode_az_var(adenomVarYok$villozyapi) -->
+
+<!-- adenomVarYok$tabandamusinozhiperplazi2 <- recode_az_var(adenomVarYok$tabandamusinozhiperplazi) -->
+
+<!-- adenomVarYok$yuzeydemusinozhiperplazi2 <- recode_az_var(adenomVarYok$yuzeydemusinozhiperplazi) -->
+
+<!-- adenomVarYok$serrasyon2 <- recode_az_var(adenomVarYok$Serrasyon) -->
+
+<!-- adenomVarYok$ektopikkript2 <- recode_az_var(adenomVarYok$ektopikkript) -->
+
+<!-- adenomVarYok$eozinofiliksitoplazma2 <- recode_az_var(adenomVarYok$eozinofiliksitoplazma) -->
+
+<!-- adenomVarYok$selendernuve2 <- recode_az_var(adenomVarYok$selendernuve) -->
+
+<!-- ``` -->
+
+
+<!-- --- -->
+
+
+<!-- ```{r} -->
+<!-- # Hibrid çıkart -->
+<!-- adenom5 <- adenomVarYok %>%  -->
+<!--   filter(sontani != "Hibrid") %>%  -->
+<!--   select( -->
+<!--         cinsiyet, -->
+<!--         yas, -->
+<!--         ilktani, -->
+<!--         sontani, -->
+<!--         cap, -->
+<!--         makro, -->
+<!--         lokalizasyon, -->
+<!--         tubuleryapi = tubuleryapi2, -->
+<!--         villozyapi = villozyapi2, -->
+<!--         tabandamusinozhiperplazi = tabandamusinozhiperplazi2, -->
+<!--         yuzeydemusinozhiperplazi = yuzeydemusinozhiperplazi2, -->
+<!--         serrasyon = serrasyon2, -->
+<!--         ektopikkript = ektopikkript2, -->
+<!--         eozinofiliksitoplazma = eozinofiliksitoplazma2, -->
+<!--         selendernuve = selendernuve2, -->
+<!--         adenomatozdisplazi, -->
+<!--         serrateddisplazi, -->
+<!--         lowgradeAD, -->
+<!--         highgradeAD, -->
+<!--         lowgradeSD, -->
+<!--         highgradeSD, -->
+<!--         # invasiveca, -->
+<!--         tabandagenisleme, -->
+<!--         filiformyapi, -->
+<!--         BRAF, -->
+<!--         KRAS, -->
+<!--         NRAS, -->
+<!--         MSI -->
+<!--   ) -->
+
+<!-- adenom5$sontani <- factor(adenom5$sontani, levels=c("TATVA", "SA", "TSA")) -->
+
+<!-- ``` -->
+
+
+
+<!-- ```{r tangram adenom5} -->
+
+<!-- # hibrid tanılarını çıkart -->
+
+<!-- library(tangram) -->
+
+<!-- summary.cell_fraction <- function(object, ...) { paste0('%', object['percentage']) } -->
+<!-- assignInNamespace("summary.cell_fraction", summary.cell_fraction, "tangram") -->
+
+
+<!-- write( -->
+<!--     html5(tangram(sontani ~ cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi +  -->
+<!--                       tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme +  -->
+<!--                       filiformyapi + -->
+<!--                       BRAF + KRAS + NRAS + MSI, -->
+<!--                   adenom5), -->
+<!--       fragment=TRUE, inline="nejm.css", caption = "Hibrid tanilari cikart HTML5 Table NEJM Style", id="tbl3"), -->
+
+<!--     "CrossTable5.html" -->
+<!-- ) -->
+
+
+<!-- ``` -->
+
+
+<!-- --- -->
+
+
+<!-- ```{r} -->
+<!-- # Hibrid ve SA çıkart -->
+<!-- adenom6 <- adenomVarYok %>%  -->
+<!--   filter(sontani == "TATVA" | sontani == "TSA") %>%  -->
+<!--   select( -->
+<!--         cinsiyet, -->
+<!--         yas, -->
+<!--         ilktani, -->
+<!--         sontani, -->
+<!--         cap, -->
+<!--         makro, -->
+<!--         lokalizasyon, -->
+<!--         tubuleryapi = tubuleryapi2, -->
+<!--         villozyapi = villozyapi2, -->
+<!--         tabandamusinozhiperplazi = tabandamusinozhiperplazi2, -->
+<!--         yuzeydemusinozhiperplazi = yuzeydemusinozhiperplazi2, -->
+<!--         serrasyon = serrasyon2, -->
+<!--         ektopikkript = ektopikkript2, -->
+<!--         eozinofiliksitoplazma = eozinofiliksitoplazma2, -->
+<!--         selendernuve = selendernuve2, -->
+<!--         adenomatozdisplazi, -->
+<!--         serrateddisplazi, -->
+<!--         lowgradeAD, -->
+<!--         highgradeAD, -->
+<!--         lowgradeSD, -->
+<!--         highgradeSD, -->
+<!--         # invasiveca, -->
+<!--         tabandagenisleme, -->
+<!--         filiformyapi, -->
+<!--         BRAF, -->
+<!--         KRAS, -->
+<!--         NRAS, -->
+<!--         MSI -->
+<!--   ) -->
+
+<!-- adenom6$sontani <- factor(adenom6$sontani, levels=c("TATVA", "TSA")) -->
+<!-- ``` -->
+
+
+<!-- ```{r tangram adenom6} -->
+
+<!-- # hibrid ve SA tanılarını çıkart -->
+
+<!-- library(tangram) -->
+
+<!-- summary.cell_fraction <- function(object, ...) { paste0('%', object['percentage']) } -->
+<!-- assignInNamespace("summary.cell_fraction", summary.cell_fraction, "tangram") -->
+
+
+<!-- write( -->
+<!--     html5(tangram(sontani ~ cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi +  -->
+<!--                       tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme +  -->
+<!--                       filiformyapi + -->
+<!--                       BRAF + KRAS + NRAS + MSI, -->
+<!--                   adenom6), -->
+<!--       fragment=TRUE, inline="nejm.css", caption = "hibrid ve SA tanilarini cikart - HTML5 Table NEJM Style", id="tbl3"), -->
+
+<!--     "CrossTable6.html" -->
+<!-- ) -->
+
+
+<!-- ``` -->
+
+
+
+<!-- # Grupları azaltarak tablo -->
+
+<!-- --- -->
+
+
+<!-- ```{r} -->
+<!-- # Hibrid çıkart -->
+<!-- adenom3 <- adenomVarYok %>%  -->
+<!--   filter(sontani != "Hibrid") %>%  -->
+<!--   select( -->
+<!--         cinsiyet, -->
+<!--         yas, -->
+<!--         ilktani, -->
+<!--         sontani, -->
+<!--         cap, -->
+<!--         makro, -->
+<!--         lokalizasyon, -->
+<!--         tubuleryapi = tubuleryapi2, -->
+<!--         villozyapi = villozyapi2, -->
+<!--         tabandamusinozhiperplazi = tabandamusinozhiperplazi2, -->
+<!--         yuzeydemusinozhiperplazi = yuzeydemusinozhiperplazi2, -->
+<!--         serrasyon = serrasyon2, -->
+<!--         ektopikkript = ektopikkript2, -->
+<!--         eozinofiliksitoplazma = eozinofiliksitoplazma2, -->
+<!--         selendernuve = selendernuve2, -->
+<!--         adenomatozdisplazi, -->
+<!--         serrateddisplazi, -->
+<!--         lowgradeAD, -->
+<!--         highgradeAD, -->
+<!--         lowgradeSD, -->
+<!--         highgradeSD, -->
+<!--         # invasiveca, -->
+<!--         tabandagenisleme, -->
+<!--         filiformyapi, -->
+<!--         BRAF, -->
+<!--         KRAS, -->
+<!--         NRAS, -->
+<!--         MSI -->
+<!--   ) -->
+
+<!-- adenom3$sontani <- factor(adenom3$sontani, levels=c("TATVA", "SA", "TSA")) -->
+
+<!-- ``` -->
+
+<!-- ```{r tangram adenom3} -->
+
+<!-- # hibrid tanılarını çıkart -->
+
+<!-- library(tangram) -->
+
+<!-- summary.cell_fraction <- function(object, ...) { paste0('%', object['percentage']) } -->
+<!-- assignInNamespace("summary.cell_fraction", summary.cell_fraction, "tangram") -->
+
+
+<!-- write( -->
+<!--     html5(tangram(sontani ~ cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi +  -->
+<!--                       tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme +  -->
+<!--                       filiformyapi + -->
+<!--                       BRAF + KRAS + NRAS + MSI, -->
+<!--                   adenom3), -->
+<!--       fragment=TRUE, inline="nejm.css", caption = "hibrid tanilarini cikart - HTML5 Table NEJM Style", id="tbl3"), -->
+
+<!--     "CrossTable3.html" -->
+<!-- ) -->
+
+
+<!-- ``` -->
+
+
+
+
+
+
+
+
+<!-- --- -->
+
+
+<!-- ```{r} -->
+<!-- # Hibrid ve SA çıkart -->
+<!-- adenom4 <- adenomVarYok %>%  -->
+<!--   filter(sontani == "TATVA" | sontani == "TSA") %>%  -->
+<!--   select( -->
+<!--         cinsiyet, -->
+<!--         yas, -->
+<!--         ilktani, -->
+<!--         sontani, -->
+<!--         cap, -->
+<!--         makro, -->
+<!--         lokalizasyon, -->
+<!--         tubuleryapi = tubuleryapi2, -->
+<!--         villozyapi = villozyapi2, -->
+<!--         tabandamusinozhiperplazi = tabandamusinozhiperplazi2, -->
+<!--         yuzeydemusinozhiperplazi = yuzeydemusinozhiperplazi2, -->
+<!--         serrasyon = serrasyon2, -->
+<!--         ektopikkript = ektopikkript2, -->
+<!--         eozinofiliksitoplazma = eozinofiliksitoplazma2, -->
+<!--         selendernuve = selendernuve2, -->
+<!--         adenomatozdisplazi, -->
+<!--         serrateddisplazi, -->
+<!--         lowgradeAD, -->
+<!--         highgradeAD, -->
+<!--         lowgradeSD, -->
+<!--         highgradeSD, -->
+<!--         # invasiveca, -->
+<!--         tabandagenisleme, -->
+<!--         filiformyapi, -->
+<!--         BRAF, -->
+<!--         KRAS, -->
+<!--         NRAS, -->
+<!--         MSI -->
+<!--   ) -->
+
+<!-- adenom4$sontani <- factor(adenom4$sontani, levels=c("TATVA", "TSA")) -->
+<!-- ``` -->
+
+<!-- ```{r tangram adenom4} -->
+
+<!-- # hibrid ve SA tanılarını çıkart -->
+
+<!-- library(tangram) -->
+
+<!-- summary.cell_fraction <- function(object, ...) { paste0('%', object['percentage']) } -->
+<!-- assignInNamespace("summary.cell_fraction", summary.cell_fraction, "tangram") -->
+
+
+<!-- write( -->
+<!--     html5(tangram(sontani ~ cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi +  -->
+<!--                       tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme +  -->
+<!--                       filiformyapi + -->
+<!--                       BRAF + KRAS + NRAS + MSI, -->
+<!--                   adenom4), -->
+<!--       fragment=TRUE, inline="nejm.css", caption = "hibrid ve SA taniarini cikart - HTML5 Table NEJM Style", id="tbl3"), -->
+
+<!--     "CrossTable4.html" -->
+<!-- ) -->
+
+
+<!-- ``` -->
+
+
+---
+
+
+# arsenal tables
+
+```{r tablo1, results = "asis"}
+library(arsenal)
+tab1 <- tableby(~ sontani + cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi + 
+                      tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + Serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme + 
+                      filiformyapi +
+                      BRAF + KRAS + NRAS + MSI + Metilasyon
+                ,
+                data=adenom2)
+summary(tab1)
+```
+
+
+```{r, results = "asis"}
+library(arsenal)
+tab2 <- tableby(~ sontani + cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi + 
+                      tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + Serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme + 
+                      filiformyapi +
+                      BRAF + KRAS + NRAS + MSI + Metilasyon
+                ,
+                data = adenomVarYok)
+summary(tab2)
+```
+
+
+```{r, results = "asis"}
+library(arsenal)
+tab2 <- tableby(sontani ~  cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi + 
+                      tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + Serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme + 
+                      filiformyapi +
+                      BRAF + KRAS + NRAS + MSI + Metilasyon
+                ,
+                data = adenomVarYok)
+summary(tab2)
+```
+
+
+
+
+
+<!-- ```{r} -->
+<!-- library(arsenal) -->
+<!-- tab1 <- tableby(sontani ~ cinsiyet + yas + cap + makro + lokalizasyon + tubuleryapi + villozyapi +  -->
+<!--                       tabandamusinozhiperplazi + yuzeydemusinozhiperplazi + serrasyon + ektopikkript + eozinofiliksitoplazma + selendernuve + adenomatozdisplazi + serrateddisplazi + lowgradeAD + highgradeAD + lowgradeSD + highgradeSD + tabandagenisleme +  -->
+<!--                       filiformyapi + -->
+<!--                       BRAF + KRAS + NRAS + MSI -->
+<!--                 , -->
+<!--                 data=adenom6) -->
+<!-- summary(tab1) -->
+<!-- ``` -->
+
+
+<!-- --- -->
+
+
+
+<!-- # adenomVarYokOrange -->
+
+
+<!-- ```{r} -->
+<!-- adenomVarYokOrange <- adenomVarYok %>%  -->
+<!--   filter(sontani != "Hibrid") %>%  -->
+<!--   select( -->
+<!--         cinsiyet, -->
+<!--         yas, -->
+<!--         sontani, -->
+<!--         cap, -->
+<!--         makro, -->
+<!--         lokalizasyon, -->
+<!--         tubuleryapi = tubuleryapi2, -->
+<!--         villozyapi = villozyapi2, -->
+<!--         tabandamusinozhiperplazi = tabandamusinozhiperplazi2, -->
+<!--         yuzeydemusinozhiperplazi = yuzeydemusinozhiperplazi2, -->
+<!--         serrasyon = serrasyon2, -->
+<!--         ektopikkript = ektopikkript2, -->
+<!--         eozinofiliksitoplazma = eozinofiliksitoplazma2, -->
+<!--         selendernuve = selendernuve2, -->
+<!--         serrateddisplazi, -->
+<!--         lowgradeAD, -->
+<!--         highgradeAD, -->
+<!--         lowgradeSD, -->
+<!--         highgradeSD, -->
+<!--         tabandagenisleme, -->
+<!--         filiformyapi, -->
+<!--         BRAF, -->
+<!--         KRAS, -->
+<!--         NRAS, -->
+<!--         MSI -->
+<!--   ) -->
+
+<!-- ``` -->
+
+
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- writexl::write_xlsx(adenomVarYok, "adenomVarYokOrange.xlsx") -->
+<!-- # write_excel_csv(x = adenomVarYokOrange, path = "adenomVarYokOrange.xlsx") -->
+<!-- # xlsx::write.xlsx(x = adenomVarYokOrange, file = "adenomVarYokOrange.xlsx") -->
+<!-- ``` -->
+
+
+
+<!-- ```{r} -->
+<!-- recode_numberize <- function(x, ...) { -->
+<!--   recode(x, -->
+<!--          "yok" = 0, -->
+<!--          "var" = 1, -->
+<!--          "Erkek" = 0, -->
+<!--          "Kadin" = 1, -->
+<!--          "sesil" = 0, -->
+<!--          "sapli" = 1, -->
+<!--          "Sag" = 0, -->
+<!--          "Sol" = 1, -->
+<!--          "TATVA" = 1, -->
+<!--          "SA" = 2, -->
+<!--          "TSA" = 3, -->
+<!--          "Hibrid" = 4)  -->
+<!-- } -->
+
+<!-- adenomVarYokOrange2 <- purrr::map_df(adenomVarYokOrange, recode_numberize) -->
+
+<!-- adenomVarYokOrange2$yas <- as.numeric(adenomVarYokOrange2$yas) -->
+
+<!-- adenomVarYokOrange2$cap <- as.numeric(adenomVarYokOrange2$cap) -->
+
+<!-- ``` -->
+
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- writexl::write_xlsx(adenomVarYokOrange2, "adenomVarYokOrange2.xlsx") -->
+<!-- # write_excel_csv(x = adenomVarYokOrange, path = "adenomVarYokOrange2.xlsx") -->
+<!-- # xlsx::write.xlsx(x = adenomVarYokOrange, file = "adenomVarYokOrange2.xlsx") -->
+<!-- ``` -->
+
+
+
+
+
+<!-- # Cluster deneme -->
+
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- adenom_cluster <- as.matrix(adenomVarYokOrange) -->
+
+<!-- typeof(adenom_cluster) -->
+
+<!-- # Euclidean distance -->
+
+<!-- rownames(adenom_cluster) <- adenom_cluster[,3] -->
+<!-- dist <- dist(adenom_cluster[ , c(1:2, 4:dim(adenom_cluster)[2])] , diag=TRUE) -->
+
+<!-- ``` -->
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- # hierarchical clustering -->
+<!-- hc=hclust(dist) -->
+<!-- ``` -->
+
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- # Representation -->
+<!-- plot(hc) -->
+<!-- ``` -->
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- dhc=as.dendrogram(hc) -->
+<!-- ``` -->
+
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- specific_leaf=dhc[[1]][[1]][[1]] -->
+<!-- specific_leaf -->
+<!-- attributes(specific_leaf) -->
+<!-- ``` -->
+
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- # install.packages("ggdendro") -->
+<!-- library("ggplot2") -->
+<!-- library("ggdendro") -->
+<!-- ``` -->
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- ggdendrogram(hc) -->
+<!-- ``` -->
+
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- ggdendrogram(hc, rotate = TRUE, theme_dendro = FALSE) -->
+<!-- ``` -->
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- adenom_cluster2 <- adenom_cluster[,-c(3, 22:25)] -->
+
+<!-- heatmap(adenom_cluster2, scale = "column") -->
+<!-- ``` -->
+
+
+
+
+
+
+
+<!-- # Dataexplorer deneme -->
+
+
+
+<!-- --- -->
+
+<!-- ```{r include=FALSE} -->
+<!-- adenom10 <- adenom %>%  -->
+<!--     select( -->
+<!--         cinsiyet, -->
+<!--         yas, -->
+<!--         ilktani, -->
+<!--         sontani, -->
+<!--         cap, -->
+<!--         makro, -->
+<!--         lokalizasyon, -->
+<!--         tubuleryapi, -->
+<!--         villozyapi, -->
+<!--         tabandamusinozhiperplazi, -->
+<!--         yuzeydemusinozhiperplazi, -->
+<!--         Serrasyon, -->
+<!--         ektopikkript, -->
+<!--         eozinofiliksitoplazma, -->
+<!--         selendernuve, -->
+<!--         # adenomatozdisplazi -->
+<!--         serrateddisplazi, -->
+<!--         lowgradeAD, -->
+<!--         highgradeAD, -->
+<!--         lowgradeSD, -->
+<!--         highgradeSD, -->
+<!--         # invasiveca, -->
+<!--         tabandagenisleme, -->
+<!--         filiformyapi, -->
+<!--         BRAF, -->
+<!--         KRAS -->
+<!--         # NRAS -->
+<!--         # MSI -->
+<!--     ) -->
+<!-- ``` -->
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- DataExplorer::create_report(data = adenom10) -->
+<!-- ``` -->
+
+
+
+
+# alluvial 
+
+
+
+```{r}
+adenomVarYok %>%
+    # filter(complete.cases(.)) %>% 
+  group_by(ilktani,
+           sontani,
+           lokalizasyon,
+           makro,
+           tubuleryapi,
+           villozyapi,
+           cinsiyet,
+           tabandamusinozhiperplazi,
+           yuzeydemusinozhiperplazi,
+           Serrasyon,
+           ektopikkript,
+           eozinofiliksitoplazma,
+           selendernuve,
+           adenomatozdisplazi,
+           serrateddisplazi,
+           lowgradeAD,
+           highgradeAD,
+           lowgradeSD,
+           highgradeSD,
+           tabandagenisleme,
+           filiformyapi
+           # BRAF,
+           # KRAS,
+           # NRAS,
+           # MSI,
+           # Metilasyon
+
+) %>% 
+  tally() -> dxchanges
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = makro,
+                    colour = makro
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("Makro")
+```
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = cinsiyet,
+                    colour = cinsiyet
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("Cinsiyet")
+```
+
+
+
+
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = lokalizasyon,
+                    colour = lokalizasyon
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("Lokalizasyon")
+```
+
+
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = tubuleryapi,
+                    colour = tubuleryapi
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("tubuleryapi")
+```
+
+
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = villozyapi,
+                    colour = villozyapi
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("villozyapi")
+```
+
+
+
+
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = tabandamusinozhiperplazi,
+                    colour = tabandamusinozhiperplazi
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("tabandamusinozhiperplazi")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = yuzeydemusinozhiperplazi,
+                    colour = yuzeydemusinozhiperplazi
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("yuzeydemusinozhiperplazi")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = Serrasyon,
+                    colour = Serrasyon
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("Serrasyon")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = ektopikkript,
+                    colour = ektopikkript
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("ektopikkript")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = eozinofiliksitoplazma,
+                    colour = eozinofiliksitoplazma
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("eozinofiliksitoplazma")
+```
+
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = tubuleryapi,
+                    colour = tubuleryapi
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("tubuleryapi")
+```
+
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = selendernuve,
+                    colour = selendernuve
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("selendernuve")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = adenomatozdisplazi,
+                    colour = adenomatozdisplazi
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("adenomatozdisplazi")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = serrateddisplazi,
+                    colour = serrateddisplazi
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("serrateddisplazi")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = lowgradeAD,
+                    colour = lowgradeAD
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("lowgradeAD")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = highgradeAD,
+                    colour = highgradeAD
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("highgradeAD")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = lowgradeSD,
+                    colour = lowgradeSD
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("lowgradeSD")
+```
+
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = highgradeSD,
+                    colour = highgradeSD
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("highgradeSD")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = tabandagenisleme,
+                    colour = tabandagenisleme
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("tabandagenisleme")
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(data = dxchanges,
+       aes(axis1 = ilktani, axis2 = sontani,
+           y = n)) +
+  scale_x_discrete(limits = c("İlk Tanı", "Son Tanı"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tanı") +
+  geom_alluvium(aes(fill = filiformyapi,
+                    colour = filiformyapi
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("filiformyapi")
+```
+
+
+
+
+```{r}
+alluvial::alluvial(dxchanges[,1:2], 
+                   freq = dxchanges$n,
+                   col = ifelse(test = dxchanges$lokalizasyon == "Sag",
+                                yes =  "orange",
+                                no = 
+                                  ifelse(test = dxchanges$makro == "sesil",
+                                         yes = "red", 
+                                         no = "grey")),
+                   axis_labels = c("İlk Tanı", "Son Tanı"),
+                   cex = 0.7
+                   
+)
+
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+  filter(complete.cases(.)) %>% 
+  group_by(ilktani, sontani, lokalizasyon,
+           cinsiyet,
+makro,
+tubuleryapi,
+villozyapi,
+tabandamusinozhiperplazi,
+yuzeydemusinozhiperplazi,
+Serrasyon,
+ektopikkript,
+eozinofiliksitoplazma,
+selendernuve,
+adenomatozdisplazi,
+serrateddisplazi,
+lowgradeAD,
+highgradeAD,
+lowgradeSD,
+highgradeSD,
+tabandagenisleme,
+filiformyapi,
+BRAF,
+KRAS,
+NRAS,
+MSI,
+Metilasyon) %>% 
+  tally() -> dxchanges
+
+```
+
+
+https://plot.ly/r/sankey-diagram/
+
+http://corybrunson.github.io/ggalluvial/articles/labels.html
+
+
+# Visualising Model Response with easyalluvial
+
+
+https://www.datisticsblog.com/page/visualising-model-response-with-easyalluvial/
+
+https://www.datisticsblog.com/2018/10/intro_easyalluvial/
+
+
+```{r remedy001, eval=FALSE, include=FALSE}
+
+suppressPackageStartupMessages( require(tidyverse) )
+suppressPackageStartupMessages( require(easyalluvial) )
+suppressPackageStartupMessages( require(mlbench) )
+suppressPackageStartupMessages( require(randomForest) )
+
+
+```
+
+
+
+```{r remedy002, eval=FALSE, include=FALSE}
+
+# data('BostonHousing')
+# df = as_tibble( BostonHousing )
+# m = randomForest( lstat ~ ., df )
+
+
+
+adenomComplete <- adenom2 %>%  
+  filter(complete.cases(.))
+
+m2 <- randomForest(x = c(
+  "cinsiyet",
+  "yas",
+  # "ilktani",
+    "cap",
+  "makro",
+  "lokalizasyon",
+  "tubuleryapi",
+  "villozyapi",
+  "tabandamusinozhiperplazi",
+  "yuzeydemusinozhiperplazi",
+  "Serrasyon",
+  "ektopikkript",
+  "eozinofiliksitoplazma",
+  "selendernuve",
+  "adenomatozdisplazi",
+  "serrateddisplazi",
+  "lowgradeAD",
+"highgradeAD",
+"lowgradeSD",        
+"highgradeSD",
+"tabandagenisleme",
+"filiformyapi",
+"BRAF",
+"KRAS",
+"NRAS",
+"MSI",
+"Metilasyon"  
+), 
+y = "sontani", 
+adenomComplete)
+
+```
+
+
+
+
+
+# ggstatsplot
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = cinsiyet, condition = sontani 
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbetweenstats(data = ., x = sontani, y = yas
+                            # , pairwise.comparisons = TRUE, pairwise.annotation = TRUE, pairwise.display = "s"
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = ilktani, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbetweenstats(data = ., x = sontani, y = cap,
+                            pairwise.comparisons = TRUE, pairwise.annotation = TRUE, pairwise.display = "s"
+
+)
+```
+
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = cinsiyet, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = makro, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = lokalizasyon, condition = sontani
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = tubuleryapi, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = villozyapi, condition = sontani
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = tabandamusinozhiperplazi, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = yuzeydemusinozhiperplazi, condition = sontani
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = Serrasyon, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = ektopikkript, condition = sontani
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = eozinofiliksitoplazma, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = selendernuve, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = adenomatozdisplazi, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = serrateddisplazi, condition = sontani
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = lowgradeAD, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = highgradeAD, condition = sontani
+)
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = lowgradeSD, condition = sontani
+)
+```
+
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = highgradeSD, condition = sontani
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = tabandagenisleme, condition = sontani
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = filiformyapi, condition = sontani
+)
+```
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = BRAF, condition = sontani
+)
+```
+
+
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = KRAS, condition = sontani
+)
+```
+
+
+```{r}
+# adenomVarYok %>% 
+# ggstatsplot::ggbarstats(
+#   data = ., main = NRAS, condition = sontani
+# )
+```
+
+
+```{r}
+# adenomVarYok %>% 
+# ggstatsplot::ggbarstats(
+#   data = ., main = MSI, condition = sontani
+# )
+```
+
+
+```{r}
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = Metilasyon, condition = sontani
+)
+```
+
+\pagebreak
+
+
+## Three features
+
+Ektopik kript >%25 & eozinofilik sitoplazma >%25 & pencillate nucleus >%25
+
+
+```{r}
+adenomVarYok <- adenomVarYok %>% 
+  mutate(
+    ThreeFeatures = 
+      case_when(
+        ektopikkript == "var" & eozinofiliksitoplazma == "var" & selendernuve == "var" ~ "positive",
+        TRUE ~ "negative"
+      )
+  )
+
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = ThreeFeatures, condition = sontani, 
+  title = "Ektopik kript >%25 & eozinofilik sitoplazma >%25 & pencillate nucleus >%25"
+
+)
+
+```
+
+
+```{r, results="asis"}
+tbl1 <- arsenal::tableby(formula = ThreeFeatures ~ ektopikkript + eozinofiliksitoplazma + selendernuve, 
+                         data = adenomVarYok)
+
+summary(tbl1)
+```
+
+
+\pagebreak
+
+
+
+## Serrasyon >25%
+
+Ektopik kript >25% veya pencillate nucleus >25%
+
+
+```{r}
+adenomVarYok <- adenomVarYok %>% 
+  mutate(
+    Serrasyon25uzeri = 
+      case_when(
+        Serrasyon == "var" & (ektopikkript == "var" | selendernuve == "var") ~ "positive",
+        TRUE ~ "negative"
+      )
+  )
+
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = ., main = Serrasyon25uzeri, condition = sontani, 
+  title = "Serrasyon >25% & (Ektopik kript >25% veya pencillate nucleus >25%)"
+)
+
+```
+
+
+\pagebreak
+
+
+
+```{r, results="asis"}
+tbl1 <- arsenal::tableby(formula = Serrasyon25uzeri ~ ektopikkript + eozinofiliksitoplazma + selendernuve, 
+                         data = adenomVarYok)
+
+summary(tbl1)
+```
+
+\pagebreak
+
+
+
+
+## Serrasyon >25%
+
+Ektopik kript >10% veya pencillate nucleus >10%
+
+
+```{r}
+adenomVarYok <- adenomVarYok %>% 
+  mutate(
+    SerrasyonKriptSelender = 
+      case_when(
+        Serrasyon == "var" & ektopikkript4lu != "kucuk10" & selendernuve4lu == "kucuk10" ~ "S>25% & P<10% & K>10% ",
+        
+        Serrasyon == "var" & selendernuve4lu != "kucuk10" & ektopikkript4lu == "kucuk10" ~ "S>25% & P>10% & K<10%",
+        
+        Serrasyon == "var" & selendernuve4lu != "kucuk10" & ektopikkript4lu != "kucuk10" ~ "S>25% & P>10% & K>10%",
+        
+        Serrasyon == "var" & selendernuve4lu == "kucuk10" & ektopikkript4lu == "kucuk10" ~ "S>25% & P<10% & K<10%",
+        
+        TRUE ~ "S<25%"
+      )
+    )
+
+adenomVarYok %>% 
+ggstatsplot::ggbarstats(
+  data = .,
+  main = SerrasyonKriptSelender, 
+  condition = sontani,
+  # legend.position = "bottom",
+  # title = "Serrasyon >25% & (Ektopik kript >10% veya pencillate nucleus >10%)",
+  label.text.size = 2 
+)
+
+```
+
+
+\pagebreak
+
+
+
+```{r, results="asis"}
+tbl3 <- arsenal::tableby(formula = 
+                           SerrasyonKriptSelender
+                           # sontani
+                         ~ ektopikkript +
+                           ektopikkript4lu + 
+                           eozinofiliksitoplazma +
+                           selendernuve +
+                           selendernuve4lu, 
+                         data = adenomVarYok)
+
+summary(tbl3)
+```
+
+
+\pagebreak
+
+
+
+
+```{r, results="asis"}
+tbl4 <- arsenal::tableby(formula = 
+                           # SerrasyonKriptSelender
+                           sontani
+                         ~ ektopikkript +
+                           ektopikkript4lu + 
+                           eozinofiliksitoplazma +
+                           selendernuve +
+                           selendernuve4lu, 
+                         data = adenomVarYok)
+
+summary(tbl4)
+```
+
+
+
+
+
+
+
+
+\pagebreak
+
+
+
+
+
+
+
+
+
+
+<!-- # serrasyonu >%25 -->
+
+<!-- serrasyonu >%25 -->
+<!-- Ektopik kript+eozinofilik sitoplazma+pencillate nucleus %25 den fazla ve az şeklinde aşağıdaki grafikten yapabilir misin -->
+
+<!-- ```{r} -->
+<!-- adenomVarYok %>% -->
+<!--   filter(Serrasyon == "var") %>%  -->
+<!-- ggstatsplot::ggbarstats( -->
+<!--   data = ., main = ThreeFeatures, condition = sontani -->
+<!-- ) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r, results="asis"} -->
+<!-- adenomVarYok %>% -->
+<!--   filter(Serrasyon == "var") %>% -->
+<!--   arsenal::tableby(formula = FourFeatures ~ ektopikkript + eozinofiliksitoplazma + selendernuve, -->
+<!--                          data = .) -> tbl4 -->
+
+<!-- summary(tbl4) -->
+<!-- ``` -->
+
+
+
+
+
+<!-- # https://indrajeetpatil.github.io/statsExpressions/ -->
+
+
+
+<!-- # correlation -->
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- adenom2corr <- purrr::map_df(adenom2, recode_numberize) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r eval=FALSE, include=FALSE} -->
+<!-- adenom2corr %>%  -->
+<!--   select(-c("yas", "cap", "cinsiyet")) %>%  -->
+<!-- ggstatsplot::ggcorrmat(data = .,  -->
+<!--                        corr.method = "pearson", -->
+<!--                        matrix.type = "upper", -->
+<!--                        hc.order = TRUE,  -->
+<!--                        hc.method = "average") -->
+
+<!-- ``` -->
+
+
+
+```{r}
+writexl::write_xlsx(adenom2, "adenom2.xlsx")
+writexl::write_xlsx(adenomVarYok, "adenomVarYok.xlsx")
+```
+
+
+
+
+
+
+
+
+
+
+
+

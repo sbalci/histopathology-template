@@ -56,7 +56,7 @@ output:
 \elandscape
 
 
-```{r ggstatplots, child = here::here('childRmd', '_ggstatplots.Rmd')}
+```{r ggstatplots, child = here::here('childRmd', '_statplots.Rmd')}
 ```
 
 
