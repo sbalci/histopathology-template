@@ -84,7 +84,7 @@ output:
 \newpage
 
 
-```{r}
+```{r git update}
 source(file = here::here("R", "gitUpdateCommitPush.R"))
 ```
 
