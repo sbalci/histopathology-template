@@ -5,9 +5,15 @@ magicfor::magic_for()
       explanatoryKM_variable <- explanatoryKM[i]
       
       y <- paste0("```{r Kaplan-Meier ", explanatoryKM_variable, "}
+# Drawing Survival Curves Using ggplot2
+# https://rpkgs.datanovia.com/survminer/reference/ggsurvplot.html
 mydata %>%
   finalfit::surv_plot('", dependentKM , "', '", explanatoryKM_variable, "', 
-  xlab='Time (months)', pval=TRUE, legend = 'none')
+  xlab='Time (months)', pval=TRUE, legend = 'none',
+    break.time.by = 12, xlim = c(0,60)),
+legend.labs = c('a','b'))
+
+)
 ```", "\n", "\n",
 
 "```{r}
