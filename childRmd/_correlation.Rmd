@@ -1,1 +1,89 @@
 
+
+```{r}
+#  https://easystats.github.io/correlation/
+# install.packages("devtools")
+# devtools::install_github("easystats/correlation")
+library("correlation")
+```
+
+
+```{r}
+correlation(iris)
+```
+
+
+
+```{r}
+library(dplyr)
+
+iris %>% 
+  select(Species, starts_with("Sepal")) %>% 
+  group_by(Species) %>% 
+  correlation() %>% 
+  filter(r < 0.9)
+
+```
+
+  
+  
+```{r}
+correlation(select(iris, Species, starts_with("Sepal")),
+            select(iris, Species, starts_with("Petal")),
+            partial=TRUE)
+
+```
+  
+            
+            
+```{r}
+correlation(iris, bayesian=TRUE)
+
+```
+
+
+
+```{r}
+library(report)
+iris %>% 
+  select(starts_with("Sepal")) %>% 
+  correlation(bayesian=TRUE) %>% 
+  report()
+
+```
+
+  
+```{r}
+iris %>% 
+  group_by(Species) %>% 
+  correlation() %>% 
+  report() %>% 
+  to_table()
+
+```
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

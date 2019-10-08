@@ -1,8 +1,16 @@
-sarcomatoid$surgpathno <- trimws(sarcomatoid$surgpathno)
-
-sarcomatoid$surgpathno <- gsub(pattern = "[a-zA-Z]", replacement = "", x = sarcomatoid$surgpathno)
-
-sarcomatoid$surgpathno <- gsub(pattern = "-", replacement = " ", x = sarcomatoid$surgpathno)
-
-sarcomatoid$surgpathno <- substr(x = sarcomatoid$surgpathno, start = 1, stop = 8)
+cleanSurgPathNo <- 
+    . %>% 
+    trimws() %>% 
+    gsub(pattern = "[a-zA-Z]",
+         replacement = "",
+         x = .
+         ) %>% 
+    gsub(pattern = "-",
+         replacement = " ",
+         x = .
+         ) %>% 
+    substr(x = .,
+           start = 1,
+           stop = 8
+           )
 

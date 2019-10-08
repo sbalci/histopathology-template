@@ -318,6 +318,12 @@
       "Source": "CRAN",
       "Hash": "7acd7cd8da575cbe664ae2301d127007"
     },
+    "brew": {
+      "Package": "brew",
+      "Version": "1.0-6",
+      "Source": "CRAN",
+      "Hash": "190fd31e9253446523a8ee4642229516"
+    },
     "bridgesampling": {
       "Package": "bridgesampling",
       "Version": "0.7-2",
@@ -444,6 +450,12 @@
       "Source": "CRAN",
       "Hash": "0adc41e3166c4b0474173fed460b5894"
     },
+    "commonmark": {
+      "Package": "commonmark",
+      "Version": "1.7",
+      "Source": "CRAN",
+      "Hash": "af7f698e0328e0474f794452177deca6"
+    },
     "contfrac": {
       "Package": "contfrac",
       "Version": "1.1-12",
@@ -455,6 +467,12 @@
       "Version": "1.6.9",
       "Source": "CRAN",
       "Hash": "eb04dde35b259a7b788fac72cf75f3fc"
+    },
+    "covr": {
+      "Package": "covr",
+      "Version": "3.3.1",
+      "Source": "CRAN",
+      "Hash": "885360370767478f19b92ee900b1f8f6"
     },
     "cowplot": {
       "Package": "cowplot",
@@ -509,6 +527,12 @@
       "Version": "1.2.0",
       "Source": "CRAN",
       "Hash": "0119aa659b9c1db195b4bd7c617d18c0"
+    },
+    "devtools": {
+      "Package": "devtools",
+      "Version": "2.2.1",
+      "Source": "CRAN",
+      "Hash": "0311cbb64e0ddee9790d8c9922dcbef1"
     },
     "dichromat": {
       "Package": "dichromat",
@@ -744,6 +768,18 @@
       "Source": "CRAN",
       "Hash": "bc3e11207ac8dc4df1532663c4cf6a7a"
     },
+    "gh": {
+      "Package": "gh",
+      "Version": "1.0.1",
+      "Source": "CRAN",
+      "Hash": "3fc5d4d6893bd1598318a35def5e9d23"
+    },
+    "git2r": {
+      "Package": "git2r",
+      "Version": "0.26.1",
+      "Source": "CRAN",
+      "Hash": "22ea14e8f582d4a83a273f24ac43e27e"
+    },
     "glasso": {
       "Package": "glasso",
       "Version": "1.10",
@@ -881,6 +917,12 @@
       "Version": "1.2.4.1",
       "Source": "CRAN",
       "Hash": "6eb7a604bc33c66dac0611b7ce75ac69"
+    },
+    "ini": {
+      "Package": "ini",
+      "Version": "0.3.1",
+      "Source": "CRAN",
+      "Hash": "4a15d8cfc931554fb2e71d66c1313b45"
     },
     "inline": {
       "Package": "inline",
@@ -1133,6 +1175,12 @@
       "Version": "0.9-6",
       "Source": "CRAN",
       "Hash": "33078f5208cb340219ad30191390047b"
+    },
+    "memoise": {
+      "Package": "memoise",
+      "Version": "1.1.0",
+      "Source": "CRAN",
+      "Hash": "22ca9b285c10f5dd8c4d1e90231ce558"
     },
     "metaBMA": {
       "Package": "metaBMA",
@@ -1412,6 +1460,12 @@
       "Source": "CRAN",
       "Hash": "587295d4cdb937d4e3cf19bd46829326"
     },
+    "pkgload": {
+      "Package": "pkgload",
+      "Version": "1.0.2",
+      "Source": "CRAN",
+      "Hash": "f214a72af3442fdd3396ceccbb7d7f44"
+    },
     "plogr": {
       "Package": "plogr",
       "Version": "0.2.0",
@@ -1441,6 +1495,12 @@
       "Version": "1.1",
       "Source": "CRAN",
       "Hash": "8b40db8afbe1682205d105ce020c35e9"
+    },
+    "praise": {
+      "Package": "praise",
+      "Version": "1.0.0",
+      "Source": "CRAN",
+      "Hash": "3940f2f321d5fa9fb72b8887b0454660"
     },
     "prettyunits": {
       "Package": "prettyunits",
@@ -1520,6 +1580,12 @@
       "Source": "CRAN",
       "Hash": "1709da5cd95308d1400443efb6cb1f72"
     },
+    "rcmdcheck": {
+      "Package": "rcmdcheck",
+      "Version": "1.3.3",
+      "Source": "CRAN",
+      "Hash": "577b91be8aea851ea27aad3585adef05"
+    },
     "rcompanion": {
       "Package": "rcompanion",
       "Version": "2.3.0",
@@ -1550,6 +1616,12 @@
       "Source": "CRAN",
       "Hash": "d3d55a556f7f2e74f449d6a53b8abf8e"
     },
+    "remotes": {
+      "Package": "remotes",
+      "Version": "2.1.0",
+      "Source": "CRAN",
+      "Hash": "830aa73278dce9beba583bfe57a5c015"
+    },
     "reprex": {
       "Package": "reprex",
       "Version": "0.3.0",
@@ -1567,6 +1639,12 @@
       "Version": "1.4.3",
       "Source": "CRAN",
       "Hash": "ac685130d1a25e3f6470960fd29c5693"
+    },
+    "rex": {
+      "Package": "rex",
+      "Version": "1.1.2",
+      "Source": "CRAN",
+      "Hash": "6a374bfb33486a98af825be15b6b87bb"
     },
     "rgl": {
       "Package": "rgl",
@@ -1609,6 +1687,12 @@
       "Version": "0.93-5",
       "Source": "CRAN",
       "Hash": "275cc8197da046f7f01f7f4c284200be"
+    },
+    "roxygen2": {
+      "Package": "roxygen2",
+      "Version": "6.1.1",
+      "Source": "CRAN",
+      "Hash": "5c44ac973ec9b56efd7990e4b4464699"
     },
     "rpart": {
       "Package": "rpart",
@@ -1664,6 +1748,12 @@
       "Source": "CRAN",
       "Hash": "04552808fd065fdf0fec7bad340eb83c"
     },
+    "rversions": {
+      "Package": "rversions",
+      "Version": "2.0.0",
+      "Source": "CRAN",
+      "Hash": "7ea870b707f4ef757127a610c2556e29"
+    },
     "rvest": {
       "Package": "rvest",
       "Version": "0.3.4",
@@ -1693,6 +1783,12 @@
       "Version": "0.4-1",
       "Source": "CRAN",
       "Hash": "40ccee5dc2b97e197648525aefcfd0ba"
+    },
+    "sessioninfo": {
+      "Package": "sessioninfo",
+      "Version": "1.1.1",
+      "Source": "CRAN",
+      "Hash": "017efbc7877606b886a2fb3d01c0bbda"
     },
     "shades": {
       "Package": "shades",
@@ -1832,6 +1928,12 @@
       "Source": "CRAN",
       "Hash": "3fda14d3b4362c09b855fb7abd55feaf"
     },
+    "testthat": {
+      "Package": "testthat",
+      "Version": "2.2.1",
+      "Source": "CRAN",
+      "Hash": "3e86adb988cb96c5b30b01ec56719ac4"
+    },
     "threejs": {
       "Package": "threejs",
       "Version": "0.3.1",
@@ -1879,6 +1981,12 @@
       "Version": "1.1-4",
       "Source": "CRAN",
       "Hash": "51f0f5ee5e09e693d22f181a32c7347a"
+    },
+    "usethis": {
+      "Package": "usethis",
+      "Version": "1.5.1",
+      "Source": "CRAN",
+      "Hash": "d9554c06c56d30d6361b5b24b8c5b083"
     },
     "utf8": {
       "Package": "utf8",
@@ -1951,6 +2059,12 @@
       "Version": "1.2.2",
       "Source": "CRAN",
       "Hash": "22fa8b694a7ffcec094bfb94a405595d"
+    },
+    "xopen": {
+      "Package": "xopen",
+      "Version": "1.0.0",
+      "Source": "CRAN",
+      "Hash": "ec32d86b4bcfa2cfa648dc0e1e46e24d"
     },
     "xtable": {
       "Package": "xtable",

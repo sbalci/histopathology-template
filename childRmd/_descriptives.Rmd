@@ -1,6 +1,13 @@
 # Descriptive Statistics
 
 
+
+```{r eval=FALSE, include=FALSE}
+report::report(mydata)
+```
+
+
+
 ```{r, results='asis', eval=FALSE, include=FALSE}
 # cat(names(mydata), sep = " + \n")
 
@@ -67,6 +74,12 @@ source(here::here("R", "generatingCodeForDescriptiveStatistics.R"))
 
 
 ## Continious Variables
+
+
+```{r eval=FALSE, include=FALSE}
+questionr:::icut()
+```
+
 
 
 ```{r, eval=FALSE, include=FALSE}
