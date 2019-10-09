@@ -1,19 +1,35 @@
 # Save Final Data  {.appendix}  
 
-saved data after analysis to `mydata.xlsx`.
-
 ```{r save final data, eval=FALSE, include=FALSE}
 
-save.image(file = here::here("data", "mydata_work_space.RData"))
+projectName <- list.files(path = here::here(), pattern = "Rproj")
+projectName <- gsub(pattern = ".Rproj", replacement = "", x = projectName)
 
-readr::write_rds(x = mydata, path = here::here("data", "mydata_afteranalysis.rds"))
+analysisDate <- as.character(Sys.Date())
 
-saveRDS(object = mydata, file = here::here("data", "mydata.rds"))
+imageName <- paste0(projectName, analysisDate, ".RData")
 
-writexl::write_xlsx(mydata, here::here("data", "mydata.xlsx"))
+save.image(file = here::here("data", imageName))
 
-paste0(rownames(file.info(here::here("data", "mydata.xlsx"))), " : ", file.info(here::here("data", "mydata.xlsx"))$ctime)
+rdsName <- paste0(projectName, analysisDate, ".rds")
 
+readr::write_rds(x = mydata, path = here::here("data", rdsName))
+
+saveRDS(object = mydata, file = here::here("data", rdsName))
+
+excelName <- paste0(projectName, analysisDate, ".xlsx")
+
+writexl::write_xlsx(mydata, here::here("data", excelName))
+
+print(glue::glue(
+    "saved data after analysis to",
+    rownames(file.info(here::here("data", excelName))),
+    " : ",
+    as.character(
+        file.info(here::here("data", excelName))$ctime
+    )
+    )
+)
 ```
 
 

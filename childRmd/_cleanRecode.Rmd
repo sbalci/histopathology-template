@@ -572,7 +572,22 @@ mydata <- mydata %>%
                            )
                            )
     
-  )
+  ) %>% 
+  mutate_at(.tbl = .,
+            .vars = vars(ends_with("_Gr")),
+            .funs = ~ factor(., levels=c("Low", "Average", "High"))
+              )
+
+# ## Reordering mydata$CSS_total_Gr
+# mydata$CSS_total_Gr <- factor(mydata$CSS_total_Gr, )
+# 
+# ## Reordering mydata$BS_total_Gr
+# mydata$BS_total_Gr <- factor(mydata$BS_total_Gr, levels=c("Low", "Average", "High"))
+# 
+# 
+# ## Reordering mydata$STSS_total_Gr
+# mydata$STSS_total_Gr <- factor(mydata$STSS_total_Gr, levels=c("Low", "Average", "High"))
+
 ```
 
 

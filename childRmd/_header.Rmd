@@ -13,14 +13,12 @@
 
 
 
-
-
-```{r setup global chunk settings}
+```{r setup global chunk settings, include=FALSE}
 knitr::opts_chunk$set(
+	echo = FALSE,
 	message = FALSE,
 	warning = FALSE,
 	comment = NA,
-	include = FALSE,
 	tidy = TRUE
 )
 ```

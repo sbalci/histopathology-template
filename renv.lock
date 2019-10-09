@@ -11,6 +11,30 @@
       }
     ]
   },
+  "Bioconductor": {
+    "Repositories": [
+      {
+        "Name": "BioCsoft",
+        "URL": "https://bioconductor.org/packages/3.9/bioc"
+      },
+      {
+        "Name": "BioCann",
+        "URL": "https://bioconductor.org/packages/3.9/data/annotation"
+      },
+      {
+        "Name": "BioCexp",
+        "URL": "https://bioconductor.org/packages/3.9/data/experiment"
+      },
+      {
+        "Name": "BioCworkflows",
+        "URL": "https://bioconductor.org/packages/3.9/workflows"
+      },
+      {
+        "Name": "CRAN",
+        "URL": "https://cran.rstudio.com"
+      }
+    ]
+  },
   "Packages": {
     "BDgraph": {
       "Package": "BDgraph",
@@ -324,6 +348,12 @@
       "Source": "CRAN",
       "Hash": "df357c9ef3b15f5e69c29157999ef11a"
     },
+    "bookdown": {
+      "Package": "bookdown",
+      "Version": "0.14",
+      "Source": "CRAN",
+      "Hash": "7be91ff9faf41931487a98dfc404608e"
+    },
     "boot": {
       "Package": "boot",
       "Version": "1.3-23",
@@ -570,6 +600,18 @@
       "Source": "CRAN",
       "Hash": "5082df7219d58e35b4613c9c687216de"
     },
+    "distill": {
+      "Package": "distill",
+      "Version": "0.7",
+      "Source": "CRAN",
+      "Hash": "41353205c7ad2bb52408bd76bbd7e5e7"
+    },
+    "downloader": {
+      "Package": "downloader",
+      "Version": "0.4",
+      "Source": "CRAN",
+      "Hash": "49907781ae2617dd5481b7c21a426d08"
+    },
     "dplyr": {
       "Package": "dplyr",
       "Version": "0.8.3",
@@ -745,11 +787,23 @@
       "Source": "CRAN",
       "Hash": "865438c1b1d890d13fdde28f1e7ee7e9"
     },
+    "ggdendro": {
+      "Package": "ggdendro",
+      "Version": "0.1-20",
+      "Source": "CRAN",
+      "Hash": "28b608f28f5f5944eddefd182b92ce6b"
+    },
     "ggfittext": {
       "Package": "ggfittext",
       "Version": "0.8.1",
       "Source": "CRAN",
       "Hash": "da66ca7846eed28cbf38f352c7a90510"
+    },
+    "ggfortify": {
+      "Package": "ggfortify",
+      "Version": "0.4.7",
+      "Source": "CRAN",
+      "Hash": "a41615cbc0ab8b2e45cd3d7a8f3de280"
     },
     "ggm": {
       "Package": "ggm",
@@ -1622,6 +1676,12 @@
       "Version": "1.0.0",
       "Source": "CRAN",
       "Hash": "78cefcda93c7e4479685d42664adb530"
+    },
+    "ranger": {
+      "Package": "ranger",
+      "Version": "0.11.2",
+      "Source": "CRAN",
+      "Hash": "b3ad2ebd739bb9996f486387921b781a"
     },
     "rapportools": {
       "Package": "rapportools",

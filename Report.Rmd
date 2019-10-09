@@ -43,6 +43,10 @@ output:
 
 
 
+\pagebreak
+
+
+
 ```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
 ```
 
@@ -56,7 +60,7 @@ output:
 \elandscape
 
 
-```{r ggstatplots, child = here::here('childRmd', '_statplots.Rmd')}
+```{r statplots, child = here::here('childRmd', '_statplots.Rmd')}
 ```
 
 
