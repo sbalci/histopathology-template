@@ -14,6 +14,19 @@ glimpse(mydata)
 
 
 
+iris %>% mutate(sumVar = rowSums(.[1:4]))
+
+
+iris %>% 
+  mutate(sumVar = rowSums(select(., contains("Sepal")))) %>% 
+  head 
+
+iris %>% 
+  mutate(sumVar = select(., contains("Sepal")) %>% rowSums()) %>% 
+  head
+
+
+
 ```{r, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 ## Recoding mydata$cinsiyet into mydata$Cinsiyet
 mydata$Cinsiyet <- recode(mydata$cinsiyet,
@@ -298,6 +311,291 @@ SonTarih = sontarih
 iRenameColumn.R  
 
 iSelectColumn.R  
+
+
+
+
+```{r clean names, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+mydata <- janitor::clean_names(mydata)
+# cat(names(mydata), sep = ",\n")
+
+names(mydata) <- c(names(mydata)[1:21], paste0("Soru", 1:30))
+
+```
+
+
+
+```{r echo=FALSE, results='asis'}
+library(arsenal)
+tab1 <- tableby(~ katilim_durumu
+                ,
+                data = mydata
+)
+summary(tab1)
+```
+
+```
+Sadece "katılmış ve tamamlamış" olanları aldım. Toplam skorda tamamlanmamış olanlar düşük çıkıyor. Alternatif olarak "impute" deneyebiliriz.
+```
+
+
+
+```{r sadece katılmış ve tamamlamış olanları seç}
+mydata <- mydata %>% 
+  filter(katilim_durumu == "katılmış ve tamamlamış")
+```
+
+
+
+
+```{r summary}
+# summarytools::view(summarytools::dfSummary(mydata))
+# glimpse(mydata)
+# mydata %>%
+#   select(starts_with("Soru")) %>% 
+#   pivot_longer(everything()) %>% 
+#   select(value) %>% 
+#   pull() %>% 
+#   unique() %>% 
+#   cat(sep = "\n")
+```
+
+
+
+
+```{r yas}
+## Recoding mydata$x3_yasiniz_nedir into mydata$YasGrup
+mydata$YasGrup <- factor(mydata$x3_yasiniz_nedir)
+## Reordering mydata$YasGrup
+mydata$YasGrup <- factor(mydata$YasGrup, levels=c("20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89"))
+```
+
+
+```{r cinsiyet}
+## Recoding mydata$x4_cinsiyetiniz_nedir into mydata$Cinsiyet
+mydata$Cinsiyet <- recode(mydata$x4_cinsiyetiniz_nedir,
+               "Kadın" = "Kadin")
+mydata$Cinsiyet <- factor(mydata$Cinsiyet)
+
+```
+
+
+```{r uzmanlik suresi}
+## Recoding mydata$x5_kac_yildir_genel_cerrahi_uzmanisiniz into mydata$UzmanlikSuresi
+mydata$UzmanlikSuresi <- recode(mydata$x5_kac_yildir_genel_cerrahi_uzmanisiniz,
+               "43739" = "10-19")
+mydata$UzmanlikSuresi <- factor(mydata$UzmanlikSuresi)
+
+## Reordering mydata$UzmanlikSuresi
+mydata$UzmanlikSuresi <- factor(mydata$UzmanlikSuresi, levels=c("0-9", "10-19", "20-29", "30-39", "40-49"))
+
+
+```
+
+
+
+```{r unvan}
+## Recoding mydata$x6_unvaniniz_nedir into mydata$Unvan
+mydata$Unvan <- factor(mydata$x6_unvaniniz_nedir)
+
+## Reordering mydata$Unvan
+mydata$Unvan <- factor(mydata$Unvan, levels=c("Op.Dr.", "Doktor Öğretim Üyesi", "Doç.Dr.", "Prof.Dr"))
+
+```
+
+
+```{r kurum}
+## Recoding mydata$x8_hangi_kurumda_calisiyorsunuz into mydata$Kurum
+mydata$Kurum <- recode(mydata$x8_hangi_kurumda_calisiyorsunuz,
+               "Eğitim Araştırma Hastanesi" = "Eğitim Araştırma",
+               "İlçe Devlet Hastanesi" = "İlçe Devlet",
+               "Üniversite Hastanesi" = "Üniversite",
+               "İl Devlet Hastanesi" = "İl Devlet",
+               "Özel Hastane ve Kurumlar" = "Özel")
+mydata$Kurum <- factor(mydata$Kurum)
+
+## Reordering mydata$Kurum
+mydata$Kurum <- factor(mydata$Kurum, levels=c("Özel", "İlçe Devlet", "İl Devlet", "Eğitim Araştırma", "Üniversite"))
+```
+
+
+
+```{r cevap gruplari}
+tersSorular <- c("Soru1",
+                 "Soru4",
+                 "Soru15",
+                 "Soru17",
+                 "Soru29")
+
+CSS <- c(
+  "Soru3",
+  "Soru6",
+  "Soru12",
+  "Soru16",
+  "Soru18",
+  "Soru20",
+  "Soru22",
+  "Soru24",
+  "Soru27",
+  "Soru30"
+)
+
+
+BS <- c(
+  "Soru1",
+  "Soru4",
+  "Soru8",
+  "Soru10",
+  "Soru15",
+  "Soru17",
+  "Soru19",
+  "Soru21",
+  "Soru26",
+  "Soru29"
+)
+
+
+STSS <- c(
+  "Soru2",
+  "Soru5",
+  "Soru7",
+  "Soru9",
+  "Soru11",
+  "Soru13",
+  "Soru14",
+  "Soru23",
+  "Soru25",
+  "Soru28"
+)
+```
+
+
+
+
+
+```{r cevaplari numerik kodla}
+recode_numberize <- function(x, ...) {
+  dplyr::recode(
+    x,
+    "Bazı zamanlar" = 3,
+    "Çoksık" = 5,
+    "Hiçbir zaman" = 1,
+    "Nadiren" = 2,
+    "Sık sık" = 4,
+    "Sıkça" = 4,
+"Bazı zamanlarda" = 3,
+"Çok sık" = 5,
+"Sıksık" = 4
+    )
+}
+
+
+mydata <- mydata %>% 
+    mutate_at(.tbl = .,
+              .vars = vars(starts_with("Soru"), -tersSorular),
+              .funs = recode_numberize
+    )
+
+
+
+recode_numberize_ters <- function(x, ...) {
+  recode(
+    x,
+    "Bazı zamanlar" = 3,
+"Çoksık" = 1,
+"Hiçbir zaman" = 5,
+"Nadiren" = 4,
+"Sık sık" = 2,
+"Sıkça" = 2,
+"Bazı zamanlarda" = 3,
+"Çok sık" = 1,
+"Sıksık" = 2
+        )
+}
+
+
+mydata <- mydata %>% 
+    mutate_at(.tbl = .,
+              .vars = vars(tersSorular),
+              .funs = recode_numberize
+    )
+
+```
+
+
+
+```{r toplam skor}
+mydata <- mydata %>% 
+  # böyle yazınca missing olunca hesaplamıyor
+  # mutate(
+  #   CSS_total = rowSums(select(., CSS), na.rm = FALSE)
+  # ) %>% 
+  mutate(
+    CSS_total = rowSums(select(., CSS), na.rm = TRUE)
+  ) %>% 
+mutate(
+    BS_total = rowSums(select(., BS), na.rm = TRUE)
+  ) %>% 
+  mutate(
+    STSS_total = rowSums(select(., STSS), na.rm = TRUE)
+  )
+
+
+mydata <- mydata %>% 
+  naniar::replace_with_na_at(
+    .vars = vars(ends_with("_total")),
+    condition = ~.x == 0
+    )
+
+```
+
+
+
+
+```
+<= 22 Low
+>= 23 & <= 41 Average 
+>=42 High
+```
+
+
+```{r skor kategorileri}
+mydata <- mydata %>% 
+  mutate_at(.tbl = .,
+            .vars = vars(ends_with("_total")),
+            .funs = list(Gr = 
+                           ~ case_when(
+                             . <= 22 ~ "Low",
+                             . >= 23 & . <= 41 ~ "Average",
+                             . >= 42 ~ "High",
+                             TRUE ~ NA_character_
+                           )
+                           )
+    
+  )
+```
+
+
+
+```{r}
+mydata2 <- mydata %>% 
+  select(
+YasGrup,
+Cinsiyet,
+UzmanlikSuresi,
+Unvan,
+Kurum,
+CSS_total,
+BS_total,
+STSS_total,
+CSS_total_Gr,
+BS_total_Gr,
+STSS_total_Gr
+  )
+```
+
+
+
 
 
 

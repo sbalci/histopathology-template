@@ -222,6 +222,12 @@
       "Source": "CRAN",
       "Hash": "2317847eb6fdd6a51d800a1e6c6f0004"
     },
+    "UpSetR": {
+      "Package": "UpSetR",
+      "Version": "1.4.0",
+      "Source": "CRAN",
+      "Hash": "5a6813a3565495460ce08bdfdd827589"
+    },
     "WRS2": {
       "Package": "WRS2",
       "Version": "1.0-0",
@@ -291,8 +297,14 @@
     "bayestestR": {
       "Package": "bayestestR",
       "Version": "0.3.0",
-      "Source": "CRAN",
-      "Hash": "69bb032c73e6e81219e0db83532fb17f"
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "bayestestR",
+      "RemoteUsername": "easystats",
+      "RemoteRef": "master",
+      "RemoteSha": "e85e4d7058512c2d9f72964060271c704c73864b",
+      "Hash": "05087c5a88e7e5ec8415ca37fec59768"
     },
     "bibtex": {
       "Package": "bibtex",
@@ -468,6 +480,18 @@
       "Source": "CRAN",
       "Hash": "eb04dde35b259a7b788fac72cf75f3fc"
     },
+    "correlation": {
+      "Package": "correlation",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "correlation",
+      "RemoteUsername": "easystats",
+      "RemoteRef": "master",
+      "RemoteSha": "84b96cb06be256f4e96ecf024d0813c324a4a89c",
+      "Hash": "4eebce9af4d33281efb369c007943523"
+    },
     "covr": {
       "Package": "covr",
       "Version": "3.3.1",
@@ -587,6 +611,19 @@
       "Version": "1.3",
       "Source": "CRAN",
       "Hash": "1b196fbb1596b952875b21e105f928b3"
+    },
+    "estimate": {
+      "Package": "estimate",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "Remotes": "easystats/bayestestR",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "estimate",
+      "RemoteUsername": "easystats",
+      "RemoteRef": "master",
+      "RemoteSha": "602c8b4782f072152b9427c8aa930945a04571e8",
+      "Hash": "a4e19e5ed97a7c7b43c7e58de88bbfe0"
     },
     "evaluate": {
       "Package": "evaluate",
@@ -1298,6 +1335,12 @@
       "Source": "CRAN",
       "Hash": "52ce995447f228a25ccfa186e758f2c4"
     },
+    "naniar": {
+      "Package": "naniar",
+      "Version": "0.4.2",
+      "Source": "CRAN",
+      "Hash": "5436bcb35a7cdc805cb290bc96b15c2a"
+    },
     "nlme": {
       "Package": "nlme",
       "Version": "3.1-141",
@@ -1408,9 +1451,15 @@
     },
     "parameters": {
       "Package": "parameters",
-      "Version": "0.1.0",
-      "Source": "CRAN",
-      "Hash": "6b2c3202e204f7069ff1becc0d39f579"
+      "Version": "0.2.0.1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "parameters",
+      "RemoteUsername": "easystats",
+      "RemoteRef": "master",
+      "RemoteSha": "ecd66e592938eb32a6e80487a604b1a3716af9b1",
+      "Hash": "e67f7ca7db25dc59b37a4d7108280e3e"
     },
     "pbapply": {
       "Package": "pbapply",
@@ -1622,6 +1671,19 @@
       "Source": "CRAN",
       "Hash": "830aa73278dce9beba583bfe57a5c015"
     },
+    "report": {
+      "Package": "report",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "Remotes": "easystats/correlation, easystats/estimate",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "report",
+      "RemoteUsername": "easystats",
+      "RemoteRef": "master",
+      "RemoteSha": "47dd0640d32ff097b1aafe76cdd8a2232d8e1ae6",
+      "Hash": "1a9913afc83ea8a5c22d80118fdd00d3"
+    },
     "reprex": {
       "Package": "reprex",
       "Version": "0.3.0",
@@ -1777,6 +1839,18 @@
       "Version": "1.1.0",
       "Source": "CRAN",
       "Hash": "39b64f934eeef47a6dfa8e5221f9c302"
+    },
+    "see": {
+      "Package": "see",
+      "Version": "0.2.1.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "see",
+      "RemoteUsername": "easystats",
+      "RemoteRef": "master",
+      "RemoteSha": "bd7bcb9b30ab9a5acf211a45c6f475037d9e046e",
+      "Hash": "0574196af6da908ebdc3dbd28834752b"
     },
     "selectr": {
       "Package": "selectr",
@@ -2023,6 +2097,12 @@
       "Version": "0.3.0",
       "Source": "CRAN",
       "Hash": "1f264fa42320c4f44b1689d89101e823"
+    },
+    "visdat": {
+      "Package": "visdat",
+      "Version": "0.5.3",
+      "Source": "CRAN",
+      "Hash": "9bda34c3ecc23952bae1bfa2f70471a4"
     },
     "webshot": {
       "Package": "webshot",
