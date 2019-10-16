@@ -1,15 +1,25 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Histopathology Template
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+
+
+# Histopathology Research Template 🔬  
 
 <!-- badges: start -->
-
 <!-- [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/histopathR)](https://CRAN.R-project.org/package=histopathR) -->
-
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/)
 <!-- [![Travis Build Status](https://travis-ci.com/sbalci/histopathR.svg?branch=master)](https://travis-ci.com/sbalci/histopathR) -->
 <!-- [![codecov](https://codecov.io/gh/sbalci/histopathR/branch/master/graph/badge.svg)](https://codecov.io/gh/sbalci/histopathR) -->
@@ -33,64 +43,60 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 <!-- [![Twitter](https://img.shields.io/twitter/url/https/github.com/sbalci/histopathR.svg?style=social)](https://twitter.com/intent/tweet?text=%23rstats%20codes%20for%20histopathology%20research%20by%20@serdarbalci&url=https%3A%2F%2Fgithub.com%2Fsbalci%2FhistopathR) -->
 <!-- ![GitHub](https://img.shields.io/github/license/sbalci/histopathR.svg) -->
 <!-- [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/sbalci/histopathR/issues) -->
-[![Say
-Thanks\!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
 <!-- badges: end -->
 
-This repository is a template for the codes I use in histopathology
-research.
 
-I have tried to collect common codes in [My R Codes For Data
-Analysis](https://sbalci.github.io/MyRCodesForDataAnalysis/), but I find
-the template repositories more helpful. LAter I plan to collect them
-under a package [histopathR](https://sbalci.github.io/histopathR/).
 
------
+This repository is a template for the codes I use in histopathology research.
+
+I have tried to collect common codes in [My R Codes For Data Analysis](https://sbalci.github.io/MyRCodesForDataAnalysis/), but I find the template repositories more helpful. LAter I plan to collect them under a package [histopathR](https://sbalci.github.io/histopathR/).
+
+---
 
 **How to use**
 
-  - Fork this repository. Then use this repository as template as
-    described
-    [here](https://help.github.com/en/articles/creating-a-repository-from-a-template).
+- Fork this repository. Then use this repository as template as described [here](https://help.github.com/en/articles/creating-a-repository-from-a-template). 
 
-  - Use RStudio project as described
-    [here](https://happygitwithr.com/existing-github-first.html#new-rstudio-project-via-git-clone-1).
+- Use RStudio project as described [here](https://happygitwithr.com/existing-github-first.html#new-rstudio-project-via-git-clone-1).
 
-  - Do not forget to change chunk functions to `eval = TRUE`.
+- Do not forget to change chunk functions to `eval = TRUE`. 
 
-  - This template contains packages using
-    [renv](https://rstudio.github.io/renv/articles/renv.html).
+- This template contains packages using [renv](https://rstudio.github.io/renv/articles/renv.html). 
 
------
+---
+
+🔬🔬🔬🔬🔬
+
 
 UNDER CONSTRUCTION 🛠⛔️⚠️🔩
 
 <!-- https://sbalci.github.io/histopathR/ -->
 
-<a class="twitter-follow-button" data-show-count="false" href="https://twitter.com/serdarbalci">Follow
-@serdarbalci</a>
+<a class="twitter-follow-button" data-show-count="false" href="https://twitter.com/serdarbalci">Follow @serdarbalci</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/sbalci/histopathR/issues) -->
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
+<!-- [![HitCount](http://hits.dwyl.io/sbalci/histopathR.svg)](http://hits.dwyl.io/sbalci/histopathR) -->
 
-[![contributions
-welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/sbalci/histopathR/issues)
-[![Say
-Thanks\!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
-[![HitCount](http://hits.dwyl.io/sbalci/histopathR.svg)](http://hits.dwyl.io/sbalci/histopathR)
 
------
+<!-- --- -->
 
-🔬 **I plan to collect codes for future research. I will add some small
-functions.**  
-\- Methods to import and prepare data for analysis.  
-\- Descriptive statistics.  
-\- Hypothesis tests.  
-\- Survival analysis.  
-\- Regression analysis.  
-\- Cluster analysis.
 
-🔬 **I plan to make template files to form when loading the package.**
+<!-- 🔬 **I plan to collect codes for future research. I will add some small functions.**   -->
+<!-- - Methods to import and prepare data for analysis.   -->
+<!-- - Descriptive statistics.   -->
+<!-- - Hypothesis tests.   -->
+<!-- - Survival analysis.   -->
+<!-- - Regression analysis.   -->
+<!-- - Cluster analysis.   -->
 
-🔬 **I plan two tutorial files as vignettes:**  
-\- How to prepare data for histopathological research  
-\- How to analyse data for histopathological research
+
+<!-- 🔬 **I plan to make template files to form when loading the package.**   -->
+
+
+<!-- 🔬 **I plan two tutorial files as vignettes:**   -->
+<!-- - How to prepare data for histopathological research   -->
+<!-- - How to analyse data for histopathological research   -->
+
+

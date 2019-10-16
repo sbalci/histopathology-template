@@ -3,7 +3,7 @@ suppressPackageStartupMessages(library("readxl"))
 suppressPackageStartupMessages(library("janitor"))
 suppressPackageStartupMessages(library("report"))
 suppressPackageStartupMessages(library("finalfit"))
-# suppressPackageStartupMessages(library("ggstatsplot"))
+suppressPackageStartupMessages(library("ggstatsplot"))
 
 # citation("tidyverse")
 # citation("readxl")
@@ -11,7 +11,6 @@ suppressPackageStartupMessages(library("finalfit"))
 # citation("report")
 
 
-# not used
 # citation("foreign")
 # citation("tidylog")
 # citation("jmv")
@@ -50,5 +49,12 @@ suppressPackageStartupMessages(library("finalfit"))
 # citation("jmv")
 # citation("tangram")
 # citation("summarytools")
+
+# Some Other Packages that can be used
+
+# Packages for Descriptive Statistics
+
+# devtools::install_github("XanderHorn/autoEDA")
+
 
 

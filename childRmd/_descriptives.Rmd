@@ -2,13 +2,13 @@
 
 
 
-```{r eval=FALSE, include=FALSE}
+```{r report data, eval=FALSE, include=FALSE}
 report::report(mydata)
 ```
 
 
 
-```{r, results='asis', eval=FALSE, include=FALSE}
+```{r arsenal Table 1, results='asis', eval=FALSE, include=FALSE}
 # cat(names(mydata), sep = " + \n")
 
 library(arsenal)

@@ -27,6 +27,53 @@ iris %>%
 
 
 
+```{r recode finalfit, eval=FALSE, include=FALSE}
+library(finalfit)
+# https://www.datasurg.net/2019/10/15/jama-retraction-after-miscoding-new-finalfit-function-to-check-recoding/
+# intentionally miscoded
+colon_s %>%
+  mutate(
+    sex.factor2 = forcats::fct_recode(sex.factor,
+      "F" = "Male",
+      "M" = "Female")
+  ) %>%
+  count(sex.factor, sex.factor2)
+```
+
+
+
+```{r check_recode finalfit}
+# Install
+# devtools::install_github('ewenharrison/finalfit')
+library(finalfit)
+library(dplyr)
+# Recode example
+colon_s_small = colon_s %>%
+  select(-id, -rx, -rx.factor) %>%
+  mutate(
+    age.factor2 = forcats::fct_collapse(age.factor,
+      "<60 years" = c("<40 years", "40-59 years")),
+    sex.factor2 = forcats::fct_recode(sex.factor,
+    # Intentional miscode
+      "F" = "Male",
+      "M" = "Female")
+  )
+# Check
+colon_s_small %>%
+  finalfit::check_recode()
+```
+
+
+```{r check_recode numeric finalfit}
+out = colon_s_small %>%
+  select(-extent, -extent.factor,-time, -time.years) %>% # choose to exclude variables
+  check_recode(include_numerics = TRUE)
+```
+
+
+
+
+
 ```{r, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 ## Recoding mydata$cinsiyet into mydata$Cinsiyet
 mydata$Cinsiyet <- recode(mydata$cinsiyet,

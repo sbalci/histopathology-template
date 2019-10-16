@@ -1,0 +1,13 @@
+
+
+```{r summarytools}
+summarytools::view(summarytools::dfSummary(mydata))
+```
+
+
+```{r glimpse}
+glimpse(mydata)
+```
+
+
+
