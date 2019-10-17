@@ -9,12 +9,12 @@ mydata$OverallTime <- round(mydata$OverallTime, digits = 1)
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r recode time, eval=FALSE, include=FALSE}
 mydata$OverallTime <- mydata$genel_sagkalim
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r recode status, eval=FALSE, include=FALSE}
 ## Recoding mydata$Outcome into mydata$Outcome2
 mydata$Outcome2 <- recode(mydata$Outcome,
                "Alive" = "0",
@@ -27,7 +27,7 @@ mydata$Outcome2 <- as.numeric(mydata$Outcome2)
 
 # Survival Analysis
 
-```{r, eval=FALSE, include=FALSE}
+```{r km, eval=FALSE, include=FALSE}
 library(survival)
 km <- with(mydata, Surv(OverallTime, Outcome2))
 # head(km,80)
@@ -36,30 +36,16 @@ km <- with(mydata, Surv(OverallTime, Outcome2))
 
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r select dependent and explanatory variables, eval=FALSE, include=FALSE}
 dependentKM <-  "Surv(OverallTime, Outcome2)"
 
-explanatoryKM <- c("Lauren",
-               "CD44",
-               "Her2",
-               "MMR2",
-                 "TumorPDL1gr1",
-                 "TumorPDL1gr5",
-                 "inflPDL1gr1",
-                 "inflPDL1gr5",
-               "Cinsiyet",
-                 "TumorYerlesimi",
-                 "Grade",
-                 "T_stage",
-                 "N_stage",
-                 "M_stage",
-                 "LVI",
-                 "PNI",
-                 "LenfNoduMetastazi")
+explanatoryKM <- c("explanatory1",
+               "explanatory2"
+               )
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r generate Code, include=FALSE, eval=FALSE, include=FALSE}
 source(here::here("R", "generatingCodeForSurvival.R"))
 ```
 
@@ -86,6 +72,7 @@ mysurvival <- function(mydata, mydependent, explanatory) {
                             xlim = c(0,60)
         )
 }
+
 
 library(tidyverse)
 mysurvival(mydata = whippleables, mydependent = mydependent, explanatory = explanatory)

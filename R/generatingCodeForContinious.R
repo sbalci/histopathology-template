@@ -22,3 +22,4 @@ jmv::descriptives(
 }
 writeLines(magicfor::magic_result_as_vector(), here::here("childRmd" , "generatedCodeContinious.Rmd"))
 magicfor::magic_free()
+

@@ -43,3 +43,30 @@ All the statistical analyses were performed by using Jamovi project (2018). jamo
 
 All the statistical analyses were performed by using Jamovi project (2019). jamovi
 (Version 1.0) [Computer Software]. Retrieved from (https://www.jamovi.org). A p value of < 0.05 was determined for the statistically significance.
+
+
+
+The jamovi project (2019). jamovi. (Version 1.0) [Computer Software]. Retrieved from https://www.jamovi.org.
+R Core Team (2018). R: A Language and envionment for statistical computing. [Computer software]. Retrieved from https://cran.r-project.org/.
+
+
+
+
+
+**Materials and Methods:**
+
+
+Sensitivity and specificity of polyp size were calculated while the presence of neoplastic polyp taken  as gold standard. 
+
+
+ROC analysis was performed by R-project (R Core Team (2018). R: A Language and envionment for statistical computing. [Computer software, version 3.6.0]. Retrieved from https://cran.r-project.org/.) and pROC package (BMC Bioinformatics, 12, p. 77.  DOI: 10.1186/1471-2105-12-77).
+
+
+
+
+
+
+
+
+
+

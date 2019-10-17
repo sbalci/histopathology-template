@@ -20,3 +20,4 @@ magicfor::magic_free()
 #     janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
 #     janitor::adorn_totals("row") %>%
 #     knitr::kable()
+
