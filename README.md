@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Histopathology Template
+# Histopathology Research Template 🔬
 
 <!-- badges: start -->
 
@@ -63,6 +63,27 @@ under a package [histopathR](https://sbalci.github.io/histopathR/).
 
 -----
 
+# Recommended Links for Reproducible Research
+
+  - [Reproducible Templates for Analysis and
+    Dissemination](https://www.coursera.org/learn/reproducible-templates-analysis/home/info)
+
+  - [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+
+<https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.html>
+<https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.nb.html>
+
+<https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.nb.html>
+<https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.html>
+
+# Please Give Me FeedBack
+
+<https://goo.gl/forms/YjGZ5DHgtPlR1RnB3>
+
+-----
+
+🔬🔬🔬🔬🔬
+
 UNDER CONSTRUCTION 🛠⛔️⚠️🔩
 
 <!-- https://sbalci.github.io/histopathR/ -->
@@ -72,25 +93,32 @@ UNDER CONSTRUCTION 🛠⛔️⚠️🔩
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-[![contributions
-welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/sbalci/histopathR/issues)
+<!-- [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/sbalci/histopathR/issues) -->
+
 [![Say
 Thanks\!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
-[![HitCount](http://hits.dwyl.io/sbalci/histopathR.svg)](http://hits.dwyl.io/sbalci/histopathR)
+<!-- [![HitCount](http://hits.dwyl.io/sbalci/histopathR.svg)](http://hits.dwyl.io/sbalci/histopathR) -->
 
------
+<!-- --- -->
 
-🔬 **I plan to collect codes for future research. I will add some small
-functions.**  
-\- Methods to import and prepare data for analysis.  
-\- Descriptive statistics.  
-\- Hypothesis tests.  
-\- Survival analysis.  
-\- Regression analysis.  
-\- Cluster analysis.
+<!-- 🔬 **I plan to collect codes for future research. I will add some small functions.**   -->
 
-🔬 **I plan to make template files to form when loading the package.**
+<!-- - Methods to import and prepare data for analysis.   -->
 
-🔬 **I plan two tutorial files as vignettes:**  
-\- How to prepare data for histopathological research  
-\- How to analyse data for histopathological research
+<!-- - Descriptive statistics.   -->
+
+<!-- - Hypothesis tests.   -->
+
+<!-- - Survival analysis.   -->
+
+<!-- - Regression analysis.   -->
+
+<!-- - Cluster analysis.   -->
+
+<!-- 🔬 **I plan to make template files to form when loading the package.**   -->
+
+<!-- 🔬 **I plan two tutorial files as vignettes:**   -->
+
+<!-- - How to prepare data for histopathological research   -->
+
+<!-- - How to analyse data for histopathological research   -->

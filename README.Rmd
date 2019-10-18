@@ -66,6 +66,28 @@ I have tried to collect common codes in [My R Codes For Data Analysis](https://s
 
 ---
 
+# Recommended Links for Reproducible Research
+
+- [Reproducible Templates for Analysis and Dissemination](https://www.coursera.org/learn/reproducible-templates-analysis/home/info)
+
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+
+https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.html
+https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.nb.html
+
+https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.nb.html
+https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.html
+
+
+# Please Give Me FeedBack
+
+https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
+
+
+
+---
+
+
 🔬🔬🔬🔬🔬
 
 
