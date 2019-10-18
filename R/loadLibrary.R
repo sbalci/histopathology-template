@@ -58,3 +58,35 @@ suppressPackageStartupMessages(library("ggstatsplot"))
 
 
 
+# https://gist.github.com/smithdanielle/9913897
+# 
+# check.packages <- function(pkg){
+#     new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+#     if (length(new.pkg)) 
+#         install.packages(new.pkg, dependencies = TRUE)
+#     sapply(pkg, require, character.only = TRUE)
+# }
+# 
+# # Usage example
+# package.check <- lapply(packages, FUN = function(x) {
+#     if (!require(x, character.only = TRUE)) {
+#         install.packages(x, dependencies = TRUE)
+#         library(x, character.only = TRUE)
+#     }
+# })
+# 
+# #verify they are loaded
+# search()
+#
+# packages<-c("ggplot2", "afex", "ez", "Hmisc", "pander", "plyr")
+# check.packages(packages)
+# 
+# options(repos=structure(c(CRAN="http://cloud.r-project.org/")))
+# 
+# if(!require(pacman))install.packages("pacman")
+# pacman::p_load("dplyr", "DT", "mosaic", "MASS", "usdm", "tidyverse", "ggplot2", "PerformanceAnalytics", "caTools", "glmnet", "caret","leaps","doParallel")
+
+
+
+
+

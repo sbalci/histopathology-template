@@ -29,9 +29,16 @@ mydata$Outcome2 <- as.numeric(mydata$Outcome2)
 
 ```{r km, eval=FALSE, include=FALSE}
 library(survival)
+# data(lung)
+# km <- with(lung, Surv(time, status))
 km <- with(mydata, Surv(OverallTime, Outcome2))
 # head(km,80)
 # plot(km)
+```
+
+```{r extract info from surv object, eval=FALSE, include=FALSE}
+surv_fit <- survfit(Surv(time, status) ~ ph.ecog, data=lung)
+insight::is_model_supported(surv_fit)
 ```
 
 
@@ -113,4 +120,53 @@ mydata %>%
 
 knitr::kable(tMultivariate, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r"))
 ```
+
+
+
+---
+
+<!-- https://ggobi.github.io/ggally/#ggallyggsurv -->
+
+
+---
+
+
+<!-- https://cran.r-project.org/web/packages/arsenal/vignettes/modelsum.html#survival -->
+
+```{r arsenal survival, eval=FALSE, include=FALSE}
+library(arsenal)
+library(survival)
+
+fit  <- coxph(Surv(fu.time, fu.stat) ~ age + sex + arm, data=mockstudy)
+summary(fit)
+
+fit.z <- cox.zph(fit)
+fit.z
+
+plot(fit.z[1], resid=FALSE) # makes for a cleaner picture in this case
+abline(h=coef(fit)[1], col='red')
+
+
+fit2 <- coxph(Surv(fu.time, fu.stat) ~ pspline(age) + sex + arm, data=mockstudy)
+fit2
+
+termplot(fit2, se=T, terms=1)
+
+summary(fit2)$concordance
+
+survConcordance(Surv(fu.time, fu.stat) ~ predict(fit2), data=mockstudy)
+
+
+broom::tidy(fit)
+
+broom::glance(fit)
+
+
+summary(modelsum(Surv(fu.time, fu.stat) ~ arm, 
+                 adjust= ~age + sex, data=mockstudy, family="survival"))
+
+
+```
+
+
 

@@ -444,18 +444,6 @@
       "Source": "CRAN",
       "Hash": "386107d8b5e771a7c850019cd0bb602a"
     },
-    "correlation": {
-      "Package": "correlation",
-      "Version": "0.1.0",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "correlation",
-      "RemoteUsername": "easystats",
-      "RemoteRef": "master",
-      "RemoteSha": "84b96cb06be256f4e96ecf024d0813c324a4a89c",
-      "Hash": "4eebce9af4d33281efb369c007943523"
-    },
     "covr": {
       "Package": "covr",
       "Version": "3.3.1",

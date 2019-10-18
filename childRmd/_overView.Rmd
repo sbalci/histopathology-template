@@ -1,13 +1,162 @@
 
 
-```{r summarytools}
+```{r summarytools, eval=FALSE, include=FALSE}
 summarytools::view(summarytools::dfSummary(mydata))
 ```
 
 
-```{r glimpse}
+```{r glimpse, eval=FALSE, include=FALSE}
 glimpse(mydata)
 ```
+
+
+
+```{r describer 1, eval=FALSE, include=FALSE}
+library(dplyr, warn.conflicts = FALSE)
+library(describer)
+
+mtcars %>% 
+  describe %>% 
+  knitr::kable(format = "markdown")
+```
+
+
+```{r describer group_by, eval=FALSE, include=FALSE}
+mtcars %>% 
+  group_by(cyl) %>% 
+  do(describe(.)) %>% 
+  knitr::kable(format = "markdown")
+```
+
+
+
+```{r describer 2, eval=FALSE, include=FALSE}
+describe(mtcars)
+describe(iris)
+describe(state.name)
+```
+
+
+```{r define continious variables, eval=FALSE, include=FALSE}
+mydataDescription <- describer::describe(iris)
+
+mydataDescription %>% 
+    janitor::clean_names() %>% 
+    dplyr::filter(column_class == "numeric") %>% 
+    dplyr::select(column_name) %>% 
+    dplyr::pull() -> continiousVariables
+```
+
+
+
+
+```{r visdat, eval=FALSE, include=FALSE}
+# https://github.com/ropensci/visdat
+# http://visdat.njtierney.com/articles/using_visdat.html
+# https://cran.r-project.org/web/packages/visdat/index.html
+# http://visdat.njtierney.com/
+
+visdat::vis_dat(airquality)
+visdat::vis_miss(airquality)
+visdat::vis_compare(airquality, airquality)
+visdat::vis_expect(data = airquality, expectation = ~.x == -1, show_perc = TRUE)
+
+visdat::vis_expect(airquality, ~.x >= 25)
+
+visdat::vis_cor(airquality)
+visdat::vis_guess(airquality)
+
+visdat::vis_miss(airquality, 
+         cluster = TRUE)
+
+visdat::vis_miss(airquality,
+         sort_miss = TRUE)
+
+
+test_miss_df <- data.frame(x1 = 1:10000,
+                           x2 = rep("A", 10000),
+                           x3 = c(rep(1L, 9999), NA))
+
+visdat::vis_miss(test_miss_df)
+
+
+
+chickwts_diff <- chickwts
+chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
+
+visdat::vis_compare(chickwts_diff, chickwts)
+
+
+# plotly::ggplotly(visdat::vis_dat(airquality))
+# ggplotly(vis_miss(airquality))
+# ggplotly(vis_guess(airquality))
+
+```
+
+
+
+
+
+
+```{r DataExplorer, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/DataExplorer/vignettes/dataexplorer-intro.html
+
+# library(nycflights13)
+# library(DataExplorer)
+# data_list <- list(airlines, airports, flights, planes, weather)
+
+DataExplorer::plot_str(data_list)
+
+DataExplorer::plot_str(data_list, type = "r")
+
+
+# merge_airlines <- merge(flights, airlines, by = "carrier", all.x = TRUE)
+# merge_planes <- merge(merge_airlines, planes, by = "tailnum", all.x = TRUE, suffixes = c("_flights", "_planes"))
+# merge_airports_origin <- merge(merge_planes, airports, by.x = "origin", by.y = "faa", all.x = TRUE, suffixes = c("_carrier", "_origin"))
+# final_data <- merge(merge_airports_origin, airports, by.x = "dest", by.y = "faa", all.x = TRUE, suffixes = c("_origin", "_dest"))
+
+DataExplorer::introduce(final_data)
+
+DataExplorer::plot_intro(final_data)
+
+DataExplorer::plot_missing(final_data)
+
+final_data <- drop_columns(final_data, "speed")
+
+plot_bar(final_data)
+
+plot_bar(final_data, with = "arr_delay")
+
+plot_histogram(final_data)
+
+
+final_data <- update_columns(final_data, "flight", as.factor)
+
+
+qq_data <- final_data[, c("arr_delay", "air_time", "distance", "seats")]
+plot_qq(qq_data, sampled_rows = 1000L)
+
+plot_correlation(na.omit(final_data), maxcat = 5L)
+
+
+
+```
+
+
+
+```{r xray, eval=FALSE, include=FALSE}
+
+```
+
+
+
+
+
+
+
+
+
+
 
 
 

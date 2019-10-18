@@ -71,6 +71,12 @@ output:
 
 
 
+
+<!-- ```{r pairedTests, child = here::here('childRmd', '_pairedTests.Rmd')} -->
+<!-- ``` -->
+
+
+
 <!-- ```{r hypothesisTests, child = here::here('childRmd', '_hypothesisTests.Rmd')} -->
 <!-- ``` -->
 

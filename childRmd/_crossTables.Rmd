@@ -49,3 +49,38 @@ source(here::here("R", "generatingCodeForCrossTables.R"))
 ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCrossTables.Rmd'), eval=FALSE, include=FALSE}
 ```
 
+
+
+
+
+```{r tableone crosstable, eval=FALSE, include=FALSE}
+CreateTableOne(vars = myVars, strata = "columnname", data = pbc, factorVars = catVars)
+```
+
+
+
+```{r tableone crosstable nonnormal values, eval=FALSE, include=FALSE}
+print(tab, nonnormal = biomarkers, exact = "exactVariable", smd = TRUE)
+```
+
+
+
+<!-- https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html -->
+
+```{r arsenal tableby crosstable, eval=FALSE, include=FALSE}
+
+```
+
+
+
+<!-- https://cran.r-project.org/web/packages/arsenal/vignettes/write2.html -->
+
+```{r arsenal write output, eval=FALSE, include=FALSE}
+write2html(
+  knitr::kable(head(mockstudy)), paste0(tmpdir, "/test.kable.keep.rmd.html"),
+  quiet = TRUE, # passed to rmarkdown::render
+  keep.rmd = TRUE
+)
+```
+
+

@@ -1,6 +1,6 @@
 # Descriptive Statistics
 
-
+# Table 1  
 
 ```{r report data, eval=FALSE, include=FALSE}
 report::report(mydata)
@@ -44,11 +44,70 @@ summary(tab1)
 ```
 
 
+<!-- https://cran.r-project.org/web/packages/tableone/index.html -->
+<!-- https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html -->
+
+
+
+```{r tableone, eval=FALSE, include=FALSE}
+library(tableone)
+library(survival)
+data(pbc)
+CreateTableOne(data = pbc)
+```
+
+
+```{r tableone 2, eval=FALSE, include=FALSE}
+CreateTableOne(vars = myVars, data = pbc, factorVars = catVars)
+```
+
+
+```{r tableone 3, eval=FALSE, include=FALSE}
+tab <- CreateTableOne(vars = myVars, data = pbc, factorVars = catVars)
+print(tab, showAllLevels = TRUE)
+?print.TableOne
+summary(tab)
+```
+
+
+
+
+```{r tableone nonnormal values, eval=FALSE, include=FALSE}
+print(tab, nonnormal = biomarkers)
+```
+
+
+```{r tableone copy to excel, eval=FALSE, include=FALSE}
+print(tab, nonnormal = biomarkers, exact = "stage", quote = TRUE, noSpaces = TRUE)
+```
+
+
+```{r tableone export to csv, eval=FALSE, include=FALSE}
+tab3Mat <- print(tab3, nonnormal = biomarkers, exact = "stage", quote = FALSE, noSpaces = TRUE, printToggle = FALSE)
+# write.csv(tab3Mat, file = "myTable.csv")
+```
+
+
+
+<!-- atable -->
+<!-- https://cran.r-project.org/web/packages/atable/vignettes/atable_usage.pdf -->
+<!-- https://journal.r-project.org/archive/2019/RJ-2019-001/index.html -->
+
+
+
+
+---
+
+
+```{r print names as vector, eval=FALSE, include=FALSE}
+dput(names(pbc))
+```
+
 
 
 ## Categorical Variables
 
-```{r, eval=FALSE, include=FALSE}
+```{r select categorical variables, eval=FALSE, include=FALSE}
 mydataCategorical <- mydata %>% 
     select(-Yas,
            -TumorCapi,
@@ -61,28 +120,57 @@ mydataCategorical <- mydata %>%
 
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r define continious variables, eval=FALSE, include=FALSE}
+mydataDescription <- describer::describe(iris)
+
+mydataDescription %>% 
+    janitor::clean_names() %>% 
+    dplyr::filter(column_class == "factor") %>% 
+    dplyr::select(column_name) %>% 
+    dplyr::pull() -> categoricalVariables
+```
+
+
+
+
+```{r generate Code descriptive, include=FALSE, eval=FALSE, include=FALSE}
 source(here::here("R", "generatingCodeForDescriptiveStatistics.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeDescriptives.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCodeDescriptives, child = here::here('childRmd', 'generatedCodeDescriptives.Rmd'), eval=FALSE, include=FALSE}
 ```
+
+
+```{r tableone categorical, eval=FALSE, include=FALSE}
+tab <- tableone::CreateTableOne(data = pbc)
+?print.CatTable
+tab$CatTable
+```
+
+
+
+
+
+
 
 
 \pagebreak
 
 
+---
+
+
 ## Continious Variables
 
 
-```{r eval=FALSE, include=FALSE}
+```{r categorise cut off continious variables, eval=FALSE, include=FALSE}
 questionr:::icut()
 ```
 
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r select continious variables, eval=FALSE, include=FALSE}
 mydataContinious <- mydata %>% 
     select(
         Yas,
@@ -92,14 +180,36 @@ mydataContinious <- mydata %>%
 
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r define continious variables, eval=FALSE, include=FALSE}
+mydataDescription <- describer::describe(iris)
+
+mydataDescription %>% 
+    janitor::clean_names() %>% 
+    dplyr::filter(column_class == "numeric") %>% 
+    dplyr::select(column_name) %>% 
+    dplyr::pull() -> continiousVariables
+```
+
+
+
+```{r generate Code Continious, include=FALSE, eval=FALSE, include=FALSE}
 source(here::here("R", "generatingCodeForContinious.R"))
 ```
 
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeContinious.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCodeContinious, child = here::here('childRmd', 'generatedCodeContinious.Rmd'), eval=FALSE, include=FALSE}
 ```
 
 
 
+```{r tableone categorical, eval=FALSE, include=FALSE}
+tab <- tableone::CreateTableOne(data = pbc)
+?print.ContTable
+tab$ContTable
+print(tab$ContTable, nonnormal = c("albumin", "copper"))
+```
+
+
+
+\pagebreak
