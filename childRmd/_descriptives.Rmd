@@ -96,6 +96,41 @@ tab3Mat <- print(tab3, nonnormal = biomarkers, exact = "stage", quote = FALSE, n
 
 
 
+```{r summarytools descriptives 1, eval=FALSE, include=FALSE}
+descr(tobacco, style = 'rmarkdown')
+```
+
+
+```{r summarytools descriptives 2, eval=FALSE, include=FALSE}
+print(descr(tobacco), method = 'render', table.classes = 'st-small')
+```
+ 
+
+
+```{r summarytools descriptives 3, eval=FALSE, include=FALSE}
+summarytools::descr(iris, style = "rmarkdown")
+descr(iris, stats = "common", transpose = TRUE, headings = FALSE)
+```
+
+
+
+```{r summarytools descriptives 4, eval=FALSE, include=FALSE}
+iris %>% descr(stats = "common") %>% tb()
+iris$Species %>% freq(cumul = FALSE, report.nas = FALSE) %>% tb()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 
@@ -105,7 +140,7 @@ dput(names(pbc))
 
 
 
-## Categorical Variables
+# Categorical Variables
 
 ```{r select categorical variables, eval=FALSE, include=FALSE}
 mydataCategorical <- mydata %>% 
@@ -150,6 +185,32 @@ tab$CatTable
 
 
 
+```{r summarytools Categorical, eval=FALSE, include=FALSE}
+(age_stats <- freq(tobacco$age.gr)) 
+print(age_stats, report.nas = FALSE, totals = FALSE, display.type = FALSE,
+      Variable.label = "Age Group")
+```
+
+
+# Split-Group Stats Categorical
+
+```{r summarytools Split-Group categorical, eval=FALSE, include=FALSE}
+grouped_freqs <- stby(data = tobacco$smoker, 
+                      INDICES = tobacco$gender, 
+                      FUN = freq, cumul = FALSE, report.nas = FALSE)
+grouped_freqs %>% tb()
+
+grouped_freqs %>% tb(order = 2)
+```
+
+
+# Grouped Categorical
+
+```{r summarytools Grouped Categorical, eval=FALSE, include=FALSE}
+stby(list(x = tobacco$smoker, y = tobacco$diseased), tobacco$gender, ctable)
+with(tobacco, stby(list(x = smoker, y = diseased), gender, ctable))
+```
+
 
 
 
@@ -161,7 +222,7 @@ tab$CatTable
 ---
 
 
-## Continious Variables
+# Continious Variables
 
 
 ```{r categorise cut off continious variables, eval=FALSE, include=FALSE}
@@ -212,4 +273,58 @@ print(tab$ContTable, nonnormal = c("albumin", "copper"))
 
 
 
+
+
+# Split-Group Stats Continious
+
+
+```{r summarytools Split-Group continious, eval=FALSE, include=FALSE}
+grouped_descr <- stby(data = exams, 
+                      INDICES = exams$gender, 
+                      FUN = descr, stats = "common")
+grouped_descr %>% tb()
+
+grouped_descr %>% tb(order = 2)
+```
+
+
+# Grouped Continious
+
+```{r summarytools Grouped Continious, eval=FALSE, include=FALSE}
+(iris_stats_by_species <- stby(data = iris, 
+                               INDICES = iris$Species, 
+                               FUN = descr, stats = c("mean", "sd", "min", "med", "max"), 
+                               transpose = TRUE))
+```
+
+
+
+```{r summarytools Grouped Continious 2, eval=FALSE, include=FALSE}
+with(tobacco, stby(BMI, age.gr, descr, 
+                   stats = c("mean", "sd", "min", "med", "max"),
+                   transpose = TRUE
+                   )
+     )
+```
+
+
+
+```{r summarytools Grouped Continious 3, eval=FALSE, include=FALSE}
+tobacco$gender <- forcats::fct_explicit_na(tobacco$gender)
+tobacco %>% group_by(gender) %>% descr(stats = "fivenum")
+```
+
+
+
+
 \pagebreak
+
+
+
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r global options, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -15,7 +15,20 @@ knitr::opts_chunk$set(
 
 
 
+
+
 # Histopathology Research Template 🔬  
+
+🔬👀📑🗃📊🏨🗄📇📖⚗📝🎶📈📉📃🖍
+🔬🔬🏋🚴🚙👨💻
+📸📺🎛🔭🔬💊🔐🍫🌸
+
+
+
+https://sbalci.github.io/histopathology-template/
+
+
+
 
 <!-- badges: start -->
 <!-- [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/histopathR)](https://CRAN.R-project.org/package=histopathR) -->
@@ -48,9 +61,10 @@ knitr::opts_chunk$set(
 
 
 
-This repository is a template for the codes I use in histopathology research.
+This repository is a template for the codes I use in [my and my friends' histopathology research](https://sbalci.github.io/cv/SerdarBalciMDPathologist.html).
 
-I have tried to collect common codes in [My R Codes For Data Analysis](https://sbalci.github.io/MyRCodesForDataAnalysis/), but I find the template repositories more helpful. LAter I plan to collect them under a package [histopathR](https://sbalci.github.io/histopathR/).
+
+I have tried to collect common codes in [My R Codes For Data Analysis](https://sbalci.github.io/MyRCodesForDataAnalysis/), but I find the template repositories more helpful. Later I plan to collect them under a package [histopathR](https://sbalci.github.io/histopathR/).
 
 ---
 
@@ -73,13 +87,34 @@ I have tried to collect common codes in [My R Codes For Data Analysis](https://s
 - [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
 https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.html
+
 https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.nb.html
 
 https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.nb.html
+
 https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.html
 
 
+https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.pdf
+
+https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.nb.html 
+ 
+https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.html 
+
+
+["The Quartz guide to bad data"nın Türkçe çevirisi: Kötü Veri Kılavuzu ](https://sbalci.github.io/Kotu-Veri-Kilavuzu/)
+
+
+
+# Minimum Required Columns
+
+
+
+
 # Please Give Me FeedBack
+
+
+
 
 https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
 

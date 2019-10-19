@@ -84,3 +84,27 @@ write2html(
 ```
 
 
+
+```{r summarytool crosstable, eval=FALSE, include=FALSE}
+ctable(tobacco$gender, tobacco$smoker, style = 'rmarkdown')
+```
+
+
+
+
+```{r summarytool crosstable html, eval=FALSE, include=FALSE}
+print(ctable(tobacco$gender, tobacco$smoker), method = 'render')
+print(ctable(tobacco$smoker, tobacco$diseased, prop = "r"), method = "render")
+with(tobacco, 
+     print(ctable(smoker, diseased, prop = 'n', totals = FALSE, chisq = TRUE),
+           headings = FALSE, method = "render"))
+```
+
+
+
+
+
+
+
+
+

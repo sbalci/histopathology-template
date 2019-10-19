@@ -1,6 +1,6 @@
 
 
-```{r eval=FALSE, include=FALSE}
+```{r load library, eval=FALSE, include=FALSE}
 #  https://easystats.github.io/correlation/
 # install.packages("devtools")
 # devtools::install_github("easystats/correlation")
@@ -8,13 +8,13 @@ library("correlation")
 ```
 
 
-```{r eval=FALSE, include=FALSE}
+```{r correlation, eval=FALSE, include=FALSE}
 correlation(iris)
 ```
 
 
 
-```{r eval=FALSE, include=FALSE}
+```{r correlation 2, eval=FALSE, include=FALSE}
 library(dplyr)
 
 iris %>% 
@@ -27,7 +27,7 @@ iris %>%
 
   
   
-```{r eval=FALSE, include=FALSE}
+```{r correlation 3, eval=FALSE, include=FALSE}
 correlation(select(iris, Species, starts_with("Sepal")),
             select(iris, Species, starts_with("Petal")),
             partial=TRUE)
@@ -36,14 +36,14 @@ correlation(select(iris, Species, starts_with("Sepal")),
   
             
             
-```{r eval=FALSE, include=FALSE}
+```{r correlation bayesian, eval=FALSE, include=FALSE}
 correlation(iris, bayesian=TRUE)
 
 ```
 
 
 
-```{r eval=FALSE, include=FALSE}
+```{r correlation report, eval=FALSE, include=FALSE}
 library(report)
 iris %>% 
   select(starts_with("Sepal")) %>% 
@@ -53,7 +53,7 @@ iris %>%
 ```
 
   
-```{r eval=FALSE, include=FALSE}
+```{r correlation report 2, eval=FALSE, include=FALSE}
 iris %>% 
   group_by(Species) %>% 
   correlation() %>% 

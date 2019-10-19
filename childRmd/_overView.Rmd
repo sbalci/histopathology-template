@@ -145,13 +145,84 @@ plot_correlation(na.omit(final_data), maxcat = 5L)
 
 
 ```{r xray, eval=FALSE, include=FALSE}
+xray::anomalies(airquality)
+
+xray::distributions(airquality)
 
 ```
 
 
 
 
+<!-- https://cran.r-project.org/web/packages/summarytools/vignettes/Recommendations-rmarkdown.html -->
+<!-- https://github.com/dcomtois/summarytools -->
 
+
+```{r summarytool options 1, eval=FALSE, include=FALSE}
+library(knitr)
+opts_chunk$set(comment=NA, 
+               prompt=FALSE,
+               cache=FALSE,
+               echo=TRUE,
+               results='asis' # add to individual summarytools chunks
+               )
+```
+
+
+```{r summarytool options 2, eval=FALSE, include=FALSE}
+library(summarytools)
+st_css()
+```
+
+
+```{r summarytool options 3, eval=FALSE, include=FALSE}
+st_options(bootstrap.css     = FALSE,       # Already part of the theme so no need for it
+           plain.ascii       = FALSE,       # One of the essential settings
+           style             = "rmarkdown", # Idem.
+           dfSummary.silent  = TRUE,        # Suppresses messages about temporary files
+           footnote          = NA,          # Keeping the results minimalistic
+           subtitle.emphasis = FALSE)       # For the vignette theme, this gives
+                                            # much better results. Your mileage may vary.
+``` 
+
+
+
+```{r summarytools frequencies, eval=FALSE, include=FALSE}
+library()
+freq(iris$Species, plain.ascii = FALSE, style = "rmarkdown")
+freq(iris$Species, report.nas = FALSE, headings = FALSE, cumul = TRUE, totals = TRUE)
+freq(tobacco$gender, style = 'rmarkdown')
+freq(tobacco[ ,c("gender", "age.gr", "smoker")])
+```
+
+
+```{r summarytool frequencies html render, eval=FALSE, include=FALSE}
+print(freq(tobacco$gender), method = 'render')
+```
+
+
+```{r summarytools df, eval=FALSE, include=FALSE}
+view(dfSummary(iris))
+```
+
+
+```{r summarytools dfs_grid, eval=FALSE, include=FALSE}
+dfSummary(tobacco, style = 'grid', graph.magnif = 0.75, tmp.img.dir = "/tmp")
+dfSummary(tobacco, plain.ascii = FALSE, style = "grid", 
+          graph.magnif = 0.75, valid.col = FALSE, tmp.img.dir = "/tmp")
+```
+
+
+```{r summarytools html, eval=FALSE, include=FALSE}
+print(dfSummary(tobacco, graph.magnif = 0.75), method = 'render')
+```
+
+
+```{r summarytools save output, eval=FALSE, include=FALSE}
+view(iris_stats_by_species,
+     file = here::here("out", "iris_stats_by_species.html")
+)
+```
 
 
 

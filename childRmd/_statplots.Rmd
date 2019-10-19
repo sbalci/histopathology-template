@@ -3,47 +3,23 @@
 ## Categorical Variables
 
 
-```{r, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
-dependent <- c("Lauren",
-               "CD44",
-               "Her2",
-               "MMR2",
-                 "TumorPDL1gr1",
-                 "TumorPDL1gr5",
-                 "inflPDL1gr1",
-                 "inflPDL1gr5"
+```{r define variables, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+dependent <- c("dependent1",
+               "dependent2"
                  )
 
-explanatory <- c("Cinsiyet",
-                 # "TumorYerlesimi",
-                 "Lauren",
-                 "Grade",
-                 "T_stage",
-                 "N_stage",
-                 "M_stage",
-                 "CD44",
-                 "Her2",
-                 "MMR2",
-                 "TumorPDL1gr1",
-                 "TumorPDL1gr5",
-                 "inflPDL1gr1",
-                 "inflPDL1gr5",
-                 "LVI",
-                 "PNI",
-                 "LenfNoduMetastazi")
+explanatory <- c("explanatory1",
+                 "explanatory2"
+                 )
 ```
 
 
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r select categorical, eval=FALSE, include=FALSE}
 mydataCategorical <- mydata %>% 
-    select(-Yas,
-           -TumorCapi,
-           -CerrahiTarih,
-           -genel_sagkalim,
-           -SonTarih,
-           -TNM
+    select(-var1,
+           -var2
     )
 ```
 

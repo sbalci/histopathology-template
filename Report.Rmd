@@ -1,11 +1,11 @@
 ---
-title: "Data Report"
+title: "Histopathology Research Template"
 description: |
-  Data Report  
-  Data Report
+  Codes Used in Histopathology Research  
+  Data Report for Histopathology Research
 author:
-  - name: Serdar
-    url: https://www.serdarbalci.com/
+  - name: Serdar Balci, MD, Pathologist
+    url: https://sbalci.github.io/histopathology-template/
     affiliation: serdarbalci.com
     affiliation_url: https://www.serdarbalci.com/
 date: "`r Sys.Date()`"
@@ -27,6 +27,13 @@ output:
     line_numbers: FALSE 
   distill::distill_article:
     toc: true
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
+vignette: >
+  %\VignetteIndexEntry{Recommendations for Rmarkdown}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 

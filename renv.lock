@@ -846,12 +846,6 @@
       "Source": "CRAN",
       "Hash": "23b8ec1bdea91c914af35b2c21dff286"
     },
-    "insight": {
-      "Package": "insight",
-      "Version": "0.5.0",
-      "Source": "CRAN",
-      "Hash": "027c04bff6dea0d2f1fbecbd74a41f79"
-    },
     "janitor": {
       "Package": "janitor",
       "Version": "1.2.0",
