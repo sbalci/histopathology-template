@@ -170,3 +170,35 @@ summary(modelsum(Surv(fu.time, fu.stat) ~ arm,
 
 
 
+
+# KM plot
+explanatory = c("perfor.factor")
+dependent = "Surv(time, status)"
+colon_s %>% 
+  surv.plot(dependent, explanatory, xlab="Time (days)", pval=TRUE, legend="none")
+
+Notes
+
+Use Hmisc::label() to assign labels to variables for tables and plots.
+
+label(colon_s$age.factor) = "Age (years)"
+
+Export dataframe tables directly or to R Markdown using knitr::kable().
+
+Note wrapper summary.missing() can be useful. Wraps mice::md.pattern.
+
+colon_s %>%
+  summary.missing(dependent, explanatory)
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -63,10 +63,15 @@ ROC analysis was performed by R-project (R Core Team (2018). R: A Language and e
 
 
 
+İSTATİSTİKSEL ANALİZ
+
+Veriler IBM SPSS Statistics 23 programına aktarılarak tamamlanmıştır. Çalışma verileri değerlendirilirken kategorik değişkenler için frekans dağılımı (sayı, yüzde), sayısal değişkenler için tanımlayıcı istatistikler (ortalama, standart sapma) verilmiştir. 
+Analiz sonucunda öncelikle varyans homojenliği için Levene testine, ardından farklılığın hangi grup ya da gruplardan kaynaklandığı “çoklu karşılaştırma testi”(Bonferonni ya da Tamhane’s T2) ile kontrol edilmiştir. Varyans homojenliğini sağlayan değişkenlerde gruplar arasındaki fark incelemesi için Bonferonni, varyans homojenliğini sağlamayan değişkenlerde gruplar arasında fark incelemesi için Tamhane’s T2 testine bakılmıştır. Ayrıca iki kategorik değişken arasındaki ilişkinin incelenemesinde ki kare testinden yararlanılmış ve sonuçlar tablolar halinde verilmiştir.
 
 
+Statistical Analysis
 
-
+Data were compiled with IBM SPSS Statistics 23 program. Categorical variables were defined with frequency distributions (number, percentage) and continious variables were defined with descriptive statistics (mean, standard deviation). One-way ANOVA was used to compare group differences. Levene test was used to evaluate whether the distribution is normal. Post-hoc tests were used to identify the different variables. Namely, Bonferonni and Tamhane’s T2 were used when variances are homogenous or not respectively. Distribution in categorical variables were evaluated using Chi-square tests. 
 
 
 

@@ -476,9 +476,9 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.12.2",
+      "Version": "1.12.6",
       "Source": "CRAN",
-      "Hash": "f2f76b5c5394350c4d4ee77dab51d35c"
+      "Hash": "e4c9420e97e4b574c7f7cd00fa4c1879"
     },
     "dbplyr": {
       "Package": "dbplyr",

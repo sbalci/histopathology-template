@@ -103,6 +103,28 @@ with(tobacco,
 
 
 
+```{r summarizer 1}
+# devtools::install_github("ewenharrison/summarizer")
+# library(summarizer)
+# data(colon_s)
+explanatory = c("age", "age.factor", "sex.factor", "obstruct.factor")
+dependent = "perfor.factor"
+colon_s %>%
+  summary.factorlist(dependent, explanatory, p=TRUE) %>% 
+    knitr::kable(row.names=FALSE, align=c("l", "l", "r", "r", "r"))
+
+explanatory = c("age.factor", "sex.factor", "obstruct.factor", "perfor.factor")
+dependent = 'mort_5yr'
+colon_s %>%
+  summary.factorlist(dependent, explanatory) %>% 
+    knitr::kable(row.names=FALSE, align=c("l", "l", "r", "r", "r"))
+
+
+```
+
+
+
+
 
 
 
