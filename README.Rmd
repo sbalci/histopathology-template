@@ -86,24 +86,25 @@ I have tried to collect common codes in [My R Codes For Data Analysis](https://s
 
 - [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
-https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.html
+- [R-Giris Dersi Sunum](https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.html)
 
-https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.nb.html
+- [R-Giris Dersi](https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.nb.html)
 
-https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.nb.html
+- [R-Markdown Dersi Sunum](https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.nb.html)
 
-https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.html
+- [R-Markdown Dersi](https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.html)
 
+- [How to Prepare Data for Histopathology Research pdf](https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.pdf)
 
-https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.pdf
-
-https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.nb.html 
+- [How to Prepare Data for Histopathology Research](https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.nb.html) 
  
-https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.html 
+- [How to Prepare Data for Histopathology Research Presentation](https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.html) 
 
 
-["The Quartz guide to bad data"nın Türkçe çevirisi: Kötü Veri Kılavuzu ](https://sbalci.github.io/Kotu-Veri-Kilavuzu/)
+- ["The Quartz guide to bad data"nın Türkçe çevirisi: Kötü Veri Kılavuzu ](https://sbalci.github.io/Kotu-Veri-Kilavuzu/)
 
+
+- [Create A MS Word Template for R Markdown](https://vimeo.com/110804387)
 
 
 # Minimum Required Columns

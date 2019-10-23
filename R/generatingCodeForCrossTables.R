@@ -3,8 +3,12 @@ magicfor::magic_for()
 for (i in 1:length(dependent)) {
     dependent_variable <- dependent[i]
     # explanatory_variable <- explanatory[!explanatory %in% dependent_variable]
+
+    explanation <- paste0("Cross Table ", dependent_variable)
     
-    y <- paste0("```{r crosstable", dependent_variable, ", message=FALSE, warning=FALSE}
+    y <- paste0("**",explanation,"** ", "\n", "\n",
+                
+"```{r crosstable", dependent_variable, ", message=FALSE, warning=FALSE}
 mydata %>%
     summary_factorlist(dependent = '", dependent_variable, "', 
                        explanatory = explanatory,

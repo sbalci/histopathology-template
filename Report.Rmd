@@ -21,6 +21,7 @@ output:
     toc: yes
     latex_engine: lualatex
     toc_depth: 5
+    keep_tex: yes
   redoc::redoc:
     highlight_outputs: TRUE
     margins: 1 
@@ -32,8 +33,8 @@ output:
     - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
 vignette: >
   %\VignetteIndexEntry{Recommendations for Rmarkdown}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 
@@ -95,6 +96,11 @@ vignette: >
 <!-- ```{r ROC, child = here::here('childRmd', '_ROC.Rmd')} -->
 <!-- ``` -->
 
+
+
+
+<!-- ```{r models, child = here::here('childRmd', '_models.Rmd')} -->
+<!-- ``` -->
 
 
 

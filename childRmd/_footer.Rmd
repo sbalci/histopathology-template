@@ -31,6 +31,10 @@ print(glue::glue(
     )
     )
 )
+
+# pacman::p_load(here, lubridate, glue)
+# here::here("data", glue("{today()}_trends.csv"))
+
 ```
 
 

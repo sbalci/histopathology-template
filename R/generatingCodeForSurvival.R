@@ -1,10 +1,14 @@
-# generating code for Categorical Plots ----
+# generating code for Survival ----
 magicfor::magic_for()
     for (i in 1:length(explanatoryKM)) {
     
       explanatoryKM_variable <- explanatoryKM[i]
       
-      y <- paste0("```{r Kaplan-Meier ", explanatoryKM_variable, "}
+      explanation <- paste0("Survival Analysis ", explanatoryKM_variable)
+      
+      y <- paste0("**",explanation,"** ", "\n", "\n",
+
+"```{r Kaplan-Meier ", explanatoryKM_variable, "}
 # Drawing Survival Curves Using ggplot2
 # https://rpkgs.datanovia.com/survminer/reference/ggsurvplot.html
 mydata %>%

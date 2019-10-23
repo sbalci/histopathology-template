@@ -1,7 +1,12 @@
 # generating code for descriptive statistics ----
 magicfor::magic_for()
 for (i in 1:length(names(mydataCategorical))) {
-y <- paste0("```{r ", names(mydataCategorical)[i], "}
+
+    explanation <- paste0("Descriptive Statistics ", names(mydataCategorical)[i])
+
+    y <- paste0("**",explanation,"** ", "\n", "\n",
+
+"```{r ", names(mydataCategorical)[i], "}
 mydataCategorical %>% 
   janitor::tabyl(", names(mydataCategorical)[i], ") %>%
   adorn_pct_formatting(rounding = 'half up', digits = 1) %>%

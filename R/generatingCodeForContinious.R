@@ -1,7 +1,12 @@
 # generating code for descriptive statistics ----
 magicfor::magic_for()
 for (i in 1:length(names(mydataContinious))) {
-y <- paste0("```{r ", names(mydataContinious)[i], "}
+
+    explanation <- paste0("Descriptive Statistics ", names(mydataContinious)[i])
+    
+    y <- paste0("**",explanation,"** ", "\n", "\n",
+
+"```{r ", names(mydataContinious)[i], "}
 mydataContinious %>% 
 jmv::descriptives(
     data = .,

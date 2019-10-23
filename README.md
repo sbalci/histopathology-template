@@ -3,6 +3,10 @@
 
 # Histopathology Research Template 🔬
 
+🔬👀📑🗃📊🏨🗄📇📖⚗📝🎶📈📉📃🖍 🔬🔬🏋🚴🚙👨💻 📸📺🎛🔭🔬💊🔐🍫🌸
+
+<https://sbalci.github.io/histopathology-template/>
+
 <!-- badges: start -->
 
 <!-- [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/histopathR)](https://CRAN.R-project.org/package=histopathR) -->
@@ -37,12 +41,13 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 Thanks\!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
 <!-- badges: end -->
 
-This repository is a template for the codes I use in histopathology
-research.
+This repository is a template for the codes I use in [my and my friends’
+histopathology
+research](https://sbalci.github.io/cv/SerdarBalciMDPathologist.html).
 
 I have tried to collect common codes in [My R Codes For Data
 Analysis](https://sbalci.github.io/MyRCodesForDataAnalysis/), but I find
-the template repositories more helpful. LAter I plan to collect them
+the template repositories more helpful. Later I plan to collect them
 under a package [histopathR](https://sbalci.github.io/histopathR/).
 
 -----
@@ -70,11 +75,34 @@ under a package [histopathR](https://sbalci.github.io/histopathR/).
 
   - [Happy Git and GitHub for the useR](https://happygitwithr.com/)
 
-<https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.html>
-<https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.nb.html>
+  - [R-Giris Dersi
+    Sunum](https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.html)
 
-<https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.nb.html>
-<https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.html>
+  - [R-Giris
+    Dersi](https://sbalci.github.io/MyRCodesForDataAnalysis/R-Giris.nb.html)
+
+  - [R-Markdown Dersi
+    Sunum](https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.nb.html)
+
+  - [R-Markdown
+    Dersi](https://sbalci.github.io/MyRCodesForDataAnalysis/R-Markdown.html)
+
+  - [How to Prepare Data for Histopathology Research
+    pdf](https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.pdf)
+
+  - [How to Prepare Data for Histopathology
+    Research](https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.nb.html)
+
+  - [How to Prepare Data for Histopathology Research
+    Presentation](https://sbalci.github.io/MyRCodesForDataAnalysis/How-to-Prepare-Data-for-Histopathology-Research.html)
+
+  - [“The Quartz guide to bad data”nın Türkçe çevirisi: Kötü Veri
+    Kılavuzu](https://sbalci.github.io/Kotu-Veri-Kilavuzu/)
+
+  - [Create A MS Word Template for R
+    Markdown](https://vimeo.com/110804387)
+
+# Minimum Required Columns
 
 # Please Give Me FeedBack
 

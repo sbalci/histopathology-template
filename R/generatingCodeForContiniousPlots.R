@@ -2,8 +2,10 @@
 magicfor::magic_for()
 for (i in 1:length(dependent)) {
     dependent_variable <- dependent[i]
-    
-    y <- paste0("```{r betweenstats boxviolinplot ", dependent_variable, " vs ", yContinious, "}
+    explanation <- paste0("Continious Plot betweenstats boxviolinplot ", dependent_variable, " vs ", yContinious)
+    y <- paste0("**",explanation,"** ", "\n", "\n",
+
+"```{r betweenstats boxviolinplot ", dependent_variable, " vs ", yContinious, "}
 mydata %>%
 ggstatsplot::ggbetweenstats(x = ", dependent_variable ,", y = ", yContinious, ")
 

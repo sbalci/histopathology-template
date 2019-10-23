@@ -64,7 +64,7 @@ source(here::here("R", "generatingCodeForSurvival.R"))
 
 
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 mydependent <-  "Surv(time, status)"
 explanatory <- "Organ"
 
@@ -87,8 +87,6 @@ mysurvival(mydata = whippleables, mydependent = mydependent, explanatory = expla
 explanatory <- c("Organ", "LVI")
 
 deneme <- purrr::map(explanatory, mysurvival, mydata = whippleables, mydependent = mydependent)
-
-
 ```
 
 
@@ -96,7 +94,7 @@ deneme <- purrr::map(explanatory, mysurvival, mydata = whippleables, mydependent
 
 # Pairwise comparison
 
-```{r eval=FALSE, include=FALSE}
+```{r pairwise comparison, eval=FALSE, include=FALSE}
 survminer::pairwise_survdiff(formula = Surv(time, Outcome) ~ ShellAnteriorOnly, 
                              data = mydata,
                              p.adjust.method = "BH")
