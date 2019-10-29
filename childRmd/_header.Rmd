@@ -25,6 +25,15 @@ knitr::opts_chunk$set(
 ```
 
 
+
+```{r exploreR reset environment, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html
+# exploreR::reset()
+```
+
+
+
+
 ```{r load library, include=FALSE}
 source(file = here::here("R", "loadLibrary.R"))
 ```

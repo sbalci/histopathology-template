@@ -1,6 +1,7 @@
 # Descriptive Statistics
 
-# Table 1  
+
+## Table 1  
 
 ```{r report data, eval=FALSE, include=FALSE}
 report::report(mydata)
@@ -13,31 +14,7 @@ report::report(mydata)
 
 library(arsenal)
 tab1 <- tableby(~ Cinsiyet + 
-Yas + 
-TumorYerlesimi + 
-TumorCapi + 
-HistolojikAltTip + 
-Lauren + 
-Grade + 
-TNM + 
-Tstage + 
-T_stage + 
-Nstage + 
-N_stage + 
-Mstage + 
-M_stage + 
-CD44 + 
-Her2 + 
-MMR + 
-MMR2 + 
-TumorPDL1gr1 + 
-TumorPDL1gr5 + 
-inflPDL1gr1 + 
-inflPDL1gr5 + 
-LVI + 
-PNI + 
-LenfNoduMetastazi + 
-Outcome
+Yas
                 ,
                 data = mydata)
 summary(tab1)
@@ -122,10 +99,11 @@ iris$Species %>% freq(cumul = FALSE, report.nas = FALSE) %>% tb()
 
 
 
-
-
-
-
+```{r explore descriptive statistics}
+iris %>% explore::describe()
+iris %>% explore::describe() %>% dplyr::filter(unique < 5)
+iris %>% explore::describe() %>% dplyr::filter(na > 0)
+```
 
 
 
@@ -134,7 +112,7 @@ iris$Species %>% freq(cumul = FALSE, report.nas = FALSE) %>% tb()
 
 
 
-# Categorical Variables
+## Categorical Variables
 
 
 
@@ -194,7 +172,44 @@ print(age_stats, report.nas = FALSE, totals = FALSE, display.type = FALSE,
 ```
 
 
-# Split-Group Stats Categorical
+
+
+```{r explore categorical variables}
+iris %>% explore::describe(Species)
+```
+
+
+```{r SmartEDA, eval=FALSE, include=FALSE}
+## Frequency or custom tables for categorical variables
+SmartEDA::ExpCTable(
+  Carseats,
+  Target = NULL,
+  margin = 1,
+  clim = 10,
+  nlim = 5,
+  round = 2,
+  bin = NULL,
+  per = T
+)
+```
+
+
+
+```{r inspectdf, eval=FALSE, include=FALSE}
+# some example data
+data(starwars, package = "dplyr")
+data(storms, package = "dplyr")
+star_1 <- starwars %>% sample_n(50)
+star_2 <- starwars %>% sample_n(50) %>% select(-1, -2)
+
+inspectdf::inspect_cat(starwars)
+
+inspectdf::inspect_cat(starwars)$levels$hair_color
+```
+
+
+
+### Split-Group Stats Categorical
 
 ```{r summarytools Split-Group categorical, eval=FALSE, include=FALSE}
 grouped_freqs <- stby(data = tobacco$smoker, 
@@ -206,13 +221,32 @@ grouped_freqs %>% tb(order = 2)
 ```
 
 
-# Grouped Categorical
+
+
+
+
+### Grouped Categorical
 
 ```{r summarytools Grouped Categorical, eval=FALSE, include=FALSE}
 stby(list(x = tobacco$smoker, y = tobacco$diseased), tobacco$gender, ctable)
 with(tobacco, stby(list(x = smoker, y = diseased), gender, ctable))
 ```
 
+
+
+
+```{r SmartEDA category, eval=FALSE, include=FALSE}
+SmartEDA::ExpCTable(
+  Carseats,
+  Target = "Price",
+  margin = 1,
+  clim = 10,
+  nlim = NULL,
+  round = 2,
+  bin = 4,
+  per = F
+)
+```
 
 
 
@@ -224,7 +258,7 @@ with(tobacco, stby(list(x = smoker, y = diseased), gender, ctable))
 ---
 
 
-# Continious Variables
+## Continious Variables
 
 
 ```{r categorise cut off continious variables, eval=FALSE, include=FALSE}
@@ -266,7 +300,7 @@ source(here::here("R", "generatingCodeForContinious.R"))
 
 
 
-```{r tableone categorical, eval=FALSE, include=FALSE}
+```{r tableone continious, eval=FALSE, include=FALSE}
 tab <- tableone::CreateTableOne(data = pbc)
 ?print.ContTable
 tab$ContTable
@@ -275,9 +309,56 @@ print(tab$ContTable, nonnormal = c("albumin", "copper"))
 
 
 
+```{r explore continious variables}
+iris %>% explore::describe(Sepal.Length)
+```
 
 
-# Split-Group Stats Continious
+```{r SmartEDA, eval=FALSE, include=FALSE}
+## Summary statistics by – overall
+SmartEDA::ExpNumStat(
+  Carseats,
+  by = "A",
+  gp = NULL,
+  Qnt = seq(0, 1, 0.1),
+  MesofShape = 2,
+  Outlier = TRUE,
+  round = 2
+)
+```
+
+
+
+
+
+```{r inspectdf, eval=FALSE, include=FALSE}
+inspectdf::inspect_num(storms, breaks = 10)
+
+inspectdf::inspect_num(storms)$hist$pressure
+
+inspectdf::inspect_num(storms, breaks = 10) %>%
+  inspectdf::show_plot()
+
+inspectdf::inspect_num(storms, storms[-c(1:10), -1])
+
+inspectdf::inspect_num(storms, storms[-c(1:10), -1]) %>% 
+  inspectdf::show_plot()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Split-Group Stats Continious
 
 
 ```{r summarytools Split-Group continious, eval=FALSE, include=FALSE}
@@ -290,7 +371,34 @@ grouped_descr %>% tb(order = 2)
 ```
 
 
-# Grouped Continious
+```{r dlookr, eval=FALSE, include=FALSE}
+carseats %>%
+  group_by(US) %>% 
+  dlookr::describe(Sales, Income) 
+
+carseats %>%
+  group_by(US, Urban) %>% 
+  dlookr::describe(Sales, Income) 
+
+```
+
+
+
+
+```{r dlookr target, eval=FALSE, include=FALSE}
+categ <- dlookr::target_by(carseats, US)
+cat_num <- dlookr::relate(categ, Sales)
+cat_num
+summary(cat_num)
+plot(cat_num)
+```
+
+
+
+
+
+
+### Grouped Continious
 
 ```{r summarytools Grouped Continious, eval=FALSE, include=FALSE}
 (iris_stats_by_species <- stby(data = iris, 
@@ -316,6 +424,20 @@ tobacco$gender <- forcats::fct_explicit_na(tobacco$gender)
 tobacco %>% group_by(gender) %>% descr(stats = "fivenum")
 ```
 
+
+
+```{r SmartEDA category, eval=FALSE, include=FALSE}
+## Summary statistics by – category
+SmartEDA::ExpNumStat(
+  Carseats,
+  by = "GA",
+  gp = "Urban",
+  Qnt = seq(0, 1, 0.1),
+  MesofShape = 2,
+  Outlier = TRUE,
+  round = 2
+)
+```
 
 
 

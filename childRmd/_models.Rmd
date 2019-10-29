@@ -125,7 +125,16 @@ colon_s %>%
 
 
 
+# ANOVA
 
+
+```{r dlookr target categorical vs numeric, eval=FALSE, include=FALSE}
+num_cat <- dlookr::relate(num, ShelveLoc)
+num_cat
+summary(num_cat)
+plot(num_cat)
+
+```
 
 
 

@@ -1,1 +1,115 @@
+# Hypothesis Tests
+
+
+
+## Tests of Normality
+
+
+```{r dlookr normality tests, eval=FALSE, include=FALSE}
+dlookr::normality(carseats)
+dlookr::normality(carseats, Sales, CompPrice, Income)
+dlookr::normality(carseats, Sales:Income)
+dlookr::normality(carseats, -(Sales:Income))
+carseats %>%
+  dlookr::normality() %>%
+  dplyr::filter(p_value <= 0.01) %>% 
+  arrange(abs(p_value))
+carseats %>%
+  group_by(ShelveLoc, US) %>%
+  dlookr::normality(Income) %>% 
+  arrange(desc(p_value))
+carseats %>%
+  mutate(log_income = log(Income)) %>%
+  group_by(ShelveLoc, US) %>%
+  dlookr::normality(log_income) %>%
+  dplyr::filter(p_value > 0.01)
+```
+
+
+```{r dlookr normality plots, eval=FALSE, include=FALSE}
+dlookr::plot_normality(carseats, Sales, CompPrice)
+carseats %>%
+  dplyr::filter(ShelveLoc == "Good") %>%
+  group_by(US) %>%
+  dlookr::plot_normality(Income)
+
+```
+
+
+
+
+## Categorical
+
+
+
+
+```{r dlookr target categorical, eval=FALSE, include=FALSE}
+categ <- dlookr::target_by(carseats, US)
+cat_cat <- dlookr::relate(categ, ShelveLoc)
+cat_cat
+summary(cat_cat)
+plot(cat_cat)
+```
+
+
+### Chi-Square Cramer Association Predictive Power
+
+
+```{r SmartEDA statistics of categorical variables, eval=FALSE, include=FALSE}
+## Summary statistics of categorical variables
+SmartEDA::ExpCatStat(
+  Carseats,
+  Target = "Urban",
+  result = "Stat",
+  clim = 10,
+  nlim = 5,
+  Pclass = "Yes"
+)
+```
+
+
+
+```{r inspectdf categorical, eval=FALSE, include=FALSE}
+inspectdf::inspect_cat(star_1, star_2)
+```
+
+
+
+
+
+## Continious
+
+```{r dlookr target continious, eval=FALSE, include=FALSE}
+num <- dlookr::target_by(carseats, Sales)
+num_num <- dlookr::relate(num, Price)
+num_num
+summary(num_num)
+plot(num_num)
+plot(num_num, hex_thres = 350)
+```
+
+
+
+
+
+
+
+## Odds
+
+
+```{r SmartEDA Odds, eval=FALSE, include=FALSE}
+## Inforamtion value and Odds value
+SmartEDA::ExpCatStat(
+  Carseats,
+  Target = "Urban",
+  result = "IV",
+  clim = 10,
+  nlim = 5,
+  Pclass = "Yes"
+)
+```
+
+
+
+
 

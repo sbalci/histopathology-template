@@ -50,10 +50,35 @@ vignette: >
 <!-- ``` -->
 
 
+```{r explore data dictionary}
+# iris %>% explore::data_dict_md(output_dir = here::here())
+# description <- data.frame(
+#                   variable = c("Species"), 
+#                   description = c("Species of Iris flower"))
+
+data_dict_md(data = mydata, 
+             title = "Data Set", 
+             # description =  description, 
+             output_file = "data_dict.md",
+             output_dir = here::here("childRmd"))
+```
+
+
+```{r data dictionary, child = here::here('childRmd', 'data_dict.md')}
+```
+
+
 
 
 ```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')}
 ```
+
+
+
+
+```{r impute, child = here::here('childRmd', '_impute.Rmd')}
+```
+
 
 
 
@@ -74,7 +99,7 @@ vignette: >
 \elandscape
 
 
-```{r statplots, child = here::here('childRmd', '_statplots.Rmd')}
+```{r plots, child = here::here('childRmd', '_plots.Rmd')}
 ```
 
 
@@ -93,15 +118,12 @@ vignette: >
 
 
 
-<!-- ```{r ROC, child = here::here('childRmd', '_ROC.Rmd')} -->
-<!-- ``` -->
+```{r ROC, child = here::here('childRmd', '_ROC.Rmd')}
+```
 
 
-
-
-<!-- ```{r models, child = here::here('childRmd', '_models.Rmd')} -->
-<!-- ``` -->
-
+```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')}
+```
 
 
 
@@ -110,6 +132,13 @@ vignette: >
 ```
 
 \elandscape
+
+
+```{r models, child = here::here('childRmd', '_models.Rmd')}
+```
+
+
+
 
 
 ```{r footer, child = here::here('childRmd', '_footer.Rmd')}

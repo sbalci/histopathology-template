@@ -1,3 +1,61 @@
+# Define Variable Types
+
+```{r define continious variables, eval=FALSE, include=FALSE}
+mydataDescription <- describer::describe(iris)
+
+mydataDescription %>% 
+    janitor::clean_names() %>% 
+    dplyr::filter(column_class == "numeric") %>% 
+    dplyr::select(column_name) %>% 
+    dplyr::pull() -> continiousVariables
+```
+
+
+
+```{r inspectdf column types, eval=FALSE, include=FALSE}
+inspectdf::inspect_types(starwars)
+
+inspectdf::inspect_types(starwars) %>% 
+  dplyr::filter(type == "character") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> characterVariables
+
+inspectdf::inspect_types(starwars) %>% 
+  dplyr::filter(type == "list") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> listVariables
+
+inspectdf::inspect_types(starwars) %>% 
+  dplyr::filter(type == "numeric") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> numericVariables
+
+inspectdf::inspect_types(starwars) %>% 
+  dplyr::filter(type == "integer") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> integerVariables
+```
+
+
+```{r inspectdf column types 2, eval=FALSE, include=FALSE}
+inspectdf::inspect_types(starwars) %>% inspectdf::show_plot()
+
+inspectdf::inspect_types(star_1, star_2)
+```
+
+
+
+
+
+
+
+
+
+# Overview / Exploratory Data Analysis (EDA)
 
 
 ```{r summarytools, eval=FALSE, include=FALSE}
@@ -34,17 +92,6 @@ mtcars %>%
 describe(mtcars)
 describe(iris)
 describe(state.name)
-```
-
-
-```{r define continious variables, eval=FALSE, include=FALSE}
-mydataDescription <- describer::describe(iris)
-
-mydataDescription %>% 
-    janitor::clean_names() %>% 
-    dplyr::filter(column_class == "numeric") %>% 
-    dplyr::select(column_name) %>% 
-    dplyr::pull() -> continiousVariables
 ```
 
 
@@ -274,6 +321,374 @@ view(iris_stats_by_species,
      file = here::here("out", "iris_stats_by_species.html")
 )
 ```
+
+
+
+
+
+```{r explore 1, eval=FALSE, include=FALSE}
+# https://github.com/rolkra/explore
+# https://cran.r-project.org/web/packages/explore/vignettes/explore.html
+# https://cran.r-project.org/web/packages/explore/vignettes/explore_mtcars.html
+
+
+# library(dplyr)
+# library(explore)
+
+explore::explore(iris)
+
+# iris %>% report(output_file = "report.html", output_dir = here::here())
+
+
+# iris$is_versicolor <- ifelse(iris$Species == "versicolor", 1, 0)
+# iris %>%
+#   report(output_file = "report.html",
+#          output_dir = here::here(),
+#          target = is_versicolor
+# # , split = FALSE
+# )
+```
+
+
+```{r explore 2, eval=FALSE, include=FALSE}
+iris %>% explore::explore_tbl()
+mtcars %>% explore::explore_tbl()
+
+iris %>% explore::describe_tbl()
+
+iris %>% explore::explore(Species)
+iris %>% explore::explore(Sepal.Length)
+iris %>% explore::explore(Sepal.Length, target = is_versicolor)
+iris %>% explore::explore(Sepal.Length, target = is_versicolor, split = FALSE)
+iris %>% explore::explore(Sepal.Length, target = Species)
+iris %>% explore::explore(Sepal.Length, target = Petal.Length)
+
+
+mtcars %>% 
+  explore_all()
+
+iris %>% 
+  select(Sepal.Length, Sepal.Width) %>% 
+  explore::explore_all()
+
+iris %>% 
+  select(Sepal.Length, Sepal.Width, is_versicolor) %>% 
+  explore::explore_all(target = is_versicolor)
+
+iris %>% 
+  select(Sepal.Length, Sepal.Width, is_versicolor) %>% 
+  explore::explore_all(target = is_versicolor, split = FALSE)
+
+iris %>% 
+  select(Sepal.Length, Sepal.Width, Species) %>% 
+  explore::explore_all(target = Species)
+
+iris %>% 
+  select(Sepal.Length, Sepal.Width, Petal.Length) %>% 
+  explore::explore_all(target = Petal.Length)
+```
+
+
+```{r explore 3, eval=FALSE, include=FALSE, fig.height=explore::total_fig_height(iris)}
+iris %>% 
+  explore::explore_all()
+```
+
+
+```{r explore 4, eval=FALSE, fig.height=explore::total_fig_height(iris, target = Species), explore::total_fig_height(iris, target=, include=FALSE}
+iris %>% explore::explore_all(target = Species)
+```
+
+
+```{r explore min-max, eval=FALSE, include=FALSE}
+iris %>% explore::explore(Sepal.Length, min_val = 4.5, max_val = 7)
+```
+
+
+```{r explore 5}
+iris %>% explore::explore(Sepal.Length, auto_scale = FALSE)
+```
+
+
+```{r explore describe}
+mtcars %>% explore::describe()
+```
+
+
+
+
+```{r dlookr, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html
+
+dlookr::describe(carseats
+                 # ,
+                 # cols = c(statistic)
+                 )
+
+# dlookr::describe(carseats, Sales, CompPrice, Income)
+# dlookr::describe(carseats, Sales:Income)
+# dlookr::describe(carseats, -(Sales:Income))
+carseats %>%
+  dlookr::describe() %>%
+  dplyr::select(variable, skewness, mean, p25, p50, p75) %>% 
+  dplyr::filter(!is.na(skewness)) %>% 
+  arrange(desc(abs(skewness)))
+```
+
+
+
+```{r dlookr EDA Report pdf, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html
+
+carseats %>%
+  dlookr::eda_report(target = Sales,
+                     output_format = "pdf",
+             output_file = "EDA.pdf"
+             )
+```
+
+
+
+```{r dlookr EDA Report html, eval=FALSE, include=FALSE}
+carseats %>%
+  dlookr::eda_report(target = Sales,
+             output_format = "html",
+             output_file = "EDA.html"
+             )
+```
+
+
+
+```{r SmartEDA, eval=FALSE, include=FALSE}
+# install.packages("ISLR")
+library("ISLR")
+# install.packages("SmartEDA")
+library("SmartEDA")
+## Load sample dataset from ISLR pacakge
+Carseats <- ISLR::Carseats
+
+## overview of the data; 
+SmartEDA::ExpData(data=Carseats,type=1)
+## structure of the data    
+SmartEDA::ExpData(data=Carseats,type=2)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Information value
+
+
+
+```{r SmartEDA variable importance based on Information value, eval=FALSE, include=FALSE}
+# Variable importance based on Information value
+SmartEDA::ExpCatStat(
+  Carseats,
+  Target = "Urban",
+  result = "Stat",
+  clim = 10,
+  nlim = 5,
+  bins = 10,
+  Pclass = "Yes",
+  plot = TRUE,
+  top = 10,
+  Round = 2
+)
+```
+
+
+# Feature imbalance
+
+
+```{r Feature imbalance inspectdf, eval=FALSE, include=FALSE}
+inspectdf::inspect_imb(starwars)
+
+inspectdf::inspect_imb(starwars) %>% inspectdf::show_plot()
+
+inspectdf::inspect_imb(star_1, star_2)
+
+inspectdf::inspect_imb(star_1, star_2) %>% inspectdf::show_plot()
+```
+
+
+
+
+# Memory usage
+  
+```{r memory usage inspectdf, eval=FALSE, include=FALSE}
+inspectdf::inspect_mem(starwars)
+
+inspectdf::inspect_mem(starwars) %>% inspectdf::show_plot()
+
+inspectdf::inspect_mem(star_1, star_2)
+
+inspectdf::inspect_mem(star_1, star_2) %>% inspectdf::show_plot()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+# SmartEDA
+
+Create HTML EDA report
+
+Create a exploratory data analysis report in HTML format
+
+    ExpReport(Carseats,Target="Urban",label=NULL,theme="Default",op_file="test.html",op_dir=getwd(),sc=2,
+    sn=2,Rc="Yes")
+
+Quantile-quantile plot for numeric variables
+
+    ExpOutQQ(CData,nlim=10,fname=NULL,Page=c(2,2),sample=4)
+
+Parallel Co-ordinate plots
+
+## Defualt ExpParcoord funciton
+    ExpParcoord(CData,Group=NULL,Stsize=NULL,Nvar=c("Price","Income","Advertising","Population","Age",
+    "Education"))
+## With Stratified rows and selected columns only
+  ExpParcoord(CData,Group="ShelveLoc",Stsize=c(10,15,20),Nvar=c("Price","Income"),Cvar=c("Urban","US"))
+## Without stratification
+  ExpParcoord(CData,Group="ShelveLoc",Nvar=c("Price","Income"),Cvar=c("Urban","US"),scale=NULL)
+
+Exploratory analysis - Custom tables, summary statistics
+
+Descriptive summary on all input variables for each level/combination of group variable. Also while running the analysis we can filter row/cases of the data.
+
+    ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=FALSE)
+    ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt=NULL)
+    ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=TRUE,filt=NULL)
+    ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt="Population>150")
+    ExpCustomStat(Carseats,Cvar=c("US","ShelveLoc"),gpby=TRUE,filt="Urban=='Yes' & Population>150")
+
+
+
+ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc","Education"),gpby=FALSE)
+
+
+ExpCTable(Carseats,Target=NULL,clim=5,nlim=15,round=2,bin=NULL,per=F)
+
+ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=FALSE)
+
+ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt=NULL)
+
+ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=TRUE,filt=NULL)
+
+ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt="Population>150")
+
+ExpCustomStat(Carseats,Cvar=c("US","ShelveLoc"),gpby=TRUE,filt="Urban=='Yes' & Population>150")
+
+options(width = 150)
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('Count','mean','sum','var','sd','min','max','IQR'))
+
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('min','p0.25','median','p0.75','max'))
+
+options(width = 150)
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('Count','mean','sum','var','min','median','max'),filt="Urban=='Yes'")
+
+options(width=150)
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('Count','mean','sum','median','IQR'),filt="Urban=='Yes' & Population>150")
+
+data_sam = Carseats[,]
+data_sam[sample(1:400,30),"Sales"] <- 999
+data_sam[sample(1:400,20),"CompPrice"] <- -9
+data_sam[sample(1:400,45),"Income"] <- 999
+ExpCustomStat(data_sam,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('Count','mean','sum','min'),filt="All %ni% c(999,-9)")
+
+options(width = 150)
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Education","Income"),stat = c('Count','mean','sum','var','sd','IQR','median'),filt=c("ShelveLoc=='Good'^Urban=='Yes'^Price>=150^All^US=='Yes'"))
+
+options(width = 150)
+ExpCustomStat(Carseats,Cvar = c("Urban","ShelveLoc"), Nvar=c("Population","Sales"), stat = c('Count','Prop','mean','min','P0.25','median','p0.75','max'),gpby=FALSE)
+
+options(width = 150)
+ExpCustomStat(Carseats,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("CompPrice","Income"), stat = c('Count','Prop','mean','sum','PS','min','max','IQR','sd'), gpby = TRUE)
+
+options(width = 150)
+ExpCustomStat(Carseats,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("CompPrice","Income"), stat = c('Count','Prop','mean','sum','PS','median','IQR'), gpby = TRUE,filt="Urban=='Yes'")
+
+options(width = 150)
+data_sam = Carseats[,]
+data_sam[sample(1:400,30),"Sales"] <- 888
+data_sam[sample(1:400,20),"CompPrice"] <- 999
+data_sam[sample(1:400,45),"Income"] <- 999
+ExpCustomStat(data_sam,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("Sales","CompPrice","Income"), stat = c('Count','Prop','mean','sum','PS'), gpby = TRUE,filt="All %ni% c(888,999)")
+
+ExpCustomStat(Carseats,Cvar = c("Urban","US"), Nvar=c("Population","Sales","CompPrice"), stat = c('Count','Prop','mean','sum','var','IQR'), filt=c("ShelveLoc=='Good'^Urban=='Yes'^Price>=150"))
+
+options(width = 150)
+ExpCustomStat(Carseats,Cvar = c("Urban"), Nvar=c("Population","Sales"), stat = c('Count','Prop'),gpby=TRUE,dcast=TRUE)
+
+##Frequency table for categorical variables
+ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=FALSE)
+
+##Crosstabulation between categorical variables
+ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt=NULL)
+ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=TRUE,filt=NULL)
+
+##Adding filters for custom tables
+ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt="Population>150")
+ExpCustomStat(Carseats,Cvar=c("US","ShelveLoc"),gpby=TRUE,filt="Urban=='Yes' & Population>150")
+
+## Numeric variable summary
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('Count','mean','sum','var','min','max'))
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('min','p0.25','median','p0.75','max'))
+
+## Adding filters for complete data (like base Subset)
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('Count','mean','sum','var'),filt="Urban=='Yes'")
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('Count','mean','sum'),filt="Urban=='Yes' & Population>150")
+
+## Filter unique value from all the numeric variables
+ExpCustomStat(data_sam,Nvar=c("Population","Sales","CompPrice","Income"),stat = c('Count','mean','sum','min'),filt="All %ni% c(999,-9)")
+
+## Adding filters at variable level
+ExpCustomStat(Carseats,Nvar=c("Population","Sales","CompPrice","Education","Income"),stat = c('Count','mean','sum','var','sd','IQR','median'),filt=c("ShelveLoc=='Good'^Urban=='Yes'^Price>=150^ ^US=='Yes'"))
+
+##Numerical summaries by category
+##Variable summary report (One group variable)
+ExpCustomStat(Carseats,Cvar = c("Urban","ShelveLoc"), Nvar=c("Population","Sales"), stat = c('Count','Prop','mean','min','P0.25','median','p0.75','max'),gpby=FALSE)
+
+##Variable summary report (More than One group variable)
+ExpCustomStat(Carseats,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("CompPrice","Income"), stat = c('Count','Prop','mean','sum','PS','min','max','IQR','sd'), gpby = TRUE)
+
+##Variable summary report (More than One group variable) with filter
+ExpCustomStat(Carseats,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("CompPrice","Income"), stat = c('Count','Prop','mean','sum','PS','P0.25','median','p0.75'), gpby = TRUE,filt="Urban=='Yes'")
+ExpCustomStat(data_sam,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("Sales","CompPrice","Income"), stat = c('Count','Prop','mean','sum','PS'), gpby = TRUE,filt="All %ni% c(888,999)")
+ExpCustomStat(Carseats,Cvar = c("Urban","US"), Nvar=c("Population","Sales","CompPrice"), stat = c('Count','Prop','mean','sum','var','min','max'), filt=c("ShelveLoc=='Good'^Urban=='Yes'^Price>=150"))
+
+
+
+
+
+
+
 
 
 

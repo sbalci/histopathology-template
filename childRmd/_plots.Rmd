@@ -232,6 +232,73 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 
 
 
+```{r SmartEDA column chart, eval=FALSE, include=FALSE}
+## column chart
+SmartEDA::ExpCatViz(
+  Carseats,
+  target = "Urban",
+  fname = NULL,
+  clim = 10,
+  col = NULL,
+  margin = 2,
+  Page = c(2, 1),
+  sample = 2
+)
+```
+
+
+```{r SmartEDA bar graph, eval=FALSE, include=FALSE}
+## Stacked bar graph
+SmartEDA::ExpCatViz(
+  Carseats,
+  target = "Urban",
+  fname = NULL,
+  clim = 10,
+  col = NULL,
+  margin = 2,
+  Page = c(2, 1),
+  sample = 2
+)
+```
+
+
+```{r SmartEDA information values, eval=FALSE, include=FALSE}
+## Variable importance graph using information values
+SmartEDA::ExpCatStat(
+  Carseats,
+  Target = "Urban",
+  result = "Stat",
+  Pclass = "Yes",
+  plot = TRUE,
+  top = 20,
+  Round = 2
+)
+```
+
+
+
+
+```{r inspectdf plot, eval=FALSE, include=FALSE}
+inspectdf::inspect_cat(starwars) %>% inspectdf::show_plot()
+```
+
+
+
+```{r inspectdf plot, eval=FALSE, include=FALSE}
+inspectdf::inspect_cat(starwars) %>% 
+  inspectdf::show_plot(high_cardinality = 1)
+```
+
+
+
+```{r inspectdf categorical plot, eval=FALSE, include=FALSE}
+inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
+```
+
+
+
+
+
 
 <!-- ## Continious Variables -->
 
@@ -620,6 +687,58 @@ ggplot(data = dxchanges,
 <!--            data = dxchanges) -->
 
 <!-- ``` -->
+
+
+```{r SmartEDA Boxplot by category, eval=FALSE, include=FALSE}
+## Generate Boxplot by category
+SmartEDA::ExpNumViz(
+  mtcars,
+  target = "gear",
+  type = 2,
+  nlim = 25,
+  fname = file.path(here::here(), "Mtcars2"),
+  Page = c(2, 2)
+)
+```
+
+
+```{r SmartEDA density plot by category, eval=FALSE, include=FALSE}
+## Generate Density plot
+SmartEDA::ExpNumViz(
+  mtcars,
+  target = NULL,
+  type = 3,
+  nlim = 25,
+  fname = file.path(here::here(), "Mtcars3"),
+  Page = c(2, 2)
+)
+```
+
+
+```{r SmartEDA scatterplot by category, eval=FALSE, include=FALSE}
+## Generate Scatter plot
+SmartEDA::ExpNumViz(
+  mtcars,
+  target = "carb",
+  type = 3,
+  nlim = 25,
+  fname = file.path(here::here(), "Mtcars4"),
+  Page = c(2, 2)
+)
+```
+
+
+```{r SmartEDA scatterplots by category, eval=FALSE, include=FALSE}
+SmartEDA::ExpNumViz(mtcars, target = "am", scatter = TRUE)
+```
+
+
+
+
+
+
+
+
 
 
 

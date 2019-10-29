@@ -7,6 +7,25 @@ mydata <- janitor::clean_names(mydata)
 ```
 
 
+
+
+
+```{r explore, eval=FALSE, include=FALSE}
+iris %>% 
+  explore::clean_var(data = ., 
+                     var = Sepal.Length,  
+            min_val = 4.5, 
+            max_val = 7.0, 
+            na = 5.8, 
+            name = "sepal_length") %>% 
+  describe()
+```
+
+
+
+
+
+
 ```{r summary}
 summarytools::view(summarytools::dfSummary(mydata))
 glimpse(mydata)

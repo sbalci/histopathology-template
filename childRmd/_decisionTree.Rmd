@@ -1,0 +1,24 @@
+---
+title: "Decision Tree"
+output: html_notebook
+---
+
+
+
+```{r explore decision tree, eval=FALSE, include=FALSE}
+iris %>% explore::explain_tree(target = Species)
+
+
+iris$is_versicolor <- ifelse(iris$Species == "versicolor", 1, 0)
+iris %>% select(-Species) %>% explain_tree(target = is_versicolor)
+
+iris %>% explain_tree(target = Sepal.Length)
+```
+
+
+
+
+
+
+
+
