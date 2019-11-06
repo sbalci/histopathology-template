@@ -1,0 +1,248 @@
+redoc-yamlheader:
+  code: "---\ntitle: \"Histopathology Research Template\"\ndescription: |\n  Codes
+    Used in Histopathology Research  \n  Data Report for Histopathology Research\nauthor:\n
+    \ - name: Serdar Balci, MD, Pathologist\n    url: https://sbalci.github.io/histopathology-template/\n
+    \   affiliation: serdarbalci.com\n    affiliation_url: https://www.serdarbalci.com/\ndate:
+    \"[[redoc-inlinecode-1]]\"\nheader-includes:\n- \\usepackage{pdflscape}\n- \\newcommand{\\blandscape}{\\begin{landscape}}\n-
+    \\newcommand{\\elandscape}{\\end{landscape}}\n- \\usepackage{xcolor}\n- \\definecolor{fancyTextColor}{HTML}{4284f5}\n-
+    \\definecolor{fancyTextColor}{RGB}{66, 132, 245}\n- \\definecolor{fancyTextColor}{rgb}{0.258,
+    0.517, 0.960}\n- \\usepackage{afterpage}\noutput: \n  redoc::redoc:\n    highlight_outputs:
+    TRUE\n    margins: 1 \n    line_numbers: FALSE \n  rmarkdown::html_vignette: \n
+    \   css: \n    - !expr system.file(\"rmarkdown/templates/html_vignette/resources/vignette.css\",
+    package = \"rmarkdown\")\n  distill::distill_article:\n    toc: true\n  pdf_document:
+    \n    fig_caption: yes\n    highlight: kate\n    number_sections: yes\n    toc:
+    yes\n    latex_engine: lualatex\n    toc_depth: 5\n    keep_tex: yes\nvignette:
+    >\n  %\\VignetteIndexEntry{Recommendations for Rmarkdown}\n  %\\VignetteEncoding{UTF-8}\n
+    \ %\\VignetteEngine{knitr::rmarkdown}\n---"
+  label: yamlheader
+  type: header
+  name: redoc-yamlheader
+  lineno: 1
+redoc-htmlcomment-1:
+  code: <!-- [[redoc-codechunk-3]]-->
+  label: htmlcomment
+  type: inline
+  name: redoc-htmlcomment-1
+  lineno: 10
+redoc-inlinecode-1:
+  code: '`r Sys.Date()`'
+  label: inlinecode
+  type: inline
+  name: redoc-inlinecode-1
+  lineno: 11
+redoc-htmlcomment-2:
+  code: <!-- [[redoc-codechunk-5]]-->
+  label: htmlcomment
+  type: inline
+  name: redoc-htmlcomment-2
+  lineno: 16
+redoc-latex-1:
+  code: \pagebreak
+  label: latex
+  type: block
+  name: redoc-latex-1
+  lineno: 31
+redoc-latex-8:
+  code: \pagebreak
+  label: latex
+  type: block
+  name: redoc-latex-8
+  lineno: 32
+redoc-latex-2:
+  code: \newpage
+  label: latex
+  type: block
+  name: redoc-latex-2
+  lineno: 41
+redoc-latex-5:
+  code: \newpage
+  label: latex
+  type: block
+  name: redoc-latex-5
+  lineno: 42
+redoc-latex-3:
+  code: \blandscape
+  label: latex
+  type: block
+  name: redoc-latex-3
+  lineno: 45
+redoc-codechunk-1:
+  code: |-
+    ```{r header, child = here::here('childRmd', '_header.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-1
+  lineno: 46
+redoc-latex-9:
+  code: \newpage
+  label: latex
+  type: block
+  name: redoc-latex-9
+  lineno: 46
+redoc-codechunk-2:
+  code: |-
+    ```{r importData, child = here::here('childRmd', '_importData.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-2
+  lineno: 49
+redoc-latex-6:
+  code: \blandscape
+  label: latex
+  type: block
+  name: redoc-latex-6
+  lineno: 49
+redoc-htmlcomment-3:
+  code: <!-- [[redoc-codechunk-11]]-->
+  label: htmlcomment
+  type: inline
+  name: redoc-htmlcomment-3
+  lineno: 51
+redoc-codechunk-3:
+  code: "```{r overview, child = here::here('childRmd', '_overView.Rmd')} -->\n<!--
+    ``` "
+  label: codechunk
+  type: block
+  name: redoc-codechunk-3
+  lineno: 52
+redoc-latex-4:
+  code: \elandscape
+  label: latex
+  type: block
+  name: redoc-latex-4
+  lineno: 52
+redoc-codechunk-4:
+  code: "```{r explore data dictionary, eval=FALSE, include=FALSE}\n# iris %>% explore::data_dict_md(output_dir
+    = here::here())\n# description <- data.frame(\n#                   variable =
+    c(\"Species\"), \n#                   description = c(\"Species of Iris flower\"))\n\ndata_dict_md(data
+    = mydata, \n             title = \"Data Set\", \n             # description =
+    \ description, \n             output_file = \"data_dict.md\",\n             output_dir
+    = here::here(\"childRmd\"))\n```"
+  label: codechunk
+  type: block
+  name: redoc-codechunk-4
+  lineno: 55
+redoc-htmlcomment-4:
+  code: <!-- [[redoc-codechunk-12]]-->
+  label: htmlcomment
+  type: inline
+  name: redoc-htmlcomment-4
+  lineno: 55
+redoc-codechunk-5:
+  code: "```{r data dictionary, child = here::here('childRmd', 'data_dict.md')} -->\n<!--
+    ``` "
+  label: codechunk
+  type: block
+  name: redoc-codechunk-5
+  lineno: 58
+redoc-latex-7:
+  code: \elandscape
+  label: latex
+  type: block
+  name: redoc-latex-7
+  lineno: 59
+redoc-codechunk-6:
+  code: |-
+    ```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-6
+  lineno: 63
+redoc-codechunk-7:
+  code: |-
+    ```{r impute, child = here::here('childRmd', '_impute.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-7
+  lineno: 68
+redoc-codechunk-8:
+  code: |-
+    ```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-8
+  lineno: 77
+redoc-codechunk-9:
+  code: |-
+    ```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-9
+  lineno: 83
+redoc-codechunk-10:
+  code: |-
+    ```{r plots, child = here::here('childRmd', '_plots.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-10
+  lineno: 88
+redoc-codechunk-11:
+  code: "```{r pairedTests, child = here::here('childRmd', '_pairedTests.Rmd')} -->\n<!--
+    ``` "
+  label: codechunk
+  type: block
+  name: redoc-codechunk-11
+  lineno: 93
+redoc-codechunk-12:
+  code: "```{r hypothesisTests, child = here::here('childRmd', '_hypothesisTests.Rmd')}
+    -->\n<!-- ``` "
+  label: codechunk
+  type: block
+  name: redoc-codechunk-12
+  lineno: 97
+redoc-codechunk-13:
+  code: |-
+    ```{r ROC, child = here::here('childRmd', '_ROC.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-13
+  lineno: 104
+redoc-codechunk-14:
+  code: |-
+    ```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-14
+  lineno: 107
+redoc-codechunk-15:
+  code: |-
+    ```{r survival, child = here::here('childRmd', '_survival.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-15
+  lineno: 112
+redoc-codechunk-16:
+  code: |-
+    ```{r models, child = here::here('childRmd', '_models.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-16
+  lineno: 117
+redoc-codechunk-17:
+  code: |-
+    ```{r footer, child = here::here('childRmd', '_footer.Rmd')}
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-17
+  lineno: 123
+redoc-codechunk-18:
+  code: |-
+    ```{r git update}
+    source(file = here::here("R", "gitUpdateCommitPush.R"))
+    ```
+  label: codechunk
+  type: block
+  name: redoc-codechunk-18
+  lineno: 133
