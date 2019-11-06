@@ -19,15 +19,6 @@ header-includes:
 - \definecolor{fancyTextColor}{rgb}{0.258, 0.517, 0.960}
 - \usepackage{afterpage}
 output: 
-  distill::distill_article:
-    toc: true
-  rmarkdown::html_vignette: 
-    css: 
-    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
-  redoc::redoc:
-    highlight_outputs: TRUE
-    margins: 1 
-    line_numbers: FALSE 
   pdf_document: 
     fig_caption: yes
     highlight: kate
@@ -36,6 +27,15 @@ output:
     latex_engine: lualatex
     toc_depth: 5
     keep_tex: yes
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
+  redoc::redoc:
+    highlight_outputs: TRUE
+    margins: 1 
+    line_numbers: FALSE 
+  distill::distill_article:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{Recommendations for Rmarkdown}
   %\VignetteEncoding{UTF-8}
