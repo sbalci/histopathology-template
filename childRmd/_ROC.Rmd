@@ -1,11 +1,9 @@
-
-
+# ROC
 
 
 ```{r OptimalCutpoints, eval=FALSE, include=FALSE}
 # library(OptimalCutpoints)
 ```
-
 
 
 
@@ -26,7 +24,6 @@ roc_fit <- yardstick::roc_curve(mydata,
 ggplot2::autoplot(roc_fit)
 
 ```
-
 
 
 
@@ -64,9 +61,6 @@ m1
 
 
 
-
-
-
 ```{r ROC AUC, eval=FALSE, include=FALSE}
 
 pROC::roc(mydata,
@@ -100,11 +94,7 @@ m1[which.max(m1$youden),]
 
 
 
-
-
-
 ```{r pROC 2, eval=FALSE, include=FALSE}
-
 
 roc_obj <- pROC::roc(polyp_rec ~ size,
           data = mydata,
@@ -122,8 +112,6 @@ roc_obj <- pROC::roc(polyp_rec ~ size,
           xlab = "False Positive",
           ylab = "True Positive"
           )
-
-
 ```
 
 

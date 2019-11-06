@@ -1,0 +1,452 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Histopathology Research Template},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Histopathology Research Template}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{true}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019-11-06}
+
+\usepackage{pdflscape}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+\usepackage{xcolor}
+\definecolor{fancyTextColor}{HTML}{4284f5}
+\definecolor{fancyTextColor}{RGB}{66, 132, 245}
+\definecolor{fancyTextColor}{rgb}{0.258, 0.517, 0.960}
+\usepackage{afterpage}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{5}
+\tableofcontents
+}
+iris \%\textgreater\% mutate(sumVar = rowSums(.{[}1:4{]}))
+
+iris \%\textgreater\% mutate(sumVar = rowSums(select(.,
+contains(``Sepal'')))) \%\textgreater\% head
+
+iris \%\textgreater\% mutate(sumVar = select(., contains(``Sepal''))
+\%\textgreater\% rowSums()) \%\textgreater\% head
+
+\begin{verbatim}
+$index
+# A tibble: 3 x 2
+  var1        var2       
+  <chr>       <chr>      
+1 sex.factor  sex.factor2
+2 age.factor  age.factor2
+3 sex.factor2 age.factor2
+
+$counts
+$counts[[1]]
+# A tibble: 2 x 3
+  sex.factor sex.factor2     n
+  <fct>      <fct>       <int>
+1 Female     M             445
+2 Male       F             484
+
+$counts[[2]]
+# A tibble: 3 x 3
+  age.factor  age.factor2     n
+  <fct>       <fct>       <int>
+1 <40 years   <60 years      70
+2 40-59 years <60 years     344
+3 60+ years   60+ years     515
+
+$counts[[3]]
+# A tibble: 4 x 3
+  sex.factor2 age.factor2     n
+  <fct>       <fct>       <int>
+1 M           <60 years     204
+2 M           60+ years     241
+3 F           <60 years     210
+4 F           60+ years     274
+\end{verbatim}
+
+iRenameColumn.R
+
+iSelectColumn.R
+
+\begin{verbatim}
+<= 22 Low
+>= 23 & <= 41 Average 
+>=42 High
+\end{verbatim}
+
+\hypertarget{impute}{%
+\section{impute}\label{impute}}
+
+\hypertarget{impute-continious}{%
+\subsection{impute continious}\label{impute-continious}}
+
+\hypertarget{impute-categorical}{%
+\subsection{impute categorical}\label{impute-categorical}}
+
+\hypertarget{impute-outlier}{%
+\subsection{impute outlier}\label{impute-outlier}}
+
+\hypertarget{transform}{%
+\section{transform}\label{transform}}
+
+\hypertarget{min--max}{%
+\subsection{min -max}\label{min--max}}
+
+\hypertarget{skewness}{%
+\subsection{skewness}\label{skewness}}
+
+\hypertarget{log}{%
+\subsection{log}\label{log}}
+
+\hypertarget{binning}{%
+\section{binning}\label{binning}}
+
+\hypertarget{optimal-binning}{%
+\subsection{optimal binning}\label{optimal-binning}}
+
+\hypertarget{standardize}{%
+\subsection{standardize}\label{standardize}}
+
+\hypertarget{data-transformation-report}{%
+\section{data transformation report}\label{data-transformation-report}}
+
+\hypertarget{inspectdf}{%
+\section{inspectdf}\label{inspectdf}}
+
+\pagebreak
+
+\hypertarget{descriptive-statistics}{%
+\section{Descriptive Statistics}\label{descriptive-statistics}}
+
+\hypertarget{table-1}{%
+\subsection{Table 1}\label{table-1}}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{categorical-variables}{%
+\subsection{Categorical Variables}\label{categorical-variables}}
+
+\hypertarget{split-group-stats-categorical}{%
+\subsubsection{Split-Group Stats
+Categorical}\label{split-group-stats-categorical}}
+
+\hypertarget{grouped-categorical}{%
+\subsubsection{Grouped Categorical}\label{grouped-categorical}}
+
+\pagebreak
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{continious-variables}{%
+\subsection{Continious Variables}\label{continious-variables}}
+
+\hypertarget{split-group-stats-continious}{%
+\subsubsection{Split-Group Stats
+Continious}\label{split-group-stats-continious}}
+
+\hypertarget{grouped-continious}{%
+\subsubsection{Grouped Continious}\label{grouped-continious}}
+
+\pagebreak
+
+\newpage
+\begin{landscape}
+
+\hypertarget{cross-tables}{%
+\section{Cross Tables}\label{cross-tables}}
+
+\end{landscape}
+
+\hypertarget{plots}{%
+\section{Plots}\label{plots}}
+
+\hypertarget{categorical-variables-1}{%
+\subsection{Categorical Variables}\label{categorical-variables-1}}
+
+\hypertarget{plots-1}{%
+\section{Plots}\label{plots-1}}
+
+\hypertarget{continious-variables-1}{%
+\subsection{Continious Variables}\label{continious-variables-1}}
+
+\newpage
+\begin{landscape}
+
+\hypertarget{survival-analysis}{%
+\section{Survival Analysis}\label{survival-analysis}}
+
+\hypertarget{pairwise-comparison}{%
+\section{Pairwise comparison}\label{pairwise-comparison}}
+
+\hypertarget{multivariate-analysis-survival}{%
+\section{Multivariate Analysis
+Survival}\label{multivariate-analysis-survival}}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{km-plot}{%
+\section{KM plot}\label{km-plot}}
+
+explanatory = c(``perfor.factor'') dependent = ``Surv(time, status)''
+colon\_s \%\textgreater\% surv.plot(dependent, explanatory, xlab=``Time
+(days)'', pval=TRUE, legend=``none'')
+
+Notes
+
+Use Hmisc::label() to assign labels to variables for tables and plots.
+
+label(colon\_s\$age.factor) = ``Age (years)''
+
+Export dataframe tables directly or to R Markdown using knitr::kable().
+
+Note wrapper summary.missing() can be useful. Wraps mice::md.pattern.
+
+colon\_s \%\textgreater\% summary.missing(dependent, explanatory)
+
+\end{landscape}
+
+Where a multivariable model contains a subset of the variables specified
+in the full univariable set, this can be specified.
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') explanatory.multi = c(``age.factor'',
+``obstruct.factor'') dependent = `mort\_5yr' colon\_s \%\textgreater\%
+summarizer(dependent, explanatory, explanatory.multi)
+
+Random effects.
+
+e.g.~lme4::glmer(dependent \textasciitilde{} explanatory + (1 \textbar{}
+random\_effect), family=``binomial'')
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') explanatory.multi = c(``age.factor'',
+``obstruct.factor'') random.effect = ``hospital'' dependent =
+`mort\_5yr' colon\_s \%\textgreater\% summarizer(dependent, explanatory,
+explanatory.multi, random.effect)
+
+metrics=TRUE provides common model metrics.
+
+colon\_s \%\textgreater\% summarizer(dependent, explanatory,
+explanatory.multi, metrics=TRUE)
+
+Cox proportional hazards
+
+e.g.~survival::coxph(dependent \textasciitilde{} explanatory)
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') dependent = ``Surv(time, status)''
+
+colon\_s \%\textgreater\% summarizer(dependent, explanatory)
+
+Rather than going all-in-one, any number of subset models can be
+manually added on to a summary.factorlist() table using
+summarizer.merge(). This is particularly useful when models take a
+long-time to run or are complicated.
+
+Note requirement for glm.id=TRUE. fit2df is a subfunction extracting
+most common models to a dataframe.
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') explanatory.multi = c(``age.factor'',
+``obstruct.factor'') random.effect = ``hospital'' dependent =
+`mort\_5yr'
+
+\hypertarget{separate-tables}{%
+\section{Separate tables}\label{separate-tables}}
+
+colon\_s \%\textgreater\% summary.factorlist(dependent, explanatory,
+glm.id=TRUE) -\textgreater{} example.summary
+
+colon\_s \%\textgreater\% glmuni(dependent, explanatory)
+\%\textgreater\% fit2df(estimate.suffix=" (univariable)")
+-\textgreater{} example.univariable
+
+colon\_s \%\textgreater\% glmmulti(dependent, explanatory)
+\%\textgreater\% fit2df(estimate.suffix=" (multivariable)")
+-\textgreater{} example.multivariable
+
+colon\_s \%\textgreater\% glmmixed(dependent, explanatory,
+random.effect) \%\textgreater\% fit2df(estimate.suffix=" (multilevel")
+-\textgreater{} example.multilevel
+
+\hypertarget{pipe-together}{%
+\section{Pipe together}\label{pipe-together}}
+
+example.summary \%\textgreater\% summarizer.merge(example.univariable)
+\%\textgreater\% summarizer.merge(example.multivariable)
+\%\textgreater\% summarizer.merge(example.multilevel) \%\textgreater\%
+select(-c(glm.id, index)) -\textgreater{} example.final example.final
+
+Cox Proportional Hazards example with separate tables merged together.
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') explanatory.multi = c(``age.factor'',
+``obstruct.factor'') dependent = ``Surv(time, status)''
+
+\hypertarget{separate-tables-1}{%
+\section{Separate tables}\label{separate-tables-1}}
+
+colon\_s \%\textgreater\% summary.factorlist(dependent, explanatory,
+glm.id=TRUE) -\textgreater{} example2.summary
+
+colon\_s \%\textgreater\% coxphuni(dependent, explanatory)
+\%\textgreater\% fit2df(estimate.suffix=" (univariable)")
+-\textgreater{} example2.univariable
+
+colon\_s \%\textgreater\% coxphmulti(dependent, explanatory.multi)
+\%\textgreater\% fit2df(estimate.suffix=" (multivariable)")
+-\textgreater{} example2.multivariable
+
+\hypertarget{pipe-together-1}{%
+\section{Pipe together}\label{pipe-together-1}}
+
+example2.summary \%\textgreater\% summarizer.merge(example2.univariable)
+\%\textgreater\% summarizer.merge(example2.multivariable)
+\%\textgreater\% select(-c(glm.id, index)) -\textgreater{}
+example2.final example2.final
+
+\hypertarget{or-plot}{%
+\section{OR plot}\label{or-plot}}
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') dependent = `mort\_5yr' colon\_s \%\textgreater\%
+or.plot(dependent, explanatory) \# Previously fitted models
+(\texttt{glmmulti()} or \texttt{glmmixed()}) can be provided directly to
+\texttt{glmfit}
+
+\hypertarget{hr-plot-not-fully-tested}{%
+\section{HR plot (not fully tested)}\label{hr-plot-not-fully-tested}}
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') dependent = ``Surv(time, status)'' colon\_s
+\%\textgreater\% hr.plot(dependent, explanatory, dependent\_label =
+``Survival'') \# Previously fitted models (\texttt{coxphmulti}) can be
+provided directly using \texttt{coxfit}
+
+\hypertarget{anova}{%
+\section{ANOVA}\label{anova}}
+
+\hypertarget{save-final-data}{%
+\section{Save Final Data}\label{save-final-data}}
+
+\pagebreak
+
+\hypertarget{final-data-summary}{%
+\section{Final Data Summary}\label{final-data-summary}}
+
+\pagebreak
+
+\hypertarget{software-and-libraries-used}{%
+\section{Software and Libraries
+Used}\label{software-and-libraries-used}}
+
+The jamovi project (2019). jamovi. (Version 0.9) {[}Computer
+Software{]}. Retrieved from \url{https://www.jamovi.org}. R Core Team
+(2018). R: A Language and envionment for statistical computing.
+{[}Computer software{]}. Retrieved from
+\url{https://cran.r-project.org/}. Fox, J., \& Weisberg, S. (2018). car:
+Companion to Applied Regression. {[}R package{]}. Retrieved from
+\url{https://cran.r-project.org/package=car}.
+
+\pagebreak
+
+\hypertarget{session-info}{%
+\section{Session Info}\label{session-info}}
+
+\pagebreak
+
+\hypertarget{notes}{%
+\section{Notes}\label{notes}}
+
+Last update on 2019-11-06 12:29:44
+
+Serdar Balci, MD, Pathologist\\
+\href{mailto:drserdarbalci@gmail.com}{\nolinkurl{drserdarbalci@gmail.com}}\\
+\url{https://rpubs.com/sbalci/CV}
+
+\pagebreak
+
+\newpage
+
+
+\end{document}

@@ -16,10 +16,31 @@ output:
 <!-- - \newcommand{\blandscape}{\begin{landscape}} -->
 <!-- - \newcommand{\elandscape}{\end{landscape}} -->
 <!-- - \usepackage{xcolor} -->
-<!-- - \definecolor{fancyTextColor}{HTML}{4284f5} -->
-<!-- - \definecolor{fancyTextColor}{RGB}{66, 132, 245} -->
-<!-- - \definecolor{fancyTextColor}{rgb}{0.258, 0.517, 0.960} -->
 <!-- - \usepackage{afterpage} -->
+
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+Unhepatik süre ile sağkalım açısından bir ilişki bulunmamıştır (p = 0.22).
+
+</div>
+
+
+\noindent\colorbox{yellow}{
+\parbox{\dimexpr\linewidth-2\fboxsep}{
+
+Unhepatik süre ile sağkalım açısından bir ilişki bulunmamıştır (p = 0.22).
+
+}
+}
+
+
+
+
+
 
 
 ```{r}
@@ -31,161 +52,9 @@ my_text <- kableExtra::text_spec("Serdar", color = "red", background = "yellow")
 
 
 
-```{r include=FALSE}
-explanation1 <- glue::glue("
-- This is my first conclusion
-- This is my second conclusion"
-)
-```
-
-
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-
-`r explanation1`
-
-</div>
-
-
-\textcolor{orange}{
-`r explanation1`
-}
-
-\colorbox{fancyTextColor}{
-
-`r explanation1`
-
-}
-
-\colorbox{fancyTextColor}{
-\textcolor{orange}{
-`r explanation1`
-}
-}
-
-
 \pagebreak
 
 \pagecolor{yellow}\afterpage{\nopagecolor}
-
-
-
-
-```{r message=FALSE}
-explanation1 <- paste(
-"İstatistik Metod:
-Sürekli verilerin ortalama, standart sapma, median, minimum ve maksimum değerleri verildi.
-Kategorik veriler ve gruplanan sürekli veriler için frekans tabloları oluşturuldu.
-Genel sağkalım analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından elde edildi. Rejeksiyonsuz sağkalım için ölüm ya da rejeksiyon tarihi son nokta olarak alındı.
-Sağkalım analizinde Kaplan-Meier grafikleri, Log-rank testi ve Cox-Regresyon testleri uygulandı.
-Analizler R-project(version 3.6.0) ve RStudio ile survival ve finalfit paketleri kullanılarak yapıldı.
-p değeri 0.05 düzeyinde anlamlı olarak kabul edildi.",
-citation(),
-citation(package = "survival"),
-citation(package = "finalfit")
-)
-```
-
-
-
-
-
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-
-`r explanation1`
-
-</div>
-
-\colorbox{orange}{
-\textcolor{black}{
-`r explanation1`
-}
-}
-
-
-
-
-
-```{r message=FALSE}
-explanation1 <- paste(
-
-)
-```
-
-
-
-
-
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-
-`r explanation1`
-
-</div>
-
-\colorbox{orange}{
-\textcolor{black}{
-`r explanation1`
-}
-}
-
-
-
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
-
-**İstatistik Metod:**  
-Sürekli verilerin ortalama, standart sapma, median, minimum ve maksimum değerleri verildi.
-Kategorik veriler ve gruplanan sürekli veriler için frekans tabloları oluşturuldu.
-Genel sağkalım analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından elde edildi. Rejeksiyonsuz sağkalım için ölüm ya da rejeksiyon tarihi son nokta olarak alındı.
-Sağkalım analizinde Kaplan-Meier grafikleri, Log-rank testi ve Cox-Regresyon testleri uygulandı.
-Analizler R-project(version 3.6.0) ve RStudio ile survival ve finalfit paketleri kullanılarak yapıldı.
-p değeri 0.05 düzeyinde anlamlı olarak kabul edildi.  
-
-R Core Team (2019). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
-  
-Therneau T (2015). _A Package for Survival Analysis in S_. version 2.38, <URL:https://CRAN.R-project.org/package=survival>.
-
-Terry M. Therneau, Patricia M. Grambsch (2000). _Modeling Survival Data: Extending the Cox Model_. Springer, New York. ISBN 0-387-98784-3.
-
-Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. https://github.com/ewenharrison/finalfit"
-
-</div>
-
-
-\noindent\colorbox{yellow}{
-\parbox{\dimexpr\linewidth-2\fboxsep}{
-İstatistik Metod:
-
-Sürekli verilerin ortalama, standart sapma, median, minimum ve maksimum değerleri verildi. Kategorik veriler ve gruplanan sürekli veriler için frekans tabloları oluşturuldu. Genel sağkalım analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından elde edildi. Rejeksiyonsuz sağkalım için ölüm ya da rejeksiyon tarihi son nokta olarak alındı. Sağkalım analizinde Kaplan-Meier grafikleri, Log-rank testi ve Cox-Regresyon testleri uygulandı. Analizler R-project (version 3.6.0) ve RStudio ile survival ve finalfit paketleri kullanılarak yapıldı. p değeri 0.05 düzeyinde anlamlı olarak kabul edildi.
-
-
-R Core Team (2019). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
-
-Therneau T (2015). A Package for Survival Analysis in S. version 2.38, https://CRAN.R-project.org/package=survival
-
-Terry M. Therneau, Patricia M. Grambsch (2000). Modeling Survival Data: Extending the Cox Model. Springer, New York. ISBN 0-387-98784-3.
-
-Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. https://github.com/ewenharrison/finalfit
-}
-}
-
-
-\pagebreak
-
-
 
 
 

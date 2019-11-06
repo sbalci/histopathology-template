@@ -20,7 +20,7 @@ legend.labs = c('a','b'))
 )
 ```", "\n", "\n",
 
-"```{r}
+"```{r Median Survivals ", explanatoryKM_variable, "}
 km_fit <- survfit(", dependentKM, " ~ ", explanatoryKM_variable, ", data = mydata)
 km_fit
 ```", "\n", "\n",

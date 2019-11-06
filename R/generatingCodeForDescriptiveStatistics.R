@@ -4,7 +4,7 @@ for (i in 1:length(names(mydataCategorical))) {
 
     explanation <- paste0("Descriptive Statistics ", names(mydataCategorical)[i])
 
-    y <- paste0("**",explanation,"** ", "\n", "\n",
+    y <- paste0("### ",explanation,"  ", "\n", "\n",
 
 "```{r ", names(mydataCategorical)[i], "}
 mydataCategorical %>% 
