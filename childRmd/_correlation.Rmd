@@ -38,7 +38,6 @@ correlation::correlation(select(iris, Species, starts_with("Sepal")),
             
 ```{r correlation bayesian, eval=FALSE, include=FALSE}
 correlation(iris, bayesian=TRUE)
-
 ```
 
 
@@ -59,7 +58,6 @@ iris %>%
   correlation() %>% 
   report() %>% 
   to_table()
-
 ```
 
 
@@ -69,7 +67,6 @@ iris %>% explore(Sepal.Length, Petal.Length)
 
 iris$is_versicolor <- ifelse(iris$Species == "versicolor", 1, 0)
 iris %>% explore(Sepal.Length, Petal.Length, target = is_versicolor)
-
 ```
 
 
@@ -132,13 +129,44 @@ inspectdf::inspect_cor(storms, storms[-c(1:200), ]) %>%
 
 
 
+https://neuropsychology.github.io/psycho.R/2018/05/20/correlation.html
+
+devtools::install_github("neuropsychology/psycho.R")  # Install the newest version
+
+library(psycho)
+library(tidyverse)
+
+cor <- psycho::affective %>% 
+  correlation()
+
+summary(cor)
+
+
+plot(cor)
+
+
+print(cor)
+
+
+  
 
 
 
+```{r}
+cor %>% 
+    report::to_values()
+```
 
 
 
+summary(cor) %>% 
+  knitr::kable(format = "latex") %>% 
+  kableExtra::kable_styling(latex_options="scale_down")
 
+
+ggplot(mydata, aes(x = tx_zamani_verici_yasi, y = trombosit)) +
+  geom_point() + 
+  geom_smooth(method = lm, size = 1)
 
 
 

@@ -1,8 +1,28 @@
 
-```{r import data, include=FALSE}
+```{r import data, eval=FALSE, include=FALSE}
 library(readxl)
-mydata <- read_excel(here::here("data", "EÇ TEZ son.xlsx"))
+mydata <- read_excel(here::here("data", "mydata.xlsx"))
 # View(mydata)
+```
+
+
+
+```{r import via rio, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/rio/vignettes/rio.html
+# rio::install_formats()
+
+x <- rio::import("mtcars.csv")
+y <- rio::import("mtcars.rds")
+z <- rio::import("mtcars.dta")
+
+rio::import("mtcars_noext", format = "csv")
+
+rio::export(mtcars, "mtcars.csv")
+rio::export(mtcars, "mtcars.rds")
+rio::export(mtcars, "mtcars.dta")
+
+rio::export(list(mtcars = mtcars, iris = iris), "multi.xlsx")
+
 ```
 
 

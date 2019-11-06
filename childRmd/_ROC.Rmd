@@ -9,7 +9,7 @@
 
 
 
-```{r yardstick print ROC curve, echo=FALSE}
+```{r yardstick print ROC curve, eval=FALSE, include=FALSE}
 # https://tidymodels.github.io/yardstick/reference/roc_curve.html
 
 roc_fit <- yardstick::roc_curve(mydata,
@@ -32,7 +32,7 @@ ggplot2::autoplot(roc_fit)
 
 
 
-```{r pROC, include=FALSE}
+```{r pROC, eval=FALSE, include=FALSE}
 library(pROC)
 
 m1 <- pROC::roc(mydata,
@@ -67,7 +67,7 @@ m1
 
 
 
-```{r ROC AUC, echo=FALSE}
+```{r ROC AUC, eval=FALSE, include=FALSE}
 
 pROC::roc(mydata,
           "polyp_rec",
@@ -92,7 +92,7 @@ pROC::roc(mydata,
 
 
 
-```{r ROC find max Youden}
+```{r ROC find max Youden, eval=FALSE, include=FALSE}
 which.max(m1$youden)
 m1[which.max(m1$youden),]
 ```

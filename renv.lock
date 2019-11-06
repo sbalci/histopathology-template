@@ -936,6 +936,12 @@
       "Source": "CRAN",
       "Hash": "23b8ec1bdea91c914af35b2c21dff286"
     },
+    "insight": {
+      "Package": "insight",
+      "Version": "0.6.0",
+      "Source": "CRAN",
+      "Hash": "781d556660e0aacd71c906c725ebdafe"
+    },
     "inum": {
       "Package": "inum",
       "Version": "1.0-1",

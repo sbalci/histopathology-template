@@ -26,7 +26,7 @@ iris %>%
 
 
 
-```{r summary}
+```{r summary, eval=FALSE, include=FALSE}
 summarytools::view(summarytools::dfSummary(mydata))
 glimpse(mydata)
 ```
@@ -381,7 +381,7 @@ iSelectColumn.R
 
 
 
-```{r clean names, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+```{r clean names 2, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 mydata <- janitor::clean_names(mydata)
 # cat(names(mydata), sep = ",\n")
 
@@ -391,7 +391,7 @@ names(mydata) <- c(names(mydata)[1:21], paste0("Soru", 1:30))
 
 
 
-```{r echo=FALSE, results='asis'}
+```{r eval=FALSE, include=FALSE, results='asis'}
 library(arsenal)
 tab1 <- tableby(~ katilim_durumu
                 ,
@@ -400,13 +400,12 @@ tab1 <- tableby(~ katilim_durumu
 summary(tab1)
 ```
 
-```
-Sadece "katılmış ve tamamlamış" olanları aldım. Toplam skorda tamamlanmamış olanlar düşük çıkıyor. Alternatif olarak "impute" deneyebiliriz.
-```
 
 
 
-```{r sadece katılmış ve tamamlamış olanları seç}
+
+
+```{r sadece katılmış ve tamamlamış olanları seç, eval=FALSE, include=FALSE}
 mydata <- mydata %>% 
   filter(katilim_durumu == "katılmış ve tamamlamış")
 ```
@@ -414,7 +413,7 @@ mydata <- mydata %>%
 
 
 
-```{r summary}
+```{r summary 2}
 # summarytools::view(summarytools::dfSummary(mydata))
 # glimpse(mydata)
 # mydata %>%
@@ -429,7 +428,7 @@ mydata <- mydata %>%
 
 
 
-```{r yas}
+```{r yas, eval=FALSE, include=FALSE}
 ## Recoding mydata$x3_yasiniz_nedir into mydata$YasGrup
 mydata$YasGrup <- factor(mydata$x3_yasiniz_nedir)
 ## Reordering mydata$YasGrup
@@ -437,7 +436,7 @@ mydata$YasGrup <- factor(mydata$YasGrup, levels=c("20-29", "30-39", "40-49", "50
 ```
 
 
-```{r cinsiyet}
+```{r cinsiyet, eval=FALSE, include=FALSE}
 ## Recoding mydata$x4_cinsiyetiniz_nedir into mydata$Cinsiyet
 mydata$Cinsiyet <- recode(mydata$x4_cinsiyetiniz_nedir,
                "Kadın" = "Kadin")
@@ -446,7 +445,7 @@ mydata$Cinsiyet <- factor(mydata$Cinsiyet)
 ```
 
 
-```{r uzmanlik suresi}
+```{r uzmanlik suresi, eval=FALSE, include=FALSE}
 ## Recoding mydata$x5_kac_yildir_genel_cerrahi_uzmanisiniz into mydata$UzmanlikSuresi
 mydata$UzmanlikSuresi <- recode(mydata$x5_kac_yildir_genel_cerrahi_uzmanisiniz,
                "43739" = "10-19")
@@ -460,7 +459,7 @@ mydata$UzmanlikSuresi <- factor(mydata$UzmanlikSuresi, levels=c("0-9", "10-19", 
 
 
 
-```{r unvan}
+```{r unvan, eval=FALSE, include=FALSE}
 ## Recoding mydata$x6_unvaniniz_nedir into mydata$Unvan
 mydata$Unvan <- factor(mydata$x6_unvaniniz_nedir)
 
@@ -470,7 +469,7 @@ mydata$Unvan <- factor(mydata$Unvan, levels=c("Op.Dr.", "Doktor Öğretim Üyesi
 ```
 
 
-```{r kurum}
+```{r kurum, eval=FALSE, include=FALSE}
 ## Recoding mydata$x8_hangi_kurumda_calisiyorsunuz into mydata$Kurum
 mydata$Kurum <- recode(mydata$x8_hangi_kurumda_calisiyorsunuz,
                "Eğitim Araştırma Hastanesi" = "Eğitim Araştırma",
@@ -486,7 +485,7 @@ mydata$Kurum <- factor(mydata$Kurum, levels=c("Özel", "İlçe Devlet", "İl Dev
 
 
 
-```{r cevap gruplari}
+```{r cevap gruplari, eval=FALSE, include=FALSE}
 tersSorular <- c("Soru1",
                  "Soru4",
                  "Soru15",
@@ -539,7 +538,7 @@ STSS <- c(
 
 
 
-```{r cevaplari numerik kodla}
+```{r cevaplari numerik kodla, eval=FALSE, include=FALSE}
 recode_numberize <- function(x, ...) {
   dplyr::recode(
     x,
@@ -590,7 +589,7 @@ mydata <- mydata %>%
 
 
 
-```{r toplam skor}
+```{r toplam skor, eval=FALSE, include=FALSE}
 mydata <- mydata %>% 
   # böyle yazınca missing olunca hesaplamıyor
   # mutate(
@@ -625,7 +624,7 @@ mydata <- mydata %>%
 ```
 
 
-```{r skor kategorileri}
+```{r skor kategorileri, eval=FALSE, include=FALSE}
 mydata <- mydata %>% 
   mutate_at(.tbl = .,
             .vars = vars(ends_with("_total")),
@@ -657,23 +656,6 @@ mydata <- mydata %>%
 ```
 
 
-
-```{r}
-mydata2 <- mydata %>% 
-  select(
-YasGrup,
-Cinsiyet,
-UzmanlikSuresi,
-Unvan,
-Kurum,
-CSS_total,
-BS_total,
-STSS_total,
-CSS_total_Gr,
-BS_total_Gr,
-STSS_total_Gr
-  )
-```
 
 
 

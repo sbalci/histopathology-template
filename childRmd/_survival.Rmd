@@ -43,7 +43,7 @@ insight::is_model_supported(surv_fit)
 
 
 
-```{r select dependent and explanatory variables, eval=FALSE, include=FALSE}
+```{r select dependent and explanatory variables 2, eval=FALSE, include=FALSE}
 dependentKM <-  "Surv(OverallTime, Outcome2)"
 
 explanatoryKM <- c("explanatory1",
@@ -57,7 +57,7 @@ source(here::here("R", "generatingCodeForSurvival.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', "generatedCodeSurvival.Rmd")}
+```{r generatedCode, child = here::here('childRmd', "generatedCodeSurvival.Rmd"), eval=FALSE, include=FALSE}
 ```
 
 

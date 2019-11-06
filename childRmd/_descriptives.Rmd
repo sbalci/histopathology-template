@@ -99,7 +99,7 @@ iris$Species %>% freq(cumul = FALSE, report.nas = FALSE) %>% tb()
 
 
 
-```{r explore descriptive statistics}
+```{r explore descriptive statistics, eval=FALSE, include=FALSE}
 iris %>% explore::describe()
 iris %>% explore::describe() %>% dplyr::filter(unique < 5)
 iris %>% explore::describe() %>% dplyr::filter(na > 0)
@@ -135,7 +135,7 @@ mydataCategorical <- mydata %>%
 
 
 
-```{r define continious variables, eval=FALSE, include=FALSE}
+```{r define continious variables 1, eval=FALSE, include=FALSE}
 mydataDescription <- describer::describe(iris)
 
 mydataDescription %>% 
@@ -174,12 +174,12 @@ print(age_stats, report.nas = FALSE, totals = FALSE, display.type = FALSE,
 
 
 
-```{r explore categorical variables}
+```{r explore categorical variables, eval=FALSE, include=FALSE}
 iris %>% explore::describe(Species)
 ```
 
 
-```{r SmartEDA, eval=FALSE, include=FALSE}
+```{r SmartEDA 1, eval=FALSE, include=FALSE}
 ## Frequency or custom tables for categorical variables
 SmartEDA::ExpCTable(
   Carseats,
@@ -195,7 +195,7 @@ SmartEDA::ExpCTable(
 
 
 
-```{r inspectdf, eval=FALSE, include=FALSE}
+```{r inspectdf 2, eval=FALSE, include=FALSE}
 # some example data
 data(starwars, package = "dplyr")
 data(storms, package = "dplyr")
@@ -235,7 +235,7 @@ with(tobacco, stby(list(x = smoker, y = diseased), gender, ctable))
 
 
 
-```{r SmartEDA category, eval=FALSE, include=FALSE}
+```{r SmartEDA category 1, eval=FALSE, include=FALSE}
 SmartEDA::ExpCTable(
   Carseats,
   Target = "Price",
@@ -309,7 +309,7 @@ print(tab$ContTable, nonnormal = c("albumin", "copper"))
 
 
 
-```{r explore continious variables}
+```{r explore continious variables, eval=FALSE, include=FALSE}
 iris %>% explore::describe(Sepal.Length)
 ```
 
@@ -331,7 +331,7 @@ SmartEDA::ExpNumStat(
 
 
 
-```{r inspectdf, eval=FALSE, include=FALSE}
+```{r inspectdf 3, eval=FALSE, include=FALSE}
 inspectdf::inspect_num(storms, breaks = 10)
 
 inspectdf::inspect_num(storms)$hist$pressure

@@ -54,7 +54,7 @@ plot(price)
 ```
 
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 carseats %>%
   mutate(Price_imp = dlookr::imputate_outlier(carseats, Price, method = "capping")) %>%
   group_by(US) %>%

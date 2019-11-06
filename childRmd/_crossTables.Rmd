@@ -78,7 +78,7 @@ with(tobacco,
 
 
 
-```{r summarizer 1}
+```{r summarizer 1, eval=FALSE, include=FALSE}
 # devtools::install_github("ewenharrison/summarizer")
 # library(summarizer)
 # data(colon_s)

@@ -13,7 +13,21 @@ header-includes:
 - \usepackage{pdflscape}
 - \newcommand{\blandscape}{\begin{landscape}}
 - \newcommand{\elandscape}{\end{landscape}}
+- \usepackage{xcolor}
+- \definecolor{fancyTextColor}{HTML}{4284f5}
+- \definecolor{fancyTextColor}{RGB}{66, 132, 245}
+- \definecolor{fancyTextColor}{rgb}{0.258, 0.517, 0.960}
+- \usepackage{afterpage}
 output: 
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
+  redoc::redoc:
+    highlight_outputs: TRUE
+    margins: 1 
+    line_numbers: FALSE 
+  distill::distill_article:
+    toc: true
   pdf_document: 
     fig_caption: yes
     highlight: kate
@@ -22,15 +36,6 @@ output:
     latex_engine: lualatex
     toc_depth: 5
     keep_tex: yes
-  redoc::redoc:
-    highlight_outputs: TRUE
-    margins: 1 
-    line_numbers: FALSE 
-  distill::distill_article:
-    toc: true
-  rmarkdown::html_vignette: 
-    css: 
-    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
 vignette: >
   %\VignetteIndexEntry{Recommendations for Rmarkdown}
   %\VignetteEncoding{UTF-8}
@@ -50,7 +55,7 @@ vignette: >
 <!-- ``` -->
 
 
-```{r explore data dictionary}
+```{r explore data dictionary, eval=FALSE, include=FALSE}
 # iris %>% explore::data_dict_md(output_dir = here::here())
 # description <- data.frame(
 #                   variable = c("Species"), 
@@ -64,8 +69,8 @@ data_dict_md(data = mydata,
 ```
 
 
-```{r data dictionary, child = here::here('childRmd', 'data_dict.md')}
-```
+<!-- ```{r data dictionary, child = here::here('childRmd', 'data_dict.md')} -->
+<!-- ``` -->
 
 
 
@@ -155,5 +160,7 @@ data_dict_md(data = mydata,
 ```{r git update}
 source(file = here::here("R", "gitUpdateCommitPush.R"))
 ```
+
+
 
 
