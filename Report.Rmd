@@ -19,15 +19,15 @@ header-includes:
 - \definecolor{fancyTextColor}{rgb}{0.258, 0.517, 0.960}
 - \usepackage{afterpage}
 output: 
+  distill::distill_article:
+    toc: true
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
   redoc::redoc:
     highlight_outputs: TRUE
     margins: 1 
     line_numbers: FALSE 
-  rmarkdown::html_vignette: 
-    css: 
-    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
-  distill::distill_article:
-    toc: true
   pdf_document: 
     fig_caption: yes
     highlight: kate
