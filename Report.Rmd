@@ -14,9 +14,6 @@ header-includes:
 - \newcommand{\blandscape}{\begin{landscape}}
 - \newcommand{\elandscape}{\end{landscape}}
 - \usepackage{xcolor}
-- \definecolor{fancyTextColor}{HTML}{4284f5}
-- \definecolor{fancyTextColor}{RGB}{66, 132, 245}
-- \definecolor{fancyTextColor}{rgb}{0.258, 0.517, 0.960}
 - \usepackage{afterpage}
 output: 
   pdf_document: 

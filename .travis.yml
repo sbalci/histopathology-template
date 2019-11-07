@@ -7,10 +7,8 @@ branches:
     only:
     - master
 
-
 r_cran_packages:
     - markdown
-
 
 r_packages:
     - janitor
