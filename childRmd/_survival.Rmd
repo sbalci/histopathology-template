@@ -81,7 +81,7 @@ mysurvival <- function(mydata, mydependent, explanatory) {
 }
 
 
-library(tidyverse)
+# library(tidyverse)
 mysurvival(mydata = whippleables, mydependent = mydependent, explanatory = explanatory)
 
 explanatory <- c("Organ", "LVI")

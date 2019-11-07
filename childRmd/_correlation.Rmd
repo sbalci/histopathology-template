@@ -134,7 +134,7 @@ https://neuropsychology.github.io/psycho.R/2018/05/20/correlation.html
 devtools::install_github("neuropsychology/psycho.R")  # Install the newest version
 
 library(psycho)
-library(tidyverse)
+<!-- library(tidyverse) -->
 
 cor <- psycho::affective %>% 
   correlation()
