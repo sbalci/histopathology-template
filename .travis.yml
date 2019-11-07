@@ -1,0 +1,63 @@
+language: r
+
+warnings_are_errors: true
+cache: packages
+sudo: required
+branches:
+    only:
+    - master
+
+
+r_cran_packages:
+    - markdown
+
+
+r_packages:
+    - janitor
+    - jmv
+    - kableExtra
+    - magicfor
+    - pkgdown
+
+r_binary_packages:
+    - devtools
+    - testthat
+    - rmarkdown
+    - knitr
+    - dplyr
+    - magrittr
+
+r_github_packages:
+    - rstudio/distill
+    - easystats/report
+    - r-lib/covr
+    - ropenscilabs/icon
+    - tidyverse/dplyr
+    - DataWookie/feedeR
+    - haozhu233/kableExtra
+    - ropensci/RefManageR
+
+
+after_success:
+#  - Rscript -e 'library(covr); codecov()'
+  - Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::coveralls()'
+
+
+before_script:
+    - Rscript -e 'print("before script")'
+
+r_github_packages:
+    - sbalci/histopathR
+
+script:
+    - Rscript -e 'rmarkdown::render(input = "Report.Rmd")'
+
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_PAT
+    on:
+        branch: master
+    local_dir: docs
+    target_branch: gh-pages

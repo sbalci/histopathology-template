@@ -5,6 +5,7 @@ suppressPackageStartupMessages(library("janitor"))
 suppressPackageStartupMessages(library("report"))
 suppressPackageStartupMessages(library("finalfit"))
 suppressPackageStartupMessages(library("ggstatsplot"))
+suppressPackageStartupMessages(library("wakefield"))
 
 # citation("tidyverse")
 # citation("readxl")

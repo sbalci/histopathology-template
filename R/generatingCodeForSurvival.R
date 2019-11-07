@@ -6,8 +6,10 @@ magicfor::magic_for()
       
       explanation <- paste0("Survival Analysis ", explanatoryKM_variable)
       
-      y <- paste0("**",explanation,"** ", "\n", "\n",
+      y <- paste0("### ",explanation,"  ", "\n", "\n",
 
+"**Kaplan-Meier Plot Log-Rank Test**","\n", "\n",
+                  
 "```{r Kaplan-Meier ", explanatoryKM_variable, "}
 # Drawing Survival Curves Using ggplot2
 # https://rpkgs.datanovia.com/survminer/reference/ggsurvplot.html
@@ -20,11 +22,29 @@ legend.labs = c('a','b'))
 )
 ```", "\n", "\n",
 
+"**Univariate Cox-Regression**","\n", "\n",
+
+"```{r}
+library(finalfit)
+library(survival)
+explanatoryUni <- '", explanatoryKM_variable, "'\n",
+      "dependentUni <- '", dependentKM,"'\n",
+      "mydata %>%
+finalfit(dependentUni, explanatoryUni) -> tUni
+
+knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
+```", "\n", "\n", "\\pagebreak",
+
+
+"**Median Survival**","\n", "\n",
+      
 "```{r Median Survivals ", explanatoryKM_variable, "}
 km_fit <- survfit(", dependentKM, " ~ ", explanatoryKM_variable, ", data = mydata)
 km_fit
 ```", "\n", "\n",
 
+"**1-3-5-yr survival**","\n", "\n",
+      
 "```{r 1-3-5-yr ", explanatoryKM_variable, "}
 summary(km_fit, times = c(12,36,60))
 ```", "\n", "\n", "\\pagebreak","\n"

@@ -1,7 +1,7 @@
 Package: HistopathTemplate
-Type: Package
-Title: Template of R Codes Used in Histopathology Research 
-Version: 0.0.0.9000
+Type: Website
+Title: Template of R Codes Used in Histopathology Research. 
+Version: 0.0.0.1
 Authors@R: 
     person(given = "Serdar",
            family = "Balci",
