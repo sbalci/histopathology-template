@@ -1,9 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
-
 <!-- https://holtzy.github.io/Pimp-my-rmd/#highlight_a_piece_of_text -->
 <!-- https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX -->
 <!-- Create Awesome LaTeX Table with knitr::kable andkableExtra -->
@@ -44,9 +38,13 @@ Some Text ile sağkalım açısından bir ilişki bulunmamıştır (p = 0.22).
 
 
 
-```{r}
-my_text <- kableExtra::text_spec("Some Text", color = "red", background = "yellow")
+```{r define my_text, include=FALSE}
+my_text <- kableExtra::text_spec("Some Text", 
+                                 color = "red",
+                                 background = "yellow"
+                                 )
 ```
+
 
 `r my_text`
 
@@ -56,7 +54,7 @@ my_text <- kableExtra::text_spec("Some Text", color = "red", background = "yello
 \pagebreak
 
 
-```{r}
+```{r mylongtext, include=FALSE}
 mylongtext <- paste("İstatistik Metod:
 
 Sürekli verilerin ortalama, standart sapma, median, minimum ve maksimum değerleri verildi. Kategorik veriler ve gruplanan sürekli veriler için frekans tabloları oluşturuldu. Genel sağkalım analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından elde edildi. 

@@ -15,7 +15,8 @@
 
 ```{r setup global chunk settings}
 knitr::opts_chunk$set(
-	echo = TRUE, #change to TRUE
+	echo = FALSE, #change to TRUE
+	eval = TRUE,
 	message = FALSE,
 	warning = FALSE,
 	comment = NA,
@@ -34,7 +35,7 @@ knitr::opts_chunk$set(
 
 
 
-```{r load library}
+```{r load library, include=FALSE}
 source(file = here::here("R", "loadLibrary.R"))
 ```
 

@@ -49,25 +49,13 @@ vignette: >
 ```
 
 
+
 <!-- ```{r overview, child = here::here('childRmd', '_overView.Rmd')} -->
 <!-- ``` -->
 
 
-```{r explore data dictionary}
-# iris %>% explore::data_dict_md(output_dir = here::here())
-# description <- data.frame(
-#                   variable = c("Species"), 
-#                   description = c("Species of Iris flower"))
 
-explore::data_dict_md(data = mydata, 
-             title = "Data Set", 
-             # description =  description, 
-             output_file = "data_dict.md",
-             output_dir = here::here("out"))
-```
-
-
-<!-- ```{r data dictionary, child = here::here('childRmd', 'data_dict.md')} -->
+<!-- ```{r data dictionary, child = here::here('childRmd', 'dataDictionary.md')} -->
 <!-- ``` -->
 
 
@@ -148,9 +136,6 @@ explore::data_dict_md(data = mydata,
 ```
 
 
-\pagebreak
-
-Comments Also Here
 
 \pagebreak
 
@@ -166,7 +151,7 @@ Comments Also Here
 \newpage
 
 
-```{r git update}
+```{r git update, include=FALSE}
 source(file = here::here("R", "gitUpdateCommitPush.R"))
 ```
 

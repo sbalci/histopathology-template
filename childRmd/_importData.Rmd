@@ -1,6 +1,6 @@
 
 
-```{r generate fake data}
+```{r generate fake data, include=FALSE}
 source(file = here::here("R", "generatingFakeData.R"))
 ```
 
@@ -8,7 +8,7 @@ source(file = here::here("R", "generatingFakeData.R"))
 
 
 
-```{r import data}
+```{r import data, include=FALSE}
 library(readxl)
 mydata <- readxl::read_excel(here::here("data", "mydata.xlsx"))
 # View(mydata)
