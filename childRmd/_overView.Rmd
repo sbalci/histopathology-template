@@ -42,9 +42,10 @@ inspectdf::inspect_types(starwars) %>%
 
 
 ```{r inspectdf column types 2}
-inspectdf::inspect_types(starwars) %>% inspectdf::show_plot()
 
-inspectdf::inspect_types(star_1, star_2)
+inspectdf::inspect_types(mydata) %>% inspectdf::show_plot()
+
+# inspectdf::inspect_types(star_1, star_2)
 ```
 
 
@@ -152,9 +153,9 @@ visdat::vis_compare(chickwts_diff, chickwts)
 # library(DataExplorer)
 # data_list <- list(airlines, airports, flights, planes, weather)
 
-DataExplorer::plot_str(data_list)
+DataExplorer::plot_str(mydata)
 
-DataExplorer::plot_str(data_list, type = "r")
+DataExplorer::plot_str(mydata, type = "r")
 
 
 # merge_airlines <- merge(flights, airlines, by = "carrier", all.x = TRUE)
@@ -162,28 +163,28 @@ DataExplorer::plot_str(data_list, type = "r")
 # merge_airports_origin <- merge(merge_planes, airports, by.x = "origin", by.y = "faa", all.x = TRUE, suffixes = c("_carrier", "_origin"))
 # final_data <- merge(merge_airports_origin, airports, by.x = "dest", by.y = "faa", all.x = TRUE, suffixes = c("_origin", "_dest"))
 
-DataExplorer::introduce(final_data)
+DataExplorer::introduce(mydata)
 
-DataExplorer::plot_intro(final_data)
+DataExplorer::plot_intro(mydata)
 
-DataExplorer::plot_missing(final_data)
+DataExplorer::plot_missing(mydata)
 
-final_data <- drop_columns(final_data, "speed")
+mydata2 <- DataExplorer::drop_columns(mydata, "TStage")
 
-plot_bar(final_data)
+DataExplorer::plot_bar(mydata)
 
-plot_bar(final_data, with = "arr_delay")
+DataExplorer::plot_bar(mydata, with = "Death")
 
-plot_histogram(final_data)
-
-
-final_data <- update_columns(final_data, "flight", as.factor)
+DataExplorer::plot_histogram(mydata)
 
 
-qq_data <- final_data[, c("arr_delay", "air_time", "distance", "seats")]
-plot_qq(qq_data, sampled_rows = 1000L)
+# final_data <- update_columns(final_data, "flight", as.factor)
 
-plot_correlation(na.omit(final_data), maxcat = 5L)
+
+# qq_data <- final_data[, c("arr_delay", "air_time", "distance", "seats")]
+# plot_qq(qq_data, sampled_rows = 1000L)
+
+# plot_correlation(na.omit(final_data), maxcat = 5L)
 
 
 
@@ -201,15 +202,17 @@ xray::distributions(airquality)
 
 
 
-```{r dataMaid}
-dataMaid::makeDataReport(mydata)
+```{r dataMaid, eval=FALSE, include=FALSE}
+dataMaid::makeDataReport(data = mydata, 
+                         file = here::here("out/dataMaid_mydata.Rmd"),
+                         replace = TRUE)
 ```
 
 
 
-```{r dataMaid 2}
+```{r dataMaid 2, eval=FALSE, include=FALSE}
 # https://cran.r-project.org/web/packages/dataMaid/vignettes/extending_dataMaid.html
-
+library("dataMaid")
 dataMaid::makeDataReport(mydata,
   #add extra precheck function         
   preChecks = c("isKey", "isSingular", "isSupported", "isID"),
@@ -247,7 +250,8 @@ dataMaid::makeDataReport(mydata,
   #open the html file automatically:
   replace = TRUE, 
   output = "html",
-  open = FALSE
+  open = FALSE,
+  file = here::here("out/dataMaid_mydata.Rmd")
 )
 ```
 
@@ -286,11 +290,10 @@ st_options(bootstrap.css     = FALSE,       # Already part of the theme so no ne
 
 
 ```{r summarytools frequencies}
-library()
-freq(iris$Species, plain.ascii = FALSE, style = "rmarkdown")
-freq(iris$Species, report.nas = FALSE, headings = FALSE, cumul = TRUE, totals = TRUE)
-freq(tobacco$gender, style = 'rmarkdown')
-freq(tobacco[ ,c("gender", "age.gr", "smoker")])
+summarytools::freq(iris$Species, plain.ascii = FALSE, style = "rmarkdown")
+summarytools::freq(iris$Species, report.nas = FALSE, headings = FALSE, cumul = TRUE, totals = TRUE)
+summarytools::freq(tobacco$gender, style = 'rmarkdown')
+summarytools::freq(tobacco[ ,c("gender", "age.gr", "smoker")])
 ```
 
 
@@ -395,7 +398,10 @@ iris %>%
 ```
 
 
-```{r explore 4, eval=FALSE, fig.height=explore::total_fig_height(iris, target = Species), explore::total_fig_height(iris, target=}
+```{r explore 4, fig.height='r explore::total_fig_height(iris, target = Species)'}
+
+explore::total_fig_height(iris, target = Species)
+
 iris %>% explore::explore_all(target = Species)
 ```
 

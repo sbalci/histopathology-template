@@ -15,12 +15,12 @@
 
 ```{r setup global chunk settings}
 knitr::opts_chunk$set(
-	echo = FALSE, #change to TRUE
+	echo = TRUE, #change to TRUE
 	message = FALSE,
 	warning = FALSE,
 	comment = NA,
 	tidy = TRUE,
-	fig.path = here::here("figs")
+	fig.path = here::here("figs/")
 )
 ```
 

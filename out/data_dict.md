@@ -7,7 +7,7 @@
  | Name | chr | 1 | 0.4 | 250 |  | 
  | Sex | chr | 1 | 0.4 | 3 |  | 
  | Age | dbl | 1 | 0.4 | 50 |  | 
- | Race | chr | 1 | 0.4 | 7 |  | 
+ | Race | chr | 1 | 0.4 | 8 |  | 
  | PreinvasiveComponent | chr | 1 | 0.4 | 3 |  | 
  | LVI | chr | 1 | 0.4 | 3 |  | 
  | PNI | chr | 1 | 0.4 | 3 |  | 
@@ -22,5 +22,5 @@
  | Valid | lgl | 1 | 0.4 | 3 |  | 
  | Smoker | lgl | 1 | 0.4 | 3 |  | 
  | Grade_Level | chr | 1 | 0.4 | 4 |  | 
- | SurgeryDate | dat | 1 | 0.4 | 238 |  | 
+ | SurgeryDate | dat | 1 | 0.4 | 243 |  | 
 
