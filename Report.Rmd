@@ -17,11 +17,11 @@ header-includes:
 - \usepackage{xcolor}
 - \usepackage{afterpage}
 output: 
+  distill::distill_article:
+    toc: true
   rmarkdown::html_vignette: 
     css: 
     - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
-  distill::distill_article:
-    toc: true
   redoc::redoc:
     highlight_outputs: TRUE
     margins: 1 

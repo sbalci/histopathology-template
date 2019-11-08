@@ -1,7 +1,7 @@
 
 # Save Final Data  {.appendix}  
 
-```{r save final data, eval=FALSE, include=FALSE}
+```{r save final data, echo=FALSE}
 
 projectName <- list.files(path = here::here(), pattern = "Rproj")
 projectName <- gsub(pattern = ".Rproj", replacement = "", x = projectName)
@@ -74,7 +74,7 @@ print(glue::glue(
 
 # Software and Libraries Used {.appendix}  
 
-```{r citation, eval=FALSE, include=FALSE}
+```{r citation, echo=FALSE}
 citation()
 ```
 
@@ -83,18 +83,18 @@ R Core Team (2018). R: A Language and envionment for statistical computing. [Com
 Fox, J., & Weisberg, S. (2018). car: Companion to Applied Regression. [R package]. Retrieved from https://cran.r-project.org/package=car.
 
 
-```{r library citation as report, results='asis', eval=FALSE, include=FALSE}
+```{r library citation as report, echo=FALSE, results='asis'}
 report::cite_packages(session = sessionInfo())
 ```
 
 
-```{r library citations, eval=FALSE, include=FALSE}
+```{r library citations, echo=FALSE}
 citation("tidyverse")
 citation("readxl")
 citation("janitor")
 citation("report")
 citation("finalfit")
-# citation("ggstatplot")
+citation("ggstatsplot")
 ```
 
 
@@ -103,7 +103,7 @@ citation("finalfit")
 
 # Session Info {.appendix} 
 
-```{r session info, eval=FALSE, include=FALSE}
+```{r session info, echo=FALSE}
 sessionInfo()
 ```
 
