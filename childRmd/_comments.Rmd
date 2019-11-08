@@ -53,6 +53,9 @@ my_text <- kableExtra::text_spec("Some Text", color = "red", background = "yello
 \pagecolor{yellow}\afterpage{\nopagecolor}
 
 
+\pagebreak
+
+
 ```{r}
 mylongtext <- "İstatistik Metod:
 
