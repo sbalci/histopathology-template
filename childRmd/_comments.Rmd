@@ -57,7 +57,7 @@ my_text <- kableExtra::text_spec("Some Text", color = "red", background = "yello
 
 
 ```{r}
-mylongtext <- "İstatistik Metod:
+mylongtext <- paste("İstatistik Metod:
 
 Sürekli verilerin ortalama, standart sapma, median, minimum ve maksimum değerleri verildi. Kategorik veriler ve gruplanan sürekli veriler için frekans tabloları oluşturuldu. Genel sağkalım analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından elde edildi. 
 Sağkalım analizinde Kaplan-Meier grafikleri, Log-rank testi ve Cox-Regresyon testleri uygulandı. Analizler R-project (version 3.6.0) ve RStudio ile survival ve finalfit paketleri kullanılarak yapıldı. p değeri 0.05 düzeyinde anlamlı olarak kabul edildi.
@@ -70,7 +70,8 @@ Therneau T (2015). A Package for Survival Analysis in S. version 2.38, https://C
 Terry M. Therneau, Patricia M. Grambsch (2000). Modeling Survival Data: Extending the Cox Model. Springer, New York. ISBN 0-387-98784-3.
 
 Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. https://github.com/ewenharrison/finalfit"
-    
+)
+
 
 mylongtext <- strwrap(mylongtext)
 ```
