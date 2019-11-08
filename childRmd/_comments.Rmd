@@ -53,6 +53,7 @@ my_text <- kableExtra::text_spec("Some Text", color = "red", background = "yello
 \pagecolor{yellow}\afterpage{\nopagecolor}
 
 
+
 \pagebreak
 
 
@@ -95,7 +96,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 }
 }
 
-
+\pagebreak
 
 
 <style>
