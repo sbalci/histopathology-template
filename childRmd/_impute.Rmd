@@ -3,7 +3,7 @@
 ## impute continious
 
 
-```{r dlookr impute}
+```{r dlookr impute, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 # https://cran.r-project.org/web/packages/dlookr/vignettes/transformation.html
 
 income <- dlookr::imputate_na(carseats, Income, US, method = "rpart")
@@ -23,7 +23,7 @@ plot(income)
 
 
 
-```{r dlookr impute continious value knn}
+```{r dlookr impute continious value knn, eval=FALSE, include=FALSE}
 carseats %>%
   mutate(Income_imp = dlookr::imputate_na(carseats, Income, US, method = "knn")) %>%
   group_by(US) %>%
@@ -34,7 +34,7 @@ carseats %>%
 
 ## impute categorical
 
-```{r dlookr impute categorical value mice}
+```{r dlookr impute categorical value mice, eval=FALSE, include=FALSE}
 library(mice)
 urban <- dlookr::imputate_na(carseats, Urban, US, method = "mice")
 urban 
@@ -46,7 +46,7 @@ plot(urban)
 
 ## impute outlier
 
-```{r dlookr impute outliers}
+```{r dlookr impute outliers, eval=FALSE, include=FALSE}
 price <- dlookr::imputate_outlier(carseats, Price, method = "capping")
 price
 summary(price)
@@ -54,7 +54,7 @@ plot(price)
 ```
 
 
-```{r eval=FALSE}
+```{r eval=FALSE, eval=FALSE, include=FALSE}
 carseats %>%
   mutate(Price_imp = dlookr::imputate_outlier(carseats, Price, method = "capping")) %>%
   group_by(US) %>%
@@ -71,7 +71,7 @@ carseats %>%
 
 ## min -max 
 
-```{r dlookr transform min max}
+```{r dlookr transform min max, eval=FALSE, include=FALSE}
 carseats %>% 
   mutate(Income_minmax = dlookr::transform(carseats$Income, method = "minmax"),
     Sales_minmax = dlookr::transform(carseats$Sales, method = "minmax")) %>% 
@@ -83,7 +83,7 @@ carseats %>%
 ## skewness
 
 
-```{r dlookr transform skewness}
+```{r dlookr transform skewness, eval=FALSE, include=FALSE}
 dlookr::find_skewness(carseats)
 
 dlookr::find_skewness(carseats, index = FALSE)
@@ -96,7 +96,7 @@ dlookr::find_skewness(carseats, value = TRUE, thres = 0.1)
 
 ## log
 
-```{r dlookr transform log}
+```{r dlookr transform log, eval=FALSE, include=FALSE}
 Advertising_log = transform(carseats$Advertising, method = "log")
 # Advertising_log <- transform(carseats$Advertising, method = "log+1")
 head(Advertising_log)
@@ -108,7 +108,7 @@ plot(Advertising_log)
 
 # binning
 
-```{r dlookr transform binning}
+```{r dlookr transform binning, eval=FALSE, include=FALSE}
 bin <- dlookr::binning(carseats$Income)
 bin <- binning(carseats$Income, nbins = 4,
               labels = c("LQ1", "UQ1", "LQ3", "UQ3"))
@@ -139,7 +139,7 @@ carseats %>%
 
 ## optimal binning
 
-```{r dlookr transform optimal binning}
+```{r dlookr transform optimal binning, eval=FALSE, include=FALSE}
 bin <- dlookr::binning_by(carseats, "US", "Advertising")
 bin
 summary(bin)
@@ -154,7 +154,7 @@ plot(bin, sub = "bins of Advertising variable")
 ## standardize
 
 
-```{r exploreR}
+```{r exploreR, eval=FALSE, include=FALSE}
 # https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html
 
 (regressResults <- exploreR::masslm(iris,
@@ -177,7 +177,7 @@ exploreR::massregplot(iris, "Sepal.Length", ignore = "Species")
 # data transformation report
 
 
-```{r dlookr data transformation method}
+```{r dlookr data transformation method, eval=FALSE, include=FALSE}
 carseats %>%
   dlookr::transformation_report(target = US)
 
@@ -191,7 +191,7 @@ carseats %>%
 
 # inspectdf
 
-```{r inspectdf}
+```{r inspectdf, eval=FALSE, include=FALSE}
 inspectdf::inspect_na(starwars)
 
 inspectdf::inspect_na(starwars) %>% inspectdf::show_plot()

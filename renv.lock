@@ -264,11 +264,23 @@
       "Source": "CRAN",
       "Hash": "4092daff86740928693e748de5327e4a"
     },
+    "UpSetR": {
+      "Package": "UpSetR",
+      "Version": "1.4.0",
+      "Source": "CRAN",
+      "Hash": "5a6813a3565495460ce08bdfdd827589"
+    },
     "WRS2": {
       "Package": "WRS2",
       "Version": "1.0-0",
       "Source": "CRAN",
       "Hash": "4a0bc719ad75f4513d28ef7054841a0d"
+    },
+    "XML": {
+      "Package": "XML",
+      "Version": "3.98-1.20",
+      "Source": "CRAN",
+      "Hash": "870a12f824e6d7729de5cf55927ae1d0"
     },
     "abind": {
       "Package": "abind",
@@ -287,6 +299,12 @@
       "Version": "0.25-1",
       "Source": "CRAN",
       "Hash": "92a43a18da50d6d0a3249f54d76c82f9"
+    },
+    "arsenal": {
+      "Package": "arsenal",
+      "Version": "3.3.0",
+      "Source": "CRAN",
+      "Hash": "bef438f19f9e5b87b8267602d2770745"
     },
     "askpass": {
       "Package": "askpass",
@@ -510,6 +528,18 @@
       "Source": "CRAN",
       "Hash": "386107d8b5e771a7c850019cd0bb602a"
     },
+    "correlation": {
+      "Package": "correlation",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "correlation",
+      "RemoteUsername": "easystats",
+      "RemoteRef": "master",
+      "RemoteSha": "84b96cb06be256f4e96ecf024d0813c324a4a89c",
+      "Hash": "4eebce9af4d33281efb369c007943523"
+    },
     "corrplot": {
       "Package": "corrplot",
       "Version": "0.84",
@@ -551,12 +581,6 @@
       "Version": "1.12.6",
       "Source": "CRAN",
       "Hash": "e4c9420e97e4b574c7f7cd00fa4c1879"
-    },
-    "dataMaid": {
-      "Package": "dataMaid",
-      "Version": "1.3.2",
-      "Source": "CRAN",
-      "Hash": "595963884010180373ecf65d1f1f0672"
     },
     "deSolve": {
       "Package": "deSolve",
@@ -653,6 +677,12 @@
       "Version": "0.5.1",
       "Source": "CRAN",
       "Hash": "e2b6cf8ec838b7d8f5895be8299d3f95"
+    },
+    "exploreR": {
+      "Package": "exploreR",
+      "Version": "0.1",
+      "Source": "CRAN",
+      "Hash": "b27ee0a247cd197070af885d7791b7ac"
     },
     "expm": {
       "Package": "expm",
@@ -834,6 +864,12 @@
       "Source": "CRAN",
       "Hash": "e8436e647719b7c9d01409767cd88cc8"
     },
+    "gmodels": {
+      "Package": "gmodels",
+      "Version": "2.18.1",
+      "Source": "CRAN",
+      "Hash": "164c45c1cc822bf2bc4b589ea0b2da9c"
+    },
     "gnm": {
       "Package": "gnm",
       "Version": "1.1-0",
@@ -851,6 +887,12 @@
       "Version": "2.3",
       "Source": "CRAN",
       "Hash": "4626f6a59a3b1095e7bdc7bd02a3107f"
+    },
+    "gridSVG": {
+      "Package": "gridSVG",
+      "Version": "1.7-1",
+      "Source": "CRAN",
+      "Hash": "bf9d041c697b7c22f0c11c2fea28da99"
     },
     "groupedstats": {
       "Package": "groupedstats",
@@ -1043,6 +1085,12 @@
       "Version": "0.3",
       "Source": "CRAN",
       "Hash": "e1f613894f080d1eee41c34b281a2184"
+    },
+    "labelled": {
+      "Package": "labelled",
+      "Version": "2.2.1",
+      "Source": "CRAN",
+      "Hash": "e7ef716cfafdd3ed77b291c9f8a9d75e"
     },
     "later": {
       "Package": "later",
@@ -1268,6 +1316,12 @@
       "Source": "CRAN",
       "Hash": "5c77744011cf806266df1330da07aae5"
     },
+    "mitools": {
+      "Package": "mitools",
+      "Version": "2.4",
+      "Source": "CRAN",
+      "Hash": "d75a066a31848256bac1ef7d24078660"
+    },
     "mnormt": {
       "Package": "mnormt",
       "Version": "1.5-5",
@@ -1327,6 +1381,12 @@
       "Version": "1.0-11",
       "Source": "CRAN",
       "Hash": "976bd3e7229aefd84d9d5cf032646601"
+    },
+    "naniar": {
+      "Package": "naniar",
+      "Version": "0.4.2",
+      "Source": "CRAN",
+      "Hash": "5436bcb35a7cdc805cb290bc96b15c2a"
     },
     "networkD3": {
       "Package": "networkD3",
@@ -1514,6 +1574,12 @@
       "Source": "CRAN",
       "Hash": "1a8304cc1382ef64e3b710ba589d7bc0"
     },
+    "plotROC": {
+      "Package": "plotROC",
+      "Version": "2.2.1",
+      "Source": "CRAN",
+      "Hash": "b7f6543f13f0a73aab3c14ecea4f661a"
+    },
     "plyr": {
       "Package": "plyr",
       "Version": "1.8.4",
@@ -1603,6 +1669,12 @@
       "Version": "5.51",
       "Source": "CRAN",
       "Hash": "512fea94c9613e1bd127d56bc08f6162"
+    },
+    "questionr": {
+      "Package": "questionr",
+      "Version": "0.7.0",
+      "Source": "CRAN",
+      "Hash": "f57de83d5ccbb55695fc561948c28fd1"
     },
     "qvcalc": {
       "Package": "qvcalc",
@@ -1941,6 +2013,12 @@
       "Source": "CRAN",
       "Hash": "0da5b0b11d59a1d6f4d5984549e24175"
     },
+    "survey": {
+      "Package": "survey",
+      "Version": "3.36",
+      "Source": "CRAN",
+      "Hash": "422b89ad8fc7cc7e94bc2be9ad912845"
+    },
     "survival": {
       "Package": "survival",
       "Version": "2.44-1.1",
@@ -1958,6 +2036,12 @@
       "Version": "3.3",
       "Source": "CRAN",
       "Hash": "9ecf6bee5958b8977bd1db3131978a71"
+    },
+    "tableone": {
+      "Package": "tableone",
+      "Version": "0.10.0",
+      "Source": "CRAN",
+      "Hash": "2cba9c942c7cc5c97ab2a44e4b26d469"
     },
     "testthat": {
       "Package": "testthat",
@@ -2061,12 +2145,6 @@
       "Source": "CRAN",
       "Hash": "99cb522b4fa9e2cf1592ac5163fd917f"
     },
-    "whoami": {
-      "Package": "whoami",
-      "Version": "1.3.0",
-      "Source": "CRAN",
-      "Hash": "c025d25de1a83dfdd0160f9c79c2684b"
-    },
     "withr": {
       "Package": "withr",
       "Version": "2.1.2",
@@ -2120,6 +2198,12 @@
       "Version": "2.2.0",
       "Source": "CRAN",
       "Hash": "3a313c96061c4ac790de611dc57ebd1f"
+    },
+    "yardstick": {
+      "Package": "yardstick",
+      "Version": "0.0.4",
+      "Source": "CRAN",
+      "Hash": "72a493fb5e91b48ae205c627528f7989"
     },
     "zeallot": {
       "Package": "zeallot",

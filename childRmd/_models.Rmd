@@ -1,7 +1,7 @@
 
 
 
-```{r eval=FALSE}
+```{r , eval=FALSE, include=FALSE}
 explanatory = c("age.factor", "sex.factor", "obstruct.factor", "perfor.factor")
 dependent = 'mort_5yr'
 colon_s %>%
@@ -128,7 +128,7 @@ colon_s %>%
 # ANOVA
 
 
-```{r dlookr target categorical vs numeric}
+```{r dlookr target categorical vs numeric, eval=FALSE, include=FALSE}
 num_cat <- dlookr::relate(num, ShelveLoc)
 num_cat
 summary(num_cat)

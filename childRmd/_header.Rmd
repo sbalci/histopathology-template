@@ -15,7 +15,7 @@
 
 ```{r setup global chunk settings}
 knitr::opts_chunk$set(
-	echo = FALSE, #change to TRUE
+	echo = TRUE, #change to TRUE
 	eval = TRUE,
 	message = FALSE,
 	warning = FALSE,

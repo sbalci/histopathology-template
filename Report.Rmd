@@ -17,15 +17,6 @@ header-includes:
 - \usepackage{xcolor}
 - \usepackage{afterpage}
 output: 
-  distill::distill_article:
-    toc: true
-  rmarkdown::html_vignette: 
-    css: 
-    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
-  redoc::redoc:
-    highlight_outputs: TRUE
-    margins: 1 
-    line_numbers: FALSE 
   pdf_document: 
     fig_caption: yes
     highlight: kate
@@ -34,6 +25,15 @@ output:
     latex_engine: lualatex
     toc_depth: 5
     keep_tex: yes
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
+  redoc::redoc:
+    highlight_outputs: TRUE
+    margins: 1 
+    line_numbers: FALSE 
+  distill::distill_article:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{Recommendations for Rmarkdown}
   %\VignetteEncoding{UTF-8}
@@ -50,25 +50,25 @@ vignette: >
 
 
 
-<!-- ```{r overview, child = here::here('childRmd', '_overView.Rmd')} -->
-<!-- ``` -->
+```{r overview, child = here::here('childRmd', '_overView.Rmd')}
+```
 
 
 
-<!-- ```{r data dictionary, child = here::here('childRmd', 'dataDictionary.md')} -->
-<!-- ``` -->
-
-
-
-
-<!-- ```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')} -->
-<!-- ``` -->
+```{r data dictionary, child = here::here('childRmd', '_dataDictionary.Rmd')}
+```
 
 
 
 
-<!-- ```{r impute, child = here::here('childRmd', '_impute.Rmd')} -->
-<!-- ``` -->
+```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')}
+```
+
+
+
+
+```{r impute, child = here::here('childRmd', '_impute.Rmd')}
+```
 
 
 
@@ -76,56 +76,56 @@ vignette: >
 
 
 
-<!-- ```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')} -->
-<!-- ``` -->
+```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
+```
 
 
 \newpage
 \blandscape
 
-<!-- ```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')} -->
-<!-- ``` -->
+```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')}
+```
 
 \elandscape
 
 
-<!-- ```{r plots, child = here::here('childRmd', '_plots.Rmd')} -->
-<!-- ``` -->
+```{r plots, child = here::here('childRmd', '_plots.Rmd')}
+```
 
 
 
 
-<!-- ```{r pairedTests, child = here::here('childRmd', '_pairedTests.Rmd')} -->
-<!-- ``` -->
+```{r pairedTests, child = here::here('childRmd', '_pairedTests.Rmd')}
+```
 
 
 
-<!-- ```{r hypothesisTests, child = here::here('childRmd', '_hypothesisTests.Rmd')} -->
-<!-- ``` -->
+```{r hypothesisTests, child = here::here('childRmd', '_hypothesisTests.Rmd')}
+```
 
 \newpage
 \blandscape
 
 
 
-<!-- ```{r ROC, child = here::here('childRmd', '_ROC.Rmd')} -->
-<!-- ``` -->
+```{r ROC, child = here::here('childRmd', '_ROC.Rmd')}
+```
 
 
-<!-- ```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')} -->
-<!-- ``` -->
+```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')}
+```
 
 
 
 
-<!-- ```{r survival, child = here::here('childRmd', '_survival.Rmd')} -->
-<!-- ``` -->
+```{r survival, child = here::here('childRmd', '_survival.Rmd')}
+```
 
 \elandscape
 
 
-<!-- ```{r models, child = here::here('childRmd', '_models.Rmd')} -->
-<!-- ``` -->
+```{r models, child = here::here('childRmd', '_models.Rmd')}
+```
 
 
 \pagebreak

@@ -1,11 +1,6 @@
----
-title: "Decision Tree"
-output: html_notebook
----
+# Decision Tree
 
-
-
-```{r explore decision tree}
+```{r explore decision tree,, eval=FALSE, include=FALSE}
 iris %>% explore::explain_tree(target = Species)
 
 

@@ -1,5 +1,5 @@
 
-```{r define survival time}
+```{r define survival time, eval=FALSE, include=FALSE}
 mydata$int <- lubridate::interval(
   lubridate::ymd(mydata$CerrahiTarih),
   lubridate::ymd(mydata$SonTarih)
@@ -9,12 +9,12 @@ mydata$OverallTime <- round(mydata$OverallTime, digits = 1)
 ```
 
 
-```{r recode time}
+```{r recode time, eval=FALSE, include=FALSE}
 mydata$OverallTime <- mydata$genel_sagkalim
 ```
 
 
-```{r recode status}
+```{r recode status, eval=FALSE, include=FALSE}
 ## Recoding mydata$Outcome into mydata$Outcome2
 mydata$Outcome2 <- recode(mydata$Outcome,
                "Alive" = "0",
@@ -27,7 +27,7 @@ mydata$Outcome2 <- as.numeric(mydata$Outcome2)
 
 # Survival Analysis
 
-```{r km}
+```{r km, eval=FALSE, include=FALSE}
 library(survival)
 # data(lung)
 # km <- with(lung, Surv(time, status))
@@ -36,14 +36,14 @@ km <- with(mydata, Surv(OverallTime, Outcome2))
 # plot(km)
 ```
 
-```{r extract info from surv object}
+```{r extract info from surv object, eval=FALSE, include=FALSE}
 surv_fit <- survfit(Surv(time, status) ~ ph.ecog, data=lung)
 insight::is_model_supported(surv_fit)
 ```
 
 
 
-```{r select dependent and explanatory variables 2}
+```{r select dependent and explanatory variables 2, eval=FALSE, include=FALSE}
 dependentKM <-  "Surv(OverallTime, Outcome2)"
 
 explanatoryKM <- c("explanatory1",
@@ -52,19 +52,19 @@ explanatoryKM <- c("explanatory1",
 ```
 
 
-```{r generate Code}
+```{r generate Code, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
 source(here::here("R", "generatingCodeForSurvival.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', "generatedCodeSurvival.Rmd")}
+```{r generatedCode, child = here::here('childRmd', "generatedCodeSurvival.Rmd"), eval=FALSE, include=FALSE}
 ```
 
 
 
 
 
-```{r eval=FALSE}
+```{r eval=FALSE, eval=FALSE, include=FALSE}
 mydependent <-  "Surv(time, status)"
 explanatory <- "Organ"
 
@@ -94,7 +94,7 @@ deneme <- purrr::map(explanatory, mysurvival, mydata = whippleables, mydependent
 
 # Pairwise comparison
 
-```{r pairwise comparison}
+```{r pairwise comparison, eval=FALSE, include=FALSE}
 survminer::pairwise_survdiff(formula = Surv(time, Outcome) ~ ShellAnteriorOnly, 
                              data = mydata,
                              p.adjust.method = "BH")
@@ -107,7 +107,7 @@ survminer::pairwise_survdiff(formula = Surv(time, Outcome) ~ ShellAnteriorOnly,
 # Multivariate Analysis Survival
 
 
-```{r Multivariate Analysis}
+```{r Multivariate Analysis, eval=FALSE, include=FALSE}
 library(finalfit)
 library(survival)
 explanatoryMultivariate <- explanatoryKM
@@ -131,7 +131,7 @@ knitr::kable(tMultivariate, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r
 
 <!-- https://cran.r-project.org/web/packages/arsenal/vignettes/modelsum.html#survival -->
 
-```{r arsenal survival}
+```{r arsenal survival, eval=FALSE, include=FALSE}
 library(arsenal)
 library(survival)
 

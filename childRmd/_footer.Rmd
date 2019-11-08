@@ -50,7 +50,7 @@ print(glue::glue(
 ```
 
 
-```{r summarytools, eval=FALSE, error=FALSE, warning=FALSE, include=FALSE}
+```{r summarytools final summary, eval=FALSE, error=FALSE, warning=FALSE, include=FALSE}
 # mydata %>% select(
 #     -c(
 #         rapor_yil,

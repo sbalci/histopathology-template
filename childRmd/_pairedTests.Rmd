@@ -4,7 +4,7 @@
 <!-- https://cran.r-project.org/web/packages/arsenal/vignettes/paired.html -->
 
 
-```{r arsenal paired}
+```{r arsenal paired, eval=FALSE, include=FALSE}
 library(arsenal)
 dat <- data.frame(
   tp = paste0("Time Point ", c(1, 2, 1, 2, 1, 2, 1, 2, 1, 2)),

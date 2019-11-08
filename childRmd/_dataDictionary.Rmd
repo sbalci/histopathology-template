@@ -1,13 +1,14 @@
 
-```{r explore data dictionary}
+
+```{r explore data dictionary, eval=FALSE, include=FALSE}
 # iris %>% explore::data_dict_md(output_dir = here::here())
 # description <- data.frame(
 #                   variable = c("Species"), 
 #                   description = c("Species of Iris flower"))
 
-explore::data_dict_md(data = mydata, 
-             title = "Data Set", 
-             # description =  description, 
-             output_file = "data_dict.md",
-             output_dir = here::here("out"))
+# explore::data_dict_md(data = mydata, 
+#              title = "Data Set", 
+#              # description =  description, 
+#              output_file = "data_dict.md",
+#              output_dir = here::here("out"))
 ```

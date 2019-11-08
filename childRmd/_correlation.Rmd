@@ -1,6 +1,6 @@
 
 
-```{r load library}
+```{r load library, eval=FALSE, include=FALSE}
 #  https://easystats.github.io/correlation/
 # install.packages("devtools")
 # devtools::install_github("easystats/correlation")
@@ -8,13 +8,13 @@ library("correlation")
 ```
 
 
-```{r correlation}
+```{r correlation, eval=FALSE, include=FALSE}
 correlation::correlation(iris)
 ```
 
 
 
-```{r correlation 2}
+```{r correlation 2, eval=FALSE, include=FALSE}
 library(dplyr)
 
 iris %>% 
@@ -27,7 +27,7 @@ iris %>%
 
   
   
-```{r correlation 3}
+```{r correlation 3, eval=FALSE, include=FALSE}
 correlation::correlation(select(iris, Species, starts_with("Sepal")),
             select(iris, Species, starts_with("Petal")),
             partial=TRUE)
@@ -36,13 +36,13 @@ correlation::correlation(select(iris, Species, starts_with("Sepal")),
   
             
             
-```{r correlation bayesian}
+```{r correlation bayesian, eval=FALSE, include=FALSE}
 correlation(iris, bayesian=TRUE)
 ```
 
 
 
-```{r correlation report}
+```{r correlation report, eval=FALSE, include=FALSE}
 library(report)
 iris %>% 
   select(starts_with("Sepal")) %>% 
@@ -52,7 +52,7 @@ iris %>%
 ```
 
   
-```{r correlation report 2}
+```{r correlation report 2, eval=FALSE, include=FALSE}
 iris %>% 
   group_by(Species) %>% 
   correlation() %>% 
@@ -62,7 +62,7 @@ iris %>%
 
 
 
-```{r explore}
+```{r explore, eval=FALSE, include=FALSE}
 iris %>% explore(Sepal.Length, Petal.Length)
 
 iris$is_versicolor <- ifelse(iris$Species == "versicolor", 1, 0)
@@ -70,7 +70,7 @@ iris %>% explore(Sepal.Length, Petal.Length, target = is_versicolor)
 ```
 
 
-```{r dlookr correlation}
+```{r dlookr correlation, eval=FALSE, include=FALSE}
 dlookr::correlate(carseats)
 dlookr::correlate(carseats, Sales, CompPrice, Income)
 dlookr::correlate(carseats, Sales:Income)
@@ -86,7 +86,7 @@ carseats %>%
 ```
 
 
-```{r dlookr correlation plots}
+```{r dlookr correlation plots, eval=FALSE, include=FALSE}
 dlookr::plot_correlate(carseats)
 dlookr::plot_correlate(carseats, Sales, Price)
 carseats %>%
@@ -97,7 +97,7 @@ carseats %>%
 
 
 
-```{r SmartEDA correlation}
+```{r SmartEDA correlation, eval=FALSE, include=FALSE}
 ## Summary statistics by – overall with correlation
 SmartEDA::ExpNumStat(
   Carseats,
@@ -113,7 +113,7 @@ SmartEDA::ExpNumStat(
 
 
 
-```{r inspectdf correlation}
+```{r inspectdf correlation, eval=FALSE, include=FALSE}
 # https://alastairrushworth.github.io/inspectdf/articles/pkgdown/inspect_cor_exampes.html
 inspectdf::inspect_cor(storms)
 
@@ -152,7 +152,7 @@ print(cor)
 
 
 
-```{r}
+```{r, eval=FALSE, include=FALSE}
 cor %>% 
     report::to_values()
 ```
