@@ -3,6 +3,9 @@ title: "R packages"
 output: html_notebook
 ---
 
+https://www.coursera.org/learn/reproducible-templates-analysis/lecture/kMdRj/create-an-r-package-with-an-r-markdown-template
+
+
 
 
 # R packages  
