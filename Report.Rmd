@@ -3,6 +3,7 @@ title: "Histopathology Research Template"
 description: |
   Codes Used in Histopathology Research  
   Data Report for Histopathology Research
+  Example Using Random Generated Fakedata
 author:
   - name: Serdar Balci, MD, Pathologist
     url: https://sbalci.github.io/histopathology-template/
@@ -72,14 +73,14 @@ data_dict_md(data = mydata,
 
 
 
-```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')}
-```
+<!-- ```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')} -->
+<!-- ``` -->
 
 
 
 
-```{r impute, child = here::here('childRmd', '_impute.Rmd')}
-```
+<!-- ```{r impute, child = here::here('childRmd', '_impute.Rmd')} -->
+<!-- ``` -->
 
 
 
@@ -88,21 +89,21 @@ data_dict_md(data = mydata,
 
 
 
-```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
-```
+<!-- ```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')} -->
+<!-- ``` -->
 
 
 \newpage
 \blandscape
 
-```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')}
-```
+<!-- ```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')} -->
+<!-- ``` -->
 
 \elandscape
 
 
-```{r plots, child = here::here('childRmd', '_plots.Rmd')}
-```
+<!-- ```{r plots, child = here::here('childRmd', '_plots.Rmd')} -->
+<!-- ``` -->
 
 
 
@@ -120,25 +121,31 @@ data_dict_md(data = mydata,
 
 
 
-```{r ROC, child = here::here('childRmd', '_ROC.Rmd')}
-```
+<!-- ```{r ROC, child = here::here('childRmd', '_ROC.Rmd')} -->
+<!-- ``` -->
 
 
-```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')}
-```
+<!-- ```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')} -->
+<!-- ``` -->
 
 
 
 
-```{r survival, child = here::here('childRmd', '_survival.Rmd')}
-```
+<!-- ```{r survival, child = here::here('childRmd', '_survival.Rmd')} -->
+<!-- ``` -->
 
 \elandscape
 
 
-```{r models, child = here::here('childRmd', '_models.Rmd')}
-```
+<!-- ```{r models, child = here::here('childRmd', '_models.Rmd')} -->
+<!-- ``` -->
 
+
+
+
+
+```{r comments, child = here::here('childRmd', '_comments.Rmd')}
+```
 
 
 
