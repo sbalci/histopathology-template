@@ -31,6 +31,7 @@ r_github_packages:
     - r-lib/covr
     - ropenscilabs/icon
     - tidyverse/dplyr
+    - tidyverse/magrittr
     - DataWookie/feedeR
     - haozhu233/kableExtra
     - ropensci/RefManageR
