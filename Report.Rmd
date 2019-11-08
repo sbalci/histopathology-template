@@ -151,7 +151,10 @@ data_dict_md(data = mydata,
 
 \pagebreak
 
+Comments Also Here
+
 \pagebreak
+
 
 ```{r footer, child = here::here('childRmd', '_footer.Rmd')}
 ```
