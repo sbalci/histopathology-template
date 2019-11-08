@@ -1,12 +1,12 @@
 # Cross Tables
 
 
-```{r load finalfit, eval=FALSE, include=FALSE}
+```{r load finalfit}
 library(finalfit)
 ```
 
 
-```{r select dependent and explanatory variables, eval=FALSE, include=FALSE}
+```{r select dependent and explanatory variables}
 dependent <- c("dependent1",
                "dependent2"
               )
@@ -18,23 +18,23 @@ explanatory <- c("explanatory1",
 
 
 
-```{r generate code for Cross Table, include=FALSE, eval=FALSE, include=FALSE}
+```{r generate code for Cross Table}
 source(here::here("R", "generatingCodeForCrossTables.R"))
 ```
 
 
 
-```{r generatedCode for Cross Table, child = here::here('childRmd', 'generatedCodeCrossTables.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode for Cross Table, child = here::here('childRmd', 'generatedCodeCrossTables.Rmd')}
 ```
 
 
-```{r tableone crosstable, eval=FALSE, include=FALSE}
+```{r tableone crosstable}
 CreateTableOne(vars = myVars, strata = "columnname", data = pbc, factorVars = catVars)
 ```
 
 
 
-```{r tableone crosstable nonnormal values, eval=FALSE, include=FALSE}
+```{r tableone crosstable nonnormal values}
 print(tab, nonnormal = biomarkers, exact = "exactVariable", smd = TRUE)
 ```
 
@@ -42,7 +42,7 @@ print(tab, nonnormal = biomarkers, exact = "exactVariable", smd = TRUE)
 
 <!-- https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html -->
 
-```{r arsenal tableby crosstable, eval=FALSE, include=FALSE}
+```{r arsenal tableby crosstable}
 
 ```
 
@@ -50,7 +50,7 @@ print(tab, nonnormal = biomarkers, exact = "exactVariable", smd = TRUE)
 
 <!-- https://cran.r-project.org/web/packages/arsenal/vignettes/write2.html -->
 
-```{r arsenal write output, eval=FALSE, include=FALSE}
+```{r arsenal write output}
 write2html(
   knitr::kable(head(mockstudy)), paste0(tmpdir, "/test.kable.keep.rmd.html"),
   quiet = TRUE, # passed to rmarkdown::render
@@ -60,14 +60,14 @@ write2html(
 
 
 
-```{r summarytool crosstable, eval=FALSE, include=FALSE}
+```{r summarytool crosstable}
 ctable(tobacco$gender, tobacco$smoker, style = 'rmarkdown')
 ```
 
 
 
 
-```{r summarytool crosstable html, eval=FALSE, include=FALSE}
+```{r summarytool crosstable html}
 print(ctable(tobacco$gender, tobacco$smoker), method = 'render')
 print(ctable(tobacco$smoker, tobacco$diseased, prop = "r"), method = "render")
 with(tobacco, 
@@ -78,7 +78,7 @@ with(tobacco,
 
 
 
-```{r summarizer 1, eval=FALSE, include=FALSE}
+```{r summarizer 1}
 # devtools::install_github("ewenharrison/summarizer")
 # library(summarizer)
 # data(colon_s)

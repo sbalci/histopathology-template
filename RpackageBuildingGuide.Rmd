@@ -6,6 +6,33 @@ output: html_notebook
 https://www.coursera.org/learn/reproducible-templates-analysis/lecture/kMdRj/create-an-r-package-with-an-r-markdown-template
 
 
+---
+
+```{r}
+# files_replace <-
+#   list.files(path = here::here("childRmd"),
+#              pattern = "*.Rmd",
+#              full.names = TRUE)
+# 
+# xfun::gsub_files(
+#   files = files_replace,
+#   pattern = ", eval=FALSE, include=FALSE",
+#   replacement = "",
+#   fixed = TRUE
+# )
+# xfun::gsub_files(
+#   files = files_replace,
+#   pattern = ", include=FALSE",
+#   replacement = "",
+#   fixed = TRUE
+# )
+
+```
+
+
+
+
+---
 
 
 # R packages  

@@ -5,7 +5,7 @@ output: html_notebook
 
 
 
-```{r explore decision tree, eval=FALSE, include=FALSE}
+```{r explore decision tree}
 iris %>% explore::explain_tree(target = Species)
 
 

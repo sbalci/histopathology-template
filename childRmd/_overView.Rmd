@@ -1,18 +1,18 @@
 # Define Variable Types
 
-```{r define continious variables, eval=FALSE, include=FALSE}
-mydataDescription <- describer::describe(iris)
+```{r define continious variables}
+mydataDescription <- describer::describe(mydata)
 
 mydataDescription %>% 
     janitor::clean_names() %>% 
-    dplyr::filter(column_class == "numeric") %>% 
+    dplyr::filter(column_type == "numeric" | column_type == "double") %>% 
     dplyr::select(column_name) %>% 
     dplyr::pull() -> continiousVariables
 ```
 
 
 
-```{r inspectdf column types, eval=FALSE, include=FALSE}
+```{r inspectdf column types}
 inspectdf::inspect_types(starwars)
 
 inspectdf::inspect_types(starwars) %>% 
@@ -41,7 +41,7 @@ inspectdf::inspect_types(starwars) %>%
 ```
 
 
-```{r inspectdf column types 2, eval=FALSE, include=FALSE}
+```{r inspectdf column types 2}
 inspectdf::inspect_types(starwars) %>% inspectdf::show_plot()
 
 inspectdf::inspect_types(star_1, star_2)
@@ -58,18 +58,18 @@ inspectdf::inspect_types(star_1, star_2)
 # Overview / Exploratory Data Analysis (EDA)
 
 
-```{r summarytools, eval=FALSE, include=FALSE}
+```{r summarytools}
 summarytools::view(summarytools::dfSummary(mydata))
 ```
 
 
-```{r glimpse, eval=FALSE, include=FALSE}
+```{r glimpse}
 glimpse(mydata)
 ```
 
 
 
-```{r describer 1, eval=FALSE, include=FALSE}
+```{r describer 1}
 library(dplyr, warn.conflicts = FALSE)
 library(describer)
 
@@ -79,7 +79,7 @@ mtcars %>%
 ```
 
 
-```{r describer group_by, eval=FALSE, include=FALSE}
+```{r describer group_by}
 mtcars %>% 
   group_by(cyl) %>% 
   do(describe(.)) %>% 
@@ -88,7 +88,7 @@ mtcars %>%
 
 
 
-```{r describer 2, eval=FALSE, include=FALSE}
+```{r describer 2}
 describe(mtcars)
 describe(iris)
 describe(state.name)
@@ -97,7 +97,7 @@ describe(state.name)
 
 
 
-```{r visdat, eval=FALSE, include=FALSE}
+```{r visdat}
 # https://github.com/ropensci/visdat
 # http://visdat.njtierney.com/articles/using_visdat.html
 # https://cran.r-project.org/web/packages/visdat/index.html
@@ -145,7 +145,7 @@ visdat::vis_compare(chickwts_diff, chickwts)
 
 
 
-```{r DataExplorer, eval=FALSE, include=FALSE}
+```{r DataExplorer}
 # https://cran.r-project.org/web/packages/DataExplorer/vignettes/dataexplorer-intro.html
 
 # library(nycflights13)
@@ -191,7 +191,7 @@ plot_correlation(na.omit(final_data), maxcat = 5L)
 
 
 
-```{r xray, eval=FALSE, include=FALSE}
+```{r xray}
 xray::anomalies(airquality)
 
 xray::distributions(airquality)
@@ -201,13 +201,13 @@ xray::distributions(airquality)
 
 
 
-```{r dataMaid, eval=FALSE, include=FALSE}
+```{r dataMaid}
 dataMaid::makeDataReport(mydata)
 ```
 
 
 
-```{r dataMaid 2, eval=FALSE, include=FALSE}
+```{r dataMaid 2}
 # https://cran.r-project.org/web/packages/dataMaid/vignettes/extending_dataMaid.html
 
 dataMaid::makeDataReport(mydata,
@@ -254,7 +254,7 @@ dataMaid::makeDataReport(mydata,
 
 
 
-```{r summarytool options 1, eval=FALSE, include=FALSE}
+```{r summarytool options 1}
 # https://cran.r-project.org/web/packages/summarytools/vignettes/Recommendations-rmarkdown.html
 # https://github.com/dcomtois/summarytools
 library(knitr)
@@ -267,13 +267,13 @@ opts_chunk$set(comment=NA,
 ```
 
 
-```{r summarytool options 2, eval=FALSE, include=FALSE}
+```{r summarytool options 2}
 library(summarytools)
 st_css()
 ```
 
 
-```{r summarytool options 3, eval=FALSE, include=FALSE}
+```{r summarytool options 3}
 st_options(bootstrap.css     = FALSE,       # Already part of the theme so no need for it
            plain.ascii       = FALSE,       # One of the essential settings
            style             = "rmarkdown", # Idem.
@@ -285,7 +285,7 @@ st_options(bootstrap.css     = FALSE,       # Already part of the theme so no ne
 
 
 
-```{r summarytools frequencies, eval=FALSE, include=FALSE}
+```{r summarytools frequencies}
 library()
 freq(iris$Species, plain.ascii = FALSE, style = "rmarkdown")
 freq(iris$Species, report.nas = FALSE, headings = FALSE, cumul = TRUE, totals = TRUE)
@@ -294,29 +294,29 @@ freq(tobacco[ ,c("gender", "age.gr", "smoker")])
 ```
 
 
-```{r summarytool frequencies html render, eval=FALSE, include=FALSE}
+```{r summarytool frequencies html render}
 print(freq(tobacco$gender), method = 'render')
 ```
 
 
-```{r summarytools df, eval=FALSE, include=FALSE}
+```{r summarytools df}
 view(dfSummary(iris))
 ```
 
 
-```{r summarytools dfs_grid, eval=FALSE, include=FALSE}
+```{r summarytools dfs_grid}
 dfSummary(tobacco, style = 'grid', graph.magnif = 0.75, tmp.img.dir = "/tmp")
 dfSummary(tobacco, plain.ascii = FALSE, style = "grid", 
           graph.magnif = 0.75, valid.col = FALSE, tmp.img.dir = "/tmp")
 ```
 
 
-```{r summarytools html, eval=FALSE, include=FALSE}
+```{r summarytools html}
 print(dfSummary(tobacco, graph.magnif = 0.75), method = 'render')
 ```
 
 
-```{r summarytools save output, eval=FALSE, include=FALSE}
+```{r summarytools save output}
 view(iris_stats_by_species,
      file = here::here("out", "iris_stats_by_species.html")
 )
@@ -326,7 +326,7 @@ view(iris_stats_by_species,
 
 
 
-```{r explore 1, eval=FALSE, include=FALSE}
+```{r explore 1}
 # https://github.com/rolkra/explore
 # https://cran.r-project.org/web/packages/explore/vignettes/explore.html
 # https://cran.r-project.org/web/packages/explore/vignettes/explore_mtcars.html
@@ -350,7 +350,7 @@ explore::explore(iris)
 ```
 
 
-```{r explore 2, eval=FALSE, include=FALSE}
+```{r explore 2}
 iris %>% explore::explore_tbl()
 mtcars %>% explore::explore_tbl()
 
@@ -389,18 +389,18 @@ iris %>%
 ```
 
 
-```{r explore 3, eval=FALSE, include=FALSE, fig.height=explore::total_fig_height(iris)}
+```{r explore 3, fig.height=explore::total_fig_height(iris)}
 iris %>% 
   explore::explore_all()
 ```
 
 
-```{r explore 4, eval=FALSE, fig.height=explore::total_fig_height(iris, target = Species), explore::total_fig_height(iris, target=, include=FALSE}
+```{r explore 4, eval=FALSE, fig.height=explore::total_fig_height(iris, target = Species), explore::total_fig_height(iris, target=}
 iris %>% explore::explore_all(target = Species)
 ```
 
 
-```{r explore min-max, eval=FALSE, include=FALSE}
+```{r explore min-max}
 iris %>% explore::explore(Sepal.Length, min_val = 4.5, max_val = 7)
 ```
 
@@ -417,7 +417,7 @@ mtcars %>% explore::describe()
 
 
 
-```{r dlookr, eval=FALSE, include=FALSE}
+```{r dlookr}
 # https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html
 
 dlookr::describe(carseats
@@ -437,7 +437,7 @@ carseats %>%
 
 
 
-```{r dlookr EDA Report pdf, eval=FALSE, include=FALSE}
+```{r dlookr EDA Report pdf}
 # https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html
 
 carseats %>%
@@ -449,7 +449,7 @@ carseats %>%
 
 
 
-```{r dlookr EDA Report html, eval=FALSE, include=FALSE}
+```{r dlookr EDA Report html}
 carseats %>%
   dlookr::eda_report(target = Sales,
              output_format = "html",
@@ -459,7 +459,7 @@ carseats %>%
 
 
 
-```{r SmartEDA, eval=FALSE, include=FALSE}
+```{r SmartEDA}
 # install.packages("ISLR")
 library("ISLR")
 # install.packages("SmartEDA")
@@ -492,7 +492,7 @@ SmartEDA::ExpData(data=Carseats,type=2)
 
 
 
-```{r SmartEDA variable importance based on Information value, eval=FALSE, include=FALSE}
+```{r SmartEDA variable importance based on Information value}
 # Variable importance based on Information value
 SmartEDA::ExpCatStat(
   Carseats,
@@ -512,7 +512,7 @@ SmartEDA::ExpCatStat(
 # Feature imbalance
 
 
-```{r Feature imbalance inspectdf, eval=FALSE, include=FALSE}
+```{r Feature imbalance inspectdf}
 inspectdf::inspect_imb(starwars)
 
 inspectdf::inspect_imb(starwars) %>% inspectdf::show_plot()
@@ -527,7 +527,7 @@ inspectdf::inspect_imb(star_1, star_2) %>% inspectdf::show_plot()
 
 # Memory usage
   
-```{r memory usage inspectdf, eval=FALSE, include=FALSE}
+```{r memory usage inspectdf}
 inspectdf::inspect_mem(starwars)
 
 inspectdf::inspect_mem(starwars) %>% inspectdf::show_plot()

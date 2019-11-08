@@ -10,7 +10,7 @@ source(file = here::here("R", "generatingFakeData.R"))
 
 ```{r import data}
 library(readxl)
-mydata <- read_excel(here::here("data", "mydata.xlsx"))
+mydata <- readxl::read_excel(here::here("data", "mydata.xlsx"))
 # View(mydata)
 ```
 

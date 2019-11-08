@@ -44,13 +44,13 @@ print(glue::glue(
 # Final Data Summary {.appendix}  
 
 
-```{r summarytools 1, eval=FALSE, include=FALSE}
+```{r summarytools 1}
 # summarytools::view(summarytools::dfSummary(x = mydata
 #                                            , style = "markdown"))
 ```
 
 
-```{r summarytools, eval=FALSE, error=FALSE, warning=FALSE, include=FALSE}
+```{r summarytools, eval=FALSE, error=FALSE, warning=FALSE}
 # mydata %>% select(
 #     -c(
 #         rapor_yil,

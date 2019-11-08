@@ -17,6 +17,15 @@ header-includes:
 - \usepackage{xcolor}
 - \usepackage{afterpage}
 output: 
+  distill::distill_article:
+    toc: true
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
+  redoc::redoc:
+    highlight_outputs: TRUE
+    margins: 1 
+    line_numbers: FALSE 
   pdf_document: 
     fig_caption: yes
     highlight: kate
@@ -25,15 +34,6 @@ output:
     latex_engine: lualatex
     toc_depth: 5
     keep_tex: yes
-  rmarkdown::html_vignette: 
-    css: 
-    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
-  redoc::redoc:
-    highlight_outputs: TRUE
-    margins: 1 
-    line_numbers: FALSE 
-  distill::distill_article:
-    toc: true
 vignette: >
   %\VignetteIndexEntry{Recommendations for Rmarkdown}
   %\VignetteEncoding{UTF-8}
@@ -53,13 +53,13 @@ vignette: >
 <!-- ``` -->
 
 
-```{r explore data dictionary, eval=FALSE, include=FALSE}
+```{r explore data dictionary}
 # iris %>% explore::data_dict_md(output_dir = here::here())
 # description <- data.frame(
 #                   variable = c("Species"), 
 #                   description = c("Species of Iris flower"))
 
-data_dict_md(data = mydata, 
+explore::data_dict_md(data = mydata, 
              title = "Data Set", 
              # description =  description, 
              output_file = "data_dict.md",
@@ -81,7 +81,6 @@ data_dict_md(data = mydata,
 
 <!-- ```{r impute, child = here::here('childRmd', '_impute.Rmd')} -->
 <!-- ``` -->
-
 
 
 

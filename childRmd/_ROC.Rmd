@@ -1,13 +1,13 @@
 # ROC
 
 
-```{r OptimalCutpoints, eval=FALSE, include=FALSE}
+```{r OptimalCutpoints}
 # library(OptimalCutpoints)
 ```
 
 
 
-```{r yardstick print ROC curve, eval=FALSE, include=FALSE}
+```{r yardstick print ROC curve}
 # https://tidymodels.github.io/yardstick/reference/roc_curve.html
 
 roc_fit <- yardstick::roc_curve(mydata,
@@ -29,7 +29,7 @@ ggplot2::autoplot(roc_fit)
 
 
 
-```{r pROC, eval=FALSE, include=FALSE}
+```{r pROC}
 library(pROC)
 
 m1 <- pROC::roc(mydata,
@@ -54,14 +54,14 @@ m1 <- pROC::roc(mydata,
 
 
 
-```{r pROC all table, eval=FALSE, include=FALSE}
+```{r pROC all table}
 m1
 ```
 
 
 
 
-```{r ROC AUC, eval=FALSE, include=FALSE}
+```{r ROC AUC}
 
 pROC::roc(mydata,
           "polyp_rec",
@@ -86,7 +86,7 @@ pROC::roc(mydata,
 
 
 
-```{r ROC find max Youden, eval=FALSE, include=FALSE}
+```{r ROC find max Youden}
 which.max(m1$youden)
 m1[which.max(m1$youden),]
 ```
@@ -94,7 +94,7 @@ m1[which.max(m1$youden),]
 
 
 
-```{r pROC 2, eval=FALSE, include=FALSE}
+```{r pROC 2}
 
 roc_obj <- pROC::roc(polyp_rec ~ size,
           data = mydata,
@@ -117,7 +117,7 @@ roc_obj <- pROC::roc(polyp_rec ~ size,
 
 
 
-```{r plotROC, eval=FALSE, include=FALSE}
+```{r plotROC}
 # devtools::install_github("sachsmc/plotROC")
 library(plotROC)
 # shiny_plotROC()

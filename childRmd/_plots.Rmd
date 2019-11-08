@@ -3,7 +3,7 @@
 ## Categorical Variables
 
 
-```{r define variables, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+```{r define variables}
 dependent <- c("dependent1",
                "dependent2"
                  )
@@ -16,7 +16,7 @@ explanatory <- c("explanatory1",
 
 
 
-```{r select categorical, eval=FALSE, include=FALSE}
+```{r select categorical}
 mydataCategorical <- mydata %>% 
     select(-var1,
            -var2
@@ -25,18 +25,18 @@ mydataCategorical <- mydata %>%
 
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- explanatory[1]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
 source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[2]
@@ -44,12 +44,12 @@ dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
 source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[3]
@@ -58,12 +58,12 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[4]
@@ -72,11 +72,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[5]
@@ -85,11 +85,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[6]
@@ -98,11 +98,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[7]
@@ -111,11 +111,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[8]
@@ -124,11 +124,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[9]
@@ -137,11 +137,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[10]
@@ -150,11 +150,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[11]
@@ -163,11 +163,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[12]
@@ -176,7 +176,7 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
@@ -189,11 +189,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[14]
@@ -201,11 +201,11 @@ dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
 source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[15]
@@ -214,11 +214,11 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
-```{r include=FALSE, eval=FALSE, include=FALSE}
+```{r include=FALSE}
 mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[16]
@@ -227,12 +227,12 @@ source(here::here("R", "generatingCodeForCategoricalPlots.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')}
 ```
 
 
 
-```{r SmartEDA column chart, eval=FALSE, include=FALSE}
+```{r SmartEDA column chart}
 ## column chart
 SmartEDA::ExpCatViz(
   Carseats,
@@ -247,7 +247,7 @@ SmartEDA::ExpCatViz(
 ```
 
 
-```{r SmartEDA bar graph, eval=FALSE, include=FALSE}
+```{r SmartEDA bar graph}
 ## Stacked bar graph
 SmartEDA::ExpCatViz(
   Carseats,
@@ -262,7 +262,7 @@ SmartEDA::ExpCatViz(
 ```
 
 
-```{r SmartEDA information values, eval=FALSE, include=FALSE}
+```{r SmartEDA information values}
 ## Variable importance graph using information values
 SmartEDA::ExpCatStat(
   Carseats,
@@ -278,20 +278,20 @@ SmartEDA::ExpCatStat(
 
 
 
-```{r inspectdf plot, eval=FALSE, include=FALSE}
+```{r inspectdf plot}
 inspectdf::inspect_cat(starwars) %>% inspectdf::show_plot()
 ```
 
 
 
-```{r inspectdf plot 2, eval=FALSE, include=FALSE}
+```{r inspectdf plot 2}
 inspectdf::inspect_cat(starwars) %>% 
   inspectdf::show_plot(high_cardinality = 1)
 ```
 
 
 
-```{r inspectdf categorical plot, eval=FALSE, include=FALSE}
+```{r inspectdf categorical plot}
 inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 ```
 
@@ -610,7 +610,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 
 
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE}
 mydata %>%
     select(institution, starts_with("Slide")) %>%
     pivot_longer(cols = starts_with("Slide")) %>%
@@ -620,7 +620,7 @@ p + geom_jitter(aes(colour = institution))
 ```
 
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE}
 dxchanges <- mydata %>%
     select(bx_no, starts_with("Slide")) %>% 
     filter(complete.cases(.)) %>%
@@ -689,7 +689,7 @@ ggplot(data = dxchanges,
 <!-- ``` -->
 
 
-```{r SmartEDA Boxplot by category, eval=FALSE, include=FALSE}
+```{r SmartEDA Boxplot by category}
 ## Generate Boxplot by category
 SmartEDA::ExpNumViz(
   mtcars,
@@ -702,7 +702,7 @@ SmartEDA::ExpNumViz(
 ```
 
 
-```{r SmartEDA density plot by category, eval=FALSE, include=FALSE}
+```{r SmartEDA density plot by category}
 ## Generate Density plot
 SmartEDA::ExpNumViz(
   mtcars,
@@ -715,7 +715,7 @@ SmartEDA::ExpNumViz(
 ```
 
 
-```{r SmartEDA scatterplot by category, eval=FALSE, include=FALSE}
+```{r SmartEDA scatterplot by category}
 ## Generate Scatter plot
 SmartEDA::ExpNumViz(
   mtcars,
@@ -728,7 +728,7 @@ SmartEDA::ExpNumViz(
 ```
 
 
-```{r SmartEDA scatterplots by category 2, eval=FALSE, include=FALSE}
+```{r SmartEDA scatterplots by category 2}
 SmartEDA::ExpNumViz(mtcars, target = "am", scatter = TRUE)
 ```
 

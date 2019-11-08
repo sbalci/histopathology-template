@@ -1,6 +1,6 @@
 
 
-```{r clean names, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+```{r clean names}
 mydata <- janitor::clean_names(mydata)
 # cat(names(mydata), sep = ",\n")
 # names(mydata) <- c(names(mydata)[1:21], paste0("Soru", 1:30))
@@ -10,7 +10,7 @@ mydata <- janitor::clean_names(mydata)
 
 
 
-```{r explore, eval=FALSE, include=FALSE}
+```{r explore}
 iris %>% 
   explore::clean_var(data = ., 
                      var = Sepal.Length,  
@@ -26,7 +26,7 @@ iris %>%
 
 
 
-```{r summary, eval=FALSE, include=FALSE}
+```{r summary}
 summarytools::view(summarytools::dfSummary(mydata))
 glimpse(mydata)
 ```
@@ -46,7 +46,7 @@ iris %>%
 
 
 
-```{r recode finalfit, eval=FALSE, include=FALSE}
+```{r recode finalfit}
 library(finalfit)
 # https://www.datasurg.net/2019/10/15/jama-retraction-after-miscoding-new-finalfit-function-to-check-recoding/
 # intentionally miscoded
@@ -93,7 +93,7 @@ out = colon_s_small %>%
 
 
 
-```{r, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$cinsiyet into mydata$Cinsiyet
 mydata$Cinsiyet <- recode(mydata$cinsiyet,
                "K" = "Kadin",
@@ -101,7 +101,7 @@ mydata$Cinsiyet <- recode(mydata$cinsiyet,
 mydata$Cinsiyet <- factor(mydata$Cinsiyet)
 ```
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$tumor_yerlesimi into mydata$TumorYerlesimi
 mydata$TumorYerlesimi <- recode(mydata$tumor_yerlesimi,
                "proksimal" = "Proksimal",
@@ -116,7 +116,7 @@ mydata$TumorYerlesimi <- factor(mydata$TumorYerlesimi, levels=c("GEJ", "Proksima
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$histolojik_alt_tip into mydata$HistolojikAltTip
 mydata$HistolojikAltTip <- recode(mydata$histolojik_alt_tip,
                "medüller benzeri" = "meduller benzeri")
@@ -125,7 +125,7 @@ mydata$HistolojikAltTip <- factor(mydata$HistolojikAltTip)
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$lauren_siniflamasi into mydata$Lauren
 mydata$Lauren <- recode(mydata$lauren_siniflamasi,
                "diffüz" = "diffuse",
@@ -134,7 +134,7 @@ mydata$Lauren <- factor(mydata$Lauren)
 
 ```
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$histolojik_derece into mydata$Grade
 mydata$Grade <- recode(mydata$histolojik_derece,
                "az diferansiye" = "az",
@@ -149,7 +149,7 @@ mydata$Grade <- factor(mydata$Grade, levels=c("iyi", "orta", "az"))
 
 
 
-```{r recode TNM stage, eval=FALSE, include=FALSE}
+```{r recode TNM stage}
 mydata$Tstage <- stringr::str_match(mydata$patolojik_evre, paste('(.+)', "N", sep=''))[,2]
 
 mydata$Nstage <- paste0("N",
@@ -162,7 +162,7 @@ mydata$Mstage <- paste0("M",
 ```
 
 
-```{r recode TNM2, eval=FALSE, include=FALSE}
+```{r recode TNM2}
 mydata <- mydata %>% 
     mutate(
         T_stage = case_when(
@@ -197,7 +197,7 @@ mutate(
 
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$cd44_oran into mydata$CD44
 mydata$CD44 <- recode(mydata$cd44_oran,
                "2" = "positive",
@@ -208,7 +208,7 @@ mydata$CD44 <- factor(mydata$CD44)
 
 ```
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$her2_skor into mydata$Her2
 mydata$Her2 <- recode(mydata$her2_skor,
                "+3" = "3",
@@ -220,7 +220,7 @@ mydata$Her2 <- factor(mydata$Her2, levels=c("0", "1", "2", "3"))
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$msi into mydata$MMR
 mydata$MMR <- recode(mydata$msi,
                "MSS" = "pMMR",
@@ -241,7 +241,7 @@ mydata$MMR2 <- factor(mydata$MMR2)
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 mydata <- mydata %>% 
     mutate(
 TumorPDL1gr1 = case_when(
@@ -270,7 +270,7 @@ inflPDL1gr5 = case_when(
 
 ```
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$lvi into mydata$LVI
 mydata$LVI <- recode(mydata$lvi,
                "var" = "Var",
@@ -281,7 +281,7 @@ mydata$LVI <- factor(mydata$LVI, levels=c("Yok", "Var"))
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$pni into mydata$PNI
 mydata$PNI <- recode(mydata$pni,
                "var" = "Var",
@@ -292,7 +292,7 @@ mydata$PNI <- factor(mydata$PNI, levels=c("Yok", "Var"))
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 ## Recoding mydata$ln into mydata$LenfNoduMetastazi
 mydata$LenfNoduMetastazi <- recode(mydata$ln,
                "var" = "Var",
@@ -303,18 +303,18 @@ mydata$LenfNoduMetastazi <- factor(mydata$LenfNoduMetastazi, levels=c("Yok", "Va
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 mydata$sontarih <- janitor::excel_numeric_to_date(as.numeric(mydata$olum_tarihi))
 ```
 
 
-```{r, eval=FALSE, include=FALSE}
+```{r}
 mydata$Outcome <- "Dead"
 mydata$Outcome[mydata$olum_tarihi == "yok"] <- "Alive"
 ```
 
 
-```{r select columns, eval=FALSE, include=FALSE}
+```{r select columns}
 # cat(names(mydata), sep = ",\n")
 
 mydata <- mydata %>% 
@@ -381,7 +381,7 @@ iSelectColumn.R
 
 
 
-```{r clean names 2, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+```{r clean names 2}
 mydata <- janitor::clean_names(mydata)
 # cat(names(mydata), sep = ",\n")
 
@@ -391,7 +391,7 @@ names(mydata) <- c(names(mydata)[1:21], paste0("Soru", 1:30))
 
 
 
-```{r eval=FALSE, include=FALSE, results='asis'}
+```{r eval=FALSE, results='asis'}
 library(arsenal)
 tab1 <- tableby(~ katilim_durumu
                 ,
@@ -405,7 +405,7 @@ summary(tab1)
 
 
 
-```{r sadece katılmış ve tamamlamış olanları seç, eval=FALSE, include=FALSE}
+```{r sadece katılmış ve tamamlamış olanları seç}
 mydata <- mydata %>% 
   filter(katilim_durumu == "katılmış ve tamamlamış")
 ```
@@ -428,7 +428,7 @@ mydata <- mydata %>%
 
 
 
-```{r yas, eval=FALSE, include=FALSE}
+```{r yas}
 ## Recoding mydata$x3_yasiniz_nedir into mydata$YasGrup
 mydata$YasGrup <- factor(mydata$x3_yasiniz_nedir)
 ## Reordering mydata$YasGrup
@@ -436,7 +436,7 @@ mydata$YasGrup <- factor(mydata$YasGrup, levels=c("20-29", "30-39", "40-49", "50
 ```
 
 
-```{r cinsiyet, eval=FALSE, include=FALSE}
+```{r cinsiyet}
 ## Recoding mydata$x4_cinsiyetiniz_nedir into mydata$Cinsiyet
 mydata$Cinsiyet <- recode(mydata$x4_cinsiyetiniz_nedir,
                "Kadın" = "Kadin")
@@ -445,7 +445,7 @@ mydata$Cinsiyet <- factor(mydata$Cinsiyet)
 ```
 
 
-```{r uzmanlik suresi, eval=FALSE, include=FALSE}
+```{r uzmanlik suresi}
 ## Recoding mydata$x5_kac_yildir_genel_cerrahi_uzmanisiniz into mydata$UzmanlikSuresi
 mydata$UzmanlikSuresi <- recode(mydata$x5_kac_yildir_genel_cerrahi_uzmanisiniz,
                "43739" = "10-19")
@@ -459,7 +459,7 @@ mydata$UzmanlikSuresi <- factor(mydata$UzmanlikSuresi, levels=c("0-9", "10-19", 
 
 
 
-```{r unvan, eval=FALSE, include=FALSE}
+```{r unvan}
 ## Recoding mydata$x6_unvaniniz_nedir into mydata$Unvan
 mydata$Unvan <- factor(mydata$x6_unvaniniz_nedir)
 
@@ -469,7 +469,7 @@ mydata$Unvan <- factor(mydata$Unvan, levels=c("Op.Dr.", "Doktor Öğretim Üyesi
 ```
 
 
-```{r kurum, eval=FALSE, include=FALSE}
+```{r kurum}
 ## Recoding mydata$x8_hangi_kurumda_calisiyorsunuz into mydata$Kurum
 mydata$Kurum <- recode(mydata$x8_hangi_kurumda_calisiyorsunuz,
                "Eğitim Araştırma Hastanesi" = "Eğitim Araştırma",
@@ -485,7 +485,7 @@ mydata$Kurum <- factor(mydata$Kurum, levels=c("Özel", "İlçe Devlet", "İl Dev
 
 
 
-```{r cevap gruplari, eval=FALSE, include=FALSE}
+```{r cevap gruplari}
 tersSorular <- c("Soru1",
                  "Soru4",
                  "Soru15",
@@ -538,7 +538,7 @@ STSS <- c(
 
 
 
-```{r cevaplari numerik kodla, eval=FALSE, include=FALSE}
+```{r cevaplari numerik kodla}
 recode_numberize <- function(x, ...) {
   dplyr::recode(
     x,
@@ -589,7 +589,7 @@ mydata <- mydata %>%
 
 
 
-```{r toplam skor, eval=FALSE, include=FALSE}
+```{r toplam skor}
 mydata <- mydata %>% 
   # böyle yazınca missing olunca hesaplamıyor
   # mutate(
@@ -624,7 +624,7 @@ mydata <- mydata %>%
 ```
 
 
-```{r skor kategorileri, eval=FALSE, include=FALSE}
+```{r skor kategorileri}
 mydata <- mydata %>% 
   mutate_at(.tbl = .,
             .vars = vars(ends_with("_total")),

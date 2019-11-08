@@ -47,6 +47,20 @@ fakedata <-
       name = "TStage"
     ),
     
+    level(
+      x = 1:3,
+      prob = c("0.1", "0.4", "0.5"),
+      name = "Anti-X-intensity"
+    ),
+    
+    
+    level(
+      x = 1:3,
+      prob = c("0.3", "0.4", "0.3"),
+      name = "Anti-Y-intensity"
+    ),
+    
+    
     answer(
       x = c("Absent", "Present"),
       prob = c("0.6", "0.4"),
@@ -101,10 +115,11 @@ fakedata <-
     # zip_code
   ) %>%
   
-  r_na(x = .,
+  wakefield::r_na(x = .,
        prob = .005) %>%
   
-  mutate(
+  dplyr::mutate(
+    Age = as.numeric(Age),
     LVI = factor(LVI, ordered = TRUE),
     PNI = factor(PNI, ordered = TRUE),
     PreinvasiveComponent = factor(PreinvasiveComponent, ordered = TRUE),
@@ -113,14 +128,14 @@ fakedata <-
     LymphNodeMetastasis = factor(LymphNodeMetastasis, ordered = TRUE)
   ) %>%
   
-  mutate(SurgeryDate = LastFollowUpDate - sample(
+  dplyr::mutate(SurgeryDate = LastFollowUpDate - sample(
     x = 180:3600,
     size = 250,
     replace = TRUE
   )) %>%
   
-  mutate(LastFollowUpDate  =
-           case_when(Death == FALSE ~  Sys.Date() - 10,
+  dplyr::mutate(LastFollowUpDate  =
+                  dplyr::case_when(Death == FALSE ~  Sys.Date() - 10,
                      TRUE ~ LastFollowUpDate))
 
 ## Reordering fakedata$LVI
@@ -136,3 +151,7 @@ rio::export(
   file = here::here("data", "mydata.xlsx"),
   format = "xlsx"
 )
+
+
+
+

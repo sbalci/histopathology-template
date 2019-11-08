@@ -7,13 +7,13 @@
 
 
 
-<!-- ```{r global_options, include=FALSE} -->
+<!-- ```{r global_options} -->
 <!-- knitr::opts_chunk$set(fig.width = 12, fig.height = 8, fig.path = 'Figs/', echo = FALSE, warning = FALSE, message = FALSE, error = FALSE, eval = TRUE, tidy = TRUE, comment = NA, cache = TRUE) -->
 <!-- ``` -->
 
 
 
-```{r setup global chunk settings, include=FALSE}
+```{r setup global chunk settings}
 knitr::opts_chunk$set(
 	echo = FALSE, #change to TRUE
 	message = FALSE,
@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 
 
 
-```{r exploreR reset environment, eval=FALSE, include=FALSE}
+```{r exploreR reset environment}
 # https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html
 # exploreR::reset()
 ```
@@ -34,7 +34,7 @@ knitr::opts_chunk$set(
 
 
 
-```{r load library, include=FALSE}
+```{r load library}
 source(file = here::here("R", "loadLibrary.R"))
 ```
 

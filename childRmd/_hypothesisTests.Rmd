@@ -5,7 +5,7 @@
 ## Tests of Normality
 
 
-```{r dlookr normality tests, eval=FALSE, include=FALSE}
+```{r dlookr normality tests}
 dlookr::normality(carseats)
 dlookr::normality(carseats, Sales, CompPrice, Income)
 dlookr::normality(carseats, Sales:Income)
@@ -26,7 +26,7 @@ carseats %>%
 ```
 
 
-```{r dlookr normality plots, eval=FALSE, include=FALSE}
+```{r dlookr normality plots}
 dlookr::plot_normality(carseats, Sales, CompPrice)
 carseats %>%
   dplyr::filter(ShelveLoc == "Good") %>%
@@ -43,7 +43,7 @@ carseats %>%
 
 
 
-```{r dlookr target categorical, eval=FALSE, include=FALSE}
+```{r dlookr target categorical}
 categ <- dlookr::target_by(carseats, US)
 cat_cat <- dlookr::relate(categ, ShelveLoc)
 cat_cat
@@ -55,7 +55,7 @@ plot(cat_cat)
 ### Chi-Square Cramer Association Predictive Power
 
 
-```{r SmartEDA statistics of categorical variables, eval=FALSE, include=FALSE}
+```{r SmartEDA statistics of categorical variables}
 ## Summary statistics of categorical variables
 SmartEDA::ExpCatStat(
   Carseats,
@@ -69,7 +69,7 @@ SmartEDA::ExpCatStat(
 
 
 
-```{r inspectdf categorical, eval=FALSE, include=FALSE}
+```{r inspectdf categorical}
 inspectdf::inspect_cat(star_1, star_2)
 ```
 
@@ -79,7 +79,7 @@ inspectdf::inspect_cat(star_1, star_2)
 
 ## Continious
 
-```{r dlookr target continious, eval=FALSE, include=FALSE}
+```{r dlookr target continious}
 num <- dlookr::target_by(carseats, Sales)
 num_num <- dlookr::relate(num, Price)
 num_num
@@ -97,7 +97,7 @@ plot(num_num, hex_thres = 350)
 ## Odds
 
 
-```{r SmartEDA Odds, eval=FALSE, include=FALSE}
+```{r SmartEDA Odds}
 ## Inforamtion value and Odds value
 SmartEDA::ExpCatStat(
   Carseats,

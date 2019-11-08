@@ -3,13 +3,13 @@
 
 ## Table 1  
 
-```{r report data, eval=FALSE, include=FALSE}
+```{r report data}
 report::report(mydata)
 ```
 
 
 
-```{r arsenal Table 1, results='asis', eval=FALSE, include=FALSE}
+```{r arsenal Table 1, results='asis'}
 # cat(names(mydata), sep = " + \n")
 
 library(arsenal)
@@ -26,7 +26,7 @@ summary(tab1)
 
 
 
-```{r tableone, eval=FALSE, include=FALSE}
+```{r tableone}
 library(tableone)
 library(survival)
 data(pbc)
@@ -34,12 +34,12 @@ CreateTableOne(data = pbc)
 ```
 
 
-```{r tableone 2, eval=FALSE, include=FALSE}
+```{r tableone 2}
 CreateTableOne(vars = myVars, data = pbc, factorVars = catVars)
 ```
 
 
-```{r tableone 3, eval=FALSE, include=FALSE}
+```{r tableone 3}
 tab <- CreateTableOne(vars = myVars, data = pbc, factorVars = catVars)
 print(tab, showAllLevels = TRUE)
 ?print.TableOne
@@ -49,17 +49,17 @@ summary(tab)
 
 
 
-```{r tableone nonnormal values, eval=FALSE, include=FALSE}
+```{r tableone nonnormal values}
 print(tab, nonnormal = biomarkers)
 ```
 
 
-```{r tableone copy to excel, eval=FALSE, include=FALSE}
+```{r tableone copy to excel}
 print(tab, nonnormal = biomarkers, exact = "stage", quote = TRUE, noSpaces = TRUE)
 ```
 
 
-```{r tableone export to csv, eval=FALSE, include=FALSE}
+```{r tableone export to csv}
 tab3Mat <- print(tab3, nonnormal = biomarkers, exact = "stage", quote = FALSE, noSpaces = TRUE, printToggle = FALSE)
 # write.csv(tab3Mat, file = "myTable.csv")
 ```
@@ -73,25 +73,25 @@ tab3Mat <- print(tab3, nonnormal = biomarkers, exact = "stage", quote = FALSE, n
 
 
 
-```{r summarytools descriptives 1, eval=FALSE, include=FALSE}
+```{r summarytools descriptives 1}
 descr(tobacco, style = 'rmarkdown')
 ```
 
 
-```{r summarytools descriptives 2, eval=FALSE, include=FALSE}
+```{r summarytools descriptives 2}
 print(descr(tobacco), method = 'render', table.classes = 'st-small')
 ```
  
 
 
-```{r summarytools descriptives 3, eval=FALSE, include=FALSE}
+```{r summarytools descriptives 3}
 summarytools::descr(iris, style = "rmarkdown")
 descr(iris, stats = "common", transpose = TRUE, headings = FALSE)
 ```
 
 
 
-```{r summarytools descriptives 4, eval=FALSE, include=FALSE}
+```{r summarytools descriptives 4}
 iris %>% descr(stats = "common") %>% tb()
 iris$Species %>% freq(cumul = FALSE, report.nas = FALSE) %>% tb()
 ```
@@ -99,7 +99,7 @@ iris$Species %>% freq(cumul = FALSE, report.nas = FALSE) %>% tb()
 
 
 
-```{r explore descriptive statistics, eval=FALSE, include=FALSE}
+```{r explore descriptive statistics}
 iris %>% explore::describe()
 iris %>% explore::describe() %>% dplyr::filter(unique < 5)
 iris %>% explore::describe() %>% dplyr::filter(na > 0)
@@ -116,13 +116,13 @@ iris %>% explore::describe() %>% dplyr::filter(na > 0)
 
 
 
-```{r print names as vector, eval=FALSE, include=FALSE}
+```{r print names as vector}
 dput(names(pbc))
 ```
 
 
 
-```{r select categorical variables, eval=FALSE, include=FALSE}
+```{r select categorical variables}
 mydataCategorical <- mydata %>% 
     select(-Yas,
            -TumorCapi,
@@ -135,7 +135,7 @@ mydataCategorical <- mydata %>%
 
 
 
-```{r define continious variables 1, eval=FALSE, include=FALSE}
+```{r define continious variables 1}
 mydataDescription <- describer::describe(iris)
 
 mydataDescription %>% 
@@ -148,16 +148,16 @@ mydataDescription %>%
 
 
 
-```{r generate Code descriptive, include=FALSE, eval=FALSE, include=FALSE}
+```{r generate Code descriptive}
 source(here::here("R", "generatingCodeForDescriptiveStatistics.R"))
 ```
 
 
-```{r generatedCodeDescriptives, child = here::here('childRmd', 'generatedCodeDescriptives.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCodeDescriptives, child = here::here('childRmd', 'generatedCodeDescriptives.Rmd')}
 ```
 
 
-```{r tableone categorical, eval=FALSE, include=FALSE}
+```{r tableone categorical}
 tab <- tableone::CreateTableOne(data = pbc)
 ?print.CatTable
 tab$CatTable
@@ -165,7 +165,7 @@ tab$CatTable
 
 
 
-```{r summarytools Categorical, eval=FALSE, include=FALSE}
+```{r summarytools Categorical}
 (age_stats <- freq(tobacco$age.gr)) 
 print(age_stats, report.nas = FALSE, totals = FALSE, display.type = FALSE,
       Variable.label = "Age Group")
@@ -174,12 +174,12 @@ print(age_stats, report.nas = FALSE, totals = FALSE, display.type = FALSE,
 
 
 
-```{r explore categorical variables, eval=FALSE, include=FALSE}
+```{r explore categorical variables}
 iris %>% explore::describe(Species)
 ```
 
 
-```{r SmartEDA 1, eval=FALSE, include=FALSE}
+```{r SmartEDA 1}
 ## Frequency or custom tables for categorical variables
 SmartEDA::ExpCTable(
   Carseats,
@@ -195,7 +195,7 @@ SmartEDA::ExpCTable(
 
 
 
-```{r inspectdf 2, eval=FALSE, include=FALSE}
+```{r inspectdf 2}
 # some example data
 data(starwars, package = "dplyr")
 data(storms, package = "dplyr")
@@ -211,7 +211,7 @@ inspectdf::inspect_cat(starwars)$levels$hair_color
 
 ### Split-Group Stats Categorical
 
-```{r summarytools Split-Group categorical, eval=FALSE, include=FALSE}
+```{r summarytools Split-Group categorical}
 grouped_freqs <- stby(data = tobacco$smoker, 
                       INDICES = tobacco$gender, 
                       FUN = freq, cumul = FALSE, report.nas = FALSE)
@@ -227,7 +227,7 @@ grouped_freqs %>% tb(order = 2)
 
 ### Grouped Categorical
 
-```{r summarytools Grouped Categorical, eval=FALSE, include=FALSE}
+```{r summarytools Grouped Categorical}
 stby(list(x = tobacco$smoker, y = tobacco$diseased), tobacco$gender, ctable)
 with(tobacco, stby(list(x = smoker, y = diseased), gender, ctable))
 ```
@@ -235,7 +235,7 @@ with(tobacco, stby(list(x = smoker, y = diseased), gender, ctable))
 
 
 
-```{r SmartEDA category 1, eval=FALSE, include=FALSE}
+```{r SmartEDA category 1}
 SmartEDA::ExpCTable(
   Carseats,
   Target = "Price",
@@ -261,13 +261,13 @@ SmartEDA::ExpCTable(
 ## Continious Variables
 
 
-```{r categorise cut off continious variables, eval=FALSE, include=FALSE}
+```{r categorise cut off continious variables}
 questionr:::icut()
 ```
 
 
 
-```{r select continious variables, eval=FALSE, include=FALSE}
+```{r select continious variables}
 mydataContinious <- mydata %>% 
     select(
         Yas,
@@ -277,7 +277,7 @@ mydataContinious <- mydata %>%
 
 
 
-```{r define continious variables, eval=FALSE, include=FALSE}
+```{r define continious variables}
 mydataDescription <- describer::describe(iris)
 
 mydataDescription %>% 
@@ -289,18 +289,18 @@ mydataDescription %>%
 
 
 
-```{r generate Code Continious, include=FALSE, eval=FALSE, include=FALSE}
+```{r generate Code Continious}
 source(here::here("R", "generatingCodeForContinious.R"))
 ```
 
 
 
-```{r generatedCodeContinious, child = here::here('childRmd', 'generatedCodeContinious.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCodeContinious, child = here::here('childRmd', 'generatedCodeContinious.Rmd')}
 ```
 
 
 
-```{r tableone continious, eval=FALSE, include=FALSE}
+```{r tableone continious}
 tab <- tableone::CreateTableOne(data = pbc)
 ?print.ContTable
 tab$ContTable
@@ -309,12 +309,12 @@ print(tab$ContTable, nonnormal = c("albumin", "copper"))
 
 
 
-```{r explore continious variables, eval=FALSE, include=FALSE}
+```{r explore continious variables}
 iris %>% explore::describe(Sepal.Length)
 ```
 
 
-```{r SmartEDA, eval=FALSE, include=FALSE}
+```{r SmartEDA}
 ## Summary statistics by – overall
 SmartEDA::ExpNumStat(
   Carseats,
@@ -331,7 +331,7 @@ SmartEDA::ExpNumStat(
 
 
 
-```{r inspectdf 3, eval=FALSE, include=FALSE}
+```{r inspectdf 3}
 inspectdf::inspect_num(storms, breaks = 10)
 
 inspectdf::inspect_num(storms)$hist$pressure
@@ -361,7 +361,7 @@ inspectdf::inspect_num(storms, storms[-c(1:10), -1]) %>%
 ### Split-Group Stats Continious
 
 
-```{r summarytools Split-Group continious, eval=FALSE, include=FALSE}
+```{r summarytools Split-Group continious}
 grouped_descr <- stby(data = exams, 
                       INDICES = exams$gender, 
                       FUN = descr, stats = "common")
@@ -371,7 +371,7 @@ grouped_descr %>% tb(order = 2)
 ```
 
 
-```{r dlookr, eval=FALSE, include=FALSE}
+```{r dlookr}
 carseats %>%
   group_by(US) %>% 
   dlookr::describe(Sales, Income) 
@@ -385,7 +385,7 @@ carseats %>%
 
 
 
-```{r dlookr target, eval=FALSE, include=FALSE}
+```{r dlookr target}
 categ <- dlookr::target_by(carseats, US)
 cat_num <- dlookr::relate(categ, Sales)
 cat_num
@@ -400,7 +400,7 @@ plot(cat_num)
 
 ### Grouped Continious
 
-```{r summarytools Grouped Continious, eval=FALSE, include=FALSE}
+```{r summarytools Grouped Continious}
 (iris_stats_by_species <- stby(data = iris, 
                                INDICES = iris$Species, 
                                FUN = descr, stats = c("mean", "sd", "min", "med", "max"), 
@@ -409,7 +409,7 @@ plot(cat_num)
 
 
 
-```{r summarytools Grouped Continious 2, eval=FALSE, include=FALSE}
+```{r summarytools Grouped Continious 2}
 with(tobacco, stby(BMI, age.gr, descr, 
                    stats = c("mean", "sd", "min", "med", "max"),
                    transpose = TRUE
@@ -419,14 +419,14 @@ with(tobacco, stby(BMI, age.gr, descr,
 
 
 
-```{r summarytools Grouped Continious 3, eval=FALSE, include=FALSE}
+```{r summarytools Grouped Continious 3}
 tobacco$gender <- forcats::fct_explicit_na(tobacco$gender)
 tobacco %>% group_by(gender) %>% descr(stats = "fivenum")
 ```
 
 
 
-```{r SmartEDA category, eval=FALSE, include=FALSE}
+```{r SmartEDA category}
 ## Summary statistics by – category
 SmartEDA::ExpNumStat(
   Carseats,
