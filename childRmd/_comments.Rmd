@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 <!-- https://holtzy.github.io/Pimp-my-rmd/#highlight_a_piece_of_text -->
 <!-- https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX -->
@@ -53,8 +58,7 @@ my_text <- kableExtra::text_spec("Some Text", color = "red", background = "yello
 \pagecolor{yellow}\afterpage{\nopagecolor}
 
 
-
-\pagebreak
+\newpage
 
 
 ```{r}
