@@ -3,7 +3,7 @@
 
 ### Table 1  
 
-**Report Data**
+**Report Data properties via report 📦**
 
 ```{r report data}
 mydata %>%
@@ -14,7 +14,7 @@ mydata %>%
 
 **Table 1 via arsenal 📦**
 
-```{r arsenal Table 1, results='asis', eval=FALSE, include=FALSE}
+```{r arsenal Table 1, results='asis'}
 # cat(names(mydata), sep = " + \n")
 library(arsenal)
 tab1 <- arsenal::tableby(
@@ -41,16 +41,16 @@ summary(tab1)
 ```
 
 
-<!-- https://cran.r-project.org/web/packages/tableone/index.html -->
-<!-- https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html -->
 
 
 
-```{r tableone, eval=FALSE, include=FALSE}
-library(tableone)
-library(survival)
+```{r tableone}
+# https://cran.r-project.org/web/packages/tableone/index.html
+# https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html
+# library(survival)
 # data(pbc)
-CreateTableOne(data = mydata)
+library(tableone)
+tableone::CreateTableOne(data = mydata)
 ```
 
 
