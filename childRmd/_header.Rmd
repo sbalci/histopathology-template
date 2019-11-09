@@ -1,13 +1,3 @@
-
-<style>
-    body .main-container {
-        max-width: 90%;
-    }
-</style>
-
-
-
-
 # Header
 
 
