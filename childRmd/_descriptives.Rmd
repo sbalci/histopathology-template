@@ -50,7 +50,10 @@ summary(tab1)
 # library(survival)
 # data(pbc)
 library(tableone)
-tableone::CreateTableOne(data = mydata)
+mydata %>% 
+  select(-ID,
+         -Name) %>% 
+tableone::CreateTableOne(data = .)
 ```
 
 
