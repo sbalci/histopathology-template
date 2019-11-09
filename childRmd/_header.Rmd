@@ -6,34 +6,37 @@
 </style>
 
 
+**setup global chunk settings**
 
-<!-- ```{r global_options} -->
-<!-- knitr::opts_chunk$set(fig.width = 12, fig.height = 8, fig.path = 'Figs/', echo = FALSE, warning = FALSE, message = FALSE, error = FALSE, eval = TRUE, tidy = TRUE, comment = NA, cache = TRUE) -->
-<!-- ``` -->
+Change `echo = FALSE` to hide codes after knitting.
 
-
-
-```{r setup global chunk settings}
+```{r global_options}
 knitr::opts_chunk$set(
-	eval = TRUE,
-	echo = TRUE,
-	fig.path = here::here("figs/"),
-	message = FALSE,
-	warning = FALSE,
-	comment = NA,
-	tidy = TRUE
+    eval = TRUE,
+    echo = TRUE,
+    fig.path = here::here("figs/"),
+    message = FALSE,
+    warning = FALSE,
+    error = FALSE,
+    cache = FALSE,
+    comment = NA,
+    tidy = TRUE,
+    fig.width = 12,
+    fig.height = 8
 )
 ```
 
 
 
-```{r exploreR reset environment}
+```{r exploreR reset environment, eval=FALSE, include=FALSE}
 # https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html
 # exploreR::reset()
 ```
 
 
+**load library**
 
+see `R/loadLibrary.R` for the libraries loaded.
 
 ```{r load library}
 source(file = here::here("R", "loadLibrary.R"))
