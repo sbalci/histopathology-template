@@ -40,7 +40,6 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
-# Header
 
 ```{r header, child = here::here('childRmd', '_header.Rmd')}
 ```
