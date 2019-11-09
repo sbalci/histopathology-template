@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2019.4.6)  8 NOV 2019 23:38
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2019.4.6)  9 NOV 2019 18:25
  restricted system commands enabled.
 **Report.tex
 (./Report.tex
@@ -35,7 +35,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.157 seconds (/Users/serdarbal
+luaotfload | main : initialization completed in 0.138 seconds (/Users/serdarbal
 ciold/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/Users/serdarbalciold/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
@@ -1159,39 +1159,36 @@ eX/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-regular.luc)(load luc: /Us
 ers/serdarbalciold/Library/TinyTeX/texmf-var/luatex-cache/generic/fonts/otl/lmro
 man12-italic.luc)(load luc: /Users/serdarbalciold/Library/TinyTeX/texmf-var/luat
 ex-cache/generic/fonts/otl/lmroman12-bold.luc) (./Report.toc
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 7.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 4.
 (/Users/serdarbalciold/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 7.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 4.
 (/Users/serdarbalciold/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 7.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 4.
 (/Users/serdarbalciold/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 7.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 4.
 (/Users/serdarbalciold/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 7.
+(Font)              <10> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 7.
+(Font)              <7> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 7.
-LaTeX Font Info:    Try loading font information for U+msa on input line 7.
+(Font)              <5> on input line 4.
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 (/Users/serdarbalciold/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 7.
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 (/Users/serdarbalciold/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{/Users/serdarbalciold/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.
-map}])
+))
 \tf@toc=\write5
 
 \openout5 = Report.toc
@@ -1211,16 +1208,6 @@ Package xcolor Warning: Incompatible color definition on input line 166.
 Package xcolor Warning: Incompatible color definition on input line 166.
 
 
-Package xcolor Warning: Incompatible color definition on input line 166.
-
-[2]
-
-Package xcolor Warning: Incompatible color definition on input line 166.
-
-
-Package xcolor Warning: Incompatible color definition on input line 166.
-
-
 Package xcolor Warning: Incompatible color definition on input line 168.
 
 
@@ -1230,262 +1217,105 @@ Package xcolor Warning: Incompatible color definition on input line 173.
 Package xcolor Warning: Incompatible color definition on input line 173.
 
 
-Overfull \hbox (60.49498pt too wide) in paragraph at lines 203--203
-[]\TU/lmtt/m/n/10 ExpReport(Carseats,Target="Urban",label=NULL,theme="Default",
-op_file="test.html",op_dir=getwd(),sc=2,[] 
+Package xcolor Warning: Incompatible color definition on input line 175.
+
+
+Package xcolor Warning: Incompatible color definition on input line 179.
+
+
+Package xcolor Warning: Incompatible color definition on input line 179.
+
+
+Package xcolor Warning: Incompatible color definition on input line 181.
+
+
+Package xcolor Warning: Incompatible color definition on input line 185.
+
+
+Package xcolor Warning: Incompatible color definition on input line 185.
+
+
+Package xcolor Warning: Incompatible color definition on input line 187.
+
+
+Package xcolor Warning: Incompatible color definition on input line 193.
+
+
+Package xcolor Warning: Incompatible color definition on input line 193.
+
+[1
+
+{/Users/serdarbalciold/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.
+map}]
+Overfull \hbox (6.66pt too wide) in paragraph at lines 207--208
+[][][][][][][] 
  []
 
-
-Overfull \hbox (44.74498pt too wide) in paragraph at lines 220--220
-[]\TU/lmtt/m/n/10 ExpParcoord(CData,Group=NULL,Stsize=NULL,Nvar=c("Price","Inco
-me","Advertising","Population","Age",[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 226--229
-\TU/lmr/m/n/10 Exp-Par-co-ord(CData,Group=``Shelve-Loc'',St-size=c(10,15,20),Nv
-ar=c(``Price'',``In-come''),Cvar=c(``Ur-
- []
-
-
-Underfull \hbox (badness 2635) in paragraph at lines 226--229
-\TU/lmr/m/n/10 ban'',``US'')) ## With-out strat-i-fi-ca-tion Exp-Par-co-ord(CDa
-ta,Group=``Shelve-Loc'',Nvar=c(``Price'',``In-
- []
-
-
-Overfull \hbox (28.99498pt too wide) in paragraph at lines 242--242
-[]\remove@tlig ExpCustomStat(Carseats,Cvar=c("US","ShelveLoc"),gpby=TRUE,filt="
-Urban=='Yes' & Population>150")[] 
+[2]
+Overfull \hbox (6.66pt too wide) in paragraph at lines 240--241
+[][][][][][][] 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 256--258
-[]\TU/lmr/m/n/10 Ex-p-Cus-tom-Stat(Carseats,Cvar=c(``US'',``Shelve-Loc''),gpby=
-TRUE,filt=``Ur-ban==‘Yes’ & Pop-u-la-
- []
-
-(load luc: /Users/serdarbalciold/Library/TinyTeX/texmf-var/luatex-cache/generic/
-fonts/otl/lmroman7-regular.luc)
-Underfull \hbox (badness 10000) in paragraph at lines 282--286
-[]\TU/lmr/m/n/10 op-tions(width = 150) Ex-p-Cus-tom-Stat(Carseats,Nvar=c(``Pop-
-u-la-tion'',``Sales'',``Comp-Price'',``Ed-u-ca-
- []
-
-
-Overfull \hbox (143.96901pt too wide) in paragraph at lines 282--286
-\TU/lmr/m/n/10 tion'',``In-come''),stat = c(‘Count’,‘mean’,‘sum’,
-‘var’,‘sd’,‘IQR’,‘median’),filt=c(``ShelveLoc==‘Good’$[][]$
-Price>=150$[][]$US==‘Yes’'')) 
- []
-
-
-Underfull \hbox (badness 4205) in paragraph at lines 287--290
-[]\TU/lmr/m/n/10 op-tions(width = 150) Ex-p-Cus-tom-Stat(Carseats,Cvar = c(``Ur
--ban'',``Shelve-Loc''), Nvar=c(``Pop-u-la-
- []
-
-
-Underfull \hbox (badness 1442) in paragraph at lines 296--300
-\TU/lmr/m/n/10 Price'',``In-come''), stat = c(‘Count’,‘Prop’,‘mean
-’,‘sum’,‘PS’,‘me-dian’,‘IQR’), gpby = TRUE,filt=``Ur-
- []
-
-
-Overfull \hbox (23.85498pt too wide) in paragraph at lines 301--309
-\TU/lmr/m/n/10 ple(1:400,20),``Comp-Price''] <- 999 data_sam[sam-ple(1:400,45),
-``In-come''] <- 999 Ex-p-Cus-tom-Stat(data_sam,Cvar
- []
-
-
-Overfull \hbox (42.38896pt too wide) in paragraph at lines 301--309
-\TU/lmr/m/n/10 = c(``Ur-ban'',``US'',``Shelve-Loc''), Nvar=c(``Sales'',``Comp-P
-rice'',``In-come''), stat = c(‘Count’,‘Prop’,‘mean’,‘sum’,‘PS
-’),
- []
-
-
-Underfull \hbox (badness 1728) in paragraph at lines 319--321
-[]\TU/lmr/m/n/10 ##Fre-quency ta-ble for cat-e-gor-i-cal vari-ables Ex-p-Cus-to
-m-Stat(Carseats,Cvar=c(``US'',``Ur-ban'',``Shelve-
- []
-
-
-Overfull \hbox (76.46497pt too wide) in paragraph at lines 322--325
-[]\TU/lmr/m/n/10 ##Crosstab-u-la-tion be-tween cat-e-gor-i-cal vari-ables Ex-p-
-Cus-tom-Stat(Carseats,Cvar=c(``US'',``Ur-ban''),gpby=TRUE,filt=NULL)
- []
-
-
-Overfull \hbox (8.25496pt too wide) in paragraph at lines 326--330
-[]\TU/lmr/m/n/10 ##Adding fil-ters for cus-tom ta-bles Ex-p-Cus-tom-Stat(Carsea
-ts,Cvar=c(``US'',``Ur-ban''),gpby=TRUE,filt=``Pop-
- []
-
-
-Underfull \hbox (badness 1694) in paragraph at lines 326--330
-\TU/lmr/m/n/10 u-la-tion>150'') Ex-p-Cus-tom-Stat(Carseats,Cvar=c(``US'',``Shel
-ve-Loc''),gpby=TRUE,filt=``Ur-ban==‘Yes’ &
- []
-
-
-Overfull \hbox (92.81496pt too wide) in paragraph at lines 334--338
-\TU/lmr/m/n/10 Ex-p-Cus-tom-Stat(Carseats,Nvar=c(``Pop-u-la-tion'',``Sales'',``
-Comp-Price'',``In-come''),stat = c(‘Count’,‘mean’,‘sum’,‘var’,
-‘min’,‘max’))
+Overfull \hbox (6.66pt too wide) in paragraph at lines 254--255
+[][][][][][][] 
  []
 
 [4]
-Overfull \hbox (79.22496pt too wide) in paragraph at lines 343--348
-\TU/lmr/m/n/10 Ex-p-Cus-tom-Stat(Carseats,Nvar=c(``Pop-u-la-tion'',``Sales'',``
-Comp-Price'',``In-come''),stat = c(‘Count’,‘mean’,‘sum’,‘var’),
-filt=``Ur-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 343--348
-\TU/lmr/m/n/10 ban==‘Yes’'') Ex-p-Cus-tom-Stat(Carseats,Nvar=c(``Pop-u-la-t
-ion'',``Sales'',``Comp-Price'',``In-come''),stat =
- []
-
-
-Overfull \hbox (87.43495pt too wide) in paragraph at lines 353--355
-\TU/lmr/m/n/10 Ex-p-Cus-tom-Stat(data_sam,Nvar=c(``Pop-u-la-tion'',``Sales'',``
-Comp-Price'',``In-come''),stat = c(‘Count’,‘mean’,‘sum’,‘min’),
-filt=``All
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 360--364
-\TU/lmr/m/n/10 Ex-p-Cus-tom-Stat(Carseats,Nvar=c(``Pop-u-la-tion'',``Sales'',``
-Comp-Price'',``Ed-u-ca-tion'',``In-come''),stat =
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 360--364
-\TU/lmr/m/n/10 c(‘Count’,‘mean’,‘sum’,‘var’,‘sd’,‘IQR’,
-‘median’),filt=c(``ShelveLoc==‘Good’$[][]$Price>=150^
- []
-
-
-Overfull \hbox (84.15895pt too wide) in paragraph at lines 365--369
-\TU/lmr/m/n/10 Stat(Carseats,Cvar = c(``Ur-ban'',``Shelve-Loc''), Nvar=c(``Pop-
-u-la-tion'',``Sales''), stat = c(‘Count’,‘Prop’,‘mean’,‘min’,
-‘P0.25’,‘me-
- []
-
-
-Overfull \hbox (70.86894pt too wide) in paragraph at lines 370--374
-\TU/lmr/m/n/10 ban'',``US'',``Shelve-Loc''), Nvar=c(``Comp-Price'',``In-come'')
-, stat = c(‘Count’,‘Prop’,‘mean’,‘sum’,‘PS’,‘min’,‘ma
-x’,‘IQR’,‘sd’),
- []
-
-
-Overfull \hbox (46.36896pt too wide) in paragraph at lines 375--387
-\TU/lmr/m/n/10 c(``Ur-ban'',``US'',``Shelve-Loc''), Nvar=c(``Comp-Price'',``In-
-come''), stat = c(‘Count’,‘Prop’,‘mean’,‘sum’,‘PS’,‘P0.25
-’,‘me-
- []
-
-
-Overfull \hbox (21.48396pt too wide) in paragraph at lines 375--387
-\TU/lmr/m/n/10 dian’,‘p0.75’), gpby = TRUE,filt=``Ur-ban==‘Yes’'') Ex
--p-Cus-tom-Stat(data_sam,Cvar = c(``Ur-ban'',``US'',``Shelve-
- []
-
-
-Underfull \hbox (badness 3078) in paragraph at lines 375--387
-\TU/lmr/m/n/10 Loc''), Nvar=c(``Sales'',``Comp-Price'',``In-come''), stat = c(
-‘Count’,‘Prop’,‘mean’,‘sum’,‘PS’), gpby =
- []
-
-
-Overfull \hbox (134.74298pt too wide) in paragraph at lines 375--387
-\TU/lmr/m/n/10 tion'',``Sales'',``Comp-Price''), stat = c(‘Count’,‘Prop
-’,‘mean’,‘sum’,‘var’,‘min’,‘max’), filt=c(``ShelveLoc==
-‘Good’$[][]$Price>=150'')) 
- []
-
-[5] [6] [7] [8] [9
-
-] [10
-
-] [11
-
-] [12
-
-] [13]
-Overfull \hbox (6.66pt too wide) in paragraph at lines 699--700
-[][][][][][][] 
- []
-
-[14]
-Overfull \hbox (6.66pt too wide) in paragraph at lines 732--733
-[][][][][][][] 
- []
-
-[15]
-Overfull \hbox (6.66pt too wide) in paragraph at lines 746--747
-[][][][][][][] 
- []
-
-[16]
 \GPT@outputbox=\box65
 
-Overfull \hbox (23.74498pt too wide) in paragraph at lines 761--761
-[]\remove@tlig saved data after analysis to/Users/serdarbalciold/histopathology
--template/data/histopathology-
+Overfull \hbox (23.74498pt too wide) in paragraph at lines 269--269
+[]\TU/lmtt/m/n/10 saved data after analysis to/Users/serdarbalciold/histopathol
+ogy-template/data/histopathology-
  []
 
-[17] [18]
-Overfull \hbox (7.15695pt too wide) in paragraph at lines 810--830
+[5] [6]
+Overfull \hbox (7.15695pt too wide) in paragraph at lines 318--338
 \TU/lmr/m/n/10 (URL:[]$https://doi.org/10.5281/zenodo.2074621$[]), <URL:[]$http
 s://CRAN.R-[]project.org/package=ggstatsplot$[]>.
  []
 
-[19]
-Overfull \hbox (39.49498pt too wide) in paragraph at lines 906--906
+[7]
+Overfull \hbox (39.49498pt too wide) in paragraph at lines 414--414
 []    \remove@tlig title = {The report package for R: Ensuring the use of best 
 practices for results reporting},[] 
  []
 
-[20] [21] [22] [23] [24] [25]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1086.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1086.
+[8] [9] [10] [11] [12] [13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 593.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 593.
 (./Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1086.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1086.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 593.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 593.
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: D8D62C1E7FB2413BD92962CD8251EA05;9173.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1086.
+(rerunfilecheck)             Checksum: AFA9A3E78DF1AE8B33CBA01F1EDFBEA4;843.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 593.
 )
 
 Here is how much of LuaTeX's memory you used:
- 23812 strings out of 494412
+ 23568 strings out of 494412
  125200,662416 words of node,token memory allocated
  553 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 2 glue, 1 kern, 9 attribute, 64 glue_spec, 9 attrib
 ute_list, 1 write, 2 pdf_action nodes
-   avail lists: 2:612,3:872,4:94,5:170,6:74,7:4552,8:59,9:228,10:5,11:291
- 27216 multiletter control sequences out of 65536+600000
- 53 fonts using 8093127 bytes
- 47i,6n,65p,1219b,443s stack positions out of 5000i,500n,10000p,200000b,100000s
+   avail lists: 2:684,3:884,4:181,5:134,6:55,7:3070,8:59,9:175,10:5,11:198
+ 27101 multiletter control sequences out of 65536+600000
+ 52 fonts using 7960823 bytes
+ 47i,5n,65p,1219b,443s stack positions out of 5000i,500n,10000p,200000b,100000s
 </Users/serdarbalciold/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmrom
 an10-italic.otf></Users/serdarbalciold/Library/TinyTeX/texmf-dist/fonts/opentype
-/public/lm/lmroman7-regular.otf></Users/serdarbalciold/Library/TinyTeX/texmf-dis
-t/fonts/opentype/public/lm/lmmonolt10-bold.otf></Users/serdarbalciold/Library/Ti
-nyTeX/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></Users/serdarbal
-ciold/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf>
-</Users/serdarbalciold/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmrom
-an10-bold.otf></Users/serdarbalciold/Library/TinyTeX/texmf-dist/fonts/opentype/p
-ublic/lm/lmroman12-bold.otf></Users/serdarbalciold/Library/TinyTeX/texmf-dist/fo
-nts/opentype/public/lm/lmroman12-italic.otf></Users/serdarbalciold/Library/TinyT
-eX/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf>
-Output written on Report.pdf (25 pages, 90010 bytes).
+/public/lm/lmmonolt10-bold.otf></Users/serdarbalciold/Library/TinyTeX/texmf-dist
+/fonts/opentype/public/lm/lmmono10-regular.otf></Users/serdarbalciold/Library/Ti
+nyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></Users/serdarba
+lciold/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></
+Users/serdarbalciold/Library/TinyTeX/texmf-dist/fonts/opentype/public/lm/lmroman
+12-bold.otf></Users/serdarbalciold/Library/TinyTeX/texmf-dist/fonts/opentype/pub
+lic/lm/lmroman12-italic.otf></Users/serdarbalciold/Library/TinyTeX/texmf-dist/fo
+nts/opentype/public/lm/lmroman17-regular.otf>
+Output written on Report.pdf (13 pages, 59841 bytes).
 
-PDF statistics: 588 PDF objects out of 1000 (max. 8388607)
- 528 compressed objects within 6 object streams
- 153 named destinations out of 1000 (max. 131072)
- 505 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 180 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 131072)
+ 49 words of extra memory for PDF output out of 10000 (max. 100000000)
 

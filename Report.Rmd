@@ -17,6 +17,9 @@ header-includes:
 - \usepackage{xcolor}
 - \usepackage{afterpage}
 output: 
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
   pdf_document: 
     fig_caption: yes
     highlight: kate
@@ -25,9 +28,6 @@ output:
     latex_engine: lualatex
     toc_depth: 5
     keep_tex: yes
-  rmarkdown::html_vignette: 
-    css: 
-    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
   redoc::redoc:
     highlight_outputs: TRUE
     margins: 1 
