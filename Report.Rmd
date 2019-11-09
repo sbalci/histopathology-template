@@ -50,82 +50,82 @@ vignette: >
 
 
 
-```{r overview, child = here::here('childRmd', '_overView.Rmd')}
-```
+<!-- ```{r overview, child = here::here('childRmd', '_overView.Rmd')} -->
+<!-- ``` -->
 
 
 
-```{r data dictionary, child = here::here('childRmd', '_dataDictionary.Rmd')}
-```
-
-
-
-
-```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')}
-```
+<!-- ```{r data dictionary, child = here::here('childRmd', '_dataDictionary.Rmd')} -->
+<!-- ``` -->
 
 
 
 
-```{r impute, child = here::here('childRmd', '_impute.Rmd')}
-```
-
-
-
-\pagebreak
-
-
-
-```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
-```
-
-
-\newpage
-\blandscape
-
-```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')}
-```
-
-\elandscape
-
-
-```{r plots, child = here::here('childRmd', '_plots.Rmd')}
-```
+<!-- ```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')} -->
+<!-- ``` -->
 
 
 
 
-```{r pairedTests, child = here::here('childRmd', '_pairedTests.Rmd')}
-```
+<!-- ```{r impute, child = here::here('childRmd', '_impute.Rmd')} -->
+<!-- ``` -->
 
 
 
-```{r hypothesisTests, child = here::here('childRmd', '_hypothesisTests.Rmd')}
-```
-
-\newpage
-\blandscape
+<!-- \pagebreak -->
 
 
 
-```{r ROC, child = here::here('childRmd', '_ROC.Rmd')}
-```
+<!-- ```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')} -->
+<!-- ``` -->
 
 
-```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')}
-```
+<!-- \newpage -->
+<!-- \blandscape -->
+
+<!-- ```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')} -->
+<!-- ``` -->
+
+<!-- \elandscape -->
+
+
+<!-- ```{r plots, child = here::here('childRmd', '_plots.Rmd')} -->
+<!-- ``` -->
 
 
 
 
-```{r survival, child = here::here('childRmd', '_survival.Rmd')}
-```
-
-\elandscape
+<!-- ```{r pairedTests, child = here::here('childRmd', '_pairedTests.Rmd')} -->
+<!-- ``` -->
 
 
-```{r models, child = here::here('childRmd', '_models.Rmd')}
-```
+
+<!-- ```{r hypothesisTests, child = here::here('childRmd', '_hypothesisTests.Rmd')} -->
+<!-- ``` -->
+
+<!-- \newpage -->
+<!-- \blandscape -->
+
+
+
+<!-- ```{r ROC, child = here::here('childRmd', '_ROC.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')} -->
+<!-- ``` -->
+
+
+
+
+<!-- ```{r survival, child = here::here('childRmd', '_survival.Rmd')} -->
+<!-- ``` -->
+
+<!-- \elandscape -->
+
+
+<!-- ```{r models, child = here::here('childRmd', '_models.Rmd')} -->
+<!-- ``` -->
 
 
 \pagebreak

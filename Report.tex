@@ -28,6 +28,46 @@
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{255,255,255}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{\textbf{\colorbox[rgb]{0.97,0.90,0.90}{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.79,0.38,0.79}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.00,0.34,0.68}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.69,0.50,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.39,0.29,0.61}{\textbf{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.57,0.30,0.62}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.54,0.53,0.53}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.00,0.58,1.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.67,0.33,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.12,0.11,0.11}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.00,0.34,0.68}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.69,0.50,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.38,0.47,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{\underline{#1}}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.58,1.00}{\textbf{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.69,0.50,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.39,0.29,0.61}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{1.00,0.33,0.00}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.69,0.50,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.12,0.11,0.11}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.12,0.11,0.11}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.12,0.11,0.11}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.43,0.16}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.00,0.43,0.16}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.34,0.68}{\colorbox[rgb]{0.88,0.91,0.97}{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{1.00,0.33,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.34,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.75,0.01,0.01}{#1}}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -111,17 +151,538 @@
 \setcounter{tocdepth}{5}
 \tableofcontents
 }
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\NormalTok{opts_chunk}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}
+    \DataTypeTok{echo =} \OtherTok{TRUE}\NormalTok{, }\CommentTok{#change to TRUE}
+    \DataTypeTok{eval =} \OtherTok{TRUE}\NormalTok{,}
+    \DataTypeTok{message =} \OtherTok{FALSE}\NormalTok{,}
+    \DataTypeTok{warning =} \OtherTok{FALSE}\NormalTok{,}
+    \DataTypeTok{comment =} \OtherTok{NA}\NormalTok{,}
+    \DataTypeTok{tidy =} \OtherTok{TRUE}\NormalTok{,}
+    \DataTypeTok{fig.path =}\NormalTok{ here}\OperatorTok{::}\KeywordTok{here}\NormalTok{(}\StringTok{"figs/"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html}
+\CommentTok{# exploreR::reset()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{define-variable-types}{%
+\section{Define Variable Types}\label{define-variable-types}}
+
+\hypertarget{overview-exploratory-data-analysis-eda}{%
+\section{Overview / Exploratory Data Analysis
+(EDA)}\label{overview-exploratory-data-analysis-eda}}
+
+\hypertarget{information-value}{%
+\section{Information value}\label{information-value}}
+
+\hypertarget{feature-imbalance}{%
+\section{Feature imbalance}\label{feature-imbalance}}
+
+\hypertarget{memory-usage}{%
+\section{Memory usage}\label{memory-usage}}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{smarteda}{%
+\section{SmartEDA}\label{smarteda}}
+
+Create HTML EDA report
+
+Create a exploratory data analysis report in HTML format
+
+\begin{verbatim}
+ExpReport(Carseats,Target="Urban",label=NULL,theme="Default",op_file="test.html",op_dir=getwd(),sc=2,
+sn=2,Rc="Yes")
+\end{verbatim}
+
+Quantile-quantile plot for numeric variables
+
+\begin{verbatim}
+ExpOutQQ(CData,nlim=10,fname=NULL,Page=c(2,2),sample=4)
+\end{verbatim}
+
+Parallel Co-ordinate plots
+
+\hypertarget{defualt-expparcoord-funciton}{%
+\subsection{Defualt ExpParcoord
+funciton}\label{defualt-expparcoord-funciton}}
+
+\begin{verbatim}
+ExpParcoord(CData,Group=NULL,Stsize=NULL,Nvar=c("Price","Income","Advertising","Population","Age",
+"Education"))
+\end{verbatim}
+
+\hypertarget{with-stratified-rows-and-selected-columns-only}{%
+\subsection{With Stratified rows and selected columns
+only}\label{with-stratified-rows-and-selected-columns-only}}
+
+ExpParcoord(CData,Group=``ShelveLoc'',Stsize=c(10,15,20),Nvar=c(``Price'',``Income''),Cvar=c(``Urban'',``US''))
+\#\# Without stratification
+ExpParcoord(CData,Group=``ShelveLoc'',Nvar=c(``Price'',``Income''),Cvar=c(``Urban'',``US''),scale=NULL)
+
+Exploratory analysis - Custom tables, summary statistics
+
+Descriptive summary on all input variables for each level/combination of
+group variable. Also while running the analysis we can filter row/cases
+of the data.
+
+\begin{verbatim}
+ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=FALSE)
+ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt=NULL)
+ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=TRUE,filt=NULL)
+ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt="Population>150")
+ExpCustomStat(Carseats,Cvar=c("US","ShelveLoc"),gpby=TRUE,filt="Urban=='Yes' & Population>150")
+\end{verbatim}
+
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban'',``ShelveLoc'',``Education''),gpby=FALSE)
+
+ExpCTable(Carseats,Target=NULL,clim=5,nlim=15,round=2,bin=NULL,per=F)
+
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban'',``ShelveLoc''),gpby=FALSE)
+
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban''),gpby=TRUE,filt=NULL)
+
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban'',``ShelveLoc''),gpby=TRUE,filt=NULL)
+
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban''),gpby=TRUE,filt=``Population\textgreater150'')
+
+ExpCustomStat(Carseats,Cvar=c(``US'',``ShelveLoc''),gpby=TRUE,filt=``Urban==`Yes'
+\& Population\textgreater150'')
+
+options(width = 150)
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`Count',`mean',`sum',`var',`sd',`min',`max',`IQR'))
+
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`min',`p0.25',`median',`p0.75',`max'))
+
+options(width = 150)
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+=
+c(`Count',`mean',`sum',`var',`min',`median',`max'),filt=``Urban==`Yes'\,'')
+
+options(width=150)
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`Count',`mean',`sum',`median',`IQR'),filt=``Urban==`Yes' \&
+Population\textgreater150'')
+
+data\_sam = Carseats{[},{]} data\_sam{[}sample(1:400,30),``Sales''{]}
+\textless- 999 data\_sam{[}sample(1:400,20),``CompPrice''{]} \textless-
+-9 data\_sam{[}sample(1:400,45),``Income''{]} \textless- 999
+ExpCustomStat(data\_sam,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`Count',`mean',`sum',`min'),filt=``All \%ni\% c(999,-9)'')
+
+options(width = 150)
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Education'',``Income''),stat
+=
+c(`Count',`mean',`sum',`var',`sd',`IQR',`median'),filt=c(``ShelveLoc==`Good'\textsuperscript{Urban==`Yes'}Price\textgreater=150\textsuperscript{All}US==`Yes'\,''))
+
+options(width = 150) ExpCustomStat(Carseats,Cvar =
+c(``Urban'',``ShelveLoc''), Nvar=c(``Population'',``Sales''), stat =
+c(`Count',`Prop',`mean',`min',`P0.25',`median',`p0.75',`max'),gpby=FALSE)
+
+options(width = 150) ExpCustomStat(Carseats,Cvar =
+c(``Urban'',``US'',``ShelveLoc''), Nvar=c(``CompPrice'',``Income''),
+stat = c(`Count',`Prop',`mean',`sum',`PS',`min',`max',`IQR',`sd'), gpby
+= TRUE)
+
+options(width = 150) ExpCustomStat(Carseats,Cvar =
+c(``Urban'',``US'',``ShelveLoc''), Nvar=c(``CompPrice'',``Income''),
+stat = c(`Count',`Prop',`mean',`sum',`PS',`median',`IQR'), gpby =
+TRUE,filt=``Urban==`Yes'\,'')
+
+options(width = 150) data\_sam = Carseats{[},{]}
+data\_sam{[}sample(1:400,30),``Sales''{]} \textless- 888
+data\_sam{[}sample(1:400,20),``CompPrice''{]} \textless- 999
+data\_sam{[}sample(1:400,45),``Income''{]} \textless- 999
+ExpCustomStat(data\_sam,Cvar = c(``Urban'',``US'',``ShelveLoc''),
+Nvar=c(``Sales'',``CompPrice'',``Income''), stat =
+c(`Count',`Prop',`mean',`sum',`PS'), gpby = TRUE,filt=``All \%ni\%
+c(888,999)'')
+
+ExpCustomStat(Carseats,Cvar = c(``Urban'',``US''),
+Nvar=c(``Population'',``Sales'',``CompPrice''), stat =
+c(`Count',`Prop',`mean',`sum',`var',`IQR'),
+filt=c(``ShelveLoc==`Good'\textsuperscript{Urban==`Yes'}Price\textgreater=150''))
+
+options(width = 150) ExpCustomStat(Carseats,Cvar = c(``Urban''),
+Nvar=c(``Population'',``Sales''), stat =
+c(`Count',`Prop'),gpby=TRUE,dcast=TRUE)
+
+\#\#Frequency table for categorical variables
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban'',``ShelveLoc''),gpby=FALSE)
+
+\#\#Crosstabulation between categorical variables
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban''),gpby=TRUE,filt=NULL)
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban'',``ShelveLoc''),gpby=TRUE,filt=NULL)
+
+\#\#Adding filters for custom tables
+ExpCustomStat(Carseats,Cvar=c(``US'',``Urban''),gpby=TRUE,filt=``Population\textgreater150'')
+ExpCustomStat(Carseats,Cvar=c(``US'',``ShelveLoc''),gpby=TRUE,filt=``Urban==`Yes'
+\& Population\textgreater150'')
+
+\hypertarget{numeric-variable-summary}{%
+\subsection{Numeric variable summary}\label{numeric-variable-summary}}
+
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`Count',`mean',`sum',`var',`min',`max'))
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`min',`p0.25',`median',`p0.75',`max'))
+
+\hypertarget{adding-filters-for-complete-data-like-base-subset}{%
+\subsection{Adding filters for complete data (like base
+Subset)}\label{adding-filters-for-complete-data-like-base-subset}}
+
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`Count',`mean',`sum',`var'),filt=``Urban==`Yes'\,'')
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`Count',`mean',`sum'),filt=``Urban==`Yes' \&
+Population\textgreater150'')
+
+\hypertarget{filter-unique-value-from-all-the-numeric-variables}{%
+\subsection{Filter unique value from all the numeric
+variables}\label{filter-unique-value-from-all-the-numeric-variables}}
+
+ExpCustomStat(data\_sam,Nvar=c(``Population'',``Sales'',``CompPrice'',``Income''),stat
+= c(`Count',`mean',`sum',`min'),filt=``All \%ni\% c(999,-9)'')
+
+\hypertarget{adding-filters-at-variable-level}{%
+\subsection{Adding filters at variable
+level}\label{adding-filters-at-variable-level}}
+
+ExpCustomStat(Carseats,Nvar=c(``Population'',``Sales'',``CompPrice'',``Education'',``Income''),stat
+=
+c(`Count',`mean',`sum',`var',`sd',`IQR',`median'),filt=c(``ShelveLoc==`Good'\textsuperscript{Urban==`Yes'}Price\textgreater=150\^{}
+\^{}US==`Yes'\,''))
+
+\#\#Numerical summaries by category \#\#Variable summary report (One
+group variable) ExpCustomStat(Carseats,Cvar =
+c(``Urban'',``ShelveLoc''), Nvar=c(``Population'',``Sales''), stat =
+c(`Count',`Prop',`mean',`min',`P0.25',`median',`p0.75',`max'),gpby=FALSE)
+
+\#\#Variable summary report (More than One group variable)
+ExpCustomStat(Carseats,Cvar = c(``Urban'',``US'',``ShelveLoc''),
+Nvar=c(``CompPrice'',``Income''), stat =
+c(`Count',`Prop',`mean',`sum',`PS',`min',`max',`IQR',`sd'), gpby = TRUE)
+
+\#\#Variable summary report (More than One group variable) with filter
+ExpCustomStat(Carseats,Cvar = c(``Urban'',``US'',``ShelveLoc''),
+Nvar=c(``CompPrice'',``Income''), stat =
+c(`Count',`Prop',`mean',`sum',`PS',`P0.25',`median',`p0.75'), gpby =
+TRUE,filt=``Urban==`Yes'\,'') ExpCustomStat(data\_sam,Cvar =
+c(``Urban'',``US'',``ShelveLoc''),
+Nvar=c(``Sales'',``CompPrice'',``Income''), stat =
+c(`Count',`Prop',`mean',`sum',`PS'), gpby = TRUE,filt=``All \%ni\%
+c(888,999)'') ExpCustomStat(Carseats,Cvar = c(``Urban'',``US''),
+Nvar=c(``Population'',``Sales'',``CompPrice''), stat =
+c(`Count',`Prop',`mean',`sum',`var',`min',`max'),
+filt=c(``ShelveLoc==`Good'\textsuperscript{Urban==`Yes'}Price\textgreater=150''))
+
+iris \%\textgreater\% mutate(sumVar = rowSums(.{[}1:4{]}))
+
+iris \%\textgreater\% mutate(sumVar = rowSums(select(.,
+contains(``Sepal'')))) \%\textgreater\% head
+
+iris \%\textgreater\% mutate(sumVar = select(., contains(``Sepal''))
+\%\textgreater\% rowSums()) \%\textgreater\% head
+
+iRenameColumn.R
+
+iSelectColumn.R
+
+\begin{verbatim}
+<= 22 Low
+>= 23 & <= 41 Average 
+>=42 High
+\end{verbatim}
+
+\hypertarget{impute}{%
+\section{impute}\label{impute}}
+
+\hypertarget{impute-continious}{%
+\subsection{impute continious}\label{impute-continious}}
+
+\hypertarget{impute-categorical}{%
+\subsection{impute categorical}\label{impute-categorical}}
+
+\hypertarget{impute-outlier}{%
+\subsection{impute outlier}\label{impute-outlier}}
+
+\hypertarget{transform}{%
+\section{transform}\label{transform}}
+
+\hypertarget{min--max}{%
+\subsection{min -max}\label{min--max}}
+
+\hypertarget{skewness}{%
+\subsection{skewness}\label{skewness}}
+
+\hypertarget{log}{%
+\subsection{log}\label{log}}
+
+\hypertarget{binning}{%
+\section{binning}\label{binning}}
+
+\hypertarget{optimal-binning}{%
+\subsection{optimal binning}\label{optimal-binning}}
+
+\hypertarget{standardize}{%
+\subsection{standardize}\label{standardize}}
+
+\hypertarget{data-transformation-report}{%
+\section{data transformation report}\label{data-transformation-report}}
+
+\hypertarget{inspectdf}{%
+\section{inspectdf}\label{inspectdf}}
+
+\pagebreak
+
+\hypertarget{descriptive-statistics}{%
+\section{Descriptive Statistics}\label{descriptive-statistics}}
+
+\hypertarget{table-1}{%
+\subsection{Table 1}\label{table-1}}
+
+\textbf{Report Data}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{categorical-variables}{%
+\subsection{Categorical Variables}\label{categorical-variables}}
+
+\hypertarget{split-group-stats-categorical}{%
+\subsubsection{Split-Group Stats
+Categorical}\label{split-group-stats-categorical}}
+
+\hypertarget{grouped-categorical}{%
+\subsubsection{Grouped Categorical}\label{grouped-categorical}}
+
+\pagebreak
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{continious-variables}{%
+\subsection{Continious Variables}\label{continious-variables}}
+
+\hypertarget{split-group-stats-continious}{%
+\subsubsection{Split-Group Stats
+Continious}\label{split-group-stats-continious}}
+
+\hypertarget{grouped-continious}{%
+\subsubsection{Grouped Continious}\label{grouped-continious}}
+
 \pagebreak
 
 \newpage
 \begin{landscape}
 
+\hypertarget{cross-tables}{%
+\section{Cross Tables}\label{cross-tables}}
+
 \end{landscape}
+
+\hypertarget{plots}{%
+\section{Plots}\label{plots}}
+
+\hypertarget{categorical-variables-1}{%
+\subsection{Categorical Variables}\label{categorical-variables-1}}
+
+\hypertarget{plots-1}{%
+\section{Plots}\label{plots-1}}
+
+\hypertarget{continious-variables-1}{%
+\subsection{Continious Variables}\label{continious-variables-1}}
+
+\hypertarget{hypothesis-tests}{%
+\section{Hypothesis Tests}\label{hypothesis-tests}}
+
+\hypertarget{tests-of-normality}{%
+\subsection{Tests of Normality}\label{tests-of-normality}}
+
+\hypertarget{categorical}{%
+\subsection{Categorical}\label{categorical}}
+
+\hypertarget{chi-square-cramer-association-predictive-power}{%
+\subsubsection{Chi-Square Cramer Association Predictive
+Power}\label{chi-square-cramer-association-predictive-power}}
+
+\hypertarget{continious}{%
+\subsection{Continious}\label{continious}}
+
+\hypertarget{odds}{%
+\subsection{Odds}\label{odds}}
 
 \newpage
 \begin{landscape}
 
+\hypertarget{roc}{%
+\section{ROC}\label{roc}}
+
+\hypertarget{decision-tree}{%
+\section{Decision Tree}\label{decision-tree}}
+
+\hypertarget{survival-analysis}{%
+\section{Survival Analysis}\label{survival-analysis}}
+
+\hypertarget{pairwise-comparison}{%
+\section{Pairwise comparison}\label{pairwise-comparison}}
+
+\hypertarget{multivariate-analysis-survival}{%
+\section{Multivariate Analysis
+Survival}\label{multivariate-analysis-survival}}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{km-plot}{%
+\section{KM plot}\label{km-plot}}
+
+explanatory = c(``perfor.factor'') dependent = ``Surv(time, status)''
+colon\_s \%\textgreater\% surv.plot(dependent, explanatory, xlab=``Time
+(days)'', pval=TRUE, legend=``none'')
+
+Notes
+
+Use Hmisc::label() to assign labels to variables for tables and plots.
+
+label(colon\_s\$age.factor) = ``Age (years)''
+
+Export dataframe tables directly or to R Markdown using knitr::kable().
+
+Note wrapper summary.missing() can be useful. Wraps mice::md.pattern.
+
+colon\_s \%\textgreater\% summary.missing(dependent, explanatory)
+
 \end{landscape}
+
+Where a multivariable model contains a subset of the variables specified
+in the full univariable set, this can be specified.
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') explanatory.multi = c(``age.factor'',
+``obstruct.factor'') dependent = `mort\_5yr' colon\_s \%\textgreater\%
+summarizer(dependent, explanatory, explanatory.multi)
+
+Random effects.
+
+e.g.~lme4::glmer(dependent \textasciitilde{} explanatory + (1 \textbar{}
+random\_effect), family=``binomial'')
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') explanatory.multi = c(``age.factor'',
+``obstruct.factor'') random.effect = ``hospital'' dependent =
+`mort\_5yr' colon\_s \%\textgreater\% summarizer(dependent, explanatory,
+explanatory.multi, random.effect)
+
+metrics=TRUE provides common model metrics.
+
+colon\_s \%\textgreater\% summarizer(dependent, explanatory,
+explanatory.multi, metrics=TRUE)
+
+Cox proportional hazards
+
+e.g.~survival::coxph(dependent \textasciitilde{} explanatory)
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') dependent = ``Surv(time, status)''
+
+colon\_s \%\textgreater\% summarizer(dependent, explanatory)
+
+Rather than going all-in-one, any number of subset models can be
+manually added on to a summary.factorlist() table using
+summarizer.merge(). This is particularly useful when models take a
+long-time to run or are complicated.
+
+Note requirement for glm.id=TRUE. fit2df is a subfunction extracting
+most common models to a dataframe.
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') explanatory.multi = c(``age.factor'',
+``obstruct.factor'') random.effect = ``hospital'' dependent =
+`mort\_5yr'
+
+\hypertarget{separate-tables}{%
+\section{Separate tables}\label{separate-tables}}
+
+colon\_s \%\textgreater\% summary.factorlist(dependent, explanatory,
+glm.id=TRUE) -\textgreater{} example.summary
+
+colon\_s \%\textgreater\% glmuni(dependent, explanatory)
+\%\textgreater\% fit2df(estimate.suffix=" (univariable)")
+-\textgreater{} example.univariable
+
+colon\_s \%\textgreater\% glmmulti(dependent, explanatory)
+\%\textgreater\% fit2df(estimate.suffix=" (multivariable)")
+-\textgreater{} example.multivariable
+
+colon\_s \%\textgreater\% glmmixed(dependent, explanatory,
+random.effect) \%\textgreater\% fit2df(estimate.suffix=" (multilevel")
+-\textgreater{} example.multilevel
+
+\hypertarget{pipe-together}{%
+\section{Pipe together}\label{pipe-together}}
+
+example.summary \%\textgreater\% summarizer.merge(example.univariable)
+\%\textgreater\% summarizer.merge(example.multivariable)
+\%\textgreater\% summarizer.merge(example.multilevel) \%\textgreater\%
+select(-c(glm.id, index)) -\textgreater{} example.final example.final
+
+Cox Proportional Hazards example with separate tables merged together.
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') explanatory.multi = c(``age.factor'',
+``obstruct.factor'') dependent = ``Surv(time, status)''
+
+\hypertarget{separate-tables-1}{%
+\section{Separate tables}\label{separate-tables-1}}
+
+colon\_s \%\textgreater\% summary.factorlist(dependent, explanatory,
+glm.id=TRUE) -\textgreater{} example2.summary
+
+colon\_s \%\textgreater\% coxphuni(dependent, explanatory)
+\%\textgreater\% fit2df(estimate.suffix=" (univariable)")
+-\textgreater{} example2.univariable
+
+colon\_s \%\textgreater\% coxphmulti(dependent, explanatory.multi)
+\%\textgreater\% fit2df(estimate.suffix=" (multivariable)")
+-\textgreater{} example2.multivariable
+
+\hypertarget{pipe-together-1}{%
+\section{Pipe together}\label{pipe-together-1}}
+
+example2.summary \%\textgreater\% summarizer.merge(example2.univariable)
+\%\textgreater\% summarizer.merge(example2.multivariable)
+\%\textgreater\% select(-c(glm.id, index)) -\textgreater{}
+example2.final example2.final
+
+\hypertarget{or-plot}{%
+\section{OR plot}\label{or-plot}}
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') dependent = `mort\_5yr' colon\_s \%\textgreater\%
+or.plot(dependent, explanatory) \# Previously fitted models
+(\texttt{glmmulti()} or \texttt{glmmixed()}) can be provided directly to
+\texttt{glmfit}
+
+\hypertarget{hr-plot-not-fully-tested}{%
+\section{HR plot (not fully tested)}\label{hr-plot-not-fully-tested}}
+
+explanatory = c(``age.factor'', ``sex.factor'', ``obstruct.factor'',
+``perfor.factor'') dependent = ``Surv(time, status)'' colon\_s
+\%\textgreater\% hr.plot(dependent, explanatory, dependent\_label =
+``Survival'') \# Previously fitted models (\texttt{coxphmulti}) can be
+provided directly using \texttt{coxfit}
+
+\hypertarget{anova}{%
+\section{ANOVA}\label{anova}}
 
 \pagebreak
 
@@ -192,15 +753,11 @@ Text Here
 
 \pagebreak
 
-Comments Also Here
-
-\pagebreak
-
 \hypertarget{save-final-data}{%
 \section{Save Final Data}\label{save-final-data}}
 
 \begin{verbatim}
-saved data after analysis to/Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-08.xlsx : 2019-11-08 10:13:18
+saved data after analysis to/Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-08.xlsx : 2019-11-08 23:38:35
 \end{verbatim}
 
 \pagebreak
@@ -412,100 +969,102 @@ other attached packages:
 [5] janitor_1.2.0     readxl_1.3.1      dplyr_0.8.3      
 
 loaded via a namespace (and not attached):
-  [1] tidyselect_0.2.5          lme4_1.1-21              
-  [3] robust_0.4-18.1           htmlwidgets_1.5.1        
-  [5] grid_3.6.0                munsell_0.5.0            
-  [7] codetools_0.2-16          future_1.14.0            
-  [9] miniUI_0.1.1.1            Brobdingnag_1.2-6        
- [11] metaBMA_0.6.2             colorspace_1.4-1         
- [13] knitr_1.25                rstudioapi_0.10          
- [15] stats4_3.6.0              DescTools_0.99.28        
- [17] robustbase_0.93-5         rcompanion_2.3.0         
- [19] ggsignif_0.6.0            listenv_0.7.0            
- [21] emmeans_1.4.1             rstan_2.19.2             
- [23] mnormt_1.5-5              MCMCpack_1.4-4           
- [25] bridgesampling_0.7-2      rprojroot_1.3-2          
- [27] coda_0.19-3               vctrs_0.2.0              
- [29] generics_0.0.2            TH.data_1.0-10           
- [31] metafor_2.1-0             xfun_0.10                
- [33] R6_2.4.0                  BayesFactor_0.9.12-4.2   
- [35] reshape_0.8.8             logspline_2.1.13         
- [37] assertthat_0.2.1          promises_1.0.1           
- [39] scales_1.0.0              multcomp_1.4-10          
- [41] nnet_7.3-12               ggExtra_0.9              
- [43] gtable_0.3.0              multcompView_0.1-7       
- [45] globals_0.12.4            processx_3.4.1           
- [47] mcmc_0.9-6                sandwich_2.5-1           
- [49] rlang_0.4.1               MatrixModels_0.4-1       
- [51] EMT_1.1                   zeallot_0.1.0            
- [53] splines_3.6.0             TMB_1.7.15               
- [55] lazyeval_0.2.2            acepack_1.4.1            
- [57] broom_0.5.2               checkmate_1.9.4          
- [59] inline_0.3.15             abind_1.4-5              
- [61] yaml_2.2.0                reshape2_1.4.3           
- [63] modelr_0.1.5              backports_1.1.5          
- [65] httpuv_1.5.2              Hmisc_4.2-0              
- [67] tools_3.6.0               psych_1.8.12             
- [69] ggplot2_3.2.1             kableExtra_1.1.0         
- [71] ellipsis_0.3.0            RColorBrewer_1.1-2       
- [73] WRS2_1.0-0                ez_4.4-0                 
- [75] Rcpp_1.0.2                plyr_1.8.4               
- [77] base64enc_0.1-3           jmvcore_1.0.0            
- [79] purrr_0.3.3               ps_1.3.0                 
- [81] prettyunits_1.0.2         rpart_4.1-15             
- [83] pbapply_1.4-2             cowplot_1.0.0            
- [85] zoo_1.8-6                 LaplacesDemon_16.1.1     
- [87] haven_2.1.1               ggrepel_0.8.1            
- [89] cluster_2.1.0             here_0.1                 
- [91] furrr_0.1.0               magrittr_1.5             
- [93] data.table_1.12.6         openxlsx_4.1.0.1         
- [95] manipulate_1.0.1          SparseM_1.77             
- [97] lmtest_0.9-37             mvtnorm_1.0-11           
- [99] broomExtra_0.0.5          mitml_0.3-7              
-[101] sjmisc_2.8.1              matrixStats_0.55.0       
-[103] hms_0.5.1                 mime_0.7                 
-[105] evaluate_0.14             xtable_1.8-4             
-[107] rio_0.5.16                sjstats_0.17.6           
-[109] pairwiseComparisons_0.1.1 broom.mixed_0.2.4        
-[111] gridExtra_2.3             rstantools_2.0.0         
-[113] compiler_3.6.0            tibble_2.1.3             
-[115] mice_3.6.0                writexl_1.1              
-[117] crayon_1.3.4              minqa_1.2.4              
-[119] StanHeaders_2.19.0        htmltools_0.4.0          
-[121] mgcv_1.8-29               mc2d_0.1-18              
-[123] pcaPP_1.9-73              later_0.8.0              
-[125] Formula_1.2-3             libcoin_1.0-5            
-[127] tidyr_1.0.0               rrcov_1.4-7              
-[129] expm_0.999-4              sjlabelled_1.1.1         
-[131] jmv_0.9.6.1               MASS_7.3-51.4            
-[133] boot_1.3-23               readr_1.3.1              
-[135] car_3.0-3                 Matrix_1.2-17            
-[137] cli_1.1.0                 parallel_3.6.0           
-[139] insight_0.6.0             pan_1.6                  
-[141] forcats_0.4.0             pkgconfig_2.0.3          
-[143] fit.models_0.5-14         statsExpressions_0.1.1   
-[145] coin_1.3-1                foreign_0.8-72           
-[147] skimr_1.0.7               xml2_1.2.2               
-[149] paletteer_0.2.1           ggcorrplot_0.1.3         
-[151] webshot_0.5.1             estimability_1.3         
-[153] rvest_0.3.4               stringr_1.4.0            
-[155] callr_3.3.2               digest_0.6.22            
-[157] parameters_0.2.0.1        rmarkdown_1.15           
-[159] cellranger_1.1.0          htmlTable_1.13.2         
-[161] nortest_1.0-4             curl_4.1                 
-[163] modeltools_0.2-22         quantreg_5.51            
-[165] shiny_1.3.2               gtools_3.8.1             
-[167] jomo_2.6-9                rjson_0.2.20             
-[169] nloptr_1.2.1              lifecycle_0.1.0          
-[171] nlme_3.1-141              carData_3.0-2            
-[173] groupedstats_0.0.9        viridisLite_0.3.0        
-[175] pillar_1.4.2              lattice_0.20-38          
-[177] loo_2.1.0                 httr_1.4.1               
-[179] DEoptimR_1.0-8            pkgbuild_1.0.6           
-[181] survival_2.44-1.1         glue_1.3.1               
-[183] zip_2.0.4                 bayestestR_0.3.0         
-[185] stringi_1.4.3             performance_0.3.0        
-[187] rsample_0.0.5             latticeExtra_0.6-28      
+  [1] estimability_1.3          SparseM_1.77             
+  [3] coda_0.19-3               tidyr_1.0.0              
+  [5] ggplot2_3.2.1             acepack_1.4.1            
+  [7] knitr_1.25                multcomp_1.4-10          
+  [9] data.table_1.12.6         rpart_4.1-15             
+ [11] inline_0.3.15             generics_0.0.2           
+ [13] callr_3.3.2               cowplot_1.0.0            
+ [15] TH.data_1.0-10            mice_3.6.0               
+ [17] future_1.14.0             webshot_0.5.1            
+ [19] xml2_1.2.2                httpuv_1.5.2             
+ [21] StanHeaders_2.19.0        assertthat_0.2.1         
+ [23] WRS2_1.0-0                xfun_0.10                
+ [25] hms_0.5.1                 evaluate_0.14            
+ [27] promises_1.0.1            DEoptimR_1.0-8           
+ [29] htmlwidgets_1.5.1         mcmc_0.9-6               
+ [31] reshape_0.8.8             stats4_3.6.0             
+ [33] paletteer_0.2.1           purrr_0.3.3              
+ [35] ellipsis_0.3.0            rcompanion_2.3.0         
+ [37] backports_1.1.5           insight_0.6.0            
+ [39] ggcorrplot_0.1.3          MCMCpack_1.4-4           
+ [41] libcoin_1.0-5             jmvcore_1.0.0            
+ [43] vctrs_0.2.0               quantreg_5.51            
+ [45] here_0.1                  sjlabelled_1.1.1         
+ [47] abind_1.4-5               metaBMA_0.6.2            
+ [49] robustbase_0.93-5         checkmate_1.9.4          
+ [51] emmeans_1.4.1             prettyunits_1.0.2        
+ [53] mnormt_1.5-5              cluster_2.1.0            
+ [55] lazyeval_0.2.2            crayon_1.3.4             
+ [57] pkgconfig_2.0.3           nlme_3.1-141             
+ [59] statsExpressions_0.1.1    nnet_7.3-12              
+ [61] rlang_0.4.1               globals_0.12.4           
+ [63] lifecycle_0.1.0           mitml_0.3-7              
+ [65] miniUI_0.1.1.1            groupedstats_0.0.9       
+ [67] skimr_1.0.7               LaplacesDemon_16.1.1     
+ [69] MatrixModels_0.4-1        sandwich_2.5-1           
+ [71] EMT_1.1                   modelr_0.1.5             
+ [73] cellranger_1.1.0          rprojroot_1.3-2          
+ [75] matrixStats_0.55.0        broomExtra_0.0.5         
+ [77] lmtest_0.9-37             Matrix_1.2-17            
+ [79] loo_2.1.0                 mc2d_0.1-18              
+ [81] carData_3.0-2             boot_1.3-23              
+ [83] zoo_1.8-6                 pan_1.6                  
+ [85] base64enc_0.1-3           processx_3.4.1           
+ [87] viridisLite_0.3.0         rjson_0.2.20             
+ [89] parameters_0.2.0.1        ggExtra_0.9              
+ [91] stringr_1.4.0             multcompView_0.1-7       
+ [93] coin_1.3-1                robust_0.4-18.1          
+ [95] readr_1.3.1               ggsignif_0.6.0           
+ [97] scales_1.0.0              magrittr_1.5             
+ [99] plyr_1.8.4                compiler_3.6.0           
+[101] rstantools_2.0.0          kableExtra_1.1.0         
+[103] RColorBrewer_1.1-2        lme4_1.1-21              
+[105] rrcov_1.4-7               cli_1.1.0                
+[107] listenv_0.7.0             pbapply_1.4-2            
+[109] ps_1.3.0                  TMB_1.7.15               
+[111] Brobdingnag_1.2-6         htmlTable_1.13.2         
+[113] formatR_1.7               Formula_1.2-3            
+[115] MASS_7.3-51.4             mgcv_1.8-29              
+[117] tidyselect_0.2.5          stringi_1.4.3            
+[119] forcats_0.4.0             yaml_2.2.0               
+[121] latticeExtra_0.6-28       ggrepel_0.8.1            
+[123] bridgesampling_0.7-2      grid_3.6.0               
+[125] manipulate_1.0.1          tools_3.6.0              
+[127] parallel_3.6.0            rio_0.5.16               
+[129] rstudioapi_0.10           foreign_0.8-72           
+[131] gridExtra_2.3             pairwiseComparisons_0.1.1
+[133] digest_0.6.22             shiny_1.3.2              
+[135] explore_0.5.1             nortest_1.0-4            
+[137] jmv_0.9.6.1               Rcpp_1.0.2               
+[139] car_3.0-3                 broom_0.5.2              
+[141] metafor_2.1-0             ez_4.4-0                 
+[143] BayesFactor_0.9.12-4.2    performance_0.3.0        
+[145] later_0.8.0               writexl_1.1              
+[147] httr_1.4.1                psych_1.8.12             
+[149] sjstats_0.17.6            colorspace_1.4-1         
+[151] rvest_0.3.4               splines_3.6.0            
+[153] expm_0.999-4              fit.models_0.5-14        
+[155] xtable_1.8-4              nloptr_1.2.1             
+[157] rstan_2.19.2              zeallot_0.1.0            
+[159] modeltools_0.2-22         R6_2.4.0                 
+[161] broom.mixed_0.2.4         Hmisc_4.2-0              
+[163] pillar_1.4.2              htmltools_0.4.0          
+[165] mime_0.7                  glue_1.3.1               
+[167] minqa_1.2.4               DT_0.9                   
+[169] codetools_0.2-16          jomo_2.6-9               
+[171] pkgbuild_1.0.6            pcaPP_1.9-73             
+[173] mvtnorm_1.0-11            furrr_0.1.0              
+[175] lattice_0.20-38           tibble_2.1.3             
+[177] curl_4.2                  DescTools_0.99.28        
+[179] gtools_3.8.1              logspline_2.1.13         
+[181] zip_2.0.4                 openxlsx_4.1.0.1         
+[183] survival_2.44-1.1         rmarkdown_1.16           
+[185] munsell_0.5.0             rsample_0.0.5            
+[187] sjmisc_2.8.1              haven_2.1.1              
+[189] reshape2_1.4.3            gtable_0.3.0             
+[191] bayestestR_0.3.0         
 \end{verbatim}
 
 \pagebreak
@@ -513,7 +1072,7 @@ loaded via a namespace (and not attached):
 \hypertarget{notes}{%
 \section{Notes}\label{notes}}
 
-Last update on 2019-11-08 10:13:19
+Last update on 2019-11-08 23:38:35
 
 Serdar Balci, MD, Pathologist\\
 \href{mailto:drserdarbalci@gmail.com}{\nolinkurl{drserdarbalci@gmail.com}}\\

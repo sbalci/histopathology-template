@@ -3,7 +3,26 @@ title: "R packages"
 output: html_notebook
 ---
 
+
+**shorten template file names**
+
+
+
+
+
+
+
+
+---
+
+
+
+
 https://www.coursera.org/learn/reproducible-templates-analysis/lecture/kMdRj/create-an-r-package-with-an-r-markdown-template
+
+
+
+
 
 
 ---
