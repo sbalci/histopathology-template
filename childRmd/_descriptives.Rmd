@@ -42,7 +42,7 @@ summary(tab1)
 
 
 
-
+**Table 1 via tableone 📦**
 
 ```{r tableone}
 # https://cran.r-project.org/web/packages/tableone/index.html
@@ -88,16 +88,16 @@ tableone::CreateTableOne(data = .)
 ```
 
 
+<!-- **Table 1 via atable 📦** -->
 
-<!-- atable -->
 <!-- https://cran.r-project.org/web/packages/atable/vignettes/atable_usage.pdf -->
 <!-- https://journal.r-project.org/archive/2019/RJ-2019-001/index.html -->
 
 
 
 
-```{r summarytools descriptives 1, eval=FALSE, include=FALSE}
-descr(tobacco, style = 'rmarkdown')
+```{r summarytools descriptives 1}
+summarytools::descr(mydata, style = 'rmarkdown')
 ```
 
 
