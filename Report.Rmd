@@ -40,20 +40,25 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
+# Header
 
 ```{r header, child = here::here('childRmd', '_header.Rmd')}
 ```
 
 
+# Import Data
+
 ```{r importData, child = here::here('childRmd', '_importData.Rmd')}
 ```
 
 
+# Overview of the Data
 
 <!-- ```{r overview, child = here::here('childRmd', '_overView.Rmd')} -->
 <!-- ``` -->
 
 
+# Generate Data Dictionary
 
 <!-- ```{r data dictionary, child = here::here('childRmd', '_dataDictionary.Rmd')} -->
 <!-- ``` -->

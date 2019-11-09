@@ -6,7 +6,9 @@
 
 
 
-# Header^[See childRmd/_header.Rmd file for other general settings]
+
+
+^[See childRmd/_header.Rmd file for other general settings]
 
 **setup global chunk settings**
 
