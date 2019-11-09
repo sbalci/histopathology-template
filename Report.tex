@@ -123,21 +123,6 @@
   \postdate{\par}
     \date{2019-11-09}
 
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
-
 \usepackage{pdflscape}
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
@@ -151,6 +136,16 @@
 \setcounter{tocdepth}{5}
 \tableofcontents
 }
+\hypertarget{header-codes}{%
+\subsection{Header Codes}\label{header-codes}}
+
+\textbf{Codes for general settings.}\footnote{See
+  \texttt{childRmd/\_header.Rmd} file for other general settings}
+
+\textbf{setup global chunk settings}
+
+Change \texttt{echo\ =\ FALSE} to hide codes after knitting.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{knitr}\OperatorTok{::}\NormalTok{opts_chunk}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}
@@ -159,18 +154,19 @@
     \DataTypeTok{fig.path =}\NormalTok{ here}\OperatorTok{::}\KeywordTok{here}\NormalTok{(}\StringTok{"figs/"}\NormalTok{),}
     \DataTypeTok{message =} \OtherTok{FALSE}\NormalTok{,}
     \DataTypeTok{warning =} \OtherTok{FALSE}\NormalTok{,}
+    \DataTypeTok{error =} \OtherTok{FALSE}\NormalTok{,}
+    \DataTypeTok{cache =} \OtherTok{FALSE}\NormalTok{,}
     \DataTypeTok{comment =} \OtherTok{NA}\NormalTok{,}
-    \DataTypeTok{tidy =} \OtherTok{TRUE}
+    \DataTypeTok{tidy =} \OtherTok{TRUE}\NormalTok{,}
+    \DataTypeTok{fig.width =} \DecValTok{12}\NormalTok{,}
+    \DataTypeTok{fig.height =} \DecValTok{8}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html}
-\CommentTok{# exploreR::reset()}
-\end{Highlighting}
-\end{Shaded}
+\textbf{load library}
+
+see \texttt{R/loadLibrary.R} for the libraries loaded.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -178,11 +174,23 @@
 \end{Highlighting}
 \end{Shaded}
 
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{import-data}{%
+\subsection{Import Data}\label{import-data}}
+
+\textbf{Codes for importing data.}\footnote{See
+  \texttt{childRmd/\_importData.Rmd} file for other codes}
+
+\textbf{Use this code to generate fake clinicopathologic data}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{source}\NormalTok{(}\DataTypeTok{file =}\NormalTok{ here}\OperatorTok{::}\KeywordTok{here}\NormalTok{(}\StringTok{"R"}\NormalTok{, }\StringTok{"generatingFakeData.R"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+
+\textbf{Use this code to read the generated fake data}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -192,402 +200,7 @@
 \end{Highlighting}
 \end{Shaded}
 
-\pagebreak
-
-Some Text ile sağkalım açısından bir ilişki bulunmamıştır (p = 0.22).
-
-\noindent
-
-\colorbox{yellow}{
-\parbox{\dimexpr\linewidth-2\fboxsep}{
-
-Some Text ile sağkalım açısından bir ilişki bulunmamıştır (p = 0.22).
-
-}
-}
-
-\colorbox{yellow}{\textcolor{red}{Some Text}}
-
-\pagebreak
-
-İstatistik Metod:, , Sürekli verilerin ortalama, standart sapma, median,
-minimum ve, maksimum değerleri verildi. Kategorik veriler ve gruplanan
-sürekli, veriler için frekans tabloları oluşturuldu. Genel sağkalım,
-analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından, elde
-edildi. Sağkalım analizinde Kaplan-Meier grafikleri,, Log-rank testi ve
-Cox-Regresyon testleri uygulandı. Analizler, R-project (version 3.6.0)
-ve RStudio ile survival ve finalfit, paketleri kullanılarak yapıldı. p
-değeri 0.05 düzeyinde anlamlı, olarak kabul edildi., , R Core Team
-(2019). R: A language and environment for statistical, computing. R
-Foundation for Statistical Computing, Vienna,, Austria. URL
-\url{https://www.R-project.org/}., , Therneau T (2015). A Package for
-Survival Analysis in S. version, 2.38,
-\url{https://CRAN.R-project.org/package=survival}, , Terry M. Therneau,
-Patricia M. Grambsch (2000). Modeling Survival, Data: Extending the Cox
-Model. Springer, New York. ISBN, 0-387-98784-3., , Ewen Harrison, Tom
-Drake and Riinu Ots (2019). finalfit: Quickly, Create Elegant Regression
-Results Tables and Plots when Modelling., R package version 0.9.6.
-\url{https://github.com/ewenharrison/finalfit}
-
-\noindent
-
-\colorbox{yellow}{
-\parbox{\dimexpr\linewidth-2\fboxsep}{
-
-İstatistik Metod:, , Sürekli verilerin ortalama, standart sapma, median, minimum ve, maksimum değerleri verildi. Kategorik veriler ve gruplanan sürekli, veriler için frekans tabloları oluşturuldu. Genel sağkalım, analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından, elde edildi.  Sağkalım analizinde Kaplan-Meier grafikleri,, Log-rank testi ve Cox-Regresyon testleri uygulandı. Analizler, R-project (version 3.6.0) ve RStudio ile survival ve finalfit, paketleri kullanılarak yapıldı. p değeri 0.05 düzeyinde anlamlı, olarak kabul edildi., , R Core Team (2019). R: A language and environment for statistical, computing. R Foundation for Statistical Computing, Vienna,, Austria. URL https://www.R-project.org/., , Therneau T (2015). A Package for Survival Analysis in S. version, 2.38, https://CRAN.R-project.org/package=survival, , Terry M. Therneau, Patricia M. Grambsch (2000). Modeling Survival, Data: Extending the Cox Model. Springer, New York. ISBN, 0-387-98784-3., , Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly, Create Elegant Regression Results Tables and Plots when Modelling., R package version 0.9.6. https://github.com/ewenharrison/finalfit
-
-}
-}
-
-\pagebreak
-
-Text Here
-
-\noindent
-
-\colorbox{yellow}{
-\parbox{\dimexpr\linewidth-2\fboxsep}{
-
-Text Here
-
-}
-}
-
-\pagebreak
-
-\pagecolor{yellow}\afterpage{\nopagecolor}
-
-\pagebreak
-
-\pagebreak
-
-\hypertarget{save-final-data}{%
-\section{Save Final Data}\label{save-final-data}}
-
-\begin{verbatim}
-saved data after analysis to/Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-09.xlsx : 2019-11-09 18:25:35
-\end{verbatim}
-
-\pagebreak
-
-\hypertarget{final-data-summary}{%
-\section{Final Data Summary}\label{final-data-summary}}
-
-\pagebreak
-
-\hypertarget{software-and-libraries-used}{%
-\section{Software and Libraries
-Used}\label{software-and-libraries-used}}
-
-\begin{verbatim}
-
-To cite R in publications use:
-
-  R Core Team (2019). R: A language and environment for
-  statistical computing. R Foundation for Statistical Computing,
-  Vienna, Austria. URL https://www.R-project.org/.
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {R: A Language and Environment for Statistical Computing},
-    author = {{R Core Team}},
-    organization = {R Foundation for Statistical Computing},
-    address = {Vienna, Austria},
-    year = {2019},
-    url = {https://www.R-project.org/},
-  }
-
-We have invested a lot of time and effort in creating R, please
-cite it when using it for data analysis. See also
-'citation("pkgname")' for citing R packages.
-\end{verbatim}
-
-The jamovi project (2019). jamovi. (Version 0.9) {[}Computer
-Software{]}. Retrieved from \url{https://www.jamovi.org}. R Core Team
-(2018). R: A Language and envionment for statistical computing.
-{[}Computer software{]}. Retrieved from
-\url{https://cran.r-project.org/}. Fox, J., \& Weisberg, S. (2018). car:
-Companion to Applied Regression. {[}R package{]}. Retrieved from
-\url{https://cran.r-project.org/package=car}.
-
-\hypertarget{dataorderdatareferences}{%
-\subsection{data{[}order(data\$References),
-{]}}\label{dataorderdatareferences}}
-
-Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create
-Elegant Regression Results Tables and Plots when Modelling. R package
-version 0.9.6. \url{https://github.com/ewenharrison/finalfit}\\
-Hadley Wickham and Jennifer Bryan (2019). readxl: Read Excel Files. R
-package version 1.3.1. \url{https://CRAN.R-project.org/package=readxl}\\
-Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2019).
-dplyr: A Grammar of Data Manipulation. R package version 0.8.3.
-\url{https://CRAN.R-project.org/package=dplyr}\\
-Makowski, D. \& Lüdecke, D. (2019). The report package for R: Ensuring
-the use of best practices for results reporting. CRAN. Available from
-\url{https://github.com/easystats/report}. doi: .\\
-Patil I (2018). \emph{ggstatsplot: `ggplot2' Based Plots withStatistical
-Details}. doi: 10.5281/zenodo.2074621
-(URL:\url{https://doi.org/10.5281/zenodo.2074621}),
-\textless URL:\url{https://CRAN.R-project.org/package=ggstatsplot}\textgreater.
-Rinker, T. W. (2018). wakefield: Generate Random Data. version 0.3.3.
-Buffalo, New York. \url{https://github.com/trinker/wakefield}\\
-Sam Firke (2019). janitor: Simple Tools for Examining and Cleaning Dirty
-Data. R package version 1.2.0.
-\url{https://CRAN.R-project.org/package=janitor}
-
-\begin{verbatim}
-
-To cite package 'tidyverse' in publications use:
-
-  Hadley Wickham (2017). tidyverse: Easily Install and Load the
-  'Tidyverse'. R package version 1.2.1.
-  https://CRAN.R-project.org/package=tidyverse
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {tidyverse: Easily Install and Load the 'Tidyverse'},
-    author = {Hadley Wickham},
-    year = {2017},
-    note = {R package version 1.2.1},
-    url = {https://CRAN.R-project.org/package=tidyverse},
-  }
-\end{verbatim}
-
-\begin{verbatim}
-
-To cite package 'readxl' in publications use:
-
-  Hadley Wickham and Jennifer Bryan (2019). readxl: Read Excel
-  Files. R package version 1.3.1.
-  https://CRAN.R-project.org/package=readxl
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {readxl: Read Excel Files},
-    author = {Hadley Wickham and Jennifer Bryan},
-    year = {2019},
-    note = {R package version 1.3.1},
-    url = {https://CRAN.R-project.org/package=readxl},
-  }
-\end{verbatim}
-
-\begin{verbatim}
-
-To cite package 'janitor' in publications use:
-
-  Sam Firke (2019). janitor: Simple Tools for Examining and
-  Cleaning Dirty Data. R package version 1.2.0.
-  https://CRAN.R-project.org/package=janitor
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {janitor: Simple Tools for Examining and Cleaning Dirty Data},
-    author = {Sam Firke},
-    year = {2019},
-    note = {R package version 1.2.0},
-    url = {https://CRAN.R-project.org/package=janitor},
-  }
-\end{verbatim}
-
-\begin{verbatim}
-
-To cite in publications use:
-
-  Makowski, D. & Lüdecke, D. (2019). The report package for R:
-  Ensuring the use of best practices for results reporting. CRAN.
-  Available from https://github.com/easystats/report. doi: .
-
-A BibTeX entry for LaTeX users is
-
-  @Article{,
-    title = {The report package for R: Ensuring the use of best practices for results reporting},
-    author = {{Makowski} and {Dominique} and {Lüdecke} and {Daniel}},
-    journal = {CRAN},
-    year = {2019},
-    note = {R package},
-    url = {https://github.com/easystats/report},
-  }
-\end{verbatim}
-
-\begin{verbatim}
-
-To cite package 'finalfit' in publications use:
-
-  Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly
-  Create Elegant Regression Results Tables and Plots when
-  Modelling. R package version 0.9.6.
-  https://github.com/ewenharrison/finalfit
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {finalfit: Quickly Create Elegant Regression Results Tables and Plots when
-Modelling},
-    author = {Ewen Harrison and Tom Drake and Riinu Ots},
-    year = {2019},
-    note = {R package version 0.9.6},
-    url = {https://github.com/ewenharrison/finalfit},
-  }
-\end{verbatim}
-
-\begin{verbatim}
-
-Patil I (2018). _ggstatsplot: 'ggplot2' Based Plots with
-Statistical Details_. doi: 10.5281/zenodo.2074621 (URL:
-https://doi.org/10.5281/zenodo.2074621), <URL:
-https://CRAN.R-project.org/package=ggstatsplot>.
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {ggstatsplot: 'ggplot2' Based Plots with Statistical Details},
-    author = {Indrajeet Patil},
-    year = {2018},
-    url = {https://CRAN.R-project.org/package=ggstatsplot},
-    doi = {10.5281/zenodo.2074621},
-  }
-\end{verbatim}
-
-\pagebreak
-
-\hypertarget{session-info}{%
-\section{Session Info}\label{session-info}}
-
-\begin{verbatim}
-R version 3.6.0 (2019-04-26)
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS  10.15.1
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] wakefield_0.3.3   ggstatsplot_0.1.2 finalfit_0.9.6    report_0.1.0     
-[5] janitor_1.2.0     readxl_1.3.1      dplyr_0.8.3      
-
-loaded via a namespace (and not attached):
-  [1] tidyselect_0.2.5          lme4_1.1-21              
-  [3] robust_0.4-18.1           htmlwidgets_1.5.1        
-  [5] grid_3.6.0                munsell_0.5.0            
-  [7] codetools_0.2-16          future_1.14.0            
-  [9] miniUI_0.1.1.1            Brobdingnag_1.2-6        
- [11] metaBMA_0.6.2             colorspace_1.4-1         
- [13] knitr_1.25                rstudioapi_0.10          
- [15] stats4_3.6.0              DescTools_0.99.28        
- [17] robustbase_0.93-5         rcompanion_2.3.0         
- [19] ggsignif_0.6.0            listenv_0.7.0            
- [21] emmeans_1.4.1             rstan_2.19.2             
- [23] mnormt_1.5-5              MCMCpack_1.4-4           
- [25] bridgesampling_0.7-2      rprojroot_1.3-2          
- [27] coda_0.19-3               vctrs_0.2.0              
- [29] generics_0.0.2            TH.data_1.0-10           
- [31] metafor_2.1-0             xfun_0.10                
- [33] R6_2.4.0                  BayesFactor_0.9.12-4.2   
- [35] reshape_0.8.8             logspline_2.1.13         
- [37] assertthat_0.2.1          promises_1.0.1           
- [39] scales_1.0.0              multcomp_1.4-10          
- [41] nnet_7.3-12               ggExtra_0.9              
- [43] gtable_0.3.0              multcompView_0.1-7       
- [45] globals_0.12.4            processx_3.4.1           
- [47] mcmc_0.9-6                sandwich_2.5-1           
- [49] rlang_0.4.1               MatrixModels_0.4-1       
- [51] EMT_1.1                   zeallot_0.1.0            
- [53] splines_3.6.0             TMB_1.7.15               
- [55] lazyeval_0.2.2            acepack_1.4.1            
- [57] broom_0.5.2               checkmate_1.9.4          
- [59] inline_0.3.15             abind_1.4-5              
- [61] yaml_2.2.0                reshape2_1.4.3           
- [63] modelr_0.1.5              backports_1.1.5          
- [65] httpuv_1.5.2              Hmisc_4.2-0              
- [67] tools_3.6.0               psych_1.8.12             
- [69] ggplot2_3.2.1             kableExtra_1.1.0         
- [71] ellipsis_0.3.0            RColorBrewer_1.1-2       
- [73] WRS2_1.0-0                ez_4.4-0                 
- [75] Rcpp_1.0.2                plyr_1.8.4               
- [77] base64enc_0.1-3           jmvcore_1.0.0            
- [79] purrr_0.3.3               ps_1.3.0                 
- [81] prettyunits_1.0.2         rpart_4.1-15             
- [83] pbapply_1.4-2             cowplot_1.0.0            
- [85] zoo_1.8-6                 LaplacesDemon_16.1.1     
- [87] haven_2.1.1               ggrepel_0.8.1            
- [89] cluster_2.1.0             here_0.1                 
- [91] furrr_0.1.0               magrittr_1.5             
- [93] data.table_1.12.6         openxlsx_4.1.0.1         
- [95] manipulate_1.0.1          SparseM_1.77             
- [97] lmtest_0.9-37             mvtnorm_1.0-11           
- [99] broomExtra_0.0.5          mitml_0.3-7              
-[101] sjmisc_2.8.1              matrixStats_0.55.0       
-[103] hms_0.5.1                 mime_0.7                 
-[105] evaluate_0.14             xtable_1.8-4             
-[107] rio_0.5.16                sjstats_0.17.6           
-[109] pairwiseComparisons_0.1.1 broom.mixed_0.2.4        
-[111] gridExtra_2.3             rstantools_2.0.0         
-[113] compiler_3.6.0            tibble_2.1.3             
-[115] mice_3.6.0                writexl_1.1              
-[117] crayon_1.3.4              minqa_1.2.4              
-[119] StanHeaders_2.19.0        htmltools_0.4.0          
-[121] mgcv_1.8-29               mc2d_0.1-18              
-[123] pcaPP_1.9-73              later_0.8.0              
-[125] Formula_1.2-3             libcoin_1.0-5            
-[127] tidyr_1.0.0               rrcov_1.4-7              
-[129] expm_0.999-4              formatR_1.7              
-[131] sjlabelled_1.1.1          jmv_0.9.6.1              
-[133] MASS_7.3-51.4             boot_1.3-23              
-[135] readr_1.3.1               car_3.0-3                
-[137] Matrix_1.2-17             cli_1.1.0                
-[139] parallel_3.6.0            insight_0.6.0            
-[141] pan_1.6                   forcats_0.4.0            
-[143] pkgconfig_2.0.3           fit.models_0.5-14        
-[145] statsExpressions_0.1.1    coin_1.3-1               
-[147] foreign_0.8-72            skimr_1.0.7              
-[149] xml2_1.2.2                paletteer_0.2.1          
-[151] ggcorrplot_0.1.3          webshot_0.5.1            
-[153] estimability_1.3          rvest_0.3.4              
-[155] stringr_1.4.0             callr_3.3.2              
-[157] digest_0.6.22             parameters_0.2.0.1       
-[159] rmarkdown_1.16            cellranger_1.1.0         
-[161] htmlTable_1.13.2          nortest_1.0-4            
-[163] curl_4.2                  modeltools_0.2-22        
-[165] quantreg_5.51             shiny_1.3.2              
-[167] gtools_3.8.1              jomo_2.6-9               
-[169] rjson_0.2.20              nloptr_1.2.1             
-[171] lifecycle_0.1.0           nlme_3.1-141             
-[173] carData_3.0-2             groupedstats_0.0.9       
-[175] viridisLite_0.3.0         pillar_1.4.2             
-[177] lattice_0.20-38           loo_2.1.0                
-[179] httr_1.4.1                DEoptimR_1.0-8           
-[181] pkgbuild_1.0.6            survival_2.44-1.1        
-[183] glue_1.3.1                zip_2.0.4                
-[185] bayestestR_0.3.0          stringi_1.4.3            
-[187] performance_0.3.0         rsample_0.0.5            
-[189] latticeExtra_0.6-28      
-\end{verbatim}
-
-\pagebreak
-
-\hypertarget{notes}{%
-\section{Notes}\label{notes}}
-
-Last update on 2019-11-09 18:25:35
-
-Serdar Balci, MD, Pathologist\\
-\href{mailto:drserdarbalci@gmail.com}{\nolinkurl{drserdarbalci@gmail.com}}\\
-\url{https://rpubs.com/sbalci/CV}
-
-\pagebreak
-
-\newpage
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 
 \end{document}

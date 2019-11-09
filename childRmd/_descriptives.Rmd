@@ -1,18 +1,18 @@
+**Codes for overviewing the data.**^[See `childRmd/_overView.Rmd` file for other codes]
 
-# Descriptive Statistics
 
-
-## Table 1  
+### Table 1  
 
 **Report Data**
 
-```{r report data, eval=FALSE, include=FALSE}
+```{r report data}
 mydata %>%
   dplyr::select(-dplyr::contains("Date")) %>%
   report::report()
 ```
 
 
+**Table 1 via arsenal 📦**
 
 ```{r arsenal Table 1, results='asis', eval=FALSE, include=FALSE}
 # cat(names(mydata), sep = " + \n")
@@ -132,7 +132,7 @@ iris %>% explore::describe() %>% dplyr::filter(na > 0)
 
 
 
-## Categorical Variables
+### Categorical Variables
 
 
 
@@ -229,7 +229,7 @@ inspectdf::inspect_cat(starwars)$levels$hair_color
 
 
 
-### Split-Group Stats Categorical
+#### Split-Group Stats Categorical
 
 ```{r summarytools Split-Group categorical, eval=FALSE, include=FALSE}
 grouped_freqs <- stby(data = tobacco$smoker, 
@@ -245,7 +245,7 @@ grouped_freqs %>% tb(order = 2)
 
 
 
-### Grouped Categorical
+#### Grouped Categorical
 
 ```{r summarytools Grouped Categorical, eval=FALSE, include=FALSE}
 stby(list(x = tobacco$smoker, y = tobacco$diseased), tobacco$gender, ctable)
@@ -278,7 +278,7 @@ SmartEDA::ExpCTable(
 ---
 
 
-## Continious Variables
+### Continious Variables
 
 
 ```{r categorise cut off continious variables, eval=FALSE, include=FALSE}
@@ -378,7 +378,7 @@ inspectdf::inspect_num(storms, storms[-c(1:10), -1]) %>%
 
 
 
-### Split-Group Stats Continious
+#### Split-Group Stats Continious
 
 
 ```{r summarytools Split-Group continious, eval=FALSE, include=FALSE}
@@ -418,7 +418,7 @@ plot(cat_num)
 
 
 
-### Grouped Continious
+#### Grouped Continious
 
 ```{r summarytools Grouped Continious, eval=FALSE, include=FALSE}
 (iris_stats_by_species <- stby(data = iris, 

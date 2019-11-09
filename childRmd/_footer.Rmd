@@ -1,8 +1,9 @@
+**Codes for explaining the software and the packages that are used in the analysis**^[See `childRmd/_footer.Rmd` file for other codes]
 
-# Save Final Data  {.appendix}  
 
-```{r save final data, echo=FALSE}
+## Save Final Data  {.appendix}  
 
+```{r save final data}
 projectName <- list.files(path = here::here(), pattern = "Rproj")
 projectName <- gsub(pattern = ".Rproj", replacement = "", x = projectName)
 
@@ -31,20 +32,23 @@ print(glue::glue(
     )
     )
 )
+```
 
+
+```{r save final data 2, eval=FALSE, include=FALSE}
 # pacman::p_load(here, lubridate, glue)
 # here::here("data", glue("{today()}_trends.csv"))
-
 ```
 
 
 \pagebreak
 
 
-# Final Data Summary {.appendix}  
+## Final Data Summary {.appendix}  
 
 
-```{r summarytools 1, eval=FALSE, include=FALSE}
+```r
+# use summarytools to generate final data summary
 # summarytools::view(summarytools::dfSummary(x = mydata
 #                                            , style = "markdown"))
 ```
@@ -72,23 +76,23 @@ print(glue::glue(
 
 
 
-# Software and Libraries Used {.appendix}  
+## Software and Libraries Used {.appendix}  
 
-```{r citation, echo=FALSE}
+```{r citation}
 citation()
 ```
 
-The jamovi project (2019). jamovi. (Version 0.9) [Computer Software]. Retrieved from https://www.jamovi.org.
-R Core Team (2018). R: A Language and envionment for statistical computing. [Computer software]. Retrieved from https://cran.r-project.org/.
+The jamovi project (2019). jamovi. (Version 0.9) [Computer Software]. Retrieved from https://www.jamovi.org.  
+R Core Team (2018). R: A Language and envionment for statistical computing. [Computer software]. Retrieved from https://cran.r-project.org/.  
 Fox, J., & Weisberg, S. (2018). car: Companion to Applied Regression. [R package]. Retrieved from https://cran.r-project.org/package=car.
 
 
-```{r library citation as report, echo=FALSE, results='asis'}
+```{r library citation as report, results='asis'}
 report::cite_packages(session = sessionInfo())
 ```
 
 
-```{r library citations, echo=FALSE}
+```{r library citations}
 citation("tidyverse")
 citation("readxl")
 citation("janitor")
@@ -101,9 +105,9 @@ citation("ggstatsplot")
 
 \pagebreak
 
-# Session Info {.appendix} 
+## Session Info {.appendix} 
 
-```{r session info, echo=FALSE}
+```{r session info}
 sessionInfo()
 ```
 
@@ -113,14 +117,10 @@ sessionInfo()
 
 
 
-# Notes {.appendix}  
+## Notes {.appendix}  
 
 Last update on `r Sys.time()`  
 
 Serdar Balci, MD, Pathologist  
 drserdarbalci@gmail.com  
 https://rpubs.com/sbalci/CV   
-
-
-
-

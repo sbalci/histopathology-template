@@ -1,4 +1,8 @@
-# Define Variable Types
+
+**Codes for overviewing the data.**^[See `childRmd/_overView.Rmd` file for other codes]
+
+
+### Define Variable Types
 
 ```{r define continious variables, eval=FALSE, include=FALSE}
 mydataDescription <- describer::describe(mydata)
@@ -56,7 +60,7 @@ inspectdf::inspect_types(mydata) %>% inspectdf::show_plot()
 
 
 
-# Overview / Exploratory Data Analysis (EDA)
+### Overview / Exploratory Data Analysis (EDA)
 
 
 ```{r summarytools, eval=FALSE, include=FALSE}
@@ -499,7 +503,7 @@ SmartEDA::ExpData(data=Carseats,type=2)
 
 
 
-# Information value
+### Information value
 
 
 
@@ -520,7 +524,7 @@ SmartEDA::ExpCatStat(
 ```
 
 
-# Feature imbalance
+### Feature imbalance
 
 
 ```{r Feature imbalance inspectdf, eval=FALSE, include=FALSE}
@@ -536,7 +540,7 @@ inspectdf::inspect_imb(star_1, star_2) %>% inspectdf::show_plot()
 
 
 
-# Memory usage
+### Memory usage
   
 ```{r memory usage inspectdf, eval=FALSE, include=FALSE}
 inspectdf::inspect_mem(starwars)
@@ -566,8 +570,9 @@ inspectdf::inspect_mem(star_1, star_2) %>% inspectdf::show_plot()
 
 ---
 
-# SmartEDA
+### SmartEDA
 
+```r
 Create HTML EDA report
 
 Create a exploratory data analysis report in HTML format
@@ -580,6 +585,7 @@ Quantile-quantile plot for numeric variables
     ExpOutQQ(CData,nlim=10,fname=NULL,Page=c(2,2),sample=4)
 
 Parallel Co-ordinate plots
+
 
 ## Defualt ExpParcoord funciton
     ExpParcoord(CData,Group=NULL,Stsize=NULL,Nvar=c("Price","Income","Advertising","Population","Age",
@@ -694,17 +700,5 @@ ExpCustomStat(Carseats,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("CompPrice","I
 ExpCustomStat(data_sam,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("Sales","CompPrice","Income"), stat = c('Count','Prop','mean','sum','PS'), gpby = TRUE,filt="All %ni% c(888,999)")
 ExpCustomStat(Carseats,Cvar = c("Urban","US"), Nvar=c("Population","Sales","CompPrice"), stat = c('Count','Prop','mean','sum','var','min','max'), filt=c("ShelveLoc=='Good'^Urban=='Yes'^Price>=150"))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
