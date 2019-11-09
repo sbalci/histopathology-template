@@ -45,10 +45,32 @@ This repository is a template for the codes I use in [my and my friends’
 histopathology
 research](https://sbalci.github.io/cv/SerdarBalciMDPathologist.html).
 
-I have tried to collect common codes in [My R Codes For Data
-Analysis](https://sbalci.github.io/MyRCodesForDataAnalysis/), but I find
-the template repositories more helpful. Later I plan to collect them
-under a package [histopathR](https://sbalci.github.io/histopathR/).
+-----
+
+**See examples**
+
+  - See some of the codes here:
+    <https://sbalci.github.io/histopathology-template/Report.html>
+
+  - You may also install
+    [histopathR](https://sbalci.github.io/histopathR/) package to get
+    all the codes as R Markdown Template.
+
+<!-- end list -->
+
+``` r
+devtools::install_github("sbalci/histopathR")
+rmarkdown::draft(file = "myfile",
+                 template = "clinicopathological",
+                 package = "histopathR",
+                 create_dir = TRUE,
+                 edit = TRUE)
+```
+
+  - I have tried to collect common codes in [My R Codes For Data
+    Analysis](https://sbalci.github.io/MyRCodesForDataAnalysis/). I plan
+    to collect them under the package
+    [histopathR](https://sbalci.github.io/histopathR/) gradually.
 
 -----
 
@@ -68,7 +90,7 @@ under a package [histopathR](https://sbalci.github.io/histopathR/).
 
 -----
 
-# Recommended Links for Reproducible Research
+**Recommended Links for Reproducible Research**
 
   - [Reproducible Templates for Analysis and
     Dissemination](https://www.coursera.org/learn/reproducible-templates-analysis/home/info)
@@ -102,9 +124,7 @@ under a package [histopathR](https://sbalci.github.io/histopathR/).
   - [Create A MS Word Template for R
     Markdown](https://vimeo.com/110804387)
 
-# Minimum Required Columns
-
-# Please Give Me FeedBack
+**Please Give Me FeedBack**
 
 <https://goo.gl/forms/YjGZ5DHgtPlR1RnB3>
 

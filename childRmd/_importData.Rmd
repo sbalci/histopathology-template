@@ -1,13 +1,14 @@
-# Import Data
 
+**Codes for importing data.**^[See `childRmd/_importData.Rmd` file for other codes]
+
+
+**Use this code to generate fake clinicopathologic data**
 
 ```{r generate fake data}
 source(file = here::here("R", "generatingFakeData.R"))
 ```
 
-
-
-
+**Use this code to read the generated fake data**
 
 ```{r import data}
 library(readxl)

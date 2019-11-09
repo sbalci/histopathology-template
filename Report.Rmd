@@ -41,14 +41,24 @@ vignette: >
 ---
 
 
+## Header Codes
+
+
 ```{r header, child = here::here('childRmd', '_header.Rmd')}
 ```
 
+
+---
+
+
+## Import Data
 
 
 ```{r importData, child = here::here('childRmd', '_importData.Rmd')}
 ```
 
+
+---
 
 
 <!-- ```{r overview, child = here::here('childRmd', '_overView.Rmd')} -->
@@ -128,32 +138,32 @@ vignette: >
 <!-- ``` -->
 
 
-\pagebreak
+<!-- \pagebreak -->
 
 
 
-```{r comments, child = here::here('childRmd', '_comments.Rmd')}
-```
+<!-- ```{r comments, child = here::here('childRmd', '_comments.Rmd')} -->
+<!-- ``` -->
 
 
 
-\pagebreak
+<!-- \pagebreak -->
 
 
-```{r footer, child = here::here('childRmd', '_footer.Rmd')}
-```
+<!-- ```{r footer, child = here::here('childRmd', '_footer.Rmd')} -->
+<!-- ``` -->
 
 
-\pagebreak
+<!-- \pagebreak -->
 
 
 
-\newpage
+<!-- \newpage -->
 
 
-```{r git update, include=FALSE}
-source(file = here::here("R", "gitUpdateCommitPush.R"))
-```
+<!-- ```{r git update, include=FALSE} -->
+<!-- source(file = here::here("R", "gitUpdateCommitPush.R")) -->
+<!-- ``` -->
 
 
 
