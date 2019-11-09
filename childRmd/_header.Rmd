@@ -1,11 +1,12 @@
-# Header^[See childRmd/_header.Rmd file for other codes]
-
 <style>
     body .main-container {
         max-width: 90%;
     }
 </style>
 
+
+
+# Header^[See childRmd/_header.Rmd file for other general settings]
 
 **setup global chunk settings**
 
