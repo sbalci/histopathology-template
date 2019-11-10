@@ -46,10 +46,17 @@ correlation(iris, bayesian=TRUE)
 library(report)
 iris %>% 
   select(starts_with("Sepal")) %>% 
-  correlation(bayesian=TRUE) %>% 
+  correlation::correlation(bayesian=TRUE) %>% 
   report()
+```
+
+
+```{r correlation report 1, eval=FALSE, include=FALSE}
+report::report(cor.test(iris$Sepal.Length, iris$Petal.Length))
 
 ```
+
+https://stat.ethz.ch/R-manual/R-patched/library/stats/html/cor.test.html
 
   
 ```{r correlation report 2, eval=FALSE, include=FALSE}

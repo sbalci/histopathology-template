@@ -89,8 +89,13 @@ plot(num_num, hex_thres = 350)
 ```
 
 
+https://stat.ethz.ch/R-manual/R-devel/library/stats/html/t.test.html
+
+t.test(mtcars$mpg ~ mtcars$am) %>% 
+  report::report()
 
 
+report(t.test(iris$Sepal.Length, iris$Petal.Length))
 
 
 

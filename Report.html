@@ -380,23 +380,23 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>mydata <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>dplyr<span class="op">::</span><span class="kw">contains</span>(<span class="st">&quot;Date&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>report<span class="op">::</span><span class="kw">report</span>()</span></code></pre></div>
 <pre><code>The data contains 250 observations of the following variables:
   - ID: 250 entries: 001, n = 1; 002, n = 1; 003, n = 1 and 247 others
-  - Name: 249 entries: Adelee, n = 1; Adorn, n = 1; Adrea, n = 1 and 246 others (1 missing)
-  - Sex: 2 entries: Male, n = 131; Female, n = 118 (1 missing)
-  - Age: Mean = 46.67, SD = 13.75, range = [25, 73], 1 missing
-  - Race: 7 entries: White, n = 158; Black, n = 39; Hispanic, n = 29 and 4 others (1 missing)
-  - PreinvasiveComponent: 2 entries: Absent, n = 193; Present, n = 56 (1 missing)
-  - LVI: 2 entries: Absent, n = 207; Present, n = 42 (1 missing)
-  - PNI: 2 entries: Absent, n = 187; Present, n = 62 (1 missing)
-  - Death: 2 levels: FALSE (n = 71); TRUE (n = 178) and missing (n = 1)
-  - Group: 2 entries: Treatment, n = 126; Control, n = 123 (1 missing)
-  - Grade: 3 entries: 3, n = 95; 1, n = 85; 2, n = 69 (1 missing)
-  - TStage: 4 entries: 3, n = 106; 4, n = 68; 2, n = 45 and 1 other (1 missing)
-  - Anti-X-intensity: Mean = 2.40, SD = 0.68, range = [1, 3], 1 missing
-  - Anti-Y-intensity: Mean = 2.01, SD = 0.79, range = [1, 3], 1 missing
-  - LymphNodeMetastasis: 2 entries: Absent, n = 156; Present, n = 93 (1 missing)
-  - Valid: 2 levels: FALSE (n = 125); TRUE (n = 124) and missing (n = 1)
-  - Smoker: 2 levels: FALSE (n = 123); TRUE (n = 126) and missing (n = 1)
-  - Grade_Level: 3 entries: high, n = 100; low, n = 75; moderate, n = 74 (1 missing)</code></pre>
+  - Name: 249 entries: Abdulrehman, n = 1; Abhijeet, n = 1; Adriana, n = 1 and 246 others (1 missing)
+  - Sex: 2 entries: Male, n = 130; Female, n = 119 (1 missing)
+  - Age: Mean = 49.36, SD = 13.80, range = [25, 73], 1 missing
+  - Race: 8 entries: White, n = 148; Hispanic, n = 47; Black, n = 33 and 5 others (1 missing)
+  - PreinvasiveComponent: 2 entries: Absent, n = 205; Present, n = 44 (1 missing)
+  - LVI: 2 entries: Absent, n = 205; Present, n = 44 (1 missing)
+  - PNI: 2 entries: Absent, n = 162; Present, n = 87 (1 missing)
+  - Death: 2 levels: FALSE (n = 78); TRUE (n = 171) and missing (n = 1)
+  - Group: 2 entries: Control, n = 125; Treatment, n = 124 (1 missing)
+  - Grade: 3 entries: 3, n = 94; 2, n = 82; 1, n = 73 (1 missing)
+  - TStage: 4 entries: 3, n = 110; 4, n = 71; 2, n = 47 and 1 other (1 missing)
+  - Anti-X-intensity: Mean = 2.43, SD = 0.64, range = [1, 3], 1 missing
+  - Anti-Y-intensity: Mean = 2.01, SD = 0.76, range = [1, 3], 1 missing
+  - LymphNodeMetastasis: 2 entries: Absent, n = 142; Present, n = 107 (1 missing)
+  - Valid: 2 levels: FALSE (n = 105); TRUE (n = 144) and missing (n = 1)
+  - Smoker: 2 levels: FALSE (n = 128); TRUE (n = 121) and missing (n = 1)
+  - Grade_Level: 3 entries: high, n = 104; moderate, n = 79; low, n = 66 (1 missing)</code></pre>
 <p><strong>Table 1 via arsenal 📦</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># cat(names(mydata), sep = &#39; + \n&#39;)</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="kw">library</span>(arsenal)</span>
@@ -422,11 +422,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Female</td>
-<td align="center">118 (47.4%)</td>
+<td align="center">119 (47.8%)</td>
 </tr>
 <tr class="even">
 <td align="left">   Male</td>
-<td align="center">131 (52.6%)</td>
+<td align="center">130 (52.2%)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Age</strong></td>
@@ -438,7 +438,7 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Mean (SD)</td>
-<td align="center">46.667 (13.748)</td>
+<td align="center">49.357 (13.798)</td>
 </tr>
 <tr class="even">
 <td align="left">   Range</td>
@@ -454,255 +454,259 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Asian</td>
-<td align="center">13 (5.2%)</td>
+<td align="center">15 (6.0%)</td>
 </tr>
 <tr class="even">
 <td align="left">   Bi-Racial</td>
-<td align="center">7 (2.8%)</td>
+<td align="center">1 (0.4%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   Black</td>
-<td align="center">39 (15.7%)</td>
+<td align="center">33 (13.3%)</td>
 </tr>
 <tr class="even">
-<td align="left">   Hispanic</td>
-<td align="center">29 (11.6%)</td>
-</tr>
-<tr class="odd">
-<td align="left">   Native</td>
+<td align="left">   Hawaiian</td>
 <td align="center">1 (0.4%)</td>
 </tr>
+<tr class="odd">
+<td align="left">   Hispanic</td>
+<td align="center">47 (18.9%)</td>
+</tr>
 <tr class="even">
-<td align="left">   Other</td>
+<td align="left">   Native</td>
 <td align="center">2 (0.8%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   White</td>
-<td align="center">158 (63.5%)</td>
+<td align="left">   Other</td>
+<td align="center">2 (0.8%)</td>
 </tr>
 <tr class="even">
+<td align="left">   White</td>
+<td align="center">148 (59.4%)</td>
+</tr>
+<tr class="odd">
 <td align="left"><strong>PreinvasiveComponent</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   Absent</td>
-<td align="center">193 (77.5%)</td>
+<td align="center">205 (82.3%)</td>
+</tr>
+<tr class="even">
+<td align="left">   Present</td>
+<td align="center">44 (17.7%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   Present</td>
-<td align="center">56 (22.5%)</td>
-</tr>
-<tr class="even">
 <td align="left"><strong>LVI</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   Absent</td>
-<td align="center">207 (83.1%)</td>
+<td align="center">205 (82.3%)</td>
+</tr>
+<tr class="even">
+<td align="left">   Present</td>
+<td align="center">44 (17.7%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   Present</td>
-<td align="center">42 (16.9%)</td>
-</tr>
-<tr class="even">
 <td align="left"><strong>PNI</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   Absent</td>
-<td align="center">187 (75.1%)</td>
+<td align="center">162 (65.1%)</td>
+</tr>
+<tr class="even">
+<td align="left">   Present</td>
+<td align="center">87 (34.9%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   Present</td>
-<td align="center">62 (24.9%)</td>
-</tr>
-<tr class="even">
 <td align="left"><strong>Death</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   FALSE</td>
-<td align="center">71 (28.5%)</td>
+<td align="center">78 (31.3%)</td>
+</tr>
+<tr class="even">
+<td align="left">   TRUE</td>
+<td align="center">171 (68.7%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   TRUE</td>
-<td align="center">178 (71.5%)</td>
-</tr>
-<tr class="even">
 <td align="left"><strong>Group</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   Control</td>
-<td align="center">123 (49.4%)</td>
-</tr>
-<tr class="odd">
-<td align="left">   Treatment</td>
-<td align="center">126 (50.6%)</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>Grade</strong></td>
-<td align="center"></td>
-</tr>
-<tr class="odd">
-<td align="left">   N-Miss</td>
-<td align="center">1</td>
-</tr>
-<tr class="even">
-<td align="left">   1</td>
-<td align="center">85 (34.1%)</td>
-</tr>
-<tr class="odd">
-<td align="left">   2</td>
-<td align="center">69 (27.7%)</td>
-</tr>
-<tr class="even">
-<td align="left">   3</td>
-<td align="center">95 (38.2%)</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>TStage</strong></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="left">   N-Miss</td>
-<td align="center">1</td>
-</tr>
-<tr class="odd">
-<td align="left">   1</td>
-<td align="center">30 (12.0%)</td>
-</tr>
-<tr class="even">
-<td align="left">   2</td>
-<td align="center">45 (18.1%)</td>
-</tr>
-<tr class="odd">
-<td align="left">   3</td>
-<td align="center">106 (42.6%)</td>
-</tr>
-<tr class="even">
-<td align="left">   4</td>
-<td align="center">68 (27.3%)</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>Anti-X-intensity</strong></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="left">   N-Miss</td>
-<td align="center">1</td>
-</tr>
-<tr class="odd">
-<td align="left">   Mean (SD)</td>
-<td align="center">2.402 (0.683)</td>
-</tr>
-<tr class="even">
-<td align="left">   Range</td>
-<td align="center">1.000 - 3.000</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>Anti-Y-intensity</strong></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="left">   N-Miss</td>
-<td align="center">1</td>
-</tr>
-<tr class="odd">
-<td align="left">   Mean (SD)</td>
-<td align="center">2.008 (0.788)</td>
-</tr>
-<tr class="even">
-<td align="left">   Range</td>
-<td align="center">1.000 - 3.000</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>LymphNodeMetastasis</strong></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="left">   N-Miss</td>
-<td align="center">1</td>
-</tr>
-<tr class="odd">
-<td align="left">   Absent</td>
-<td align="center">156 (62.7%)</td>
-</tr>
-<tr class="even">
-<td align="left">   Present</td>
-<td align="center">93 (37.3%)</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>Valid</strong></td>
-<td align="center"></td>
-</tr>
-<tr class="even">
-<td align="left">   N-Miss</td>
-<td align="center">1</td>
-</tr>
-<tr class="odd">
-<td align="left">   FALSE</td>
 <td align="center">125 (50.2%)</td>
 </tr>
 <tr class="even">
-<td align="left">   TRUE</td>
+<td align="left">   Treatment</td>
 <td align="center">124 (49.8%)</td>
 </tr>
 <tr class="odd">
+<td align="left"><strong>Grade</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="left">   1</td>
+<td align="center">73 (29.3%)</td>
+</tr>
+<tr class="even">
+<td align="left">   2</td>
+<td align="center">82 (32.9%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   3</td>
+<td align="center">94 (37.8%)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>TStage</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="left">   1</td>
+<td align="center">21 (8.4%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   2</td>
+<td align="center">47 (18.9%)</td>
+</tr>
+<tr class="even">
+<td align="left">   3</td>
+<td align="center">110 (44.2%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   4</td>
+<td align="center">71 (28.5%)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Anti-X-intensity</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="left">   Mean (SD)</td>
+<td align="center">2.430 (0.638)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Range</td>
+<td align="center">1.000 - 3.000</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Anti-Y-intensity</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="left">   Mean (SD)</td>
+<td align="center">2.008 (0.762)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Range</td>
+<td align="center">1.000 - 3.000</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>LymphNodeMetastasis</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="left">   Absent</td>
+<td align="center">142 (57.0%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Present</td>
+<td align="center">107 (43.0%)</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Valid</strong></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">   N-Miss</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="left">   FALSE</td>
+<td align="center">105 (42.2%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   TRUE</td>
+<td align="center">144 (57.8%)</td>
+</tr>
+<tr class="even">
 <td align="left"><strong>Smoker</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   FALSE</td>
-<td align="center">123 (49.4%)</td>
+<td align="center">128 (51.4%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   TRUE</td>
+<td align="center">121 (48.6%)</td>
 </tr>
 <tr class="even">
-<td align="left">   TRUE</td>
-<td align="center">126 (50.6%)</td>
-</tr>
-<tr class="odd">
 <td align="left"><strong>Grade_Level</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   high</td>
-<td align="center">100 (40.2%)</td>
+<td align="center">104 (41.8%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   low</td>
+<td align="center">66 (26.5%)</td>
 </tr>
 <tr class="even">
-<td align="left">   low</td>
-<td align="center">75 (30.1%)</td>
-</tr>
-<tr class="odd">
 <td align="left">   moderate</td>
-<td align="center">74 (29.7%)</td>
+<td align="center">79 (31.7%)</td>
 </tr>
 </tbody>
 </table>
@@ -715,39 +719,40 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 <pre><code>                                    
                                      Overall      
   n                                    250        
-  Sex = Male (%)                       131 (52.6) 
-  Age (mean (SD))                    46.67 (13.75)
+  Sex = Male (%)                       130 (52.2) 
+  Age (mean (SD))                    49.36 (13.80)
   Race (%)                                        
-     Asian                              13 ( 5.2) 
-     Bi-Racial                           7 ( 2.8) 
-     Black                              39 (15.7) 
-     Hispanic                           29 (11.6) 
-     Native                              1 ( 0.4) 
+     Asian                              15 ( 6.0) 
+     Bi-Racial                           1 ( 0.4) 
+     Black                              33 (13.3) 
+     Hawaiian                            1 ( 0.4) 
+     Hispanic                           47 (18.9) 
+     Native                              2 ( 0.8) 
      Other                               2 ( 0.8) 
-     White                             158 (63.5) 
-  PreinvasiveComponent = Present (%)    56 (22.5) 
-  LVI = Present (%)                     42 (16.9) 
-  PNI = Present (%)                     62 (24.9) 
-  Death = TRUE (%)                     178 (71.5) 
-  Group = Treatment (%)                126 (50.6) 
+     White                             148 (59.4) 
+  PreinvasiveComponent = Present (%)    44 (17.7) 
+  LVI = Present (%)                     44 (17.7) 
+  PNI = Present (%)                     87 (34.9) 
+  Death = TRUE (%)                     171 (68.7) 
+  Group = Treatment (%)                124 (49.8) 
   Grade (%)                                       
-     1                                  85 (34.1) 
-     2                                  69 (27.7) 
-     3                                  95 (38.2) 
+     1                                  73 (29.3) 
+     2                                  82 (32.9) 
+     3                                  94 (37.8) 
   TStage (%)                                      
-     1                                  30 (12.0) 
-     2                                  45 (18.1) 
-     3                                 106 (42.6) 
-     4                                  68 (27.3) 
-  Anti-X-intensity (mean (SD))        2.40 (0.68) 
-  Anti-Y-intensity (mean (SD))        2.01 (0.79) 
-  LymphNodeMetastasis = Present (%)     93 (37.3) 
-  Valid = TRUE (%)                     124 (49.8) 
-  Smoker = TRUE (%)                    126 (50.6) 
+     1                                  21 ( 8.4) 
+     2                                  47 (18.9) 
+     3                                 110 (44.2) 
+     4                                  71 (28.5) 
+  Anti-X-intensity (mean (SD))        2.43 (0.64) 
+  Anti-Y-intensity (mean (SD))        2.01 (0.76) 
+  LymphNodeMetastasis = Present (%)    107 (43.0) 
+  Valid = TRUE (%)                     144 (57.8) 
+  Smoker = TRUE (%)                    121 (48.6) 
   Grade_Level (%)                                 
-     high                              100 (40.2) 
-     low                                75 (30.1) 
-     moderate                           74 (29.7) </code></pre>
+     high                              104 (41.8) 
+     low                                66 (26.5) 
+     moderate                           79 (31.7) </code></pre>
 <!-- **Table 1 via atable 📦** -->
 <!-- https://cran.r-project.org/web/packages/atable/vignettes/atable_usage.pdf -->
 <!-- https://journal.r-project.org/archive/2019/RJ-2019-001/index.html -->
@@ -756,19 +761,19 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 
 |          &amp;nbsp; |    Age | Anti-X-intensity | Anti-Y-intensity |
 |----------------:|-------:|-----------------:|-----------------:|
-|        **Mean** |  46.67 |             2.40 |             2.01 |
-|     **Std.Dev** |  13.75 |             0.68 |             0.79 |
+|        **Mean** |  49.36 |             2.43 |             2.01 |
+|     **Std.Dev** |  13.80 |             0.64 |             0.76 |
 |         **Min** |  25.00 |             1.00 |             1.00 |
-|          **Q1** |  35.00 |             2.00 |             1.00 |
-|      **Median** |  45.00 |             3.00 |             2.00 |
-|          **Q3** |  57.00 |             3.00 |             3.00 |
+|          **Q1** |  38.00 |             2.00 |             1.00 |
+|      **Median** |  50.00 |             3.00 |             2.00 |
+|          **Q3** |  61.00 |             3.00 |             3.00 |
 |         **Max** |  73.00 |             3.00 |             3.00 |
-|         **MAD** |  16.31 |             0.00 |             1.48 |
-|         **IQR** |  22.00 |             1.00 |             2.00 |
-|          **CV** |   0.29 |             0.28 |             0.39 |
-|    **Skewness** |   0.29 |            -0.70 |            -0.01 |
+|         **MAD** |  17.79 |             0.00 |             1.48 |
+|         **IQR** |  23.00 |             1.00 |             2.00 |
+|          **CV** |   0.28 |             0.26 |             0.38 |
+|    **Skewness** |  -0.06 |            -0.66 |            -0.01 |
 | **SE.Skewness** |   0.15 |             0.15 |             0.15 |
-|    **Kurtosis** |  -1.00 |            -0.66 |            -1.40 |
+|    **Kurtosis** |  -1.16 |            -0.57 |            -1.28 |
 |     **N.Valid** | 249.00 |           249.00 |           249.00 |
 |   **Pct.Valid** |  99.60 |            99.60 |            99.60 |</code></pre>
 <hr />
@@ -937,9 +942,9 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 <span id="cb14-17"><a href="#cb14-17"></a></span>
 <span id="cb14-18"><a href="#cb14-18"></a>writexl<span class="op">::</span><span class="kw">write_xlsx</span>(mydata, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, excelName))</span>
 <span id="cb14-19"><a href="#cb14-19"></a></span>
-<span id="cb14-20"><a href="#cb14-20"></a><span class="kw">print</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;saved data after analysis to&quot;</span>, <span class="kw">rownames</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, </span>
+<span id="cb14-20"><a href="#cb14-20"></a><span class="kw">print</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;saved data after analysis to &quot;</span>, <span class="kw">rownames</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, </span>
 <span id="cb14-21"><a href="#cb14-21"></a>    excelName))), <span class="st">&quot; : &quot;</span>, <span class="kw">as.character</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, excelName))<span class="op">$</span>ctime)))</span></code></pre></div>
-<pre><code>saved data after analysis to/Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-10.xlsx : 2019-11-10 11:52:04</code></pre>
+<pre><code>saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-10.xlsx : 2019-11-10 11:55:53</code></pre>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="final-data-summary" class="section level2 appendix">
@@ -988,7 +993,12 @@ Makowski, D. &amp; Lüdecke, D. (2019). The report package for R: Ensuring the u
 Patil I (2018). <em>ggstatsplot: ‘ggplot2’ Based Plots withStatistical Details</em>. doi: 10.5281/zenodo.2074621 (URL:<a href="https://doi.org/10.5281/zenodo.2074621" class="uri">https://doi.org/10.5281/zenodo.2074621</a>), &lt;URL:<a href="https://CRAN.R-project.org/package=ggstatsplot" class="uri">https://CRAN.R-project.org/package=ggstatsplot</a>&gt;.<br />
 Rinker, T. W. (2018). wakefield: Generate Random Data. version 0.3.3. Buffalo, New York. <a href="https://github.com/trinker/wakefield" class="uri">https://github.com/trinker/wakefield</a><br />
 Sam Firke (2019). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 1.2.0. <a href="https://CRAN.R-project.org/package=janitor" class="uri">https://CRAN.R-project.org/package=janitor</a></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>report<span class="op">::</span><span class="kw">show_packages</span>(<span class="dt">session =</span> <span class="kw">sessionInfo</span>())</span></code></pre></div>
+</div>
+<div id="package-version-references" class="section level2">
+<h2>Package | Version | References</h2>
+<p>arsenal | 3.3.0 | Ethan Heinzen, Jason Sinnwell, Elizabeth Atkinson, Tina Gunderson and Gregory Dougherty (2019). arsenal: An Arsenal of ‘R’ Functions for Large-Scale Statistical Summaries. R package version 3.3.0. <a href="https://CRAN.R-project.org/package=arsenal" class="uri">https://CRAN.R-project.org/package=arsenal</a> dplyr | 0.8.3 | Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2019). dplyr: A Grammar of Data Manipulation. R package version 0.8.3. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a> finalfit | 0.9.6 | Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. <a href="https://github.com/ewenharrison/finalfit" class="uri">https://github.com/ewenharrison/finalfit</a> ggstatsplot | 0.1.2 | Patil I (2018). <em>ggstatsplot: ‘ggplot2’ Based Plots withStatistical Details</em>. doi: 10.5281/zenodo.2074621 (URL:<a href="https://doi.org/10.5281/zenodo.2074621" class="uri">https://doi.org/10.5281/zenodo.2074621</a>), &lt;URL:<a href="https://CRAN.R-project.org/package=ggstatsplot" class="uri">https://CRAN.R-project.org/package=ggstatsplot</a>&gt;. janitor | 1.2.0 | Sam Firke (2019). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 1.2.0. <a href="https://CRAN.R-project.org/package=janitor" class="uri">https://CRAN.R-project.org/package=janitor</a> readxl | 1.3.1 | Hadley Wickham and Jennifer Bryan (2019). readxl: Read Excel Files. R package version 1.3.1. <a href="https://CRAN.R-project.org/package=readxl" class="uri">https://CRAN.R-project.org/package=readxl</a> report | 0.1.0 | Makowski, D. &amp; Lüdecke, D. (2019). The report package for R: Ensuring the use of best practices for results reporting. CRAN. Available from <a href="https://github.com/easystats/report" class="uri">https://github.com/easystats/report</a>. doi: . tableone | 0.10.0 | Kazuki Yoshida (2019). tableone: Create ‘Table 1’ to Describe Baseline Characteristics. R package version 0.10.0. <a href="https://CRAN.R-project.org/package=tableone" class="uri">https://CRAN.R-project.org/package=tableone</a> wakefield | 0.3.3 | Rinker, T. W. (2018). wakefield: Generate Random Data. version 0.3.3. Buffalo, New York. <a href="https://github.com/trinker/wakefield" class="uri">https://github.com/trinker/wakefield</a></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite package &#39;tidyverse&#39; in publications use:
 
@@ -1005,7 +1015,7 @@ A BibTeX entry for LaTeX users is
     note = {R package version 1.2.1},
     url = {https://CRAN.R-project.org/package=tidyverse},
   }</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">citation</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">citation</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite package &#39;readxl&#39; in publications use:
 
@@ -1022,7 +1032,7 @@ A BibTeX entry for LaTeX users is
     note = {R package version 1.3.1},
     url = {https://CRAN.R-project.org/package=readxl},
   }</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">citation</span>(<span class="st">&quot;janitor&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">citation</span>(<span class="st">&quot;janitor&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite package &#39;janitor&#39; in publications use:
 
@@ -1039,7 +1049,7 @@ A BibTeX entry for LaTeX users is
     note = {R package version 1.2.0},
     url = {https://CRAN.R-project.org/package=janitor},
   }</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">citation</span>(<span class="st">&quot;report&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">citation</span>(<span class="st">&quot;report&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite in publications use:
 
@@ -1057,7 +1067,7 @@ A BibTeX entry for LaTeX users is
     note = {R package},
     url = {https://github.com/easystats/report},
   }</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">citation</span>(<span class="st">&quot;finalfit&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">citation</span>(<span class="st">&quot;finalfit&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite package &#39;finalfit&#39; in publications use:
 
@@ -1076,7 +1086,7 @@ Modelling},
     note = {R package version 0.9.6},
     url = {https://github.com/ewenharrison/finalfit},
   }</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">citation</span>(<span class="st">&quot;ggstatsplot&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">citation</span>(<span class="st">&quot;ggstatsplot&quot;</span>)</span></code></pre></div>
 <pre><code>
 Patil I (2018). _ggstatsplot: &#39;ggplot2&#39; Based Plots with
 Statistical Details_. doi: 10.5281/zenodo.2074621 (URL:
@@ -1096,7 +1106,7 @@ A BibTeX entry for LaTeX users is
 </div>
 <div id="session-info" class="section level2 appendix">
 <h2>Session Info</h2>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
 <pre><code>R version 3.6.0 (2019-04-26)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
 Running under: macOS  10.15.1
@@ -1221,13 +1231,13 @@ loaded via a namespace (and not attached):
 </div>
 <div id="notes" class="section level2 appendix">
 <h2>Notes</h2>
-<p>Last update on 2019-11-10 11:52:05</p>
+<p>Last update on 2019-11-10 11:55:55</p>
 <p>Serdar Balci, MD, Pathologist<br />
 <a href="mailto:drserdarbalci@gmail.com" class="email">drserdarbalci@gmail.com</a><br />
 <a href="https://rpubs.com/sbalci/CV" class="uri">https://rpubs.com/sbalci/CV</a></p>
 <hr />
 <div style="page-break-after: always;"></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="kw">source</span>(<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;gitUpdateCommitPush.R&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">source</span>(<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;gitUpdateCommitPush.R&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <div class="footnotes">

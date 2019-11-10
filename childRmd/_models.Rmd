@@ -1,14 +1,44 @@
-**Codes used in models**^[See `childRmd/_models.Rmd` file for other codes]
+**Codes used in models**^[See `childRmd/_models.Rmd` file for other codes]  
+**Use [these descriptions](https://easystats.github.io/report/articles/supporting_new_models.html) to add autoreporting of new models**  
 
+
+### Linear Model
 
 **generate automatic reporting of model via [easystats/report](https://easystats.github.io/report/) 📦**
 
 ```{r generate automatic reporting of model}
 library(report)
 model <- lm(Sepal.Length ~ Species, data = iris)
-report(model)
+report::report(model)
 ```
 
+**Table report for a linear model**
+
+```{r Table report for a linear model}
+# Table report for a linear model
+lm(Sepal.Length ~ Petal.Length + Species, data=iris) %>% 
+  report::report() %>% 
+  report::to_table()
+```
+
+
+model <- lm(Sepal.Length ~ Petal.Length + Species, data=iris)
+r <- report(model)
+to_text(r)
+to_table(r)
+
+
+
+
+### General Linear Models (GLMs)
+
+https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html
+
+model <- glm(vs ~ mpg + cyl, data=mtcars, family="binomial")
+r <- report(model)
+
+to_fulltext(r)
+to_fulltable(r)
 
 
 
@@ -137,7 +167,7 @@ colon_s %>%
 
 
 
-<!-- # ANOVA -->
+### ANOVA
 
 
 ```{r dlookr target categorical vs numeric, eval=FALSE, include=FALSE}
@@ -149,4 +179,21 @@ plot(num_cat)
 ```
 
 
+
+
+### Bayesian
+
+
+# Full report for a Bayesian logistic mixed model with effect sizes
+library(rstanarm)
+
+stan_glmer(vs ~ mpg + (1|cyl), data=mtcars, family="binomial") %>% 
+  report(standardize="smart", effsize="cohen1988") %>% 
+  to_fulltext()
+
+
+
+### lme4: Mixed-effects models in R
+
+https://github.com/lme4/lme4/
 

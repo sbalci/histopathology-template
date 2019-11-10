@@ -2,6 +2,40 @@
 **Codes for overviewing the data.**^[See `childRmd/_overView.Rmd` file for other codes]
 
 
+### Report General Features
+
+
+```{r}
+# Dataframe report
+mydata %>% 
+  select(-contains("Date")) %>%
+  report::report(.)
+```
+
+
+r <- report(iris)
+to_text(r)
+print(to_text(r), width=100)
+to_table(r)
+
+
+r <- iris %>% 
+  group_by(Species) %>% 
+  report(median = TRUE, range = FALSE)  # Display only the Median and MAD
+to_fulltext(r)
+to_fulltable(r)
+
+
+Report participants details
+
+data <- data.frame("Age" = c(22, 23, 54, 21),
+                   "Sex" = c("F", "F", "M", "M"))
+
+paste(report_participants(data, spell_n = TRUE),
+      "were recruited in the study.")
+
+
+
 ### Define Variable Types
 
 ```{r define continious variables, eval=FALSE, include=FALSE}

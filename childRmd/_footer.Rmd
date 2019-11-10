@@ -93,7 +93,8 @@ report::cite_packages(session = sessionInfo())
 
 
 ```{r show library citation as report, results='asis'}
-report::show_packages(session = sessionInfo())
+report::show_packages(session = sessionInfo()) %>% 
+    kableExtra::kable()
 ```
 
 
