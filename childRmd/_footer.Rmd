@@ -24,7 +24,7 @@ excelName <- paste0(projectName, analysisDate, ".xlsx")
 writexl::write_xlsx(mydata, here::here("data", excelName))
 
 print(glue::glue(
-    "saved data after analysis to",
+    "saved data after analysis to ",
     rownames(file.info(here::here("data", excelName))),
     " : ",
     as.character(
@@ -89,6 +89,11 @@ Fox, J., & Weisberg, S. (2018). car: Companion to Applied Regression. [R package
 
 ```{r library citation as report, results='asis'}
 report::cite_packages(session = sessionInfo())
+```
+
+
+```{r show library citation as report, results='asis'}
+report::show_packages(session = sessionInfo())
 ```
 
 
