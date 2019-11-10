@@ -1,3 +1,14 @@
+**Codes used in models**^[See `childRmd/_models.Rmd` file for other codes]
+
+
+
+```{r}
+library(report)
+model <- lm(Sepal.Length ~ Species, data = iris)
+report(model)
+```
+
+
 
 
 

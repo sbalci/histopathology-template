@@ -146,9 +146,14 @@ vignette: >
 <!-- \elandscape -->
 
 
-<!-- ```{r models, child = here::here('childRmd', '_models.Rmd')} -->
-<!-- ``` -->
+# Models
 
+
+```{r models, child = here::here('childRmd', '_models.Rmd')}
+```
+
+
+---
 
 <!-- \pagebreak -->
 
