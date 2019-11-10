@@ -380,23 +380,23 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>mydata <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>dplyr<span class="op">::</span><span class="kw">contains</span>(<span class="st">&quot;Date&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>report<span class="op">::</span><span class="kw">report</span>()</span></code></pre></div>
 <pre><code>The data contains 250 observations of the following variables:
   - ID: 250 entries: 001, n = 1; 002, n = 1; 003, n = 1 and 247 others
-  - Name: 249 entries: Achaia, n = 1; Adalina, n = 1; Addlyn, n = 1 and 246 others (1 missing)
-  - Sex: 2 entries: Male, n = 133; Female, n = 116 (1 missing)
-  - Age: Mean = 49.43, SD = 14.67, range = [25, 73], 1 missing
-  - Race: 5 entries: White, n = 169; Hispanic, n = 39; Black, n = 31 and 2 others (1 missing)
-  - PreinvasiveComponent: 2 entries: Absent, n = 206; Present, n = 43 (1 missing)
-  - LVI: 2 entries: Absent, n = 204; Present, n = 45 (1 missing)
+  - Name: 249 entries: Aamirah, n = 1; Aber, n = 1; Adella, n = 1 and 246 others (1 missing)
+  - Sex: 2 entries: Male, n = 125; Female, n = 124 (1 missing)
+  - Age: Mean = 49.65, SD = 14.47, range = [25, 73], 1 missing
+  - Race: 7 entries: White, n = 151; Hispanic, n = 45; Black, n = 35 and 4 others (1 missing)
+  - PreinvasiveComponent: 2 entries: Absent, n = 195; Present, n = 54 (1 missing)
+  - LVI: 2 entries: Absent, n = 189; Present, n = 60 (1 missing)
   - PNI: 2 entries: Absent, n = 175; Present, n = 74 (1 missing)
-  - Death: 2 levels: FALSE (n = 72); TRUE (n = 177) and missing (n = 1)
-  - Group: 2 entries: Treatment, n = 127; Control, n = 122 (1 missing)
-  - Grade: 3 entries: 3, n = 93; 2, n = 84; 1, n = 72 (1 missing)
-  - TStage: 4 entries: 3, n = 101; 4, n = 69; 2, n = 52 and 1 other (1 missing)
-  - Anti-X-intensity: Mean = 2.35, SD = 0.70, range = [1, 3], 1 missing
-  - Anti-Y-intensity: Mean = 2.02, SD = 0.76, range = [1, 3], 1 missing
-  - LymphNodeMetastasis: 2 entries: Absent, n = 161; Present, n = 88 (1 missing)
-  - Valid: 2 levels: FALSE (n = 127); TRUE (n = 122) and missing (n = 1)
-  - Smoker: 2 levels: FALSE (n = 135); TRUE (n = 114) and missing (n = 1)
-  - Grade_Level: 3 entries: high, n = 100; moderate, n = 76; low, n = 73 (1 missing)</code></pre>
+  - Death: 2 levels: FALSE (n = 75); TRUE (n = 174) and missing (n = 1)
+  - Group: 2 entries: Treatment, n = 135; Control, n = 114 (1 missing)
+  - Grade: 3 entries: 1, n = 93; 3, n = 92; 2, n = 64 (1 missing)
+  - TStage: 4 entries: 3, n = 106; 4, n = 73; 2, n = 47 and 1 other (1 missing)
+  - Anti-X-intensity: Mean = 2.30, SD = 0.70, range = [1, 3], 1 missing
+  - Anti-Y-intensity: Mean = 2.00, SD = 0.77, range = [1, 3], 1 missing
+  - LymphNodeMetastasis: 2 entries: Absent, n = 148; Present, n = 101 (1 missing)
+  - Valid: 2 levels: FALSE (n = 124); TRUE (n = 125) and missing (n = 1)
+  - Smoker: 2 levels: FALSE (n = 133); TRUE (n = 116) and missing (n = 1)
+  - Grade_Level: 3 entries: high, n = 101; low, n = 76; moderate, n = 72 (1 missing)</code></pre>
 <p><strong>Table 1 via arsenal 📦</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># cat(names(mydata), sep = &#39; + \n&#39;)</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="kw">library</span>(arsenal)</span>
@@ -422,11 +422,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Female</td>
-<td align="center">116 (46.6%)</td>
+<td align="center">124 (49.8%)</td>
 </tr>
 <tr class="even">
 <td align="left">   Male</td>
-<td align="center">133 (53.4%)</td>
+<td align="center">125 (50.2%)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Age</strong></td>
@@ -438,7 +438,7 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Mean (SD)</td>
-<td align="center">49.430 (14.666)</td>
+<td align="center">49.647 (14.465)</td>
 </tr>
 <tr class="even">
 <td align="left">   Range</td>
@@ -454,7 +454,7 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Asian</td>
-<td align="center">7 (2.8%)</td>
+<td align="center">11 (4.4%)</td>
 </tr>
 <tr class="even">
 <td align="left">   Bi-Racial</td>
@@ -462,15 +462,23 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Black</td>
-<td align="center">31 (12.4%)</td>
+<td align="center">35 (14.1%)</td>
 </tr>
 <tr class="even">
+<td align="left">   Hawaiian</td>
+<td align="center">1 (0.4%)</td>
+</tr>
+<tr class="odd">
 <td align="left">   Hispanic</td>
-<td align="center">39 (15.7%)</td>
+<td align="center">45 (18.1%)</td>
+</tr>
+<tr class="even">
+<td align="left">   Native</td>
+<td align="center">3 (1.2%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   White</td>
-<td align="center">169 (67.9%)</td>
+<td align="center">151 (60.6%)</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>PreinvasiveComponent</strong></td>
@@ -482,11 +490,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="even">
 <td align="left">   Absent</td>
-<td align="center">206 (82.7%)</td>
+<td align="center">195 (78.3%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   Present</td>
-<td align="center">43 (17.3%)</td>
+<td align="center">54 (21.7%)</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>LVI</strong></td>
@@ -498,11 +506,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="even">
 <td align="left">   Absent</td>
-<td align="center">204 (81.9%)</td>
+<td align="center">189 (75.9%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   Present</td>
-<td align="center">45 (18.1%)</td>
+<td align="center">60 (24.1%)</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>PNI</strong></td>
@@ -530,11 +538,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="even">
 <td align="left">   FALSE</td>
-<td align="center">72 (28.9%)</td>
+<td align="center">75 (30.1%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   TRUE</td>
-<td align="center">177 (71.1%)</td>
+<td align="center">174 (69.9%)</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Group</strong></td>
@@ -546,11 +554,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="even">
 <td align="left">   Control</td>
-<td align="center">122 (49.0%)</td>
+<td align="center">114 (45.8%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   Treatment</td>
-<td align="center">127 (51.0%)</td>
+<td align="center">135 (54.2%)</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Grade</strong></td>
@@ -562,15 +570,15 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="even">
 <td align="left">   1</td>
-<td align="center">72 (28.9%)</td>
+<td align="center">93 (37.3%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   2</td>
-<td align="center">84 (33.7%)</td>
+<td align="center">64 (25.7%)</td>
 </tr>
 <tr class="even">
 <td align="left">   3</td>
-<td align="center">93 (37.3%)</td>
+<td align="center">92 (36.9%)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>TStage</strong></td>
@@ -582,19 +590,19 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   1</td>
-<td align="center">27 (10.8%)</td>
+<td align="center">23 (9.2%)</td>
 </tr>
 <tr class="even">
 <td align="left">   2</td>
-<td align="center">52 (20.9%)</td>
+<td align="center">47 (18.9%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   3</td>
-<td align="center">101 (40.6%)</td>
+<td align="center">106 (42.6%)</td>
 </tr>
 <tr class="even">
 <td align="left">   4</td>
-<td align="center">69 (27.7%)</td>
+<td align="center">73 (29.3%)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Anti-X-intensity</strong></td>
@@ -606,7 +614,7 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Mean (SD)</td>
-<td align="center">2.353 (0.698)</td>
+<td align="center">2.301 (0.697)</td>
 </tr>
 <tr class="even">
 <td align="left">   Range</td>
@@ -622,7 +630,7 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Mean (SD)</td>
-<td align="center">2.020 (0.759)</td>
+<td align="center">2.000 (0.773)</td>
 </tr>
 <tr class="even">
 <td align="left">   Range</td>
@@ -638,11 +646,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Absent</td>
-<td align="center">161 (64.7%)</td>
+<td align="center">148 (59.4%)</td>
 </tr>
 <tr class="even">
 <td align="left">   Present</td>
-<td align="center">88 (35.3%)</td>
+<td align="center">101 (40.6%)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Valid</strong></td>
@@ -654,11 +662,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   FALSE</td>
-<td align="center">127 (51.0%)</td>
+<td align="center">124 (49.8%)</td>
 </tr>
 <tr class="even">
 <td align="left">   TRUE</td>
-<td align="center">122 (49.0%)</td>
+<td align="center">125 (50.2%)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Smoker</strong></td>
@@ -670,11 +678,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   FALSE</td>
-<td align="center">135 (54.2%)</td>
+<td align="center">133 (53.4%)</td>
 </tr>
 <tr class="even">
 <td align="left">   TRUE</td>
-<td align="center">114 (45.8%)</td>
+<td align="center">116 (46.6%)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Grade_Level</strong></td>
@@ -686,15 +694,15 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   high</td>
-<td align="center">100 (40.2%)</td>
+<td align="center">101 (40.6%)</td>
 </tr>
 <tr class="even">
 <td align="left">   low</td>
-<td align="center">73 (29.3%)</td>
+<td align="center">76 (30.5%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   moderate</td>
-<td align="center">76 (30.5%)</td>
+<td align="center">72 (28.9%)</td>
 </tr>
 </tbody>
 </table>
@@ -707,37 +715,39 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 <pre><code>                                    
                                      Overall      
   n                                    250        
-  Sex = Male (%)                       133 (53.4) 
-  Age (mean (SD))                    49.43 (14.67)
+  Sex = Male (%)                       125 (50.2) 
+  Age (mean (SD))                    49.65 (14.47)
   Race (%)                                        
-     Asian                               7 ( 2.8) 
+     Asian                              11 ( 4.4) 
      Bi-Racial                           3 ( 1.2) 
-     Black                              31 (12.4) 
-     Hispanic                           39 (15.7) 
-     White                             169 (67.9) 
-  PreinvasiveComponent = Present (%)    43 (17.3) 
-  LVI = Present (%)                     45 (18.1) 
+     Black                              35 (14.1) 
+     Hawaiian                            1 ( 0.4) 
+     Hispanic                           45 (18.1) 
+     Native                              3 ( 1.2) 
+     White                             151 (60.6) 
+  PreinvasiveComponent = Present (%)    54 (21.7) 
+  LVI = Present (%)                     60 (24.1) 
   PNI = Present (%)                     74 (29.7) 
-  Death = TRUE (%)                     177 (71.1) 
-  Group = Treatment (%)                127 (51.0) 
+  Death = TRUE (%)                     174 (69.9) 
+  Group = Treatment (%)                135 (54.2) 
   Grade (%)                                       
-     1                                  72 (28.9) 
-     2                                  84 (33.7) 
-     3                                  93 (37.3) 
+     1                                  93 (37.3) 
+     2                                  64 (25.7) 
+     3                                  92 (36.9) 
   TStage (%)                                      
-     1                                  27 (10.8) 
-     2                                  52 (20.9) 
-     3                                 101 (40.6) 
-     4                                  69 (27.7) 
-  Anti-X-intensity (mean (SD))        2.35 (0.70) 
-  Anti-Y-intensity (mean (SD))        2.02 (0.76) 
-  LymphNodeMetastasis = Present (%)     88 (35.3) 
-  Valid = TRUE (%)                     122 (49.0) 
-  Smoker = TRUE (%)                    114 (45.8) 
+     1                                  23 ( 9.2) 
+     2                                  47 (18.9) 
+     3                                 106 (42.6) 
+     4                                  73 (29.3) 
+  Anti-X-intensity (mean (SD))        2.30 (0.70) 
+  Anti-Y-intensity (mean (SD))        2.00 (0.77) 
+  LymphNodeMetastasis = Present (%)    101 (40.6) 
+  Valid = TRUE (%)                     125 (50.2) 
+  Smoker = TRUE (%)                    116 (46.6) 
   Grade_Level (%)                                 
-     high                              100 (40.2) 
-     low                                73 (29.3) 
-     moderate                           76 (30.5) </code></pre>
+     high                              101 (40.6) 
+     low                                76 (30.5) 
+     moderate                           72 (28.9) </code></pre>
 <!-- **Table 1 via atable 📦** -->
 <!-- https://cran.r-project.org/web/packages/atable/vignettes/atable_usage.pdf -->
 <!-- https://journal.r-project.org/archive/2019/RJ-2019-001/index.html -->
@@ -746,19 +756,19 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 
 |          &amp;nbsp; |    Age | Anti-X-intensity | Anti-Y-intensity |
 |----------------:|-------:|-----------------:|-----------------:|
-|        **Mean** |  49.43 |             2.35 |             2.02 |
-|     **Std.Dev** |  14.67 |             0.70 |             0.76 |
+|        **Mean** |  49.65 |             2.30 |             2.00 |
+|     **Std.Dev** |  14.47 |             0.70 |             0.77 |
 |         **Min** |  25.00 |             1.00 |             1.00 |
-|          **Q1** |  37.00 |             2.00 |             1.00 |
-|      **Median** |  48.00 |             2.00 |             2.00 |
+|          **Q1** |  36.00 |             2.00 |             1.00 |
+|      **Median** |  51.00 |             2.00 |             2.00 |
 |          **Q3** |  63.00 |             3.00 |             3.00 |
 |         **Max** |  73.00 |             3.00 |             3.00 |
 |         **MAD** |  19.27 |             1.48 |             1.48 |
-|         **IQR** |  26.00 |             1.00 |             2.00 |
-|          **CV** |   0.30 |             0.30 |             0.38 |
-|    **Skewness** |   0.02 |            -0.60 |            -0.03 |
+|         **IQR** |  27.00 |             1.00 |             2.00 |
+|          **CV** |   0.29 |             0.30 |             0.39 |
+|    **Skewness** |  -0.08 |            -0.48 |             0.00 |
 | **SE.Skewness** |   0.15 |             0.15 |             0.15 |
-|    **Kurtosis** |  -1.30 |            -0.81 |            -1.27 |
+|    **Kurtosis** |  -1.33 |            -0.88 |            -1.33 |
 |     **N.Valid** | 249.00 |           249.00 |           249.00 |
 |   **Pct.Valid** |  99.60 |            99.60 |            99.60 |</code></pre>
 <hr />
@@ -967,7 +977,7 @@ R2 (adj.)         |             |                    |        |                 
 <span id="cb16-19"><a href="#cb16-19"></a></span>
 <span id="cb16-20"><a href="#cb16-20"></a><span class="kw">print</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;saved data after analysis to &quot;</span>, <span class="kw">rownames</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, </span>
 <span id="cb16-21"><a href="#cb16-21"></a>    excelName))), <span class="st">&quot; : &quot;</span>, <span class="kw">as.character</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, excelName))<span class="op">$</span>ctime)))</span></code></pre></div>
-<pre><code>saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-10.xlsx : 2019-11-10 12:46:04</code></pre>
+<pre><code>saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-10.xlsx : 2019-11-10 15:35:53</code></pre>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="final-data-summary" class="section level2 appendix">
@@ -1369,13 +1379,45 @@ loaded via a namespace (and not attached):
 </div>
 <div id="notes" class="section level2 appendix">
 <h2>Notes</h2>
-<p>Last update on 2019-11-10 12:46:06</p>
+<p>Last update on 2019-11-10 15:35:54</p>
 <p>Serdar Balci, MD, Pathologist<br />
 <a href="mailto:drserdarbalci@gmail.com" class="email">drserdarbalci@gmail.com</a><br />
 <a href="https://rpubs.com/sbalci/CV" class="uri">https://rpubs.com/sbalci/CV</a></p>
 <hr />
 <div style="page-break-after: always;"></div>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">source</span>(<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;gitUpdateCommitPush.R&quot;</span>))</span></code></pre></div>
+<hr />
+{% if page.comments %}
+<script>var DISQUSWIDGETS,disqus_domain,disqus_shortname;
+typeof DISQUSWIDGETS==="undefined"&&(DISQUSWIDGETS=function(){var f=document,a=f.getElementById("dsq-count-scr"),a=a&&a.src.match(/(https?:)?\/\/(?:www\.)?([\w_\-]+)\.((?:dev\.)?disqus\.(?:com|org)(?::\d+)?)/i),e={},s=f.head||f.body,j={},q={identifier:1,url:2};e.domain=a&&a[3]||disqus_domain||"disqus.com";e.forum=a&&a[2]||disqus_shortname;e.proto=a&&a[1]||"";e.getCount=function(b){var c;c=encodeURIComponent;var a=e.proto+"//"+e.forum+"."+e.domain+"/count-data.js?",d=[],k=0,l=10,r="",b=b||{};b.reset&&
+(j={},r="&_="+ +new Date);for(var b=[f.getElementsByTagName("A"),f.getElementsByClassName&&f.getElementsByClassName("disqus-comment-count")||[]],m,i,g,h,n=0;n<b.length;n++){m=b[n];for(var o=0;o<m.length;o++){i=m[o];g=i.getAttribute("data-disqus-identifier");h=i.hash==="#disqus_thread"&&i.href.replace("#disqus_thread","")||i.getAttribute("data-disqus-url");if(g)h=q.identifier;else if(h)g=h,h=q.url;else continue;var p;j.hasOwnProperty(g)?p=j[g]:(p=j[g]={elements:[],type:h},d.push(c(h)+"="+c(g)));p.elements.push(i)}}d.sort();
+for(c=d.slice(k,l);c.length;)b=f.createElement("script"),b.src=a+c.join("&")+r,s.appendChild(b),k+=10,l+=10,c=d.slice(k,l)};e.displayCount=function(b){for(var c,a,d,e=b.counts,b=b.text.comments;c=e.shift();)if(a=j[c.id]){switch(c.comments){case 0:d=b.zero;break;case 1:d=b.one;break;default:d=b.multiple}c=d.replace("{num}",c.comments);a=a.elements;for(d=a.length-1;d>=0;d--)a[d].innerHTML=c}};return e}());DISQUSWIDGETS.getCount();</script>
+<div id="disqus_thread">
+
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-sbalci-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<p>{% endif %}</p>
+<hr />
 </div>
 </div>
 <div class="footnotes">

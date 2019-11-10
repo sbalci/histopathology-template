@@ -1,4 +1,4 @@
-**Codes used in models**^[See `childRmd/_models.Rmd` file for other codes]  
+**Codes used in models**^[See [`childRmd/_models.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_models.Rmd) file for other codes]  
 **Use [these descriptions](https://easystats.github.io/report/articles/supporting_new_models.html) to add autoreporting of new models**  
 
 
