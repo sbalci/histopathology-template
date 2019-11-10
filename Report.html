@@ -380,23 +380,23 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>mydata <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>dplyr<span class="op">::</span><span class="kw">contains</span>(<span class="st">&quot;Date&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>report<span class="op">::</span><span class="kw">report</span>()</span></code></pre></div>
 <pre><code>The data contains 250 observations of the following variables:
   - ID: 250 entries: 001, n = 1; 002, n = 1; 003, n = 1 and 247 others
-  - Name: 249 entries: Abdulrehman, n = 1; Abhijeet, n = 1; Adriana, n = 1 and 246 others (1 missing)
-  - Sex: 2 entries: Male, n = 130; Female, n = 119 (1 missing)
-  - Age: Mean = 49.36, SD = 13.80, range = [25, 73], 1 missing
-  - Race: 8 entries: White, n = 148; Hispanic, n = 47; Black, n = 33 and 5 others (1 missing)
-  - PreinvasiveComponent: 2 entries: Absent, n = 205; Present, n = 44 (1 missing)
-  - LVI: 2 entries: Absent, n = 205; Present, n = 44 (1 missing)
-  - PNI: 2 entries: Absent, n = 162; Present, n = 87 (1 missing)
-  - Death: 2 levels: FALSE (n = 78); TRUE (n = 171) and missing (n = 1)
-  - Group: 2 entries: Control, n = 125; Treatment, n = 124 (1 missing)
-  - Grade: 3 entries: 3, n = 94; 2, n = 82; 1, n = 73 (1 missing)
-  - TStage: 4 entries: 3, n = 110; 4, n = 71; 2, n = 47 and 1 other (1 missing)
-  - Anti-X-intensity: Mean = 2.43, SD = 0.64, range = [1, 3], 1 missing
-  - Anti-Y-intensity: Mean = 2.01, SD = 0.76, range = [1, 3], 1 missing
-  - LymphNodeMetastasis: 2 entries: Absent, n = 142; Present, n = 107 (1 missing)
-  - Valid: 2 levels: FALSE (n = 105); TRUE (n = 144) and missing (n = 1)
-  - Smoker: 2 levels: FALSE (n = 128); TRUE (n = 121) and missing (n = 1)
-  - Grade_Level: 3 entries: high, n = 104; moderate, n = 79; low, n = 66 (1 missing)</code></pre>
+  - Name: 249 entries: Achaia, n = 1; Adalina, n = 1; Addlyn, n = 1 and 246 others (1 missing)
+  - Sex: 2 entries: Male, n = 133; Female, n = 116 (1 missing)
+  - Age: Mean = 49.43, SD = 14.67, range = [25, 73], 1 missing
+  - Race: 5 entries: White, n = 169; Hispanic, n = 39; Black, n = 31 and 2 others (1 missing)
+  - PreinvasiveComponent: 2 entries: Absent, n = 206; Present, n = 43 (1 missing)
+  - LVI: 2 entries: Absent, n = 204; Present, n = 45 (1 missing)
+  - PNI: 2 entries: Absent, n = 175; Present, n = 74 (1 missing)
+  - Death: 2 levels: FALSE (n = 72); TRUE (n = 177) and missing (n = 1)
+  - Group: 2 entries: Treatment, n = 127; Control, n = 122 (1 missing)
+  - Grade: 3 entries: 3, n = 93; 2, n = 84; 1, n = 72 (1 missing)
+  - TStage: 4 entries: 3, n = 101; 4, n = 69; 2, n = 52 and 1 other (1 missing)
+  - Anti-X-intensity: Mean = 2.35, SD = 0.70, range = [1, 3], 1 missing
+  - Anti-Y-intensity: Mean = 2.02, SD = 0.76, range = [1, 3], 1 missing
+  - LymphNodeMetastasis: 2 entries: Absent, n = 161; Present, n = 88 (1 missing)
+  - Valid: 2 levels: FALSE (n = 127); TRUE (n = 122) and missing (n = 1)
+  - Smoker: 2 levels: FALSE (n = 135); TRUE (n = 114) and missing (n = 1)
+  - Grade_Level: 3 entries: high, n = 100; moderate, n = 76; low, n = 73 (1 missing)</code></pre>
 <p><strong>Table 1 via arsenal 📦</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># cat(names(mydata), sep = &#39; + \n&#39;)</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="kw">library</span>(arsenal)</span>
@@ -422,11 +422,11 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Female</td>
-<td align="center">119 (47.8%)</td>
+<td align="center">116 (46.6%)</td>
 </tr>
 <tr class="even">
 <td align="left">   Male</td>
-<td align="center">130 (52.2%)</td>
+<td align="center">133 (53.4%)</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>Age</strong></td>
@@ -438,7 +438,7 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Mean (SD)</td>
-<td align="center">49.357 (13.798)</td>
+<td align="center">49.430 (14.666)</td>
 </tr>
 <tr class="even">
 <td align="left">   Range</td>
@@ -454,259 +454,247 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </tr>
 <tr class="odd">
 <td align="left">   Asian</td>
-<td align="center">15 (6.0%)</td>
+<td align="center">7 (2.8%)</td>
 </tr>
 <tr class="even">
 <td align="left">   Bi-Racial</td>
-<td align="center">1 (0.4%)</td>
+<td align="center">3 (1.2%)</td>
 </tr>
 <tr class="odd">
 <td align="left">   Black</td>
-<td align="center">33 (13.3%)</td>
+<td align="center">31 (12.4%)</td>
 </tr>
 <tr class="even">
-<td align="left">   Hawaiian</td>
-<td align="center">1 (0.4%)</td>
-</tr>
-<tr class="odd">
 <td align="left">   Hispanic</td>
-<td align="center">47 (18.9%)</td>
-</tr>
-<tr class="even">
-<td align="left">   Native</td>
-<td align="center">2 (0.8%)</td>
+<td align="center">39 (15.7%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   Other</td>
-<td align="center">2 (0.8%)</td>
-</tr>
-<tr class="even">
 <td align="left">   White</td>
-<td align="center">148 (59.4%)</td>
+<td align="center">169 (67.9%)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><strong>PreinvasiveComponent</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   Absent</td>
-<td align="center">205 (82.3%)</td>
+<td align="center">206 (82.7%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Present</td>
+<td align="center">43 (17.3%)</td>
 </tr>
 <tr class="even">
-<td align="left">   Present</td>
-<td align="center">44 (17.7%)</td>
-</tr>
-<tr class="odd">
 <td align="left"><strong>LVI</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   Absent</td>
-<td align="center">205 (82.3%)</td>
+<td align="center">204 (81.9%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Present</td>
+<td align="center">45 (18.1%)</td>
 </tr>
 <tr class="even">
-<td align="left">   Present</td>
-<td align="center">44 (17.7%)</td>
-</tr>
-<tr class="odd">
 <td align="left"><strong>PNI</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   Absent</td>
-<td align="center">162 (65.1%)</td>
+<td align="center">175 (70.3%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Present</td>
+<td align="center">74 (29.7%)</td>
 </tr>
 <tr class="even">
-<td align="left">   Present</td>
-<td align="center">87 (34.9%)</td>
-</tr>
-<tr class="odd">
 <td align="left"><strong>Death</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   FALSE</td>
-<td align="center">78 (31.3%)</td>
+<td align="center">72 (28.9%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   TRUE</td>
+<td align="center">177 (71.1%)</td>
 </tr>
 <tr class="even">
-<td align="left">   TRUE</td>
-<td align="center">171 (68.7%)</td>
-</tr>
-<tr class="odd">
 <td align="left"><strong>Group</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   Control</td>
-<td align="center">125 (50.2%)</td>
+<td align="center">122 (49.0%)</td>
+</tr>
+<tr class="odd">
+<td align="left">   Treatment</td>
+<td align="center">127 (51.0%)</td>
 </tr>
 <tr class="even">
-<td align="left">   Treatment</td>
-<td align="center">124 (49.8%)</td>
-</tr>
-<tr class="odd">
 <td align="left"><strong>Grade</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   1</td>
-<td align="center">73 (29.3%)</td>
-</tr>
-<tr class="even">
-<td align="left">   2</td>
-<td align="center">82 (32.9%)</td>
+<td align="center">72 (28.9%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   3</td>
-<td align="center">94 (37.8%)</td>
+<td align="left">   2</td>
+<td align="center">84 (33.7%)</td>
 </tr>
 <tr class="even">
+<td align="left">   3</td>
+<td align="center">93 (37.3%)</td>
+</tr>
+<tr class="odd">
 <td align="left"><strong>TStage</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   1</td>
-<td align="center">21 (8.4%)</td>
+<td align="center">27 (10.8%)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   2</td>
-<td align="center">47 (18.9%)</td>
-</tr>
-<tr class="even">
-<td align="left">   3</td>
-<td align="center">110 (44.2%)</td>
+<td align="center">52 (20.9%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   4</td>
-<td align="center">71 (28.5%)</td>
+<td align="left">   3</td>
+<td align="center">101 (40.6%)</td>
 </tr>
 <tr class="even">
+<td align="left">   4</td>
+<td align="center">69 (27.7%)</td>
+</tr>
+<tr class="odd">
 <td align="left"><strong>Anti-X-intensity</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
-<td align="left">   Mean (SD)</td>
-<td align="center">2.430 (0.638)</td>
-</tr>
 <tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">2.353 (0.698)</td>
+</tr>
+<tr class="even">
 <td align="left">   Range</td>
 <td align="center">1.000 - 3.000</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><strong>Anti-Y-intensity</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
-<td align="left">   Mean (SD)</td>
-<td align="center">2.008 (0.762)</td>
-</tr>
 <tr class="odd">
+<td align="left">   Mean (SD)</td>
+<td align="center">2.020 (0.759)</td>
+</tr>
+<tr class="even">
 <td align="left">   Range</td>
 <td align="center">1.000 - 3.000</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><strong>LymphNodeMetastasis</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   Absent</td>
-<td align="center">142 (57.0%)</td>
+<td align="center">161 (64.7%)</td>
+</tr>
+<tr class="even">
+<td align="left">   Present</td>
+<td align="center">88 (35.3%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   Present</td>
-<td align="center">107 (43.0%)</td>
-</tr>
-<tr class="even">
 <td align="left"><strong>Valid</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   FALSE</td>
-<td align="center">105 (42.2%)</td>
+<td align="center">127 (51.0%)</td>
+</tr>
+<tr class="even">
+<td align="left">   TRUE</td>
+<td align="center">122 (49.0%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   TRUE</td>
-<td align="center">144 (57.8%)</td>
-</tr>
-<tr class="even">
 <td align="left"><strong>Smoker</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   FALSE</td>
-<td align="center">128 (51.4%)</td>
+<td align="center">135 (54.2%)</td>
+</tr>
+<tr class="even">
+<td align="left">   TRUE</td>
+<td align="center">114 (45.8%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   TRUE</td>
-<td align="center">121 (48.6%)</td>
-</tr>
-<tr class="even">
 <td align="left"><strong>Grade_Level</strong></td>
 <td align="center"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">   N-Miss</td>
 <td align="center">1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">   high</td>
-<td align="center">104 (41.8%)</td>
+<td align="center">100 (40.2%)</td>
+</tr>
+<tr class="even">
+<td align="left">   low</td>
+<td align="center">73 (29.3%)</td>
 </tr>
 <tr class="odd">
-<td align="left">   low</td>
-<td align="center">66 (26.5%)</td>
-</tr>
-<tr class="even">
 <td align="left">   moderate</td>
-<td align="center">79 (31.7%)</td>
+<td align="center">76 (30.5%)</td>
 </tr>
 </tbody>
 </table>
@@ -719,40 +707,37 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 <pre><code>                                    
                                      Overall      
   n                                    250        
-  Sex = Male (%)                       130 (52.2) 
-  Age (mean (SD))                    49.36 (13.80)
+  Sex = Male (%)                       133 (53.4) 
+  Age (mean (SD))                    49.43 (14.67)
   Race (%)                                        
-     Asian                              15 ( 6.0) 
-     Bi-Racial                           1 ( 0.4) 
-     Black                              33 (13.3) 
-     Hawaiian                            1 ( 0.4) 
-     Hispanic                           47 (18.9) 
-     Native                              2 ( 0.8) 
-     Other                               2 ( 0.8) 
-     White                             148 (59.4) 
-  PreinvasiveComponent = Present (%)    44 (17.7) 
-  LVI = Present (%)                     44 (17.7) 
-  PNI = Present (%)                     87 (34.9) 
-  Death = TRUE (%)                     171 (68.7) 
-  Group = Treatment (%)                124 (49.8) 
+     Asian                               7 ( 2.8) 
+     Bi-Racial                           3 ( 1.2) 
+     Black                              31 (12.4) 
+     Hispanic                           39 (15.7) 
+     White                             169 (67.9) 
+  PreinvasiveComponent = Present (%)    43 (17.3) 
+  LVI = Present (%)                     45 (18.1) 
+  PNI = Present (%)                     74 (29.7) 
+  Death = TRUE (%)                     177 (71.1) 
+  Group = Treatment (%)                127 (51.0) 
   Grade (%)                                       
-     1                                  73 (29.3) 
-     2                                  82 (32.9) 
-     3                                  94 (37.8) 
+     1                                  72 (28.9) 
+     2                                  84 (33.7) 
+     3                                  93 (37.3) 
   TStage (%)                                      
-     1                                  21 ( 8.4) 
-     2                                  47 (18.9) 
-     3                                 110 (44.2) 
-     4                                  71 (28.5) 
-  Anti-X-intensity (mean (SD))        2.43 (0.64) 
-  Anti-Y-intensity (mean (SD))        2.01 (0.76) 
-  LymphNodeMetastasis = Present (%)    107 (43.0) 
-  Valid = TRUE (%)                     144 (57.8) 
-  Smoker = TRUE (%)                    121 (48.6) 
+     1                                  27 (10.8) 
+     2                                  52 (20.9) 
+     3                                 101 (40.6) 
+     4                                  69 (27.7) 
+  Anti-X-intensity (mean (SD))        2.35 (0.70) 
+  Anti-Y-intensity (mean (SD))        2.02 (0.76) 
+  LymphNodeMetastasis = Present (%)     88 (35.3) 
+  Valid = TRUE (%)                     122 (49.0) 
+  Smoker = TRUE (%)                    114 (45.8) 
   Grade_Level (%)                                 
-     high                              104 (41.8) 
-     low                                66 (26.5) 
-     moderate                           79 (31.7) </code></pre>
+     high                              100 (40.2) 
+     low                                73 (29.3) 
+     moderate                           76 (30.5) </code></pre>
 <!-- **Table 1 via atable 📦** -->
 <!-- https://cran.r-project.org/web/packages/atable/vignettes/atable_usage.pdf -->
 <!-- https://journal.r-project.org/archive/2019/RJ-2019-001/index.html -->
@@ -761,19 +746,19 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 
 |          &amp;nbsp; |    Age | Anti-X-intensity | Anti-Y-intensity |
 |----------------:|-------:|-----------------:|-----------------:|
-|        **Mean** |  49.36 |             2.43 |             2.01 |
-|     **Std.Dev** |  13.80 |             0.64 |             0.76 |
+|        **Mean** |  49.43 |             2.35 |             2.02 |
+|     **Std.Dev** |  14.67 |             0.70 |             0.76 |
 |         **Min** |  25.00 |             1.00 |             1.00 |
-|          **Q1** |  38.00 |             2.00 |             1.00 |
-|      **Median** |  50.00 |             3.00 |             2.00 |
-|          **Q3** |  61.00 |             3.00 |             3.00 |
+|          **Q1** |  37.00 |             2.00 |             1.00 |
+|      **Median** |  48.00 |             2.00 |             2.00 |
+|          **Q3** |  63.00 |             3.00 |             3.00 |
 |         **Max** |  73.00 |             3.00 |             3.00 |
-|         **MAD** |  17.79 |             0.00 |             1.48 |
-|         **IQR** |  23.00 |             1.00 |             2.00 |
-|          **CV** |   0.28 |             0.26 |             0.38 |
-|    **Skewness** |  -0.06 |            -0.66 |            -0.01 |
+|         **MAD** |  19.27 |             1.48 |             1.48 |
+|         **IQR** |  26.00 |             1.00 |             2.00 |
+|          **CV** |   0.30 |             0.30 |             0.38 |
+|    **Skewness** |   0.02 |            -0.60 |            -0.03 |
 | **SE.Skewness** |   0.15 |             0.15 |             0.15 |
-|    **Kurtosis** |  -1.16 |            -0.57 |            -1.28 |
+|    **Kurtosis** |  -1.30 |            -0.81 |            -1.27 |
 |     **N.Valid** | 249.00 |           249.00 |           249.00 |
 |   **Pct.Valid** |  99.60 |            99.60 |            99.60 |</code></pre>
 <hr />
@@ -823,15 +808,38 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 </div>
 <div id="models" class="section level1">
 <h1>Models</h1>
-<p><strong>Codes used in models</strong><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p><strong>Codes used in models</strong><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a><br />
+<strong>Use <a href="https://easystats.github.io/report/articles/supporting_new_models.html">these descriptions</a> to add autoreporting of new models</strong></p>
+<div id="linear-model" class="section level3">
+<h3>Linear Model</h3>
 <p><strong>generate automatic reporting of model via <a href="https://easystats.github.io/report/">easystats/report</a> 📦</strong></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">library</span>(report)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>model &lt;-<span class="st"> </span><span class="kw">lm</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Species, <span class="dt">data =</span> iris)</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="kw">report</span>(model)</span></code></pre></div>
+<span id="cb12-3"><a href="#cb12-3"></a>report<span class="op">::</span><span class="kw">report</span>(model)</span></code></pre></div>
 <pre><code>We fitted a linear model to predict Sepal.Length with Species.The model&#39;s explanatory power is substantial (R2 = 0.62, adj. R2 = 0.61). The model&#39;s intercept is at 5.01. Whithin this model:
 
   - The effect of Species (versicolor) is positive and can be considered as very large and significant (beta = 0.93, 95% CI [0.73, 1.13], std. beta = 1.12, p &lt; .001).
   - The effect of Species (virginica) is positive and can be considered as very large and significant (beta = 1.58, 95% CI [1.38, 1.79], std. beta = 1.91, p &lt; .001).</code></pre>
+<p><strong>Table report for a linear model</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Table report for a linear model</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">lm</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Petal.Length <span class="op">+</span><span class="st"> </span>Species, <span class="dt">data =</span> iris) <span class="op">%&gt;%</span><span class="st"> </span>report<span class="op">::</span><span class="kw">report</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="st">    </span>report<span class="op">::</span><span class="kw">to_table</span>()</span></code></pre></div>
+<pre><code>Parameter         | Coefficient |             95% CI |      p | Coefficient (std.) |  Fit
+-----------------------------------------------------------------------------------------
+(Intercept)       |        3.68 | [   3.47,    3.89] | &lt; .001 |               1.50 |     
+Petal.Length      |        0.90 | [   0.78,    1.03] | &lt; .001 |               1.93 |     
+Speciesversicolor |       -1.60 | [  -1.98,   -1.22] | &lt; .001 |              -1.93 |     
+Speciesvirginica  |       -2.12 | [  -2.66,   -1.58] | &lt; .001 |              -2.56 |     
+                  |             |                    |        |                    |     
+R2                |             |                    |        |                    | 0.84
+R2 (adj.)         |             |                    |        |                    | 0.83</code></pre>
+<p>model &lt;- lm(Sepal.Length ~ Petal.Length + Species, data=iris) r &lt;- report(model) to_text(r) to_table(r)</p>
+</div>
+<div id="general-linear-models-glms" class="section level3">
+<h3>General Linear Models (GLMs)</h3>
+<p><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html" class="uri">https://stat.ethz.ch/R-manual/R-devel/library/stats/html/glm.html</a></p>
+<p>model &lt;- glm(vs ~ mpg + cyl, data=mtcars, family=“binomial”) r &lt;- report(model)</p>
+<p>to_fulltext(r) to_fulltable(r)</p>
 <!-- Where a multivariable model contains a subset of the variables specified in the full univariable set, this can be specified. -->
 <!-- explanatory = c("age.factor", "sex.factor", "obstruct.factor", "perfor.factor") -->
 <!-- explanatory.multi = c("age.factor", "obstruct.factor") -->
@@ -911,52 +919,67 @@ serdarbalci.com<br><h4 class="date">2019-11-10</h4>
 <!-- colon_s %>% -->
 <!--   hr.plot(dependent, explanatory, dependent_label = "Survival") -->
 <!-- # Previously fitted models (`coxphmulti`) can be provided directly using `coxfit` -->
-<!-- # ANOVA -->
+</div>
+<div id="anova" class="section level3">
+<h3>ANOVA</h3>
+</div>
+<div id="bayesian" class="section level3">
+<h3>Bayesian</h3>
+</div>
+</div>
+<div id="full-report-for-a-bayesian-logistic-mixed-model-with-effect-sizes" class="section level1">
+<h1>Full report for a Bayesian logistic mixed model with effect sizes</h1>
+<p>library(rstanarm)</p>
+<p>stan_glmer(vs ~ mpg + (1|cyl), data=mtcars, family=“binomial”) %&gt;% report(standardize=“smart”, effsize=“cohen1988”) %&gt;% to_fulltext()</p>
+<div id="lme4-mixed-effects-models-in-r" class="section level3">
+<h3>lme4: Mixed-effects models in R</h3>
+<p><a href="https://github.com/lme4/lme4/" class="uri">https://github.com/lme4/lme4/</a></p>
 <hr />
 <!-- \pagebreak -->
 <!-- ```{r comments, child = here::here('childRmd', '_comments.Rmd')} -->
 <!-- ``` -->
 <!-- \pagebreak -->
 </div>
+</div>
 <div id="footer" class="section level1">
 <h1>Footer</h1>
 <p><strong>Codes for explaining the software and the packages that are used in the analysis</strong><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <div id="save-final-data" class="section level2 appendix">
 <h2>Save Final Data</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>projectName &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> here<span class="op">::</span><span class="kw">here</span>(), <span class="dt">pattern =</span> <span class="st">&quot;Rproj&quot;</span>)</span>
-<span id="cb14-2"><a href="#cb14-2"></a>projectName &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot;.Rproj&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;&quot;</span>, <span class="dt">x =</span> projectName)</span>
-<span id="cb14-3"><a href="#cb14-3"></a></span>
-<span id="cb14-4"><a href="#cb14-4"></a>analysisDate &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">Sys.Date</span>())</span>
-<span id="cb14-5"><a href="#cb14-5"></a></span>
-<span id="cb14-6"><a href="#cb14-6"></a>imageName &lt;-<span class="st"> </span><span class="kw">paste0</span>(projectName, analysisDate, <span class="st">&quot;.RData&quot;</span>)</span>
-<span id="cb14-7"><a href="#cb14-7"></a></span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="kw">save.image</span>(<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, imageName))</span>
-<span id="cb14-9"><a href="#cb14-9"></a></span>
-<span id="cb14-10"><a href="#cb14-10"></a>rdsName &lt;-<span class="st"> </span><span class="kw">paste0</span>(projectName, analysisDate, <span class="st">&quot;.rds&quot;</span>)</span>
-<span id="cb14-11"><a href="#cb14-11"></a></span>
-<span id="cb14-12"><a href="#cb14-12"></a>readr<span class="op">::</span><span class="kw">write_rds</span>(<span class="dt">x =</span> mydata, <span class="dt">path =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, rdsName))</span>
-<span id="cb14-13"><a href="#cb14-13"></a></span>
-<span id="cb14-14"><a href="#cb14-14"></a><span class="kw">saveRDS</span>(<span class="dt">object =</span> mydata, <span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, rdsName))</span>
-<span id="cb14-15"><a href="#cb14-15"></a></span>
-<span id="cb14-16"><a href="#cb14-16"></a>excelName &lt;-<span class="st"> </span><span class="kw">paste0</span>(projectName, analysisDate, <span class="st">&quot;.xlsx&quot;</span>)</span>
-<span id="cb14-17"><a href="#cb14-17"></a></span>
-<span id="cb14-18"><a href="#cb14-18"></a>writexl<span class="op">::</span><span class="kw">write_xlsx</span>(mydata, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, excelName))</span>
-<span id="cb14-19"><a href="#cb14-19"></a></span>
-<span id="cb14-20"><a href="#cb14-20"></a><span class="kw">print</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;saved data after analysis to &quot;</span>, <span class="kw">rownames</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, </span>
-<span id="cb14-21"><a href="#cb14-21"></a>    excelName))), <span class="st">&quot; : &quot;</span>, <span class="kw">as.character</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, excelName))<span class="op">$</span>ctime)))</span></code></pre></div>
-<pre><code>saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-10.xlsx : 2019-11-10 11:55:53</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>projectName &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path =</span> here<span class="op">::</span><span class="kw">here</span>(), <span class="dt">pattern =</span> <span class="st">&quot;Rproj&quot;</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>projectName &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="dt">pattern =</span> <span class="st">&quot;.Rproj&quot;</span>, <span class="dt">replacement =</span> <span class="st">&quot;&quot;</span>, <span class="dt">x =</span> projectName)</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a>analysisDate &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">Sys.Date</span>())</span>
+<span id="cb16-5"><a href="#cb16-5"></a></span>
+<span id="cb16-6"><a href="#cb16-6"></a>imageName &lt;-<span class="st"> </span><span class="kw">paste0</span>(projectName, analysisDate, <span class="st">&quot;.RData&quot;</span>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="kw">save.image</span>(<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, imageName))</span>
+<span id="cb16-9"><a href="#cb16-9"></a></span>
+<span id="cb16-10"><a href="#cb16-10"></a>rdsName &lt;-<span class="st"> </span><span class="kw">paste0</span>(projectName, analysisDate, <span class="st">&quot;.rds&quot;</span>)</span>
+<span id="cb16-11"><a href="#cb16-11"></a></span>
+<span id="cb16-12"><a href="#cb16-12"></a>readr<span class="op">::</span><span class="kw">write_rds</span>(<span class="dt">x =</span> mydata, <span class="dt">path =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, rdsName))</span>
+<span id="cb16-13"><a href="#cb16-13"></a></span>
+<span id="cb16-14"><a href="#cb16-14"></a><span class="kw">saveRDS</span>(<span class="dt">object =</span> mydata, <span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, rdsName))</span>
+<span id="cb16-15"><a href="#cb16-15"></a></span>
+<span id="cb16-16"><a href="#cb16-16"></a>excelName &lt;-<span class="st"> </span><span class="kw">paste0</span>(projectName, analysisDate, <span class="st">&quot;.xlsx&quot;</span>)</span>
+<span id="cb16-17"><a href="#cb16-17"></a></span>
+<span id="cb16-18"><a href="#cb16-18"></a>writexl<span class="op">::</span><span class="kw">write_xlsx</span>(mydata, here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, excelName))</span>
+<span id="cb16-19"><a href="#cb16-19"></a></span>
+<span id="cb16-20"><a href="#cb16-20"></a><span class="kw">print</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;saved data after analysis to &quot;</span>, <span class="kw">rownames</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, </span>
+<span id="cb16-21"><a href="#cb16-21"></a>    excelName))), <span class="st">&quot; : &quot;</span>, <span class="kw">as.character</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, excelName))<span class="op">$</span>ctime)))</span></code></pre></div>
+<pre><code>saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-10.xlsx : 2019-11-10 12:46:04</code></pre>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="final-data-summary" class="section level2 appendix">
 <h2>Final Data Summary</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># use summarytools to generate final data summary</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="co"># summarytools::view(summarytools::dfSummary(x = mydata</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co">#                                            , style = &quot;markdown&quot;))</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># use summarytools to generate final data summary</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co"># summarytools::view(summarytools::dfSummary(x = mydata</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">#                                            , style = &quot;markdown&quot;))</span></span></code></pre></div>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="software-and-libraries-used" class="section level2 appendix">
 <h2>Software and Libraries Used</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">citation</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">citation</span>()</span></code></pre></div>
 <pre><code>
 To cite R in publications use:
 
@@ -981,7 +1004,7 @@ cite it when using it for data analysis. See also
 <p>The jamovi project (2019). jamovi. (Version 0.9) [Computer Software]. Retrieved from <a href="https://www.jamovi.org" class="uri">https://www.jamovi.org</a>.<br />
 R Core Team (2018). R: A Language and envionment for statistical computing. [Computer software]. Retrieved from <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.<br />
 Fox, J., &amp; Weisberg, S. (2018). car: Companion to Applied Regression. [R package]. Retrieved from <a href="https://cran.r-project.org/package=car" class="uri">https://cran.r-project.org/package=car</a>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>report<span class="op">::</span><span class="kw">cite_packages</span>(<span class="dt">session =</span> <span class="kw">sessionInfo</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>report<span class="op">::</span><span class="kw">cite_packages</span>(<span class="dt">session =</span> <span class="kw">sessionInfo</span>())</span></code></pre></div>
 </div>
 <div id="dataorderdatareferences" class="section level2">
 <h2>data[order(data$References), ]</h2>
@@ -993,12 +1016,124 @@ Makowski, D. &amp; Lüdecke, D. (2019). The report package for R: Ensuring the u
 Patil I (2018). <em>ggstatsplot: ‘ggplot2’ Based Plots withStatistical Details</em>. doi: 10.5281/zenodo.2074621 (URL:<a href="https://doi.org/10.5281/zenodo.2074621" class="uri">https://doi.org/10.5281/zenodo.2074621</a>), &lt;URL:<a href="https://CRAN.R-project.org/package=ggstatsplot" class="uri">https://CRAN.R-project.org/package=ggstatsplot</a>&gt;.<br />
 Rinker, T. W. (2018). wakefield: Generate Random Data. version 0.3.3. Buffalo, New York. <a href="https://github.com/trinker/wakefield" class="uri">https://github.com/trinker/wakefield</a><br />
 Sam Firke (2019). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 1.2.0. <a href="https://CRAN.R-project.org/package=janitor" class="uri">https://CRAN.R-project.org/package=janitor</a></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>report<span class="op">::</span><span class="kw">show_packages</span>(<span class="dt">session =</span> <span class="kw">sessionInfo</span>())</span></code></pre></div>
-</div>
-<div id="package-version-references" class="section level2">
-<h2>Package | Version | References</h2>
-<p>arsenal | 3.3.0 | Ethan Heinzen, Jason Sinnwell, Elizabeth Atkinson, Tina Gunderson and Gregory Dougherty (2019). arsenal: An Arsenal of ‘R’ Functions for Large-Scale Statistical Summaries. R package version 3.3.0. <a href="https://CRAN.R-project.org/package=arsenal" class="uri">https://CRAN.R-project.org/package=arsenal</a> dplyr | 0.8.3 | Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2019). dplyr: A Grammar of Data Manipulation. R package version 0.8.3. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a> finalfit | 0.9.6 | Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. <a href="https://github.com/ewenharrison/finalfit" class="uri">https://github.com/ewenharrison/finalfit</a> ggstatsplot | 0.1.2 | Patil I (2018). <em>ggstatsplot: ‘ggplot2’ Based Plots withStatistical Details</em>. doi: 10.5281/zenodo.2074621 (URL:<a href="https://doi.org/10.5281/zenodo.2074621" class="uri">https://doi.org/10.5281/zenodo.2074621</a>), &lt;URL:<a href="https://CRAN.R-project.org/package=ggstatsplot" class="uri">https://CRAN.R-project.org/package=ggstatsplot</a>&gt;. janitor | 1.2.0 | Sam Firke (2019). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 1.2.0. <a href="https://CRAN.R-project.org/package=janitor" class="uri">https://CRAN.R-project.org/package=janitor</a> readxl | 1.3.1 | Hadley Wickham and Jennifer Bryan (2019). readxl: Read Excel Files. R package version 1.3.1. <a href="https://CRAN.R-project.org/package=readxl" class="uri">https://CRAN.R-project.org/package=readxl</a> report | 0.1.0 | Makowski, D. &amp; Lüdecke, D. (2019). The report package for R: Ensuring the use of best practices for results reporting. CRAN. Available from <a href="https://github.com/easystats/report" class="uri">https://github.com/easystats/report</a>. doi: . tableone | 0.10.0 | Kazuki Yoshida (2019). tableone: Create ‘Table 1’ to Describe Baseline Characteristics. R package version 0.10.0. <a href="https://CRAN.R-project.org/package=tableone" class="uri">https://CRAN.R-project.org/package=tableone</a> wakefield | 0.3.3 | Rinker, T. W. (2018). wakefield: Generate Random Data. version 0.3.3. Buffalo, New York. <a href="https://github.com/trinker/wakefield" class="uri">https://github.com/trinker/wakefield</a></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>report<span class="op">::</span><span class="kw">show_packages</span>(<span class="dt">session =</span> <span class="kw">sessionInfo</span>()) <span class="op">%&gt;%</span><span class="st"> </span>kableExtra<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Package
+</th>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+References
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+arsenal
+</td>
+<td style="text-align:left;">
+3.3.0
+</td>
+<td style="text-align:left;">
+Ethan Heinzen, Jason Sinnwell, Elizabeth Atkinson, Tina Gunderson and Gregory Dougherty (2019). arsenal: An Arsenal of ‘R’ Functions for Large-Scale Statistical Summaries. R package version 3.3.0. <a href="https://CRAN.R-project.org/package=arsenal" class="uri">https://CRAN.R-project.org/package=arsenal</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dplyr
+</td>
+<td style="text-align:left;">
+0.8.3
+</td>
+<td style="text-align:left;">
+Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2019). dplyr: A Grammar of Data Manipulation. R package version 0.8.3. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+finalfit
+</td>
+<td style="text-align:left;">
+0.9.6
+</td>
+<td style="text-align:left;">
+Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. <a href="https://github.com/ewenharrison/finalfit" class="uri">https://github.com/ewenharrison/finalfit</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ggstatsplot
+</td>
+<td style="text-align:left;">
+0.1.2
+</td>
+<td style="text-align:left;">
+Patil I (2018). <em>ggstatsplot: ‘ggplot2’ Based Plots withStatistical Details</em>. doi: 10.5281/zenodo.2074621 (URL:<a href="https://doi.org/10.5281/zenodo.2074621" class="uri">https://doi.org/10.5281/zenodo.2074621</a>), &lt;URL:<a href="https://CRAN.R-project.org/package=ggstatsplot%3E" class="uri">https://CRAN.R-project.org/package=ggstatsplot&gt;</a>;.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+janitor
+</td>
+<td style="text-align:left;">
+1.2.0
+</td>
+<td style="text-align:left;">
+Sam Firke (2019). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 1.2.0. <a href="https://CRAN.R-project.org/package=janitor" class="uri">https://CRAN.R-project.org/package=janitor</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+readxl
+</td>
+<td style="text-align:left;">
+1.3.1
+</td>
+<td style="text-align:left;">
+Hadley Wickham and Jennifer Bryan (2019). readxl: Read Excel Files. R package version 1.3.1. <a href="https://CRAN.R-project.org/package=readxl" class="uri">https://CRAN.R-project.org/package=readxl</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+report
+</td>
+<td style="text-align:left;">
+0.1.0
+</td>
+<td style="text-align:left;">
+Makowski, D. &amp; Lüdecke, D. (2019). The report package for R: Ensuring the use of best practices for results reporting. CRAN. Available from <a href="https://github.com/easystats/report" class="uri">https://github.com/easystats/report</a>. doi: .
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tableone
+</td>
+<td style="text-align:left;">
+0.10.0
+</td>
+<td style="text-align:left;">
+Kazuki Yoshida (2019). tableone: Create ‘Table 1’ to Describe Baseline Characteristics. R package version 0.10.0. <a href="https://CRAN.R-project.org/package=tableone" class="uri">https://CRAN.R-project.org/package=tableone</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wakefield
+</td>
+<td style="text-align:left;">
+0.3.3
+</td>
+<td style="text-align:left;">
+Rinker, T. W. (2018). wakefield: Generate Random Data. version 0.3.3. Buffalo, New York. <a href="https://github.com/trinker/wakefield" class="uri">https://github.com/trinker/wakefield</a>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">citation</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite package &#39;tidyverse&#39; in publications use:
 
@@ -1015,7 +1150,7 @@ A BibTeX entry for LaTeX users is
     note = {R package version 1.2.1},
     url = {https://CRAN.R-project.org/package=tidyverse},
   }</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">citation</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">citation</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite package &#39;readxl&#39; in publications use:
 
@@ -1032,7 +1167,7 @@ A BibTeX entry for LaTeX users is
     note = {R package version 1.3.1},
     url = {https://CRAN.R-project.org/package=readxl},
   }</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">citation</span>(<span class="st">&quot;janitor&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">citation</span>(<span class="st">&quot;janitor&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite package &#39;janitor&#39; in publications use:
 
@@ -1049,7 +1184,7 @@ A BibTeX entry for LaTeX users is
     note = {R package version 1.2.0},
     url = {https://CRAN.R-project.org/package=janitor},
   }</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">citation</span>(<span class="st">&quot;report&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">citation</span>(<span class="st">&quot;report&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite in publications use:
 
@@ -1067,7 +1202,7 @@ A BibTeX entry for LaTeX users is
     note = {R package},
     url = {https://github.com/easystats/report},
   }</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">citation</span>(<span class="st">&quot;finalfit&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">citation</span>(<span class="st">&quot;finalfit&quot;</span>)</span></code></pre></div>
 <pre><code>
 To cite package &#39;finalfit&#39; in publications use:
 
@@ -1086,7 +1221,7 @@ Modelling},
     note = {R package version 0.9.6},
     url = {https://github.com/ewenharrison/finalfit},
   }</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">citation</span>(<span class="st">&quot;ggstatsplot&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">citation</span>(<span class="st">&quot;ggstatsplot&quot;</span>)</span></code></pre></div>
 <pre><code>
 Patil I (2018). _ggstatsplot: &#39;ggplot2&#39; Based Plots with
 Statistical Details_. doi: 10.5281/zenodo.2074621 (URL:
@@ -1106,7 +1241,7 @@ A BibTeX entry for LaTeX users is
 </div>
 <div id="session-info" class="section level2 appendix">
 <h2>Session Info</h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
 <pre><code>R version 3.6.0 (2019-04-26)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
 Running under: macOS  10.15.1
@@ -1136,108 +1271,111 @@ loaded via a namespace (and not attached):
  [13] generics_0.0.2            callr_3.3.2              
  [15] cowplot_1.0.0             TH.data_1.0-10           
  [17] mice_3.6.0                future_1.14.0            
- [19] lubridate_1.7.4           httpuv_1.5.2             
- [21] StanHeaders_2.19.0        assertthat_0.2.1         
- [23] WRS2_1.0-0                xfun_0.10                
- [25] hms_0.5.1                 evaluate_0.14            
- [27] promises_1.0.1            DEoptimR_1.0-8           
- [29] DBI_1.0.0                 htmlwidgets_1.5.1        
- [31] mcmc_0.9-6                reshape_0.8.8            
- [33] stats4_3.6.0              paletteer_0.2.1          
- [35] purrr_0.3.3               ellipsis_0.3.0           
- [37] rcompanion_2.3.0          backports_1.1.5          
- [39] insight_0.6.0             survey_3.36              
- [41] ggcorrplot_0.1.3          MCMCpack_1.4-4           
- [43] rapportools_1.0           libcoin_1.0-5            
- [45] jmvcore_1.0.0             vctrs_0.2.0              
- [47] quantreg_5.51             here_0.1                 
- [49] sjlabelled_1.1.1          abind_1.4-5              
- [51] pryr_0.1.4                metaBMA_0.6.2            
- [53] robustbase_0.93-5         checkmate_1.9.4          
- [55] emmeans_1.4.1             prettyunits_1.0.2        
- [57] mnormt_1.5-5              cluster_2.1.0            
- [59] lazyeval_0.2.2            crayon_1.3.4             
- [61] pkgconfig_2.0.3           nlme_3.1-141             
- [63] statsExpressions_0.1.1    nnet_7.3-12              
- [65] rlang_0.4.1               globals_0.12.4           
- [67] lifecycle_0.1.0           mitml_0.3-7              
- [69] miniUI_0.1.1.1            groupedstats_0.0.9       
- [71] skimr_1.0.7               LaplacesDemon_16.1.1     
- [73] MatrixModels_0.4-1        sandwich_2.5-1           
- [75] EMT_1.1                   modelr_0.1.5             
- [77] tcltk_3.6.0               cellranger_1.1.0         
- [79] rprojroot_1.3-2           matrixStats_0.55.0       
- [81] broomExtra_0.0.5          lmtest_0.9-37            
- [83] Matrix_1.2-17             loo_2.1.0                
- [85] mc2d_0.1-18               carData_3.0-2            
- [87] boot_1.3-23               zoo_1.8-6                
- [89] pan_1.6                   base64enc_0.1-3          
- [91] processx_3.4.1            rjson_0.2.20             
- [93] bitops_1.0-6              parameters_0.2.0.1       
- [95] pander_0.6.3              ggExtra_0.9              
- [97] stringr_1.4.0             multcompView_0.1-7       
- [99] coin_1.3-1                robust_0.4-18.1          
-[101] readr_1.3.1               ggsignif_0.6.0           
-[103] scales_1.0.0              magrittr_1.5             
-[105] plyr_1.8.4                compiler_3.6.0           
-[107] rstantools_2.0.0          RColorBrewer_1.1-2       
-[109] lme4_1.1-21               rrcov_1.4-7              
-[111] cli_1.1.0                 listenv_0.7.0            
-[113] pbapply_1.4-2             ps_1.3.0                 
-[115] TMB_1.7.15                Brobdingnag_1.2-6        
-[117] htmlTable_1.13.2          formatR_1.7              
-[119] Formula_1.2-3             MASS_7.3-51.4            
-[121] mgcv_1.8-29               tidyselect_0.2.5         
-[123] stringi_1.4.3             forcats_0.4.0            
-[125] highr_0.8                 mitools_2.4              
-[127] yaml_2.2.0                latticeExtra_0.6-28      
-[129] ggrepel_0.8.1             bridgesampling_0.7-2     
-[131] grid_3.6.0                manipulate_1.0.1         
-[133] tools_3.6.0               parallel_3.6.0           
-[135] rio_0.5.16                rstudioapi_0.10          
-[137] foreign_0.8-72            gridExtra_2.3            
-[139] pairwiseComparisons_0.1.1 digest_0.6.22            
-[141] shiny_1.3.2               nortest_1.0-4            
-[143] jmv_0.9.6.1               Rcpp_1.0.2               
-[145] car_3.0-3                 broom_0.5.2              
-[147] metafor_2.1-0             ez_4.4-0                 
-[149] BayesFactor_0.9.12-4.2    writexl_1.1              
-[151] performance_0.3.0         later_0.8.0              
-[153] psych_1.8.12              sjstats_0.17.6           
-[155] colorspace_1.4-1          splines_3.6.0            
-[157] expm_0.999-4              fit.models_0.5-14        
-[159] xtable_1.8-4              nloptr_1.2.1             
-[161] rstan_2.19.2              zeallot_0.1.0            
-[163] modeltools_0.2-22         R6_2.4.0                 
-[165] broom.mixed_0.2.4         Hmisc_4.2-0              
-[167] pillar_1.4.2              htmltools_0.4.0          
-[169] mime_0.7                  glue_1.3.1               
-[171] minqa_1.2.4               summarytools_0.9.4       
-[173] class_7.3-15              codetools_0.2-16         
-[175] jomo_2.6-9                pkgbuild_1.0.6           
-[177] pcaPP_1.9-73              mvtnorm_1.0-11           
-[179] furrr_0.1.0               lattice_0.20-38          
-[181] tibble_2.1.3              curl_4.2                 
-[183] DescTools_0.99.28         gtools_3.8.1             
-[185] magick_2.2                logspline_2.1.13         
-[187] zip_2.0.4                 openxlsx_4.1.0.1         
-[189] survival_2.44-1.1         rmarkdown_1.16           
-[191] munsell_0.5.0             e1071_1.7-2              
-[193] rsample_0.0.5             labelled_2.2.1           
-[195] sjmisc_2.8.1              haven_2.1.1              
-[197] reshape2_1.4.3            gtable_0.3.0             
-[199] bayestestR_0.3.0         </code></pre>
+ [19] webshot_0.5.1             xml2_1.2.2               
+ [21] lubridate_1.7.4           httpuv_1.5.2             
+ [23] StanHeaders_2.19.0        assertthat_0.2.1         
+ [25] WRS2_1.0-0                xfun_0.10                
+ [27] hms_0.5.1                 evaluate_0.14            
+ [29] promises_1.0.1            DEoptimR_1.0-8           
+ [31] DBI_1.0.0                 htmlwidgets_1.5.1        
+ [33] mcmc_0.9-6                reshape_0.8.8            
+ [35] stats4_3.6.0              paletteer_0.2.1          
+ [37] purrr_0.3.3               ellipsis_0.3.0           
+ [39] rcompanion_2.3.0          backports_1.1.5          
+ [41] insight_0.6.0             survey_3.36              
+ [43] ggcorrplot_0.1.3          MCMCpack_1.4-4           
+ [45] rapportools_1.0           libcoin_1.0-5            
+ [47] jmvcore_1.0.0             vctrs_0.2.0              
+ [49] quantreg_5.51             here_0.1                 
+ [51] sjlabelled_1.1.1          abind_1.4-5              
+ [53] pryr_0.1.4                metaBMA_0.6.2            
+ [55] robustbase_0.93-5         checkmate_1.9.4          
+ [57] emmeans_1.4.1             prettyunits_1.0.2        
+ [59] mnormt_1.5-5              cluster_2.1.0            
+ [61] lazyeval_0.2.2            crayon_1.3.4             
+ [63] pkgconfig_2.0.3           nlme_3.1-141             
+ [65] statsExpressions_0.1.1    nnet_7.3-12              
+ [67] rlang_0.4.1               globals_0.12.4           
+ [69] lifecycle_0.1.0           mitml_0.3-7              
+ [71] miniUI_0.1.1.1            groupedstats_0.0.9       
+ [73] skimr_1.0.7               LaplacesDemon_16.1.1     
+ [75] MatrixModels_0.4-1        sandwich_2.5-1           
+ [77] EMT_1.1                   modelr_0.1.5             
+ [79] tcltk_3.6.0               cellranger_1.1.0         
+ [81] rprojroot_1.3-2           matrixStats_0.55.0       
+ [83] broomExtra_0.0.5          lmtest_0.9-37            
+ [85] Matrix_1.2-17             loo_2.1.0                
+ [87] mc2d_0.1-18               carData_3.0-2            
+ [89] boot_1.3-23               zoo_1.8-6                
+ [91] pan_1.6                   base64enc_0.1-3          
+ [93] processx_3.4.1            viridisLite_0.3.0        
+ [95] rjson_0.2.20              bitops_1.0-6             
+ [97] parameters_0.2.0.1        pander_0.6.3             
+ [99] ggExtra_0.9               stringr_1.4.0            
+[101] multcompView_0.1-7        coin_1.3-1               
+[103] robust_0.4-18.1           readr_1.3.1              
+[105] ggsignif_0.6.0            scales_1.0.0             
+[107] magrittr_1.5              plyr_1.8.4               
+[109] compiler_3.6.0            kableExtra_1.1.0         
+[111] rstantools_2.0.0          RColorBrewer_1.1-2       
+[113] lme4_1.1-21               rrcov_1.4-7              
+[115] cli_1.1.0                 listenv_0.7.0            
+[117] pbapply_1.4-2             ps_1.3.0                 
+[119] TMB_1.7.15                Brobdingnag_1.2-6        
+[121] htmlTable_1.13.2          formatR_1.7              
+[123] Formula_1.2-3             MASS_7.3-51.4            
+[125] mgcv_1.8-29               tidyselect_0.2.5         
+[127] stringi_1.4.3             forcats_0.4.0            
+[129] highr_0.8                 mitools_2.4              
+[131] yaml_2.2.0                latticeExtra_0.6-28      
+[133] ggrepel_0.8.1             bridgesampling_0.7-2     
+[135] grid_3.6.0                manipulate_1.0.1         
+[137] tools_3.6.0               parallel_3.6.0           
+[139] rio_0.5.16                rstudioapi_0.10          
+[141] foreign_0.8-72            gridExtra_2.3            
+[143] pairwiseComparisons_0.1.1 digest_0.6.22            
+[145] shiny_1.3.2               nortest_1.0-4            
+[147] jmv_0.9.6.1               Rcpp_1.0.2               
+[149] car_3.0-3                 broom_0.5.2              
+[151] metafor_2.1-0             ez_4.4-0                 
+[153] BayesFactor_0.9.12-4.2    writexl_1.1              
+[155] performance_0.3.0         later_0.8.0              
+[157] httr_1.4.1                psych_1.8.12             
+[159] sjstats_0.17.6            colorspace_1.4-1         
+[161] rvest_0.3.4               splines_3.6.0            
+[163] expm_0.999-4              fit.models_0.5-14        
+[165] xtable_1.8-4              nloptr_1.2.1             
+[167] rstan_2.19.2              zeallot_0.1.0            
+[169] modeltools_0.2-22         R6_2.4.0                 
+[171] broom.mixed_0.2.4         Hmisc_4.2-0              
+[173] pillar_1.4.2              htmltools_0.4.0          
+[175] mime_0.7                  glue_1.3.1               
+[177] minqa_1.2.4               summarytools_0.9.4       
+[179] class_7.3-15              codetools_0.2-16         
+[181] jomo_2.6-9                pkgbuild_1.0.6           
+[183] pcaPP_1.9-73              mvtnorm_1.0-11           
+[185] furrr_0.1.0               lattice_0.20-38          
+[187] tibble_2.1.3              curl_4.2                 
+[189] DescTools_0.99.28         gtools_3.8.1             
+[191] magick_2.2                logspline_2.1.13         
+[193] zip_2.0.4                 openxlsx_4.1.0.1         
+[195] survival_2.44-1.1         rmarkdown_1.16           
+[197] munsell_0.5.0             e1071_1.7-2              
+[199] rsample_0.0.5             labelled_2.2.1           
+[201] sjmisc_2.8.1              haven_2.1.1              
+[203] reshape2_1.4.3            gtable_0.3.0             
+[205] bayestestR_0.3.0         </code></pre>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="notes" class="section level2 appendix">
 <h2>Notes</h2>
-<p>Last update on 2019-11-10 11:55:55</p>
+<p>Last update on 2019-11-10 12:46:06</p>
 <p>Serdar Balci, MD, Pathologist<br />
 <a href="mailto:drserdarbalci@gmail.com" class="email">drserdarbalci@gmail.com</a><br />
 <a href="https://rpubs.com/sbalci/CV" class="uri">https://rpubs.com/sbalci/CV</a></p>
 <hr />
 <div style="page-break-after: always;"></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">source</span>(<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;gitUpdateCommitPush.R&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">source</span>(<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;gitUpdateCommitPush.R&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <div class="footnotes">
