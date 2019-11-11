@@ -23,45 +23,7 @@ LazyData: true
 RoxygenNote: 6.1.1
 URL: https://sbalci.github.io/
 BugReports: https://github.com/sbalci/histopathology-template
-Depends: 
-    R (>= 3.1.0),
-    arsenal,
-    covr,
-    describer,
-    devtools,
-    dplyr,
-    DT,
-    finalfit,
-    forcats,
-    ggstatsplot,
-    glue,
-    here,
-    inspectdf,
-    janitor,
-    jmv,
-    kableExtra,
-    knitr,
-    lubridate,
-    magicfor,
-    magrittr,
-    miniUI,
-    R,
-    readr,
-    readxl,
-    report,
-    rio,
-    rmarkdown,
-    roxygen2,
-    rstudioapi,
-    shiny,
-    summarytools,
-    survival,
-    survminer,
-    tableone,
-    testthat,
-    viridis,
-    wakefield,
-    writexl
+Depends: R (>= 3.1.0)
 Suggests: 
     testthat (>= 2.1.0),
     covr,
@@ -76,6 +38,5 @@ Imports:
     magrittr
 Remotes:
     r-lib/covr
-    easystats/report,
-    ewenharrison/finalfit
 VignetteBuilder: knitr
+

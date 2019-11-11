@@ -39,6 +39,8 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 <!-- [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/sbalci/histopathR/issues) -->
 [![Say
 Thanks\!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
+[![Launch Rstudio
+Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sbalci/histopathology-template/master?urlpath=rstudio)
 <!-- badges: end -->
 
 This repository is a template for the codes I use in [my and my friends’

@@ -12,7 +12,7 @@ mydata %>%
   report::report(.)
 ```
 
-
+```r
 r <- report(iris)
 to_text(r)
 print(to_text(r), width=100)
@@ -33,7 +33,7 @@ data <- data.frame("Age" = c(22, 23, 54, 21),
 
 paste(report_participants(data, spell_n = TRUE),
       "were recruited in the study.")
-
+```
 
 
 ### Define Variable Types
@@ -89,11 +89,6 @@ inspectdf::inspect_types(mydata) %>% inspectdf::show_plot()
 
 
 
-
-
-
-
-
 ### Overview / Exploratory Data Analysis (EDA)
 
 
@@ -121,7 +116,7 @@ mydata %>%
 ```{r describer group_by, eval=FALSE, include=FALSE}
 mydata %>% 
   group_by(Grade) %>% 
-  do(describe(.)) %>% 
+  do(describer::describe(.)) %>% 
   knitr::kable(format = "markdown")
 ```
 

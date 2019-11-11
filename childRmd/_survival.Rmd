@@ -1,8 +1,13 @@
+**Codes for Survival Analysis**^[See `childRmd/_survival.Rmd` file for other codes]
 
-```{r define survival time, eval=FALSE, include=FALSE}
+
+
+**calculate survival time**
+
+```{r define survival time}
 mydata$int <- lubridate::interval(
-  lubridate::ymd(mydata$CerrahiTarih),
-  lubridate::ymd(mydata$SonTarih)
+  lubridate::ymd(mydata$SurgeryDate),
+  lubridate::ymd(mydata$LastFollowUpDate)
   )
 mydata$OverallTime <- lubridate::time_length(mydata$int, "month")
 mydata$OverallTime <- round(mydata$OverallTime, digits = 1)
@@ -13,32 +18,145 @@ mydata$OverallTime <- round(mydata$OverallTime, digits = 1)
 mydata$OverallTime <- mydata$genel_sagkalim
 ```
 
+**recode death status outcome as numbers for survival analysis**
 
-```{r recode status, eval=FALSE, include=FALSE}
-## Recoding mydata$Outcome into mydata$Outcome2
-mydata$Outcome2 <- recode(mydata$Outcome,
-               "Alive" = "0",
-               "Dead" = "1")
-mydata$Outcome2 <- as.numeric(mydata$Outcome2)
+<!-- alive 0, death 1, punch cards -->
 
+<!-- reference to addin -->
+
+
+```{r recode death status outcome}
+## Recoding mydata$Death into mydata$Outcome
+mydata$Outcome <- forcats::fct_recode(as.character(mydata$Death),
+               "1" = "TRUE",
+               "0" = "FALSE")
+mydata$Outcome <- as.numeric(as.character(mydata$Outcome))
+```
+
+**it is always a good practice to double-check after recoding**^[[JAMA retraction after miscoding – new Finalfit function to check recoding](https://www.datasurg.net/2019/10/15/jama-retraction-after-miscoding-new-finalfit-function-to-check-recoding/)]
+
+<!-- https://www.datasurg.net/2019/10/15/jama-retraction-after-miscoding-new-finalfit-function-to-check-recoding/ -->
+
+
+
+```{r recode status}
+table(mydata$Death, mydata$Outcome)
 ```
 
 
 
-# Survival Analysis
+### Kaplan-Meier
 
-```{r km, eval=FALSE, include=FALSE}
+<!-- ref to coursera -->
+
+
+```{r km}
 library(survival)
 # data(lung)
 # km <- with(lung, Surv(time, status))
-km <- with(mydata, Surv(OverallTime, Outcome2))
-# head(km,80)
-# plot(km)
+km <- with(mydata, Surv(OverallTime, Outcome))
+head(km,80)
+plot(km)
 ```
 
+
+
+**Kaplan-Meier Plot Log-Rank Test**
+
+```{r Kaplan-Meier Plot Log-Rank Test}
+# Drawing Survival Curves Using ggplot2
+# https://rpkgs.datanovia.com/survminer/reference/ggsurvplot.html
+dependentKM <- "Surv(OverallTime, Outcome)"
+explanatoryKM <- "LVI"
+
+mydata %>%
+  finalfit::surv_plot(.data = .,
+                      dependent = dependentKM,
+                      explanatory = explanatoryKM,
+                      xlab='Time (months)',
+                      pval=TRUE,
+                      legend = 'none',
+                      break.time.by = 12,
+                      xlim = c(0,60)
+                      # legend.labs = c('a','b')
+                      )
+```
+
+
+
+**Univariate Cox-Regression**
+
+```{r Univariate Cox-Regression}
+library(finalfit)
+library(survival)
+explanatoryUni <- "LVI"
+dependentUni <- "Surv(OverallTime, Outcome)"
+
+mydata %>%
+finalfit::finalfit(dependentUni, explanatoryUni) -> tUni
+
+knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
+```
+
+<!-- tUni$`HR (univariable)`[2] -->
+
+<!-- as_tibble(tUni) -->
+
+
+
+**Median Survival**
+
+```{r Median Survivals}
+km_fit <- survfit(Surv(OverallTime, Outcome) ~ LVI, data = mydata)
+km_fit
+# summary(km_fit)
+```
+
+
+
+
+
+
+**1-3-5-yr survival**
+      
+```{r 1-3-5-yr}
+summary(km_fit, times = c(12,36,60))
+```
+
+```{r make df from survival summary}
+km_fit_summary <- summary(km_fit, times = c(12,36,60))
+
+km_fit_df <- as.data.frame(km_fit_summary[c("strata", "time", "n.risk", "n.event", "surv", "std.err", "lower", "upper")])
+
+```
+
+
+
+```{r print autoreport from survival summary df}
+km_fit_df %>% 
+  dplyr::mutate(
+    description = 
+      glue::glue(
+      "When {strata}, {time} month survival is {scales::percent(surv)} [{scales::percent(lower)}-{scales::percent(upper)}, 95% CI]."
+    )
+  ) %>% 
+  dplyr::select(description) %>% 
+  pull()
+```
+
+
+
+
 ```{r extract info from surv object, eval=FALSE, include=FALSE}
-surv_fit <- survfit(Surv(time, status) ~ ph.ecog, data=lung)
+library(survival)
+surv_fit <- survival::survfit(Surv(time, status) ~ ph.ecog, data=lung)
 insight::is_model_supported(surv_fit)
+insight::find_formula(surv_fit)
+```
+
+
+```{r extract info from surv object 2, eval=FALSE, include=FALSE}
+report::report_participants(mydata)
 ```
 
 
@@ -92,7 +210,7 @@ deneme <- purrr::map(explanatory, mysurvival, mydata = whippleables, mydependent
 
 
 
-# Pairwise comparison
+### Pairwise comparison
 
 ```{r pairwise comparison, eval=FALSE, include=FALSE}
 survminer::pairwise_survdiff(formula = Surv(time, Outcome) ~ ShellAnteriorOnly, 
@@ -104,7 +222,7 @@ survminer::pairwise_survdiff(formula = Surv(time, Outcome) ~ ShellAnteriorOnly,
 
 
 
-# Multivariate Analysis Survival
+### Multivariate Analysis Survival
 
 
 ```{r Multivariate Analysis, eval=FALSE, include=FALSE}
@@ -168,25 +286,28 @@ summary(modelsum(Surv(fu.time, fu.stat) ~ arm,
 
 
 
-
+```{r eval=FALSE, include=FALSE}
 # KM plot
 explanatory = c("perfor.factor")
 dependent = "Surv(time, status)"
 colon_s %>% 
   surv.plot(dependent, explanatory, xlab="Time (days)", pval=TRUE, legend="none")
 
-Notes
+# Notes
 
-Use Hmisc::label() to assign labels to variables for tables and plots.
+# Use Hmisc::label() to assign labels to variables for tables and plots.
 
 label(colon_s$age.factor) = "Age (years)"
 
-Export dataframe tables directly or to R Markdown using knitr::kable().
+# Export dataframe tables directly or to R Markdown using knitr::kable().
 
-Note wrapper summary.missing() can be useful. Wraps mice::md.pattern.
+# Note wrapper summary.missing() can be useful. Wraps mice::md.pattern.
 
 colon_s %>%
   summary.missing(dependent, explanatory)
+
+```
+
 
 
 

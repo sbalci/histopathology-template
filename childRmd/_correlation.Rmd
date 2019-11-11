@@ -135,7 +135,7 @@ inspectdf::inspect_cor(storms, storms[-c(1:200), ]) %>%
 ```
 
 
-
+```r
 https://neuropsychology.github.io/psycho.R/2018/05/20/correlation.html
 
 devtools::install_github("neuropsychology/psycho.R")  # Install the newest version
@@ -153,7 +153,7 @@ plot(cor)
 
 
 print(cor)
-
+```
 
   
 
@@ -165,7 +165,7 @@ cor %>%
 ```
 
 
-
+```r
 summary(cor) %>% 
   knitr::kable(format = "latex") %>% 
   kableExtra::kable_styling(latex_options="scale_down")
@@ -174,10 +174,12 @@ summary(cor) %>%
 ggplot(mydata, aes(x = tx_zamani_verici_yasi, y = trombosit)) +
   geom_point() + 
   geom_smooth(method = lm, size = 1)
+```
 
 
-
-
+<!-- References: -->
+<!-- Automated Interpretation of Metrics and Effect Sizes -->
+<!-- https://easystats.github.io/report/articles/interpret_metrics.html -->
 
 
 

@@ -1,4 +1,4 @@
-**Codes for overviewing the data.**^[See `childRmd/_overView.Rmd` file for other codes]
+**Codes for Descriptive Statistics**^[See `childRmd/_descriptives.Rmd` file for other codes]
 
 
 ### Table 1  
@@ -95,14 +95,16 @@ tableone::CreateTableOne(data = .)
 
 
 
+**Descriptive Statistics of Continuous Variables**
 
 ```{r summarytools descriptives 1}
 summarytools::descr(mydata, style = 'rmarkdown')
 ```
 
 
+
 ```{r summarytools descriptives 2, eval=FALSE, include=FALSE}
-print(descr(tobacco), method = 'render', table.classes = 'st-small')
+print(summarytools::descr(mydata), method = 'render', table.classes = 'st-small')
 ```
  
 
@@ -138,9 +140,11 @@ iris %>% explore::describe() %>% dplyr::filter(na > 0)
 ### Categorical Variables
 
 
+**print column names as vector**
 
-```{r print names as vector, eval=FALSE, include=FALSE}
-dput(names(pbc))
+```{r print names as vector}
+dput(names(mydata))
+names(which(sapply(mydata, FUN = class) == "character"))
 ```
 
 
@@ -158,12 +162,16 @@ mydataCategorical <- mydata %>%
 
 
 
-```{r define continious variables 1, eval=FALSE, include=FALSE}
-mydataDescription <- describer::describe(iris)
+```{r define categorical variables 1}
+mydata %>% 
+  dplyr::select(-ID,
+         -Name
+         ) %>% 
+  describer::describe() %>% 
+  janitor::clean_names() -> mydataDescription
 
 mydataDescription %>% 
-    janitor::clean_names() %>% 
-    dplyr::filter(column_class == "factor") %>% 
+    dplyr::filter(column_type == "factor") %>% 
     dplyr::select(column_name) %>% 
     dplyr::pull() -> categoricalVariables
 ```

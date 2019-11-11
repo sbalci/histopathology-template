@@ -32,7 +32,9 @@ fakedata <-
     ),
     
     date_stamp(random = TRUE, name = "LastFollowUpDate"),
+    
     death(prob = c(.3, .7)),
+    
     group,
     
     level(
@@ -116,7 +118,7 @@ fakedata <-
   ) %>%
   
   wakefield::r_na(x = .,
-       prob = .005) %>%
+                  prob = .005) %>%
   
   dplyr::mutate(
     Age = as.numeric(Age),
@@ -128,30 +130,37 @@ fakedata <-
     LymphNodeMetastasis = factor(LymphNodeMetastasis, ordered = TRUE)
   ) %>%
   
-  dplyr::mutate(SurgeryDate = LastFollowUpDate - sample(
-    x = 180:3600,
-    size = 250,
+  dplyr::mutate(SurgeryDate = LastFollowUpDate - c(
+    sample(
+    x = 90:360,
+    size = 150,
     replace = TRUE
-  )) %>%
+  ),
+  sample(
+    x = 360:1080,
+    size = 75,
+    replace = TRUE
+  ),
+  sample(
+    x = 1080:1800,
+    size = 25,
+    replace = TRUE
+  )
+  )
+  ) %>%
   
   dplyr::mutate(LastFollowUpDate  =
-                  dplyr::case_when(Death == FALSE ~  Sys.Date() - 10,
-                     TRUE ~ LastFollowUpDate))
-
-## Reordering fakedata$LVI
-# fakedata$LVI <- factor(fakedata$LVI, levels=c("Absent", "Present"), ordered = TRUE)
+                  dplyr::case_when(Death == FALSE ~  Sys.Date() - 100,
+                                   TRUE ~ LastFollowUpDate))
 
 
 fakedata %>%
   plot(palette = "Set1")
 
+wakefield::table_heat(fakedata)
 
 rio::export(
   x = fakedata,
   file = here::here("data", "mydata.xlsx"),
   format = "xlsx"
 )
-
-
-
-
