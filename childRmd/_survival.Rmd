@@ -114,7 +114,7 @@ km_fit
 
 
 ```{r}
-
+km_fit_median_df <- as_data_frame(km_fit)
 ```
 
 
