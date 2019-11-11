@@ -28,7 +28,6 @@ Depends:
     arsenal,
     covr,
     describer,
-    devtools,
     dplyr,
     DT,
     finalfit,
@@ -45,7 +44,6 @@ Depends:
     magicfor,
     magrittr,
     miniUI,
-    R,
     readr,
     readxl,
     report,
@@ -77,5 +75,6 @@ Imports:
 Remotes:
     r-lib/covr
     easystats/report,
-    ewenharrison/finalfit
+    ewenharrison/finalfit,
+    r-lib/devtools
 VignetteBuilder: knitr
