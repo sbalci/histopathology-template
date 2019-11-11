@@ -75,6 +75,5 @@ Imports:
 Remotes:
     r-lib/covr
     easystats/report,
-    ewenharrison/finalfit,
-    r-lib/devtools
+    ewenharrison/finalfit
 VignetteBuilder: knitr
