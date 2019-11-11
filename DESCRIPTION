@@ -73,7 +73,7 @@ Imports:
     dplyr,
     magrittr
 Remotes:
-    r-lib/covr
+    r-lib/covr,
     easystats/report,
     ewenharrison/finalfit
 VignetteBuilder: knitr
