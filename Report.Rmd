@@ -4,12 +4,17 @@ description: |
   Codes Used in Histopathology Research  
   Data Report for Histopathology Research  
   Example Using Random Generated Fakedata
-author:
+author: 
   - name: Serdar Balci, MD, Pathologist
     url: https://sbalci.github.io/histopathology-template/
     affiliation: serdarbalci.com
     affiliation_url: https://www.serdarbalci.com/
 date: "`r Sys.Date()`"
+mail: drserdarbalci@gmail.com
+linkedin: "serdar-balci-md-pathologist"
+twitter: "serdarbalci"
+github: "sbalci"
+home: "https://www.serdarbalci.com/"
 header-includes:
 - \usepackage{pdflscape}
 - \newcommand{\blandscape}{\begin{landscape}}
@@ -20,9 +25,18 @@ output:
   prettydoc::html_pretty:
     theme: leonids
     highlight: vignette
+    toc: true
+    number_sections: yes
+    css: css/style.css
+    includes:
+      after_body: _footer.html
   rmarkdown::html_vignette: 
     css: 
     - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
+  epuRate::epurate:
+    toc: TRUE
+    number_sections: FALSE
+    code_folding: "hide"
   distill::distill_article:
     toc: true
   redoc::redoc:
@@ -41,7 +55,69 @@ vignette: >
   %\VignetteIndexEntry{Histopathology Research Template}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
+bibliography: bib/template.bib
 ---
+
+
+# Introduction
+
+- **State the marker of interest, the study objectives, and hypotheses**^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3]
+
+[@Knijn2015] 
+
+
+# Materials & Methods
+
+Material and methods
+
+- Describe patient characteristics, and inclusion and exclusion criteria
+
+- Describe treatment details
+
+- Describe the type of material used
+
+- Specify how expression of the biomarker was assessed
+
+- Describe the number of independent (blinded) scorers and how they scored
+
+- State the method of case selection, study design, origin of the cases, and time frame
+
+- Describe the end of the follow-up period and median follow-up time
+
+- Define all clinical endpoints examined
+
+- Specify all applied statistical methods
+
+- Describe how interactions with other clinical/pathological factors were analyzed
+
+
+
+# Study Population
+
+<!-- Kişisel veriler -->
+
+
+# Statistical Analysis
+
+<!-- Hangi testler bilinmeli makalesi -->
+
+# Results
+
+- Describe the number of patients included in the analysis and reason for dropout
+
+- Report patient/disease characteristics (including the biomarker of interest) with the number of missing values
+
+- Describe the interaction of the biomarker of interest with established prognostic variables
+
+- Include at least 90 % of initial cases included in univariate and multivariate analyses
+
+- Report the estimated effect (relative risk/odds ratio, confidence interval, and p value) in univariate analysis
+
+- Report the estimated effect (hazard rate/odds ratio, confidence interval, and p value) in multivariate analysis
+
+- Report the estimated effects (hazard ratio/odds ratio, confidence interval, and p value) of other prognostic factors included in multivariate analysis
+
+
 
 
 ## Header Codes
@@ -97,7 +173,9 @@ vignette: >
 
 <!-- \pagebreak -->
 
+
 ## Descriptive Statistics
+
 
 ```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
 ```
@@ -144,6 +222,7 @@ vignette: >
 
 # Survival Analysis
 
+
 ```{r survival, child = here::here('childRmd', '_survival.Rmd')}
 ```
 
@@ -177,9 +256,18 @@ vignette: >
 <!-- ```{r comments, child = here::here('childRmd', '_comments.Rmd')} -->
 <!-- ``` -->
 
+---
+
+\pagebreak
 
 
-<!-- \pagebreak -->
+# Discussion
+
+- Interpret the results in context of the working hypothesis elaborated in the introduction and other relevant studies; include a discussion of limitations of the study.
+
+- Discuss potential clinical applications and implications for future research
+
+\pagebreak
 
 
 # Footer
@@ -199,37 +287,8 @@ vignette: >
 <!-- ``` -->
 
 
-
-
 <!-- --- -->
 
 
-<!-- {% if page.comments %} -->
-<!-- <script id="dsq-count-scr" src="//https-sbalci-github-io.disqus.com/count.js" async></script> -->
-
-<!-- <div id="disqus_thread"></div> -->
-<!-- <script> -->
-
-<!-- /** -->
-<!-- *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS. -->
-<!-- *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/ -->
-<!-- /* -->
-<!-- var disqus_config = function () { -->
-<!-- this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable -->
-<!-- this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable -->
-<!-- }; -->
-<!-- */ -->
-<!-- (function() { // DON'T EDIT BELOW THIS LINE -->
-<!-- var d = document, s = d.createElement('script'); -->
-<!-- s.src = 'https://https-sbalci-github-io.disqus.com/embed.js'; -->
-<!-- s.setAttribute('data-timestamp', +new Date()); -->
-<!-- (d.head || d.body).appendChild(s); -->
-<!-- })(); -->
-<!-- </script> -->
-<!-- <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
-
-<!-- {% endif %}  -->
-
-<!-- --- -->
-
+# References
 

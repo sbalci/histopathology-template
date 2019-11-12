@@ -1,0 +1,22 @@
+
+**Generate Fake Data**
+
+- Synthea^[The validity of synthetic clinical data: a validation study of a leading synthetic data generator (Synthea) using clinical quality measures. BMC Med Inform Decis Mak 19, 44 (2019) doi:10.1186/s12911-019-0793-0]
+  - https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-019-0793-0
+  - [Synthetic Patient Generation](https://synthetichealth.github.io/synthea/)
+  - [Basic Setup and Running](https://github.com/synthetichealth/synthea/wiki/Basic-Setup-and-Running)
+  - 
+- [intelligent patient data generator (iPDG)](http://www.mli.gmu.edu/index.php/research/ipdg/)
+- https://medium.com/free-code-camp/how-our-test-data-generator-makes-fake-data-look-real-ace01c5bde4a
+- https://forums.librehealth.io/t/demo-data-generation/203
+- https://mihin.org/services/patient-generator/
+- <!-- lung, cancer, breast datası ile birleştir -->
+
+
+
+**Use this code to generate fake clinicopathologic data**
+
+```{r generate fake data}
+source(file = here::here("R", "generatingFakeData.R"))
+```
+

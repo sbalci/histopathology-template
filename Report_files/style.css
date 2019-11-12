@@ -14,3 +14,28 @@ code span.ot { color: #007020; } /* OtherToken */
 code span.al { color: #ff0000; font-weight: bold; } /* AlertToken */
 code span.fu { color: #900; font-weight: bold; } /* Function calls */
 code span.er { color: #a61717; background-color: #e3d2d2; } /* ErrorTok */
+body .main-container {
+    max-width: 90%;
+}
+h1, .h1, h2, .h2, h3, .h3 {
+margin-top: 84px;
+}
+p.caption {
+  font-size: 0.9em;
+  font-style: italic;
+  color: grey;
+  margin-right: 10%;
+  margin-left: 10%;  
+  text-align: justify;
+}
+.btn {
+    border-width: 0 0px 0px 0px;
+    font-weight: normal;
+    text-transform: ;
+}
+
+.btn-default {
+    color: #2ecc71;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}

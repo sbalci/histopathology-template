@@ -98,7 +98,10 @@ colon_s %>%
 ```
 
 
-
+```r
+library(DT)
+datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T) )
+```
 
 
 

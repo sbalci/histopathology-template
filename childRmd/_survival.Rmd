@@ -98,9 +98,44 @@ finalfit::finalfit(dependentUni, explanatoryUni) -> tUni
 knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
 ```
 
-<!-- tUni$`HR (univariable)`[2] -->
+```{r}
+tUni_df <- tibble::as_tibble(tUni) %>% 
+  janitor::clean_names() 
 
-<!-- as_tibble(tUni) -->
+tUni_df_descr <- paste0("When ",
+                        tUni_df$dependent_surv_overall_time_outcome[1],
+                        " is ",
+                        tUni_df$x[2],
+                        ", there is ",
+                        tUni_df$hr_univariable[2],
+                        " times risk than ",
+                        "when ",
+                        tUni_df$dependent_surv_overall_time_outcome[1],
+                        " is ",
+                        tUni_df$x[1],
+                        "."
+                        )
+
+
+```
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+`r tUni_df_descr`
+
+</div>
+
+
+\noindent\colorbox{yellow}{
+\parbox{\dimexpr\linewidth-2\fboxsep}{
+
+`r tUni_df_descr`
+
+}
+}
 
 
 
@@ -114,8 +149,43 @@ km_fit
 
 
 ```{r}
-km_fit_median_df <- as_data_frame(km_fit)
+km_fit_median_df <- summary(km_fit)
+km_fit_median_df <- as.data.frame(km_fit_median_df$table) %>% 
+  janitor::clean_names() %>% 
+  tibble::rownames_to_column()
 ```
+
+
+```{r}
+km_fit_median_df %>% 
+  dplyr::mutate(
+    description = 
+      glue::glue(
+      "When {rowname}, median survival is {median} [{x0_95lcl} - {x0_95ucl}, 95% CI] months."
+    )
+  ) %>% 
+  dplyr::select(description) %>% 
+  pull() -> km_fit_median_definition
+```
+
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+`r km_fit_median_definition`
+
+</div>
+
+
+\noindent\colorbox{yellow}{
+\parbox{\dimexpr\linewidth-2\fboxsep}{
+
+`r km_fit_median_definition`
+
+}
+}
 
 
 
@@ -144,9 +214,26 @@ km_fit_df %>%
     )
   ) %>% 
   dplyr::select(description) %>% 
-  pull()
+  pull() -> km_fit_definition
 ```
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+`r km_fit_definition`
+
+</div>
+
+
+\noindent\colorbox{yellow}{
+\parbox{\dimexpr\linewidth-2\fboxsep}{
+
+`r km_fit_definition`
+
+}
+}
 
 
 
@@ -315,12 +402,25 @@ colon_s %>%
 
 
 
+```r
+library(survMisc)
+# Contal C, O'Quigley J, 1999 An application of changepoint methods in studying the effect of age on survival in breast cancer. Computational Statistics & Data Analysis 30(3):253--70. http://www.sciencedirect.com/science/article/pii/S0167947398000966{ScienceDirect}
+
+data(kidtran, package="KMsurv")
+k1 <- kidtran
+k2 <- k1[k1$gender==1 & k1$race==2, ]
+c1 <- coxph(Surv(time, delta) ~ age, data = k2)
+cutp(c1, var="age", plot=TRUE)
+k2 <- k1[k1$gender==2 & k1$race==2, ]
+c1 <- coxph(Surv(time, delta) ~ age, data = k2)
+cutp(c1, var="age")
+```
 
 
-
-
-
-
+```
+survIDINRI: IDI and NRI for comparing competing risk prediction models with censored survival data
+https://cran.r-project.org/web/packages/survIDINRI/index.html
+```
 
 
 

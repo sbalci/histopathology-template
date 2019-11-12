@@ -32,6 +32,12 @@ glimpse(mydata)
 ```
 
 
+questionr::irec()
+
+questionr::iorder()
+
+questionr::icut()
+
 
 iris %>% mutate(sumVar = rowSums(.[1:4]))
 

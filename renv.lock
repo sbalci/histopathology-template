@@ -642,6 +642,12 @@
       "Source": "CRAN",
       "Hash": "505705dbc59521b60da4c9c7fe94bde9"
     },
+    "gapminder": {
+      "Package": "gapminder",
+      "Version": "0.3.0",
+      "Source": "CRAN",
+      "Hash": "88cead34c8b0cd2aadc1655d42f3e0cd"
+    },
     "gdata": {
       "Package": "gdata",
       "Version": "2.18.0",
@@ -803,6 +809,12 @@
       "Version": "0.1",
       "Source": "CRAN",
       "Hash": "17102304d55b3242d6199cddc0fd79f7"
+    },
+    "hexbin": {
+      "Package": "hexbin",
+      "Version": "1.27.3",
+      "Source": "CRAN",
+      "Hash": "dd1a219a8e8212b1808640670893274e"
     },
     "highr": {
       "Package": "highr",
@@ -1250,6 +1262,12 @@
       "Source": "CRAN",
       "Hash": "10548c749c529a01a2c0e5cbc9d93aa2"
     },
+    "nycflights13": {
+      "Package": "nycflights13",
+      "Version": "1.0.1",
+      "Source": "CRAN",
+      "Hash": "63997ce87cced3914e5467aa859c07c5"
+    },
     "oompaBase": {
       "Package": "oompaBase",
       "Version": "3.2.9",
@@ -1387,6 +1405,12 @@
       "Version": "0.2.0",
       "Source": "CRAN",
       "Hash": "1a8304cc1382ef64e3b710ba589d7bc0"
+    },
+    "plotly": {
+      "Package": "plotly",
+      "Version": "4.9.0",
+      "Source": "CRAN",
+      "Hash": "d4f8ca9fa024657598c3698df2e12cfb"
     },
     "plyr": {
       "Package": "plyr",

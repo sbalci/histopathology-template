@@ -124,4 +124,52 @@ Text Here
 \pagebreak
 
 
+---
 
+
+
+```{r out.width=c('50%', '50%'), fig.show='hold', echo=FALSE}
+boxplot(1:10)
+plot(rnorm(10))
+```
+
+
+
+---
+
+<div class = "row">
+<div class = "col-md-4">
+<br><br>Since R Markdown use the [bootstrap framework](https://getbootstrap.com/docs/4.0/layout/grid/) under the hood. It is possible to benefit its powerful grid system. Basically, you can consider that your row is divided in 12 subunits of same width. You can then choose to use only a few of this subunits.
+</div>
+<div class = "col-md-4">
+<br><br>Here, I use 3 subunits of size 4 (4x3=12). The last column is used for a plot. You can read more about the grid system [here](bootstrap grid system). I got this result showing the following code in my R Markdown document.
+</div>
+<div class = "col-md-4">
+```{r, message=FALSE, echo=FALSE}
+ggplot2::ggplot(mtcars,
+                ggplot2::aes(x=mpg)
+                ) + 
+ggplot2::geom_histogram(fill="skyblue", alpha=0.5) + 
+ggplot2::theme_minimal()
+```
+</div>
+</div>
+
+
+---
+
+
+
+# Tabs for sub-chapters {#buttons .tabset .tabset-fade .tabset-pills}
+
+## First
+
+content of sub-chapter #1
+
+## Second
+
+content of sub-chapter #2
+
+## Third
+
+content of sub-chapter #3

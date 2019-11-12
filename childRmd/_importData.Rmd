@@ -2,20 +2,12 @@
 **Codes for importing data.**^[See `childRmd/_importData.Rmd` file for other codes]
 
 
-**Use this code to generate fake clinicopathologic data**
-
-<!-- lung, cancer, breast datası ile birleştir -->
-
-```{r generate fake data}
-source(file = here::here("R", "generatingFakeData.R"))
-```
-
-**Use this code to read the generated fake data**
+**Use this code to read the data**
 
 ```{r import data}
 library(readxl)
 mydata <- readxl::read_excel(here::here("data", "mydata.xlsx"))
-# View(mydata)
+# View(mydata) # Use to view data after importing
 ```
 
 

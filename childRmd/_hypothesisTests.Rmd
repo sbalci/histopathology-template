@@ -118,3 +118,32 @@ SmartEDA::ExpCatStat(
 
 
 
+# Frequently Used Statistical Tests By Pathologists
+
+Frequently Used Statistical Tests^[Statistical Literacy Among Academic Pathologists: A Survey Study to Gauge Knowledge of Frequently Used Statistical Tests Among Trainees and Faculty. Archives of Pathology & Laboratory Medicine: February 2017, Vol. 141, No. 2, pp. 279-287. https://doi.org/10.5858/arpa.2016-0200-OA] by [@Schmidt2017]
+
+- Student t test
+- Regression/ANOVA
+- Chi-square test
+- Mann-Whitney test (rank sum)
+- Fisher exact test
+- Survival analysis
+    - Kaplan-Meier/log-rank
+    - Cox regression
+- Multiple comparison adjustment
+    - Tukey
+    - Bonferroni
+    - Newman-Keuls
+- Kappa Statistic
+- ROC analysis
+- Logistic regression
+- Spearman rank correlation
+- Kruskal-Wallis test
+- Pearson correlation statistic
+- Normality test
+- McNemar test
+
+# Consider Adding:
+- https://cran.r-project.org/web/packages/sm/sm.pdf
+- https://cran.r-project.org/web/packages/Rfit/Rfit.pdf
+

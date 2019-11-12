@@ -734,12 +734,23 @@ SmartEDA::ExpNumViz(mtcars, target = "am", scatter = TRUE)
 
 
 
-
-
-
-
-
-
-
+# Interactive graphics {#interactive}
+***
+R allows to build any type of [interactive graphic](https://www.r-graph-gallery.com/interactive-charts/). My favourite library is [plotly](https://www.r-graph-gallery.com/get-the-best-from-ggplotly/) that will turn any of your ggplot2 graphic interactive in one supplementary line of code. Try to hover points, to select a zone, to click on the legend.
+<br><br>
+```{r, message=FALSE, warning=FALSE, fig.align="center"}
+library(ggplot2)
+library(plotly)
+library(gapminder)
+ 
+p <- gapminder %>%
+  filter(year==1977) %>%
+  ggplot( aes(gdpPercap, lifeExp, size = pop, color=continent)) +
+  geom_point() +
+  scale_x_log10() +
+  theme_bw()
+ 
+ggplotly(p)
+```
 
 
