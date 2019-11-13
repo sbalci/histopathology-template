@@ -246,50 +246,50 @@ dataMaid::makeDataReport(data = mydata,
 
 
 
-<!-- ```{r dataMaid 2, eval=FALSE, include=FALSE} -->
-<!-- # https://cran.r-project.org/web/packages/dataMaid/vignettes/extending_dataMaid.html -->
-<!-- library("dataMaid") -->
-<!-- dataMaid::makeDataReport(mydata, -->
-<!--   #add extra precheck function          -->
-<!--   preChecks = c("isKey", "isSingular", "isSupported", "isID"), -->
+```{r dataMaid 2, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/dataMaid/vignettes/extending_dataMaid.html
+library("dataMaid")
+dataMaid::makeDataReport(mydata,
+  #add extra precheck function
+  preChecks = c("isKey", "isSingular", "isSupported", "isID"),
 
-<!--   #Add the extra summaries - countZeros() for character, factor,  -->
-<!--   #integer, labelled and numeric variables and meanSummary() for integer,  -->
-<!--   #numeric and logical variables: -->
-<!--   summaries = setSummaries( -->
-<!--     character = defaultCharacterSummaries(add = "countZeros"), -->
-<!--     factor = defaultFactorSummaries(add = "countZeros"), -->
-<!--     labelled = defaultLabelledSummaries(add = "countZeros"), -->
-<!--     numeric = defaultNumericSummaries(add = c("countZeros", "meanSummary")), -->
-<!--     integer = defaultIntegerSummaries(add = c("countZeros", "meanSummary")), -->
-<!--     logical = defaultLogicalSummaries(add =  c("meanSummary")) -->
-<!--   ), -->
+  #Add the extra summaries - countZeros() for character, factor,
+  #integer, labelled and numeric variables and meanSummary() for integer,
+  #numeric and logical variables:
+  summaries = setSummaries(
+    character = defaultCharacterSummaries(add = "countZeros"),
+    factor = defaultFactorSummaries(add = "countZeros"),
+    labelled = defaultLabelledSummaries(add = "countZeros"),
+    numeric = defaultNumericSummaries(add = c("countZeros", "meanSummary")),
+    integer = defaultIntegerSummaries(add = c("countZeros", "meanSummary")),
+    logical = defaultLogicalSummaries(add =  c("meanSummary"))
+  ),
 
-<!--   #choose mosaicVisual() for categorical variables, -->
-<!--   #prettierHist() for all others: -->
-<!--   visuals = setVisuals( -->
-<!--     factor = "mosaicVisual", -->
-<!--     numeric = "prettierHist", -->
-<!--     integer = "prettierHist",  -->
-<!--     Date = "prettierHist" -->
-<!--   ),  -->
+  #choose mosaicVisual() for categorical variables,
+  #prettierHist() for all others:
+  visuals = setVisuals(
+    factor = "mosaicVisual",
+    numeric = "prettierHist",
+    integer = "prettierHist",
+    Date = "prettierHist"
+  ),
 
-<!--   #Add the new checkFunction, identifyColons, for character, factor and  -->
-<!--   #labelled variables: -->
-<!--   checks = setChecks( -->
-<!--     character = defaultCharacterChecks(add = "identifyColons"), -->
-<!--     factor = defaultFactorChecks(add = "identifyColons"), -->
-<!--     labelled = defaultLabelledChecks(add = "identifyColons") -->
-<!--   ), -->
+  #Add the new checkFunction, identifyColons, for character, factor and
+  #labelled variables:
+  checks = setChecks(
+    character = defaultCharacterChecks(add = "identifyColons"),
+    factor = defaultFactorChecks(add = "identifyColons"),
+    labelled = defaultLabelledChecks(add = "identifyColons")
+  ),
 
-<!--   #overwrite old versions of the report, render to html and don't  -->
-<!--   #open the html file automatically: -->
-<!--   replace = TRUE,  -->
-<!--   output = "html", -->
-<!--   open = FALSE, -->
-<!--   file = here::here("out/dataMaid_mydata.Rmd") -->
-<!-- ) -->
-<!-- ``` -->
+  #overwrite old versions of the report, render to html and don't
+  #open the html file automatically:
+  replace = TRUE,
+  output = "html",
+  open = FALSE,
+  file = here::here("out/dataMaid_mydata.Rmd")
+)
+```
 
 
 

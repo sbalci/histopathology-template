@@ -9,7 +9,7 @@ for (i in 1:length(names(mydataCategorical))) {
 "```{r ", names(mydataCategorical)[i], "}
 mydataCategorical %>% 
   janitor::tabyl(", names(mydataCategorical)[i], ") %>%
-  adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
   knitr::kable()
 ```", "\n", "\n", "\\pagebreak","\n")
     put(y)

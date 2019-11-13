@@ -84,6 +84,28 @@ mydata %>%
 
 
 
+```{r Kaplan-Meier Plot Log-Rank Test 2}
+# Drawing Survival Curves Using ggplot2
+# https://rpkgs.datanovia.com/survminer/reference/ggsurvplot.html
+
+mydata %>%
+  finalfit::surv_plot(.data = .,
+                      dependent = "Surv(OverallTime, Outcome)",
+                      explanatory = "LVI",
+                      xlab='Time (months)',
+                      pval=TRUE,
+                      legend = 'none',
+                      break.time.by = 12,
+                      xlim = c(0,60)
+                      # legend.labs = c('a','b')
+                      )
+```
+
+
+
+
+
+
 **Univariate Cox-Regression**
 
 ```{r Univariate Cox-Regression}
