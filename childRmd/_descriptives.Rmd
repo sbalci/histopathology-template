@@ -180,7 +180,7 @@ mydataDescription %>%
 
 
 ```{r generate Code descriptive, eval=FALSE, include=FALSE}
-source(here::here("R", "generatingCodeForDescriptiveStatistics.R"))
+source(here::here("R", "gc_desc_cat.R"))
 ```
 
 
@@ -321,7 +321,7 @@ mydataDescription %>%
 
 
 ```{r generate Code Continious, eval=FALSE, include=FALSE}
-source(here::here("R", "generatingCodeForContinious.R"))
+source(here::here("R", "gc_desc_cont.R"))
 ```
 
 

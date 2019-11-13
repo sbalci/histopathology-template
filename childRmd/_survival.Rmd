@@ -283,7 +283,7 @@ explanatoryKM <- c("explanatory1",
 
 
 ```{r generate Code, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
-source(here::here("R", "generatingCodeForSurvival.R"))
+source(here::here("R", "gc_survival.R"))
 ```
 
 

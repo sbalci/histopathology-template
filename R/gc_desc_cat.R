@@ -17,12 +17,3 @@ mydataCategorical %>%
 
 writeLines(magicfor::magic_result_as_vector(), here::here("childRmd", "generatedCodeDescriptives.Rmd"))
 magicfor::magic_free()
-
-
-
-# whippleables %>% 
-#     janitor::tabyl(Organ) %>%
-#     janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
-#     janitor::adorn_totals("row") %>%
-#     knitr::kable()
-

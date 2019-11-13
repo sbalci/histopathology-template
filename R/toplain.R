@@ -11,5 +11,5 @@ toplain <- function(s) {
     s2
 }
 
-names(merkez_sonuc) <- make.names(toplain(tolower(names(merkez_sonuc))))
+# names(merkez_sonuc) <- make.names(toplain(tolower(names(merkez_sonuc))))
 

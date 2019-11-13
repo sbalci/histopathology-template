@@ -7,5 +7,5 @@ ozet <- function(x) {
     cat(names(x), "ortalama+ssapma:",ortalama,"±",ssapma)
 }
 
-ozet(mydata$variables)
+# ozet(mydata$variables)
 

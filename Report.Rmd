@@ -283,7 +283,7 @@ Material and methods
 <!-- **push all changes to GitHub repository**  -->
 
 <!-- ```{r git update} -->
-<!-- source(file = here::here("R", "gitUpdateCommitPush.R")) -->
+<!-- source(file = here::here("R", "force_git.R")) -->
 <!-- ``` -->
 
 

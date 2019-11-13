@@ -19,7 +19,7 @@ explanatory <- c("explanatory1",
 
 
 ```{r generate code for Cross Table, eval=FALSE, include=FALSE}
-source(here::here("R", "generatingCodeForCrossTables.R"))
+source(here::here("R", "gc_table_cross.R"))
 ```
 
 

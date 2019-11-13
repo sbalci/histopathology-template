@@ -28,7 +28,7 @@ mydataCategorical <- mydata %>%
 ```{r include=FALSE, eval=FALSE, include=FALSE}
 mydataCategorical_variable <- explanatory[1]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -41,7 +41,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[2]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
@@ -54,7 +54,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[3]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -68,7 +68,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[4]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -81,7 +81,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[5]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -94,7 +94,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[6]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -107,7 +107,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[7]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -120,7 +120,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[8]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -133,7 +133,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[9]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -146,7 +146,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[10]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -159,7 +159,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[11]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -172,7 +172,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[12]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -185,7 +185,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[13]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -198,7 +198,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[14]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
@@ -210,7 +210,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[15]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -223,7 +223,7 @@ mydataCategorical_variable <- NA
 dependent2 <- NA
 mydataCategorical_variable <- explanatory[16]
 dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
-source(here::here("R", "generatingCodeForCategoricalPlots.R"))
+source(here::here("R", "gc_plot_cat.R"))
 ```
 
 
@@ -314,7 +314,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 
 
 <!-- ```{r include=FALSE} -->
-<!-- source(here::here("R", "generatingCodeForContiniousPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cont.R")) -->
 <!-- ``` -->
 
 
@@ -377,7 +377,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- ```{r include=FALSE} -->
 <!-- mydataCategorical_variable <- explanatory[1] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -390,7 +390,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[2] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 <!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
@@ -403,7 +403,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[3] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -417,7 +417,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[4] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -430,7 +430,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[5] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -443,7 +443,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[6] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -456,7 +456,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[7] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -469,7 +469,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[8] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -482,7 +482,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[9] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -495,7 +495,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[10] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -508,7 +508,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[11] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -521,7 +521,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[12] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -534,7 +534,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[13] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -547,7 +547,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[14] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 <!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
@@ -559,7 +559,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[15] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -572,7 +572,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- dependent2 <- NA -->
 <!-- mydataCategorical_variable <- explanatory[16] -->
 <!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
-<!-- source(here::here("R", "generatingCodeForCategoricalPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
 <!-- ``` -->
 
 
@@ -592,7 +592,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 
 
 <!-- ```{r include=FALSE} -->
-<!-- source(here::here("R", "generatingCodeForContiniousPlots.R")) -->
+<!-- source(here::here("R", "gc_plot_cont.R")) -->
 <!-- ``` -->
 
 

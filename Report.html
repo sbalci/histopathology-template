@@ -1006,7 +1006,7 @@ https://cran.r-project.org/web/packages/survIDINRI/index.html</code></pre>
 <span id="cb38-19"><a href="#cb38-19"></a></span>
 <span id="cb38-20"><a href="#cb38-20"></a><span class="kw">print</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;saved data after analysis to &quot;</span>, <span class="kw">rownames</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, </span>
 <span id="cb38-21"><a href="#cb38-21"></a>    excelName))), <span class="st">&quot; : &quot;</span>, <span class="kw">as.character</span>(<span class="kw">file.info</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, excelName))<span class="op">$</span>ctime)))</span></code></pre></div>
-<pre><code>saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-13.xlsx : 2019-11-13 17:49:06</code></pre>
+<pre><code>saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-13.xlsx : 2019-11-13 21:32:03</code></pre>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="final-data-summary" class="section level2 appendix">
@@ -1048,6 +1048,7 @@ Fox, J., &amp; Weisberg, S. (2018). car: Companion to Applied Regression. [R pac
 <div id="dataorderdatareferences" class="section level2">
 <h2><span class="header-section-number">8.4</span> data[order(data$References), ]</h2>
 <p>Ethan Heinzen, Jason Sinnwell, Elizabeth Atkinson, Tina Gunderson and Gregory Dougherty (2019). arsenal: An Arsenal of ‘R’ Functions for Large-Scale Statistical Summaries. R package version 3.3.0. <a href="https://CRAN.R-project.org/package=arsenal" class="uri">https://CRAN.R-project.org/package=arsenal</a> Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. <a href="https://github.com/ewenharrison/finalfit" class="uri">https://github.com/ewenharrison/finalfit</a><br />
+H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.<br />
 Hadley Wickham and Jennifer Bryan (2019). readxl: Read Excel Files. R package version 1.3.1. <a href="https://CRAN.R-project.org/package=readxl" class="uri">https://CRAN.R-project.org/package=readxl</a><br />
 Hadley Wickham, Romain François, Lionel Henry and Kirill Müller (2019). dplyr: A Grammar of Data Manipulation. R package version 0.8.3. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a><br />
 Kazuki Yoshida (2019). tableone: Create ‘Table 1’ to Describe Baseline Characteristics. R package version 0.10.0. <a href="https://CRAN.R-project.org/package=tableone" class="uri">https://CRAN.R-project.org/package=tableone</a><br />
@@ -1055,6 +1056,7 @@ Makowski, D. &amp; Lüdecke, D. (2019). The report package for R: Ensuring the u
 Patil I (2018). <em>ggstatsplot: ‘ggplot2’ Based Plots withStatistical Details</em>. doi: 10.5281/zenodo.2074621 (URL:<a href="https://doi.org/10.5281/zenodo.2074621" class="uri">https://doi.org/10.5281/zenodo.2074621</a>), &lt;URL:<a href="https://CRAN.R-project.org/package=ggstatsplot" class="uri">https://CRAN.R-project.org/package=ggstatsplot</a>&gt;.<br />
 Rinker, T. W. (2018). wakefield: Generate Random Data. version 0.3.3. Buffalo, New York. <a href="https://github.com/trinker/wakefield" class="uri">https://github.com/trinker/wakefield</a><br />
 Sam Firke (2019). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 1.2.0. <a href="https://CRAN.R-project.org/package=janitor" class="uri">https://CRAN.R-project.org/package=janitor</a><br />
+Stefan Milton Bache and Hadley Wickham (2014). magrittr: A Forward-Pipe Operator for R. R package version 1.5. <a href="https://CRAN.R-project.org/package=magrittr" class="uri">https://CRAN.R-project.org/package=magrittr</a><br />
 Therneau T (2015). <em>A Package for Survival Analysis in S</em>. version2.38, &lt;URL: <a href="https://CRAN.R-project.org/package=survival" class="uri">https://CRAN.R-project.org/package=survival</a>&gt;.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>report<span class="op">::</span><span class="kw">show_packages</span>(<span class="dt">session =</span> <span class="kw">sessionInfo</span>()) <span class="op">%&gt;%</span><span class="st"> </span>kableExtra<span class="op">::</span><span class="kw">kable</span>()</span></code></pre></div>
 <table>
@@ -1107,6 +1109,17 @@ Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant 
 </tr>
 <tr>
 <td style="text-align:left;">
+ggplot2
+</td>
+<td style="text-align:left;">
+3.2.1
+</td>
+<td style="text-align:left;">
+H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 ggstatsplot
 </td>
 <td style="text-align:left;">
@@ -1125,6 +1138,17 @@ janitor
 </td>
 <td style="text-align:left;">
 Sam Firke (2019). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 1.2.0. <a href="https://CRAN.R-project.org/package=janitor" class="uri">https://CRAN.R-project.org/package=janitor</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+magrittr
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+<td style="text-align:left;">
+Stefan Milton Bache and Hadley Wickham (2014). magrittr: A Forward-Pipe Operator for R. R package version 1.5. <a href="https://CRAN.R-project.org/package=magrittr" class="uri">https://CRAN.R-project.org/package=magrittr</a>
 </td>
 </tr>
 <tr>
@@ -1309,39 +1333,39 @@ attached base packages:
 
 other attached packages:
  [1] survival_2.44-1.1 tableone_0.10.0   arsenal_3.3.0    
- [4] wakefield_0.3.3   ggstatsplot_0.1.2 finalfit_0.9.6   
- [7] report_0.1.0      janitor_1.2.0     readxl_1.3.1     
-[10] dplyr_0.8.3      
+ [4] wakefield_0.3.3   ggstatsplot_0.1.2 ggplot2_3.2.1    
+ [7] finalfit_0.9.6    report_0.1.0      janitor_1.2.0    
+[10] readxl_1.3.1      magrittr_1.5      dplyr_0.8.3      
 
 loaded via a namespace (and not attached):
   [1] estimability_1.3          SparseM_1.77             
   [3] coda_0.19-3               tidyr_1.0.0              
-  [5] ggplot2_3.2.1             acepack_1.4.1            
-  [7] knitr_1.25                multcomp_1.4-10          
-  [9] data.table_1.12.6         rpart_4.1-15             
- [11] inline_0.3.15             RCurl_1.95-4.12          
- [13] generics_0.0.2            callr_3.3.2              
- [15] cowplot_1.0.0             TH.data_1.0-10           
- [17] mice_3.6.0                future_1.15.0            
- [19] webshot_0.5.1             xml2_1.2.2               
- [21] lubridate_1.7.4           httpuv_1.5.2             
- [23] ggsci_2.9                 StanHeaders_2.19.0       
- [25] assertthat_0.2.1          WRS2_1.0-0               
- [27] xfun_0.10                 hms_0.5.2                
- [29] evaluate_0.14             promises_1.1.0           
- [31] DEoptimR_1.0-8            km.ci_0.5-2              
- [33] DBI_1.0.0                 htmlwidgets_1.5.1        
- [35] mcmc_0.9-6                reshape_0.8.8            
- [37] stats4_3.6.0              paletteer_0.2.1          
- [39] purrr_0.3.3               ellipsis_0.3.0           
- [41] rcompanion_2.3.0          ggpubr_0.2.3             
- [43] backports_1.1.5           insight_0.6.0            
- [45] survey_3.36               ggcorrplot_0.1.3         
- [47] MCMCpack_1.4-4            rapportools_1.0          
- [49] libcoin_1.0-5             jmvcore_1.0.0            
- [51] vctrs_0.2.0               quantreg_5.51            
- [53] here_0.1                  prettydoc_0.3.0          
- [55] sjlabelled_1.1.1          abind_1.4-5              
+  [5] acepack_1.4.1             knitr_1.25               
+  [7] multcomp_1.4-10           data.table_1.12.6        
+  [9] rpart_4.1-15              inline_0.3.15            
+ [11] RCurl_1.95-4.12           generics_0.0.2           
+ [13] callr_3.3.2               cowplot_1.0.0            
+ [15] TH.data_1.0-10            mice_3.6.0               
+ [17] future_1.15.0             webshot_0.5.1            
+ [19] xml2_1.2.2                lubridate_1.7.4          
+ [21] httpuv_1.5.2              ggsci_2.9                
+ [23] StanHeaders_2.19.0        assertthat_0.2.1         
+ [25] WRS2_1.0-0                xfun_0.10                
+ [27] hms_0.5.2                 evaluate_0.14            
+ [29] promises_1.1.0            DEoptimR_1.0-8           
+ [31] km.ci_0.5-2               DBI_1.0.0                
+ [33] htmlwidgets_1.5.1         mcmc_0.9-6               
+ [35] reshape_0.8.8             stats4_3.6.0             
+ [37] paletteer_0.2.1           purrr_0.3.3              
+ [39] ellipsis_0.3.0            rcompanion_2.3.0         
+ [41] ggpubr_0.2.3              backports_1.1.5          
+ [43] insight_0.6.0             survey_3.36              
+ [45] ggcorrplot_0.1.3          MCMCpack_1.4-4           
+ [47] rapportools_1.0           libcoin_1.0-5            
+ [49] jmvcore_1.0.0             vctrs_0.2.0              
+ [51] quantreg_5.51             here_0.1                 
+ [53] prettydoc_0.3.0           sjlabelled_1.1.1         
+ [55] abind_1.4-5               withr_2.1.2              
  [57] pryr_0.1.4                metaBMA_0.6.2            
  [59] robustbase_0.93-5         checkmate_1.9.4          
  [61] emmeans_1.4.1             describer_0.2.0          
@@ -1370,62 +1394,62 @@ loaded via a namespace (and not attached):
 [107] stringr_1.4.0             multcompView_0.1-7       
 [109] coin_1.3-1                robust_0.4-18.1          
 [111] readr_1.3.1               ggsignif_0.6.0           
-[113] scales_1.0.0              magrittr_1.5             
-[115] plyr_1.8.4                compiler_3.6.0           
-[117] kableExtra_1.1.0          rstantools_2.0.0         
-[119] RColorBrewer_1.1-2        lme4_1.1-21              
-[121] rrcov_1.4-7               snakecase_0.11.0         
-[123] cli_1.1.0                 listenv_0.7.0            
-[125] pbapply_1.4-2             ps_1.3.0                 
-[127] TMB_1.7.15                Brobdingnag_1.2-6        
-[129] htmlTable_1.13.2          formatR_1.7              
-[131] Formula_1.2-3             MASS_7.3-51.4            
-[133] mgcv_1.8-29               tidyselect_0.2.5         
-[135] stringi_1.4.3             forcats_0.4.0            
-[137] highr_0.8                 mitools_2.4              
-[139] yaml_2.2.0                latticeExtra_0.6-28      
-[141] ggrepel_0.8.1             bridgesampling_0.7-2     
-[143] survMisc_0.5.5            grid_3.6.0               
-[145] manipulate_1.0.1          tools_3.6.0              
-[147] parallel_3.6.0            rio_0.5.16               
-[149] rstudioapi_0.10           foreign_0.8-72           
-[151] gridExtra_2.3             pairwiseComparisons_0.1.1
-[153] digest_0.6.22             shiny_1.3.2              
-[155] nortest_1.0-4             jmv_0.9.6.1              
-[157] Rcpp_1.0.3                car_3.0-3                
-[159] broom_0.5.2               metafor_2.1-0            
-[161] ez_4.4-0                  BayesFactor_0.9.12-4.2   
-[163] writexl_1.1               performance_0.3.0        
-[165] later_1.0.0               httr_1.4.1               
-[167] survminer_0.4.6           psych_1.8.12             
-[169] sjstats_0.17.6            colorspace_1.4-1         
-[171] rvest_0.3.4               splines_3.6.0            
-[173] expm_0.999-4              fit.models_0.5-14        
-[175] xtable_1.8-4              nloptr_1.2.1             
-[177] rstan_2.19.2              zeallot_0.1.0            
-[179] modeltools_0.2-22         R6_2.4.0                 
-[181] broom.mixed_0.2.4         Hmisc_4.2-0              
-[183] pillar_1.4.2              htmltools_0.4.0          
-[185] mime_0.7                  glue_1.3.1               
-[187] minqa_1.2.4               summarytools_0.9.4       
-[189] class_7.3-15              codetools_0.2-16         
-[191] jomo_2.6-9                pkgbuild_1.0.6           
-[193] pcaPP_1.9-73              mvtnorm_1.0-11           
-[195] furrr_0.1.0               lattice_0.20-38          
-[197] tibble_2.1.3              curl_4.2                 
-[199] DescTools_0.99.28         gtools_3.8.1             
-[201] magick_2.2                logspline_2.1.13         
-[203] zip_2.0.4                 openxlsx_4.1.0.1         
-[205] rmarkdown_1.16            munsell_0.5.0            
-[207] e1071_1.7-2               rsample_0.0.5            
-[209] labelled_2.2.1            sjmisc_2.8.1             
-[211] haven_2.1.1               reshape2_1.4.3           
-[213] gtable_0.3.0              bayestestR_0.3.0         </code></pre>
+[113] scales_1.0.0              plyr_1.8.4               
+[115] compiler_3.6.0            kableExtra_1.1.0         
+[117] rstantools_2.0.0          RColorBrewer_1.1-2       
+[119] lme4_1.1-21               rrcov_1.4-7              
+[121] snakecase_0.11.0          cli_1.1.0                
+[123] listenv_0.7.0             pbapply_1.4-2            
+[125] ps_1.3.0                  TMB_1.7.15               
+[127] Brobdingnag_1.2-6         htmlTable_1.13.2         
+[129] formatR_1.7               Formula_1.2-3            
+[131] MASS_7.3-51.4             mgcv_1.8-29              
+[133] tidyselect_0.2.5          stringi_1.4.3            
+[135] forcats_0.4.0             highr_0.8                
+[137] mitools_2.4               yaml_2.2.0               
+[139] latticeExtra_0.6-28       ggrepel_0.8.1            
+[141] bridgesampling_0.7-2      survMisc_0.5.5           
+[143] grid_3.6.0                manipulate_1.0.1         
+[145] tools_3.6.0               parallel_3.6.0           
+[147] rio_0.5.16                rstudioapi_0.10          
+[149] foreign_0.8-72            gridExtra_2.3            
+[151] pairwiseComparisons_0.1.1 digest_0.6.22            
+[153] shiny_1.3.2               nortest_1.0-4            
+[155] jmv_0.9.6.1               Rcpp_1.0.3               
+[157] car_3.0-3                 broom_0.5.2              
+[159] metafor_2.1-0             ez_4.4-0                 
+[161] BayesFactor_0.9.12-4.2    writexl_1.1              
+[163] performance_0.3.0         later_1.0.0              
+[165] httr_1.4.1                survminer_0.4.6          
+[167] psych_1.8.12              sjstats_0.17.6           
+[169] colorspace_1.4-1          rvest_0.3.4              
+[171] splines_3.6.0             expm_0.999-4             
+[173] fit.models_0.5-14         xtable_1.8-4             
+[175] nloptr_1.2.1              rstan_2.19.2             
+[177] zeallot_0.1.0             modeltools_0.2-22        
+[179] R6_2.4.0                  broom.mixed_0.2.4        
+[181] Hmisc_4.2-0               pillar_1.4.2             
+[183] htmltools_0.4.0           mime_0.7                 
+[185] summarytools_0.9.4        glue_1.3.1               
+[187] minqa_1.2.4               class_7.3-15             
+[189] codetools_0.2-16          jomo_2.6-9               
+[191] pkgbuild_1.0.6            pcaPP_1.9-73             
+[193] mvtnorm_1.0-11            furrr_0.1.0              
+[195] lattice_0.20-38           tibble_2.1.3             
+[197] curl_4.2                  DescTools_0.99.28        
+[199] gtools_3.8.1              magick_2.2               
+[201] logspline_2.1.13          zip_2.0.4                
+[203] openxlsx_4.1.0.1          rmarkdown_1.16           
+[205] munsell_0.5.0             e1071_1.7-2              
+[207] rsample_0.0.5             labelled_2.2.1           
+[209] sjmisc_2.8.1              haven_2.1.1              
+[211] reshape2_1.4.3            gtable_0.3.0             
+[213] bayestestR_0.3.0         </code></pre>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="notes" class="section level2 appendix">
 <h2><span class="header-section-number">8.6</span> Notes</h2>
-<p>Last update on 2019-11-13 17:49:07</p>
+<p>Last update on 2019-11-13 21:32:05</p>
 <p>Serdar Balci, MD, Pathologist<br />
 <a href="mailto:drserdarbalci@gmail.com" class="email">drserdarbalci@gmail.com</a><br />
 <a href="https://rpubs.com/sbalci/CV" class="uri">https://rpubs.com/sbalci/CV</a></p>
@@ -1433,7 +1457,7 @@ loaded via a namespace (and not attached):
 <!-- \pagebreak -->
 <!-- **push all changes to GitHub repository**  -->
 <!-- ```{r git update} -->
-<!-- source(file = here::here("R", "gitUpdateCommitPush.R")) -->
+<!-- source(file = here::here("R", "force_git.R")) -->
 <!-- ``` -->
 <!-- --- -->
 </div>

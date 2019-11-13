@@ -17,6 +17,6 @@
 **Use this code to generate fake clinicopathologic data**
 
 ```{r generate fake data}
-source(file = here::here("R", "generatingFakeData.R"))
+source(file = here::here("R", "gc_fake_data.R"))
 ```
 
