@@ -1,6 +1,30 @@
-# impute
+## impute
 
-## impute continious
+
+### Missing Data
+
+
+**Plot missing data**
+
+```{r visdat}
+visdat::vis_miss(mydata)
+```
+
+
+
+```{r visdat, eval=FALSE, include=FALSE}
+visdat::vis_miss(airquality,
+                 cluster = TRUE)
+```
+
+
+```{r visdat, eval=FALSE, include=FALSE}
+visdat::vis_miss(airquality,
+         sort_miss = TRUE)
+```
+
+
+### impute continious
 
 
 ```{r dlookr impute, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
@@ -32,7 +56,7 @@ carseats %>%
 ```
 
 
-## impute categorical
+### impute categorical
 
 ```{r dlookr impute categorical value mice, eval=FALSE, include=FALSE}
 library(mice)
@@ -44,7 +68,7 @@ plot(urban)
 
 
 
-## impute outlier
+### impute outlier
 
 ```{r dlookr impute outliers, eval=FALSE, include=FALSE}
 price <- dlookr::imputate_outlier(carseats, Price, method = "capping")
@@ -66,10 +90,10 @@ carseats %>%
 
 
 
-# transform
+## transform
 
 
-## min -max 
+### min -max 
 
 ```{r dlookr transform min max, eval=FALSE, include=FALSE}
 carseats %>% 
@@ -80,7 +104,7 @@ carseats %>%
 ```
 
 
-## skewness
+### skewness
 
 
 ```{r dlookr transform skewness, eval=FALSE, include=FALSE}
@@ -94,7 +118,7 @@ dlookr::find_skewness(carseats, value = TRUE, thres = 0.1)
 ```
 
 
-## log
+### log
 
 ```{r dlookr transform log, eval=FALSE, include=FALSE}
 Advertising_log = transform(carseats$Advertising, method = "log")
@@ -106,7 +130,7 @@ plot(Advertising_log)
 
 
 
-# binning
+## binning
 
 ```{r dlookr transform binning, eval=FALSE, include=FALSE}
 bin <- dlookr::binning(carseats$Income)
@@ -137,7 +161,7 @@ carseats %>%
 
 
 
-## optimal binning
+### optimal binning
 
 ```{r dlookr transform optimal binning, eval=FALSE, include=FALSE}
 bin <- dlookr::binning_by(carseats, "US", "Advertising")
@@ -151,7 +175,7 @@ plot(bin, sub = "bins of Advertising variable")
 ```
 
 
-## standardize
+### standardize
 
 
 ```{r exploreR, eval=FALSE, include=FALSE}
@@ -174,7 +198,7 @@ exploreR::massregplot(iris, "Sepal.Length", ignore = "Species")
 
 
 
-# data transformation report
+## data transformation report
 
 
 ```{r dlookr data transformation method, eval=FALSE, include=FALSE}
@@ -189,7 +213,7 @@ carseats %>%
 
 
 
-# inspectdf
+## inspectdf
 
 ```{r inspectdf, eval=FALSE, include=FALSE}
 inspectdf::inspect_na(starwars)

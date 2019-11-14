@@ -140,14 +140,6 @@ iris %>% explore::describe() %>% dplyr::filter(na > 0)
 ### Categorical Variables
 
 
-**print column names as vector**
-
-```{r print names as vector}
-dput(names(mydata))
-names(which(sapply(mydata, FUN = class) == "character"))
-```
-
-
 
 ```{r select categorical variables, eval=FALSE, include=FALSE}
 mydataCategorical <- mydata %>% 

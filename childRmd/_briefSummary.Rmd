@@ -1,0 +1,10 @@
+
+### Report General Features
+
+```{r}
+# Dataframe report
+mydata %>% 
+  select(-contains("Date")) %>%
+  report::report(.)
+```
+

@@ -2,185 +2,217 @@
 **Codes for overviewing the data.**^[See `childRmd/_overView.Rmd` file for other codes]
 
 
-### Report General Features
+### Find Key Columns
+
+**print column names as vector**
 
 
-```{r}
-# Dataframe report
+```{r print names as vector}
+dput(names(mydata))
+```
+
+
+**Find ID and key columns to exclude from analysis**
+
+See the code as function in `R/find_key.R` 
+
+```{r find ID and key columns}
+keycolumns <- 
+    mydata %>% 
+    sapply(., FUN = dataMaid::isKey) %>% 
+    as_tibble() %>% 
+    select(
+        which(.[1, ] == TRUE)
+    ) %>% 
+    names()
+keycolumns
+```
+
+
+### Variable Types
+
+**Get variable types**
+
+```{r get variable types inspectdf}
 mydata %>% 
-  select(-contains("Date")) %>%
-  report::report(.)
-```
-
-```r
-r <- report(iris)
-to_text(r)
-print(to_text(r), width=100)
-to_table(r)
-
-
-r <- iris %>% 
-  group_by(Species) %>% 
-  report(median = TRUE, range = FALSE)  # Display only the Median and MAD
-to_fulltext(r)
-to_fulltable(r)
-
-
-Report participants details
-
-data <- data.frame("Age" = c(22, 23, 54, 21),
-                   "Sex" = c("F", "F", "M", "M"))
-
-paste(report_participants(data, spell_n = TRUE),
-      "were recruited in the study.")
+  select(-keycolumns) %>% 
+inspectdf::inspect_types()
 ```
 
 
-### Define Variable Types
-
-```{r define continious variables, eval=FALSE, include=FALSE}
-mydataDescription <- describer::describe(mydata)
-
-mydataDescription %>% 
-    janitor::clean_names() %>% 
-    dplyr::filter(column_type == "numeric" | column_type == "double") %>% 
-    dplyr::select(column_name) %>% 
-    dplyr::pull() -> continiousVariables
-```
-
-
-
-```{r inspectdf column types, eval=FALSE, include=FALSE}
-inspectdf::inspect_types(starwars)
-
-inspectdf::inspect_types(starwars) %>% 
-  dplyr::filter(type == "character") %>% 
-  dplyr::select(col_name) %>% 
-  pull() %>% 
-  unlist() -> characterVariables
-
-inspectdf::inspect_types(starwars) %>% 
-  dplyr::filter(type == "list") %>% 
-  dplyr::select(col_name) %>% 
-  pull() %>% 
-  unlist() -> listVariables
-
-inspectdf::inspect_types(starwars) %>% 
-  dplyr::filter(type == "numeric") %>% 
-  dplyr::select(col_name) %>% 
-  pull() %>% 
-  unlist() -> numericVariables
-
-inspectdf::inspect_types(starwars) %>% 
-  dplyr::filter(type == "integer") %>% 
-  dplyr::select(col_name) %>% 
-  pull() %>% 
-  unlist() -> integerVariables
-```
-
-
-```{r inspectdf column types 2, eval=FALSE, include=FALSE}
-
-inspectdf::inspect_types(mydata) %>% inspectdf::show_plot()
-
-# inspectdf::inspect_types(star_1, star_2)
-```
-
-
-
-
-### Overview / Exploratory Data Analysis (EDA)
-
-
-```{r summarytools, eval=FALSE, include=FALSE}
-summarytools::view(summarytools::dfSummary(mydata))
-```
-
-
-```{r glimpse, eval=FALSE, include=FALSE}
-glimpse(mydata)
-```
-
-
-
-```{r describer 1, eval=FALSE, include=FALSE}
-library(dplyr, warn.conflicts = FALSE)
-library(describer)
-
+```{r describer 1}
 mydata %>% 
   describer::describe() %>% 
   knitr::kable(format = "markdown")
 ```
 
 
-```{r describer group_by, eval=FALSE, include=FALSE}
+**Plot vriable types**
+
+```{r variable type plot inspectdf}
 mydata %>% 
-  group_by(Grade) %>% 
-  do(describer::describe(.)) %>% 
-  knitr::kable(format = "markdown")
+    select(-keycolumns) %>% 
+  inspectdf::inspect_types() %>% 
+  inspectdf::show_plot()
 ```
 
 
 
-```{r describer 2, eval=FALSE, include=FALSE}
-describer::describe(mydata)
-# describe(mtcars)
-# describe(iris)
-# describe(state.name)
-```
-
-
-
-
-```{r visdat, eval=FALSE, include=FALSE}
+```{r variable type plot visdat}
 # https://github.com/ropensci/visdat
 # http://visdat.njtierney.com/articles/using_visdat.html
 # https://cran.r-project.org/web/packages/visdat/index.html
 # http://visdat.njtierney.com/
 
-visdat::vis_dat(airquality)
-visdat::vis_miss(airquality)
-visdat::vis_compare(airquality, airquality)
-visdat::vis_expect(data = airquality, expectation = ~.x == -1, show_perc = TRUE)
+# visdat::vis_guess(mydata)
 
-visdat::vis_expect(airquality, ~.x >= 25)
-
-visdat::vis_cor(airquality)
-visdat::vis_guess(airquality)
-
-visdat::vis_miss(airquality, 
-         cluster = TRUE)
-
-visdat::vis_miss(airquality,
-         sort_miss = TRUE)
-
-
-test_miss_df <- data.frame(x1 = 1:10000,
-                           x2 = rep("A", 10000),
-                           x3 = c(rep(1L, 9999), NA))
-
-visdat::vis_miss(test_miss_df)
+visdat::vis_dat(mydata)
+```
 
 
 
-chickwts_diff <- chickwts
-chickwts_diff[sample(1:nrow(chickwts), 30),sample(1:ncol(chickwts), 2)] <- NA
-
-visdat::vis_compare(chickwts_diff, chickwts)
+### Define Variable Types
 
 
-# plotly::ggplotly(visdat::vis_dat(airquality))
-# ggplotly(vis_miss(airquality))
-# ggplotly(vis_guess(airquality))
+**Find `character` variables**
 
+```{r find character variables inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+    inspectdf::inspect_types() %>% 
+    dplyr::filter(type == "character") %>% 
+    dplyr::select(col_name) %>% 
+    pull() %>% 
+    unlist() -> characterVariables
+characterVariables
+```
+
+
+**Find `continious` variables**
+
+
+```{r find continious variables describer}
+mydata %>%
+    select(-keycolumns) %>% 
+  describer::describe() %>% 
+    janitor::clean_names() %>% 
+    dplyr::filter(column_type == "numeric" | column_type == "double") %>% 
+    dplyr::select(column_name) %>% 
+    dplyr::pull() -> continiousVariables
+continiousVariables
+```
+
+
+```{r find numeric variables inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+inspectdf::inspect_types() %>% 
+  dplyr::filter(type == "numeric") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> numericVariables
+numericVariables
+```
+
+
+```{r find integer variables inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+inspectdf::inspect_types() %>% 
+  dplyr::filter(type == "integer") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> integerVariables
+integerVariables
+```
+
+
+**Find `list` variables**
+
+```{r find list variables inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+inspectdf::inspect_types() %>% 
+  dplyr::filter(type == "list") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> listVariables
+listVariables
+```
+
+
+**Find date variables**
+
+```{r find Date variables}
+is_date <- function(x) inherits(x, c("POSIXct", "POSIXt"))
+
+dateVariables <- 
+names(which(sapply(mydata, FUN = is_date) == TRUE))
+dateVariables
 ```
 
 
 
 
 
+### Overview / Exploratory Data Analysis (EDA)
 
-```{r DataExplorer, eval=FALSE, include=FALSE}
+**Summary of Data via summarytools 📦**
+
+```{r summarytools, echo=TRUE, eval=FALSE}
+summarytools::view(summarytools::dfSummary(mydata %>% select(-keycolumns)))
+```
+
+**Summary via dataMaid 📦**
+
+```{r dataMaid, echo=TRUE, eval=FALSE}
+dataMaid::makeDataReport(data = mydata, 
+                         file = here::here("out/dataMaid_mydata.Rmd"),
+                         replace = TRUE,
+                         openResult = FALSE
+                         )
+```
+
+
+**Glimpse of Data**
+
+```{r glimpse}
+glimpse(mydata %>% select(-keycolumns, -dateVariables))
+```
+
+
+
+
+### Control Data
+
+**Control Data if matching expectations**
+
+```{r check expectations visdat, echo=TRUE, eval=FALSE}
+visdat::vis_expect(data = airquality,
+                   expectation = ~.x == -1,
+                   show_perc = TRUE)
+visdat::vis_expect(airquality, ~.x >= 25)
+```
+
+
+**See missing values**
+
+```{r missing values visdat}
+visdat::vis_miss(airquality,
+                 cluster = TRUE)
+```
+
+
+```{r missing values visdat 2}
+visdat::vis_miss(airquality,
+         sort_miss = TRUE)
+```
+
+
+
+
+
+```{r DataExplorer 1, eval=FALSE, include=FALSE}
 # https://cran.r-project.org/web/packages/DataExplorer/vignettes/dataexplorer-intro.html
 
 # library(nycflights13)
@@ -188,27 +220,50 @@ visdat::vis_compare(chickwts_diff, chickwts)
 # data_list <- list(airlines, airports, flights, planes, weather)
 
 DataExplorer::plot_str(mydata)
+```
 
+
+```{r DataExplorer 2, eval=FALSE, include=FALSE}
 DataExplorer::plot_str(mydata, type = "r")
+```
 
 
+```{r DataExplorer 3, eval=FALSE, include=FALSE}
 # merge_airlines <- merge(flights, airlines, by = "carrier", all.x = TRUE)
 # merge_planes <- merge(merge_airlines, planes, by = "tailnum", all.x = TRUE, suffixes = c("_flights", "_planes"))
 # merge_airports_origin <- merge(merge_planes, airports, by.x = "origin", by.y = "faa", all.x = TRUE, suffixes = c("_carrier", "_origin"))
 # final_data <- merge(merge_airports_origin, airports, by.x = "dest", by.y = "faa", all.x = TRUE, suffixes = c("_origin", "_dest"))
 
 DataExplorer::introduce(mydata)
+```
 
+
+```{r DataExplorer 4, eval=FALSE, include=FALSE}
 DataExplorer::plot_intro(mydata)
+```
 
+
+```{r DataExplorer 5, eval=FALSE, include=FALSE}
 DataExplorer::plot_missing(mydata)
+```
 
+
+```{r DataExplorer 6, eval=FALSE, include=FALSE}
 mydata2 <- DataExplorer::drop_columns(mydata, "TStage")
+```
 
+
+```{r DataExplorer 7, eval=FALSE, include=FALSE}
 DataExplorer::plot_bar(mydata)
+```
 
+
+```{r DataExplorer 8, eval=FALSE, include=FALSE}
 DataExplorer::plot_bar(mydata, with = "Death")
+```
 
+
+```{r DataExplorer 9, eval=FALSE, include=FALSE}
 DataExplorer::plot_histogram(mydata)
 
 
@@ -219,30 +274,22 @@ DataExplorer::plot_histogram(mydata)
 # plot_qq(qq_data, sampled_rows = 1000L)
 
 # plot_correlation(na.omit(final_data), maxcat = 5L)
-
-
-
 ```
 
 
 
 ```{r xray, eval=FALSE, include=FALSE}
-xray::anomalies(airquality)
+xray::anomalies(mydata)
+```
 
-xray::distributions(airquality)
 
+```{r xray 2, eval=FALSE, include=FALSE}
+xray::distributions(mydata)
 ```
 
 
 
 
-```{r dataMaid, eval=FALSE, include=FALSE}
-dataMaid::makeDataReport(data = mydata, 
-                         file = here::here("out/dataMaid_mydata.Rmd"),
-                         replace = TRUE,
-                         openResult = FALSE
-                         )
-```
 
 
 
@@ -298,7 +345,7 @@ dataMaid::makeDataReport(mydata,
 # https://cran.r-project.org/web/packages/summarytools/vignettes/Recommendations-rmarkdown.html
 # https://github.com/dcomtois/summarytools
 library(knitr)
-opts_chunk$set(comment=NA, 
+opts_chunk$set(comment=NA,
                prompt=FALSE,
                cache=FALSE,
                echo=TRUE,
@@ -321,7 +368,7 @@ st_options(bootstrap.css     = FALSE,       # Already part of the theme so no ne
            footnote          = NA,          # Keeping the results minimalistic
            subtitle.emphasis = FALSE)       # For the vignette theme, this gives
                                             # much better results. Your mileage may vary.
-``` 
+```
 
 
 
@@ -345,7 +392,7 @@ view(dfSummary(iris))
 
 ```{r summarytools dfs_grid, eval=FALSE, include=FALSE}
 dfSummary(tobacco, style = 'grid', graph.magnif = 0.75, tmp.img.dir = "/tmp")
-dfSummary(tobacco, plain.ascii = FALSE, style = "grid", 
+dfSummary(tobacco, plain.ascii = FALSE, style = "grid",
           graph.magnif = 0.75, valid.col = FALSE, tmp.img.dir = "/tmp")
 ```
 
@@ -391,7 +438,7 @@ explore::explore(mydata)
 ```
 
 
-```{r explore 2, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+```{r explore 2, eval=FALSE, include=FALSE}
 iris %>% explore::explore_tbl()
 mtcars %>% explore::explore_tbl()
 
@@ -405,43 +452,45 @@ iris %>% explore::explore(Sepal.Length, target = Species)
 iris %>% explore::explore(Sepal.Length, target = Petal.Length)
 
 
-mtcars %>% 
+mtcars %>%
   explore_all()
 
-iris %>% 
-  select(Sepal.Length, Sepal.Width) %>% 
+iris %>%
+  select(Sepal.Length, Sepal.Width) %>%
   explore::explore_all()
 
-iris %>% 
-  select(Sepal.Length, Sepal.Width, is_versicolor) %>% 
+iris %>%
+  select(Sepal.Length, Sepal.Width, is_versicolor) %>%
   explore::explore_all(target = is_versicolor)
 
-iris %>% 
-  select(Sepal.Length, Sepal.Width, is_versicolor) %>% 
+iris %>%
+  select(Sepal.Length, Sepal.Width, is_versicolor) %>%
   explore::explore_all(target = is_versicolor, split = FALSE)
 
-iris %>% 
-  select(Sepal.Length, Sepal.Width, Species) %>% 
+iris %>%
+  select(Sepal.Length, Sepal.Width, Species) %>%
   explore::explore_all(target = Species)
 
-iris %>% 
-  select(Sepal.Length, Sepal.Width, Petal.Length) %>% 
+iris %>%
+  select(Sepal.Length, Sepal.Width, Petal.Length) %>%
   explore::explore_all(target = Petal.Length)
 ```
 
 
 ```{r explore 3, fig.height=explore::total_fig_height(iris), eval=FALSE, include=FALSE}
-iris %>% 
+iris %>%
   explore::explore_all()
 ```
 
 
-<!-- ```{r explore 4, fig.height='r explore::total_fig_height(iris, target = Species)', eval=FALSE, include=FALSE} -->
+```{r explore 4, eval=FALSE, include=FALSE}
 
-<!-- explore::total_fig_height(iris, target = Species) -->
+knitr::opts_current(fig.height=explore::total_fig_height(iris, target = Species))
 
-<!-- iris %>% explore::explore_all(target = Species) -->
-<!-- ``` -->
+explore::total_fig_height(iris, target = Species)
+
+iris %>% explore::explore_all(target = Species)
+```
 
 
 ```{r explore min-max, eval=FALSE, include=FALSE}
@@ -474,8 +523,8 @@ dlookr::describe(carseats
 # dlookr::describe(carseats, -(Sales:Income))
 carseats %>%
   dlookr::describe() %>%
-  dplyr::select(variable, skewness, mean, p25, p50, p75) %>% 
-  dplyr::filter(!is.na(skewness)) %>% 
+  dplyr::select(variable, skewness, mean, p25, p50, p75) %>%
+  dplyr::filter(!is.na(skewness)) %>%
   arrange(desc(abs(skewness)))
 ```
 
@@ -511,9 +560,9 @@ library("SmartEDA")
 ## Load sample dataset from ISLR pacakge
 Carseats <- ISLR::Carseats
 
-## overview of the data; 
+## overview of the data;
 SmartEDA::ExpData(data=Carseats,type=1)
-## structure of the data    
+## structure of the data
 SmartEDA::ExpData(data=Carseats,type=2)
 
 
@@ -523,16 +572,7 @@ SmartEDA::ExpData(data=Carseats,type=2)
 
 
 
-
-
-
-
-
-
-
-
-
-### Information value
+<!-- ### Information value -->
 
 
 
@@ -553,7 +593,7 @@ SmartEDA::ExpCatStat(
 ```
 
 
-### Feature imbalance
+<!-- ### Feature imbalance -->
 
 
 ```{r Feature imbalance inspectdf, eval=FALSE, include=FALSE}
@@ -569,8 +609,8 @@ inspectdf::inspect_imb(star_1, star_2) %>% inspectdf::show_plot()
 
 
 
-### Memory usage
-  
+<!-- ### Memory usage -->
+
 ```{r memory usage inspectdf, eval=FALSE, include=FALSE}
 inspectdf::inspect_mem(starwars)
 
@@ -583,50 +623,39 @@ inspectdf::inspect_mem(star_1, star_2) %>% inspectdf::show_plot()
 
 
 
+<!-- ### SmartEDA -->
 
+```{r eval=FALSE, include=FALSE}
+# Create HTML EDA report
 
+#Create a exploratory data analysis report in HTML format
 
-
-
-
-
-
-
-
-
-
-
-
----
-
-### SmartEDA
-
-```r
-Create HTML EDA report
-
-Create a exploratory data analysis report in HTML format
-
-    ExpReport(Carseats,Target="Urban",label=NULL,theme="Default",op_file="test.html",op_dir=getwd(),sc=2,
+ExpReport(Carseats,Target="Urban",label=NULL,theme="Default",op_file="test.html",op_dir=getwd(),sc=2,
     sn=2,Rc="Yes")
 
-Quantile-quantile plot for numeric variables
+# Quantile-quantile plot for numeric variables
 
-    ExpOutQQ(CData,nlim=10,fname=NULL,Page=c(2,2),sample=4)
+ExpOutQQ(CData,nlim=10,fname=NULL,Page=c(2,2),sample=4)
 
-Parallel Co-ordinate plots
+# Parallel Co-ordinate plots
 
 
 ## Defualt ExpParcoord funciton
-    ExpParcoord(CData,Group=NULL,Stsize=NULL,Nvar=c("Price","Income","Advertising","Population","Age",
+
+ExpParcoord(CData,Group=NULL,Stsize=NULL,Nvar=c("Price","Income","Advertising","Population","Age",
     "Education"))
+
 ## With Stratified rows and selected columns only
-  ExpParcoord(CData,Group="ShelveLoc",Stsize=c(10,15,20),Nvar=c("Price","Income"),Cvar=c("Urban","US"))
+
+ExpParcoord(CData,Group="ShelveLoc",Stsize=c(10,15,20),Nvar=c("Price","Income"),Cvar=c("Urban","US"))
+
 ## Without stratification
-  ExpParcoord(CData,Group="ShelveLoc",Nvar=c("Price","Income"),Cvar=c("Urban","US"),scale=NULL)
 
-Exploratory analysis - Custom tables, summary statistics
+ExpParcoord(CData,Group="ShelveLoc",Nvar=c("Price","Income"),Cvar=c("Urban","US"),scale=NULL)
 
-Descriptive summary on all input variables for each level/combination of group variable. Also while running the analysis we can filter row/cases of the data.
+# Exploratory analysis - Custom tables, summary statistics
+
+# Descriptive summary on all input variables for each level/combination of group variable. Also while running the analysis we can filter row/cases of the data.
 
     ExpCustomStat(Carseats,Cvar=c("US","Urban","ShelveLoc"),gpby=FALSE)
     ExpCustomStat(Carseats,Cvar=c("US","Urban"),gpby=TRUE,filt=NULL)
@@ -729,5 +758,31 @@ ExpCustomStat(Carseats,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("CompPrice","I
 ExpCustomStat(data_sam,Cvar = c("Urban","US","ShelveLoc"), Nvar=c("Sales","CompPrice","Income"), stat = c('Count','Prop','mean','sum','PS'), gpby = TRUE,filt="All %ni% c(888,999)")
 ExpCustomStat(Carseats,Cvar = c("Urban","US"), Nvar=c("Population","Sales","CompPrice"), stat = c('Count','Prop','mean','sum','var','min','max'), filt=c("ShelveLoc=='Good'^Urban=='Yes'^Price>=150"))
 
+r <- report(iris)
+to_text(r)
+print(to_text(r), width=100)
+to_table(r)
+
+
+r <- iris %>%
+  group_by(Species) %>%
+  report(median = TRUE, range = FALSE)  # Display only the Median and MAD
+to_fulltext(r)
+to_fulltable(r)
+
+
+# Report participants details
+
+data <- data.frame("Age" = c(22, 23, 54, 21),
+                   "Sex" = c("F", "F", "M", "M"))
+
+paste(report_participants(data, spell_n = TRUE),
+      "were recruited in the study.")
+
 ```
+
+
+
+
+
 

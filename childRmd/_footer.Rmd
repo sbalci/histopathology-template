@@ -1,7 +1,7 @@
 **Codes for explaining the software and the packages that are used in the analysis**^[See `childRmd/_footer.Rmd` file for other codes]
 
 
-## Save Final Data  {.appendix}  
+### Save Final Data  {.appendix}  
 
 ```{r save final data}
 projectName <- list.files(path = here::here(), pattern = "Rproj")
@@ -44,7 +44,7 @@ print(glue::glue(
 \pagebreak
 
 
-## Final Data Summary {.appendix}  
+### Final Data Summary {.appendix}  
 
 
 ```r
@@ -76,7 +76,7 @@ print(glue::glue(
 
 
 
-## Software and Libraries Used {.appendix}  
+### Software and Libraries Used {.appendix}  
 
 ```{r citation}
 citation()
@@ -111,7 +111,7 @@ citation("ggstatsplot")
 
 \pagebreak
 
-## Session Info {.appendix} 
+### Session Info {.appendix} 
 
 ```{r session info}
 sessionInfo()
@@ -123,7 +123,7 @@ sessionInfo()
 
 
 
-## Notes {.appendix}  
+### Notes {.appendix}  
 
 Last update on `r Sys.time()`  
 

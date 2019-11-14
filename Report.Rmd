@@ -90,12 +90,40 @@ Material and methods
 
 - Describe how interactions with other clinical/pathological factors were analyzed
 
+---
+
+## Header Codes
 
 
-# Study Population
+```{r header, child = here::here('childRmd', '_header.Rmd')}
+```
+
+
+---
+
+
+## Import Data
+
+
+```{r importData, child = here::here('childRmd', '_importData.Rmd')}
+```
+
+
+---
+
+## Study Population
+
+
+```{r header, child = here::here('childRmd', '_briefSummary.Rmd')}
+```
+
+
+
 
 <!-- Kişisel veriler -->
 
+
+---
 
 # Statistical Analysis
 
@@ -118,35 +146,17 @@ Material and methods
 - Report the estimated effects (hazard ratio/odds ratio, confidence interval, and p value) of other prognostic factors included in multivariate analysis
 
 
+---
 
 
-## Header Codes
+## Overview the Data
 
 
-```{r header, child = here::here('childRmd', '_header.Rmd')}
+```{r overview, child = here::here('childRmd', '_overView.Rmd')}
 ```
 
 
 ---
-
-
-## Import Data
-
-
-```{r importData, child = here::here('childRmd', '_importData.Rmd')}
-```
-
-
----
-
-
-<!-- ## Overview the Data -->
-
-<!-- ```{r overview, child = here::here('childRmd', '_overView.Rmd')} -->
-<!-- ``` -->
-
-
-<!-- --- -->
 
 
 <!-- ## Data Dictionary -->
@@ -220,7 +230,7 @@ Material and methods
 
 
 
-# Survival Analysis
+## Survival Analysis
 
 
 ```{r survival, child = here::here('childRmd', '_survival.Rmd')}
@@ -291,4 +301,5 @@ Material and methods
 
 
 # References
+
 

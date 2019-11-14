@@ -184,6 +184,14 @@ ggplot(mydata, aes(x = tx_zamani_verici_yasi, y = trombosit)) +
 
 
 
+```{r correlation plot visdat, eval=FALSE, include=FALSE}
+mydata %>%
+  select(continiousVariables,
+         -dateVariables) %>% 
+visdat::vis_cor()
+```
+
+
 
 
 
