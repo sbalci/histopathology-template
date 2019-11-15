@@ -40,14 +40,15 @@ inspectdf::inspect_types()
 ```
 
 
-```{r describer 1}
+```{r describer 1, echo=TRUE, eval=FALSE}
 mydata %>% 
+    select(-keycolumns) %>% 
   describer::describe() %>% 
   knitr::kable(format = "markdown")
 ```
 
 
-**Plot vriable types**
+**Plot variable types**
 
 ```{r variable type plot inspectdf}
 mydata %>% 
@@ -91,14 +92,15 @@ characterVariables
 **Find `continious` variables**
 
 
-```{r find continious variables describer}
+```{r find continious variables describer, echo=TRUE, eval=FALSE}
 mydata %>%
-    select(-keycolumns) %>% 
+    dplyr::select(-keycolumns) %>% 
   describer::describe() %>% 
     janitor::clean_names() %>% 
     dplyr::filter(column_type == "numeric" | column_type == "double") %>% 
     dplyr::select(column_name) %>% 
     dplyr::pull() -> continiousVariables
+
 continiousVariables
 ```
 

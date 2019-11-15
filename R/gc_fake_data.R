@@ -117,6 +117,24 @@ fakedata <-
     # zip_code
   ) %>%
   
+  dplyr::mutate(SurgeryDate = LastFollowUpDate - c(
+    sample(
+      x = 90:360,
+      size = 150,
+      replace = TRUE
+    ),
+    sample(
+      x = 360:1080,
+      size = 75,
+      replace = TRUE
+    ),
+    sample(
+      x = 1080:1800,
+      size = 25,
+      replace = TRUE
+    )
+  )) %>%
+  
   wakefield::r_na(x = .,
                   prob = .005) %>%
   
@@ -128,36 +146,34 @@ fakedata <-
     Grade = factor(Grade, ordered = TRUE),
     TStage = factor(TStage, ordered = TRUE),
     LymphNodeMetastasis = factor(LymphNodeMetastasis, ordered = TRUE)
-  ) %>%
+  )
+
+
+fakedata <- fakedata %>%
+  dplyr::mutate(
+    DeathTime =
+      case_when(
+        LastFollowUpDate - SurgeryDate <= 360 ~ "Within1Year",
+        TRUE ~ "MoreThan1Year"
+      )
+  )
+
+
+fakedata$LVI[fakedata$DeathTime == "Within1Year"] <-
   
-  dplyr::mutate(SurgeryDate = LastFollowUpDate - c(
-    sample(
-    x = 90:360,
-    size = 150,
-    replace = TRUE
-  ),
   sample(
-    x = 360:1080,
-    size = 75,
-    replace = TRUE
-  ),
-  sample(
-    x = 1080:1800,
-    size = 25,
+    x = c("Absent", "Present"),
+    prob = c(.5, .5),
+    size = sum(fakedata$DeathTime == "Within1Year"),
     replace = TRUE
   )
-  )
-  ) %>%
-  
-  dplyr::mutate(LastFollowUpDate  =
-                  dplyr::case_when(Death == FALSE ~  Sys.Date() - 100,
-                                   TRUE ~ LastFollowUpDate))
+
 
 
 fakedata %>%
   plot(palette = "Set1")
 
-wakefield::table_heat(fakedata)
+# wakefield::table_heat(fakedata)
 
 rio::export(
   x = fakedata,

@@ -102,6 +102,16 @@ Material and methods
 ---
 
 
+<!-- ## Generate Fake Data -->
+
+
+<!-- ```{r generate fake data, child = here::here('childRmd', '_generateFakeData.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- --- -->
+
+
 ## Import Data
 
 
@@ -114,13 +124,23 @@ Material and methods
 ## Study Population
 
 
-```{r header, child = here::here('childRmd', '_briefSummary.Rmd')}
+```{r brief summary, child = here::here('childRmd', '_briefSummary.Rmd')}
 ```
 
 
-
-
 <!-- Kişisel veriler -->
+
+
+---
+
+
+## Overview the Data
+
+
+```{r overview, child = here::here('childRmd', '_overView.Rmd')}
+```
+
+
 
 
 ---
@@ -145,15 +165,6 @@ Material and methods
 
 - Report the estimated effects (hazard ratio/odds ratio, confidence interval, and p value) of other prognostic factors included in multivariate analysis
 
-
----
-
-
-## Overview the Data
-
-
-```{r overview, child = here::here('childRmd', '_overView.Rmd')}
-```
 
 
 ---
@@ -184,14 +195,14 @@ Material and methods
 <!-- \pagebreak -->
 
 
-## Descriptive Statistics
+<!-- ## Descriptive Statistics -->
 
 
-```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
-```
+<!-- ```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')} -->
+<!-- ``` -->
 
 
----
+<!-- --- -->
 
 <!-- \newpage -->
 <!-- \blandscape -->

@@ -36,21 +36,11 @@ r_github_packages:
     - haozhu233/kableExtra
     - ropensci/RefManageR
 
-
-after_success:
-#  - Rscript -e 'library(covr); codecov()'
-  - Rscript -e 'covr::codecov()'
-  - Rscript -e 'covr::coveralls()'
-
-
 before_script:
     - Rscript -e 'print("before script")'
 
-r_github_packages:
-    - sbalci/histopathR
-
 script:
-    - Rscript -e 'rmarkdown::render(input = "Report.Rmd")'
+    - Rscript -e 'rmarkdown::render_site()'
 
 deploy:
     provider: pages

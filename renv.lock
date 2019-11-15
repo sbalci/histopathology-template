@@ -486,6 +486,12 @@
       "Source": "CRAN",
       "Hash": "e4c9420e97e4b574c7f7cd00fa4c1879"
     },
+    "dataMaid": {
+      "Package": "dataMaid",
+      "Version": "1.3.2",
+      "Source": "CRAN",
+      "Hash": "595963884010180373ecf65d1f1f0672"
+    },
     "deSolve": {
       "Package": "deSolve",
       "Version": "1.24",
@@ -1262,12 +1268,6 @@
       "Source": "CRAN",
       "Hash": "10548c749c529a01a2c0e5cbc9d93aa2"
     },
-    "nycflights13": {
-      "Package": "nycflights13",
-      "Version": "1.0.1",
-      "Source": "CRAN",
-      "Hash": "63997ce87cced3914e5467aa859c07c5"
-    },
     "oompaBase": {
       "Package": "oompaBase",
       "Version": "3.2.9",
@@ -1899,6 +1899,12 @@
       "Source": "CRAN",
       "Hash": "1f264fa42320c4f44b1689d89101e823"
     },
+    "visdat": {
+      "Package": "visdat",
+      "Version": "0.5.3",
+      "Source": "CRAN",
+      "Hash": "9bda34c3ecc23952bae1bfa2f70471a4"
+    },
     "wakefield": {
       "Package": "wakefield",
       "Version": "0.3.3",
@@ -1916,6 +1922,12 @@
       "Version": "0.4",
       "Source": "CRAN",
       "Hash": "99cb522b4fa9e2cf1592ac5163fd917f"
+    },
+    "whoami": {
+      "Package": "whoami",
+      "Version": "1.3.0",
+      "Source": "CRAN",
+      "Hash": "c025d25de1a83dfdd0160f9c79c2684b"
     },
     "withr": {
       "Package": "withr",
