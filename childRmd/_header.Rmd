@@ -1,8 +1,8 @@
 
-**Codes for general settings.**^[See `childRmd/_header.Rmd` file for other general settings]
+**Codes for general settings.**^[See [`childRmd/_header.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_header.Rmd) file for other general settings]
 
 
-**setup global chunk settings**
+**Setup global chunk settings**
 
 Change `echo = FALSE` to hide codes after knitting.
 
@@ -31,9 +31,9 @@ knitr::opts_chunk$set(
 
 
 
-**load library**
+**Load Library**
 
-see `R/loadLibrary.R` for the libraries loaded.
+see [`R/loadLibrary.R`](https://github.com/sbalci/histopathology-template/blob/master/R/loadLibrary.R) for the libraries loaded.
 
 ```{r load library}
 source(file = here::here("R", "loadLibrary.R"))

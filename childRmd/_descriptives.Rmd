@@ -1,4 +1,4 @@
-**Codes for Descriptive Statistics**^[See `childRmd/_descriptives.Rmd` file for other codes]
+**Codes for Descriptive Statistics**^[See [`childRmd/_descriptives.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_descriptives.Rmd) file for other codes]
 
 
 ### Table 1  
@@ -125,7 +125,6 @@ iris$Species %>% freq(cumul = FALSE, report.nas = FALSE) %>% tb()
 
 
 ```{r explore descriptive statistics, eval=FALSE, include=FALSE}
-iris %>% explore::describe()
 iris %>% explore::describe() %>% dplyr::filter(unique < 5)
 iris %>% explore::describe() %>% dplyr::filter(na > 0)
 ```
@@ -133,6 +132,12 @@ iris %>% explore::describe() %>% dplyr::filter(na > 0)
 
 
 ---
+
+
+```{r describe via explore}
+mydata %>% explore::describe()
+```
+
 
 
 
@@ -154,7 +159,7 @@ mydataCategorical <- mydata %>%
 
 
 
-```{r define categorical variables 1}
+```{r define categorical variables 1, eval=FALSE, include=FALSE}
 mydata %>% 
   dplyr::select(-ID,
          -Name

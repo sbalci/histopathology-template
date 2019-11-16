@@ -1,6 +1,7 @@
+**Codes for generating hypothesis tests**.^[See [`childRmd/_hypothesisTests.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_hypothesisTests.Rmd) file for other codes]
+
+
 # Hypothesis Tests
-
-
 
 ## Tests of Normality
 

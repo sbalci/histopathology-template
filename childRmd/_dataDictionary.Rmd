@@ -1,3 +1,5 @@
+**Codes for generating data dictionary**.^[See [`childRmd/_dataDictionary.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_dataDictionary.Rmd) file for other codes]
+
 
 
 ```{r explore data dictionary, eval=FALSE, include=FALSE}

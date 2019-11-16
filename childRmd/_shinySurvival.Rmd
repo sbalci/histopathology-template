@@ -4,6 +4,10 @@ output: html_document
 runtime: shiny
 ---
 
+**Codes for generating Survival Analysis**.^[See [`childRmd/_survival.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_survival.Rmd) file for other codes]
+
+**Codes for generating Shiny Survival Analysis**.^[See [`childRmd/_shinySurvival.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_shinySurvival.Rmd) file for other codes]
+
 
 ```{r load library shiny, include = FALSE}
 library("shiny")

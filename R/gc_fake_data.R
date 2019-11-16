@@ -168,12 +168,17 @@ fakedata$LVI[fakedata$DeathTime == "Within1Year"] <-
     replace = TRUE
   )
 
-
+fakedata$TStage[fakedata$DeathTime == "Within1Year"] <-
+  
+  sample(
+    x = c(1:4),
+    prob = c(.1, .2, .2,.5),
+    size = sum(fakedata$DeathTime == "Within1Year"),
+    replace = TRUE
+  )
 
 fakedata %>%
   plot(palette = "Set1")
-
-# wakefield::table_heat(fakedata)
 
 rio::export(
   x = fakedata,

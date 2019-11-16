@@ -1,5 +1,7 @@
 ## impute
 
+**Codes for missing data and impute**.^[See [`childRmd/_impute.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_impute.Rmd) file for other codes]
+
 
 ### Missing Data
 

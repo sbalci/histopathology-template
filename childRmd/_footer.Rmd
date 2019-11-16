@@ -1,4 +1,4 @@
-**Codes for explaining the software and the packages that are used in the analysis**^[See `childRmd/_footer.Rmd` file for other codes]
+**Codes for explaining the software and the packages that are used in the analysis**^[See [`childRmd/_footer.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_footer.Rmd) file for other codes]
 
 
 ### Save Final Data  {.appendix}  

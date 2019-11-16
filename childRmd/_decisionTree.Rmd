@@ -1,4 +1,8 @@
+**Codes for Decision Tree**^[See [`childRmd/_decisionTree.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_decisionTree.Rmd)]
+
+
 # Decision Tree
+
 
 ```{r explore decision tree,, eval=FALSE, include=FALSE}
 iris %>% explore::explain_tree(target = Species)
@@ -12,6 +16,12 @@ iris %>% explain_tree(target = Sepal.Length)
 
 
 
+
+**Explore**
+
+```{r explore, echo=TRUE, eval=FALSE}
+explore::explore(mydata)
+```
 
 
 

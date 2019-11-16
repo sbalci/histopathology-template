@@ -59,16 +59,26 @@ bibliography: bib/template.bib
 ---
 
 
+---
+
+
+[Histopathology Research Template 🔬](https://sbalci.github.io/histopathology-template/)
+
+
+---
+
+
+
 # Introduction
 
-- **State the marker of interest, the study objectives, and hypotheses**^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3]
+- **State the marker of interest, the study objectives, and hypotheses [@Knijn2015]**.^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3]
 
-[@Knijn2015] 
+ 
 
 
 # Materials & Methods
 
-Material and methods
+**Describe Materials and Methods as highlighted in [@Knijn2015]**.^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3]
 
 - Describe patient characteristics, and inclusion and exclusion criteria
 
@@ -102,14 +112,14 @@ Material and methods
 ---
 
 
-<!-- ## Generate Fake Data -->
+## Generate Fake Data
 
 
-<!-- ```{r generate fake data, child = here::here('childRmd', '_generateFakeData.Rmd')} -->
-<!-- ``` -->
+```{r generate fake data, child = here::here('childRmd', '_generateFakeData.Rmd')}
+```
 
 
-<!-- --- -->
+---
 
 
 ## Import Data
@@ -128,7 +138,28 @@ Material and methods
 ```
 
 
-<!-- Kişisel veriler -->
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+**Always Respect Patient Privacy**  
+- Health Information Privacy^[https://www.hhs.gov/hipaa/index.html]  
+- Kişisel Verilerin Korunması^[[Kişisel verilerin kaydedilmesi ve kişisel verileri hukuka aykırı olarak verme veya ele geçirme Türk Ceza Kanunu'nun 135. ve 136. maddesi kapsamında bizim hukuk sistemimizde suç olarak tanımlanmıştır. Kişisel verilerin kaydedilmesi suçunun cezası 1 ila 3 yıl hapis cezasıdır. Suçun nitelikli hali ise, kamu görevlisi tarafından görevin verdiği yetkinin kötüye kullanılarak veya belirli bir meslek veya sanatın sağladığı kolaylıktan yararlanılarak işlenmesidir ki bu durumda suçun cezası 1.5 ile 4.5 yıl hapis cezası olacaktır.](https://barandogan.av.tr/blog/ceza-hukuku/kisisel-verilerin-ele-gecirilmesi-yayilmasi-baskasina-verilmesi-sucu.html)]  
+
+</div>
+
+
+\noindent\colorbox{yellow}{
+\parbox{\dimexpr\linewidth-2\fboxsep}{
+
+**Always Respect Patient Privacy**  
+- Health Information Privacy^[https://www.hhs.gov/hipaa/index.html]  
+- Kişisel Verilerin Korunması^[[Kişisel verilerin kaydedilmesi ve kişisel verileri hukuka aykırı olarak verme veya ele geçirme Türk Ceza Kanunu'nun 135. ve 136. maddesi kapsamında bizim hukuk sistemimizde suç olarak tanımlanmıştır. Kişisel verilerin kaydedilmesi suçunun cezası 1 ila 3 yıl hapis cezasıdır. Suçun nitelikli hali ise, kamu görevlisi tarafından görevin verdiği yetkinin kötüye kullanılarak veya belirli bir meslek veya sanatın sağladığı kolaylıktan yararlanılarak işlenmesidir ki bu durumda suçun cezası 1.5 ile 4.5 yıl hapis cezası olacaktır.](https://barandogan.av.tr/blog/ceza-hukuku/kisisel-verilerin-ele-gecirilmesi-yayilmasi-baskasina-verilmesi-sucu.html)]  
+
+}
+}
+
 
 
 ---
@@ -147,9 +178,11 @@ Material and methods
 
 # Statistical Analysis
 
-<!-- Hangi testler bilinmeli makalesi -->
+**Learn these tests as highlighted in [@Schmidt2017].**^[Statistical Literacy Among Academic Pathologists: A Survey Study to Gauge Knowledge of Frequently Used Statistical Tests Among Trainees and Faculty. Archives of Pathology & Laboratory Medicine: February 2017, Vol. 141, No. 2, pp. 279-287. https://doi.org/10.5858/arpa.2016-0200-OA]
 
 # Results
+
+**Write results as described in [@Knijn2015]**^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3]
 
 - Describe the number of patients included in the analysis and reason for dropout
 
@@ -195,14 +228,14 @@ Material and methods
 <!-- \pagebreak -->
 
 
-<!-- ## Descriptive Statistics -->
+## Descriptive Statistics
 
 
-<!-- ```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')} -->
-<!-- ``` -->
+```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
+```
 
 
-<!-- --- -->
+---
 
 <!-- \newpage -->
 <!-- \blandscape -->

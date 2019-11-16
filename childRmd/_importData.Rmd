@@ -1,8 +1,8 @@
 
-**Codes for importing data.**^[See `childRmd/_importData.Rmd` file for other codes]
+**Codes for importing data.**^[See [`childRmd/_importData.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_importData.Rmd) file for other codes]
 
 
-**Use this code to read the data**
+**Read the data**
 
 ```{r import data}
 library(readxl)

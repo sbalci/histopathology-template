@@ -9,6 +9,12 @@ branches:
 
 r_cran_packages:
     - markdown
+    - devtools
+    - testthat
+    - rmarkdown
+    - knitr
+    - dplyr
+    - magrittr
 
 r_packages:
     - janitor
@@ -17,13 +23,6 @@ r_packages:
     - magicfor
     - pkgdown
 
-r_binary_packages:
-    - devtools
-    - testthat
-    - rmarkdown
-    - knitr
-    - dplyr
-    - magrittr
 
 r_github_packages:
     - rstudio/distill
