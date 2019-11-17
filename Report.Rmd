@@ -165,6 +165,17 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 ---
 
 
+## Define Variable Types
+
+
+```{r variable types, child = here::here('childRmd', '_variableTypes.Rmd')}
+```
+
+
+
+---
+
+
 ## Overview the Data
 
 

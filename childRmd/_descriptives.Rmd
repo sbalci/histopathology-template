@@ -304,19 +304,10 @@ SmartEDA::ExpCTable(
 ### Continious Variables
 
 
-```{r categorise cut off continious variables, eval=FALSE, include=FALSE}
+```{r categorise cut off continious variables, eval=FALSE, echo=TRUE}
 questionr:::icut()
 ```
 
-
-
-```{r select continious variables 1, eval=FALSE, include=FALSE}
-mydataContinious <- mydata %>% 
-    select(
-        Yas,
-        TumorCapi
-    )
-```
 
 
 
