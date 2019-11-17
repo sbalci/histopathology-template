@@ -11,7 +11,8 @@ dput(names(mydata))
 ```
 
 
-**Find ID and key columns to exclude from analysis**
+#### Find ID and key columns to exclude from analysis
+
 
 See the code as function in [`R/find_key.R`](https://github.com/sbalci/histopathology-template/blob/master/R/find_key.R). 
 
@@ -83,7 +84,7 @@ mydata %>% explore::explore_tbl()
 ### Define Variable Types
 
 
-**Find `character` variables**
+#### Find `character` variables
 
 ```{r find character variables inspectdf}
 mydata %>% 
@@ -93,11 +94,29 @@ mydata %>%
     dplyr::select(col_name) %>% 
     pull() %>% 
     unlist() -> characterVariables
+
 characterVariables
 ```
 
 
-**Find `continious` variables**
+#### Find `categorical` variables
+
+```{r find categorical variables}
+mydata %>%
+    dplyr::select(-keycolumns,
+                  -contains("Date")) %>%
+  describer::describe() %>% 
+    janitor::clean_names() %>% 
+    dplyr::filter(column_type == "factor") %>% 
+    dplyr::select(column_name) %>% 
+    dplyr::pull() -> categoricalVariables
+
+categoricalVariables
+```
+
+
+
+#### Find `continious` variables
 
 
 ```{r find continious variables describer}
@@ -114,7 +133,7 @@ continiousVariables
 ```
 
 
-**Find `numeric` variables**
+#### Find `numeric` variables
 
 
 
@@ -131,7 +150,7 @@ numericVariables
 ```
 
 
-**Find `integer` variables**
+#### Find `integer` variables
 
 
 ```{r find integer variables inspectdf}
@@ -142,11 +161,12 @@ inspectdf::inspect_types() %>%
   dplyr::select(col_name) %>% 
   pull() %>% 
   unlist() -> integerVariables
+
 integerVariables
 ```
 
 
-**Find `list` variables**
+#### Find `list` variables
 
 ```{r find list variables inspectdf}
 mydata %>% 
@@ -160,7 +180,7 @@ listVariables
 ```
 
 
-**Find `date` variables**
+#### Find `date` variables
 
 ```{r find Date variables}
 is_date <- function(x) inherits(x, c("POSIXct", "POSIXt"))

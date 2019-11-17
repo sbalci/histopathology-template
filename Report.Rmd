@@ -22,6 +22,9 @@ header-includes:
 - \usepackage{xcolor}
 - \usepackage{afterpage}
 output:
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
   prettydoc::html_pretty:
     theme: leonids
     highlight: vignette
@@ -30,9 +33,6 @@ output:
     css: css/style.css
     includes:
       after_body: _footer.html
-  rmarkdown::html_vignette: 
-    css: 
-    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
   epuRate::epurate:
     toc: TRUE
     number_sections: FALSE

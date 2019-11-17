@@ -1,7 +1,7 @@
 **Codes for Descriptive Statistics**^[See [`childRmd/_descriptives.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_descriptives.Rmd) file for other codes]
 
 
-### Table 1  
+### Table One   
 
 **Report Data properties via report 📦**
 
@@ -44,21 +44,24 @@ summary(tab1)
 
 **Table 1 via tableone 📦**
 
+<!-- https://cran.r-project.org/web/packages/tableone/index.html -->
+<!-- https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html -->
+<!-- library(survival) -->
+<!-- data(pbc) -->
+
+
 ```{r tableone}
-# https://cran.r-project.org/web/packages/tableone/index.html
-# https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html
-# library(survival)
-# data(pbc)
 library(tableone)
 mydata %>% 
-  select(-ID,
-         -Name) %>% 
+  select(-keycolumns,
+         -dateVariables
+         ) %>% 
 tableone::CreateTableOne(data = .)
 ```
 
 
 ```{r tableone 2, eval=FALSE, include=FALSE}
-# CreateTableOne(vars = myVars, data = pbc, factorVars = catVars)
+# CreateTableOne(vars = myVars, data = mydata, factorVars = characterVariables)
 ```
 
 
@@ -98,40 +101,65 @@ tableone::CreateTableOne(data = .)
 **Descriptive Statistics of Continuous Variables**
 
 ```{r summarytools descriptives 1}
-summarytools::descr(mydata, style = 'rmarkdown')
+mydata %>% 
+  select(
+    continiousVariables,
+    numericVariables,
+    integerVariables
+  ) %>% 
+summarytools::descr(., style = 'rmarkdown')
 ```
 
 
 
-```{r summarytools descriptives 2, eval=FALSE, include=FALSE}
+```{r summarytools descriptives 2}
 print(summarytools::descr(mydata), method = 'render', table.classes = 'st-small')
 ```
  
 
 
-```{r summarytools descriptives 3, eval=FALSE, include=FALSE}
-summarytools::descr(iris, style = "rmarkdown")
-descr(iris, stats = "common", transpose = TRUE, headings = FALSE)
+```{r summarytools descriptives 3}
+mydata %>% 
+  summarytools::descr(.,
+                      stats = "common",
+                      transpose = TRUE,
+                      headings = FALSE
+                      )
 ```
 
 
 
-```{r summarytools descriptives 4, eval=FALSE, include=FALSE}
-iris %>% descr(stats = "common") %>% tb()
-iris$Species %>% freq(cumul = FALSE, report.nas = FALSE) %>% tb()
+```{r summarytools descriptives 4}
+mydata %>% 
+  summarytools::descr(stats = "common") %>%
+  summarytools::tb()
+```
+
+
+```{r summarytools descriptives 5}
+mydata$Sex %>% 
+  summarytools::freq(cumul = FALSE, report.nas = FALSE) %>%
+  summarytools::tb()
 ```
 
 
 
 
-```{r explore descriptive statistics, eval=FALSE, include=FALSE}
-iris %>% explore::describe() %>% dplyr::filter(unique < 5)
-iris %>% explore::describe() %>% dplyr::filter(na > 0)
+```{r explore descriptive statistics 1}
+mydata %>%
+  explore::describe() %>%
+  dplyr::filter(unique < 5)
+```
+
+
+```{r explore descriptive statistics 2}
+mydata %>%
+  explore::describe() %>%
+  dplyr::filter(na > 0)
 ```
 
 
 
----
 
 
 ```{r describe via explore}
@@ -140,77 +168,56 @@ mydata %>% explore::describe()
 
 
 
-
-
 ### Categorical Variables
 
+**Use `R/gc_desc_cat.R` to generate `gc_desc_cat.Rmd` containing descriptive statistics for categorical variables**
 
 
-```{r select categorical variables, eval=FALSE, include=FALSE}
-mydataCategorical <- mydata %>% 
-    select(-Yas,
-           -TumorCapi,
-           -CerrahiTarih,
-           -genel_sagkalim,
-           -SonTarih,
-           -TNM
-    )
-```
-
-
-
-```{r define categorical variables 1, eval=FALSE, include=FALSE}
-mydata %>% 
-  dplyr::select(-ID,
-         -Name
-         ) %>% 
-  describer::describe() %>% 
-  janitor::clean_names() -> mydataDescription
-
-mydataDescription %>% 
-    dplyr::filter(column_type == "factor") %>% 
-    dplyr::select(column_name) %>% 
-    dplyr::pull() -> categoricalVariables
-```
-
-
-
-
-```{r generate Code descriptive, eval=FALSE, include=FALSE}
+```{r generate Code descriptive, message=FALSE, warning=FALSE}
 source(here::here("R", "gc_desc_cat.R"))
 ```
 
 
-```{r generatedCodeDescriptives, child = here::here('childRmd', 'generatedCodeDescriptives.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCodeDescriptives, child = here::here('childRmd', 'gc_desc_cat.Rmd'), echo=TRUE}
 ```
 
 
 ```{r tableone categorical, eval=FALSE, include=FALSE}
-tab <- tableone::CreateTableOne(data = pbc)
+tab <- 
+  mydata %>% 
+  select(
+    -keycolumns
+    ) %>% 
+  tableone::CreateTableOne(data = .)
 ?print.CatTable
 tab$CatTable
 ```
 
 
 
-```{r summarytools Categorical, eval=FALSE, include=FALSE}
-(age_stats <- freq(tobacco$age.gr)) 
-print(age_stats, report.nas = FALSE, totals = FALSE, display.type = FALSE,
-      Variable.label = "Age Group")
+```{r summarytools categorical, echo=TRUE, eval=FALSE}
+race_stats <- summarytools::freq(mydata$Race) 
+print(race_stats,
+      report.nas = FALSE,
+      totals = FALSE,
+      display.type = FALSE,
+      Variable.label = "Race Group"
+      )
 ```
 
 
 
 
-```{r explore categorical variables, eval=FALSE, include=FALSE}
-iris %>% explore::describe(Species)
+```{r explore categorical variables}
+mydata %>% explore::describe(PreinvasiveComponent)
 ```
 
 
-```{r SmartEDA 1, eval=FALSE, include=FALSE}
+
+```{r SmartEDA 1}
 ## Frequency or custom tables for categorical variables
 SmartEDA::ExpCTable(
-  Carseats,
+  mydata,
   Target = NULL,
   margin = 1,
   clim = 10,
@@ -223,50 +230,58 @@ SmartEDA::ExpCTable(
 
 
 
-```{r inspectdf 2, eval=FALSE, include=FALSE}
-# some example data
-data(starwars, package = "dplyr")
-data(storms, package = "dplyr")
-star_1 <- starwars %>% sample_n(50)
-star_2 <- starwars %>% sample_n(50) %>% select(-1, -2)
+```{r inspectdf 2}
+inspectdf::inspect_cat(mydata)
 
-inspectdf::inspect_cat(starwars)
-
-inspectdf::inspect_cat(starwars)$levels$hair_color
+inspectdf::inspect_cat(mydata)$levels$Group
 ```
 
 
 
 #### Split-Group Stats Categorical
 
-```{r summarytools Split-Group categorical, eval=FALSE, include=FALSE}
-grouped_freqs <- stby(data = tobacco$smoker, 
-                      INDICES = tobacco$gender, 
+
+```{r summarytools Split-Group categorical, echo=TRUE, eval=FALSE}
+library(summarytools)
+
+grouped_freqs <- stby(data = mydata$Smoker, 
+                      INDICES = mydata$Sex, 
                       FUN = freq, cumul = FALSE, report.nas = FALSE)
-grouped_freqs %>% tb()
 
 grouped_freqs %>% tb(order = 2)
 ```
 
 
 
-
-
-
 #### Grouped Categorical
 
-```{r summarytools Grouped Categorical, eval=FALSE, include=FALSE}
-stby(list(x = tobacco$smoker, y = tobacco$diseased), tobacco$gender, ctable)
-with(tobacco, stby(list(x = smoker, y = diseased), gender, ctable))
+
+```{r summarytools Grouped Categorical}
+summarytools::stby(
+  list(x = mydata$LVI, y = mydata$LymphNodeMetastasis), 
+  mydata$PNI,
+  summarytools::ctable
+  )
+```
+
+
+
+```{r summarytools Grouped Categorical 2}
+with(mydata, 
+     summarytools::stby(
+       list(x = LVI, y = LymphNodeMetastasis), PNI,
+       summarytools::ctable
+       )
+     )
 ```
 
 
 
 
-```{r SmartEDA category 1, eval=FALSE, include=FALSE}
+```{r SmartEDA category 1}
 SmartEDA::ExpCTable(
-  Carseats,
-  Target = "Price",
+  mydata,
+  Target = "Sex",
   margin = 1,
   clim = 10,
   nlim = NULL,

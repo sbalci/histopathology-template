@@ -1,0 +1,121 @@
+#### Descriptive Statistics Sex  
+
+```{r Descriptive Statistics Sex}
+mydata %>% 
+  janitor::tabyl(Sex) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics Race  
+
+```{r Descriptive Statistics Race}
+mydata %>% 
+  janitor::tabyl(Race) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics PreinvasiveComponent  
+
+```{r Descriptive Statistics PreinvasiveComponent}
+mydata %>% 
+  janitor::tabyl(PreinvasiveComponent) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics LVI  
+
+```{r Descriptive Statistics LVI}
+mydata %>% 
+  janitor::tabyl(LVI) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics PNI  
+
+```{r Descriptive Statistics PNI}
+mydata %>% 
+  janitor::tabyl(PNI) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics Group  
+
+```{r Descriptive Statistics Group}
+mydata %>% 
+  janitor::tabyl(Group) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics Grade  
+
+```{r Descriptive Statistics Grade}
+mydata %>% 
+  janitor::tabyl(Grade) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics TStage  
+
+```{r Descriptive Statistics TStage}
+mydata %>% 
+  janitor::tabyl(TStage) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics LymphNodeMetastasis  
+
+```{r Descriptive Statistics LymphNodeMetastasis}
+mydata %>% 
+  janitor::tabyl(LymphNodeMetastasis) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics Grade_Level  
+
+```{r Descriptive Statistics Grade_Level}
+mydata %>% 
+  janitor::tabyl(Grade_Level) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+
+#### Descriptive Statistics DeathTime  
+
+```{r Descriptive Statistics DeathTime}
+mydata %>% 
+  janitor::tabyl(DeathTime) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+```
+
+\pagebreak
+

@@ -120,7 +120,7 @@ finalfit::finalfit(dependentUni, explanatoryUni) -> tUni
 knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
 ```
 
-```{r}
+```{r print autoreport Cox-Regression}
 tUni_df <- tibble::as_tibble(tUni) %>% 
   janitor::clean_names() 
 
@@ -137,8 +137,6 @@ tUni_df_descr <- paste0("When ",
                         tUni_df$x[1],
                         "."
                         )
-
-
 ```
 
 <style>
@@ -170,7 +168,7 @@ km_fit
 ```
 
 
-```{r}
+```{r median survival table}
 km_fit_median_df <- summary(km_fit)
 km_fit_median_df <- as.data.frame(km_fit_median_df$table) %>% 
   janitor::clean_names() %>% 
@@ -178,7 +176,7 @@ km_fit_median_df <- as.data.frame(km_fit_median_df$table) %>%
 ```
 
 
-```{r}
+```{r print autoreport median survival}
 km_fit_median_df %>% 
   dplyr::mutate(
     description = 
@@ -222,7 +220,6 @@ summary(km_fit, times = c(12,36,60))
 km_fit_summary <- summary(km_fit, times = c(12,36,60))
 
 km_fit_df <- as.data.frame(km_fit_summary[c("strata", "time", "n.risk", "n.event", "surv", "std.err", "lower", "upper")])
-
 ```
 
 
