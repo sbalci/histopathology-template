@@ -1,16 +1,16 @@
 # generating code for descriptive statistics ----
 magicfor::magic_for()
-for (i in 1:length(names(mydataContinious))) {
+for (i in 1:length(continiousVariables)) {
 
-    explanation <- paste0("Descriptive Statistics ", names(mydataContinious)[i])
+    explanation <- paste0("Descriptive Statistics ", continiousVariables[i])
     
     y <- paste0("**",explanation,"** ", "\n", "\n",
 
-"```{r ", names(mydataContinious)[i], "}
-mydataContinious %>% 
+"```{r ", explanation, "}
+mydata %>% 
 jmv::descriptives(
     data = .,
-    vars = ", names(mydataContinious)[i], ",
+    vars = '", continiousVariables[i], "',
     hist = TRUE,
     dens = TRUE,
     box = TRUE,
@@ -25,6 +25,6 @@ jmv::descriptives(
 ```", "\n", "\n", "\\pagebreak","\n")
     put(y)
 }
-writeLines(magicfor::magic_result_as_vector(), here::here("childRmd" , "generatedCodeContinious.Rmd"))
+writeLines(magicfor::magic_result_as_vector(), here::here("childRmd" , "gc_desc_cont.Rmd"))
 magicfor::magic_free()
 

@@ -1,5 +1,5 @@
 
-**Codes for importing data.**^[See [`childRmd/_importData.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_importData.Rmd) file for other codes]
+**Codes for importing data.**^[See [`childRmd/_03importData.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_03importData.Rmd) file for other codes]
 
 
 **Read the data**

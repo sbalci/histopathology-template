@@ -1,6 +1,6 @@
 # Plots
 
-**Codes for generating Plots**.^[See [`childRmd/_plots.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_plots.Rmd) file for other codes]
+**Codes for generating Plots**.^[See [`childRmd/_13plots.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_13plots.Rmd) file for other codes]
 
 ## Categorical Variables
 

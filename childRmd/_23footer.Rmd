@@ -1,4 +1,4 @@
-**Codes for explaining the software and the packages that are used in the analysis**^[See [`childRmd/_footer.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_footer.Rmd) file for other codes]
+**Codes for explaining the software and the packages that are used in the analysis**^[See [`childRmd/_23footer.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_23footer.Rmd) file for other codes]
 
 
 ### Save Final Data  {.appendix}  
@@ -41,6 +41,10 @@ print(glue::glue(
 ```
 
 
+
+---
+
+
 \pagebreak
 
 
@@ -71,6 +75,8 @@ print(glue::glue(
 #                                            , style = "markdown"))
 ```
 
+
+---
 
 \pagebreak
 
@@ -108,6 +114,14 @@ citation("ggstatsplot")
 ```
 
 
+```{r}
+knitr::write_bib(x = c(.packages(), "knitr", "shiny"),
+                 file = here::here("bib", "packages.bib")
+)
+```
+
+
+---
 
 \pagebreak
 
@@ -118,6 +132,7 @@ sessionInfo()
 ```
 
 
+---
 
 \pagebreak
 
@@ -131,4 +146,12 @@ Serdar Balci, MD, Pathologist
 drserdarbalci@gmail.com  
 https://rpubs.com/sbalci/CV   
 
+---
+
+\pagebreak
+
+## Code Appendix
+
+```{r, echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
+```
 

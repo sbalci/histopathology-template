@@ -1,4 +1,4 @@
-**Codes for clean and recode data**.^[See [`childRmd/_cleanRecode.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_cleanRecode.Rmd) file for other codes]
+**Codes for clean and recode data**.^[See [`childRmd/_09cleanRecode.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_09cleanRecode.Rmd) file for other codes]
 
 
 ```{r clean names, eval=FALSE, include=FALSE}

@@ -1,4 +1,4 @@
-**Codes for generating data dictionary**.^[See [`childRmd/_dataDictionary.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_dataDictionary.Rmd) file for other codes]
+**Codes for generating data dictionary**.^[See [`childRmd/_08dataDictionary.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_08dataDictionary.Rmd) file for other codes]
 
 
 

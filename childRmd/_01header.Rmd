@@ -1,5 +1,5 @@
 
-**Codes for general settings.**^[See [`childRmd/_header.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_header.Rmd) file for other general settings]
+**Codes for general settings.**^[See [`childRmd/_01header.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_01header.Rmd) file for other general settings]
 
 
 **Setup global chunk settings**

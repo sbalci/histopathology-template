@@ -105,7 +105,7 @@ bibliography: bib/template.bib
 ## Header Codes
 
 
-```{r header, child = here::here('childRmd', '_header.Rmd')}
+```{r header, child = here::here('childRmd', '_01header.Rmd')}
 ```
 
 
@@ -115,7 +115,7 @@ bibliography: bib/template.bib
 ## Generate Fake Data
 
 
-```{r generate fake data, child = here::here('childRmd', '_generateFakeData.Rmd')}
+```{r generate fake data, child = here::here('childRmd', '_02fakeData.Rmd')}
 ```
 
 
@@ -125,7 +125,7 @@ bibliography: bib/template.bib
 ## Import Data
 
 
-```{r importData, child = here::here('childRmd', '_importData.Rmd')}
+```{r importData, child = here::here('childRmd', '_03importData.Rmd')}
 ```
 
 
@@ -134,32 +134,16 @@ bibliography: bib/template.bib
 ## Study Population
 
 
-```{r brief summary, child = here::here('childRmd', '_briefSummary.Rmd')}
+```{r brief summary, child = here::here('childRmd', '_04briefSummary.Rmd')}
 ```
 
 
-<style>
-div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
-</style>
-<div class = "blue">
+---
 
-**Always Respect Patient Privacy**  
-- Health Information Privacy^[https://www.hhs.gov/hipaa/index.html]  
-- Kişisel Verilerin Korunması^[[Kişisel verilerin kaydedilmesi ve kişisel verileri hukuka aykırı olarak verme veya ele geçirme Türk Ceza Kanunu'nun 135. ve 136. maddesi kapsamında bizim hukuk sistemimizde suç olarak tanımlanmıştır. Kişisel verilerin kaydedilmesi suçunun cezası 1 ila 3 yıl hapis cezasıdır. Suçun nitelikli hali ise, kamu görevlisi tarafından görevin verdiği yetkinin kötüye kullanılarak veya belirli bir meslek veya sanatın sağladığı kolaylıktan yararlanılarak işlenmesidir ki bu durumda suçun cezası 1.5 ile 4.5 yıl hapis cezası olacaktır.](https://barandogan.av.tr/blog/ceza-hukuku/kisisel-verilerin-ele-gecirilmesi-yayilmasi-baskasina-verilmesi-sucu.html)]  
+## Ethics and IRB
 
-</div>
-
-
-\noindent\colorbox{yellow}{
-\parbox{\dimexpr\linewidth-2\fboxsep}{
-
-**Always Respect Patient Privacy**  
-- Health Information Privacy^[https://www.hhs.gov/hipaa/index.html]  
-- Kişisel Verilerin Korunması^[[Kişisel verilerin kaydedilmesi ve kişisel verileri hukuka aykırı olarak verme veya ele geçirme Türk Ceza Kanunu'nun 135. ve 136. maddesi kapsamında bizim hukuk sistemimizde suç olarak tanımlanmıştır. Kişisel verilerin kaydedilmesi suçunun cezası 1 ila 3 yıl hapis cezasıdır. Suçun nitelikli hali ise, kamu görevlisi tarafından görevin verdiği yetkinin kötüye kullanılarak veya belirli bir meslek veya sanatın sağladığı kolaylıktan yararlanılarak işlenmesidir ki bu durumda suçun cezası 1.5 ile 4.5 yıl hapis cezası olacaktır.](https://barandogan.av.tr/blog/ceza-hukuku/kisisel-verilerin-ele-gecirilmesi-yayilmasi-baskasina-verilmesi-sucu.html)]  
-
-}
-}
-
+```{r ethics, child = here::here('childRmd', '_05ethics.Rmd')}
+```
 
 
 ---
@@ -168,7 +152,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 ## Define Variable Types
 
 
-```{r variable types, child = here::here('childRmd', '_variableTypes.Rmd')}
+```{r variable types, child = here::here('childRmd', '_06variableTypes.Rmd')}
 ```
 
 
@@ -179,7 +163,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 ## Overview the Data
 
 
-```{r overview, child = here::here('childRmd', '_overView.Rmd')}
+```{r overview, child = here::here('childRmd', '_07overView.Rmd')}
 ```
 
 
@@ -190,6 +174,9 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 # Statistical Analysis
 
 **Learn these tests as highlighted in [@Schmidt2017].**^[Statistical Literacy Among Academic Pathologists: A Survey Study to Gauge Knowledge of Frequently Used Statistical Tests Among Trainees and Faculty. Archives of Pathology & Laboratory Medicine: February 2017, Vol. 141, No. 2, pp. 279-287. https://doi.org/10.5858/arpa.2016-0200-OA]
+
+
+---
 
 # Results
 
@@ -216,7 +203,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 <!-- ## Data Dictionary -->
 
-<!-- ```{r data dictionary, child = here::here('childRmd', '_dataDictionary.Rmd')} -->
+<!-- ```{r data dictionary, child = here::here('childRmd', '_08dataDictionary.Rmd')} -->
 <!-- ``` -->
 
 <!-- --- -->
@@ -224,14 +211,14 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 <!-- ## Clean and Recode Data -->
 
-<!-- ```{r clean and recode, child = here::here('childRmd', '_cleanRecode.Rmd')} -->
+<!-- ```{r clean and recode, child = here::here('childRmd', '_09cleanRecode.Rmd')} -->
 <!-- ``` -->
 
 <!-- --- -->
 
 <!-- ## Impute Missing Data -->
 
-<!-- ```{r impute, child = here::here('childRmd', '_impute.Rmd')} -->
+<!-- ```{r impute, child = here::here('childRmd', '_10impute.Rmd')} -->
 <!-- ``` -->
 
 <!-- --- -->
@@ -242,7 +229,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 ## Descriptive Statistics
 
 
-```{r descriptives, child = here::here('childRmd', '_descriptives.Rmd')}
+```{r descriptives, child = here::here('childRmd', '_11descriptives.Rmd')}
 ```
 
 
@@ -251,24 +238,24 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <!-- \newpage -->
 <!-- \blandscape -->
 
-<!-- ```{r crossTables, child = here::here('childRmd', '_crossTables.Rmd')} -->
+<!-- ```{r crossTables, child = here::here('childRmd', '_12crossTables.Rmd')} -->
 <!-- ``` -->
 
 <!-- \elandscape -->
 
 
-<!-- ```{r plots, child = here::here('childRmd', '_plots.Rmd')} -->
+<!-- ```{r plots, child = here::here('childRmd', '_13plots.Rmd')} -->
 <!-- ``` -->
 
 
 
 
-<!-- ```{r pairedTests, child = here::here('childRmd', '_pairedTests.Rmd')} -->
+<!-- ```{r pairedTests, child = here::here('childRmd', '_14pairedTests.Rmd')} -->
 <!-- ``` -->
 
 
 
-<!-- ```{r hypothesisTests, child = here::here('childRmd', '_hypothesisTests.Rmd')} -->
+<!-- ```{r hypothesisTests, child = here::here('childRmd', '_15hypothesisTests.Rmd')} -->
 <!-- ``` -->
 
 <!-- \newpage -->
@@ -276,11 +263,11 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 
 
-<!-- ```{r ROC, child = here::here('childRmd', '_ROC.Rmd')} -->
+<!-- ```{r ROC, child = here::here('childRmd', '_16ROC.Rmd')} -->
 <!-- ``` -->
 
 
-<!-- ```{r Decision Tree, child = here::here('childRmd', '_decisionTree.Rmd')} -->
+<!-- ```{r Decision Tree, child = here::here('childRmd', '_17decisionTree.Rmd')} -->
 <!-- ``` -->
 
 
@@ -288,7 +275,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 ## Survival Analysis
 
 
-```{r survival, child = here::here('childRmd', '_survival.Rmd')}
+```{r survival, child = here::here('childRmd', '_18survival.Rmd')}
 ```
 
 
@@ -296,7 +283,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 <!-- # Interactive Survival Analysis -->
 
-<!-- ```{r shiny survival, child = here::here('childRmd', '_shinySurvival.Rmd')} -->
+<!-- ```{r shiny survival, child = here::here('childRmd', '_19shinySurvival.Rmd')} -->
 <!-- ``` -->
 
 
@@ -305,10 +292,17 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 <!-- \elandscape -->
 
 
+<!-- # Correlation -->
+
+
+<!-- ```{r correlation, child = here::here('childRmd', '_20correlation.Rmd')} -->
+<!-- ``` -->
+
+
 <!-- # Models -->
 
 
-<!-- ```{r models, child = here::here('childRmd', '_models.Rmd')} -->
+<!-- ```{r models, child = here::here('childRmd', '_21models.Rmd')} -->
 <!-- ``` -->
 
 
@@ -318,7 +312,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 
 
-<!-- ```{r comments, child = here::here('childRmd', '_comments.Rmd')} -->
+<!-- ```{r comments, child = here::here('childRmd', '_22comments.Rmd')} -->
 <!-- ``` -->
 
 ---
@@ -337,7 +331,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 # Footer
 
-```{r footer, child = here::here('childRmd', '_footer.Rmd')}
+```{r footer, child = here::here('childRmd', '_23footer.Rmd')}
 ```
 
 <!-- --- -->

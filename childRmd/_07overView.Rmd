@@ -1,4 +1,4 @@
-**Codes for overviewing the data.**^[See [`childRmd/_overView.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_overView.Rmd) file for other codes]
+**Codes for overviewing the data.**^[See [`childRmd/_07overView.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_07overView.Rmd) file for other codes]
 
 ### Overview / Exploratory Data Analysis (EDA)
 

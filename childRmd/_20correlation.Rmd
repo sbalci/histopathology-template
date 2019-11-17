@@ -1,6 +1,6 @@
 ## Correlation Analysis
 
-**Codes for generating correlation analysis**.^[See [`childRmd/_correlation.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_correlation.Rmd) file for other codes]
+**Codes for generating correlation analysis**.^[See [`childRmd/_20correlation.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_20correlation.Rmd) file for other codes]
 
 
 ```{r load library, eval=FALSE, include=FALSE}

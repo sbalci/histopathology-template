@@ -1,6 +1,6 @@
 ### Report General Features
 
-**Codes for reporting general features.**^[See [`childRmd/_briefSummary.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_briefSummary.Rmd) file for other codes]
+**Codes for reporting general features.**^[See [`childRmd/_04briefSummary.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_04briefSummary.Rmd) file for other codes]
 
 
 **Dataframe Report**

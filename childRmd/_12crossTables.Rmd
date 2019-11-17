@@ -1,4 +1,4 @@
-**Codes for cross tables**.^[See [`childRmd/_crossTables.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_crossTables.Rmd) file for other codes]
+**Codes for cross tables**.^[See [`childRmd/_12crossTables.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_12crossTables.Rmd) file for other codes]
 
 
 # Cross Tables

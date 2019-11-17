@@ -1,4 +1,4 @@
-**Codes for generating paired tests**.^[See [`childRmd/_pairedTests.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_pairedTests.Rmd) file for other codes]
+**Codes for generating paired tests**.^[See [`childRmd/_14pairedTests.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_14pairedTests.Rmd) file for other codes]
 
 
 <!-- https://cran.r-project.org/web/packages/arsenal/vignettes/paired.html -->

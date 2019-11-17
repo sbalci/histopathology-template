@@ -1,4 +1,4 @@
-**Codes for Decision Tree**^[See [`childRmd/_decisionTree.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_decisionTree.Rmd)]
+**Codes for Decision Tree**.^[See [`childRmd/_17decisionTree.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_17decisionTree.Rmd)]
 
 
 # Decision Tree

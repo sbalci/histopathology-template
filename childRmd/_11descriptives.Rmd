@@ -1,4 +1,4 @@
-**Codes for Descriptive Statistics**^[See [`childRmd/_descriptives.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_descriptives.Rmd) file for other codes]
+**Codes for Descriptive Statistics**.^[See [`childRmd/_11descriptives.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_11descriptives.Rmd) file for other codes]
 
 
 ### Table One   
@@ -310,48 +310,36 @@ questionr:::icut()
 
 
 
-
-```{r define continious, eval=FALSE, include=FALSE}
-mydataDescription <- describer::describe(iris)
-
-mydataDescription %>% 
-    janitor::clean_names() %>% 
-    dplyr::filter(column_class == "numeric") %>% 
-    dplyr::select(column_name) %>% 
-    dplyr::pull() -> continiousVariables
-```
-
-
-
-```{r generate Code Continious, eval=FALSE, include=FALSE}
+```{r generate Code Continious}
 source(here::here("R", "gc_desc_cont.R"))
 ```
 
 
 
-```{r generatedCodeContinious, child = here::here('childRmd', 'generatedCodeContinious.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCodeContinious, child = here::here('childRmd', 'gc_desc_cont.Rmd')}
 ```
 
 
 
-```{r tableone continious, eval=FALSE, include=FALSE}
-tab <- tableone::CreateTableOne(data = pbc)
-?print.ContTable
+```{r tableone continious, warning=FALSE}
+tab <- tableone::CreateTableOne(data = mydata)
+# ?print.ContTable
 tab$ContTable
-print(tab$ContTable, nonnormal = c("albumin", "copper"))
+print(tab$ContTable, nonnormal = c("Anti-X-intensity"))
 ```
 
 
 
-```{r explore continious variables, eval=FALSE, include=FALSE}
-iris %>% explore::describe(Sepal.Length)
+```{r explore continious variables}
+mydata %>% explore::describe(Age)
 ```
 
 
-```{r SmartEDA, eval=FALSE, include=FALSE}
-## Summary statistics by – overall
+```{r SmartEDA, echo=TRUE, eval=FALSE}
+mydata %>% 
+  select(continiousVariables) %>% 
 SmartEDA::ExpNumStat(
-  Carseats,
+  data = .,
   by = "A",
   gp = NULL,
   Qnt = seq(0, 1, 0.1),
@@ -363,30 +351,20 @@ SmartEDA::ExpNumStat(
 
 
 
-
-
-```{r inspectdf 3, eval=FALSE, include=FALSE}
-inspectdf::inspect_num(storms, breaks = 10)
-
-inspectdf::inspect_num(storms)$hist$pressure
-
-inspectdf::inspect_num(storms, breaks = 10) %>%
-  inspectdf::show_plot()
-
-inspectdf::inspect_num(storms, storms[-c(1:10), -1])
-
-inspectdf::inspect_num(storms, storms[-c(1:10), -1]) %>% 
-  inspectdf::show_plot()
+```{r inspectdf 3}
+inspectdf::inspect_num(mydata, breaks = 10)
 ```
 
 
+```{r inspectdf 4}
+inspectdf::inspect_num(mydata)$hist$Age
+```
 
 
-
-
-
-
-
+```{r inspectdf 5}
+inspectdf::inspect_num(mydata, breaks = 10) %>%
+  inspectdf::show_plot()
+```
 
 
 
@@ -395,18 +373,17 @@ inspectdf::inspect_num(storms, storms[-c(1:10), -1]) %>%
 #### Split-Group Stats Continious
 
 
-```{r summarytools Split-Group continious, eval=FALSE, include=FALSE}
-grouped_descr <- stby(data = exams, 
-                      INDICES = exams$gender, 
-                      FUN = descr, stats = "common")
-grouped_descr %>% tb()
-
-grouped_descr %>% tb(order = 2)
+```{r summarytools Split-Group continious}
+grouped_descr <- summarytools::stby(data = mydata, 
+                      INDICES = mydata$Sex, 
+                      FUN = summarytools::descr, stats = "common")
+# grouped_descr %>% summarytools::tb(order = 2)
+grouped_descr %>% summarytools::tb()
 ```
 
 
 ```{r dlookr descriptives, eval=FALSE, include=FALSE}
-carseats %>%
+mydata %>%
   group_by(US) %>% 
   dlookr::describe(Sales, Income) 
 
@@ -434,38 +411,41 @@ plot(cat_num)
 
 #### Grouped Continious
 
-```{r summarytools Grouped Continious, eval=FALSE, include=FALSE}
-(iris_stats_by_species <- stby(data = iris, 
-                               INDICES = iris$Species, 
-                               FUN = descr, stats = c("mean", "sd", "min", "med", "max"), 
-                               transpose = TRUE))
+
+```{r summarytools Grouped Continious}
+   summarytools::stby(data = mydata, 
+                               INDICES = mydata$PreinvasiveComponent, 
+                               FUN = summarytools::descr,
+                      stats = c("mean", "sd", "min", "med", "max"), 
+                               transpose = TRUE)
 ```
 
 
 
-```{r summarytools Grouped Continious 2, eval=FALSE, include=FALSE}
-with(tobacco, stby(BMI, age.gr, descr, 
+```{r summarytools Grouped Continious 2}
+with(mydata, 
+     summarytools::stby(Age, PreinvasiveComponent, summarytools::descr), 
                    stats = c("mean", "sd", "min", "med", "max"),
                    transpose = TRUE
                    )
-     )
 ```
 
 
 
-```{r summarytools Grouped Continious 3, eval=FALSE, include=FALSE}
-tobacco$gender <- forcats::fct_explicit_na(tobacco$gender)
-tobacco %>% group_by(gender) %>% descr(stats = "fivenum")
+```{r summarytools Grouped Continious 3, echo=TRUE, eval=FALSE, message=FALSE, warning=FALSE}
+mydata %>% 
+  group_by(PreinvasiveComponent) %>% 
+  summarytools::descr(stats = "fivenum")
 ```
 
 
 
-```{r SmartEDA category, eval=FALSE, include=FALSE}
+```{r SmartEDA category}
 ## Summary statistics by – category
 SmartEDA::ExpNumStat(
-  Carseats,
+  mydata,
   by = "GA",
-  gp = "Urban",
+  gp = "PreinvasiveComponent",
   Qnt = seq(0, 1, 0.1),
   MesofShape = 2,
   Outlier = TRUE,

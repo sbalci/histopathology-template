@@ -1,4 +1,4 @@
-**Codes for generating fake data**.^[See [`childRmd/_generateFakeData.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_generateFakeData.Rmd) file for other codes]
+**Codes for generating fake data**.^[See [`childRmd/_02fakeData.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_02fakeData.Rmd) file for other codes]
 
 **Generate Fake Data**
 

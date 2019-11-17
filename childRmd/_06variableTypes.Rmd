@@ -1,4 +1,4 @@
-**Codes for defining variable types**.^[See [`childRmd/_variableTypes.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_variableTypes.Rmd) file for other codes]
+**Codes for defining variable types**.^[See [`childRmd/_06variableTypes.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_06variableTypes.Rmd) file for other codes]
 
 
 ### Find Key Columns
