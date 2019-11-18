@@ -17,6 +17,8 @@ r_cran_packages:
     - knitr
 
 r_packages:
+    - dplyr
+    - magrittr
     - janitor
     - jmv
     - kableExtra
