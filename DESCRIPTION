@@ -25,6 +25,7 @@ URL: https://sbalci.github.io/
 BugReports: https://github.com/sbalci/histopathology-template
 Depends: 
     R (>= 3.1.0),
+    renv,
     rlang,
     dplyr,
     magrittr,

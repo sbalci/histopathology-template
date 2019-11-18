@@ -17,6 +17,7 @@ r_cran_packages:
     - knitr
 
 r_packages:
+    - renv
     - dplyr
     - magrittr
     - janitor
