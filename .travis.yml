@@ -46,3 +46,10 @@ deploy:
         branch: master
     local_dir: docs
     target_branch: gh-pages
+addons:
+       apt:
+         update: true
+         sources:
+           - sourceline: 'ppa:opencpu/imagemagick'
+         packages:
+           - libmagick++-dev
