@@ -402,12 +402,6 @@
       "Source": "CRAN",
       "Hash": "2cd2a065192f3ba08a919d8800dba7e0"
     },
-    "checkmate": {
-      "Package": "checkmate",
-      "Version": "1.9.4",
-      "Source": "CRAN",
-      "Hash": "51788d50ba2a6ac3bf71efadaf1f76d9"
-    },
     "chron": {
       "Package": "chron",
       "Version": "2.3-54",
@@ -1115,12 +1109,6 @@
       "Version": "0.1.0",
       "Source": "CRAN",
       "Hash": "f88aefec3ceada8f4216b2d79ac9cdbb"
-    },
-    "magick": {
-      "Package": "magick",
-      "Version": "2.2",
-      "Source": "CRAN",
-      "Hash": "452b461db4b0b37d0718a03e00613b84"
     },
     "magrittr": {
       "Package": "magrittr",
