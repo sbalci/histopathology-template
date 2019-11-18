@@ -72,6 +72,12 @@
       "Source": "CRAN",
       "Hash": "3713a75ea5f5bbc25579b20cbb7843f3"
     },
+    "DataExplorer": {
+      "Package": "DataExplorer",
+      "Version": "0.8.0",
+      "Source": "CRAN",
+      "Hash": "2e0d2de3a70f95efe55912ca9cff0941"
+    },
     "DescTools": {
       "Package": "DescTools",
       "Version": "0.99.28",
@@ -104,9 +110,15 @@
     },
     "Hmisc": {
       "Package": "Hmisc",
-      "Version": "4.2-0",
+      "Version": "4.3-0",
       "Source": "CRAN",
-      "Hash": "b77dc16cbac363773edd581bcac3fe28"
+      "Hash": "734709b1d7c91916c3fe8cb5237197dd"
+    },
+    "ISLR": {
+      "Package": "ISLR",
+      "Version": "1.2",
+      "Source": "CRAN",
+      "Hash": "ff55a5200f4cec4d02d5fda654af3595"
     },
     "KMsurv": {
       "Package": "KMsurv",
@@ -158,9 +170,9 @@
     },
     "R6": {
       "Package": "R6",
-      "Version": "2.4.0",
+      "Version": "2.4.1",
       "Source": "CRAN",
-      "Hash": "92b50d943a7c76c67918c1e1beb68627"
+      "Hash": "32b894df8893259af194abdc2b1fc366"
     },
     "RColorBrewer": {
       "Package": "RColorBrewer",
@@ -197,6 +209,12 @@
       "Version": "0.3.3.5.0",
       "Source": "CRAN",
       "Hash": "b86bf100354fb8fe4a20b5689e40c7b3"
+    },
+    "SmartEDA": {
+      "Package": "SmartEDA",
+      "Version": "0.3.2",
+      "Source": "CRAN",
+      "Hash": "899fcb65f21ae096ad6d10bfaa235740"
     },
     "SparseM": {
       "Package": "SparseM",
@@ -288,11 +306,29 @@
       "RemoteSha": "e85e4d7058512c2d9f72964060271c704c73864b",
       "Hash": "05087c5a88e7e5ec8415ca37fec59768"
     },
+    "bit": {
+      "Package": "bit",
+      "Version": "1.1-14",
+      "Source": "CRAN",
+      "Hash": "915a13dd2f8633d92971640ed1498e5b"
+    },
+    "bit64": {
+      "Package": "bit64",
+      "Version": "0.9-7",
+      "Source": "CRAN",
+      "Hash": "805d4ae996fa46f4f8436500959d669b"
+    },
     "bitops": {
       "Package": "bitops",
       "Version": "1.0-6",
       "Source": "CRAN",
       "Hash": "62408262624d9f8e436f51ca901424e2"
+    },
+    "blob": {
+      "Package": "blob",
+      "Version": "1.2.0",
+      "Source": "CRAN",
+      "Hash": "9ef42c7a122fb0bc78563a7d1da7ba4e"
     },
     "boot": {
       "Package": "boot",
@@ -576,6 +612,12 @@
       "Source": "CRAN",
       "Hash": "d02ac58732ac82b42336fc8dc7d8880c"
     },
+    "explore": {
+      "Package": "explore",
+      "Version": "0.5.1",
+      "Source": "CRAN",
+      "Hash": "e2b6cf8ec838b7d8f5895be8299d3f95"
+    },
     "expm": {
       "Package": "expm",
       "Version": "0.999-4",
@@ -603,8 +645,8 @@
       "RemoteRepo": "finalfit",
       "RemoteUsername": "ewenharrison",
       "RemoteRef": "master",
-      "RemoteSha": "2db4d72d08e1f79c39c56b9b705fa4b73f39ba00",
-      "Hash": "d4ecaf43983563a24b0f583f5fd3068f"
+      "RemoteSha": "c7e808efe7755f4b5e31390ccb53cfa3012db654",
+      "Hash": "9ee2638ff3a672ce08e09029ca7eecd4"
     },
     "fit.models": {
       "Package": "fit.models",
@@ -617,6 +659,12 @@
       "Version": "0.4.0",
       "Source": "CRAN",
       "Hash": "4d7e4a2ed5adadda6714eb7b9361213b"
+    },
+    "foreach": {
+      "Package": "foreach",
+      "Version": "1.4.7",
+      "Source": "CRAN",
+      "Hash": "679941326860ea87464d7f010341fb05"
     },
     "foreign": {
       "Package": "foreign",
@@ -692,9 +740,9 @@
     },
     "ggpubr": {
       "Package": "ggpubr",
-      "Version": "0.2.3",
+      "Version": "0.2.4",
       "Source": "CRAN",
-      "Hash": "5ef8f49b551629233160fe8165f0dadd"
+      "Hash": "7fda625615c28d392cc56e2348e8ea96"
     },
     "ggrepel": {
       "Package": "ggrepel",
@@ -806,9 +854,9 @@
     },
     "haven": {
       "Package": "haven",
-      "Version": "2.1.1",
+      "Version": "2.2.0",
       "Source": "CRAN",
-      "Hash": "d1f21b8ced82ba581c26edfcc69d0c41"
+      "Hash": "086fad0dd7ec01e7576118a05ea3da9b"
     },
     "here": {
       "Package": "here",
@@ -870,6 +918,12 @@
       "Source": "CRAN",
       "Hash": "0696bca6f7253eb776c63b101cbc65a8"
     },
+    "igraph": {
+      "Package": "igraph",
+      "Version": "1.2.4.1",
+      "Source": "CRAN",
+      "Hash": "6eb7a604bc33c66dac0611b7ce75ac69"
+    },
     "ini": {
       "Package": "ini",
       "Version": "0.3.1",
@@ -894,6 +948,12 @@
       "Source": "CRAN",
       "Hash": "f1512cd6faeb83fd99704ba4c44468d3"
     },
+    "iterators": {
+      "Package": "iterators",
+      "Version": "1.0.12",
+      "Source": "CRAN",
+      "Hash": "30ef58a17d970ae05c85793da79152d6"
+    },
     "janitor": {
       "Package": "janitor",
       "Version": "1.2.0",
@@ -908,21 +968,21 @@
     },
     "jmv": {
       "Package": "jmv",
-      "Version": "0.9.6.1",
+      "Version": "1.0.8",
       "Source": "CRAN",
-      "Hash": "43da8655e0406e89cdeed66d0dfc6ae4"
+      "Hash": "b1c4cbb40d3870a01ace112fe9c750a0"
     },
     "jmvcore": {
       "Package": "jmvcore",
-      "Version": "1.0.0",
+      "Version": "1.0.8",
       "Source": "CRAN",
-      "Hash": "5eea0941d2792610a337acbc83b1b3bd"
+      "Hash": "2233c64cb605352ed8d2c5301dae4a77"
     },
     "jomo": {
       "Package": "jomo",
-      "Version": "2.6-9",
+      "Version": "2.6-10",
       "Source": "CRAN",
-      "Hash": "030fce3ad82cebccbb3171106653897a"
+      "Hash": "4760440f2c874eb1354ead2815b3bd5c"
     },
     "jsonlite": {
       "Package": "jsonlite",
@@ -944,9 +1004,9 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.25",
+      "Version": "1.26",
       "Source": "CRAN",
-      "Hash": "33a3a009f5e7c3606d6851692bf703d9"
+      "Hash": "4a9bc248b52335212d8d36f9a4c6a6f0"
     },
     "labeling": {
       "Package": "labeling",
@@ -1037,6 +1097,12 @@
       "Version": "2.1.0",
       "Source": "CRAN",
       "Hash": "74d62fb96be363e317bdc53a45fcd4e7"
+    },
+    "lpSolve": {
+      "Package": "lpSolve",
+      "Version": "5.6.13.3",
+      "Source": "CRAN",
+      "Hash": "d6a07b5b156177846b24602bd1747a5a"
     },
     "lubridate": {
       "Package": "lubridate",
@@ -1238,6 +1304,12 @@
       "Source": "CRAN",
       "Hash": "976bd3e7229aefd84d9d5cf032646601"
     },
+    "networkD3": {
+      "Package": "networkD3",
+      "Version": "0.4",
+      "Source": "CRAN",
+      "Hash": "3537c2ee4479712254e0d857fc823d51"
+    },
     "nlme": {
       "Package": "nlme",
       "Version": "3.1-141",
@@ -1267,6 +1339,12 @@
       "Version": "2016.8-1.1",
       "Source": "CRAN",
       "Hash": "10548c749c529a01a2c0e5cbc9d93aa2"
+    },
+    "odbc": {
+      "Package": "odbc",
+      "Version": "1.1.6",
+      "Source": "CRAN",
+      "Hash": "abbb5111e6587918d8ceba915164d149"
     },
     "oompaBase": {
       "Package": "oompaBase",
@@ -1623,6 +1701,12 @@
       "Source": "CRAN",
       "Hash": "0d0e7f0e3c22944bb9bf67d0d5636e50"
     },
+    "rpart.plot": {
+      "Package": "rpart.plot",
+      "Version": "3.0.8",
+      "Source": "CRAN",
+      "Hash": "fc16b6f50fd39736cd2c2ee899c7a62c"
+    },
     "rprojroot": {
       "Package": "rprojroot",
       "Version": "1.3-2",
@@ -1670,6 +1754,12 @@
       "Version": "0.3.4",
       "Source": "CRAN",
       "Hash": "76bb112bc3833454dc701230aa9cb3ed"
+    },
+    "sampling": {
+      "Package": "sampling",
+      "Version": "2.8",
+      "Source": "CRAN",
+      "Hash": "ba0875451ee4704aa61a7ccad49e97a6"
     },
     "sandwich": {
       "Package": "sandwich",
@@ -1943,9 +2033,9 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.10",
+      "Version": "0.11",
       "Source": "CRAN",
-      "Hash": "b22f06440a75a69aa0c6c04cf5278d83"
+      "Hash": "7d51266ba491e922f72026a90552378b"
     },
     "xml2": {
       "Package": "xml2",
@@ -1958,6 +2048,12 @@
       "Version": "1.0.0",
       "Source": "CRAN",
       "Hash": "ec32d86b4bcfa2cfa648dc0e1e46e24d"
+    },
+    "xray": {
+      "Package": "xray",
+      "Version": "0.2",
+      "Source": "CRAN",
+      "Hash": "bfe4f4342a28354ab967b64f8dc19443"
     },
     "xtable": {
       "Package": "xtable",

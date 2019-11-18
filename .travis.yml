@@ -1,6 +1,6 @@
 language: r
 
-warnings_are_errors: true
+warnings_are_errors: false
 cache: packages
 sudo: required
 branches:
@@ -10,11 +10,11 @@ branches:
 r_cran_packages:
     - markdown
     - devtools
+    - dplyr
+    - magrittr
     - testthat
     - rmarkdown
     - knitr
-    - dplyr
-    - magrittr
 
 r_packages:
     - janitor
@@ -29,8 +29,6 @@ r_github_packages:
     - easystats/report
     - r-lib/covr
     - ropenscilabs/icon
-    - tidyverse/dplyr
-    - tidyverse/magrittr
     - DataWookie/feedeR
     - haozhu233/kableExtra
     - ropensci/RefManageR
