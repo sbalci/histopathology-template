@@ -25,6 +25,8 @@ URL: https://sbalci.github.io/
 BugReports: https://github.com/sbalci/histopathology-template
 Depends: 
     R (>= 3.1.0),
+    dplyr,
+    magrittr,
     arsenal,
     describer,
     DT,
@@ -57,9 +59,7 @@ Imports:
     janitor,
     jmv,
     kableExtra,
-    magicfor,
-    dplyr,
-    magrittr
+    magicfor
 Remotes:
     r-lib/covr,
     r-lib/devtools,
