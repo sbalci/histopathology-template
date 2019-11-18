@@ -1116,6 +1116,12 @@
       "Source": "CRAN",
       "Hash": "f88aefec3ceada8f4216b2d79ac9cdbb"
     },
+    "magick": {
+      "Package": "magick",
+      "Version": "2.2",
+      "Source": "CRAN",
+      "Hash": "452b461db4b0b37d0718a03e00613b84"
+    },
     "magrittr": {
       "Package": "magrittr",
       "Version": "1.5",
