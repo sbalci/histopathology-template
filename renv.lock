@@ -402,6 +402,12 @@
       "Source": "CRAN",
       "Hash": "2cd2a065192f3ba08a919d8800dba7e0"
     },
+    "checkmate": {
+      "Package": "checkmate",
+      "Version": "1.9.4",
+      "Source": "CRAN",
+      "Hash": "51788d50ba2a6ac3bf71efadaf1f76d9"
+    },
     "chron": {
       "Package": "chron",
       "Version": "2.3-54",
@@ -482,9 +488,9 @@
     },
     "covr": {
       "Package": "covr",
-      "Version": "3.3.1",
+      "Version": "3.3.2",
       "Source": "CRAN",
-      "Hash": "885360370767478f19b92ee900b1f8f6"
+      "Hash": "1d82e0a7d7c413c607619004f96b9e3f"
     },
     "cowplot": {
       "Package": "cowplot",
@@ -938,9 +944,9 @@
     },
     "inspectdf": {
       "Package": "inspectdf",
-      "Version": "0.0.5",
+      "Version": "0.0.7",
       "Source": "CRAN",
-      "Hash": "f1512cd6faeb83fd99704ba4c44468d3"
+      "Hash": "ea88e0ccc17a095645452c6c81847ec7"
     },
     "iterators": {
       "Package": "iterators",
@@ -1109,6 +1115,12 @@
       "Version": "0.1.0",
       "Source": "CRAN",
       "Hash": "f88aefec3ceada8f4216b2d79ac9cdbb"
+    },
+    "magick": {
+      "Package": "magick",
+      "Version": "2.2",
+      "Source": "CRAN",
+      "Hash": "452b461db4b0b37d0718a03e00613b84"
     },
     "magrittr": {
       "Package": "magrittr",
@@ -1474,9 +1486,9 @@
     },
     "plotly": {
       "Package": "plotly",
-      "Version": "4.9.0",
+      "Version": "4.9.1",
       "Source": "CRAN",
-      "Hash": "d4f8ca9fa024657598c3698df2e12cfb"
+      "Hash": "637807e01b470d5a425c24aa7a33e63f"
     },
     "plyr": {
       "Package": "plyr",
@@ -1614,8 +1626,8 @@
       "RemoteRepo": "report",
       "RemoteUsername": "easystats",
       "RemoteRef": "master",
-      "RemoteSha": "47dd0640d32ff097b1aafe76cdd8a2232d8e1ae6",
-      "Hash": "1a9913afc83ea8a5c22d80118fdd00d3"
+      "RemoteSha": "e7ba04b4409fc1b78d480d15c3f1233eb6c62da9",
+      "Hash": "850f5d20eab001b88c546da18dcea2f7"
     },
     "reshape": {
       "Package": "reshape",
@@ -1661,9 +1673,9 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "1.16",
+      "Version": "1.17",
       "Source": "CRAN",
-      "Hash": "74352997ea70389458e7a8b7059dfb95"
+      "Hash": "b0829435ecf8d260997ac7afb01f29ca"
     },
     "robust": {
       "Package": "robust",
@@ -1679,9 +1691,9 @@
     },
     "roxygen2": {
       "Package": "roxygen2",
-      "Version": "6.1.1",
+      "Version": "7.0.0",
       "Source": "CRAN",
-      "Hash": "5c44ac973ec9b56efd7990e4b4464699"
+      "Hash": "930f75ebe1726624ed511e62ab129254"
     },
     "rpart": {
       "Package": "rpart",
@@ -1901,9 +1913,9 @@
     },
     "testthat": {
       "Package": "testthat",
-      "Version": "2.2.1",
+      "Version": "2.3.0",
       "Source": "CRAN",
-      "Hash": "3e86adb988cb96c5b30b01ec56719ac4"
+      "Hash": "546f9348ba728fc3844ac74aabcc7839"
     },
     "tibble": {
       "Package": "tibble",
@@ -1985,9 +1997,15 @@
     },
     "wakefield": {
       "Package": "wakefield",
-      "Version": "0.3.3",
-      "Source": "CRAN",
-      "Hash": "967fefcb5f502cd803c43a589ff90324"
+      "Version": "0.3.4",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "wakefield",
+      "RemoteUsername": "trinker",
+      "RemoteRef": "master",
+      "RemoteSha": "3610b702221a7576b1762f0ec224c8f70b30e7dc",
+      "Hash": "e9e832dfc142418b2d6c1e4757df8e6f"
     },
     "webshot": {
       "Package": "webshot",

@@ -7,7 +7,7 @@ branches:
     only:
     - master
 
-r_cran_packages:
+r_packages:
     - markdown
     - devtools
     - dplyr
@@ -15,11 +15,7 @@ r_cran_packages:
     - testthat
     - rmarkdown
     - knitr
-
-r_packages:
     - renv
-    - dplyr
-    - magrittr
     - janitor
     - jmv
     - kableExtra
