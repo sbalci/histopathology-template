@@ -1,4 +1,11 @@
-if (!require("pacman")) install.packages("pacman"); library(pacman)
+
+mypackages <- function(package) {
+    
+if (!require({{package}})) install.packages({{package}})
+library({{package}})
+    
+}
+
 
 pacman::p_load(
     here,
@@ -14,7 +21,11 @@ pacman::p_load(
     prettydoc,
     distill,
     renv,
-    remotes
+    remotes,
+    rlang,
+    xfun,
+    stringi,
+    magrittr
 )
 
 pacman::p_load_gh(
