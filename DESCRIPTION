@@ -25,9 +25,20 @@ URL: https://sbalci.github.io/
 BugReports: https://github.com/sbalci/histopathology-template
 Depends: 
     R (>= 3.1.0),
-    renv,
-    dplyr
-Suggests: 
     rmarkdown,
-    knitr
+    knitr,
+    renv,
+    remotes,
+    dplyr,
+    rprojroot,
+    here,
+    readxl,
+    janitor,
+    bayestestR
+Suggests:
+    prettydoc,
+    distill
+Remotes:
+    easystats/report,
+    noamross/redoc
 VignetteBuilder: knitr

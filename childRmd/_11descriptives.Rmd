@@ -136,7 +136,7 @@ mydata %>%
 ```
 
 
-```{r summarytools descriptives 5}
+```{r summarytools descriptives 5, echo=TRUE, eval=FALSE}
 mydata$Sex %>% 
   summarytools::freq(cumul = FALSE, report.nas = FALSE) %>%
   summarytools::tb()

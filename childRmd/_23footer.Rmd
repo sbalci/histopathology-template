@@ -105,7 +105,7 @@ report::show_packages(session = sessionInfo()) %>%
 
 
 ```{r library citations}
-citation("tidyverse")
+# citation("tidyverse")
 citation("readxl")
 citation("janitor")
 citation("report")
@@ -114,7 +114,7 @@ citation("ggstatsplot")
 ```
 
 
-```{r}
+```{r write libraries as bib file}
 knitr::write_bib(x = c(.packages(), "knitr", "shiny"),
                  file = here::here("bib", "packages.bib")
 )
@@ -140,7 +140,7 @@ sessionInfo()
 
 ### Notes {.appendix}  
 
-Last update on `r Sys.time()`  
+Last update on `r as.character(Sys.time())`  
 
 Serdar Balci, MD, Pathologist  
 drserdarbalci@gmail.com  
@@ -152,6 +152,8 @@ https://rpubs.com/sbalci/CV
 
 ## Code Appendix
 
-```{r, echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
+**Use following chunk options to include all codes below the report.**
+
+```r{echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
 ```
 

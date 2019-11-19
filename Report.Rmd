@@ -33,10 +33,6 @@ output:
     css: css/style.css
     includes:
       after_body: _footer.html
-  epuRate::epurate:
-    toc: TRUE
-    number_sections: FALSE
-    code_folding: "hide"
   distill::distill_article:
     toc: true
   redoc::redoc:
@@ -334,9 +330,9 @@ bibliography: bib/template.bib
 ```{r footer, child = here::here('childRmd', '_23footer.Rmd')}
 ```
 
-<!-- --- -->
+---
 
-<!-- \pagebreak -->
+\pagebreak
 
 
 <!-- **push all changes to GitHub repository**  -->

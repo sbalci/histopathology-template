@@ -1,0 +1,20 @@
+name: "Histopathology Research Template"
+navbar:
+  title: "Histopathology Research Template"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Readme"
+      href: Readme.html
+    - text: "Report"
+      href: Report.html
+  right:
+    - social: menu
+    - icon: fab fa-github
+      href: https://github.com/sbalci/histopathology-template
+output_dir: "docs"
+twitter:
+      site: "@serdarbalci"
+base_url: https://sbalci.github.io/histopathology-template
+repository_url: https://github.com/sbalci/histopathology-template
+exclude: [".log", "/oldRmd/", "/drafts/", "/childRmd/"]

@@ -289,7 +289,7 @@ source(here::here("R", "gc_survival.R"))
 
 
 
-```{r eval=FALSE, eval=FALSE, include=FALSE}
+```{r survival function, eval=FALSE, include=FALSE}
 mydependent <-  "Surv(time, status)"
 explanatory <- "Organ"
 
@@ -363,101 +363,6 @@ mydata %>%
   finalfit(dependentMultivariate, explanatoryMultivariate) -> tMultivariate
 
 knitr::kable(tMultivariate, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r"))
-```
-
-
-
----
-
-<!-- https://ggobi.github.io/ggally/#ggallyggsurv -->
-
-
----
-
-
-<!-- https://cran.r-project.org/web/packages/arsenal/vignettes/modelsum.html#survival -->
-
-```{r arsenal survival, eval=FALSE, include=FALSE}
-library(arsenal)
-library(survival)
-
-fit  <- coxph(Surv(fu.time, fu.stat) ~ age + sex + arm, data=mockstudy)
-summary(fit)
-
-fit.z <- cox.zph(fit)
-fit.z
-
-plot(fit.z[1], resid=FALSE) # makes for a cleaner picture in this case
-abline(h=coef(fit)[1], col='red')
-
-
-fit2 <- coxph(Surv(fu.time, fu.stat) ~ pspline(age) + sex + arm, data=mockstudy)
-fit2
-
-termplot(fit2, se=T, terms=1)
-
-summary(fit2)$concordance
-
-survConcordance(Surv(fu.time, fu.stat) ~ predict(fit2), data=mockstudy)
-
-
-broom::tidy(fit)
-
-broom::glance(fit)
-
-
-summary(modelsum(Surv(fu.time, fu.stat) ~ arm, 
-                 adjust= ~age + sex, data=mockstudy, family="survival"))
-
-
-```
-
-
-
-```{r eval=FALSE, include=FALSE}
-# KM plot
-explanatory = c("perfor.factor")
-dependent = "Surv(time, status)"
-colon_s %>% 
-  surv.plot(dependent, explanatory, xlab="Time (days)", pval=TRUE, legend="none")
-
-# Notes
-
-# Use Hmisc::label() to assign labels to variables for tables and plots.
-
-label(colon_s$age.factor) = "Age (years)"
-
-# Export dataframe tables directly or to R Markdown using knitr::kable().
-
-# Note wrapper summary.missing() can be useful. Wraps mice::md.pattern.
-
-colon_s %>%
-  summary.missing(dependent, explanatory)
-
-```
-
-
-
-
-
-```r
-library(survMisc)
-# Contal C, O'Quigley J, 1999 An application of changepoint methods in studying the effect of age on survival in breast cancer. Computational Statistics & Data Analysis 30(3):253--70. http://www.sciencedirect.com/science/article/pii/S0167947398000966{ScienceDirect}
-
-data(kidtran, package="KMsurv")
-k1 <- kidtran
-k2 <- k1[k1$gender==1 & k1$race==2, ]
-c1 <- coxph(Surv(time, delta) ~ age, data = k2)
-cutp(c1, var="age", plot=TRUE)
-k2 <- k1[k1$gender==2 & k1$race==2, ]
-c1 <- coxph(Surv(time, delta) ~ age, data = k2)
-cutp(c1, var="age")
-```
-
-
-```
-survIDINRI: IDI and NRI for comparing competing risk prediction models with censored survival data
-https://cran.r-project.org/web/packages/survIDINRI/index.html
 ```
 
 
