@@ -4,8 +4,6 @@ navbar:
   left:
     - text: "Readme"
       href: readme.html
-    - text: "Report"
-      href: report.html
   right:
     - social: menu
     - icon: fab fa-github
