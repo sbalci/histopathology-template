@@ -7,6 +7,6 @@ USER ${NB_USER}
 
 
 
-RUN wget https://github.com/sbalci/histopathology-template/raw/master/DESCRIPTION && R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2019-11-18/')); install.packages('devtools'); install.packages('renv'); install.packages('dplyr'); install.packages('magrittr'); install.packages('rmarkdown'); install.packages('knitr'); install.packages('rlang'); devtools::install_deps()"
+RUN wget https://github.com/sbalci/histopathology-template/raw/master/DESCRIPTION && R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2019-11-18/'));  install.packages('renv'); install.packages('dplyr'); install.packages('rmarkdown'); install.packages('knitr')"
 
 RUN rm DESCRIPTION.1; exit 0

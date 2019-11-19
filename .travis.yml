@@ -8,15 +8,11 @@ branches:
     - master
 
 r_packages:
-    - devtools
     - dplyr
     - rmarkdown
     - knitr
     - renv
 
-
-r_github_packages:
-    - ewenharrison/finalfit
 
 before_script:
     - Rscript -e 'print("before script")'

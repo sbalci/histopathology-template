@@ -26,13 +26,10 @@ BugReports: https://github.com/sbalci/histopathology-template
 Depends: 
     R (>= 3.1.0),
     renv,
-    rlang,
     dplyr
 Suggests: 
     rmarkdown,
     knitr
 Imports: 
-    janitor,
 Remotes:
-    ewenharrison/finalfit
 VignetteBuilder: knitr
