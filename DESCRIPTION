@@ -30,6 +30,4 @@ Depends:
 Suggests: 
     rmarkdown,
     knitr
-Imports: 
-Remotes:
 VignetteBuilder: knitr
