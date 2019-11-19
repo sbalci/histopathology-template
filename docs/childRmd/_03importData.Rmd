@@ -1,0 +1,33 @@
+
+**Codes for importing data.**^[See [`childRmd/_03importData.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_03importData.Rmd) file for other codes]
+
+
+**Read the data**
+
+```{r import data}
+library(readxl)
+mydata <- readxl::read_excel(here::here("data", "mydata.xlsx"))
+# View(mydata) # Use to view data after importing
+```
+
+
+
+```{r import via rio, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/rio/vignettes/rio.html
+# rio::install_formats()
+
+x <- rio::import("mtcars.csv")
+y <- rio::import("mtcars.rds")
+z <- rio::import("mtcars.dta")
+
+rio::import("mtcars_noext", format = "csv")
+
+rio::export(mtcars, "mtcars.csv")
+rio::export(mtcars, "mtcars.rds")
+rio::export(mtcars, "mtcars.dta")
+
+rio::export(list(mtcars = mtcars, iris = iris), "multi.xlsx")
+
+```
+
+

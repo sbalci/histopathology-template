@@ -1,0 +1,194 @@
+**Codes for defining variable types**.^[See [`childRmd/_06variableTypes.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_06variableTypes.Rmd) file for other codes]
+
+
+### Find Key Columns
+
+
+**print column names as vector**
+
+
+```{r print names as vector}
+dput(names(mydata))
+```
+
+
+#### Find ID and key columns to exclude from analysis
+
+
+See the code as function in [`R/find_key.R`](https://github.com/sbalci/histopathology-template/blob/master/R/find_key.R). 
+
+
+```{r find ID and key columns}
+keycolumns <-  
+    mydata %>%  
+    sapply(., FUN = dataMaid::isKey) %>%  
+    as_tibble() %>%  
+    select(  
+        which(.[1, ] == TRUE)  
+    ) %>%   
+    names()  
+keycolumns  
+```
+
+
+### Variable Types
+
+**Get variable types**
+
+```{r get variable types inspectdf}
+mydata %>% 
+  select(-keycolumns) %>% 
+inspectdf::inspect_types()
+```
+
+
+
+```{r describer 1}
+mydata %>% 
+    select(-keycolumns,
+           -contains("Date")) %>% 
+  describer::describe() %>% 
+  knitr::kable(format = "markdown")
+```
+
+
+**Plot variable types**
+
+```{r variable type plot inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+  inspectdf::inspect_types() %>% 
+  inspectdf::show_plot()
+```
+
+
+
+```{r variable type plot visdat}
+# https://github.com/ropensci/visdat
+# http://visdat.njtierney.com/articles/using_visdat.html
+# https://cran.r-project.org/web/packages/visdat/index.html
+# http://visdat.njtierney.com/
+
+# visdat::vis_guess(mydata)
+
+visdat::vis_dat(mydata)
+```
+
+
+```{r variable type plot explore}
+library("explore")
+mydata %>% explore::explore_tbl()
+```
+
+
+
+### Define Variable Types
+
+
+#### Find `character` variables
+
+```{r find character variables inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+    inspectdf::inspect_types() %>% 
+    dplyr::filter(type == "character") %>% 
+    dplyr::select(col_name) %>% 
+    pull() %>% 
+    unlist() -> characterVariables
+
+characterVariables
+```
+
+
+#### Find `categorical` variables
+
+```{r find categorical variables}
+mydata %>%
+    dplyr::select(-keycolumns,
+                  -contains("Date")) %>%
+  describer::describe() %>% 
+    janitor::clean_names() %>% 
+    dplyr::filter(column_type == "factor") %>% 
+    dplyr::select(column_name) %>% 
+    dplyr::pull() -> categoricalVariables
+
+categoricalVariables
+```
+
+
+
+#### Find `continious` variables
+
+
+```{r find continious variables describer}
+mydata %>%
+    dplyr::select(-keycolumns,
+                  -contains("Date")) %>%
+  describer::describe() %>% 
+    janitor::clean_names() %>% 
+    dplyr::filter(column_type == "numeric" | column_type == "double") %>% 
+    dplyr::select(column_name) %>% 
+    dplyr::pull() -> continiousVariables
+
+continiousVariables
+```
+
+
+#### Find `numeric` variables
+
+
+
+```{r find numeric variables inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+inspectdf::inspect_types() %>% 
+  dplyr::filter(type == "numeric") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> numericVariables
+
+numericVariables
+```
+
+
+#### Find `integer` variables
+
+
+```{r find integer variables inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+inspectdf::inspect_types() %>% 
+  dplyr::filter(type == "integer") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> integerVariables
+
+integerVariables
+```
+
+
+#### Find `list` variables
+
+```{r find list variables inspectdf}
+mydata %>% 
+    select(-keycolumns) %>% 
+inspectdf::inspect_types() %>% 
+  dplyr::filter(type == "list") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> listVariables
+listVariables
+```
+
+
+#### Find `date` variables
+
+```{r find Date variables}
+is_date <- function(x) inherits(x, c("POSIXct", "POSIXt"))
+
+dateVariables <- 
+names(which(sapply(mydata, FUN = is_date) == TRUE))
+dateVariables
+```
+
+

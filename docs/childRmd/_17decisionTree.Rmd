@@ -1,0 +1,29 @@
+**Codes for Decision Tree**.^[See [`childRmd/_17decisionTree.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_17decisionTree.Rmd)]
+
+
+# Decision Tree
+
+
+```{r explore decision tree,, eval=FALSE, include=FALSE}
+iris %>% explore::explain_tree(target = Species)
+
+
+iris$is_versicolor <- ifelse(iris$Species == "versicolor", 1, 0)
+iris %>% select(-Species) %>% explain_tree(target = is_versicolor)
+
+iris %>% explain_tree(target = Sepal.Length)
+```
+
+
+
+
+**Explore**
+
+```{r explore, echo=TRUE, eval=FALSE}
+explore::explore(mydata)
+```
+
+
+
+
+

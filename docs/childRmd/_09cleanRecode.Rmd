@@ -1,0 +1,672 @@
+**Codes for clean and recode data**.^[See [`childRmd/_09cleanRecode.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_09cleanRecode.Rmd) file for other codes]
+
+
+```{r clean names, eval=FALSE, include=FALSE}
+mydata <- janitor::clean_names(mydata)
+# cat(names(mydata), sep = ",\n")
+# names(mydata) <- c(names(mydata)[1:21], paste0("Soru", 1:30))
+```
+
+
+
+
+
+```{r explore, eval=FALSE, include=FALSE}
+iris %>% 
+  explore::clean_var(data = ., 
+                     var = Sepal.Length,  
+            min_val = 4.5, 
+            max_val = 7.0, 
+            na = 5.8, 
+            name = "sepal_length") %>% 
+  describe()
+```
+
+
+
+
+
+
+```{r summary, eval=FALSE, include=FALSE}
+summarytools::view(summarytools::dfSummary(mydata))
+glimpse(mydata)
+```
+
+
+questionr::irec()
+
+questionr::iorder()
+
+questionr::icut()
+
+
+iris %>% mutate(sumVar = rowSums(.[1:4]))
+
+
+iris %>% 
+  mutate(sumVar = rowSums(select(., contains("Sepal")))) %>% 
+  head 
+
+iris %>% 
+  mutate(sumVar = select(., contains("Sepal")) %>% rowSums()) %>% 
+  head
+
+
+
+```{r recode finalfit, eval=FALSE, include=FALSE}
+library(finalfit)
+# https://www.datasurg.net/2019/10/15/jama-retraction-after-miscoding-new-finalfit-function-to-check-recoding/
+# intentionally miscoded
+colon_s %>%
+  mutate(
+    sex.factor2 = forcats::fct_recode(sex.factor,
+      "F" = "Male",
+      "M" = "Female")
+  ) %>%
+  count(sex.factor, sex.factor2)
+```
+
+
+
+```{r check_recode finalfit, eval=FALSE, include=FALSE}
+# Install
+# devtools::install_github('ewenharrison/finalfit')
+library(finalfit)
+library(dplyr)
+# Recode example
+colon_s_small = colon_s %>%
+  select(-id, -rx, -rx.factor) %>%
+  mutate(
+    age.factor2 = forcats::fct_collapse(age.factor,
+      "<60 years" = c("<40 years", "40-59 years")),
+    sex.factor2 = forcats::fct_recode(sex.factor,
+    # Intentional miscode
+      "F" = "Male",
+      "M" = "Female")
+  )
+# Check
+colon_s_small %>%
+  finalfit::check_recode()
+```
+
+
+```{r check_recode numeric finalfit, eval=FALSE, include=FALSE}
+out = colon_s_small %>%
+  select(-extent, -extent.factor,-time, -time.years) %>% # choose to exclude variables
+  check_recode(include_numerics = TRUE)
+```
+
+
+
+
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$cinsiyet into mydata$Cinsiyet
+mydata$Cinsiyet <- recode(mydata$cinsiyet,
+               "K" = "Kadin",
+               "E" = "Erkek")
+mydata$Cinsiyet <- factor(mydata$Cinsiyet)
+```
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$tumor_yerlesimi into mydata$TumorYerlesimi
+mydata$TumorYerlesimi <- recode(mydata$tumor_yerlesimi,
+               "proksimal" = "Proksimal",
+               "distal" = "Distal",
+               "yaygın" = "Yaygin",
+               "gö bileşke" = "GEJ",
+               "antrum" = "Antrum")
+mydata$TumorYerlesimi <- factor(mydata$TumorYerlesimi)
+
+## Reordering mydata$TumorYerlesimi
+mydata$TumorYerlesimi <- factor(mydata$TumorYerlesimi, levels=c("GEJ", "Proksimal", "Antrum", "Distal", "Yaygin"))
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$histolojik_alt_tip into mydata$HistolojikAltTip
+mydata$HistolojikAltTip <- recode(mydata$histolojik_alt_tip,
+               "medüller benzeri" = "meduller benzeri")
+mydata$HistolojikAltTip <- factor(mydata$HistolojikAltTip)
+
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$lauren_siniflamasi into mydata$Lauren
+mydata$Lauren <- recode(mydata$lauren_siniflamasi,
+               "diffüz" = "diffuse",
+               "???" = "medullary")
+mydata$Lauren <- factor(mydata$Lauren)
+
+```
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$histolojik_derece into mydata$Grade
+mydata$Grade <- recode(mydata$histolojik_derece,
+               "az diferansiye" = "az",
+               "iyi diferansiye" = "iyi",
+               "orta diferansiye" = "orta")
+mydata$Grade <- factor(mydata$Grade)
+
+## Reordering mydata$Grade
+mydata$Grade <- factor(mydata$Grade, levels=c("iyi", "orta", "az"))
+```
+
+
+
+
+```{r recode TNM stage, eval=FALSE, include=FALSE}
+mydata$Tstage <- stringr::str_match(mydata$patolojik_evre, paste('(.+)', "N", sep=''))[,2]
+
+mydata$Nstage <- paste0("N",
+    stringr::str_match(mydata$patolojik_evre, paste( "N", '(.+)', "M", sep=''))[,2]
+    )
+
+mydata$Mstage <- paste0("M", 
+    stringr::str_match(mydata$patolojik_evre, paste("M", '(.+)', sep=''))[,2]
+)
+```
+
+
+```{r recode TNM2, eval=FALSE, include=FALSE}
+mydata <- mydata %>% 
+    mutate(
+        T_stage = case_when(
+            grepl(pattern = "T1", x = .$Tstage) == TRUE ~ "T1",
+            grepl(pattern = "T2", x = .$Tstage) == TRUE ~ "T2",
+            grepl(pattern = "T3", x = .$Tstage) == TRUE ~ "T3",
+            grepl(pattern = "T4", x = .$Tstage) == TRUE ~ "T4",
+            TRUE ~ "Tx"
+        )
+    ) %>% 
+mutate(
+        N_stage = case_when(
+            grepl(pattern = "N0", x = .$Nstage) == TRUE ~ "N0",
+            grepl(pattern = "N1", x = .$Nstage) == TRUE ~ "N1",
+            grepl(pattern = "N2", x = .$Nstage) == TRUE ~ "N2",
+            grepl(pattern = "N3", x = .$Nstage) == TRUE ~ "N3",
+            TRUE ~ "Nx"
+        )
+    ) %>% 
+mutate(
+        M_stage = case_when(
+            grepl(pattern = "M0", x = .$Mstage) == TRUE ~ "M0",
+            grepl(pattern = "M1", x = .$Mstage) == TRUE ~ "M1",
+            TRUE ~ "Mx"
+        )
+    )
+
+
+```
+
+
+
+
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$cd44_oran into mydata$CD44
+mydata$CD44 <- recode(mydata$cd44_oran,
+               "2" = "positive",
+               "0" = "negative",
+               "1" = "negative",
+               "3" = "positive")
+mydata$CD44 <- factor(mydata$CD44)
+
+```
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$her2_skor into mydata$Her2
+mydata$Her2 <- recode(mydata$her2_skor,
+               "+3" = "3",
+               "+1" = "1",
+               "+2" = "2")
+mydata$Her2 <- factor(mydata$Her2)
+## Reordering mydata$Her2
+mydata$Her2 <- factor(mydata$Her2, levels=c("0", "1", "2", "3"))
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$msi into mydata$MMR
+mydata$MMR <- recode(mydata$msi,
+               "MSS" = "pMMR",
+               "MSİ(PMS2,MLH1)" = "dMMR(PMS2,MLH1)",
+               "MSİ(MSH2,MSH6)" = "dMMR(MSH2,MSH6)",
+               "MSİ(PMS2)" = "dMMR(PMS2)")
+mydata$MMR <- factor(mydata$MMR)
+
+## Recoding mydata$msi into mydata$MMR2
+mydata$MMR2 <- recode(mydata$msi,
+               "MSS" = "pMMR",
+               "MSİ(PMS2,MLH1)" = "dMMR",
+               "MSİ(MSH2,MSH6)" = "dMMR",
+               "MSİ(PMS2)" = "dMMR")
+mydata$MMR2 <- factor(mydata$MMR2)
+
+
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+mydata <- mydata %>% 
+    mutate(
+TumorPDL1gr1 = case_when(
+        t_pdl1 < 1 ~ "kucuk1",
+        t_pdl1 >= 1 ~ "buyukesit1"
+    )
+    ) %>% 
+mutate(
+TumorPDL1gr5 = case_when(
+        t_pdl1 < 5 ~ "kucuk5",
+        t_pdl1 >= 5 ~ "buyukesit5"
+    )
+    )   %>% 
+mutate(
+inflPDL1gr1 = case_when(
+        i_pdl1 < 1 ~ "kucuk1",
+        i_pdl1 >= 1 ~ "buyukesit1"
+    )
+    ) %>% 
+mutate(
+inflPDL1gr5 = case_when(
+        i_pdl1 < 5 ~ "kucuk5",
+        i_pdl1 >= 5 ~ "buyukesit5"
+    )
+    )
+
+```
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$lvi into mydata$LVI
+mydata$LVI <- recode(mydata$lvi,
+               "var" = "Var",
+               "yok" = "Yok")
+mydata$LVI <- factor(mydata$LVI)
+## Reordering mydata$LVI
+mydata$LVI <- factor(mydata$LVI, levels=c("Yok", "Var"))
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$pni into mydata$PNI
+mydata$PNI <- recode(mydata$pni,
+               "var" = "Var",
+               "yok" = "Yok")
+mydata$PNI <- factor(mydata$PNI)
+## Reordering mydata$PNI
+mydata$PNI <- factor(mydata$PNI, levels=c("Yok", "Var"))
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+## Recoding mydata$ln into mydata$LenfNoduMetastazi
+mydata$LenfNoduMetastazi <- recode(mydata$ln,
+               "var" = "Var",
+               "yok" = "Yok")
+mydata$LenfNoduMetastazi <- factor(mydata$LenfNoduMetastazi)
+## Reordering mydata$LenfNoduMetastazi
+mydata$LenfNoduMetastazi <- factor(mydata$LenfNoduMetastazi, levels=c("Yok", "Var"))
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+mydata$sontarih <- janitor::excel_numeric_to_date(as.numeric(mydata$olum_tarihi))
+```
+
+
+```{r, eval=FALSE, include=FALSE}
+mydata$Outcome <- "Dead"
+mydata$Outcome[mydata$olum_tarihi == "yok"] <- "Alive"
+```
+
+
+```{r select columns, eval=FALSE, include=FALSE}
+# cat(names(mydata), sep = ",\n")
+
+mydata <- mydata %>% 
+    select(
+# sira_no,
+# no,
+# x3,
+# hasta_biyopsi_no,
+# cinsiyet,
+        Cinsiyet,
+        Yas = hasta_yasi,
+        TumorYerlesimi,
+        TumorCapi = tumor_capi,
+HistolojikAltTip,
+Lauren,
+Grade,
+TNM = patolojik_evre,
+Tstage,
+T_stage,
+Nstage,
+N_stage,
+Mstage,
+M_stage,
+CD44,
+Her2,
+MMR,
+MMR2,
+TumorPDL1gr1,
+TumorPDL1gr5,
+inflPDL1gr1,
+inflPDL1gr5,
+LVI,
+PNI,
+LenfNoduMetastazi,
+Outcome,        
+# tumor_yerlesimi,
+
+# histolojik_alt_tip,
+# lauren_siniflamasi,
+# histolojik_derece,
+# cd44_oran,
+# cd44_intense,
+# her2_skor,
+# msi,
+# t_pdl1,
+# i_pdl1,
+# lvi,
+# pni,
+# ln,
+CerrahiTarih = cerrahi_tarih,
+# olum_tarihi,
+genel_sagkalim,
+SonTarih = sontarih
+    )
+
+```
+
+
+
+iRenameColumn.R  
+
+iSelectColumn.R  
+
+
+
+
+```{r clean names 2, eval=FALSE, include=FALSE}
+mydata <- janitor::clean_names(mydata)
+# cat(names(mydata), sep = ",\n")
+
+names(mydata) <- c(names(mydata)[1:21], paste0("Soru", 1:30))
+
+```
+
+
+
+```{r eval=FALSE, results='asis', eval=FALSE, include=FALSE}
+library(arsenal)
+tab1 <- tableby(~ katilim_durumu
+                ,
+                data = mydata
+)
+summary(tab1)
+```
+
+
+
+
+
+
+```{r sadece katılmış ve tamamlamış olanları seç, eval=FALSE, include=FALSE}
+mydata <- mydata %>% 
+  filter(katilim_durumu == "katılmış ve tamamlamış")
+```
+
+
+
+
+```{r summary 2, eval=FALSE, include=FALSE}
+# summarytools::view(summarytools::dfSummary(mydata))
+# glimpse(mydata)
+# mydata %>%
+#   select(starts_with("Soru")) %>% 
+#   pivot_longer(everything()) %>% 
+#   select(value) %>% 
+#   pull() %>% 
+#   unique() %>% 
+#   cat(sep = "\n")
+```
+
+
+
+
+```{r yas, eval=FALSE, include=FALSE}
+## Recoding mydata$x3_yasiniz_nedir into mydata$YasGrup
+mydata$YasGrup <- factor(mydata$x3_yasiniz_nedir)
+## Reordering mydata$YasGrup
+mydata$YasGrup <- factor(mydata$YasGrup, levels=c("20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89"))
+```
+
+
+```{r cinsiyet, eval=FALSE, include=FALSE}
+## Recoding mydata$x4_cinsiyetiniz_nedir into mydata$Cinsiyet
+mydata$Cinsiyet <- recode(mydata$x4_cinsiyetiniz_nedir,
+               "Kadın" = "Kadin")
+mydata$Cinsiyet <- factor(mydata$Cinsiyet)
+
+```
+
+
+```{r uzmanlik suresi, eval=FALSE, include=FALSE}
+## Recoding mydata$x5_kac_yildir_genel_cerrahi_uzmanisiniz into mydata$UzmanlikSuresi
+mydata$UzmanlikSuresi <- recode(mydata$x5_kac_yildir_genel_cerrahi_uzmanisiniz,
+               "43739" = "10-19")
+mydata$UzmanlikSuresi <- factor(mydata$UzmanlikSuresi)
+
+## Reordering mydata$UzmanlikSuresi
+mydata$UzmanlikSuresi <- factor(mydata$UzmanlikSuresi, levels=c("0-9", "10-19", "20-29", "30-39", "40-49"))
+
+
+```
+
+
+
+```{r unvan, eval=FALSE, include=FALSE}
+## Recoding mydata$x6_unvaniniz_nedir into mydata$Unvan
+mydata$Unvan <- factor(mydata$x6_unvaniniz_nedir)
+
+## Reordering mydata$Unvan
+mydata$Unvan <- factor(mydata$Unvan, levels=c("Op.Dr.", "Doktor Öğretim Üyesi", "Doç.Dr.", "Prof.Dr"))
+
+```
+
+
+```{r kurum, eval=FALSE, include=FALSE}
+## Recoding mydata$x8_hangi_kurumda_calisiyorsunuz into mydata$Kurum
+mydata$Kurum <- recode(mydata$x8_hangi_kurumda_calisiyorsunuz,
+               "Eğitim Araştırma Hastanesi" = "Eğitim Araştırma",
+               "İlçe Devlet Hastanesi" = "İlçe Devlet",
+               "Üniversite Hastanesi" = "Üniversite",
+               "İl Devlet Hastanesi" = "İl Devlet",
+               "Özel Hastane ve Kurumlar" = "Özel")
+mydata$Kurum <- factor(mydata$Kurum)
+
+## Reordering mydata$Kurum
+mydata$Kurum <- factor(mydata$Kurum, levels=c("Özel", "İlçe Devlet", "İl Devlet", "Eğitim Araştırma", "Üniversite"))
+```
+
+
+
+```{r cevap gruplari, eval=FALSE, include=FALSE}
+tersSorular <- c("Soru1",
+                 "Soru4",
+                 "Soru15",
+                 "Soru17",
+                 "Soru29")
+
+CSS <- c(
+  "Soru3",
+  "Soru6",
+  "Soru12",
+  "Soru16",
+  "Soru18",
+  "Soru20",
+  "Soru22",
+  "Soru24",
+  "Soru27",
+  "Soru30"
+)
+
+
+BS <- c(
+  "Soru1",
+  "Soru4",
+  "Soru8",
+  "Soru10",
+  "Soru15",
+  "Soru17",
+  "Soru19",
+  "Soru21",
+  "Soru26",
+  "Soru29"
+)
+
+
+STSS <- c(
+  "Soru2",
+  "Soru5",
+  "Soru7",
+  "Soru9",
+  "Soru11",
+  "Soru13",
+  "Soru14",
+  "Soru23",
+  "Soru25",
+  "Soru28"
+)
+```
+
+
+
+
+
+```{r cevaplari numerik kodla, eval=FALSE, include=FALSE}
+recode_numberize <- function(x, ...) {
+  dplyr::recode(
+    x,
+    "Bazı zamanlar" = 3,
+    "Çoksık" = 5,
+    "Hiçbir zaman" = 1,
+    "Nadiren" = 2,
+    "Sık sık" = 4,
+    "Sıkça" = 4,
+"Bazı zamanlarda" = 3,
+"Çok sık" = 5,
+"Sıksık" = 4
+    )
+}
+
+
+mydata <- mydata %>% 
+    mutate_at(.tbl = .,
+              .vars = vars(starts_with("Soru"), -tersSorular),
+              .funs = recode_numberize
+    )
+
+
+
+recode_numberize_ters <- function(x, ...) {
+  recode(
+    x,
+    "Bazı zamanlar" = 3,
+"Çoksık" = 1,
+"Hiçbir zaman" = 5,
+"Nadiren" = 4,
+"Sık sık" = 2,
+"Sıkça" = 2,
+"Bazı zamanlarda" = 3,
+"Çok sık" = 1,
+"Sıksık" = 2
+        )
+}
+
+
+mydata <- mydata %>% 
+    mutate_at(.tbl = .,
+              .vars = vars(tersSorular),
+              .funs = recode_numberize
+    )
+
+```
+
+
+
+```{r toplam skor, eval=FALSE, include=FALSE}
+mydata <- mydata %>% 
+  # böyle yazınca missing olunca hesaplamıyor
+  # mutate(
+  #   CSS_total = rowSums(select(., CSS), na.rm = FALSE)
+  # ) %>% 
+  mutate(
+    CSS_total = rowSums(select(., CSS), na.rm = TRUE)
+  ) %>% 
+mutate(
+    BS_total = rowSums(select(., BS), na.rm = TRUE)
+  ) %>% 
+  mutate(
+    STSS_total = rowSums(select(., STSS), na.rm = TRUE)
+  )
+
+
+mydata <- mydata %>% 
+  naniar::replace_with_na_at(
+    .vars = vars(ends_with("_total")),
+    condition = ~.x == 0
+    )
+
+```
+
+
+
+
+```
+<= 22 Low
+>= 23 & <= 41 Average 
+>=42 High
+```
+
+
+```{r skor kategorileri, eval=FALSE, include=FALSE}
+mydata <- mydata %>% 
+  mutate_at(.tbl = .,
+            .vars = vars(ends_with("_total")),
+            .funs = list(Gr = 
+                           ~ case_when(
+                             . <= 22 ~ "Low",
+                             . >= 23 & . <= 41 ~ "Average",
+                             . >= 42 ~ "High",
+                             TRUE ~ NA_character_
+                           )
+                           )
+    
+  ) %>% 
+  mutate_at(.tbl = .,
+            .vars = vars(ends_with("_Gr")),
+            .funs = ~ factor(., levels=c("Low", "Average", "High"))
+              )
+
+# ## Reordering mydata$CSS_total_Gr
+# mydata$CSS_total_Gr <- factor(mydata$CSS_total_Gr, )
+# 
+# ## Reordering mydata$BS_total_Gr
+# mydata$BS_total_Gr <- factor(mydata$BS_total_Gr, levels=c("Low", "Average", "High"))
+# 
+# 
+# ## Reordering mydata$STSS_total_Gr
+# mydata$STSS_total_Gr <- factor(mydata$STSS_total_Gr, levels=c("Low", "Average", "High"))
+
+```
+
+
+
+
+
+
+
+
+

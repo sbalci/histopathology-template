@@ -1,0 +1,21 @@
+### Report General Features
+
+**Codes for reporting general features.**^[See [`childRmd/_04briefSummary.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_04briefSummary.Rmd) file for other codes]
+
+
+**Dataframe Report**
+
+```{r dataframe report}
+# Dataframe report
+mydata %>% 
+  select(-contains("Date")) %>%
+  report::report(.)
+```
+
+
+```{r dataframe explore}
+mydata %>% explore::describe_tbl()
+```
+
+
+

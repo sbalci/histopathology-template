@@ -1,0 +1,113 @@
+**Codes for cross tables**.^[See [`childRmd/_12crossTables.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_12crossTables.Rmd) file for other codes]
+
+
+# Cross Tables
+
+
+```{r load finalfit, eval=FALSE, include=FALSE}
+library(finalfit)
+```
+
+
+```{r select dependent and explanatory variables, eval=FALSE, include=FALSE}
+dependent <- c("dependent1",
+               "dependent2"
+              )
+
+explanatory <- c("explanatory1",
+                 "explanatory2"
+                 )
+```
+
+
+
+```{r generate code for Cross Table, eval=FALSE, include=FALSE}
+source(here::here("R", "gc_table_cross.R"))
+```
+
+
+
+```{r generatedCode for Cross Table, child = here::here('childRmd', 'generatedCodeCrossTables.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r tableone crosstable, eval=FALSE, include=FALSE}
+CreateTableOne(vars = myVars, strata = "columnname", data = pbc, factorVars = catVars)
+```
+
+
+
+```{r tableone crosstable nonnormal values, eval=FALSE, include=FALSE}
+print(tab, nonnormal = biomarkers, exact = "exactVariable", smd = TRUE)
+```
+
+
+
+<!-- https://cran.r-project.org/web/packages/arsenal/vignettes/tableby.html -->
+
+```{r arsenal tableby crosstable, eval=FALSE, include=FALSE}
+
+```
+
+
+
+<!-- https://cran.r-project.org/web/packages/arsenal/vignettes/write2.html -->
+
+```{r arsenal write output, eval=FALSE, include=FALSE}
+write2html(
+  knitr::kable(head(mockstudy)), paste0(tmpdir, "/test.kable.keep.rmd.html"),
+  quiet = TRUE, # passed to rmarkdown::render
+  keep.rmd = TRUE
+)
+```
+
+
+
+```{r summarytool crosstable, eval=FALSE, include=FALSE}
+ctable(tobacco$gender, tobacco$smoker, style = 'rmarkdown')
+```
+
+
+
+
+```{r summarytool crosstable html, eval=FALSE, include=FALSE}
+print(ctable(tobacco$gender, tobacco$smoker), method = 'render')
+print(ctable(tobacco$smoker, tobacco$diseased, prop = "r"), method = "render")
+with(tobacco, 
+     print(ctable(smoker, diseased, prop = 'n', totals = FALSE, chisq = TRUE),
+           headings = FALSE, method = "render"))
+```
+
+
+
+
+```{r summarizer 1, eval=FALSE, include=FALSE}
+# devtools::install_github("ewenharrison/summarizer")
+# library(summarizer)
+# data(colon_s)
+explanatory = c("age", "age.factor", "sex.factor", "obstruct.factor")
+dependent = "perfor.factor"
+colon_s %>%
+  summary.factorlist(dependent, explanatory, p=TRUE) %>% 
+    knitr::kable(row.names=FALSE, align=c("l", "l", "r", "r", "r"))
+
+explanatory = c("age.factor", "sex.factor", "obstruct.factor", "perfor.factor")
+dependent = 'mort_5yr'
+colon_s %>%
+  summary.factorlist(dependent, explanatory) %>% 
+    knitr::kable(row.names=FALSE, align=c("l", "l", "r", "r", "r"))
+
+
+```
+
+
+```r
+library(DT)
+datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T) )
+```
+
+
+
+
+
+

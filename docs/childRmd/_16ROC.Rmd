@@ -1,0 +1,133 @@
+**Codes for ROC**.^[See [`childRmd/_16ROC.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_16ROC.Rmd) file for other codes]
+
+
+# ROC
+
+
+```{r OptimalCutpoints, eval=FALSE, include=FALSE}
+# library(OptimalCutpoints)
+```
+
+
+
+```{r yardstick print ROC curve, eval=FALSE, include=FALSE}
+# https://tidymodels.github.io/yardstick/reference/roc_curve.html
+
+roc_fit <- yardstick::roc_curve(mydata,
+                                truth = "classification", 
+                                estimate = "test",
+                                na_rm = TRUE,
+                                  options = list(
+                                    smooth = FALSE,
+                                    print.auc = TRUE,
+                                    ret = c("all_coords")
+                                    )
+                                )
+                                
+ggplot2::autoplot(roc_fit)
+
+```
+
+
+
+
+
+```{r pROC, eval=FALSE, include=FALSE}
+library(pROC)
+
+m1 <- pROC::roc(mydata,
+          "classification",
+          "test",
+          auc = TRUE, 
+          ci = TRUE,
+          # plot = TRUE,
+          # percent=TRUE, 
+          na.rm=TRUE,
+          # smooth = TRUE,
+          ret = "all_coords",
+          # ret = "roc",
+          quiet = FALSE,
+          legacy.axes = TRUE,
+          print.auc = TRUE,
+          # xlab = "False Positive",
+          # ylab = "True Positive"
+          )
+
+```
+
+
+
+```{r pROC all table, eval=FALSE, include=FALSE}
+m1
+```
+
+
+
+
+```{r ROC AUC, eval=FALSE, include=FALSE}
+
+pROC::roc(mydata,
+          "polyp_rec",
+          "size",
+          auc = TRUE, 
+          ci = TRUE,
+          # plot = TRUE,
+          # percent=TRUE, 
+          na.rm=TRUE,
+          # smooth = TRUE,
+          # ret = "all_coords",
+          ret = "roc",
+          quiet = FALSE,
+          legacy.axes = TRUE,
+          print.auc = TRUE,
+          # xlab = "False Positive",
+          # ylab = "True Positive"
+          )
+
+
+```
+
+
+
+```{r ROC find max Youden, eval=FALSE, include=FALSE}
+which.max(m1$youden)
+m1[which.max(m1$youden),]
+```
+
+
+
+
+```{r pROC 2, eval=FALSE, include=FALSE}
+
+roc_obj <- pROC::roc(polyp_rec ~ size,
+          data = mydata,
+          auc = TRUE,
+          ci = TRUE,
+          plot = TRUE,
+          # percent=TRUE, 
+          na.rm=TRUE,
+          # smooth = TRUE,
+          # ret = "all_coords",
+          ret = "roc",
+          quiet = FALSE,
+          legacy.axes = TRUE,
+          print.auc = TRUE,
+          xlab = "False Positive",
+          ylab = "True Positive"
+          )
+```
+
+
+
+
+```{r plotROC, eval=FALSE, include=FALSE}
+# devtools::install_github("sachsmc/plotROC")
+library(plotROC)
+# shiny_plotROC()
+
+
+```
+
+
+
+

@@ -1,0 +1,173 @@
+---
+title: "Interactive Survival Analysis"
+output: html_document
+runtime: shiny
+---
+
+**Codes for generating Survival Analysis**.^[See [`childRmd/_18survival.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_18survival.Rmd) file for other codes]
+
+**Codes for generating Shiny Survival Analysis**.^[See [`childRmd/_19shinySurvival.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_19shinySurvival.Rmd) file for other codes]
+
+
+```{r load library shiny, include = FALSE}
+library("shiny")
+library("dplyr")
+library("magrittr")
+library("viridis")
+library("readxl")
+library("survival")
+library("survminer")
+library("finalfit")
+library("glue")
+```
+
+
+
+```{r rad and recode data, echo = FALSE}
+mydata <- readxl::read_excel(here::here("data", "mydata.xlsx"))
+mydata$int <- lubridate::interval(
+  lubridate::ymd(mydata$SurgeryDate),
+  lubridate::ymd(mydata$LastFollowUpDate)
+  )
+mydata$OverallTime <- lubridate::time_length(mydata$int, "month")
+mydata$OverallTime <- round(mydata$OverallTime, digits = 1)
+
+mydata$Outcome <- forcats::fct_recode(as.character(mydata$Death),
+               "1" = "TRUE",
+               "0" = "FALSE")
+
+mydata$Outcome <- as.numeric(as.character(mydata$Outcome))
+
+mydata %>% 
+  select(-ID,
+         -Name) %>% 
+  inspectdf::inspect_types() %>% 
+  dplyr::filter(type == "character") %>% 
+  dplyr::select(col_name) %>% 
+  pull() %>% 
+  unlist() -> characterVariables
+```
+
+
+```{r shiny output, echo = FALSE}
+selectInput(
+  inputId = "Factor",
+  label = "Choose a Factor Affecting Survival",
+  choices = characterVariables,
+  selected = "LVI"
+)
+
+
+dependentKM <- "Surv(OverallTime, Outcome)"
+
+
+renderPrint({
+
+  print(input$Factor)
+  
+  
+})
+
+tags$b("Kaplan-Meier Plot, Log-Rank Test")
+tags$br()
+
+renderPlot({
+
+    
+  mydata %>%
+    finalfit::surv_plot(
+      .data = .,
+      dependent = dependentKM,
+      explanatory = input$Factor,
+      xlab = 'Time (months)',
+      pval = TRUE,
+      legend = 'none',
+      break.time.by = 12,
+      xlim = c(0, 60)
+    )
+  
+})
+
+
+
+tags$b("Univariate Cox-Regression")
+tags$br()
+
+
+renderPrint({
+
+  mydata %>%
+    finalfit::finalfit(dependentKM, input$Factor) -> tUni
+  
+  knitr::kable(tUni,
+               row.names = FALSE,
+               align = c('l', 'l', 'r', 'r', 'r', 'r'))
+  
+  
+})
+
+
+
+
+tags$b("Median Survival")
+tags$br()
+
+
+renderPrint({
+  
+  formula_text <- paste0("Surv(OverallTime, Outcome) ~ ",input$Factor)
+  
+  km_fit <- survfit(as.formula(formula_text),
+                              data = mydata)
+  
+  km_fit
+  
+})
+
+
+
+
+tags$b("1-3-5-yr Survival")
+tags$br()
+
+
+renderPrint({
+
+  formula_text <- paste0("Surv(OverallTime, Outcome) ~ ",input$Factor)
+  
+  km_fit <- survfit(as.formula(formula_text),
+                              data = mydata)
+
+  summary(km_fit, times = c(12, 36, 60))
+  
+})
+
+
+renderPrint({
+
+  
+  formula_text <- paste0("Surv(OverallTime, Outcome) ~ ",input$Factor)
+  
+  km_fit <- survfit(as.formula(formula_text),
+                              data = mydata)
+  
+km_fit_summary <- summary(km_fit, times = c(12,36,60))
+
+km_fit_df <- as.data.frame(km_fit_summary[c("strata", "time", "n.risk", "n.event", "surv", "std.err", "lower", "upper")])
+
+km_fit_df %>% 
+  dplyr::mutate(
+    description = 
+      glue::glue(
+      "When {strata}, {time} month survival is {scales::percent(surv)} [{scales::percent(lower)}-{scales::percent(upper)}, 95% CI]."
+    )
+  ) %>% 
+  dplyr::select(description) %>% 
+  pull()
+
+})
+
+```
+
+
+

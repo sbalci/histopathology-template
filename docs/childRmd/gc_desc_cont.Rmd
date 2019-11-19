@@ -1,0 +1,66 @@
+**Descriptive Statistics Age** 
+
+```{r Descriptive Statistics Age}
+mydata %>% 
+jmv::descriptives(
+    data = .,
+    vars = 'Age',
+    hist = TRUE,
+    dens = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE,
+    mode = TRUE,
+    sd = TRUE,
+    variance = TRUE,
+    skew = TRUE,
+    kurt = TRUE,
+    quart = TRUE)
+```
+
+\pagebreak
+
+**Descriptive Statistics Anti-X-intensity** 
+
+```{r Descriptive Statistics Anti-X-intensity}
+mydata %>% 
+jmv::descriptives(
+    data = .,
+    vars = 'Anti-X-intensity',
+    hist = TRUE,
+    dens = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE,
+    mode = TRUE,
+    sd = TRUE,
+    variance = TRUE,
+    skew = TRUE,
+    kurt = TRUE,
+    quart = TRUE)
+```
+
+\pagebreak
+
+**Descriptive Statistics Anti-Y-intensity** 
+
+```{r Descriptive Statistics Anti-Y-intensity}
+mydata %>% 
+jmv::descriptives(
+    data = .,
+    vars = 'Anti-Y-intensity',
+    hist = TRUE,
+    dens = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE,
+    mode = TRUE,
+    sd = TRUE,
+    variance = TRUE,
+    skew = TRUE,
+    kurt = TRUE,
+    quart = TRUE)
+```
+
+\pagebreak
+

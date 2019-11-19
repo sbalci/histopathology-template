@@ -1,0 +1,16 @@
+**Codes for generating data dictionary**.^[See [`childRmd/_08dataDictionary.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_08dataDictionary.Rmd) file for other codes]
+
+
+
+```{r explore data dictionary, eval=FALSE, include=FALSE}
+# iris %>% explore::data_dict_md(output_dir = here::here())
+# description <- data.frame(
+#                   variable = c("Species"), 
+#                   description = c("Species of Iris flower"))
+
+# explore::data_dict_md(data = mydata, 
+#              title = "Data Set", 
+#              # description =  description, 
+#              output_file = "data_dict.md",
+#              output_dir = here::here("out"))
+```

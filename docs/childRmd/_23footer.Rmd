@@ -1,0 +1,157 @@
+**Codes for explaining the software and the packages that are used in the analysis**^[See [`childRmd/_23footer.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_23footer.Rmd) file for other codes]
+
+
+### Save Final Data  {.appendix}  
+
+```{r save final data}
+projectName <- list.files(path = here::here(), pattern = "Rproj")
+projectName <- gsub(pattern = ".Rproj", replacement = "", x = projectName)
+
+analysisDate <- as.character(Sys.Date())
+
+imageName <- paste0(projectName, analysisDate, ".RData")
+
+save.image(file = here::here("data", imageName))
+
+rdsName <- paste0(projectName, analysisDate, ".rds")
+
+readr::write_rds(x = mydata, path = here::here("data", rdsName))
+
+saveRDS(object = mydata, file = here::here("data", rdsName))
+
+excelName <- paste0(projectName, analysisDate, ".xlsx")
+
+writexl::write_xlsx(mydata, here::here("data", excelName))
+
+print(glue::glue(
+    "saved data after analysis to ",
+    rownames(file.info(here::here("data", excelName))),
+    " : ",
+    as.character(
+        file.info(here::here("data", excelName))$ctime
+    )
+    )
+)
+```
+
+
+```{r save final data 2, eval=FALSE, include=FALSE}
+# pacman::p_load(here, lubridate, glue)
+# here::here("data", glue("{today()}_trends.csv"))
+```
+
+
+
+---
+
+
+\pagebreak
+
+
+### Final Data Summary {.appendix}  
+
+
+```r
+# use summarytools to generate final data summary
+# summarytools::view(summarytools::dfSummary(x = mydata
+#                                            , style = "markdown"))
+```
+
+
+```{r summarytools final summary, eval=FALSE, error=FALSE, warning=FALSE, include=FALSE}
+# mydata %>% select(
+#     -c(
+#         rapor_yil,
+#         rapor_no,
+#         protokol_no,
+#         istek_tarihi,
+#         nux_yada_met_varsa_tarihi,
+#         son_hastane_vizit_tarihi,
+#         Outcome
+#     )
+# ) -> finalSummary
+# 
+# summarytools::view(summarytools::dfSummary(x = finalSummary
+#                                            , style = "markdown"))
+```
+
+
+---
+
+\pagebreak
+
+
+
+### Software and Libraries Used {.appendix}  
+
+```{r citation}
+citation()
+```
+
+The jamovi project (2019). jamovi. (Version 0.9) [Computer Software]. Retrieved from https://www.jamovi.org.  
+R Core Team (2018). R: A Language and envionment for statistical computing. [Computer software]. Retrieved from https://cran.r-project.org/.  
+Fox, J., & Weisberg, S. (2018). car: Companion to Applied Regression. [R package]. Retrieved from https://cran.r-project.org/package=car.
+
+
+```{r library citation as report, results='asis'}
+report::cite_packages(session = sessionInfo())
+```
+
+
+```{r show library citation as report, results='asis'}
+report::show_packages(session = sessionInfo()) %>% 
+    kableExtra::kable()
+```
+
+
+```{r library citations}
+citation("tidyverse")
+citation("readxl")
+citation("janitor")
+citation("report")
+citation("finalfit")
+citation("ggstatsplot")
+```
+
+
+```{r}
+knitr::write_bib(x = c(.packages(), "knitr", "shiny"),
+                 file = here::here("bib", "packages.bib")
+)
+```
+
+
+---
+
+\pagebreak
+
+### Session Info {.appendix} 
+
+```{r session info}
+sessionInfo()
+```
+
+
+---
+
+\pagebreak
+
+
+
+### Notes {.appendix}  
+
+Last update on `r Sys.time()`  
+
+Serdar Balci, MD, Pathologist  
+drserdarbalci@gmail.com  
+https://rpubs.com/sbalci/CV   
+
+---
+
+\pagebreak
+
+## Code Appendix
+
+```{r, echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
+```
+

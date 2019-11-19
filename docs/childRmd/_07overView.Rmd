@@ -1,0 +1,468 @@
+**Codes for overviewing the data.**^[See [`childRmd/_07overView.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_07overView.Rmd) file for other codes]
+
+### Overview / Exploratory Data Analysis (EDA)
+
+
+**Summary of Data via summarytools 📦**
+
+
+```{r summarytools, echo=TRUE, eval=FALSE}
+summarytools::view(summarytools::dfSummary(mydata %>% select(-keycolumns)))
+```
+
+
+```{r summarytools save output}
+summarytools::view(
+  x = summarytools::dfSummary(
+    mydata %>% 
+      select(-keycolumns)
+    ),
+  file = here::here("out", "mydata_summary.html")
+)
+```
+
+
+**Summary via dataMaid 📦**
+
+
+```{r summary dataMaid}
+dataMaid::makeDataReport(data = mydata, 
+                         file = here::here("out", "dataMaid_mydata.Rmd"),
+                         replace = TRUE,
+                         openResult = FALSE, 
+                         render = FALSE,
+                         quiet = TRUE
+                         )
+```
+
+
+**Summary via explore 📦**
+
+```{r summary explore, echo=TRUE, eval=FALSE}
+mydata %>% 
+  select(
+    -dateVariables
+  ) %>% 
+  explore::report(
+    output_file = "mydata_report.html",
+    output_dir = here::here("out") 
+    )
+```
+
+
+
+
+**Glimpse of Data**
+
+
+```{r glimpse}
+glimpse(mydata %>% select(-keycolumns, -dateVariables))
+```
+
+
+
+```{r describe explore}
+mydata %>% explore::describe()
+```
+
+
+
+
+**Explore**
+
+```{r explore, echo=TRUE, eval=FALSE}
+explore::explore(mydata)
+```
+
+
+```{r eval=FALSE, include=FALSE}
+mydata %>%
+  explore::explore_all()
+```
+
+
+
+### Control Data
+
+**Control Data if matching expectations**
+
+```{r check expectations visdat, echo=TRUE, eval=FALSE}
+visdat::vis_expect(data = mydata,
+                   expectation = ~.x == -1,
+                   show_perc = TRUE)
+
+visdat::vis_expect(mydata, ~.x >= 25)
+```
+
+
+**See missing values**
+
+```{r missing values visdat}
+visdat::vis_miss(airquality,
+                 cluster = TRUE)
+```
+
+
+```{r missing values visdat 2}
+visdat::vis_miss(airquality,
+         sort_miss = TRUE)
+```
+
+
+
+
+```{r xray}
+xray::anomalies(mydata)
+```
+
+
+
+
+```{r xray 2, warning=FALSE}
+xray::distributions(mydata)
+```
+
+
+
+
+
+
+
+
+### Explore Data 
+
+
+**Summary of Data via DataExplorer 📦**
+
+
+```{r DataExplorer 1}
+DataExplorer::plot_str(mydata)
+```
+
+
+```{r DataExplorer 2}
+DataExplorer::plot_str(mydata, type = "r")
+```
+
+
+```{r DataExplorer 3}
+DataExplorer::introduce(mydata)
+```
+
+
+```{r DataExplorer 4}
+DataExplorer::plot_intro(mydata)
+```
+
+
+```{r DataExplorer 5}
+DataExplorer::plot_missing(mydata)
+```
+
+**Drop columns**
+
+```{r DataExplorer 6}
+mydata2 <- DataExplorer::drop_columns(mydata, "TStage")
+```
+
+
+```{r DataExplorer 7}
+DataExplorer::plot_bar(mydata)
+```
+
+
+
+```{r DataExplorer 8}
+DataExplorer::plot_bar(mydata, with = "Death")
+```
+
+
+```{r DataExplorer 9}
+DataExplorer::plot_histogram(mydata)
+```
+
+
+
+
+---
+
+
+
+<!-- extracodes are below -->
+
+<!-- ### dataMaid -->
+
+
+```{r dataMaid 2, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/dataMaid/vignettes/extending_dataMaid.html
+library("dataMaid")
+dataMaid::makeDataReport(mydata,
+  #add extra precheck function
+  preChecks = c("isKey", "isSingular", "isSupported", "isID"),
+
+  #Add the extra summaries - countZeros() for character, factor,
+  #integer, labelled and numeric variables and meanSummary() for integer,
+  #numeric and logical variables:
+  summaries = setSummaries(
+    character = defaultCharacterSummaries(add = "countZeros"),
+    factor = defaultFactorSummaries(add = "countZeros"),
+    labelled = defaultLabelledSummaries(add = "countZeros"),
+    numeric = defaultNumericSummaries(add = c("countZeros", "meanSummary")),
+    integer = defaultIntegerSummaries(add = c("countZeros", "meanSummary")),
+    logical = defaultLogicalSummaries(add =  c("meanSummary"))
+  ),
+
+  #choose mosaicVisual() for categorical variables,
+  #prettierHist() for all others:
+  visuals = setVisuals(
+    factor = "mosaicVisual",
+    numeric = "prettierHist",
+    integer = "prettierHist",
+    Date = "prettierHist"
+  ),
+
+  #Add the new checkFunction, identifyColons, for character, factor and
+  #labelled variables:
+  checks = setChecks(
+    character = defaultCharacterChecks(add = "identifyColons"),
+    factor = defaultFactorChecks(add = "identifyColons"),
+    labelled = defaultLabelledChecks(add = "identifyColons")
+  ),
+
+  #overwrite old versions of the report, render to html and don't
+  #open the html file automatically:
+  replace = TRUE,
+  output = "html",
+  open = FALSE,
+  file = here::here("out/dataMaid_mydata.Rmd")
+)
+```
+
+
+
+
+```{r summarytool options 1, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/summarytools/vignettes/Recommendations-rmarkdown.html
+# https://github.com/dcomtois/summarytools
+library(knitr)
+opts_chunk$set(comment=NA,
+               prompt=FALSE,
+               cache=FALSE,
+               echo=TRUE,
+               results='asis' # add to individual summarytools chunks
+               )
+```
+
+
+```{r summarytool options 2, eval=FALSE, include=FALSE}
+library(summarytools)
+st_css()
+```
+
+
+```{r summarytool options 3, eval=FALSE, include=FALSE}
+st_options(bootstrap.css     = FALSE,       # Already part of the theme so no need for it
+           plain.ascii       = FALSE,       # One of the essential settings
+           style             = "rmarkdown", # Idem.
+           dfSummary.silent  = TRUE,        # Suppresses messages about temporary files
+           footnote          = NA,          # Keeping the results minimalistic
+           subtitle.emphasis = FALSE)       # For the vignette theme, this gives
+                                            # much better results. Your mileage may vary.
+```
+
+
+
+```{r summarytools frequencies, eval=FALSE, include=FALSE}
+summarytools::freq(iris$Species, plain.ascii = FALSE, style = "rmarkdown")
+summarytools::freq(iris$Species, report.nas = FALSE, headings = FALSE, cumul = TRUE, totals = TRUE)
+summarytools::freq(tobacco$gender, style = 'rmarkdown')
+summarytools::freq(tobacco[ ,c("gender", "age.gr", "smoker")])
+```
+
+
+```{r summarytool frequencies html render, eval=FALSE, include=FALSE}
+print(freq(tobacco$gender), method = 'render')
+```
+
+
+```{r summarytools df, eval=FALSE, include=FALSE}
+view(dfSummary(iris))
+```
+
+
+```{r summarytools dfs_grid, eval=FALSE, include=FALSE}
+dfSummary(tobacco, style = 'grid', graph.magnif = 0.75, tmp.img.dir = "/tmp")
+dfSummary(tobacco, plain.ascii = FALSE, style = "grid",
+          graph.magnif = 0.75, valid.col = FALSE, tmp.img.dir = "/tmp")
+```
+
+
+```{r summarytools html, eval=FALSE, include=FALSE}
+print(dfSummary(tobacco, graph.magnif = 0.75), method = 'render')
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r explore 1, eval=FALSE, include=FALSE}
+# https://github.com/rolkra/explore
+# https://cran.r-project.org/web/packages/explore/vignettes/explore.html
+# https://cran.r-project.org/web/packages/explore/vignettes/explore_mtcars.html
+
+
+# library(dplyr)
+# library(explore)
+
+explore::explore(mydata)
+
+# iris %>% report(output_file = "report.html", output_dir = here::here())
+
+
+# iris$is_versicolor <- ifelse(iris$Species == "versicolor", 1, 0)
+# iris %>%
+#   report(output_file = "report.html",
+#          output_dir = here::here(),
+#          target = is_versicolor
+# # , split = FALSE
+# )
+```
+
+
+
+```{r explore 2, eval=FALSE, include=FALSE}
+iris %>% explore::explore_tbl()
+
+iris %>% explore::describe_tbl()
+
+iris %>% explore::explore(Species)
+iris %>% explore::explore(Sepal.Length)
+iris %>% explore::explore(Sepal.Length, target = is_versicolor)
+iris %>% explore::explore(Sepal.Length, target = is_versicolor, split = FALSE)
+iris %>% explore::explore(Sepal.Length, target = Species)
+iris %>% explore::explore(Sepal.Length, target = Petal.Length)
+
+
+%>% %>%
+  explore::explore_all()
+
+iris %>%
+  select(Sepal.Length, Sepal.Width) %>%
+  explore::explore_all()
+
+iris %>%
+  select(Sepal.Length, Sepal.Width, is_versicolor) %>%
+  explore::explore_all(target = is_versicolor)
+
+iris %>%
+  select(Sepal.Length, Sepal.Width, is_versicolor) %>%
+  explore::explore_all(target = is_versicolor, split = FALSE)
+
+iris %>%
+  select(Sepal.Length, Sepal.Width, Species) %>%
+  explore::explore_all(target = Species)
+
+iris %>%
+  select(Sepal.Length, Sepal.Width, Petal.Length) %>%
+  explore::explore_all(target = Petal.Length)
+```
+
+
+```{r explore 3, fig.height=explore::total_fig_height(iris), eval=FALSE, include=FALSE}
+iris %>%
+  explore::explore_all()
+```
+
+
+```{r explore 4, eval=FALSE, include=FALSE}
+
+knitr::opts_current(fig.height=explore::total_fig_height(iris, target = Species))
+
+explore::total_fig_height(iris, target = Species)
+
+iris %>% explore::explore_all(target = Species)
+```
+
+
+```{r explore min-max, eval=FALSE, include=FALSE}
+iris %>% explore::explore(Sepal.Length, min_val = 4.5, max_val = 7)
+```
+
+
+```{r explore 5, eval=FALSE, include=FALSE}
+iris %>% explore::explore(Sepal.Length, auto_scale = FALSE)
+```
+
+
+```{r explore describe, eval=FALSE, include=FALSE}
+mtcars %>% explore::describe()
+```
+
+
+
+
+```{r dlookr, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html
+
+dlookr::describe(mydata
+                 # ,
+                 # cols = c(statistic)
+                 )
+
+# dlookr::describe(carseats, Sales, CompPrice, Income)
+# dlookr::describe(carseats, Sales:Income)
+# dlookr::describe(carseats, -(Sales:Income))
+mydata %>%
+  dlookr::describe() %>%
+  dplyr::select(variable, skewness, mean, p25, p50, p75) %>%
+  dplyr::filter(!is.na(skewness)) %>%
+  arrange(desc(abs(skewness)))
+```
+
+
+
+```{r dlookr EDA Report pdf, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/dlookr/vignettes/EDA.html
+
+carseats %>%
+  dlookr::eda_report(target = Sales,
+                     output_format = "pdf",
+             output_file = "EDA.pdf"
+             )
+```
+
+
+
+```{r dlookr EDA Report html, eval=FALSE, include=FALSE}
+carseats %>%
+  dlookr::eda_report(target = Sales,
+             output_format = "html",
+             output_file = "EDA.html"
+             )
+```
+
+
+
+```{r SmartEDA ExpData, eval=FALSE, include=FALSE}
+# install.packages("ISLR")
+library("ISLR")
+# install.packages("SmartEDA")
+library("SmartEDA")
+## Load sample dataset from ISLR pacakge
+Carseats <- ISLR::Carseats
+
+## overview of the data;
+SmartEDA::ExpData(data=Carseats,type=1)
+## structure of the data
+SmartEDA::ExpData(data=Carseats,type=2)
+
+
+```
+
+

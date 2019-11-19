@@ -1,0 +1,42 @@
+
+**Codes for general settings.**^[See [`childRmd/_01header.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_01header.Rmd) file for other general settings]
+
+
+**Setup global chunk settings**
+
+Change `echo = FALSE` to hide codes after knitting.
+
+```{r global_options}
+knitr::opts_chunk$set(
+    eval = TRUE,
+    echo = TRUE,
+    fig.path = here::here("figs/"),
+    message = FALSE,
+    warning = FALSE,
+    error = FALSE,
+    cache = FALSE,
+    comment = NA,
+    tidy = TRUE,
+    fig.width = 6,
+    fig.height = 4
+)
+```
+
+
+
+```{r exploreR reset environment, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html
+# exploreR::reset()
+```
+
+
+
+**Load Library**
+
+see [`R/loadLibrary.R`](https://github.com/sbalci/histopathology-template/blob/master/R/loadLibrary.R) for the libraries loaded.
+
+```{r load library}
+source(file = here::here("R", "loadLibrary.R"))
+```
+
+

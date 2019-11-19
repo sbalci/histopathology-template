@@ -1,0 +1,758 @@
+# Plots
+
+**Codes for generating Plots**.^[See [`childRmd/_13plots.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_13plots.Rmd) file for other codes]
+
+## Categorical Variables
+
+
+```{r define variables, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+dependent <- c("dependent1",
+               "dependent2"
+                 )
+
+explanatory <- c("explanatory1",
+                 "explanatory2"
+                 )
+```
+
+
+
+
+```{r select categorical, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical <- mydata %>% 
+    select(-var1,
+           -var2
+    )
+```
+
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- explanatory[1]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[2]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[3]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[4]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[5]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[6]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[7]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[8]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[9]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[10]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[11]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[12]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[13]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[14]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[15]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+mydataCategorical_variable <- NA
+dependent2 <- NA
+mydataCategorical_variable <- explanatory[16]
+dependent2 <- dependent[!dependent %in% mydataCategorical_variable]
+source(here::here("R", "gc_plot_cat.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+
+```{r SmartEDA column chart, eval=FALSE, include=FALSE}
+## column chart
+SmartEDA::ExpCatViz(
+  Carseats,
+  target = "Urban",
+  fname = NULL,
+  clim = 10,
+  col = NULL,
+  margin = 2,
+  Page = c(2, 1),
+  sample = 2
+)
+```
+
+
+```{r SmartEDA bar graph, eval=FALSE, include=FALSE}
+## Stacked bar graph
+SmartEDA::ExpCatViz(
+  Carseats,
+  target = "Urban",
+  fname = NULL,
+  clim = 10,
+  col = NULL,
+  margin = 2,
+  Page = c(2, 1),
+  sample = 2
+)
+```
+
+
+```{r SmartEDA information values, eval=FALSE, include=FALSE}
+## Variable importance graph using information values
+SmartEDA::ExpCatStat(
+  Carseats,
+  Target = "Urban",
+  result = "Stat",
+  Pclass = "Yes",
+  plot = TRUE,
+  top = 20,
+  Round = 2
+)
+```
+
+
+
+
+```{r inspectdf plot, eval=FALSE, include=FALSE}
+inspectdf::inspect_cat(starwars) %>% inspectdf::show_plot()
+```
+
+
+
+```{r inspectdf plot 2, eval=FALSE, include=FALSE}
+inspectdf::inspect_cat(starwars) %>% 
+  inspectdf::show_plot(high_cardinality = 1)
+```
+
+
+
+```{r inspectdf categorical plot, eval=FALSE, include=FALSE}
+inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
+```
+
+
+
+
+
+
+<!-- ## Continious Variables -->
+
+
+<!-- ```{r} -->
+<!-- mydataContinious <- mydata %>%  -->
+<!--     select( -->
+<!--         Yas, -->
+<!--         TumorCapi -->
+<!--     ) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r include=FALSE} -->
+<!-- source(here::here("R", "gc_plot_cont.R")) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeContiniousPlots.Rmd')} -->
+<!-- ``` -->
+
+
+# Plots
+
+<!-- ## Categorical Variables -->
+
+
+<!-- ```{r} -->
+<!-- dependent <- c("Lauren", -->
+<!--                "CD44", -->
+<!--                "Her2", -->
+<!--                "MMR2", -->
+<!--                  "TumorPDL1gr1", -->
+<!--                  "TumorPDL1gr5", -->
+<!--                  "inflPDL1gr1", -->
+<!--                  "inflPDL1gr5" -->
+<!--                  ) -->
+
+<!-- explanatory <- c("Cinsiyet", -->
+<!--                  # "TumorYerlesimi", -->
+<!--                  "Lauren", -->
+<!--                  "Grade", -->
+<!--                  "T_stage", -->
+<!--                  "N_stage", -->
+<!--                  "M_stage", -->
+<!--                  "CD44", -->
+<!--                  "Her2", -->
+<!--                  "MMR2", -->
+<!--                  "TumorPDL1gr1", -->
+<!--                  "TumorPDL1gr5", -->
+<!--                  "inflPDL1gr1", -->
+<!--                  "inflPDL1gr5", -->
+<!--                  "LVI", -->
+<!--                  "PNI", -->
+<!--                  "LenfNoduMetastazi") -->
+<!-- ``` -->
+
+
+
+
+<!-- ```{r} -->
+<!-- mydataCategorical <- mydata %>%  -->
+<!--     select(-Yas, -->
+<!--            -TumorCapi, -->
+<!--            -CerrahiTarih, -->
+<!--            -genel_sagkalim, -->
+<!--            -SonTarih, -->
+<!--            -TNM -->
+<!--     ) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- explanatory[1] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[2] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[3] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[4] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[5] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[6] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[7] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[8] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[9] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[10] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[11] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[12] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[13] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[14] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[15] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r include=FALSE} -->
+<!-- mydataCategorical_variable <- NA -->
+<!-- dependent2 <- NA -->
+<!-- mydataCategorical_variable <- explanatory[16] -->
+<!-- dependent2 <- dependent[!dependent %in% mydataCategorical_variable] -->
+<!-- source(here::here("R", "gc_plot_cat.R")) -->
+<!-- ``` -->
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeCategoricalPlots.Rmd')} -->
+<!-- ``` -->
+
+
+
+
+## Continious Variables
+
+
+```{r, eval=FALSE, include=FALSE}
+# mydataContinious
+```
+
+
+
+<!-- ```{r include=FALSE} -->
+<!-- source(here::here("R", "gc_plot_cont.R")) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r generatedCode, child = here::here('childRmd', 'generatedCodeContiniousPlots.Rmd')} -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- mydata %>%  -->
+<!--     select(starts_with("Slide")) %>%  -->
+<!--     pivot_longer(cols = everything()) %>%  -->
+<!-- ggstatsplot::ggwithinstats(data = ., x = name, y = value) -->
+<!-- ``` -->
+
+
+
+```{r eval=FALSE, eval=FALSE, include=FALSE}
+mydata %>%
+    select(institution, starts_with("Slide")) %>%
+    pivot_longer(cols = starts_with("Slide")) %>%
+    ggplot(., aes(name, value)) -> p
+p + geom_jitter() 
+p + geom_jitter(aes(colour = institution)) 
+```
+
+
+```{r eval=FALSE, eval=FALSE, include=FALSE}
+dxchanges <- mydata %>%
+    select(bx_no, starts_with("Slide")) %>% 
+    filter(complete.cases(.)) %>%
+    group_by(Slide1_infiltrative, Slide2_Medium, Slide3_Demarcated) %>% 
+    tally()
+
+library(ggalluvial)
+
+ggplot(data = dxchanges,
+       aes(axis1 = Slide1_infiltrative, axis2 = Slide2_Medium, axis3 = Slide3_Demarcated,
+           y = n)) +
+  scale_x_discrete(limits = c("Slide1", "Slide2", "Slide3"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Slide") +
+  geom_alluvium(aes(fill = Slide1_infiltrative,
+                    colour = Slide1_infiltrative
+                    )) +
+  geom_stratum() +
+  geom_text(stat = "stratum", label.strata = TRUE) +
+  theme_minimal() +
+  ggtitle("PanNET")
+
+```
+
+
+
+
+
+<!-- ```{r webgl=TRUE, results='hide'} -->
+<!-- # library -->
+<!-- library(rgl) -->
+
+<!-- # This is to output a rgl plot in a rmarkdown document. Note that you must add webgl=TRUE, results='hide' in the chunck header -->
+<!-- library(knitr) -->
+<!-- knit_hooks$set(webgl = hook_webgl) -->
+
+<!-- # Data: the iris data is provided by R -->
+<!-- # data <- iris -->
+
+<!-- # Add a new column with color -->
+<!-- # mycolors <- c('royalblue1', 'darkcyan', 'oldlace', 'red', 'orange') -->
+<!-- # data$color <- mycolors[ as.numeric(dxchanges$Slide1_infiltrative) ] -->
+
+<!-- # Plot -->
+<!-- par(mar=c(0,0,0,0)) -->
+<!-- plot3d(  -->
+<!--   x=dxchanges$Slide1_infiltrative, y=dxchanges$Slide2_Medium, z=dxchanges$Slide3_Demarcated,  -->
+<!--   col = dxchanges$Slide1_infiltrative, -->
+<!--   type = 's',  -->
+<!--   radius = .1, -->
+<!--   xlab="Slide1_infiltrative", ylab="Sepal Width", zlab="Petal Length") -->
+
+<!-- writeWebGL(filename = here::here("HtmlWidget/3dscatter2.html") ,  width=600, height=600) -->
+
+<!-- ``` -->
+
+
+
+
+<!-- ```{r} -->
+<!-- library(ggparallel) -->
+<!-- ggparallel(vars = list("Slide1_infiltrative", "Slide2_Medium", "Slide3_Demarcated"),  -->
+<!--            data = dxchanges) -->
+
+<!-- ``` -->
+
+
+```{r SmartEDA Boxplot by category, eval=FALSE, include=FALSE}
+## Generate Boxplot by category
+SmartEDA::ExpNumViz(
+  mtcars,
+  target = "gear",
+  type = 2,
+  nlim = 25,
+  fname = file.path(here::here(), "Mtcars2"),
+  Page = c(2, 2)
+)
+```
+
+
+```{r SmartEDA density plot by category, eval=FALSE, include=FALSE}
+## Generate Density plot
+SmartEDA::ExpNumViz(
+  mtcars,
+  target = NULL,
+  type = 3,
+  nlim = 25,
+  fname = file.path(here::here(), "Mtcars3"),
+  Page = c(2, 2)
+)
+```
+
+
+```{r SmartEDA scatterplot by category, eval=FALSE, include=FALSE}
+## Generate Scatter plot
+SmartEDA::ExpNumViz(
+  mtcars,
+  target = "carb",
+  type = 3,
+  nlim = 25,
+  fname = file.path(here::here(), "Mtcars4"),
+  Page = c(2, 2)
+)
+```
+
+
+```{r SmartEDA scatterplots by category 2, eval=FALSE, include=FALSE}
+SmartEDA::ExpNumViz(mtcars, target = "am", scatter = TRUE)
+```
+
+
+
+# Interactive graphics {#interactive}
+***
+R allows to build any type of [interactive graphic](https://www.r-graph-gallery.com/interactive-charts/). My favourite library is [plotly](https://www.r-graph-gallery.com/get-the-best-from-ggplotly/) that will turn any of your ggplot2 graphic interactive in one supplementary line of code. Try to hover points, to select a zone, to click on the legend.
+<br><br>
+```{r, message=FALSE, warning=FALSE, fig.align="center"}
+library(ggplot2)
+library(plotly)
+library(gapminder)
+ 
+p <- gapminder %>%
+  filter(year==1977) %>%
+  ggplot( aes(gdpPercap, lifeExp, size = pop, color=continent)) +
+  geom_point() +
+  scale_x_log10() +
+  theme_bw()
+ 
+ggplotly(p)
+```
+
+

@@ -1,0 +1,150 @@
+**Codes for generating hypothesis tests**.^[See [`childRmd/_15hypothesisTests.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_15hypothesisTests.Rmd) file for other codes]
+
+
+# Hypothesis Tests
+
+## Tests of Normality
+
+
+```{r dlookr normality tests, eval=FALSE, include=FALSE}
+dlookr::normality(carseats)
+dlookr::normality(carseats, Sales, CompPrice, Income)
+dlookr::normality(carseats, Sales:Income)
+dlookr::normality(carseats, -(Sales:Income))
+carseats %>%
+  dlookr::normality() %>%
+  dplyr::filter(p_value <= 0.01) %>% 
+  arrange(abs(p_value))
+carseats %>%
+  group_by(ShelveLoc, US) %>%
+  dlookr::normality(Income) %>% 
+  arrange(desc(p_value))
+carseats %>%
+  mutate(log_income = log(Income)) %>%
+  group_by(ShelveLoc, US) %>%
+  dlookr::normality(log_income) %>%
+  dplyr::filter(p_value > 0.01)
+```
+
+
+```{r dlookr normality plots, eval=FALSE, include=FALSE}
+dlookr::plot_normality(carseats, Sales, CompPrice)
+carseats %>%
+  dplyr::filter(ShelveLoc == "Good") %>%
+  group_by(US) %>%
+  dlookr::plot_normality(Income)
+
+```
+
+
+
+
+## Categorical
+
+
+
+
+```{r dlookr target categorical, eval=FALSE, include=FALSE}
+categ <- dlookr::target_by(carseats, US)
+cat_cat <- dlookr::relate(categ, ShelveLoc)
+cat_cat
+summary(cat_cat)
+plot(cat_cat)
+```
+
+
+### Chi-Square Cramer Association Predictive Power
+
+
+```{r SmartEDA statistics of categorical variables, eval=FALSE, include=FALSE}
+## Summary statistics of categorical variables
+SmartEDA::ExpCatStat(
+  Carseats,
+  Target = "Urban",
+  result = "Stat",
+  clim = 10,
+  nlim = 5,
+  Pclass = "Yes"
+)
+```
+
+
+
+```{r inspectdf categorical, eval=FALSE, include=FALSE}
+inspectdf::inspect_cat(star_1, star_2)
+```
+
+
+
+
+
+## Continious
+
+```{r dlookr target continious, eval=FALSE, include=FALSE}
+num <- dlookr::target_by(carseats, Sales)
+num_num <- dlookr::relate(num, Price)
+num_num
+summary(num_num)
+plot(num_num)
+plot(num_num, hex_thres = 350)
+```
+
+
+https://stat.ethz.ch/R-manual/R-devel/library/stats/html/t.test.html
+
+t.test(mtcars$mpg ~ mtcars$am) %>% 
+  report::report()
+
+
+report(t.test(iris$Sepal.Length, iris$Petal.Length))
+
+
+
+## Odds
+
+
+```{r SmartEDA Odds, eval=FALSE, include=FALSE}
+## Inforamtion value and Odds value
+SmartEDA::ExpCatStat(
+  Carseats,
+  Target = "Urban",
+  result = "IV",
+  clim = 10,
+  nlim = 5,
+  Pclass = "Yes"
+)
+```
+
+
+
+
+
+# Frequently Used Statistical Tests By Pathologists
+
+Frequently Used Statistical Tests^[Statistical Literacy Among Academic Pathologists: A Survey Study to Gauge Knowledge of Frequently Used Statistical Tests Among Trainees and Faculty. Archives of Pathology & Laboratory Medicine: February 2017, Vol. 141, No. 2, pp. 279-287. https://doi.org/10.5858/arpa.2016-0200-OA] by [@Schmidt2017]
+
+- Student t test
+- Regression/ANOVA
+- Chi-square test
+- Mann-Whitney test (rank sum)
+- Fisher exact test
+- Survival analysis
+    - Kaplan-Meier/log-rank
+    - Cox regression
+- Multiple comparison adjustment
+    - Tukey
+    - Bonferroni
+    - Newman-Keuls
+- Kappa Statistic
+- ROC analysis
+- Logistic regression
+- Spearman rank correlation
+- Kruskal-Wallis test
+- Pearson correlation statistic
+- Normality test
+- McNemar test
+
+# Consider Adding:
+- https://cran.r-project.org/web/packages/sm/sm.pdf
+- https://cran.r-project.org/web/packages/Rfit/Rfit.pdf
+

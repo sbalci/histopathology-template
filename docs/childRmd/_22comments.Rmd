@@ -1,0 +1,175 @@
+<!-- https://holtzy.github.io/Pimp-my-rmd/#highlight_a_piece_of_text -->
+<!-- https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX -->
+<!-- Create Awesome LaTeX Table with knitr::kable andkableExtra -->
+<!-- https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf -->
+
+<!-- header-includes: -->
+<!-- - \usepackage{pdflscape} -->
+<!-- - \newcommand{\blandscape}{\begin{landscape}} -->
+<!-- - \newcommand{\elandscape}{\end{landscape}} -->
+<!-- - \usepackage{xcolor} -->
+<!-- - \usepackage{afterpage} -->
+
+
+
+
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+Some Text ile sağkalım açısından bir ilişki bulunmamıştır (p = 0.22).
+
+</div>
+
+
+\noindent\colorbox{yellow}{
+\parbox{\dimexpr\linewidth-2\fboxsep}{
+
+Some Text ile sağkalım açısından bir ilişki bulunmamıştır (p = 0.22).
+
+}
+}
+
+
+
+
+
+
+
+```{r define my_text, include=FALSE}
+my_text <- kableExtra::text_spec("Some Text", 
+                                 color = "red",
+                                 background = "yellow"
+                                 )
+```
+
+
+`r my_text`
+
+
+
+
+\pagebreak
+
+
+```{r mylongtext, include=FALSE}
+mylongtext <- paste("İstatistik Metod:
+
+Sürekli verilerin ortalama, standart sapma, median, minimum ve maksimum değerleri verildi. Kategorik veriler ve gruplanan sürekli veriler için frekans tabloları oluşturuldu. Genel sağkalım analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından elde edildi. 
+Sağkalım analizinde Kaplan-Meier grafikleri, Log-rank testi ve Cox-Regresyon testleri uygulandı. Analizler R-project (version 3.6.0) ve RStudio ile survival ve finalfit paketleri kullanılarak yapıldı. p değeri 0.05 düzeyinde anlamlı olarak kabul edildi.
+
+
+R Core Team (2019). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+
+Therneau T (2015). A Package for Survival Analysis in S. version 2.38, https://CRAN.R-project.org/package=survival
+
+Terry M. Therneau, Patricia M. Grambsch (2000). Modeling Survival Data: Extending the Cox Model. Springer, New York. ISBN 0-387-98784-3.
+
+Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. https://github.com/ewenharrison/finalfit"
+)
+
+
+mylongtext <- strwrap(mylongtext)
+```
+
+
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+`r mylongtext`
+
+</div>
+
+
+\noindent\colorbox{yellow}{
+\parbox{\dimexpr\linewidth-2\fboxsep}{
+
+`r mylongtext`
+
+}
+}
+
+\pagebreak
+
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
+Text Here
+
+</div>
+
+
+\noindent\colorbox{yellow}{
+\parbox{\dimexpr\linewidth-2\fboxsep}{
+
+Text Here
+
+}
+}
+
+
+\pagebreak
+
+\pagecolor{yellow}\afterpage{\nopagecolor}
+
+
+\pagebreak
+
+
+---
+
+
+
+```{r out.width=c('50%', '50%'), fig.show='hold', echo=FALSE}
+boxplot(1:10)
+plot(rnorm(10))
+```
+
+
+
+---
+
+<div class = "row">
+<div class = "col-md-4">
+<br><br>Since R Markdown use the [bootstrap framework](https://getbootstrap.com/docs/4.0/layout/grid/) under the hood. It is possible to benefit its powerful grid system. Basically, you can consider that your row is divided in 12 subunits of same width. You can then choose to use only a few of this subunits.
+</div>
+<div class = "col-md-4">
+<br><br>Here, I use 3 subunits of size 4 (4x3=12). The last column is used for a plot. You can read more about the grid system [here](bootstrap grid system). I got this result showing the following code in my R Markdown document.
+</div>
+<div class = "col-md-4">
+```{r, message=FALSE, echo=FALSE}
+ggplot2::ggplot(mtcars,
+                ggplot2::aes(x=mpg)
+                ) + 
+ggplot2::geom_histogram(fill="skyblue", alpha=0.5) + 
+ggplot2::theme_minimal()
+```
+</div>
+</div>
+
+
+---
+
+
+
+# Tabs for sub-chapters {#buttons .tabset .tabset-fade .tabset-pills}
+
+## First
+
+content of sub-chapter #1
+
+## Second
+
+content of sub-chapter #2
+
+## Third
+
+content of sub-chapter #3

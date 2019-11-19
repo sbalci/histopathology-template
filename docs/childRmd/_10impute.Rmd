@@ -1,0 +1,253 @@
+## impute
+
+**Codes for missing data and impute**.^[See [`childRmd/_10impute.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_10impute.Rmd) file for other codes]
+
+
+### Missing Data
+
+
+**Plot missing data**
+
+```{r visdat}
+visdat::vis_miss(mydata)
+```
+
+
+
+```{r visdat, eval=FALSE, include=FALSE}
+visdat::vis_miss(airquality,
+                 cluster = TRUE)
+```
+
+
+```{r visdat, eval=FALSE, include=FALSE}
+visdat::vis_miss(airquality,
+         sort_miss = TRUE)
+```
+
+
+### impute continious
+
+
+```{r dlookr impute, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/dlookr/vignettes/transformation.html
+
+income <- dlookr::imputate_na(carseats, Income, US, method = "rpart")
+income
+attr(income,"var_type")
+attr(income,"method")
+attr(income,"na_pos")
+attr(income,"type")
+attr(income,"message")
+attr(income,"success")
+attr(income,"class")
+
+summary(income)
+
+plot(income)
+```
+
+
+
+```{r dlookr impute continious value knn, eval=FALSE, include=FALSE}
+carseats %>%
+  mutate(Income_imp = dlookr::imputate_na(carseats, Income, US, method = "knn")) %>%
+  group_by(US) %>%
+  summarise(orig = mean(Income, na.rm = TRUE),
+    imputation = mean(Income_imp))
+```
+
+
+### impute categorical
+
+```{r dlookr impute categorical value mice, eval=FALSE, include=FALSE}
+library(mice)
+urban <- dlookr::imputate_na(carseats, Urban, US, method = "mice")
+urban 
+summary(urban)
+plot(urban)
+```
+
+
+
+### impute outlier
+
+```{r dlookr impute outliers, eval=FALSE, include=FALSE}
+price <- dlookr::imputate_outlier(carseats, Price, method = "capping")
+price
+summary(price)
+plot(price)
+```
+
+
+```{r eval=FALSE, eval=FALSE, include=FALSE}
+carseats %>%
+  mutate(Price_imp = dlookr::imputate_outlier(carseats, Price, method = "capping")) %>%
+  group_by(US) %>%
+  summarise(orig = mean(Price, na.rm = TRUE),
+    imputation = mean(Price_imp, na.rm = TRUE))
+```
+
+
+
+
+
+## transform
+
+
+### min -max 
+
+```{r dlookr transform min max, eval=FALSE, include=FALSE}
+carseats %>% 
+  mutate(Income_minmax = dlookr::transform(carseats$Income, method = "minmax"),
+    Sales_minmax = dlookr::transform(carseats$Sales, method = "minmax")) %>% 
+  select(Income_minmax, Sales_minmax) %>% 
+  boxplot()
+```
+
+
+### skewness
+
+
+```{r dlookr transform skewness, eval=FALSE, include=FALSE}
+dlookr::find_skewness(carseats)
+
+dlookr::find_skewness(carseats, index = FALSE)
+
+dlookr::find_skewness(carseats, value = TRUE)
+
+dlookr::find_skewness(carseats, value = TRUE, thres = 0.1)
+```
+
+
+### log
+
+```{r dlookr transform log, eval=FALSE, include=FALSE}
+Advertising_log = transform(carseats$Advertising, method = "log")
+# Advertising_log <- transform(carseats$Advertising, method = "log+1")
+head(Advertising_log)
+summary(Advertising_log)
+plot(Advertising_log)
+```
+
+
+
+## binning
+
+```{r dlookr transform binning, eval=FALSE, include=FALSE}
+bin <- dlookr::binning(carseats$Income)
+bin <- binning(carseats$Income, nbins = 4,
+              labels = c("LQ1", "UQ1", "LQ3", "UQ3"))
+binning(carseats$Income, nbins = 5, type = "equal")
+binning(carseats$Income, nbins = 5, type = "pretty")
+binning(carseats$Income, nbins = 5, type = "kmeans")
+binning(carseats$Income, nbins = 5, type = "bclust")
+
+bin
+summary(bin)
+plot(bin)
+
+
+
+carseats %>%
+ mutate(Income_bin = dlookr::binning(carseats$Income)) %>%
+ group_by(ShelveLoc, Income_bin) %>%
+ summarise(freq = n()) %>%
+ arrange(desc(freq)) %>%
+ head(10)
+
+```
+
+
+
+
+
+
+### optimal binning
+
+```{r dlookr transform optimal binning, eval=FALSE, include=FALSE}
+bin <- dlookr::binning_by(carseats, "US", "Advertising")
+bin
+summary(bin)
+attr(bin, "iv") # information value 
+attr(bin, "ivtable") # information value table
+
+plot(bin, sub = "bins of Advertising variable")
+
+```
+
+
+### standardize
+
+
+```{r exploreR, eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html
+
+(regressResults <- exploreR::masslm(iris,
+                                   "Sepal.Length",
+                                   ignore = "Species")
+)
+ 
+exploreR::massregplot(iris, "Sepal.Length", ignore = "Species")
+
+(stand.Petals <- exploreR::standardize(iris,
+                                      c("Petal.Width", "Petal.Length"))
+)
+```
+
+
+
+
+
+
+## data transformation report
+
+
+```{r dlookr data transformation method, eval=FALSE, include=FALSE}
+carseats %>%
+  dlookr::transformation_report(target = US)
+
+carseats %>%
+  dlookr::transformation_report(target = US, output_format = "html", 
+    output_file = "transformation.html")
+
+```
+
+
+
+## inspectdf
+
+```{r inspectdf, eval=FALSE, include=FALSE}
+inspectdf::inspect_na(starwars)
+
+inspectdf::inspect_na(starwars) %>% inspectdf::show_plot()
+
+inspectdf::inspect_na(star_1, star_2)
+
+inspectdf::inspect_na(star_1, star_2) %>% inspectdf::show_plot()
+```
+
+
+
+<!-- References: -->
+<!-- Multiple imputation support in Finalfit -->
+<!-- https://www.datasurg.net/2019/09/25/multiple-imputation-support-in-finalfit/ -->
+<!-- Survival analysis with strata, clusters, frailties and competing risks in in Finalfit -->
+<!-- https://www.datasurg.net/2019/09/12/survival-analysis-with-strata-clusters-frailties-and-competing-risks-in-in-finalfit/ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

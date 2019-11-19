@@ -1,0 +1,39 @@
+**Codes for generating paired tests**.^[See [`childRmd/_14pairedTests.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_14pairedTests.Rmd) file for other codes]
+
+
+<!-- https://cran.r-project.org/web/packages/arsenal/vignettes/paired.html -->
+
+
+```{r arsenal paired, eval=FALSE, include=FALSE}
+library(arsenal)
+dat <- data.frame(
+  tp = paste0("Time Point ", c(1, 2, 1, 2, 1, 2, 1, 2, 1, 2)),
+  id = c(1, 1, 2, 2, 3, 3, 4, 4, 5, 6),
+  Cat = c("A", "A", "A", "B", "B", "B", "B", "A", NA, "B"),
+  Fac = factor(c("A", "B", "C", "A", "B", "C", "A", "B", "C", "A")),
+  Num = c(1, 2, 3, 4, 4, 3, 3, 4, 0, NA),
+  Ord = ordered(c("I", "II", "II", "III", "III", "III", "I", "III", "II", "I")),
+  Lgl = c(TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE),
+  Dat = as.Date("2018-05-01") + c(1, 1, 2, 2, 3, 4, 5, 6, 3, 4),
+  stringsAsFactors = FALSE
+)
+
+
+p <- paired(tp ~ Cat + Fac + Num + Ord + Lgl + Dat, data = dat, id = id, signed.rank.exact = FALSE)
+summary(p)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

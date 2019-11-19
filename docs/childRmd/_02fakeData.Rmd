@@ -1,0 +1,31 @@
+**Codes for generating fake data**.^[See [`childRmd/_02fakeData.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_02fakeData.Rmd) file for other codes]
+
+**Generate Fake Data**
+
+This code generates a fake histopathological data.
+Some sources for fake data generation
+here^[Synthea The validity of synthetic clinical data: a validation study of a leading synthetic data generator (Synthea) using clinical quality measures. BMC Med Inform Decis Mak 19, 44 (2019) doi:10.1186/s12911-019-0793-0]
+, here^[https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-019-0793-0]
+, here^[[Synthetic Patient Generation](https://synthetichealth.github.io/synthea/)]
+, here^[[Basic Setup and Running](https://github.com/synthetichealth/synthea/wiki/Basic-Setup-and-Running)]
+, here^[[intelligent patient data generator (iPDG)](http://www.mli.gmu.edu/index.php/research/ipdg/)]
+, here^[https://medium.com/free-code-camp/how-our-test-data-generator-makes-fake-data-look-real-ace01c5bde4a]
+, here^[https://forums.librehealth.io/t/demo-data-generation/203]
+, here^[https://mihin.org/services/patient-generator/]
+, and here^[lung, cancer, breast datası ile birleştir]
+.
+
+
+**Use [this code](https://github.com/sbalci/histopathology-template/blob/master/R/gc_fake_data.R) to generate fake clinicopathologic data**
+
+```{r generate fake data}
+source(file = here::here("R", "gc_fake_data.R"))
+```
+
+
+
+```{r plot fake data}
+wakefield::table_heat(x = fakedata, palette = "Set1", flip = TRUE, print = TRUE)
+```
+
+
