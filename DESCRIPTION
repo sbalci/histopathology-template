@@ -27,44 +27,12 @@ Depends:
     R (>= 3.1.0),
     renv,
     rlang,
-    dplyr,
-    magrittr,
-    arsenal,
-    describer,
-    DT,
-    forcats,
-    ggstatsplot,
-    glue,
-    here,
-    inspectdf,
-    lubridate,
-    miniUI,
-    readr,
-    readxl,
-    rio,
-    roxygen2,
-    rstudioapi,
-    shiny,
-    summarytools,
-    survival,
-    survminer,
-    tableone,
-    viridis,
-    wakefield,
-    writexl
+    dplyr
 Suggests: 
-    testthat (>= 2.1.0),
-    covr,
     rmarkdown,
     knitr
 Imports: 
     janitor,
-    jmv,
-    kableExtra,
-    magicfor
 Remotes:
-    r-lib/covr,
-    r-lib/devtools,
-    easystats/report,
     ewenharrison/finalfit
 VignetteBuilder: knitr

@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^renv$
 ^renv\.lock$
+drafts
+oldRmd

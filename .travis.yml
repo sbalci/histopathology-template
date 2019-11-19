@@ -8,29 +8,15 @@ branches:
     - master
 
 r_packages:
-    - markdown
     - devtools
     - dplyr
-    - magrittr
-    - testthat
     - rmarkdown
     - knitr
     - renv
-    - janitor
-    - jmv
-    - kableExtra
-    - magicfor
-    - pkgdown
 
 
 r_github_packages:
-    - rstudio/distill
-    - easystats/report
-    - r-lib/covr
-    - ropenscilabs/icon
-    - DataWookie/feedeR
-    - haozhu233/kableExtra
-    - ropensci/RefManageR
+    - ewenharrison/finalfit
 
 before_script:
     - Rscript -e 'print("before script")'
