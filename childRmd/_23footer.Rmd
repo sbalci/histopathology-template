@@ -131,6 +131,16 @@ knitr::write_bib(x = c(.packages(), "knitr", "shiny"),
 sessionInfo()
 ```
 
+\pagebreak
+
+---
+
+### Loaded packages {.appendix} 
+
+```{r session info by pacman}
+pacman::p_loaded(all = TRUE)
+```
+
 
 ---
 
