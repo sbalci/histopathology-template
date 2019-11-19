@@ -34,7 +34,7 @@ https://sbalci.github.io/histopathology-template/
 <!-- [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/histopathology-template)](https://CRAN.R-project.org/package=histopathology-template) -->
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/)
-[![Travis Build Status](https://travis-ci.com/sbalci/histopathology-template.svg?branch=master)](https://travis-ci.com/sbalci/histopathology-template)
+<!-- [![Travis Build Status](https://travis-ci.com/sbalci/histopathology-template.svg?branch=master)](https://travis-ci.com/sbalci/histopathology-template) -->
 <!-- [![codecov](https://codecov.io/gh/sbalci/histopathology-template/branch/master/graph/badge.svg)](https://codecov.io/gh/sbalci/histopathology-template) -->
 <!-- [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/1cxwgpgfi1x9vcdc?svg=true)](https://ci.appveyor.com/project/sbalci/histopathology-template) -->
 <!-- [![Coverage Status](https://coveralls.io/repos/github/sbalci/histopathology-template/badge.svg?branch=master)](https://coveralls.io/github/sbalci/histopathology-template?branch=master) -->
