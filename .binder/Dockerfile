@@ -7,6 +7,6 @@ USER ${NB_USER}
 
 
 
-RUN wget https://github.com/sbalci/histopathology-template/raw/master/DESCRIPTION && R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2019-11-19/'));  install.packages('renv'); install.packages('remotes')"
+RUN wget https://github.com/sbalci/histopathology-template/raw/master/DESCRIPTION && R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2019-11-19/'))"
 
 RUN rm DESCRIPTION.1; exit 0
