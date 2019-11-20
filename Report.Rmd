@@ -56,8 +56,7 @@ bibliography: bib/template.bib
 
 ```{r pacman, include=FALSE}
 # installing necessary packages
-if (!require("rlang")) install.packages("rlang"); library(rlang)
-if (!require("renv")) install.packages("renv"); library(renv)
+if (!require("pacman")) install.packages("pacman"); library(pacman)
 if (!require("here")) install.packages("here"); library(here)
 ```
 

@@ -1,37 +1,97 @@
-
-mypackages <- function(package) {
-    
-if (!require({{package}})) install.packages({{package}})
-library({{package}})
-    
-}
-
+if (!require("pak"))
+    install.packages("pak")
+library(pak)
+if (!require("rlang"))
+    install.packages("rlang")
+library(rlang)
+if (!require("renv"))
+    install.packages("renv")
+library(renv)
+if (!require("xfun"))
+    install.packages("xfun")
+library(xfun)
 
 pacman::p_load(
-    here,
-    rmarkdown,
-    knitr,
-    renv,
-    remotes,
-    dplyr,
-    rprojroot,
-    readxl,
-    janitor,
-    bayestestR,
-    prettydoc,
-    distill,
-    renv,
-    remotes,
-    rlang,
-    xfun,
-    stringi,
-    magrittr
+    char = c(
+        "knitr",
+        "devtools",
+        "rmarkdown",
+        "prettydoc",
+        "distill",
+        "pacman",
+        "here",
+        "exploreR",
+        "wakefield",
+        "readxl",
+        "rio",
+        "explore",
+        "dataMaid",
+        "inspectdf",
+        "describer",
+        "visdat",
+        "dplyr",
+        "janitor",
+        "summarytools",
+        "xray",
+        "DataExplorer",
+        "dlookr",
+        "ISLR",
+        "SmartEDA",
+        "questionr",
+        "finalfit",
+        "forcats",
+        "stringr",
+        "arsenal",
+        "naniar",
+        "mice",
+        "survival",
+        "tableone",
+        "summarizer",
+        "DT",
+        "ggstatsplot",
+        "ggalluvial",
+        "rgl",
+        "ggparallel",
+        "ggplot2",
+        "plotly",
+        "gapminder",
+        "stats",
+        "OptimalCutpoints",
+        "yardstick",
+        "pROC",
+        "plotROC",
+        "lubridate",
+        "tibble",
+        "glue",
+        "scales",
+        "insight",
+        "purrr",
+        "survminer",
+        "shiny",
+        "magrittr",
+        "viridis",
+        "eval",
+        "correlation",
+        "psycho",
+        "kableExtra",
+        "lme4",
+        "rstanarm",
+        "readr",
+        "writexl",
+        "citation",
+        "citations",
+        "jmv",
+        "magicfor",
+        "pak",
+        "rlang",
+        "renv",
+        "xfun"
+    )
 )
 
-pacman::p_load_gh(
-    "easystats/report",
-    "noamross/redoc"
-)
+
+pacman::p_load_gh("easystats/report",
+                  "noamross/redoc")
 
 suppressPackageStartupMessages(library("dplyr"))
 suppressPackageStartupMessages(library("magrittr"))
