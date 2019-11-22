@@ -76,7 +76,6 @@ visdat::vis_dat(mydata)
 
 
 ```{r variable type plot explore}
-library("explore")
 mydata %>% explore::explore_tbl()
 ```
 

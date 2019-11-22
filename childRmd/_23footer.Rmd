@@ -21,7 +21,13 @@ saveRDS(object = mydata, file = here::here("data", rdsName))
 
 excelName <- paste0(projectName, analysisDate, ".xlsx")
 
-writexl::write_xlsx(mydata, here::here("data", excelName))
+rio::export(
+  x = mydata,
+  file = here::here("data", excelName),
+  format = "xlsx"
+)
+
+# writexl::write_xlsx(mydata, here::here("data", excelName))
 
 print(glue::glue(
     "saved data after analysis to ",
@@ -98,7 +104,7 @@ report::cite_packages(session = sessionInfo())
 ```
 
 
-```{r show library citation as report, results='asis'}
+```{r show library citation as report, echo=TRUE, eval=FALSE, results='asis'}
 report::show_packages(session = sessionInfo()) %>% 
     kableExtra::kable()
 ```
@@ -110,7 +116,7 @@ citation("readxl")
 citation("janitor")
 citation("report")
 citation("finalfit")
-citation("ggstatsplot")
+# citation("ggstatsplot")
 ```
 
 
@@ -137,7 +143,7 @@ sessionInfo()
 
 ### Loaded packages {.appendix} 
 
-```{r session info by pacman}
+```{r session info by pacman, echo=TRUE, eval=FALSE}
 pacman::p_loaded(all = TRUE)
 ```
 

@@ -100,7 +100,7 @@ tableone::CreateTableOne(data = .)
 
 **Descriptive Statistics of Continuous Variables**
 
-```{r summarytools descriptives 1}
+```{r summarytools descriptives 1, echo=TRUE, eval=FALSE}
 mydata %>% 
   select(
     continiousVariables,
@@ -112,13 +112,13 @@ summarytools::descr(., style = 'rmarkdown')
 
 
 
-```{r summarytools descriptives 2}
+```{r summarytools descriptives 2, echo=TRUE, eval=FALSE}
 print(summarytools::descr(mydata), method = 'render', table.classes = 'st-small')
 ```
  
 
 
-```{r summarytools descriptives 3}
+```{r summarytools descriptives 3, echo=TRUE, eval=FALSE}
 mydata %>% 
   summarytools::descr(.,
                       stats = "common",
@@ -129,7 +129,7 @@ mydata %>%
 
 
 
-```{r summarytools descriptives 4}
+```{r summarytools descriptives 4, echo=TRUE, eval=FALSE}
 mydata %>% 
   summarytools::descr(stats = "common") %>%
   summarytools::tb()
@@ -256,7 +256,7 @@ grouped_freqs %>% tb(order = 2)
 #### Grouped Categorical
 
 
-```{r summarytools Grouped Categorical}
+```{r summarytools Grouped Categorical, echo=TRUE, eval=FALSE}
 summarytools::stby(
   list(x = mydata$LVI, y = mydata$LymphNodeMetastasis), 
   mydata$PNI,
@@ -266,7 +266,7 @@ summarytools::stby(
 
 
 
-```{r summarytools Grouped Categorical 2}
+```{r summarytools Grouped Categorical 2, echo=TRUE, eval=FALSE}
 with(mydata, 
      summarytools::stby(
        list(x = LVI, y = LymphNodeMetastasis), PNI,
@@ -373,7 +373,7 @@ inspectdf::inspect_num(mydata, breaks = 10) %>%
 #### Split-Group Stats Continious
 
 
-```{r summarytools Split-Group continious}
+```{r summarytools Split-Group continious, echo=TRUE, eval=FALSE}
 grouped_descr <- summarytools::stby(data = mydata, 
                       INDICES = mydata$Sex, 
                       FUN = summarytools::descr, stats = "common")
@@ -412,7 +412,7 @@ plot(cat_num)
 #### Grouped Continious
 
 
-```{r summarytools Grouped Continious}
+```{r summarytools Grouped Continious, echo=TRUE, eval=FALSE}
    summarytools::stby(data = mydata, 
                                INDICES = mydata$PreinvasiveComponent, 
                                FUN = summarytools::descr,
@@ -422,7 +422,7 @@ plot(cat_num)
 
 
 
-```{r summarytools Grouped Continious 2}
+```{r summarytools Grouped Continious 2, echo=TRUE, eval=FALSE}
 with(mydata, 
      summarytools::stby(Age, PreinvasiveComponent, summarytools::descr), 
                    stats = c("mean", "sd", "min", "med", "max"),

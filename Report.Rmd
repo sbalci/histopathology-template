@@ -54,10 +54,15 @@ vignette: >
 bibliography: bib/template.bib
 ---
 
-```{r pacman, include=FALSE}
+```{r pacman, message=FALSE, warning=FALSE, include=FALSE}
 # installing necessary packages
-if (!require("pacman")) install.packages("pacman"); library(pacman)
-if (!require("here")) install.packages("here"); library(here)
+if (!require("pacman")) install.packages("pacman")
+suppressPackageStartupMessages(library("pacman"))
+if (!require("pak")) install.packages("pak")
+suppressPackageStartupMessages(library("pak"))
+if (!require("here")) install.packages("here")
+suppressPackageStartupMessages(library("here"))
+source(file = here::here("R", "loadLibrary.R"))
 ```
 
 

@@ -11,7 +11,7 @@ summarytools::view(summarytools::dfSummary(mydata %>% select(-keycolumns)))
 ```
 
 
-```{r summarytools save output}
+```{r summarytools save output, echo=TRUE, eval=FALSE}
 summarytools::view(
   x = summarytools::dfSummary(
     mydata %>% 

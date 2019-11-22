@@ -14,7 +14,7 @@ report::report(model)
 
 **Table report for a linear model**
 
-```{r Table report for a linear model}
+```{r Table report for a linear model, eval=FALSE, include=FALSE}
 # Table report for a linear model
 lm(Sepal.Length ~ Petal.Length + Species, data=iris) %>% 
   report::report() %>% 

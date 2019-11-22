@@ -119,7 +119,7 @@ knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
 ```
 
 ```{r print autoreport Cox-Regression}
-tUni_df <- tibble::as_tibble(tUni) %>% 
+tUni_df <- tibble::as_tibble(tUni, .name_repair = "minimal") %>% 
   janitor::clean_names() 
 
 tUni_df_descr <- paste0("When ",
