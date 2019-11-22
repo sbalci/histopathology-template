@@ -121,6 +121,8 @@ citation("finalfit")
 
 
 ```{r write libraries as bib file}
+if(!dir.exists(here::here("bib"))) {dir.create(here::here("bib"))}
+
 knitr::write_bib(x = c(.packages(), "knitr", "shiny"),
                  file = here::here("bib", "packages.bib")
 )

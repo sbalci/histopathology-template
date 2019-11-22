@@ -53,6 +53,7 @@ package_list <- c(
 
 # Statistics
 
+"jmv",
 "explore",
 "finalfit",
 "dataMaid",

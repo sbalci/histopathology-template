@@ -12,6 +12,8 @@ summarytools::view(summarytools::dfSummary(mydata %>% select(-keycolumns)))
 
 
 ```{r summarytools save output, echo=TRUE, eval=FALSE}
+if(!dir.exists(here::here("out"))) {dir.create(here::here("out"))}
+
 summarytools::view(
   x = summarytools::dfSummary(
     mydata %>% 
@@ -26,6 +28,8 @@ summarytools::view(
 
 
 ```{r summary dataMaid}
+if(!dir.exists(here::here("out"))) {dir.create(here::here("out"))}
+
 dataMaid::makeDataReport(data = mydata, 
                          file = here::here("out", "dataMaid_mydata.Rmd"),
                          replace = TRUE,
@@ -39,6 +43,8 @@ dataMaid::makeDataReport(data = mydata,
 **Summary via explore 📦**
 
 ```{r summary explore, echo=TRUE, eval=FALSE}
+if(!dir.exists(here::here("out"))) {dir.create(here::here("out"))}
+
 mydata %>% 
   select(
     -dateVariables
@@ -75,7 +81,7 @@ explore::explore(mydata)
 ```
 
 
-```{r eval=FALSE, include=FALSE}
+```{r explore all, eval=FALSE, include=FALSE}
 mydata %>%
   explore::explore_all()
 ```
@@ -118,7 +124,7 @@ xray::anomalies(mydata)
 
 
 
-```{r xray 2, warning=FALSE}
+```{r xray 2, message=FALSE, warning=FALSE}
 xray::distributions(mydata)
 ```
 
@@ -194,6 +200,8 @@ DataExplorer::plot_histogram(mydata)
 
 
 ```{r dataMaid 2, eval=FALSE, include=FALSE}
+if(!dir.exists(here::here("out"))) {dir.create(here::here("out"))}
+
 # https://cran.r-project.org/web/packages/dataMaid/vignettes/extending_dataMaid.html
 library("dataMaid")
 dataMaid::makeDataReport(mydata,
