@@ -89,17 +89,29 @@ rmarkdown::draft(file = "myfile",
 
 **How to use**
 
-  - Fork this repository. Then use this repository as template as
-    described
-    [here](https://help.github.com/en/articles/creating-a-repository-from-a-template).
+  - In RStudio:
+    
+      - Fork this repository. Then use this repository as template as
+        described
+        [here](https://help.github.com/en/articles/creating-a-repository-from-a-template).
+    
+      - Use RStudio project as described
+        [here](https://happygitwithr.com/existing-github-first.html#new-rstudio-project-via-git-clone-1).
+    
+      - Do not forget to change chunk functions to `eval = TRUE`.
+    
+      - This template contains packages using
+        [renv](https://rstudio.github.io/renv/articles/renv.html).
 
-  - Use RStudio project as described
-    [here](https://happygitwithr.com/existing-github-first.html#new-rstudio-project-via-git-clone-1).
+  - Via Docker
 
-  - Do not forget to change chunk functions to `eval = TRUE`.
+<https://hub.docker.com/r/serdarbalci/clinicopathological>
 
-  - This template contains packages using
-    [renv](https://rstudio.github.io/renv/articles/renv.html).
+``` bash
+docker pull serdarbalci/clinicopathological
+```
+
+<https://twitter.com/serdarbalci/status/1197849208302252032>
 
 -----
 
