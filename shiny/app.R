@@ -1,6 +1,5 @@
 library("shiny")
 library("dplyr")
-library("viridis")
 library("readxl")
 library("survival")
 library("survminer")
@@ -9,7 +8,7 @@ library("glue")
 
 # Data pre-processing ----
 
-mydata <- readxl::read_excel(here::here("data", "mydata.xlsx"))
+mydata <- rio::import(file = here::here(), format = "xlsx")
 mydata$int <- lubridate::interval(
   lubridate::ymd(mydata$SurgeryDate),
   lubridate::ymd(mydata$LastFollowUpDate)
@@ -59,37 +58,47 @@ ui <- fluidPage(
     # Main panel for displaying outputs ----
     mainPanel(
       
-      tags$b("Kaplan-Meier Plot, Log-Rank Test"),
       tags$br(),
-
-            
+      tags$h3("Kaplan-Meier Plot, Log-Rank Test"),
+      tags$br(),
+      tags$hr(),
       plotOutput("KMPlot"),
-      
-      tags$b("Univariate Cox-Regression"),
       tags$br(),
-      
-      
+      tags$br(),
+      tags$hr(),
+      tags$br(),
+      tags$h3("Univariate Cox-Regression"),
+      tags$br(),
+      tags$hr(),
       tableOutput("CoxTable"),
-      
-      
-      tags$b("Median Survival"),
       tags$br(),
-      
+      tags$br(),
+      tags$hr(),
+      tags$br(),
+      tags$h3("Median Survival"),
+      tags$br(),
+      tags$hr(),
       tableOutput("Median"),
-      
-      
-      tags$b("1-3-5-yr Survival"),
       tags$br(),
-      
+      tags$br(),
+      tags$hr(),
+      tags$br(),
+      tags$h3("1-3-5-yr Survival"),
+      tags$br(),
+      tags$hr(),
       tableOutput("YearSurv"),
-
-      
-      tags$b("Comment"),
       tags$br(),
-      
-      
-      textOutput("Comment")
-      
+      tags$br(),
+      tags$hr(),
+      tags$br(),
+      tags$h3("Comment 1-3-5-yr Survival"),
+      tags$br(),
+      tags$hr(),
+      textOutput("YearSurvComment"),
+      tags$br(),
+      tags$br(),
+      tags$hr(),
+      tags$br()
       
       
 
@@ -122,15 +131,10 @@ server <- function(input, output) {
   
   output$CoxTable <- 
   
-  renderPrint({
+  renderTable({
     
     mydata %>%
-      finalfit::finalfit("Surv(OverallTime, Outcome)", input$Factor) -> tUni
-    
-    knitr::kable(tUni,
-                 row.names = FALSE,
-                 align = c('l', 'l', 'r', 'r', 'r', 'r'))
-    
+      finalfit::finalfit("Surv(OverallTime, Outcome)", input$Factor)
     
   })
   
@@ -139,14 +143,18 @@ server <- function(input, output) {
   output$Median <- 
   
   
-  renderPrint({
+    renderTable({
     
     formula_text <- paste0("Surv(OverallTime, Outcome) ~ ",input$Factor)
     
     km_fit <- survfit(as.formula(formula_text),
                       data = mydata)
     
-    km_fit
+    km_fit_median_df <- summary(km_fit)
+    
+    km_fit_median_df <- as.data.frame(km_fit_median_df$table) %>% 
+      janitor::clean_names() %>% 
+      tibble::rownames_to_column()
     
   })
   
@@ -155,19 +163,23 @@ server <- function(input, output) {
   
   output$YearSurv <- 
   
-  renderPrint({
+    renderTable({
     
     formula_text <- paste0("Surv(OverallTime, Outcome) ~ ",input$Factor)
     
     km_fit <- survfit(as.formula(formula_text),
                       data = mydata)
     
-    summary(km_fit, times = c(12, 36, 60))
+    km_fit_summary <- summary(km_fit, times = c(12,36,60))
+    
+    km_fit_df <- as.data.frame(km_fit_summary[c("strata", "time", "n.risk", "n.event", "surv", "std.err", "lower", "upper")])
+    
+    km_fit_df
     
   })
   
   
-  output$Comment <- 
+  output$YearSurvComment <- 
   
   renderPrint({
     
@@ -189,7 +201,9 @@ server <- function(input, output) {
           )
       ) %>% 
       dplyr::select(description) %>% 
-      pull()
+      pull() -> comment
+    
+    print(comment)
     
   })
 

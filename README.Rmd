@@ -57,6 +57,9 @@ https://sbalci.github.io/histopathology-template/
 <!-- [![Twitter](https://img.shields.io/twitter/url/https/github.com/sbalci/histopathology-template.svg?style=social)](https://twitter.com/intent/tweet?text=%23rstats%20codes%20for%20histopathology%20research%20by%20@serdarbalci&url=https%3A%2F%2Fgithub.com%2Fsbalci%2Fhistopathology-template) -->
 <!-- ![GitHub](https://img.shields.io/github/license/sbalci/histopathology-template.svg) -->
 <!-- [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/sbalci/histopathology-template/issues) -->
+[![Download histopathR](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/histopathr/files/latest/download)
+[![Download histopathR](https://img.shields.io/sourceforge/dt/histopathr.svg)](https://sourceforge.net/projects/histopathr/files/latest/download)
+[![Download histopathR](https://sourceforge.net/sflogo.php?type=13&group_id=3161064)](https://sourceforge.net/p/histopathr/)
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
 [![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sbalci/histopathology-template/master?urlpath=rstudio)
 <!-- badges: end -->
@@ -99,7 +102,7 @@ rmarkdown::draft(file = "myfile",
 
    - This template contains packages using [renv](https://rstudio.github.io/renv/articles/renv.html). 
 
-- Via Docker
+- Via Docker:
 
 https://hub.docker.com/r/serdarbalci/clinicopathological
 
@@ -109,6 +112,14 @@ docker pull serdarbalci/clinicopathological
 
 
 https://twitter.com/serdarbalci/status/1197849208302252032
+
+
+- As an app:
+
+https://sourceforge.net/projects/histopathr/
+
+https://twitter.com/serdarbalci/status/1198348640294711296
+
 
 ---
 

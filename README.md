@@ -48,6 +48,12 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 
 <!-- [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/sbalci/histopathology-template/issues) -->
 
+[![Download
+histopathR](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/histopathr/files/latest/download)
+[![Download
+histopathR](https://img.shields.io/sourceforge/dt/histopathr.svg)](https://sourceforge.net/projects/histopathr/files/latest/download)
+[![Download
+histopathR](https://sourceforge.net/sflogo.php?type=13&group_id=3161064)](https://sourceforge.net/p/histopathr/)
 [![Say
 Thanks\!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/sbalci)
 [![Launch Rstudio
@@ -103,7 +109,7 @@ rmarkdown::draft(file = "myfile",
       - This template contains packages using
         [renv](https://rstudio.github.io/renv/articles/renv.html).
 
-  - Via Docker
+  - Via Docker:
 
 <https://hub.docker.com/r/serdarbalci/clinicopathological>
 
@@ -112,6 +118,12 @@ docker pull serdarbalci/clinicopathological
 ```
 
 <https://twitter.com/serdarbalci/status/1197849208302252032>
+
+  - As an app:
+
+<https://sourceforge.net/projects/histopathr/>
+
+<https://twitter.com/serdarbalci/status/1198348640294711296>
 
 -----
 
