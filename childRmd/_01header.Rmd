@@ -2,9 +2,7 @@
 **Codes for general settings.**^[See [`childRmd/_01header.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_01header.Rmd) file for other general settings]
 
 
-**Setup global chunk settings**
-
-Change `echo = FALSE` to hide codes after knitting.
+**Setup global chunk settings**^[Change `echo = FALSE` to hide codes after knitting.]
 
 ```{r global_options}
 knitr::opts_chunk$set(

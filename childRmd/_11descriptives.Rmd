@@ -292,6 +292,18 @@ SmartEDA::ExpCTable(
 ```
 
 
+```{r reactable groupby, echo=TRUE, eval = FALSE}
+mydata %>% 
+  select(characterVariables) %>% 
+  select(PreinvasiveComponent,
+         PNI,
+         LVI
+         ) %>% 
+reactable::reactable(data = ., groupBy = c("PreinvasiveComponent", "PNI"), columns = list(
+  LVI = reactable::colDef(aggregate = "count")
+))
+```
+
 
 
 

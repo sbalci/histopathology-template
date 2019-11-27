@@ -90,13 +90,20 @@ print(glue::glue(
 
 ### Software and Libraries Used {.appendix}  
 
+Why and how to cite software and packages?^[Smith AM, Katz DS, Niemeyer KE, FORCE11 Software Citation Working Group. (2016) Software Citation Principles. PeerJ Computer Science 2:e86. DOI: 10.7717/peerj-cs.86 https://www.force11.org/software-citation-principles]
+
+
 ```{r citation}
 citation()
 ```
 
+
 The jamovi project (2019). jamovi. (Version 0.9) [Computer Software]. Retrieved from https://www.jamovi.org.  
 R Core Team (2018). R: A Language and envionment for statistical computing. [Computer software]. Retrieved from https://cran.r-project.org/.  
 Fox, J., & Weisberg, S. (2018). car: Companion to Applied Regression. [R package]. Retrieved from https://cran.r-project.org/package=car.
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+Data processing was carried out with R (R Core Team, 2019) and the easystats ecosystem (Lüdecke, Waggoner, & Makowski, 2019; Makowski, Ben-Shachar, & Lüdecke, 2019)
+
 
 
 ```{r library citation as report, results='asis'}
@@ -111,7 +118,7 @@ report::show_packages(session = sessionInfo()) %>%
 
 
 ```{r library citations}
-# citation("tidyverse")
+citation("tidyverse")
 citation("readxl")
 citation("janitor")
 citation("report")
@@ -172,6 +179,12 @@ https://rpubs.com/sbalci/CV
 
 **Use following chunk options to include all codes below the report.**
 
-```r{echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
+```r
+{r, echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
+```
+
+
+
+```{r, echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
 ```
 

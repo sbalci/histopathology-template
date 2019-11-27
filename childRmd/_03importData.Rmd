@@ -11,6 +11,12 @@ mydata <- readxl::read_excel(here::here("data", "mydata.xlsx"))
 ```
 
 
+Add code for 
+import multiple data
+purrr
+reduce
+
+
 
 ```{r import via rio, eval=FALSE, include=FALSE}
 # https://cran.r-project.org/web/packages/rio/vignettes/rio.html

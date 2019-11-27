@@ -104,7 +104,8 @@ characterVariables
 ```{r find categorical variables}
 mydata %>%
     dplyr::select(-keycolumns,
-                  -contains("Date")) %>%
+                  -contains("Date")
+                  ) %>%
   describer::describe() %>% 
     janitor::clean_names() %>% 
     dplyr::filter(column_type == "factor") %>% 

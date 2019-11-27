@@ -22,6 +22,17 @@ header-includes:
 - \usepackage{xcolor}
 - \usepackage{afterpage}
 output:
+  html_document: 
+    toc: yes
+    toc_float: yes
+    number_sections: yes
+    fig_caption: yes
+    keep_md: yes
+    highlight: kate
+    theme: readable
+    code_folding: "hide"
+    includes:
+      after_body: _footer.html
   rmarkdown::html_vignette: 
     css: 
     - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")

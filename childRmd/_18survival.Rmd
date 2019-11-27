@@ -1,6 +1,16 @@
 **Codes for Survival Analysis**^[See [`childRmd/_18survival.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_18survival.Rmd) file for other codes, and [`childRmd/_19shinySurvival.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_19shinySurvival.Rmd) for `shiny` application]
 
 
+- Survival analysis with strata, clusters, frailties and competing risks in in Finalfit
+
+https://www.datasurg.net/2019/09/12/survival-analysis-with-strata-clusters-frailties-and-competing-risks-in-in-finalfit/
+
+- Intracranial WHO grade I meningioma: a competing risk analysis of progression and disease-specific survival
+
+https://link.springer.com/article/10.1007/s00701-019-04096-9
+
+
+
 
 **Calculate survival time**
 
@@ -162,6 +172,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 ```{r Median Survivals}
 km_fit <- survfit(Surv(OverallTime, Outcome) ~ LVI, data = mydata)
 km_fit
+plot(km_fit)
 # summary(km_fit)
 ```
 
@@ -172,6 +183,14 @@ km_fit_median_df <- as.data.frame(km_fit_median_df$table) %>%
   janitor::clean_names() %>% 
   tibble::rownames_to_column()
 ```
+
+```{r broom survival, eval=FALSE}
+km_fit
+broom::tidy(km_fit)
+```
+
+
+
 
 
 ```{r print autoreport median survival}

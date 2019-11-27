@@ -3,6 +3,17 @@
 **Codes for missing data and impute**.^[See [`childRmd/_10impute.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_10impute.Rmd) file for other codes]
 
 
+- Multiple imputation support in Finalfit  
+https://www.datasurg.net/2019/09/25/multiple-imputation-support-in-finalfit/
+
+- Missing data  
+https://finalfit.org/articles/missing.html
+
+
+
+
+
+
 ### Missing Data
 
 

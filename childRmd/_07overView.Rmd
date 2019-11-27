@@ -1,5 +1,25 @@
 **Codes for overviewing the data.**^[See [`childRmd/_07overView.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_07overView.Rmd) file for other codes]
 
+
+### View Data
+
+
+```{r view, echo=TRUE, eval=FALSE}
+View(mydata)
+```
+
+
+```{r view ractable}
+reactable::reactable(data = mydata, sortable = TRUE, resizable = TRUE, filterable = TRUE, searchable = TRUE, pagination = TRUE, paginationType = "numbers", showPageSizeOptions = TRUE, highlight = TRUE, striped = TRUE, outlined = TRUE, compact = TRUE, wrap = FALSE, showSortIcon = TRUE, showSortable = TRUE)
+```
+
+
+
+
+
+
+
+
 ### Overview / Exploratory Data Analysis (EDA)
 
 
