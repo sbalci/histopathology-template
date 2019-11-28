@@ -121,7 +121,7 @@ report::show_packages(session = sessionInfo()) %>%
 citation("tidyverse")
 citation("readxl")
 citation("janitor")
-citation("report")
+# citation("report")
 citation("finalfit")
 # citation("ggstatsplot")
 ```

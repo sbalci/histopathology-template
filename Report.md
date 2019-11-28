@@ -255,23 +255,23 @@ mydata %>% select(-contains("Date")) %>% report::report(.)
 ```
 The data contains 250 observations of the following variables:
   - ID: 250 entries: 001, n = 1; 002, n = 1; 003, n = 1 and 247 others
-  - Name: 249 entries: Adayah, n = 1; Adeja, n = 1; Adelaina, n = 1 and 246 others (1 missing)
-  - Sex: 2 entries: Male, n = 135; Female, n = 114 (1 missing)
-  - Age: Mean = 49.05, SD = 13.68, range = [25, 73], 1 missing
-  - Race: 6 entries: White, n = 158; Hispanic, n = 46; Black, n = 33 and 3 others (1 missing)
-  - PreinvasiveComponent: 2 entries: Absent, n = 192; Present, n = 57 (1 missing)
-  - LVI: 2 entries: Absent, n = 163; Present, n = 86 (1 missing)
-  - PNI: 2 entries: Absent, n = 174; Present, n = 75 (1 missing)
-  - Death: 2 levels: FALSE (n = 81); TRUE (n = 168) and missing (n = 1)
-  - Group: 2 entries: Treatment, n = 128; Control, n = 121 (1 missing)
-  - Grade: 3 entries: 3, n = 101; 1, n = 80; 2, n = 68 (1 missing)
-  - TStage: 4 entries: 4, n = 102; 3, n = 73; 2, n = 52 and 1 other (1 missing)
-  - Anti-X-intensity: Mean = 2.41, SD = 0.62, range = [1, 3], 1 missing
-  - Anti-Y-intensity: Mean = 1.97, SD = 0.77, range = [1, 3], 1 missing
-  - LymphNodeMetastasis: 2 entries: Absent, n = 143; Present, n = 106 (1 missing)
-  - Valid: 2 levels: FALSE (n = 139); TRUE (n = 110) and missing (n = 1)
-  - Smoker: 2 levels: FALSE (n = 125); TRUE (n = 124) and missing (n = 1)
-  - Grade_Level: 3 entries: high, n = 96; moderate, n = 79; low, n = 74 (1 missing)
+  - Name: 249 entries: Adiya, n = 1; Ahlani, n = 1; Ahlaysia, n = 1 and 246 others (1 missing)
+  - Sex: 2 entries: Female, n = 134; Male, n = 115 (1 missing)
+  - Age: Mean = 50.16, SD = 14.12, range = [25, 73], 1 missing
+  - Race: 6 entries: White, n = 158; Hispanic, n = 37; Black, n = 28 and 3 others (1 missing)
+  - PreinvasiveComponent: 2 entries: Absent, n = 201; Present, n = 48 (1 missing)
+  - LVI: 2 entries: Absent, n = 152; Present, n = 98
+  - PNI: 2 entries: Absent, n = 171; Present, n = 78 (1 missing)
+  - Death: 2 levels: FALSE (n = 70); TRUE (n = 179) and missing (n = 1)
+  - Group: 2 entries: Treatment, n = 127; Control, n = 122 (1 missing)
+  - Grade: 3 entries: 3, n = 105; 1, n = 79; 2, n = 65 (1 missing)
+  - TStage: 4 entries: 4, n = 109; 3, n = 62; 2, n = 51 and 1 other (1 missing)
+  - Anti-X-intensity: Mean = 2.42, SD = 0.64, range = [1, 3], 1 missing
+  - Anti-Y-intensity: Mean = 2.02, SD = 0.77, range = [1, 3], 1 missing
+  - LymphNodeMetastasis: 2 entries: Absent, n = 148; Present, n = 101 (1 missing)
+  - Valid: 2 levels: FALSE (n = 119); TRUE (n = 130) and missing (n = 1)
+  - Smoker: 2 levels: FALSE (n = 129); TRUE (n = 120) and missing (n = 1)
+  - Grade_Level: 3 entries: high, n = 104; low, n = 74; moderate, n = 71 (1 missing)
   - DeathTime: 2 entries: Within1Year, n = 149; MoreThan1Year, n = 101
 ```
 
@@ -283,7 +283,7 @@ mydata %>% explore::describe_tbl()
 
 ```
 250 observations with 21 variables
-19 variables containing missings (NA)
+18 variables containing missings (NA)
 0 variables with no variance
 ```
 
@@ -401,7 +401,7 @@ mydata %>% select(-keycolumns, -contains("Date")) %>% describer::describe() %>% 
 |.column_name         |.column_class |.column_type | .count_elements| .mean_value|  .sd_value|.q0_value     | .q25_value| .q50_value| .q75_value|.q100_value |
 |:--------------------|:-------------|:------------|---------------:|-----------:|----------:|:-------------|----------:|----------:|----------:|:-----------|
 |Sex                  |character     |character    |             250|          NA|         NA|Female        |         NA|         NA|         NA|Male        |
-|Age                  |numeric       |double       |             250|   49.048193| 13.6814894|25            |         37|         48|         61|73          |
+|Age                  |numeric       |double       |             250|   50.156627| 14.1188634|25            |         39|         51|         63|73          |
 |Race                 |character     |character    |             250|          NA|         NA|Asian         |         NA|         NA|         NA|White       |
 |PreinvasiveComponent |character     |character    |             250|          NA|         NA|Absent        |         NA|         NA|         NA|Present     |
 |LVI                  |character     |character    |             250|          NA|         NA|Absent        |         NA|         NA|         NA|Present     |
@@ -410,8 +410,8 @@ mydata %>% select(-keycolumns, -contains("Date")) %>% describer::describe() %>% 
 |Group                |character     |character    |             250|          NA|         NA|Control       |         NA|         NA|         NA|Treatment   |
 |Grade                |character     |character    |             250|          NA|         NA|1             |         NA|         NA|         NA|3           |
 |TStage               |character     |character    |             250|          NA|         NA|1             |         NA|         NA|         NA|4           |
-|Anti-X-intensity     |numeric       |double       |             250|    2.405623|  0.6222751|1             |          2|          2|          3|3           |
-|Anti-Y-intensity     |numeric       |double       |             250|    1.967871|  0.7718405|1             |          1|          2|          3|3           |
+|Anti-X-intensity     |numeric       |double       |             250|    2.421687|  0.6435878|1             |          2|          3|          3|3           |
+|Anti-Y-intensity     |numeric       |double       |             250|    2.020080|  0.7748559|1             |          1|          2|          3|3           |
 |LymphNodeMetastasis  |character     |character    |             250|          NA|         NA|Absent        |         NA|         NA|         NA|Present     |
 |Valid                |logical       |logical      |             250|          NA|         NA|FALSE         |         NA|         NA|         NA|TRUE        |
 |Smoker               |logical       |logical      |             250|          NA|         NA|FALSE         |         NA|         NA|         NA|TRUE        |
@@ -602,8 +602,8 @@ reactable::reactable(data = mydata, sortable = TRUE, resizable = TRUE, filterabl
     showSortIcon = TRUE, showSortable = TRUE)
 ```
 
-<!--html_preserve--><div id="htmlwidget-1e686042647165acb8a8" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1e686042647165acb8a8">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ID":["001","002","003","004","005","006","007","008","009","010","011","012","013","014","015","016","017","018","019","020","021","022","023","024","025","026","027","028","029","030","031","032","033","034","035","036","037","038","039","040","041","042","043","044","045","046","047","048","049","050","051","052","053","054","055","056","057","058","059","060","061","062","063","064","065","066","067","068","069","070","071","072","073","074","075","076","077","078","079","080","081","082","083","084","085","086","087","088","089","090","091","092","093","094","095","096","097","098","099","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250"],"Name":["Rameses","Eulala","Shacara","Ryly","Estefhany","Jacenda","Ilithia","Ahmira","Keawe","Derelys","Dekisha","Nicayla","Brendy","Westonia","Saranda","Rudell","Emmanuella","Trinitie","Jamerious","Aire","Kadiesha","Drexell","Tanvee","Tiffni","Jaylia","Aubriana","Labarron","Carrina","Yishai","Chiquitta","Moses","Adayah","Jasline","Persephonie","Kalyan","Shiniya","Litza","Tavio","Atarah","Amandra","Timarion","Feltus","Jennille","Draxie","Malacia","Cheril","Hanae","Marquice","Nazayah","Eveliz","Darein","Genee","Eriann","Parke","Venna","Emiliano","Xylee","Lilandra","Solveig","Chayim","Jahmez","Kenniyah","Markeysha","Elizebeth","Traiton","Torivio","Latessa","Cheryln","Itcel","Tresa","Divion","Shreyas","Trevor","Naif","Andols","Jaikob","Alecsandra","Angelissa","Latieka","Katlynne","Nervia","Phoeba","Daniella","Brette","Baasil","Tychicus","Keishun","Othell","Nellia","Eshani","Kristo","Darsha","Shawndrika","Lakenya","Maclynn","Princeten","Linder","Dinasti","Jociah","Jemario","Shataka","Shacarra","Cambree","Rahshad","Laytoya","Kaseton","Leshly","Furlon","Wendel","Maimouna","Prayer","Mariajose","Taylia","Vidisha","Cledus","Bandar","Elisabel","Neako","Mycheal","Anneisha","Telesfora","Denishia","Ellianna","Gillard","Gabreille","Haeley","Bethsaida","Winthrop","Filsan","Lolabelle","Lefty","Charleeann","Frederick","Jaewon","Deeandre","Bridgid","Cedra","Ginger","Adylee","Adelaina","Janahla","Emilliano","Gewel","Yecica","Zuhal","Skyshun","Raghav","Saith","Elli","Ellesyn","Kiersten","Celine","Isahia","Mynette","Adeja","Arieliz","Saranne","Enma","Sory","Kaare","Shafeqah","Azaraya","Cormick","Shaunette","Bla","Hickory","Majed","Genesy","Teagon","Anakah","Katelinn","Baha","Vikas","Joshualee",null,"Alegra","Ras","Timoty","Evyana","Laith","Hulbert","Ikira","Amandalee","Kyeon","Frampton","Archita","Angeles","Tyreace","Varnie","Carren","Januarie","Kash","Wojciech","Salinda","Azarel","Elsey","Cindylou","Shawana","Souren","Cleoria","Arri","Paulus","Norva","Kyriakos","Mariabella","Ziya","Olajumoke","Alyssamarie","Sosie","Jaycob","Dulcia","Shaunece","Tanicha","Valinda","Yisselle","Pasqual","Shakeita","Jaylun","Sharlan","Amarieon","Melverine","Katiya","Ketan","Mecayla","Kiyami","Kereen","Nikeesha","Antiona","Zane","Seigo","Jolian","Hennry","Shykeria","Dixie","Jenne","Tanyha","Mikalah","Aquileo","Deshun","Jesselynn","Kisten","Masud","Condy","Gent","Shadarian","Miyla","Yanay","Luevertha","Jetziel","Enyssa"],"Sex":["Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Male","Male","Male","Female","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Male","Female","Male","Male","Female","Male","Male","Female","Male","Male","Male","Male","Female","Female","Male","Male","Female","Male","Male","Male","Female","Female","Female","Male","Male","Male","Female","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Male","Female","Female","Female","Female","Male","Male","Female","Female","Male","Female","Female","Male","Male","Male","Female","Male","Female","Female","Male","Male","Female","Male","Female","Male","Female","Male","Female","Female","Male","Male",null,"Female","Female","Female","Male","Female","Female","Female","Male","Female","Male","Male","Male","Male","Male","Male","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female","Female","Female","Male","Male","Male","Male","Female","Female","Female","Female","Male","Male","Male","Female","Male","Male","Male","Male","Male","Female","Female","Male","Female","Male","Male","Female","Male","Male","Male","Male","Male","Female","Male","Female","Female","Female","Male","Male","Female","Male","Female","Female","Male","Female","Female","Female","Male","Male","Male","Female","Male","Female","Male","Male","Male","Male","Female","Female","Male","Male","Female","Male","Female","Female","Female","Female","Female","Female","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Male","Male","Male","Female","Female","Female","Male","Female","Female","Female","Female","Female","Male","Male","Male","Female","Male","Male","Male","Male","Male","Male","Female","Female","Male","Male","Female","Female","Male","Male","Male","Female","Male","Female","Male","Female","Male","Female","Male","Female","Female","Female","Female","Male","Male","Female","Male","Male","Male","Male","Female","Female","Female"],"Age":[29,47,56,67,68,69,69,63,54,41,48,31,65,54,41,39,42,60,39,58,55,61,54,28,31,49,47,40,47,45,64,28,71,60,30,49,26,64,44,48,26,54,49,44,73,32,68,37,46,65,59,43,36,26,52,47,43,45,48,73,31,42,66,47,70,25,57,27,61,39,43,70,72,65,53,56,57,34,59,68,32,50,39,57,34,60,32,43,33,69,32,43,45,37,36,53,43,41,32,35,39,31,65,43,59,41,51,37,67,53,64,41,57,42,29,58,35,32,71,61,35,28,49,57,50,61,72,66,56,58,69,43,39,33,51,41,54,28,47,73,65,55,30,57,39,51,45,34,65,54,41,36,27,49,73,54,62,49,69,65,34,52,35,66,32,62,62,63,26,43,70,48,52,30,40,60,34,34,45,30,46,63,54,65,37,67,61,35,37,72,70,64,39,46,62,"NA",38,42,63,63,26,42,69,31,62,35,32,67,72,50,61,68,67,59,64,40,32,48,64,43,53,34,65,45,53,43,45,41,34,46,42,66,25,65,27,57,33,60,58,30,40,72,62,37,39,68,50,29,26,53],"Race":["White","White","White","White","White","Hispanic","White","White","White","Hispanic","Hispanic","Black","White","Black","Black","Hispanic","White","White","White","Black","Black","White","White","Black","Hispanic","White","White","White","White","White","White","White","White","Hispanic","White","Hispanic","White","White","Hispanic","White","White","Hispanic","White","Black","White","White","Asian","Hispanic","White","Other","White","Hispanic","Hispanic","White","White","Hispanic","White","White","White","White","White","Asian","Hispanic","Hispanic","White","White","White","White","White","White","Hispanic","White","White","White","White","White","Asian","Hispanic","White","White","White","White","Hispanic","White","Black","White","Hispanic","White","White","White","Hispanic","Hispanic","White","Asian","White","Hispanic","White","White","White","White","White","White","White","White","Hispanic","White","Black","Hispanic","White","White","White","White","White","Bi-Racial","White","White","White","Hispanic","White","White","White","White","White","Hispanic","White","White","Hispanic","Hispanic","White","White","White","White","Hispanic","White","White","Black","Black","Hispanic","White","Black","White","White","Hispanic","White","Hispanic","Hispanic","Black","Black","White","Black","White","White","White","Hispanic","White","White","White","White","Bi-Racial","White","White","White","White","White","Asian","Black","Asian","White","White","Black","Hispanic","Hispanic","Hispanic","Black","Black","White","White","Black",null,"Hispanic","Black","White","White","White","White","White","White","White","White","White","White","Black","White","White","White","White","Hispanic","Hispanic","White","White","Black","White","White","Black","White","Asian","Hispanic","White","Black","White","White","White","White","Black","White","White","White","Black","White","Bi-Racial","White","White","White","White","White","Hispanic","Black","White","White","White","Hispanic","White","White","Hispanic","Hispanic","Black","Black","Hispanic","White","Black","White","White","White","White","Black","Bi-Racial","White","Black","White","White"],"PreinvasiveComponent":["Absent","Absent","Absent","Present","Absent","Present","Absent","Present","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent",null,"Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Present","Absent","Present","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent"],"LVI":["Present","Absent","Absent","Present","Present","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Present","Present","Present","Present","Absent","Absent","Present","Present","Present","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Present","Absent","Present","Present","Present","Present","Absent","Absent","Absent","Present","Present","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Present","Present","Present","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Present","Present","Present","Present","Absent","Present","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Present","Present","Present","Present","Present","Present","Absent","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent",null,"Absent","Present","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent"],"PNI":["Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Present","Absent","Present","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present",null,"Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Present","Present","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent"],"LastFollowUpDate":["2019-05-28T00:00:00","2019-05-28T00:00:00","2019-06-28T00:00:00","2019-07-28T00:00:00","2019-03-28T00:00:00","2019-08-28T00:00:00","2019-08-28T00:00:00","2019-07-28T00:00:00","2019-02-28T00:00:00","2019-11-28T00:00:00","2019-01-28T00:00:00","2019-11-28T00:00:00","2019-01-28T00:00:00","2019-07-28T00:00:00","2019-05-28T00:00:00","2019-07-28T00:00:00","2019-08-28T00:00:00","2019-01-28T00:00:00","2019-08-28T00:00:00","2019-11-28T00:00:00","2019-08-28T00:00:00","2019-02-28T00:00:00","2018-12-28T00:00:00","2019-08-28T00:00:00","2019-05-28T00:00:00","2019-02-28T00:00:00","2019-02-28T00:00:00","2019-07-28T00:00:00","2019-01-28T00:00:00","2019-03-28T00:00:00","2018-12-28T00:00:00","2019-07-28T00:00:00","2019-05-28T00:00:00","2019-01-28T00:00:00","2019-03-28T00:00:00","2019-07-28T00:00:00","2019-11-28T00:00:00","2019-03-28T00:00:00","2018-12-28T00:00:00","2018-12-28T00:00:00","2019-09-28T00:00:00","2019-03-28T00:00:00","2019-03-28T00:00:00","2019-08-28T00:00:00","2019-03-28T00:00:00","2019-10-28T00:00:00","2019-08-28T00:00:00","2019-11-28T00:00:00","2019-11-28T00:00:00","2019-03-28T00:00:00","2019-10-28T00:00:00","2019-04-28T00:00:00","2019-04-28T00:00:00","2019-01-28T00:00:00","2019-11-28T00:00:00","2019-02-28T00:00:00","2019-04-28T00:00:00","2019-03-28T00:00:00","2019-04-28T00:00:00","2019-11-28T00:00:00","2019-08-28T00:00:00","2019-04-28T00:00:00","2019-07-28T00:00:00","2019-05-28T00:00:00","2019-09-28T00:00:00","2019-11-28T00:00:00","2019-03-28T00:00:00","2019-01-28T00:00:00","2019-07-28T00:00:00","2019-01-28T00:00:00","2019-05-28T00:00:00","2019-06-28T00:00:00","2019-02-28T00:00:00","2019-02-28T00:00:00","2019-08-28T00:00:00","2019-11-28T00:00:00","2019-04-28T00:00:00","2019-11-28T00:00:00","2019-07-28T00:00:00","2019-06-28T00:00:00","2019-01-28T00:00:00","2019-03-28T00:00:00","2019-03-28T00:00:00","2019-11-28T00:00:00","2019-09-28T00:00:00","2019-07-28T00:00:00","2019-11-28T00:00:00","2019-06-28T00:00:00","2019-11-28T00:00:00","2019-02-28T00:00:00","2019-04-28T00:00:00","2018-12-28T00:00:00","2019-07-28T00:00:00","2019-09-28T00:00:00","2019-03-28T00:00:00","2019-01-28T00:00:00","2019-07-28T00:00:00","2019-10-28T00:00:00","2019-06-28T00:00:00","2019-11-28T00:00:00","2019-11-28T00:00:00","2019-06-28T00:00:00","2019-01-28T00:00:00","2019-07-28T00:00:00","2019-11-28T00:00:00","2019-02-28T00:00:00","2019-10-28T00:00:00","2018-12-28T00:00:00","2019-09-28T00:00:00","2019-05-28T00:00:00","2019-03-28T00:00:00","2019-02-28T00:00:00","2019-08-28T00:00:00","2019-03-28T00:00:00","2019-07-28T00:00:00","2019-03-28T00:00:00","2019-01-28T00:00:00","2019-04-28T00:00:00","2019-10-28T00:00:00","2019-01-28T00:00:00","2019-08-28T00:00:00","2018-12-28T00:00:00","2018-12-28T00:00:00","2018-12-28T00:00:00","2019-11-28T00:00:00","2018-12-28T00:00:00","2019-11-28T00:00:00","2019-11-28T00:00:00","2019-01-28T00:00:00","2019-09-28T00:00:00","2018-12-28T00:00:00","2019-05-28T00:00:00","2019-09-28T00:00:00","2019-06-28T00:00:00","2019-05-28T00:00:00","2019-07-28T00:00:00","2019-03-28T00:00:00","2019-09-28T00:00:00","2019-08-28T00:00:00","2019-04-28T00:00:00","2019-08-28T00:00:00","2019-11-28T00:00:00","2019-07-28T00:00:00","2018-12-28T00:00:00","2019-11-28T00:00:00","2019-02-28T00:00:00","2019-09-28T00:00:00","2019-02-28T00:00:00","2019-04-28T00:00:00","2019-08-28T00:00:00","2019-08-28T00:00:00","2019-02-28T00:00:00","2019-07-28T00:00:00","2019-07-28T00:00:00","2019-08-28T00:00:00","2019-10-28T00:00:00","2019-08-28T00:00:00","2019-09-28T00:00:00","2019-09-28T00:00:00","2019-05-28T00:00:00","2019-06-28T00:00:00","2019-08-28T00:00:00","2019-03-28T00:00:00","2019-11-28T00:00:00","2019-10-28T00:00:00","2019-01-28T00:00:00","2019-08-28T00:00:00","2019-02-28T00:00:00","2019-03-28T00:00:00","2019-01-28T00:00:00","2019-10-28T00:00:00","2019-07-28T00:00:00",null,"2019-10-28T00:00:00","2019-09-28T00:00:00","2019-06-28T00:00:00","2019-03-28T00:00:00","2019-07-28T00:00:00","2019-09-28T00:00:00","2019-11-28T00:00:00","2019-02-28T00:00:00","2018-12-28T00:00:00","2019-01-28T00:00:00","2019-10-28T00:00:00","2019-07-28T00:00:00","2019-01-28T00:00:00","2019-05-28T00:00:00","2019-03-28T00:00:00","2019-06-28T00:00:00","2019-05-28T00:00:00","2019-01-28T00:00:00","2019-08-28T00:00:00","2019-02-28T00:00:00","2019-11-28T00:00:00","2019-02-28T00:00:00","2019-01-28T00:00:00","2019-01-28T00:00:00","2019-10-28T00:00:00","2019-04-28T00:00:00","2019-04-28T00:00:00","2019-03-28T00:00:00","2018-12-28T00:00:00","2019-06-28T00:00:00","2019-06-28T00:00:00","2019-07-28T00:00:00","2019-05-28T00:00:00","2019-09-28T00:00:00","2019-07-28T00:00:00","2019-08-28T00:00:00","2019-02-28T00:00:00","2019-10-28T00:00:00","2019-04-28T00:00:00","2019-03-28T00:00:00","2019-09-28T00:00:00","2019-09-28T00:00:00","2019-09-28T00:00:00","2019-05-28T00:00:00","2018-12-28T00:00:00","2019-02-28T00:00:00","2019-01-28T00:00:00","2019-10-28T00:00:00","2019-05-28T00:00:00","2019-05-28T00:00:00","2019-11-28T00:00:00","2019-08-28T00:00:00","2019-01-28T00:00:00","2019-09-28T00:00:00","2018-12-28T00:00:00","2019-09-28T00:00:00","2019-04-28T00:00:00","2019-07-28T00:00:00","2019-01-28T00:00:00","2019-07-28T00:00:00","2019-06-28T00:00:00","2019-06-28T00:00:00","2019-10-28T00:00:00","2019-10-28T00:00:00","2019-02-28T00:00:00","2019-11-28T00:00:00","2019-08-28T00:00:00","2019-08-28T00:00:00","2019-02-28T00:00:00","2019-01-28T00:00:00","2019-03-28T00:00:00","2019-10-28T00:00:00","2019-08-28T00:00:00","2019-06-28T00:00:00","2019-09-28T00:00:00","2019-03-28T00:00:00","2019-10-28T00:00:00"],"Death":[true,true,true,true,true,true,false,false,true,true,true,true,true,true,false,false,false,true,true,true,false,false,true,false,false,true,true,true,false,true,false,true,false,true,true,true,false,true,false,false,true,true,false,true,false,true,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,false,false,true,true,false,true,true,true,true,false,true,true,true,false,true,true,true,true,false,true,false,false,false,true,true,false,false,false,false,false,true,true,true,false,true,true,false,false,false,true,true,true,true,true,true,true,true,true,true,false,true,true,true,false,true,true,true,false,true,true,false,true,false,false,false,true,false,true,false,true,false,false,false,false,true,true,false,true,false,true,true,true,true,true,true,true,true,true,true,false,false,false,true,false,true,true,true,false,true,true,true,false,true,true,false,false,true,false,true,true,true,false,true,false,true,true,true,false,false,true,true,true,false,true,true,true,true,false,true,true,true,false,true,false,true,true,true,false,true,true,false,true,true,true,true,true,true,true,true,true,true,true,null,false,false,true,false,true,true,false,false,true,false,true,true,true,true,false,true,false,true,true,false,true,true,false,true,true,true,true],"Group":["Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Control","Control","Control","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Control","Treatment","Control","Control","Treatment","Control","Control","Treatment","Treatment","Control","Control","Treatment","Control","Treatment","Control","Treatment","Treatment","Treatment","Control","Control","Treatment","Control","Control","Control","Control","Treatment","Treatment","Treatment","Control","Treatment","Control","Control","Control","Treatment","Treatment","Control","Control","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Treatment","Control","Control","Treatment","Control","Control","Control","Treatment","Control","Control","Control","Control","Treatment","Treatment","Treatment","Treatment","Control","Control","Treatment","Treatment","Control","Control","Control","Treatment","Control","Treatment","Treatment","Treatment","Control","Treatment","Control","Control","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Control","Control","Control","Control","Control","Treatment","Control","Control","Treatment","Treatment","Control","Control","Treatment","Treatment","Treatment","Control","Treatment","Control","Control","Treatment","Treatment","Control","Control","Control","Treatment","Control","Treatment","Control","Control","Treatment","Control","Control","Treatment","Treatment","Treatment","Treatment","Control","Control","Treatment","Treatment","Treatment","Treatment","Treatment","Control","Control","Control","Treatment","Control","Treatment","Treatment","Control","Control","Control","Treatment","Control","Treatment","Treatment","Treatment","Control","Control","Control","Control","Control","Treatment","Treatment","Control","Treatment","Treatment","Control","Control","Control","Treatment","Treatment",null,"Control","Treatment","Control","Control","Treatment","Control","Control","Treatment","Control","Treatment","Treatment","Control","Treatment","Treatment","Treatment","Control","Control","Treatment","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Control","Control","Treatment","Control","Treatment","Control","Treatment","Control","Treatment","Treatment","Treatment","Control","Treatment","Control","Treatment","Treatment","Control","Treatment","Treatment","Control","Treatment","Control","Treatment","Control","Control","Control","Control","Treatment","Control","Control","Treatment","Control","Control","Control","Treatment","Control","Control","Treatment","Treatment","Control","Control","Treatment","Control","Treatment","Treatment","Control","Treatment"],"Grade":["2","1","3","1","3","2","2","3","2","3","1","1","1","3","1","2","3","2","3","1","1","1","3","1","1","3","2","3","1","3","1","2","2","2","3","1","3","2","1","2","1","2","3","3","3","3","2","1","3","2","1","1","1","3","3","1","1","1","2","2","2","3","3","3","2","3","3","2","3","3","3","3","2","1","3","1","3","3","3","1",null,"1","1","1","3","3","1","3","3","2","1","1","1","2","3","2","3","3","1","2","3","2","1","1","3","1","1","2","3","1","1","1","3","3","1","1","1","3","2","1","2","2","1","3","2","3","1","2","3","3","3","3","3","1","1","2","3","3","1","2","3","2","1","3","2","3","1","2","3","1","2","1","2","3","3","3","3","2","3","1","2","2","3","1","2","3","3","3","1","3","1","1","3","3","1","3","2","3","1","3","1","3","3","2","3","3","3","3","2","1","3","3","2","3","3","1","2","2","2","1","1","2","2","1","1","3","2","2","1","1","3","2","2","3","3","3","3","2","2","1","2","2","3","3","1","2","1","1","3","3","1","1","1","2","2","3","1","2","2","2","2","3","3","3","3","3","1","1","3","2"],"TStage":["4","2","1","4","4","4","1","3","4","1","3","4","1","3","4","4","4","4","2","1","4","4","4","3","4","4","3","3","4","3","3","2","4","4","4","3","3","3","2","4","4","4","3","1","4","2","2","3","4","2","3","3","2","4","1","4","2","4","4","2","3","1","4","1","4","3","4","4","4","4","2","4","4","4","4","4","4","3","3","2","4","4","4","2","3","4","3","4","4","2","4","2","2","4","4","4","4","4","4","1","4","3","3","4","4","3","2","3","3","4","2","2","3","4","2","1","4","3","4","4","4","4","2","3","3","4","4","2","1","4","2","4","2","1","2","4","4","4","4","4","2","4","3","1","4","4","2","4","4","2","4","3","4","2","3","2","2","4","4","3","3","3","4","2","2","3","3","4","2","4","3","2","3","3","3","3","1","3","4","3","4","3","4","4","4","3","3","3","3","2","4","1","1","2","4","4","3","3","4","2","4","3","2","2","3","3","1","3","3","3","4","4","2","3","2","4","4","2","2","2","3","3","3","1","3","2","1","2",null,"3","4","4","3","2","3","4","3","3","1","3","3","3","2","3","3","2","2","4","1","2"],"Anti-X-intensity":[3,2,3,2,3,3,2,2,2,3,3,3,1,2,3,3,3,2,3,2,3,2,1,2,2,1,3,2,2,3,3,2,2,1,2,1,3,3,2,2,3,2,3,3,2,2,2,3,2,2,2,3,2,3,3,3,2,3,2,3,3,2,3,2,2,3,2,3,3,2,3,3,3,2,2,2,1,2,3,1,3,2,3,2,3,3,"NA",3,3,2,3,2,2,3,3,3,3,1,3,2,1,3,1,3,2,2,2,3,3,3,1,2,2,2,3,2,2,3,3,2,2,3,2,2,3,3,1,3,3,2,2,3,3,2,2,3,2,2,2,3,2,2,2,3,2,3,3,2,3,3,2,2,2,2,3,2,3,2,3,3,1,2,2,2,3,2,3,3,3,2,2,3,3,3,2,2,2,2,3,3,3,3,3,3,2,3,2,3,3,2,2,2,1,1,3,3,3,2,1,3,2,3,3,3,2,3,2,3,2,1,3,2,2,3,3,3,2,2,2,3,2,3,2,3,2,3,3,2,3,2,3,3,2,1,3,3,3,2,3,3,3,2,3,2,2,2,2,3,2,2],"Anti-Y-intensity":[3,3,1,3,2,2,"NA",1,1,1,2,1,2,3,3,2,1,1,2,3,1,1,2,2,1,3,2,3,1,1,1,2,2,2,3,1,1,1,1,2,3,2,1,3,3,3,2,2,2,3,3,2,2,2,1,2,3,2,1,3,1,2,3,3,1,1,3,1,1,2,2,2,1,3,3,2,2,3,2,2,1,3,3,1,2,2,2,2,2,2,2,2,3,1,3,3,2,3,1,2,2,1,3,1,1,1,1,2,2,3,3,2,3,2,2,3,3,1,1,1,1,2,3,3,3,2,1,2,3,2,2,1,2,1,2,2,2,1,1,1,3,3,3,1,2,2,3,2,1,3,3,3,1,2,2,1,2,1,2,3,1,1,2,2,2,2,3,1,2,1,1,2,2,3,1,1,3,2,2,2,1,2,1,2,1,1,2,3,2,1,2,3,2,2,3,2,3,2,3,1,2,3,2,1,2,3,1,2,2,3,1,2,1,3,2,1,2,1,2,1,2,3,2,2,1,3,1,3,3,3,1,1,1,3,3,1,2,2,2,2,2,3,3,2,3,1,1,3,2,2],"LymphNodeMetastasis":["Present","Present","Present","Present","Present","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Present","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Present","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Present","Present","Present","Present","Absent","Absent","Absent","Absent","Present","Present","Present","Present","Present","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Present","Present","Present","Present","Present","Present","Present","Present","Present","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Present","Present","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Present","Present","Present","Absent","Absent","Present","Present","Present","Absent","Absent","Absent","Present","Present","Present","Absent","Absent","Present","Present","Present","Present","Absent","Present","Absent","Absent","Absent","Present",null,"Absent","Absent","Present","Absent","Present","Absent","Present"],"Valid":[true,false,false,false,false,false,true,false,true,false,true,false,true,true,true,false,false,false,false,false,false,false,true,true,true,true,false,false,true,false,true,true,false,false,false,false,true,true,false,true,false,false,null,true,true,false,true,true,false,false,false,false,false,false,false,true,false,true,true,false,false,false,true,true,true,true,true,false,false,false,false,true,true,false,true,false,true,true,true,false,false,true,true,true,true,false,false,false,false,true,false,true,true,true,true,true,false,false,true,false,true,false,true,true,true,false,false,true,false,true,true,false,false,true,true,false,false,true,true,false,true,false,true,false,false,false,false,false,true,true,false,false,true,false,false,true,true,false,false,false,false,true,false,true,false,false,false,false,true,true,true,false,false,false,true,true,true,true,false,false,true,false,false,false,true,false,true,true,true,false,false,false,false,false,false,false,false,false,false,true,true,false,false,false,true,false,true,false,false,false,false,true,false,false,true,false,false,false,false,false,true,true,false,true,false,false,false,true,true,true,true,true,true,false,true,true,false,true,true,false,false,true,true,false,true,true,false,false,false,false,true,true,false,false,false,false,false,true,true,false,true,true,false,false,false,true,false,false,true,true],"Smoker":[true,true,true,false,true,true,false,false,false,false,false,true,false,false,false,false,true,false,false,false,false,false,true,true,true,true,true,true,true,false,true,false,true,true,true,true,true,false,true,false,false,false,false,false,true,false,false,true,false,false,true,false,true,true,false,false,false,true,false,true,true,true,false,false,false,true,true,true,false,true,true,false,true,false,true,false,true,true,true,true,false,true,false,true,true,false,false,false,false,false,true,true,true,true,null,false,false,true,false,false,false,true,false,false,true,true,true,true,false,true,true,true,false,true,true,false,true,false,true,false,true,true,true,true,true,false,true,true,true,true,true,false,true,false,true,false,true,true,true,true,false,true,false,true,true,true,false,false,false,false,false,false,true,false,false,false,true,true,true,false,false,true,false,false,true,true,false,false,false,true,false,true,true,false,false,false,true,false,false,false,true,false,true,false,false,true,false,true,true,false,false,true,true,true,false,true,true,true,true,true,false,false,true,false,false,false,true,true,true,true,false,true,false,true,false,false,false,false,true,false,false,false,false,false,true,true,false,true,false,true,false,false,true,false,false,false,true,false,true,true,true,false,true,false,false,false,true,false,false,false],"Grade_Level":["moderate","high","low","moderate","high","high","low","moderate","high","high","moderate","low","moderate","high","low","high","low","high","low","low","moderate","moderate","moderate","moderate","moderate","high","moderate","low","moderate","low","high","high","low","moderate","high","low","high","moderate","low","low","high","high","moderate","moderate","low","low","moderate","high","moderate","high","moderate","moderate","low","moderate","high","low","high","low","moderate","low","high","moderate","high","moderate","moderate","high","high","high","high","moderate","moderate","high","high","high","high","high","high","low","low","moderate","low","high","high","high","moderate","moderate","low","moderate","low","low","moderate","moderate","moderate","moderate","high","high","high","high","high","low","high","low","moderate","low","moderate","high","high","high","high","low","low","low","low","high","moderate","low","high","high","high","moderate","low","low","high","moderate","high","low","high","moderate","low","high","moderate","moderate","low","low","moderate","high","low","low","moderate","low","high","high","low","high","moderate","high","high","moderate","high","moderate","moderate","high","high","high","low",null,"high","high","low","low","moderate","moderate","low","low","low","moderate","low","moderate","low","high","high","high","moderate","moderate","low","low","moderate","high","moderate","moderate","low","low","moderate","low","low","low","high","moderate","moderate","low","high","low","low","low","moderate","moderate","moderate","high","high","moderate","high","low","moderate","low","low","moderate","low","moderate","high","high","moderate","moderate","high","low","moderate","high","high","low","moderate","high","low","moderate","high","high","high","moderate","high","high","moderate","high","high","high","high","high","high","high","low","high","moderate","moderate","low","moderate","low","high","high","low","high","moderate","high","low"],"SurgeryDate":["2019-02-16T00:00:00","2018-10-07T00:00:00","2018-12-19T00:00:00","2019-01-09T00:00:00","2018-06-17T00:00:00","2018-11-24T00:00:00","2019-02-14T00:00:00","2018-09-14T00:00:00","2018-06-23T00:00:00","2019-03-08T00:00:00","2018-02-10T00:00:00","2018-12-19T00:00:00","2018-09-02T00:00:00","2019-01-05T00:00:00","2018-06-10T00:00:00","2019-01-21T00:00:00","2019-01-23T00:00:00","2018-07-15T00:00:00","2019-05-19T00:00:00","2019-02-08T00:00:00","2018-09-15T00:00:00","2018-06-29T00:00:00","2018-03-17T00:00:00","2018-09-30T00:00:00","2018-12-25T00:00:00","2018-06-04T00:00:00","2018-11-13T00:00:00","2018-10-28T00:00:00","2018-10-02T00:00:00","2018-10-02T00:00:00","2018-02-22T00:00:00","2019-04-06T00:00:00","2018-09-18T00:00:00","2018-06-19T00:00:00","2018-12-25T00:00:00","2019-02-01T00:00:00","2019-03-29T00:00:00","2018-08-15T00:00:00","2018-03-12T00:00:00","2018-09-06T00:00:00","2018-11-23T00:00:00","2018-12-01T00:00:00","2018-06-25T00:00:00","2019-02-10T00:00:00","2018-08-20T00:00:00","2019-05-14T00:00:00","2019-03-16T00:00:00","2019-08-03T00:00:00","2019-03-03T00:00:00","2018-07-04T00:00:00","2019-07-21T00:00:00","2018-09-28T00:00:00","2018-06-07T00:00:00","2018-07-09T00:00:00","2019-03-10T00:00:00","2018-09-15T00:00:00","2018-05-13T00:00:00","2018-06-06T00:00:00",null,"2019-01-14T00:00:00","2019-01-11T00:00:00","2018-07-28T00:00:00","2018-12-04T00:00:00","2018-07-08T00:00:00","2019-04-29T00:00:00","2019-05-20T00:00:00","2018-11-19T00:00:00","2018-09-16T00:00:00","2018-12-13T00:00:00","2018-07-20T00:00:00","2018-09-11T00:00:00","2018-09-28T00:00:00","2018-07-26T00:00:00","2018-08-31T00:00:00","2019-03-04T00:00:00","2019-08-29T00:00:00","2018-08-23T00:00:00","2019-03-11T00:00:00","2019-02-07T00:00:00","2018-11-22T00:00:00","2018-04-30T00:00:00","2018-04-02T00:00:00","2018-10-22T00:00:00","2019-06-12T00:00:00","2019-04-22T00:00:00","2018-09-21T00:00:00","2019-04-11T00:00:00","2019-02-18T00:00:00","2019-08-07T00:00:00","2018-10-05T00:00:00","2018-09-03T00:00:00","2018-02-27T00:00:00","2019-01-05T00:00:00","2019-02-02T00:00:00","2018-04-24T00:00:00","2018-05-14T00:00:00","2018-11-10T00:00:00","2019-06-07T00:00:00","2018-07-30T00:00:00","2019-07-24T00:00:00","2019-07-10T00:00:00","2018-09-06T00:00:00","2018-07-08T00:00:00","2018-12-20T00:00:00","2019-03-08T00:00:00","2018-03-14T00:00:00","2019-07-24T00:00:00","2018-08-17T00:00:00","2019-01-25T00:00:00","2018-11-10T00:00:00","2018-11-04T00:00:00","2018-11-15T00:00:00","2019-05-23T00:00:00","2018-05-28T00:00:00","2018-12-23T00:00:00","2018-05-02T00:00:00","2018-09-29T00:00:00","2018-12-10T00:00:00","2019-02-22T00:00:00","2018-07-28T00:00:00","2019-01-01T00:00:00","2018-04-12T00:00:00","2018-02-21T00:00:00","2018-02-14T00:00:00","2019-08-11T00:00:00","2018-01-15T00:00:00","2019-04-08T00:00:00","2019-02-14T00:00:00","2018-03-26T00:00:00","2019-01-31T00:00:00","2018-03-13T00:00:00","2019-01-12T00:00:00","2018-12-13T00:00:00","2019-02-13T00:00:00","2018-09-23T00:00:00","2019-01-02T00:00:00","2018-08-04T00:00:00","2018-12-30T00:00:00","2019-04-01T00:00:00","2018-05-27T00:00:00","2019-01-01T00:00:00","2019-01-03T00:00:00","2019-04-02T00:00:00","2018-06-15T00:00:00","2019-06-18T00:00:00","2018-09-05T00:00:00","2018-11-11T00:00:00","2018-07-03T00:00:00","2018-12-06T00:00:00","2018-09-21T00:00:00","2016-12-03T00:00:00","2017-03-20T00:00:00","2017-03-13T00:00:00","2017-06-29T00:00:00","2018-04-18T00:00:00","2017-05-08T00:00:00","2017-12-29T00:00:00","2017-07-23T00:00:00","2018-07-24T00:00:00","2016-09-22T00:00:00","2016-10-27T00:00:00","2016-10-21T00:00:00","2017-11-16T00:00:00","2017-11-15T00:00:00","2018-10-27T00:00:00","2017-04-12T00:00:00","2017-11-05T00:00:00","2017-09-10T00:00:00","2017-02-19T00:00:00","2016-06-27T00:00:00","2018-05-10T00:00:00","2018-06-03T00:00:00","2017-03-08T00:00:00","2017-11-01T00:00:00","2017-05-18T00:00:00","2017-03-02T00:00:00","2016-10-09T00:00:00","2018-05-01T00:00:00","2017-01-30T00:00:00","2017-02-22T00:00:00","2017-07-09T00:00:00","2017-10-29T00:00:00","2016-02-22T00:00:00","2016-12-14T00:00:00","2017-08-03T00:00:00","2016-12-19T00:00:00","2017-12-23T00:00:00","2016-05-17T00:00:00","2017-07-21T00:00:00","2017-10-30T00:00:00","2017-05-30T00:00:00","2018-04-16T00:00:00","2016-09-22T00:00:00","2018-12-02T00:00:00","2017-04-28T00:00:00","2017-06-10T00:00:00","2017-10-22T00:00:00","2017-07-05T00:00:00","2016-11-11T00:00:00","2017-09-28T00:00:00","2017-04-12T00:00:00","2016-02-13T00:00:00","2018-05-11T00:00:00","2017-06-18T00:00:00","2017-05-28T00:00:00","2017-01-09T00:00:00","2017-09-13T00:00:00","2018-01-08T00:00:00","2018-04-14T00:00:00","2017-09-24T00:00:00","2017-08-29T00:00:00","2017-06-13T00:00:00","2018-02-11T00:00:00","2018-08-18T00:00:00","2017-06-30T00:00:00","2017-02-26T00:00:00","2016-07-13T00:00:00","2016-05-30T00:00:00","2016-06-29T00:00:00","2017-05-31T00:00:00","2018-05-21T00:00:00","2016-11-21T00:00:00","2017-07-08T00:00:00","2018-10-10T00:00:00","2018-04-20T00:00:00","2015-04-12T00:00:00","2016-05-29T00:00:00","2015-11-29T00:00:00","2015-01-10T00:00:00","2015-10-18T00:00:00","2016-04-23T00:00:00","2014-06-16T00:00:00","2014-10-21T00:00:00","2016-04-23T00:00:00","2015-12-18T00:00:00","2016-01-05T00:00:00","2015-07-22T00:00:00","2015-08-14T00:00:00","2016-01-02T00:00:00","2016-09-06T00:00:00","2016-01-22T00:00:00","2015-11-14T00:00:00","2014-12-10T00:00:00","2014-08-08T00:00:00","2016-03-24T00:00:00","2015-08-24T00:00:00","2015-05-23T00:00:00","2015-08-22T00:00:00","2015-07-29T00:00:00","2016-08-19T00:00:00"],"DeathTime":["Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","MoreThan1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year"]},"columns":[{"accessor":"ID","name":"ID","type":"character"},{"accessor":"Name","name":"Name","type":"character"},{"accessor":"Sex","name":"Sex","type":"character"},{"accessor":"Age","name":"Age","type":"numeric"},{"accessor":"Race","name":"Race","type":"character"},{"accessor":"PreinvasiveComponent","name":"PreinvasiveComponent","type":"character"},{"accessor":"LVI","name":"LVI","type":"character"},{"accessor":"PNI","name":"PNI","type":"character"},{"accessor":"LastFollowUpDate","name":"LastFollowUpDate","type":"Date"},{"accessor":"Death","name":"Death","type":"logical"},{"accessor":"Group","name":"Group","type":"character"},{"accessor":"Grade","name":"Grade","type":"character"},{"accessor":"TStage","name":"TStage","type":"character"},{"accessor":"Anti-X-intensity","name":"Anti-X-intensity","type":"numeric"},{"accessor":"Anti-Y-intensity","name":"Anti-Y-intensity","type":"numeric"},{"accessor":"LymphNodeMetastasis","name":"LymphNodeMetastasis","type":"character"},{"accessor":"Valid","name":"Valid","type":"logical"},{"accessor":"Smoker","name":"Smoker","type":"logical"},{"accessor":"Grade_Level","name":"Grade_Level","type":"character"},{"accessor":"SurgeryDate","name":"SurgeryDate","type":"Date"},{"accessor":"DeathTime","name":"DeathTime","type":"character"}],"resizable":true,"filterable":true,"searchable":true,"defaultPageSize":10,"showPageSizeOptions":true,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"striped":true,"compact":true,"nowrap":true,"showSortable":true,"dataKey":"19becc3ef648c0abfdd32963d645dd65"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-39c910b26f35a8b40786" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-39c910b26f35a8b40786">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"ID":["001","002","003","004","005","006","007","008","009","010","011","012","013","014","015","016","017","018","019","020","021","022","023","024","025","026","027","028","029","030","031","032","033","034","035","036","037","038","039","040","041","042","043","044","045","046","047","048","049","050","051","052","053","054","055","056","057","058","059","060","061","062","063","064","065","066","067","068","069","070","071","072","073","074","075","076","077","078","079","080","081","082","083","084","085","086","087","088","089","090","091","092","093","094","095","096","097","098","099","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250"],"Name":["Dezrae","Marlee","Uvaldo","Ghavin","Delyn","Briaunna","Kaien","Rajon","Mckaylen","Zemar","Kolbey","Lydian","Deone","Yomaris","Saadiyah","Tiffane","Brandylee","Mariabelen","Dementrius","Laughlin","Brandice","Taneca","Ean","Reyan","Khalifah","Zandrea","Mee","Vitold","Tyke","Geoggrey","Jameya","Yarisley","Ismah","Jode","Cacy","Ilda","Jaquari","Galyn","Dawud","Reniel","Ladessa","Faustina","Giovoni","Kerry","Taunya","Shunya","Rubianna","Orissa","Malazia","Yanine","Dameian","Brandun","Ilani","Brenya","Vanna","Sitlaly","Keegon","Henrick","Dejanique","Yonas","Isaura","Lamia","Kiuna","Tashalee","Equasia","Amecia","Tehilah","Landdon","Juliuz","Suly","Calixto","Seanette","Caytie","Shangaleza","Krishanna","Tatijana","Nekeidra","Bionce","Cristelle","Bictor","Quadarrius","Kinnard","Resha","Kamarianna","Ayunna","Annlouise","Zariyah","Shenitha","Candrea","Gereldine","Jarid","Reema","Vonzel","Damiann","Julieanna","Jearline","Raeyah","Chasty","Titilayo","Ashia","Vanicia","Claymon","Johnpatrick","Mahmood","Farmer","Uriel","Shandra","Bradson","Eleyna","Trayvion","Rihaan","Lucely","Tamiracle","Eyani","Katey","Elzadie","Yacquelin","Tylynn","Jaidynn","Zakary","Corman","Dariya","Malwina","Deair","Echelle","Zaul","Kealen","Dahntay","Kalaysha","Brittanii","Jarade","Fair","Shalawn","Alayiah","Denija","Kinda","Charleah","Manetta","Sharana","Falak","Joncarlo","Eliger","Colbert","Kenil","Elyanah","Sajad","Juli","Naoma","Tashyah","Orit","Racyn","Houda","Brinleigh","Seba","Sesily","Shriyans","Tykie","Burnice","Kaianna","Raynathan","Chariel","Katelynn","Deede","Aketzaly","Ashar","Lovene","Jessee","Shalexus","Nettye","Sidh","Jerrico","Guila","Ahlani","Inayah","Tamani","Elverna","Delayah","Manly","Ovie","Darielis","Esaie","Chaston","Ramond","Scholar","Zavanna","Christoher","Reubin","Syma","Finus","Husna","Clata","Daks","Jadavion","Antwanette","Cerina","Gottlob","Yonika","Nohemi","Arlyce","Vionda","Cearra","Xaylie","Jacynda","Jenette","Ledora","Karlyle","Leyna","Alizabella","Kaylany","Nyriah","Magaly","Martial","Letzy","Brelyn","Shamond","Lekendric","Karynna","Lianette","Danean","Razi","Alvan","Zell","Troye","Tasheika","Haileyjo","Nevaehly","Akaila","Daquandre","Chaaya","Landrey","Amadou","Ahlaysia","Dealva","Alejandria","Ellaya","Nairy","Kenaria","Marianna","Karicia",null,"Jesstine","Adiya","Eulys","Lettica","Annajulia","Malikhai","Floris","Anihya","Zhanasia","Izybella"],"Sex":["Female","Female","Female","Male","Male","Female","Female","Male","Female","Male","Female","Female","Male","Male","Female","Male","Female","Male","Male","Male","Female","Female","Female","Female","Female","Female","Male","Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Female","Female","Female","Male","Female","Female","Female","Female","Female","Female","Female","Male","Male","Female","Female","Female","Male","Female","Male","Male","Male","Female","Male","Male","Male","Female","Female","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Female","Female","Female","Female","Female","Male","Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Female","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Female","Female","Male","Male","Female","Male","Male","Male","Male","Female","Male","Female","Female","Male","Female","Female","Female","Male","Female","Male","Male","Female","Female","Female","Male","Male","Female","Female","Female","Female","Female","Female","Female","Female","Male","Female","Female","Male","Male","Female","Male","Female","Male","Female","Female","Male","Male","Male","Female","Female","Female","Male","Male","Female","Male","Male","Male","Male","Male","Male","Male","Male","Female","Female","Male","Female","Female","Male","Female","Female","Female","Female","Female","Male","Female","Male","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Female","Male","Female","Male","Male","Male","Male","Male","Male","Male","Female","Female","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female",null,"Female","Female","Female","Female","Male","Male","Female","Female","Male","Female","Male","Male","Female","Male","Male","Female","Male","Female","Female","Female"],"Age":[33,43,47,68,53,51,56,47,55,36,68,68,45,67,32,37,33,43,39,68,25,39,63,71,29,54,32,71,41,48,58,61,38,58,25,44,42,39,63,42,35,42,31,72,55,38,43,41,68,28,46,55,47,65,27,66,56,51,29,55,51,70,25,63,42,28,67,55,70,60,26,37,54,39,26,58,69,28,27,32,48,61,70,39,56,54,64,69,53,41,58,30,71,49,32,43,31,37,45,34,27,48,71,67,55,"NA",65,63,40,73,36,41,54,47,42,36,66,68,66,25,55,72,66,65,67,45,71,47,39,54,50,71,72,54,52,38,69,40,61,53,55,68,62,62,34,55,59,40,47,63,52,60,39,69,30,48,65,40,41,31,65,53,71,48,66,65,42,25,60,36,37,39,32,38,63,31,54,58,31,49,63,51,53,51,48,62,25,60,63,50,68,69,27,37,46,30,68,58,40,65,51,73,27,42,61,40,38,72,30,56,69,45,48,50,37,65,33,59,32,38,66,57,68,56,48,42,46,25,69,56,34,63,52,71,62,70,70,35,41,69,43,30,63,58,65,34,49,27,72,40],"Race":["White","White","Black","Asian","Hispanic","Black","White","Black","White","White","White","White","White","White","White","Hispanic","Black","White","White","White","White","Hispanic","White","Native","Hispanic","Black","Bi-Racial","White","White","Black","Hispanic","Asian","Hispanic","White","White","White","White","Hispanic","Black","White","Asian","White","White","White","White","White","White","Asian","White","Black","White","White","Black","White","White","White","White","White","Black","Black","White","Asian","White","White","White","White","White","White","Hispanic","Asian","White","White","White","White","White","White","White","Hispanic",null,"White","White","Hispanic","Black","White","White","Black","White","Native","Hispanic","White","White","White","White","White","White","White","White","Asian","White","Hispanic","White","White","White","White","White","White","White","Black","White","White","White","Asian","White","White","White","Native","White","White","White","White","Hispanic","White","White","Bi-Racial","White","White","White","White","Hispanic","Hispanic","White","White","Asian","White","White","White","Hispanic","White","Hispanic","White","White","White","White","White","White","White","Asian","White","White","White","Hispanic","Asian","Black","White","White","White","White","White","Black","Black","White","White","White","White","White","Black","White","White","Hispanic","White","Hispanic","Hispanic","White","Hispanic","White","Bi-Racial","Native","White","White","Hispanic","Black","Hispanic","Hispanic","Black","White","White","White","Black","White","Bi-Racial","Black","Hispanic","White","White","Asian","White","White","White","White","White","White","White","Native","White","White","White","White","White","Asian","White","White","Black","Asian","Hispanic","Black","White","Hispanic","Black","Hispanic","White","White","White","Hispanic","Bi-Racial","Hispanic","Hispanic","White","Hispanic","Asian","White","White","White","Hispanic","White","White","Hispanic","White","White","White","Black","Black","Hispanic","Asian","Hispanic","White","White","White","White","Black","White"],"PreinvasiveComponent":["Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent",null,"Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent"],"LVI":["Absent","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Present","Present","Present","Absent","Absent","Present","Absent","Present","Present","Present","Absent","Present","Present","Present","Present","Absent","Absent","Present","Absent","Present","Present","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Present","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Present","Present","Present","Present","Present","Present","Present","Absent","Absent","Absent","Present","Absent","Present","Absent","Present","Present","Absent","Absent","Present","Present","Present","Present","Absent","Present","Present","Absent","Absent","Present","Absent","Present","Present","Absent","Absent","Present","Present","Absent","Absent","Present","Present","Present","Absent","Present","Present","Absent","Absent","Present","Present","Present","Absent","Present","Absent","Present","Present","Present","Present","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Present","Absent","Present","Present","Absent","Absent","Present","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Present","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present"],"PNI":["Present","Present","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Present",null,"Present","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Present","Absent","Present","Present","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Present","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Present","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present"],"LastFollowUpDate":["2019-09-28T00:00:00","2018-12-28T00:00:00","2019-03-28T00:00:00","2019-01-28T00:00:00","2019-02-28T00:00:00","2019-05-28T00:00:00","2019-07-28T00:00:00","2019-05-28T00:00:00","2018-12-28T00:00:00","2019-05-28T00:00:00","2019-05-28T00:00:00","2019-04-28T00:00:00","2019-10-28T00:00:00","2019-11-28T00:00:00","2019-11-28T00:00:00","2019-06-28T00:00:00","2018-12-28T00:00:00","2019-11-28T00:00:00","2019-07-28T00:00:00","2019-11-28T00:00:00","2019-01-28T00:00:00","2019-03-28T00:00:00","2019-10-28T00:00:00","2019-07-28T00:00:00","2018-12-28T00:00:00","2019-04-28T00:00:00","2019-10-28T00:00:00","2019-06-28T00:00:00","2019-03-28T00:00:00","2019-07-28T00:00:00","2018-12-28T00:00:00","2019-10-28T00:00:00","2018-12-28T00:00:00","2018-12-28T00:00:00","2019-02-28T00:00:00","2019-03-28T00:00:00","2019-02-28T00:00:00","2019-03-28T00:00:00","2019-04-28T00:00:00","2019-07-28T00:00:00","2019-08-28T00:00:00","2019-04-28T00:00:00","2019-05-28T00:00:00","2019-03-28T00:00:00","2019-09-28T00:00:00","2019-03-28T00:00:00","2019-11-28T00:00:00","2019-03-28T00:00:00","2019-08-28T00:00:00","2019-01-28T00:00:00","2019-11-28T00:00:00","2019-03-28T00:00:00","2019-11-28T00:00:00","2019-11-28T00:00:00","2019-05-28T00:00:00","2019-02-28T00:00:00","2019-09-28T00:00:00","2019-02-28T00:00:00","2019-01-28T00:00:00","2019-07-28T00:00:00","2019-05-28T00:00:00","2019-08-28T00:00:00","2019-05-28T00:00:00","2019-11-28T00:00:00","2019-10-28T00:00:00","2018-12-28T00:00:00","2019-08-28T00:00:00","2019-08-28T00:00:00","2019-09-28T00:00:00","2019-03-28T00:00:00","2019-01-28T00:00:00","2019-07-28T00:00:00","2019-03-28T00:00:00","2019-08-28T00:00:00","2019-06-28T00:00:00","2019-02-28T00:00:00","2019-08-28T00:00:00","2019-05-28T00:00:00","2019-06-28T00:00:00","2018-12-28T00:00:00","2019-02-28T00:00:00","2019-02-28T00:00:00","2019-08-28T00:00:00","2018-12-28T00:00:00","2019-09-28T00:00:00","2019-02-28T00:00:00","2019-06-28T00:00:00","2019-10-28T00:00:00","2019-06-28T00:00:00","2019-03-28T00:00:00","2019-05-28T00:00:00","2019-07-28T00:00:00","2019-04-28T00:00:00","2019-07-28T00:00:00","2019-03-28T00:00:00","2019-02-28T00:00:00","2019-05-28T00:00:00","2019-06-28T00:00:00","2019-01-28T00:00:00","2019-04-28T00:00:00","2019-04-28T00:00:00","2019-08-28T00:00:00","2019-05-28T00:00:00","2019-09-28T00:00:00","2018-12-28T00:00:00","2019-07-28T00:00:00","2019-07-28T00:00:00","2019-11-28T00:00:00","2019-10-28T00:00:00","2018-12-28T00:00:00",null,"2019-07-28T00:00:00","2019-09-28T00:00:00","2019-10-28T00:00:00","2019-09-28T00:00:00","2019-08-28T00:00:00","2019-09-28T00:00:00","2019-11-28T00:00:00","2019-10-28T00:00:00","2019-02-28T00:00:00","2018-12-28T00:00:00","2019-04-28T00:00:00","2019-10-28T00:00:00","2019-07-28T00:00:00","2019-10-28T00:00:00","2018-12-28T00:00:00","2019-02-28T00:00:00","2019-05-28T00:00:00","2019-11-28T00:00:00","2019-10-28T00:00:00","2019-11-28T00:00:00","2019-07-28T00:00:00","2018-12-28T00:00:00","2019-02-28T00:00:00","2019-02-28T00:00:00","2019-03-28T00:00:00","2019-03-28T00:00:00","2019-09-28T00:00:00","2019-08-28T00:00:00","2019-01-28T00:00:00","2019-10-28T00:00:00","2019-02-28T00:00:00","2019-09-28T00:00:00","2019-10-28T00:00:00","2019-05-28T00:00:00","2019-11-28T00:00:00","2019-04-28T00:00:00","2019-08-28T00:00:00","2019-03-28T00:00:00","2018-12-28T00:00:00","2019-10-28T00:00:00","2019-10-28T00:00:00","2019-01-28T00:00:00","2019-04-28T00:00:00","2019-10-28T00:00:00","2019-03-28T00:00:00","2019-09-28T00:00:00","2019-01-28T00:00:00","2019-11-28T00:00:00","2019-06-28T00:00:00","2019-01-28T00:00:00","2019-11-28T00:00:00","2018-12-28T00:00:00","2019-10-28T00:00:00","2019-10-28T00:00:00","2018-12-28T00:00:00","2019-10-28T00:00:00","2019-03-28T00:00:00","2019-02-28T00:00:00","2019-10-28T00:00:00","2019-07-28T00:00:00","2018-12-28T00:00:00","2019-03-28T00:00:00","2018-12-28T00:00:00","2019-08-28T00:00:00","2018-12-28T00:00:00","2019-07-28T00:00:00","2019-11-28T00:00:00","2019-02-28T00:00:00","2019-11-28T00:00:00","2019-02-28T00:00:00","2019-09-28T00:00:00","2019-10-28T00:00:00","2019-04-28T00:00:00","2019-09-28T00:00:00","2019-09-28T00:00:00","2019-10-28T00:00:00","2019-02-28T00:00:00","2019-07-28T00:00:00","2019-03-28T00:00:00","2019-03-28T00:00:00","2019-09-28T00:00:00","2018-12-28T00:00:00","2019-03-28T00:00:00","2019-06-28T00:00:00","2019-04-28T00:00:00","2019-04-28T00:00:00","2019-03-28T00:00:00","2019-01-28T00:00:00","2019-10-28T00:00:00","2019-05-28T00:00:00","2019-05-28T00:00:00","2018-12-28T00:00:00","2019-02-28T00:00:00","2019-10-28T00:00:00","2019-07-28T00:00:00","2019-09-28T00:00:00","2019-04-28T00:00:00","2019-09-28T00:00:00","2019-02-28T00:00:00","2018-12-28T00:00:00","2019-03-28T00:00:00","2018-12-28T00:00:00","2019-07-28T00:00:00","2019-03-28T00:00:00","2018-12-28T00:00:00","2019-01-28T00:00:00","2019-03-28T00:00:00","2019-06-28T00:00:00","2019-06-28T00:00:00","2019-05-28T00:00:00","2019-11-28T00:00:00","2019-10-28T00:00:00","2019-06-28T00:00:00","2019-05-28T00:00:00","2019-10-28T00:00:00","2019-01-28T00:00:00","2019-11-28T00:00:00","2019-11-28T00:00:00","2019-03-28T00:00:00","2019-07-28T00:00:00","2019-06-28T00:00:00","2018-12-28T00:00:00","2019-11-28T00:00:00","2019-07-28T00:00:00","2019-11-28T00:00:00","2019-11-28T00:00:00","2019-10-28T00:00:00","2019-08-28T00:00:00","2019-07-28T00:00:00","2019-10-28T00:00:00","2019-01-28T00:00:00","2019-11-28T00:00:00","2019-11-28T00:00:00","2019-10-28T00:00:00","2019-02-28T00:00:00","2019-07-28T00:00:00","2019-11-28T00:00:00","2019-03-28T00:00:00","2019-11-28T00:00:00"],"Death":[true,true,true,true,true,true,true,false,false,true,false,true,true,true,false,false,true,true,false,true,false,true,true,true,true,true,true,false,true,true,true,true,false,true,false,true,true,false,true,true,false,true,false,true,true,true,true,true,true,true,true,true,true,true,false,true,false,true,true,false,false,true,true,false,true,true,true,true,false,false,false,false,false,false,true,true,true,false,false,true,false,true,true,true,true,true,true,false,true,true,true,true,false,false,true,false,true,true,true,null,true,false,false,true,true,false,false,true,true,true,true,true,true,true,true,true,false,true,true,false,true,true,true,true,false,true,false,false,true,true,true,true,true,false,true,true,true,true,true,false,true,false,true,true,true,false,false,true,true,true,true,true,true,true,true,true,true,false,false,false,true,true,true,true,false,true,true,false,true,true,true,true,false,false,true,true,true,true,true,true,false,true,true,false,true,true,true,true,true,true,true,true,true,true,false,true,true,true,false,true,true,true,false,true,false,false,true,true,true,false,false,true,false,true,true,true,false,true,true,true,true,false,false,true,false,true,true,true,true,true,true,true,true,false,true,true,true,true,true,true,false,false,false,true,true,true,true,true,true,true],"Group":["Treatment","Control","Control","Control","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Control","Control","Treatment","Treatment","Treatment","Treatment","Treatment","Treatment","Control","Control","Control","Control","Treatment","Treatment","Control","Treatment","Control","Treatment","Control","Control","Control","Treatment","Control","Control","Treatment","Control","Control","Control","Control","Treatment","Control","Control","Treatment","Treatment","Control","Control","Treatment","Treatment","Control","Treatment","Treatment","Treatment","Control","Control",null,"Treatment","Control","Control","Control","Treatment","Treatment","Treatment","Control","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Control","Control","Control","Control","Control","Treatment","Control","Control","Treatment","Treatment","Control","Control","Control","Control","Control","Treatment","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Treatment","Treatment","Control","Control","Control","Treatment","Treatment","Control","Treatment","Control","Treatment","Treatment","Control","Treatment","Treatment","Control","Control","Treatment","Control","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Treatment","Control","Control","Control","Control","Treatment","Control","Control","Control","Control","Treatment","Treatment","Control","Treatment","Control","Control","Control","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Control","Treatment","Treatment","Control","Treatment","Treatment","Control","Control","Treatment","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Treatment","Control","Treatment","Treatment","Treatment","Control","Control","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Treatment","Control","Treatment","Control","Treatment","Control","Treatment","Treatment","Treatment","Treatment","Control","Control","Control","Treatment","Control","Control","Treatment","Treatment","Treatment","Treatment","Treatment","Control","Control","Control","Treatment","Control","Control","Control","Treatment","Treatment","Treatment","Treatment","Control","Treatment","Control","Treatment","Treatment","Treatment","Control","Control","Control","Control","Control","Treatment","Control","Control","Treatment","Treatment","Control","Control","Treatment","Control","Treatment","Treatment","Control","Control","Control","Treatment","Control","Control","Control","Treatment","Control","Treatment","Treatment","Control","Control","Control","Control","Control","Treatment","Control","Treatment","Control"],"Grade":["1","3","1","3","3","3","3","3","2","3","1","1","2","2","3","2","1","1","1","3","2","1","2","3","3","3","3","3","3","1","3","3","2","2","2","1","2","2","1","2","3","2","3","1","2","2","1","2","3","3","3","2","3","2","2","1","2","3","1","3","1","1","3","3","1","3","2","3","3","1","2","3","1","3","1","1","1","2","1","3","1","3","3","2","3","1","2","1","2","1","3","2","3","2","3","1","2","3","3","3","1","3","3","3","3","2","2","2","2","1","1","1","1","3","1","3","1","2","3","3","1","3","1","2","2","1","3","1","2","1","2","2","2","1","1","1","3","1","1","3","3","1","2",null,"3","3","3","2","1","3","3","2","1","3","3","1","3","3","3","2","3","2","3","1","1","2","3","1","3","1","3","3","3","1","2","3","2","2","1","3","3","3","2","3","3","1","2","1","2","2","1","3","3","2","3","1","3","1","3","1","3","2","2","2","1","2","3","1","3","3","1","1","2","3","3","1","3","1","3","1","2","3","1","3","1","3","1","3","3","1","1","1","3","1","3","2","2","3","3","3","2","3","2","1","1","3","3","2","1","3"],"TStage":["2","2","4","2","4","3","4","4","1","3","2","3","1","3","4","1","4","2","4","4","4","4","4","1","3","4","4","4","4","1","4","4","3","4","4","4","4","1","4","3","4","3","4","2","1","2","4","4","3","3","4","4","2","4","2","4","4","3","1","4","3","3","2","3","4","4","2","2","4","2","3","4","2","2","3","4","3","4","4","3","3","4","4","3","4","4","3","4","4","4","1","4","4","4","3","4","4","2","4","4","2","4","4","4","4","3","3","4","4","4","3","2","3","4","4","2","2","3","4","4","3","1","4","4","4","4","3","4","4","4","4","1","1","4","2","4","2","3","3","2","2","4","2","1","4","2","4","4","4","4","4","4","4","4","3","3","3","2","2","4","3","1","4","3","3","4","3","3","4","3","1","2","2","3","2","3","4","2","2","1","2","1","3","4","3","2","3","3","2","3","2","2","4","1","4",null,"3","2","2","3","1","2","1","2","3","4","4","2","2","3","3","3","1","4","4","2","4","4","1","3","2","4","3","4","4","4","3","1","4","2","4","3","2","3","3","3","4","1","2","1","3","4","2","1","3","4","1","2","4","4"],"Anti-X-intensity":[2,1,3,2,2,3,3,1,2,3,3,3,3,3,2,3,2,3,2,"NA",3,2,2,3,2,2,3,1,2,1,3,3,3,2,2,3,3,2,3,3,2,2,3,2,2,2,2,3,3,3,3,3,3,2,3,3,2,3,3,3,2,3,2,2,3,2,3,2,3,2,2,3,3,3,2,2,3,2,3,2,3,3,2,3,3,2,3,3,3,3,1,2,2,3,2,3,2,3,3,3,1,3,2,3,2,3,3,2,2,2,2,3,2,2,1,2,3,2,2,3,3,3,3,2,3,2,3,2,3,3,3,2,3,2,3,2,3,3,2,2,2,1,2,3,2,3,2,1,2,3,1,3,1,3,3,3,3,2,2,3,3,2,2,3,3,3,2,3,2,2,2,2,1,3,2,3,3,1,2,3,3,2,1,3,2,3,1,2,2,3,2,2,3,3,2,3,3,3,2,2,3,1,2,2,3,2,3,2,3,3,3,3,2,1,2,3,1,3,3,3,3,3,2,3,3,3,3,1,3,2,2,3,2,2,2,2,2,3,3,3,3,1,2,2,2,3,1,3,2,3],"Anti-Y-intensity":[3,3,2,2,1,2,1,2,1,2,2,2,2,1,1,3,1,1,1,2,2,2,3,2,2,2,3,2,2,3,2,3,3,3,2,2,3,1,1,2,3,3,2,3,3,2,2,2,3,3,2,1,2,1,1,2,3,3,1,1,1,3,3,3,1,3,1,1,1,2,3,2,2,2,1,1,2,1,1,3,2,2,2,2,2,1,2,2,2,2,2,2,3,2,1,2,3,1,1,2,3,3,2,1,2,2,2,1,2,3,2,2,2,2,1,2,3,2,1,1,3,2,2,3,2,1,1,2,2,1,2,2,1,3,2,3,3,1,1,1,2,2,3,1,2,2,2,1,2,2,3,2,3,3,1,3,3,1,2,1,2,2,3,3,2,3,1,1,3,2,1,2,1,1,2,3,1,2,1,2,1,3,3,3,3,2,3,3,1,1,1,1,3,3,3,2,1,2,3,2,3,1,2,3,3,1,3,3,3,2,1,1,3,2,1,1,3,2,2,3,1,"NA",1,1,3,3,1,2,3,3,3,1,2,3,2,3,2,2,3,3,2,2,2,3,3,1,1,1,2,3],"LymphNodeMetastasis":["Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Absent","Present","Absent","Present","Present","Absent","Present","Absent","Absent","Present","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Present","Absent","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Present","Absent","Present","Present","Absent","Present","Absent","Absent","Present","Present","Absent","Present","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Present","Absent","Absent","Present","Present","Absent","Present","Absent","Present","Present","Absent","Present","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Present","Present","Absent","Present",null,"Absent","Present","Absent","Present","Absent","Absent","Present","Present","Present","Absent","Absent","Present","Present","Absent","Absent","Present","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Present","Present","Absent","Absent","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Present","Present","Present","Absent","Present","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Present","Absent","Present","Present","Present","Present","Present","Absent","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent","Absent","Absent","Present","Present","Present","Present","Absent","Present","Absent","Present","Absent","Absent","Present","Absent","Present","Present","Absent","Absent","Present","Present","Present","Absent","Present","Absent","Absent","Present","Absent","Present","Absent","Absent","Absent","Absent","Absent","Present","Present","Absent"],"Valid":[true,true,false,true,false,false,true,false,false,false,false,true,false,false,false,true,true,true,true,false,false,false,true,false,false,true,true,false,false,true,true,false,false,true,true,true,true,true,true,false,true,true,true,false,true,true,true,false,true,false,true,false,true,false,true,true,false,false,true,true,true,true,true,false,true,true,true,false,true,true,true,true,true,true,true,false,false,true,false,true,true,true,true,true,false,false,false,true,true,false,false,false,true,false,true,false,false,false,false,false,false,true,true,false,false,true,false,false,false,true,false,false,false,true,false,false,false,true,false,true,false,true,true,true,true,true,false,true,false,false,true,false,false,true,true,true,true,false,true,true,true,true,false,true,true,true,true,false,false,true,false,false,false,true,false,true,true,true,false,true,false,false,true,true,false,true,true,true,true,true,false,true,true,false,false,true,false,false,true,true,false,true,true,false,false,true,true,null,true,false,true,false,true,false,false,false,false,true,true,true,true,true,false,true,true,true,true,false,false,false,true,false,true,false,false,false,false,true,false,true,false,false,true,true,false,false,false,false,false,false,false,true,true,false,false,true,true,true,false,false,false,true,false,false,false,false,false,false,true,true],"Smoker":[false,true,true,false,false,false,true,false,true,true,false,false,true,true,false,true,false,true,true,false,true,true,false,false,true,false,true,false,true,false,false,false,true,false,false,false,true,true,false,true,false,false,true,true,true,true,true,true,false,false,false,false,false,true,false,true,false,false,false,true,true,false,false,true,true,true,true,false,false,true,false,false,true,false,false,true,true,false,false,true,false,true,true,false,true,true,false,true,true,true,true,false,false,true,true,false,false,true,false,true,true,true,true,false,false,false,false,false,false,true,true,true,false,true,true,true,false,false,false,false,true,false,true,true,true,false,false,true,false,false,true,false,true,false,false,false,false,false,false,false,true,true,true,true,false,false,true,null,false,false,true,false,false,false,true,false,true,true,false,false,false,true,true,false,false,true,false,true,true,false,false,false,false,true,false,false,false,true,true,true,true,false,false,true,false,true,true,true,true,false,true,false,true,false,false,false,true,true,true,false,true,false,false,false,false,true,false,true,true,true,false,false,false,true,true,true,true,false,true,true,true,true,false,true,true,false,false,false,true,false,false,false,true,true,false,false,true,true,false,true,false,false,true,true,false,true,false,true,false,false],"Grade_Level":["moderate","high","moderate","low","moderate","moderate","low","low","moderate","high","low","high","moderate","high","high","high","low","low","moderate","low","high","moderate","high","moderate","moderate","low","moderate","high","high","moderate","high","high","high","low","moderate","high","low","high","low","high","high","high","moderate","high","high","low","high","moderate","high","high","high","low","high","high","high","high","moderate",null,"low","low","high","low","low","moderate","moderate","moderate","high","low","high","low","high","high","high","high","low","moderate","low","high","high","high","low","high","moderate","high","low","high","low","high","low","moderate","moderate","low","moderate","moderate","high","high","moderate","moderate","low","high","low","moderate","high","moderate","low","low","low","high","moderate","high","high","moderate","low","low","moderate","high","moderate","high","moderate","low","low","high","moderate","low","high","high","low","low","high","high","moderate","moderate","low","low","low","moderate","low","high","moderate","moderate","low","moderate","high","high","low","low","high","low","moderate","moderate","moderate","high","low","moderate","high","low","high","moderate","moderate","high","high","low","moderate","moderate","high","low","moderate","low","high","low","low","low","high","moderate","moderate","low","moderate","low","high","high","high","low","high","high","high","low","high","low","high","low","moderate","low","low","high","moderate","moderate","high","high","high","moderate","high","high","moderate","high","low","low","high","moderate","high","high","low","moderate","moderate","low","high","low","moderate","low","low","high","moderate","high","moderate","high","low","moderate","moderate","high","high","low","high","high","high","high","low","moderate","moderate","high","high","high","high","moderate","high","moderate","high","high","moderate","high","low","low"],"SurgeryDate":["2018-12-05T00:00:00","2018-01-15T00:00:00","2018-11-17T00:00:00","2018-09-06T00:00:00","2018-04-24T00:00:00","2018-10-04T00:00:00","2018-12-05T00:00:00","2018-10-08T00:00:00","2018-04-16T00:00:00","2018-06-17T00:00:00","2018-11-01T00:00:00","2018-10-07T00:00:00","2019-07-29T00:00:00","2019-07-27T00:00:00","2018-12-06T00:00:00","2019-03-01T00:00:00","2018-05-24T00:00:00","2018-12-18T00:00:00","2018-08-18T00:00:00","2019-06-17T00:00:00","2018-08-01T00:00:00","2018-12-06T00:00:00","2019-01-19T00:00:00","2018-08-19T00:00:00","2018-08-11T00:00:00","2018-08-17T00:00:00","2019-01-26T00:00:00","2018-10-21T00:00:00","2018-11-14T00:00:00","2018-08-28T00:00:00","2018-03-01T00:00:00","2019-03-05T00:00:00","2018-09-07T00:00:00","2018-08-29T00:00:00","2018-04-06T00:00:00","2018-12-26T00:00:00","2018-04-12T00:00:00","2018-08-19T00:00:00","2018-11-17T00:00:00","2019-04-03T00:00:00","2018-11-10T00:00:00","2018-11-05T00:00:00","2019-01-14T00:00:00","2018-10-01T00:00:00","2018-11-18T00:00:00","2018-07-09T00:00:00","2018-12-11T00:00:00","2018-11-06T00:00:00","2019-04-20T00:00:00","2018-02-12T00:00:00","2019-05-28T00:00:00","2018-06-04T00:00:00","2019-05-02T00:00:00","2019-01-28T00:00:00","2019-02-07T00:00:00","2018-10-21T00:00:00","2018-11-24T00:00:00","2018-06-24T00:00:00","2018-08-05T00:00:00","2018-09-11T00:00:00","2018-08-01T00:00:00","2019-02-05T00:00:00","2019-02-23T00:00:00","2018-12-29T00:00:00","2019-06-11T00:00:00","2018-08-08T00:00:00","2018-12-29T00:00:00","2018-12-24T00:00:00","2018-12-20T00:00:00","2018-10-07T00:00:00","2018-02-13T00:00:00","2018-11-19T00:00:00","2018-10-20T00:00:00","2019-02-28T00:00:00","2018-08-06T00:00:00","2018-07-20T00:00:00","2019-04-09T00:00:00","2018-12-26T00:00:00","2018-10-03T00:00:00","2018-01-23T00:00:00","2018-08-11T00:00:00","2018-10-13T00:00:00","2019-02-11T00:00:00","2018-07-21T00:00:00","2019-01-15T00:00:00","2018-08-04T00:00:00","2019-01-29T00:00:00","2019-05-03T00:00:00","2018-09-24T00:00:00","2018-07-13T00:00:00","2018-07-24T00:00:00","2019-01-27T00:00:00","2018-07-16T00:00:00","2018-08-14T00:00:00","2018-11-09T00:00:00","2018-08-11T00:00:00","2018-07-06T00:00:00","2018-10-18T00:00:00","2018-02-03T00:00:00","2018-07-02T00:00:00","2018-08-13T00:00:00","2019-01-02T00:00:00","2018-06-25T00:00:00","2018-12-27T00:00:00","2018-04-21T00:00:00","2019-02-11T00:00:00","2019-02-11T00:00:00","2019-03-26T00:00:00","2019-06-14T00:00:00","2018-05-26T00:00:00","2018-12-04T00:00:00","2018-09-26T00:00:00","2019-03-07T00:00:00","2019-02-06T00:00:00","2019-01-19T00:00:00","2019-03-21T00:00:00","2019-05-12T00:00:00","2019-08-17T00:00:00","2018-12-14T00:00:00","2018-08-17T00:00:00","2018-01-11T00:00:00","2018-06-07T00:00:00","2019-06-22T00:00:00","2019-01-25T00:00:00","2018-12-17T00:00:00","2018-01-19T00:00:00","2018-05-24T00:00:00","2019-01-01T00:00:00","2019-04-10T00:00:00","2019-04-08T00:00:00","2019-04-29T00:00:00","2018-10-05T00:00:00","2018-04-09T00:00:00","2018-07-17T00:00:00","2018-05-24T00:00:00","2018-05-21T00:00:00","2018-11-28T00:00:00","2018-10-16T00:00:00","2019-03-22T00:00:00","2018-06-10T00:00:00","2018-11-27T00:00:00","2018-10-20T00:00:00","2019-01-11T00:00:00","2019-04-20T00:00:00","2018-07-16T00:00:00","2019-05-29T00:00:00","2018-07-21T00:00:00","2019-01-07T00:00:00","2018-04-18T00:00:00","2018-01-13T00:00:00","2017-05-10T00:00:00","2017-08-04T00:00:00","2016-06-02T00:00:00","2017-06-20T00:00:00","2016-12-26T00:00:00","2017-04-03T00:00:00","2017-11-01T00:00:00","2016-10-18T00:00:00","2018-07-20T00:00:00","2018-07-02T00:00:00","2017-10-18T00:00:00","2018-05-04T00:00:00","2017-09-19T00:00:00","2017-04-02T00:00:00","2017-10-21T00:00:00","2017-01-03T00:00:00","2017-06-12T00:00:00","2017-04-21T00:00:00","2016-03-22T00:00:00","2018-01-01T00:00:00","2018-01-02T00:00:00","2016-07-06T00:00:00","2016-04-12T00:00:00","2016-10-18T00:00:00","2017-05-03T00:00:00","2017-09-02T00:00:00","2018-05-06T00:00:00","2017-01-19T00:00:00","2017-08-16T00:00:00","2018-06-12T00:00:00","2016-09-20T00:00:00","2018-08-16T00:00:00","2017-06-10T00:00:00","2017-03-08T00:00:00","2017-06-24T00:00:00","2017-05-29T00:00:00","2018-02-17T00:00:00","2017-01-17T00:00:00","2018-07-06T00:00:00","2016-09-28T00:00:00","2016-06-03T00:00:00","2018-02-23T00:00:00","2016-07-07T00:00:00","2016-06-05T00:00:00","2018-01-18T00:00:00","2017-03-10T00:00:00","2016-06-11T00:00:00","2017-12-13T00:00:00","2017-08-26T00:00:00","2017-06-30T00:00:00","2018-03-31T00:00:00","2017-07-15T00:00:00","2017-04-20T00:00:00","2017-07-28T00:00:00","2018-10-09T00:00:00","2017-11-23T00:00:00",null,"2017-04-01T00:00:00","2017-12-16T00:00:00","2017-07-09T00:00:00","2016-02-05T00:00:00","2016-07-19T00:00:00","2017-04-11T00:00:00","2018-06-24T00:00:00","2017-06-10T00:00:00","2017-05-11T00:00:00","2017-05-29T00:00:00","2016-10-08T00:00:00","2018-03-13T00:00:00","2017-07-20T00:00:00","2017-04-15T00:00:00","2016-12-22T00:00:00","2018-07-30T00:00:00","2016-10-09T00:00:00","2017-10-08T00:00:00","2015-07-21T00:00:00","2014-06-18T00:00:00","2016-04-29T00:00:00","2016-11-06T00:00:00","2014-09-19T00:00:00","2015-02-04T00:00:00","2014-11-15T00:00:00","2015-09-24T00:00:00","2016-12-01T00:00:00","2015-12-26T00:00:00","2016-04-25T00:00:00","2016-10-19T00:00:00","2016-02-27T00:00:00","2015-06-23T00:00:00","2015-06-15T00:00:00","2016-07-16T00:00:00","2014-04-10T00:00:00","2015-12-26T00:00:00","2015-08-24T00:00:00","2015-09-15T00:00:00","2015-10-01T00:00:00","2016-05-05T00:00:00","2016-06-30T00:00:00","2015-09-13T00:00:00","2016-03-10T00:00:00"],"DeathTime":["Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","MoreThan1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","Within1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year","MoreThan1Year"]},"columns":[{"accessor":"ID","name":"ID","type":"character"},{"accessor":"Name","name":"Name","type":"character"},{"accessor":"Sex","name":"Sex","type":"character"},{"accessor":"Age","name":"Age","type":"numeric"},{"accessor":"Race","name":"Race","type":"character"},{"accessor":"PreinvasiveComponent","name":"PreinvasiveComponent","type":"character"},{"accessor":"LVI","name":"LVI","type":"character"},{"accessor":"PNI","name":"PNI","type":"character"},{"accessor":"LastFollowUpDate","name":"LastFollowUpDate","type":"Date"},{"accessor":"Death","name":"Death","type":"logical"},{"accessor":"Group","name":"Group","type":"character"},{"accessor":"Grade","name":"Grade","type":"character"},{"accessor":"TStage","name":"TStage","type":"character"},{"accessor":"Anti-X-intensity","name":"Anti-X-intensity","type":"numeric"},{"accessor":"Anti-Y-intensity","name":"Anti-Y-intensity","type":"numeric"},{"accessor":"LymphNodeMetastasis","name":"LymphNodeMetastasis","type":"character"},{"accessor":"Valid","name":"Valid","type":"logical"},{"accessor":"Smoker","name":"Smoker","type":"logical"},{"accessor":"Grade_Level","name":"Grade_Level","type":"character"},{"accessor":"SurgeryDate","name":"SurgeryDate","type":"Date"},{"accessor":"DeathTime","name":"DeathTime","type":"character"}],"resizable":true,"filterable":true,"searchable":true,"defaultPageSize":10,"showPageSizeOptions":true,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"outlined":true,"striped":true,"compact":true,"nowrap":true,"showSortable":true,"dataKey":"c32bc1018a5786b4083fa336ded205dc"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 
@@ -675,22 +675,22 @@ glimpse(mydata %>% select(-keycolumns, -dateVariables))
 ```
 Observations: 250
 Variables: 17
-$ Sex                  <chr> "Male", "Female", "Female", "Male", "Male", "Mal…
-$ Age                  <dbl> 29, 47, 56, 67, 68, 69, 69, 63, 54, 41, 48, 31, …
-$ Race                 <chr> "White", "White", "White", "White", "White", "Hi…
-$ PreinvasiveComponent <chr> "Absent", "Absent", "Absent", "Present", "Absent…
-$ LVI                  <chr> "Present", "Absent", "Absent", "Present", "Prese…
-$ PNI                  <chr> "Present", "Absent", "Absent", "Absent", "Absent…
-$ Death                <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE…
-$ Group                <chr> "Treatment", "Treatment", "Treatment", "Treatmen…
-$ Grade                <chr> "2", "1", "3", "1", "3", "2", "2", "3", "2", "3"…
-$ TStage               <chr> "4", "2", "1", "4", "4", "4", "1", "3", "4", "1"…
-$ `Anti-X-intensity`   <dbl> 3, 2, 3, 2, 3, 3, 2, 2, 2, 3, 3, 3, 1, 2, 3, 3, …
-$ `Anti-Y-intensity`   <dbl> 3, 3, 1, 3, 2, 2, NA, 1, 1, 1, 2, 1, 2, 3, 3, 2,…
-$ LymphNodeMetastasis  <chr> "Present", "Present", "Present", "Present", "Pre…
-$ Valid                <lgl> TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, F…
-$ Smoker               <lgl> TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, FALS…
-$ Grade_Level          <chr> "moderate", "high", "low", "moderate", "high", "…
+$ Sex                  <chr> "Female", "Female", "Female", "Male", "Male", "F…
+$ Age                  <dbl> 33, 43, 47, 68, 53, 51, 56, 47, 55, 36, 68, 68, …
+$ Race                 <chr> "White", "White", "Black", "Asian", "Hispanic", …
+$ PreinvasiveComponent <chr> "Absent", "Absent", "Absent", "Absent", "Present…
+$ LVI                  <chr> "Absent", "Absent", "Present", "Absent", "Absent…
+$ PNI                  <chr> "Present", "Present", "Absent", "Present", "Pres…
+$ Death                <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,…
+$ Group                <chr> "Treatment", "Control", "Control", "Control", "T…
+$ Grade                <chr> "1", "3", "1", "3", "3", "3", "3", "3", "2", "3"…
+$ TStage               <chr> "2", "2", "4", "2", "4", "3", "4", "4", "1", "3"…
+$ `Anti-X-intensity`   <dbl> 2, 1, 3, 2, 2, 3, 3, 1, 2, 3, 3, 3, 3, 3, 2, 3, …
+$ `Anti-Y-intensity`   <dbl> 3, 3, 2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 2, 1, 1, 3, …
+$ LymphNodeMetastasis  <chr> "Absent", "Absent", "Present", "Absent", "Absent…
+$ Valid                <lgl> TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, FAL…
+$ Smoker               <lgl> FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE, FA…
+$ Grade_Level          <chr> "moderate", "high", "moderate", "low", "moderate…
 $ DeathTime            <chr> "Within1Year", "Within1Year", "Within1Year", "Wi…
 ```
 
@@ -706,23 +706,23 @@ mydata %>% explore::describe()
 1                    ID  chr  0    0.0    250  NA    NA  NA
 2                  Name  chr  1    0.4    250  NA    NA  NA
 3                   Sex  chr  1    0.4      3  NA    NA  NA
-4                   Age  dbl  1    0.4     50  25 49.05  73
+4                   Age  dbl  1    0.4     50  25 50.16  73
 5                  Race  chr  1    0.4      7  NA    NA  NA
 6  PreinvasiveComponent  chr  1    0.4      3  NA    NA  NA
-7                   LVI  chr  1    0.4      3  NA    NA  NA
+7                   LVI  chr  0    0.0      2  NA    NA  NA
 8                   PNI  chr  1    0.4      3  NA    NA  NA
 9      LastFollowUpDate  dat  1    0.4     13  NA    NA  NA
-10                Death  lgl  1    0.4      3   0  0.67   1
+10                Death  lgl  1    0.4      3   0  0.72   1
 11                Group  chr  1    0.4      3  NA    NA  NA
 12                Grade  chr  1    0.4      4  NA    NA  NA
 13               TStage  chr  1    0.4      5  NA    NA  NA
-14     Anti-X-intensity  dbl  1    0.4      4   1  2.41   3
-15     Anti-Y-intensity  dbl  1    0.4      4   1  1.97   3
+14     Anti-X-intensity  dbl  1    0.4      4   1  2.42   3
+15     Anti-Y-intensity  dbl  1    0.4      4   1  2.02   3
 16  LymphNodeMetastasis  chr  1    0.4      3  NA    NA  NA
-17                Valid  lgl  1    0.4      3   0  0.44   1
-18               Smoker  lgl  1    0.4      3   0  0.50   1
+17                Valid  lgl  1    0.4      3   0  0.52   1
+18               Smoker  lgl  1    0.4      3   0  0.48   1
 19          Grade_Level  chr  1    0.4      4  NA    NA  NA
-20          SurgeryDate  dat  1    0.4    231  NA    NA  NA
+20          SurgeryDate  dat  1    0.4    221  NA    NA  NA
 21            DeathTime  chr  0    0.0      2  NA    NA  NA
 ```
 
@@ -781,47 +781,47 @@ xray::anomalies(mydata)
 ```
 $variables
                Variable   q qNA  pNA qZero pZero qBlank pBlank qInf pInf
-1                 Valid 250   1 0.4%   139 55.6%      0      -    0    -
-2                Smoker 250   1 0.4%   125   50%      0      -    0    -
-3                 Death 250   1 0.4%    81 32.4%      0      -    0    -
+1                Smoker 250   1 0.4%   129 51.6%      0      -    0    -
+2                 Valid 250   1 0.4%   119 47.6%      0      -    0    -
+3                 Death 250   1 0.4%    70   28%      0      -    0    -
 4                   Sex 250   1 0.4%     0     -      0      -    0    -
 5  PreinvasiveComponent 250   1 0.4%     0     -      0      -    0    -
-6                   LVI 250   1 0.4%     0     -      0      -    0    -
-7                   PNI 250   1 0.4%     0     -      0      -    0    -
-8                 Group 250   1 0.4%     0     -      0      -    0    -
-9   LymphNodeMetastasis 250   1 0.4%     0     -      0      -    0    -
-10                Grade 250   1 0.4%     0     -      0      -    0    -
-11     Anti-X-intensity 250   1 0.4%     0     -      0      -    0    -
-12     Anti-Y-intensity 250   1 0.4%     0     -      0      -    0    -
-13          Grade_Level 250   1 0.4%     0     -      0      -    0    -
-14               TStage 250   1 0.4%     0     -      0      -    0    -
-15                 Race 250   1 0.4%     0     -      0      -    0    -
-16     LastFollowUpDate 250   1 0.4%     0     -      0      -    0    -
-17                  Age 250   1 0.4%     0     -      0      -    0    -
-18          SurgeryDate 250   1 0.4%     0     -      0      -    0    -
-19                 Name 250   1 0.4%     0     -      0      -    0    -
+6                   PNI 250   1 0.4%     0     -      0      -    0    -
+7                 Group 250   1 0.4%     0     -      0      -    0    -
+8   LymphNodeMetastasis 250   1 0.4%     0     -      0      -    0    -
+9                 Grade 250   1 0.4%     0     -      0      -    0    -
+10     Anti-X-intensity 250   1 0.4%     0     -      0      -    0    -
+11     Anti-Y-intensity 250   1 0.4%     0     -      0      -    0    -
+12          Grade_Level 250   1 0.4%     0     -      0      -    0    -
+13               TStage 250   1 0.4%     0     -      0      -    0    -
+14                 Race 250   1 0.4%     0     -      0      -    0    -
+15     LastFollowUpDate 250   1 0.4%     0     -      0      -    0    -
+16                  Age 250   1 0.4%     0     -      0      -    0    -
+17          SurgeryDate 250   1 0.4%     0     -      0      -    0    -
+18                 Name 250   1 0.4%     0     -      0      -    0    -
+19                  LVI 250   0    -     0     -      0      -    0    -
 20            DeathTime 250   0    -     0     -      0      -    0    -
 21                   ID 250   0    -     0     -      0      -    0    -
    qDistinct      type anomalous_percent
-1          3   Logical               56%
-2          3   Logical             50.4%
-3          3   Logical             32.8%
+1          3   Logical               52%
+2          3   Logical               48%
+3          3   Logical             28.4%
 4          3 Character              0.4%
 5          3 Character              0.4%
 6          3 Character              0.4%
 7          3 Character              0.4%
 8          3 Character              0.4%
-9          3 Character              0.4%
-10         4 Character              0.4%
+9          4 Character              0.4%
+10         4   Numeric              0.4%
 11         4   Numeric              0.4%
-12         4   Numeric              0.4%
-13         4 Character              0.4%
-14         5 Character              0.4%
-15         7 Character              0.4%
-16        13 Timestamp              0.4%
-17        50   Numeric              0.4%
-18       231 Timestamp              0.4%
-19       250 Character              0.4%
+12         4 Character              0.4%
+13         5 Character              0.4%
+14         7 Character              0.4%
+15        13 Timestamp              0.4%
+16        50   Numeric              0.4%
+17       221 Timestamp              0.4%
+18       250 Character              0.4%
+19         2 Character                 -
 20         2 Character                 -
 21       250 Character                 -
 
@@ -861,9 +861,9 @@ xray::distributions(mydata)
 
 ```
           Variable p_1 p_10 p_25 p_50 p_75 p_90 p_99
-1 Anti-X-intensity   1    2    2    2    3    3    3
+1 Anti-X-intensity   1    2    2    3    3    3    3
 2 Anti-Y-intensity   1    1    1    2    3    3    3
-3              Age  26   31   37   48   61   68   73
+3              Age  25 30.8   39   51   63   69   72
 ```
 
 
@@ -1123,23 +1123,23 @@ mydata %>% dplyr::select(-dplyr::contains("Date")) %>% report::report()
 ```
 The data contains 250 observations of the following variables:
   - ID: 250 entries: 001, n = 1; 002, n = 1; 003, n = 1 and 247 others
-  - Name: 249 entries: Adayah, n = 1; Adeja, n = 1; Adelaina, n = 1 and 246 others (1 missing)
-  - Sex: 2 entries: Male, n = 135; Female, n = 114 (1 missing)
-  - Age: Mean = 49.05, SD = 13.68, range = [25, 73], 1 missing
-  - Race: 6 entries: White, n = 158; Hispanic, n = 46; Black, n = 33 and 3 others (1 missing)
-  - PreinvasiveComponent: 2 entries: Absent, n = 192; Present, n = 57 (1 missing)
-  - LVI: 2 entries: Absent, n = 163; Present, n = 86 (1 missing)
-  - PNI: 2 entries: Absent, n = 174; Present, n = 75 (1 missing)
-  - Death: 2 levels: FALSE (n = 81); TRUE (n = 168) and missing (n = 1)
-  - Group: 2 entries: Treatment, n = 128; Control, n = 121 (1 missing)
-  - Grade: 3 entries: 3, n = 101; 1, n = 80; 2, n = 68 (1 missing)
-  - TStage: 4 entries: 4, n = 102; 3, n = 73; 2, n = 52 and 1 other (1 missing)
-  - Anti-X-intensity: Mean = 2.41, SD = 0.62, range = [1, 3], 1 missing
-  - Anti-Y-intensity: Mean = 1.97, SD = 0.77, range = [1, 3], 1 missing
-  - LymphNodeMetastasis: 2 entries: Absent, n = 143; Present, n = 106 (1 missing)
-  - Valid: 2 levels: FALSE (n = 139); TRUE (n = 110) and missing (n = 1)
-  - Smoker: 2 levels: FALSE (n = 125); TRUE (n = 124) and missing (n = 1)
-  - Grade_Level: 3 entries: high, n = 96; moderate, n = 79; low, n = 74 (1 missing)
+  - Name: 249 entries: Adiya, n = 1; Ahlani, n = 1; Ahlaysia, n = 1 and 246 others (1 missing)
+  - Sex: 2 entries: Female, n = 134; Male, n = 115 (1 missing)
+  - Age: Mean = 50.16, SD = 14.12, range = [25, 73], 1 missing
+  - Race: 6 entries: White, n = 158; Hispanic, n = 37; Black, n = 28 and 3 others (1 missing)
+  - PreinvasiveComponent: 2 entries: Absent, n = 201; Present, n = 48 (1 missing)
+  - LVI: 2 entries: Absent, n = 152; Present, n = 98
+  - PNI: 2 entries: Absent, n = 171; Present, n = 78 (1 missing)
+  - Death: 2 levels: FALSE (n = 70); TRUE (n = 179) and missing (n = 1)
+  - Group: 2 entries: Treatment, n = 127; Control, n = 122 (1 missing)
+  - Grade: 3 entries: 3, n = 105; 1, n = 79; 2, n = 65 (1 missing)
+  - TStage: 4 entries: 4, n = 109; 3, n = 62; 2, n = 51 and 1 other (1 missing)
+  - Anti-X-intensity: Mean = 2.42, SD = 0.64, range = [1, 3], 1 missing
+  - Anti-Y-intensity: Mean = 2.02, SD = 0.77, range = [1, 3], 1 missing
+  - LymphNodeMetastasis: 2 entries: Absent, n = 148; Present, n = 101 (1 missing)
+  - Valid: 2 levels: FALSE (n = 119); TRUE (n = 130) and missing (n = 1)
+  - Smoker: 2 levels: FALSE (n = 129); TRUE (n = 120) and missing (n = 1)
+  - Grade_Level: 3 entries: high, n = 104; low, n = 74; moderate, n = 71 (1 missing)
   - DeathTime: 2 entries: Within1Year, n = 149; MoreThan1Year, n = 101
 ```
 
@@ -1162,76 +1162,75 @@ summary(tab1)
 |:---------------------------|:---------------:|
 |**Sex**                     |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Female    |   114 (45.8%)   |
-|&nbsp;&nbsp;&nbsp;Male      |   135 (54.2%)   |
+|&nbsp;&nbsp;&nbsp;Female    |   134 (53.8%)   |
+|&nbsp;&nbsp;&nbsp;Male      |   115 (46.2%)   |
 |**Age**                     |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Mean (SD) | 49.048 (13.681) |
+|&nbsp;&nbsp;&nbsp;Mean (SD) | 50.157 (14.119) |
 |&nbsp;&nbsp;&nbsp;Range     | 25.000 - 73.000 |
 |**Race**                    |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Asian     |    7 (2.8%)     |
-|&nbsp;&nbsp;&nbsp;Bi-Racial |    4 (1.6%)     |
-|&nbsp;&nbsp;&nbsp;Black     |   33 (13.3%)    |
-|&nbsp;&nbsp;&nbsp;Hispanic  |   46 (18.5%)    |
-|&nbsp;&nbsp;&nbsp;Other     |    1 (0.4%)     |
+|&nbsp;&nbsp;&nbsp;Asian     |    16 (6.4%)    |
+|&nbsp;&nbsp;&nbsp;Bi-Racial |    5 (2.0%)     |
+|&nbsp;&nbsp;&nbsp;Black     |   28 (11.2%)    |
+|&nbsp;&nbsp;&nbsp;Hispanic  |   37 (14.9%)    |
+|&nbsp;&nbsp;&nbsp;Native    |    5 (2.0%)     |
 |&nbsp;&nbsp;&nbsp;White     |   158 (63.5%)   |
 |**PreinvasiveComponent**    |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Absent    |   192 (77.1%)   |
-|&nbsp;&nbsp;&nbsp;Present   |   57 (22.9%)    |
+|&nbsp;&nbsp;&nbsp;Absent    |   201 (80.7%)   |
+|&nbsp;&nbsp;&nbsp;Present   |   48 (19.3%)    |
 |**LVI**                     |                 |
-|&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Absent    |   163 (65.5%)   |
-|&nbsp;&nbsp;&nbsp;Present   |   86 (34.5%)    |
+|&nbsp;&nbsp;&nbsp;Absent    |   152 (60.8%)   |
+|&nbsp;&nbsp;&nbsp;Present   |   98 (39.2%)    |
 |**PNI**                     |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Absent    |   174 (69.9%)   |
-|&nbsp;&nbsp;&nbsp;Present   |   75 (30.1%)    |
+|&nbsp;&nbsp;&nbsp;Absent    |   171 (68.7%)   |
+|&nbsp;&nbsp;&nbsp;Present   |   78 (31.3%)    |
 |**Death**                   |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;FALSE     |   81 (32.5%)    |
-|&nbsp;&nbsp;&nbsp;TRUE      |   168 (67.5%)   |
+|&nbsp;&nbsp;&nbsp;FALSE     |   70 (28.1%)    |
+|&nbsp;&nbsp;&nbsp;TRUE      |   179 (71.9%)   |
 |**Group**                   |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Control   |   121 (48.6%)   |
-|&nbsp;&nbsp;&nbsp;Treatment |   128 (51.4%)   |
+|&nbsp;&nbsp;&nbsp;Control   |   122 (49.0%)   |
+|&nbsp;&nbsp;&nbsp;Treatment |   127 (51.0%)   |
 |**Grade**                   |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;1         |   80 (32.1%)    |
-|&nbsp;&nbsp;&nbsp;2         |   68 (27.3%)    |
-|&nbsp;&nbsp;&nbsp;3         |   101 (40.6%)   |
+|&nbsp;&nbsp;&nbsp;1         |   79 (31.7%)    |
+|&nbsp;&nbsp;&nbsp;2         |   65 (26.1%)    |
+|&nbsp;&nbsp;&nbsp;3         |   105 (42.2%)   |
 |**TStage**                  |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;1         |    22 (8.8%)    |
-|&nbsp;&nbsp;&nbsp;2         |   52 (20.9%)    |
-|&nbsp;&nbsp;&nbsp;3         |   73 (29.3%)    |
-|&nbsp;&nbsp;&nbsp;4         |   102 (41.0%)   |
+|&nbsp;&nbsp;&nbsp;1         |   27 (10.8%)    |
+|&nbsp;&nbsp;&nbsp;2         |   51 (20.5%)    |
+|&nbsp;&nbsp;&nbsp;3         |   62 (24.9%)    |
+|&nbsp;&nbsp;&nbsp;4         |   109 (43.8%)   |
 |**Anti-X-intensity**        |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Mean (SD) |  2.406 (0.622)  |
+|&nbsp;&nbsp;&nbsp;Mean (SD) |  2.422 (0.644)  |
 |&nbsp;&nbsp;&nbsp;Range     |  1.000 - 3.000  |
 |**Anti-Y-intensity**        |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Mean (SD) |  1.968 (0.772)  |
+|&nbsp;&nbsp;&nbsp;Mean (SD) |  2.020 (0.775)  |
 |&nbsp;&nbsp;&nbsp;Range     |  1.000 - 3.000  |
 |**LymphNodeMetastasis**     |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;Absent    |   143 (57.4%)   |
-|&nbsp;&nbsp;&nbsp;Present   |   106 (42.6%)   |
+|&nbsp;&nbsp;&nbsp;Absent    |   148 (59.4%)   |
+|&nbsp;&nbsp;&nbsp;Present   |   101 (40.6%)   |
 |**Valid**                   |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;FALSE     |   139 (55.8%)   |
-|&nbsp;&nbsp;&nbsp;TRUE      |   110 (44.2%)   |
+|&nbsp;&nbsp;&nbsp;FALSE     |   119 (47.8%)   |
+|&nbsp;&nbsp;&nbsp;TRUE      |   130 (52.2%)   |
 |**Smoker**                  |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;FALSE     |   125 (50.2%)   |
-|&nbsp;&nbsp;&nbsp;TRUE      |   124 (49.8%)   |
+|&nbsp;&nbsp;&nbsp;FALSE     |   129 (51.8%)   |
+|&nbsp;&nbsp;&nbsp;TRUE      |   120 (48.2%)   |
 |**Grade_Level**             |                 |
 |&nbsp;&nbsp;&nbsp;N-Miss    |        1        |
-|&nbsp;&nbsp;&nbsp;high      |   96 (38.6%)    |
+|&nbsp;&nbsp;&nbsp;high      |   104 (41.8%)   |
 |&nbsp;&nbsp;&nbsp;low       |   74 (29.7%)    |
-|&nbsp;&nbsp;&nbsp;moderate  |   79 (31.7%)    |
+|&nbsp;&nbsp;&nbsp;moderate  |   71 (28.5%)    |
 
 
 
@@ -1253,38 +1252,38 @@ mydata %>% select(-keycolumns, -dateVariables) %>% tableone::CreateTableOne(data
                                     
                                      Overall      
   n                                    250        
-  Sex = Male (%)                       135 (54.2) 
-  Age (mean (SD))                    49.05 (13.68)
+  Sex = Male (%)                       115 (46.2) 
+  Age (mean (SD))                    50.16 (14.12)
   Race (%)                                        
-     Asian                               7 ( 2.8) 
-     Bi-Racial                           4 ( 1.6) 
-     Black                              33 (13.3) 
-     Hispanic                           46 (18.5) 
-     Other                               1 ( 0.4) 
+     Asian                              16 ( 6.4) 
+     Bi-Racial                           5 ( 2.0) 
+     Black                              28 (11.2) 
+     Hispanic                           37 (14.9) 
+     Native                              5 ( 2.0) 
      White                             158 (63.5) 
-  PreinvasiveComponent = Present (%)    57 (22.9) 
-  LVI = Present (%)                     86 (34.5) 
-  PNI = Present (%)                     75 (30.1) 
-  Death = TRUE (%)                     168 (67.5) 
-  Group = Treatment (%)                128 (51.4) 
+  PreinvasiveComponent = Present (%)    48 (19.3) 
+  LVI = Present (%)                     98 (39.2) 
+  PNI = Present (%)                     78 (31.3) 
+  Death = TRUE (%)                     179 (71.9) 
+  Group = Treatment (%)                127 (51.0) 
   Grade (%)                                       
-     1                                  80 (32.1) 
-     2                                  68 (27.3) 
-     3                                 101 (40.6) 
+     1                                  79 (31.7) 
+     2                                  65 (26.1) 
+     3                                 105 (42.2) 
   TStage (%)                                      
-     1                                  22 ( 8.8) 
-     2                                  52 (20.9) 
-     3                                  73 (29.3) 
-     4                                 102 (41.0) 
-  Anti-X-intensity (mean (SD))        2.41 (0.62) 
-  Anti-Y-intensity (mean (SD))        1.97 (0.77) 
-  LymphNodeMetastasis = Present (%)    106 (42.6) 
-  Valid = TRUE (%)                     110 (44.2) 
-  Smoker = TRUE (%)                    124 (49.8) 
+     1                                  27 (10.8) 
+     2                                  51 (20.5) 
+     3                                  62 (24.9) 
+     4                                 109 (43.8) 
+  Anti-X-intensity (mean (SD))        2.42 (0.64) 
+  Anti-Y-intensity (mean (SD))        2.02 (0.77) 
+  LymphNodeMetastasis = Present (%)    101 (40.6) 
+  Valid = TRUE (%)                     130 (52.2) 
+  Smoker = TRUE (%)                    120 (48.2) 
   Grade_Level (%)                                 
-     high                               96 (38.6) 
+     high                              104 (41.8) 
      low                                74 (29.7) 
-     moderate                           79 (31.7) 
+     moderate                           71 (28.5) 
   DeathTime = Within1Year (%)          149 (59.6) 
 ```
 
@@ -1360,16 +1359,16 @@ mydata %>% explore::describe() %>% dplyr::filter(unique < 5)
                variable type na na_pct unique min mean max
 1                   Sex  chr  1    0.4      3  NA   NA  NA
 2  PreinvasiveComponent  chr  1    0.4      3  NA   NA  NA
-3                   LVI  chr  1    0.4      3  NA   NA  NA
+3                   LVI  chr  0    0.0      2  NA   NA  NA
 4                   PNI  chr  1    0.4      3  NA   NA  NA
-5                 Death  lgl  1    0.4      3   0 0.67   1
+5                 Death  lgl  1    0.4      3   0 0.72   1
 6                 Group  chr  1    0.4      3  NA   NA  NA
 7                 Grade  chr  1    0.4      4  NA   NA  NA
-8      Anti-X-intensity  dbl  1    0.4      4   1 2.41   3
-9      Anti-Y-intensity  dbl  1    0.4      4   1 1.97   3
+8      Anti-X-intensity  dbl  1    0.4      4   1 2.42   3
+9      Anti-Y-intensity  dbl  1    0.4      4   1 2.02   3
 10  LymphNodeMetastasis  chr  1    0.4      3  NA   NA  NA
-11                Valid  lgl  1    0.4      3   0 0.44   1
-12               Smoker  lgl  1    0.4      3   0 0.50   1
+11                Valid  lgl  1    0.4      3   0 0.52   1
+12               Smoker  lgl  1    0.4      3   0 0.48   1
 13          Grade_Level  chr  1    0.4      4  NA   NA  NA
 14            DeathTime  chr  0    0.0      2  NA   NA  NA
 ```
@@ -1384,23 +1383,22 @@ mydata %>% explore::describe() %>% dplyr::filter(na > 0)
                variable type na na_pct unique min  mean max
 1                  Name  chr  1    0.4    250  NA    NA  NA
 2                   Sex  chr  1    0.4      3  NA    NA  NA
-3                   Age  dbl  1    0.4     50  25 49.05  73
+3                   Age  dbl  1    0.4     50  25 50.16  73
 4                  Race  chr  1    0.4      7  NA    NA  NA
 5  PreinvasiveComponent  chr  1    0.4      3  NA    NA  NA
-6                   LVI  chr  1    0.4      3  NA    NA  NA
-7                   PNI  chr  1    0.4      3  NA    NA  NA
-8      LastFollowUpDate  dat  1    0.4     13  NA    NA  NA
-9                 Death  lgl  1    0.4      3   0  0.67   1
-10                Group  chr  1    0.4      3  NA    NA  NA
-11                Grade  chr  1    0.4      4  NA    NA  NA
-12               TStage  chr  1    0.4      5  NA    NA  NA
-13     Anti-X-intensity  dbl  1    0.4      4   1  2.41   3
-14     Anti-Y-intensity  dbl  1    0.4      4   1  1.97   3
-15  LymphNodeMetastasis  chr  1    0.4      3  NA    NA  NA
-16                Valid  lgl  1    0.4      3   0  0.44   1
-17               Smoker  lgl  1    0.4      3   0  0.50   1
-18          Grade_Level  chr  1    0.4      4  NA    NA  NA
-19          SurgeryDate  dat  1    0.4    231  NA    NA  NA
+6                   PNI  chr  1    0.4      3  NA    NA  NA
+7      LastFollowUpDate  dat  1    0.4     13  NA    NA  NA
+8                 Death  lgl  1    0.4      3   0  0.72   1
+9                 Group  chr  1    0.4      3  NA    NA  NA
+10                Grade  chr  1    0.4      4  NA    NA  NA
+11               TStage  chr  1    0.4      5  NA    NA  NA
+12     Anti-X-intensity  dbl  1    0.4      4   1  2.42   3
+13     Anti-Y-intensity  dbl  1    0.4      4   1  2.02   3
+14  LymphNodeMetastasis  chr  1    0.4      3  NA    NA  NA
+15                Valid  lgl  1    0.4      3   0  0.52   1
+16               Smoker  lgl  1    0.4      3   0  0.48   1
+17          Grade_Level  chr  1    0.4      4  NA    NA  NA
+18          SurgeryDate  dat  1    0.4    221  NA    NA  NA
 ```
 
 
@@ -1417,23 +1415,23 @@ mydata %>% explore::describe()
 1                    ID  chr  0    0.0    250  NA    NA  NA
 2                  Name  chr  1    0.4    250  NA    NA  NA
 3                   Sex  chr  1    0.4      3  NA    NA  NA
-4                   Age  dbl  1    0.4     50  25 49.05  73
+4                   Age  dbl  1    0.4     50  25 50.16  73
 5                  Race  chr  1    0.4      7  NA    NA  NA
 6  PreinvasiveComponent  chr  1    0.4      3  NA    NA  NA
-7                   LVI  chr  1    0.4      3  NA    NA  NA
+7                   LVI  chr  0    0.0      2  NA    NA  NA
 8                   PNI  chr  1    0.4      3  NA    NA  NA
 9      LastFollowUpDate  dat  1    0.4     13  NA    NA  NA
-10                Death  lgl  1    0.4      3   0  0.67   1
+10                Death  lgl  1    0.4      3   0  0.72   1
 11                Group  chr  1    0.4      3  NA    NA  NA
 12                Grade  chr  1    0.4      4  NA    NA  NA
 13               TStage  chr  1    0.4      5  NA    NA  NA
-14     Anti-X-intensity  dbl  1    0.4      4   1  2.41   3
-15     Anti-Y-intensity  dbl  1    0.4      4   1  1.97   3
+14     Anti-X-intensity  dbl  1    0.4      4   1  2.42   3
+15     Anti-Y-intensity  dbl  1    0.4      4   1  2.02   3
 16  LymphNodeMetastasis  chr  1    0.4      3  NA    NA  NA
-17                Valid  lgl  1    0.4      3   0  0.44   1
-18               Smoker  lgl  1    0.4      3   0  0.50   1
+17                Valid  lgl  1    0.4      3   0  0.52   1
+18               Smoker  lgl  1    0.4      3   0  0.48   1
 19          Grade_Level  chr  1    0.4      4  NA    NA  NA
-20          SurgeryDate  dat  1    0.4    231  NA    NA  NA
+20          SurgeryDate  dat  1    0.4    221  NA    NA  NA
 21            DeathTime  chr  0    0.0      2  NA    NA  NA
 ```
 
@@ -1463,8 +1461,8 @@ mydata %>% janitor::tabyl(Sex) %>% janitor::adorn_pct_formatting(rounding = "hal
 
 Sex         n  percent   valid_percent 
 -------  ----  --------  --------------
-Female    114  45.6%     45.8%         
-Male      135  54.0%     54.2%         
+Female    134  53.6%     53.8%         
+Male      115  46.0%     46.2%         
 NA          1  0.4%      -             
 
 \pagebreak
@@ -1481,11 +1479,11 @@ mydata %>% janitor::tabyl(Race) %>% janitor::adorn_pct_formatting(rounding = "ha
 
 Race           n  percent   valid_percent 
 ----------  ----  --------  --------------
-Asian          7  2.8%      2.8%          
-Bi-Racial      4  1.6%      1.6%          
-Black         33  13.2%     13.3%         
-Hispanic      46  18.4%     18.5%         
-Other          1  0.4%      0.4%          
+Asian         16  6.4%      6.4%          
+Bi-Racial      5  2.0%      2.0%          
+Black         28  11.2%     11.2%         
+Hispanic      37  14.8%     14.9%         
+Native         5  2.0%      2.0%          
 White        158  63.2%     63.5%         
 NA             1  0.4%      -             
 
@@ -1503,8 +1501,8 @@ mydata %>% janitor::tabyl(PreinvasiveComponent) %>% janitor::adorn_pct_formattin
 
 PreinvasiveComponent      n  percent   valid_percent 
 ---------------------  ----  --------  --------------
-Absent                  192  76.8%     77.1%         
-Present                  57  22.8%     22.9%         
+Absent                  201  80.4%     80.7%         
+Present                  48  19.2%     19.3%         
 NA                        1  0.4%      -             
 
 \pagebreak
@@ -1519,11 +1517,10 @@ mydata %>% janitor::tabyl(LVI) %>% janitor::adorn_pct_formatting(rounding = "hal
 
 
 
-LVI          n  percent   valid_percent 
---------  ----  --------  --------------
-Absent     163  65.2%     65.5%         
-Present     86  34.4%     34.5%         
-NA           1  0.4%      -             
+LVI          n  percent 
+--------  ----  --------
+Absent     152  60.8%   
+Present     98  39.2%   
 
 \pagebreak
 
@@ -1539,8 +1536,8 @@ mydata %>% janitor::tabyl(PNI) %>% janitor::adorn_pct_formatting(rounding = "hal
 
 PNI          n  percent   valid_percent 
 --------  ----  --------  --------------
-Absent     174  69.6%     69.9%         
-Present     75  30.0%     30.1%         
+Absent     171  68.4%     68.7%         
+Present     78  31.2%     31.3%         
 NA           1  0.4%      -             
 
 \pagebreak
@@ -1557,8 +1554,8 @@ mydata %>% janitor::tabyl(Group) %>% janitor::adorn_pct_formatting(rounding = "h
 
 Group          n  percent   valid_percent 
 ----------  ----  --------  --------------
-Control      121  48.4%     48.6%         
-Treatment    128  51.2%     51.4%         
+Control      122  48.8%     49.0%         
+Treatment    127  50.8%     51.0%         
 NA             1  0.4%      -             
 
 \pagebreak
@@ -1575,9 +1572,9 @@ mydata %>% janitor::tabyl(Grade) %>% janitor::adorn_pct_formatting(rounding = "h
 
 Grade      n  percent   valid_percent 
 ------  ----  --------  --------------
-1         80  32.0%     32.1%         
-2         68  27.2%     27.3%         
-3        101  40.4%     40.6%         
+1         79  31.6%     31.7%         
+2         65  26.0%     26.1%         
+3        105  42.0%     42.2%         
 NA         1  0.4%      -             
 
 \pagebreak
@@ -1594,10 +1591,10 @@ mydata %>% janitor::tabyl(TStage) %>% janitor::adorn_pct_formatting(rounding = "
 
 TStage      n  percent   valid_percent 
 -------  ----  --------  --------------
-1          22  8.8%      8.8%          
-2          52  20.8%     20.9%         
-3          73  29.2%     29.3%         
-4         102  40.8%     41.0%         
+1          27  10.8%     10.8%         
+2          51  20.4%     20.5%         
+3          62  24.8%     24.9%         
+4         109  43.6%     43.8%         
 NA          1  0.4%      -             
 
 \pagebreak
@@ -1614,8 +1611,8 @@ mydata %>% janitor::tabyl(LymphNodeMetastasis) %>% janitor::adorn_pct_formatting
 
 LymphNodeMetastasis      n  percent   valid_percent 
 --------------------  ----  --------  --------------
-Absent                 143  57.2%     57.4%         
-Present                106  42.4%     42.6%         
+Absent                 148  59.2%     59.4%         
+Present                101  40.4%     40.6%         
 NA                       1  0.4%      -             
 
 \pagebreak
@@ -1630,12 +1627,12 @@ mydata %>% janitor::tabyl(Grade_Level) %>% janitor::adorn_pct_formatting(roundin
 
 
 
-Grade_Level     n  percent   valid_percent 
-------------  ---  --------  --------------
-high           96  38.4%     38.6%         
-low            74  29.6%     29.7%         
-moderate       79  31.6%     31.7%         
-NA              1  0.4%      -             
+Grade_Level      n  percent   valid_percent 
+------------  ----  --------  --------------
+high           104  41.6%     41.8%         
+low             74  29.6%     29.7%         
+moderate        71  28.4%     28.5%         
+NA               1  0.4%      -             
 
 \pagebreak
 
@@ -1681,8 +1678,8 @@ variable = PreinvasiveComponent
 type     = character
 na       = 1 of 250 (0.4%)
 unique   = 3
- Absent  = 192 (76.8%)
- Present = 57 (22.8%)
+ Absent  = 201 (80.4%)
+ Present = 48 (19.2%)
  NA      = 1 (0.4%)
 ```
 
@@ -1697,67 +1694,66 @@ SmartEDA::ExpCTable(mydata, Target = NULL, margin = 1, clim = 10, nlim = 5, roun
 
 ```
                Variable         Valid Frequency Percent CumPercent
-1                   Sex        Female       114    45.6       45.6
-2                   Sex          Male       135    54.0       99.6
+1                   Sex        Female       134    53.6       53.6
+2                   Sex          Male       115    46.0       99.6
 3                   Sex            NA         1     0.4      100.0
 4                   Sex         TOTAL       250      NA         NA
-5                  Race         Asian         7     2.8        2.8
-6                  Race     Bi-Racial         4     1.6        4.4
-7                  Race         Black        33    13.2       17.6
-8                  Race      Hispanic        46    18.4       36.0
-9                  Race            NA         1     0.4       36.4
-10                 Race         Other         1     0.4       36.8
+5                  Race         Asian        16     6.4        6.4
+6                  Race     Bi-Racial         5     2.0        8.4
+7                  Race         Black        28    11.2       19.6
+8                  Race      Hispanic        37    14.8       34.4
+9                  Race            NA         1     0.4       34.8
+10                 Race        Native         5     2.0       36.8
 11                 Race         White       158    63.2      100.0
 12                 Race         TOTAL       250      NA         NA
-13 PreinvasiveComponent        Absent       192    76.8       76.8
-14 PreinvasiveComponent            NA         1     0.4       77.2
-15 PreinvasiveComponent       Present        57    22.8      100.0
+13 PreinvasiveComponent        Absent       201    80.4       80.4
+14 PreinvasiveComponent            NA         1     0.4       80.8
+15 PreinvasiveComponent       Present        48    19.2      100.0
 16 PreinvasiveComponent         TOTAL       250      NA         NA
-17                  LVI        Absent       163    65.2       65.2
-18                  LVI            NA         1     0.4       65.6
-19                  LVI       Present        86    34.4      100.0
-20                  LVI         TOTAL       250      NA         NA
-21                  PNI        Absent       174    69.6       69.6
-22                  PNI            NA         1     0.4       70.0
-23                  PNI       Present        75    30.0      100.0
-24                  PNI         TOTAL       250      NA         NA
-25                Group       Control       121    48.4       48.4
-26                Group            NA         1     0.4       48.8
-27                Group     Treatment       128    51.2      100.0
-28                Group         TOTAL       250      NA         NA
-29                Grade             1        80    32.0       32.0
-30                Grade             2        68    27.2       59.2
-31                Grade             3       101    40.4       99.6
-32                Grade            NA         1     0.4      100.0
-33                Grade         TOTAL       250      NA         NA
-34               TStage             1        22     8.8        8.8
-35               TStage             2        52    20.8       29.6
-36               TStage             3        73    29.2       58.8
-37               TStage             4       102    40.8       99.6
-38               TStage            NA         1     0.4      100.0
-39               TStage         TOTAL       250      NA         NA
-40  LymphNodeMetastasis        Absent       143    57.2       57.2
-41  LymphNodeMetastasis            NA         1     0.4       57.6
-42  LymphNodeMetastasis       Present       106    42.4      100.0
-43  LymphNodeMetastasis         TOTAL       250      NA         NA
-44          Grade_Level          high        96    38.4       38.4
-45          Grade_Level           low        74    29.6       68.0
-46          Grade_Level      moderate        79    31.6       99.6
-47          Grade_Level            NA         1     0.4      100.0
-48          Grade_Level         TOTAL       250      NA         NA
-49            DeathTime MoreThan1Year       101    40.4       40.4
-50            DeathTime   Within1Year       149    59.6      100.0
-51            DeathTime         TOTAL       250      NA         NA
-52     Anti-X-intensity             1        18     7.2        7.2
-53     Anti-X-intensity             2       112    44.8       52.0
-54     Anti-X-intensity             3       119    47.6       99.6
-55     Anti-X-intensity            NA         1     0.4      100.0
-56     Anti-X-intensity         TOTAL       250      NA         NA
-57     Anti-Y-intensity             1        78    31.2       31.2
-58     Anti-Y-intensity             2       101    40.4       71.6
-59     Anti-Y-intensity             3        70    28.0       99.6
-60     Anti-Y-intensity            NA         1     0.4      100.0
-61     Anti-Y-intensity         TOTAL       250      NA         NA
+17                  LVI        Absent       152    60.8       60.8
+18                  LVI       Present        98    39.2      100.0
+19                  LVI         TOTAL       250      NA         NA
+20                  PNI        Absent       171    68.4       68.4
+21                  PNI            NA         1     0.4       68.8
+22                  PNI       Present        78    31.2      100.0
+23                  PNI         TOTAL       250      NA         NA
+24                Group       Control       122    48.8       48.8
+25                Group            NA         1     0.4       49.2
+26                Group     Treatment       127    50.8      100.0
+27                Group         TOTAL       250      NA         NA
+28                Grade             1        79    31.6       31.6
+29                Grade             2        65    26.0       57.6
+30                Grade             3       105    42.0       99.6
+31                Grade            NA         1     0.4      100.0
+32                Grade         TOTAL       250      NA         NA
+33               TStage             1        27    10.8       10.8
+34               TStage             2        51    20.4       31.2
+35               TStage             3        62    24.8       56.0
+36               TStage             4       109    43.6       99.6
+37               TStage            NA         1     0.4      100.0
+38               TStage         TOTAL       250      NA         NA
+39  LymphNodeMetastasis        Absent       148    59.2       59.2
+40  LymphNodeMetastasis            NA         1     0.4       59.6
+41  LymphNodeMetastasis       Present       101    40.4      100.0
+42  LymphNodeMetastasis         TOTAL       250      NA         NA
+43          Grade_Level          high       104    41.6       41.6
+44          Grade_Level           low        74    29.6       71.2
+45          Grade_Level      moderate        71    28.4       99.6
+46          Grade_Level            NA         1     0.4      100.0
+47          Grade_Level         TOTAL       250      NA         NA
+48            DeathTime MoreThan1Year       101    40.4       40.4
+49            DeathTime   Within1Year       149    59.6      100.0
+50            DeathTime         TOTAL       250      NA         NA
+51     Anti-X-intensity             1        21     8.4        8.4
+52     Anti-X-intensity             2       102    40.8       49.2
+53     Anti-X-intensity             3       126    50.4       99.6
+54     Anti-X-intensity            NA         1     0.4      100.0
+55     Anti-X-intensity         TOTAL       250      NA         NA
+56     Anti-Y-intensity             1        72    28.8       28.8
+57     Anti-Y-intensity             2       100    40.0       68.8
+58     Anti-Y-intensity             3        77    30.8       99.6
+59     Anti-Y-intensity            NA         1     0.4      100.0
+60     Anti-Y-intensity         TOTAL       250      NA         NA
 ```
 
 
@@ -1771,22 +1767,22 @@ inspectdf::inspect_cat(mydata)
 # A tibble: 16 x 5
    col_name               cnt common      common_pcnt levels            
    <chr>                <int> <chr>             <dbl> <named list>      
- 1 Death                    3 TRUE               67.2 <tibble [3 × 3]>  
+ 1 Death                    3 TRUE               71.6 <tibble [3 × 3]>  
  2 DeathTime                2 Within1Year        59.6 <tibble [2 × 3]>  
- 3 Grade                    4 3                  40.4 <tibble [4 × 3]>  
- 4 Grade_Level              4 high               38.4 <tibble [4 × 3]>  
- 5 Group                    3 Treatment          51.2 <tibble [3 × 3]>  
+ 3 Grade                    4 3                  42   <tibble [4 × 3]>  
+ 4 Grade_Level              4 high               41.6 <tibble [4 × 3]>  
+ 5 Group                    3 Treatment          50.8 <tibble [3 × 3]>  
  6 ID                     250 001                 0.4 <tibble [250 × 3]>
- 7 LVI                      3 Absent             65.2 <tibble [3 × 3]>  
- 8 LymphNodeMetastasis      3 Absent             57.2 <tibble [3 × 3]>  
- 9 Name                   250 Adayah              0.4 <tibble [250 × 3]>
-10 PNI                      3 Absent             69.6 <tibble [3 × 3]>  
-11 PreinvasiveComponent     3 Absent             76.8 <tibble [3 × 3]>  
+ 7 LVI                      2 Absent             60.8 <tibble [2 × 3]>  
+ 8 LymphNodeMetastasis      3 Absent             59.2 <tibble [3 × 3]>  
+ 9 Name                   250 Adiya               0.4 <tibble [250 × 3]>
+10 PNI                      3 Absent             68.4 <tibble [3 × 3]>  
+11 PreinvasiveComponent     3 Absent             80.4 <tibble [3 × 3]>  
 12 Race                     7 White              63.2 <tibble [7 × 3]>  
-13 Sex                      3 Male               54   <tibble [3 × 3]>  
-14 Smoker                   3 FALSE              50   <tibble [3 × 3]>  
-15 TStage                   5 4                  40.8 <tibble [5 × 3]>  
-16 Valid                    3 FALSE              55.6 <tibble [3 × 3]>  
+13 Sex                      3 Female             53.6 <tibble [3 × 3]>  
+14 Smoker                   3 FALSE              51.6 <tibble [3 × 3]>  
+15 TStage                   5 4                  43.6 <tibble [5 × 3]>  
+16 Valid                    3 TRUE               52   <tibble [3 × 3]>  
 ```
 
 ```r
@@ -1797,8 +1793,8 @@ inspectdf::inspect_cat(mydata)$levels$Group
 # A tibble: 3 x 3
   value      prop   cnt
   <chr>     <dbl> <int>
-1 Treatment 0.512   128
-2 Control   0.484   121
+1 Treatment 0.508   127
+2 Control   0.488   122
 3 <NA>      0.004     1
 ```
 
@@ -1846,63 +1842,62 @@ SmartEDA::ExpCTable(mydata, Target = "Sex", margin = 1, clim = 10, nlim = NULL, 
 
 ```
                VARIABLE      CATEGORY Sex:Female Sex:Male Sex:NA TOTAL
-1                  Race         Asian          3        3      1     7
-2                  Race     Bi-Racial          2        2      0     4
-3                  Race         Black          9       24      0    33
-4                  Race      Hispanic         24       22      0    46
+1                  Race         Asian          9        7      0    16
+2                  Race     Bi-Racial          3        2      0     5
+3                  Race         Black         21        7      0    28
+4                  Race      Hispanic         19       18      0    37
 5                  Race            NA          0        1      0     1
-6                  Race         Other          0        1      0     1
-7                  Race         White         76       82      0   158
-8                  Race         TOTAL        114      135      1   250
-9  PreinvasiveComponent        Absent         86      106      0   192
-10 PreinvasiveComponent            NA          0        0      1     1
-11 PreinvasiveComponent       Present         28       29      0    57
-12 PreinvasiveComponent         TOTAL        114      135      1   250
-13                  LVI        Absent         75       87      1   163
-14                  LVI            NA          0        1      0     1
-15                  LVI       Present         39       47      0    86
-16                  LVI         TOTAL        114      135      1   250
-17                  PNI        Absent         77       97      0   174
-18                  PNI            NA          1        0      0     1
-19                  PNI       Present         36       38      1    75
-20                  PNI         TOTAL        114      135      1   250
-21                Group       Control         60       61      0   121
-22                Group            NA          1        0      0     1
-23                Group     Treatment         53       74      1   128
-24                Group         TOTAL        114      135      1   250
-25                Grade             1         38       42      0    80
-26                Grade             2         37       30      1    68
-27                Grade             3         38       63      0   101
-28                Grade            NA          1        0      0     1
-29                Grade         TOTAL        114      135      1   250
-30               TStage             1         12       10      0    22
-31               TStage             2         23       29      0    52
-32               TStage             3         34       39      0    73
-33               TStage             4         44       57      1   102
-34               TStage            NA          1        0      0     1
-35               TStage         TOTAL        114      135      1   250
-36  LymphNodeMetastasis        Absent         68       74      1   143
-37  LymphNodeMetastasis            NA          1        0      0     1
-38  LymphNodeMetastasis       Present         45       61      0   106
-39  LymphNodeMetastasis         TOTAL        114      135      1   250
-40          Grade_Level          high         36       60      0    96
-41          Grade_Level           low         39       35      0    74
-42          Grade_Level      moderate         39       39      1    79
-43          Grade_Level            NA          0        1      0     1
-44          Grade_Level         TOTAL        114      135      1   250
-45            DeathTime MoreThan1Year         51       50      0   101
-46            DeathTime   Within1Year         63       85      1   149
-47            DeathTime         TOTAL        114      135      1   250
-48     Anti-X-intensity             1          8       10      0    18
-49     Anti-X-intensity             2         50       62      0   112
-50     Anti-X-intensity             3         56       62      1   119
-51     Anti-X-intensity            NA          0        1      0     1
-52     Anti-X-intensity         TOTAL        114      135      1   250
-53     Anti-Y-intensity             1         38       39      1    78
-54     Anti-Y-intensity             2         51       50      0   101
-55     Anti-Y-intensity             3         25       45      0    70
-56     Anti-Y-intensity            NA          0        1      0     1
-57     Anti-Y-intensity         TOTAL        114      135      1   250
+6                  Race        Native          4        1      0     5
+7                  Race         White         78       79      1   158
+8                  Race         TOTAL        134      115      1   250
+9  PreinvasiveComponent        Absent        108       92      1   201
+10 PreinvasiveComponent            NA          1        0      0     1
+11 PreinvasiveComponent       Present         25       23      0    48
+12 PreinvasiveComponent         TOTAL        134      115      1   250
+13                  LVI        Absent         77       74      1   152
+14                  LVI       Present         57       41      0    98
+15                  LVI         TOTAL        134      115      1   250
+16                  PNI        Absent         98       73      0   171
+17                  PNI            NA          0        1      0     1
+18                  PNI       Present         36       41      1    78
+19                  PNI         TOTAL        134      115      1   250
+20                Group       Control         70       52      0   122
+21                Group            NA          0        1      0     1
+22                Group     Treatment         64       62      1   127
+23                Group         TOTAL        134      115      1   250
+24                Grade             1         46       32      1    79
+25                Grade             2         35       30      0    65
+26                Grade             3         52       53      0   105
+27                Grade            NA          1        0      0     1
+28                Grade         TOTAL        134      115      1   250
+29               TStage             1         16       11      0    27
+30               TStage             2         29       21      1    51
+31               TStage             3         32       30      0    62
+32               TStage             4         57       52      0   109
+33               TStage            NA          0        1      0     1
+34               TStage         TOTAL        134      115      1   250
+35  LymphNodeMetastasis        Absent         80       68      0   148
+36  LymphNodeMetastasis            NA          1        0      0     1
+37  LymphNodeMetastasis       Present         53       47      1   101
+38  LymphNodeMetastasis         TOTAL        134      115      1   250
+39          Grade_Level          high         61       43      0   104
+40          Grade_Level           low         42       31      1    74
+41          Grade_Level      moderate         31       40      0    71
+42          Grade_Level            NA          0        1      0     1
+43          Grade_Level         TOTAL        134      115      1   250
+44            DeathTime MoreThan1Year         53       47      1   101
+45            DeathTime   Within1Year         81       68      0   149
+46            DeathTime         TOTAL        134      115      1   250
+47     Anti-X-intensity             1         12        9      0    21
+48     Anti-X-intensity             2         53       48      1   102
+49     Anti-X-intensity             3         69       57      0   126
+50     Anti-X-intensity            NA          0        1      0     1
+51     Anti-X-intensity         TOTAL        134      115      1   250
+52     Anti-Y-intensity             1         40       32      0    72
+53     Anti-Y-intensity             2         56       44      0   100
+54     Anti-Y-intensity             3         38       38      1    77
+55     Anti-Y-intensity            NA          0        1      0     1
+56     Anti-Y-intensity         TOTAL        134      115      1   250
 ```
 
 
@@ -1952,27 +1947,27 @@ mydata %>% jmv::descriptives(data = ., vars = "Age", hist = TRUE, dens = TRUE, b
 
  DESCRIPTIVES
 
- Descriptives                      
- ───────────────────────────────── 
-                          Age      
- ───────────────────────────────── 
-   N                         249   
-   Missing                     1   
-   Mean                     49.0   
-   Median                   48.0   
-   Mode                     43.0   
-   Standard deviation       13.7   
-   Variance                  187   
-   Minimum                  25.0   
-   Maximum                  73.0   
-   Skewness               0.0330   
-   Std. error skewness     0.154   
-   Kurtosis                -1.20   
-   Std. error kurtosis     0.307   
-   25th percentile          37.0   
-   50th percentile          48.0   
-   75th percentile          61.0   
- ───────────────────────────────── 
+ Descriptives                       
+ ────────────────────────────────── 
+                          Age       
+ ────────────────────────────────── 
+   N                          249   
+   Missing                      1   
+   Mean                      50.2   
+   Median                    51.0   
+   Mode                      63.0   
+   Standard deviation        14.1   
+   Variance                   199   
+   Minimum                   25.0   
+   Maximum                   73.0   
+   Skewness               -0.0947   
+   Std. error skewness      0.154   
+   Kurtosis                 -1.21   
+   Std. error kurtosis      0.307   
+   25th percentile           39.0   
+   50th percentile           51.0   
+   75th percentile           63.0   
+ ────────────────────────────────── 
 ```
 
 ![](/Users/serdarbalciold/histopathology-template/figs/Descriptive Statistics Age-1.png)<!-- -->![](/Users/serdarbalciold/histopathology-template/figs/Descriptive Statistics Age-2.png)<!-- -->
@@ -1998,19 +1993,19 @@ mydata %>% jmv::descriptives(data = ., vars = "Anti-X-intensity", hist = TRUE, d
  ─────────────────────────────────────────── 
    N                                   249   
    Missing                               1   
-   Mean                               2.41   
-   Median                             2.00   
+   Mean                               2.42   
+   Median                             3.00   
    Mode                               3.00   
-   Standard deviation                0.622   
-   Variance                          0.387   
+   Standard deviation                0.644   
+   Variance                          0.414   
    Minimum                            1.00   
    Maximum                            3.00   
-   Skewness                         -0.548   
+   Skewness                         -0.665   
    Std. error skewness               0.154   
-   Kurtosis                         -0.608   
+   Kurtosis                         -0.554   
    Std. error kurtosis               0.307   
    25th percentile                    2.00   
-   50th percentile                    2.00   
+   50th percentile                    3.00   
    75th percentile                    3.00   
  ─────────────────────────────────────────── 
 ```
@@ -2038,16 +2033,16 @@ mydata %>% jmv::descriptives(data = ., vars = "Anti-Y-intensity", hist = TRUE, d
  ─────────────────────────────────────────── 
    N                                   249   
    Missing                               1   
-   Mean                               1.97   
+   Mean                               2.02   
    Median                             2.00   
    Mode                               2.00   
-   Standard deviation                0.772   
-   Variance                          0.596   
+   Standard deviation                0.775   
+   Variance                          0.600   
    Minimum                            1.00   
    Maximum                            3.00   
-   Skewness                         0.0552   
+   Skewness                        -0.0347   
    Std. error skewness               0.154   
-   Kurtosis                          -1.32   
+   Kurtosis                          -1.33   
    Std. error kurtosis               0.307   
    25th percentile                    1.00   
    50th percentile                    2.00   
@@ -2073,9 +2068,9 @@ tab$ContTable
                               
                                Overall      
   n                            250          
-  Age (mean (SD))              49.05 (13.68)
-  Anti-X-intensity (mean (SD))  2.41 (0.62) 
-  Anti-Y-intensity (mean (SD))  1.97 (0.77) 
+  Age (mean (SD))              50.16 (14.12)
+  Anti-X-intensity (mean (SD))  2.42 (0.64) 
+  Anti-Y-intensity (mean (SD))  2.02 (0.77) 
 ```
 
 ```r
@@ -2086,9 +2081,9 @@ print(tab$ContTable, nonnormal = c("Anti-X-intensity"))
                                  
                                   Overall           
   n                               250               
-  Age (mean (SD))                 49.05 (13.68)     
-  Anti-X-intensity (median [IQR])  2.00 [2.00, 3.00]
-  Anti-Y-intensity (mean (SD))     1.97 (0.77)      
+  Age (mean (SD))                 50.16 (14.12)     
+  Anti-X-intensity (median [IQR])  3.00 [2.00, 3.00]
+  Anti-Y-intensity (mean (SD))     2.02 (0.77)      
 ```
 
 
@@ -2104,10 +2099,10 @@ type     = double
 na       = 1 of 250 (0.4%)
 unique   = 50
 min|max  = 25 | 73
-q05|q95  = 28 | 70
-q25|q75  = 37 | 61
-median   = 48
-mean     = 49.04819
+q05|q95  = 27 | 71
+q25|q75  = 39 | 63
+median   = 51
+mean     = 50.15663
 ```
 
 
@@ -2128,9 +2123,9 @@ inspectdf::inspect_num(mydata, breaks = 10)
 # A tibble: 3 x 10
   col_name        min    q1 median  mean    q3   max     sd pcnt_na hist        
   <chr>         <dbl> <dbl>  <dbl> <dbl> <dbl> <dbl>  <dbl>   <dbl> <named list>
-1 Age              25    37     48 49.0     61    73 13.7       0.4 <tibble [12…
-2 Anti-X-inten…     1     2      2  2.41     3     3  0.622     0.4 <tibble [12…
-3 Anti-Y-inten…     1     1      2  1.97     3     3  0.772     0.4 <tibble [12…
+1 Age              25    39     51 50.2     63    73 14.1       0.4 <tibble [12…
+2 Anti-X-inten…     1     2      3  2.42     3     3  0.644     0.4 <tibble [12…
+3 Anti-Y-inten…     1     1      2  2.02     3     3  0.775     0.4 <tibble [12…
 ```
 
 
@@ -2141,18 +2136,18 @@ inspectdf::inspect_num(mydata)$hist$Age
 
 ```
 # A tibble: 27 x 2
-   value         prop
-   <chr>        <dbl>
- 1 [-Inf, 24) 0      
- 2 [24, 26)   0.00803
- 3 [26, 28)   0.0361 
- 4 [28, 30)   0.0281 
- 5 [30, 32)   0.0402 
- 6 [32, 34)   0.0482 
- 7 [34, 36)   0.0562 
- 8 [36, 38)   0.0361 
- 9 [38, 40)   0.0402 
-10 [40, 42)   0.0482 
+   value        prop
+   <chr>       <dbl>
+ 1 [-Inf, 24) 0     
+ 2 [24, 26)   0.0281
+ 3 [26, 28)   0.0321
+ 4 [28, 30)   0.0201
+ 5 [30, 32)   0.0402
+ 6 [32, 34)   0.0361
+ 7 [34, 36)   0.0241
+ 8 [36, 38)   0.0402
+ 9 [38, 40)   0.0562
+10 [40, 42)   0.0522
 # … with 17 more rows
 ```
 
@@ -2228,19 +2223,19 @@ SmartEDA::ExpNumStat(mydata, by = "GA", gp = "PreinvasiveComponent", Qnt = seq(0
 ```
   Vname                        Group  TN nNeg nZero nPos NegInf PosInf NA_Value
 1   Age     PreinvasiveComponent:All 250    0     0  249      0      0        1
-2   Age  PreinvasiveComponent:Absent 192    0     0  191      0      0        1
-3   Age PreinvasiveComponent:Present  57    0     0   57      0      0        0
+2   Age  PreinvasiveComponent:Absent 201    0     0  201      0      0        0
+3   Age PreinvasiveComponent:Present  48    0     0   48      0      0        0
 4   Age      PreinvasiveComponent:NA   0    0     0    0      0      0        0
-  Per_of_Missing   sum min  max  mean median    SD   CV  IQR Skewness Kurtosis
-1           0.40 12213  25   73 49.05     48 13.68 0.28 24.0     0.03    -1.20
-2           0.52  9143  25   73 47.87     47 13.43 0.28 22.5     0.12    -1.12
-3           0.00  3033  27   73 53.21     58 13.86 0.26 24.0    -0.33    -1.24
-4            NaN     0 Inf -Inf   NaN     NA    NA   NA   NA      NaN      NaN
-  0%  10% 20% 30% 40% 50% 60% 70% 80%  90% 100% LB.25% UB.75% nOutliers
-1 25 31.0  35  40  43  48  54  59  64 68.0   73   1.00  97.00         0
-2 25 30.0  34  39  43  47  52  57  62 67.0   73   3.75  93.75         0
-3 27 32.6  37  45  49  58  60  63  66 69.4   73   5.00 101.00         0
-4 NA   NA  NA  NA  NA  NA  NA  NA  NA   NA   NA     NA     NA         0
+  Per_of_Missing   sum min  max  mean median    SD   CV   IQR Skewness Kurtosis
+1            0.4 12489  25   73 50.16     51 14.12 0.28 24.00    -0.09    -1.21
+2            0.0 10057  25   73 50.03     51 14.22 0.28 25.00    -0.11    -1.21
+3            0.0  2432  25   73 50.67     51 13.84 0.27 26.25    -0.03    -1.23
+4            NaN     0 Inf -Inf   NaN     NA    NA   NA    NA      NaN      NaN
+  0%  10%  20%  30%  40% 50%  60%  70%  80% 90% 100% LB.25% UB.75% nOutliers
+1 25 30.8 37.0 40.0 45.2  51 55.0 61.0 65.0  69   73   3.00  99.00         0
+2 25 30.0 36.0 40.0 46.0  51 55.0 61.0 65.0  69   73   0.50 100.50         0
+3 25 33.1 38.4 41.1 45.0  51 54.2 59.8 66.6  69   73  -0.38 104.62         0
+4 NA   NA   NA   NA   NA  NA   NA   NA   NA  NA   NA     NA     NA         0
 ```
 
 
@@ -2355,8 +2350,8 @@ table(mydata$Death, mydata$Outcome)
 ```
        
           0   1
-  FALSE  81   0
-  TRUE    0 168
+  FALSE  70   0
+  TRUE    0 179
 ```
 
 
@@ -2375,13 +2370,13 @@ head(km, 80)
 ```
 
 ```
- [1]  3.4   7.7   6.3   6.6   9.4   9.1   6.5+ 10.5+  8.2   8.7  11.6  11.3 
-[13]  4.8   6.7  11.6+  6.2+  7.2+  6.4   3.3   9.7  11.4+  8.0+  9.4  10.9+
-[25]  5.1+  8.9   3.5   9.0   3.8+  5.8  10.2+  3.7   8.3+  7.3   3.1   5.9 
-[37]  8.0+  7.4   9.5+  3.7+ 10.2   3.9   9.1+  6.6   7.3+  5.5   5.4   3.8 
-[49]  8.8+  8.8   3.2   7.0  10.7   6.6   8.6   5.5  11.5   9.7    NA  10.5 
-[61]  7.5   9.0   7.8  10.6   5.0   6.3   4.3   4.4+  7.5   6.3   8.5+  9.0+
-[73]  7.1   6.0   5.8+  3.0   8.2   8.6   5.7   7.2+
+ [1]  9.8  11.4   4.4   4.7  10.1   7.8   7.7   7.6+  8.4+ 11.4   6.9+  6.7 
+[13]  3.0   4.0  11.7+  3.9+  7.1  11.3  11.3+  5.4   5.9+  3.7   9.3  11.3 
+[25]  4.5   8.4   9.1   8.2+  4.5  11.0   9.9   7.7   3.7+  4.0  10.8+  3.1 
+[37] 10.6   7.3+  5.4   3.8   9.6+  5.8   4.5+  5.9  10.3   8.6  11.6   4.7 
+[49]  4.3  11.5   6.0   9.8   6.9  10.0   3.7+  4.2  10.1+  8.1   5.7  10.5+
+[61]  9.9+  6.7   3.2  11.0+  4.5   4.6   8.0   8.1   9.3+  5.7+ 11.5+  8.3+
+[73]  5.3+  6.0+ 10.7   7.3   4.6   5.1+  8.8+ 11.2 
 ```
 
 ```r
@@ -2459,8 +2454,8 @@ knitr::kable(tUni, row.names = FALSE, align = c("l", "l", "r", "r", "r", "r"))
 
 Dependent: Surv(OverallTime, Outcome)                      all            HR (univariable)          HR (multivariable)
 --------------------------------------  --------  ------------  --------------------------  --------------------------
-LVI                                     Absent     163 (100.0)                          NA                          NA
-                                        Present     86 (100.0)   1.09 (0.77-1.54, p=0.613)   1.09 (0.77-1.54, p=0.613)
+LVI                                     Absent     152 (100.0)                          NA                          NA
+                                        Present     98 (100.0)   1.42 (1.04-1.94, p=0.025)   1.42 (1.04-1.94, p=0.025)
 
 
 ```r
@@ -2477,7 +2472,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
 
-When LVI is Present, there is 1.09 (0.77-1.54, p=0.613) times risk than when LVI is Absent.
+When LVI is Present, there is 1.42 (1.04-1.94, p=0.025) times risk than when LVI is Absent.
 
 </div>
 
@@ -2485,7 +2480,7 @@ When LVI is Present, there is 1.09 (0.77-1.54, p=0.613) times risk than when LVI
 \noindent\colorbox{yellow}{
 \parbox{\dimexpr\linewidth-2\fboxsep}{
 
-When LVI is Present, there is 1.09 (0.77-1.54, p=0.613) times risk than when LVI is Absent.
+When LVI is Present, there is 1.42 (1.04-1.94, p=0.025) times risk than when LVI is Absent.
 
 }
 }
@@ -2503,10 +2498,10 @@ km_fit
 ```
 Call: survfit(formula = Surv(OverallTime, Outcome) ~ LVI, data = mydata)
 
-   4 observations deleted due to missingness 
+   3 observations deleted due to missingness 
               n events median 0.95LCL 0.95UCL
-LVI=Absent  161    119   17.6    13.6    23.5
-LVI=Present  85     46   10.6     9.4    26.0
+LVI=Absent  151    112   20.4    14.7    26.8
+LVI=Present  96     65   10.7     9.1    13.4
 ```
 
 ```r
@@ -2562,7 +2557,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
 
-When LVI=Absent, median survival is 17.6 [13.6 - 23.5, 95% CI] months., When LVI=Present, median survival is 10.6 [9.4 - 26, 95% CI] months.
+When LVI=Absent, median survival is 20.4 [14.7 - 26.8, 95% CI] months., When LVI=Present, median survival is 10.7 [9.1 - 13.4, 95% CI] months.
 
 </div>
 
@@ -2570,7 +2565,7 @@ When LVI=Absent, median survival is 17.6 [13.6 - 23.5, 95% CI] months., When LVI
 \noindent\colorbox{yellow}{
 \parbox{\dimexpr\linewidth-2\fboxsep}{
 
-When LVI=Absent, median survival is 17.6 [13.6 - 23.5, 95% CI] months., When LVI=Present, median survival is 10.6 [9.4 - 26, 95% CI] months.
+When LVI=Absent, median survival is 20.4 [14.7 - 26.8, 95% CI] months., When LVI=Present, median survival is 10.7 [9.1 - 13.4, 95% CI] months.
 
 }
 }
@@ -2588,16 +2583,16 @@ summary(km_fit, times = c(12, 36, 60))
 ```
 Call: survfit(formula = Surv(OverallTime, Outcome) ~ LVI, data = mydata)
 
-4 observations deleted due to missingness 
+3 observations deleted due to missingness 
                 LVI=Absent 
  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-   12     81      61    0.587  0.0409        0.513        0.673
-   36     18      45    0.211  0.0378        0.148        0.300
+   12     76      54    0.610  0.0419        0.533        0.698
+   36     19      41    0.219  0.0404        0.152        0.314
 
                 LVI=Present 
  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-   12     15      38    0.409  0.0671        0.297        0.564
-   36      6       4    0.273  0.0721        0.163        0.458
+   12     22      49    0.386  0.0570       0.2893        0.516
+   36      5      12    0.152  0.0489       0.0808        0.286
 ```
 
 
@@ -2621,7 +2616,7 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
 
-When LVI=Absent, 12 month survival is 58.7% [51.3%-67%, 95% CI]., When LVI=Absent, 36 month survival is 21.1% [14.8%-30%, 95% CI]., When LVI=Present, 12 month survival is 40.9% [29.7%-56%, 95% CI]., When LVI=Present, 36 month survival is 27.3% [16.3%-46%, 95% CI].
+When LVI=Absent, 12 month survival is 61.0% [53.3%-69.8%, 95% CI]., When LVI=Absent, 36 month survival is 21.9% [15.2%-31.4%, 95% CI]., When LVI=Present, 12 month survival is 38.6% [28.9%-51.6%, 95% CI]., When LVI=Present, 36 month survival is 15.2% [8.1%-28.6%, 95% CI].
 
 </div>
 
@@ -2629,7 +2624,7 @@ When LVI=Absent, 12 month survival is 58.7% [51.3%-67%, 95% CI]., When LVI=Absen
 \noindent\colorbox{yellow}{
 \parbox{\dimexpr\linewidth-2\fboxsep}{
 
-When LVI=Absent, 12 month survival is 58.7% [51.3%-67%, 95% CI]., When LVI=Absent, 36 month survival is 21.1% [14.8%-30%, 95% CI]., When LVI=Present, 12 month survival is 40.9% [29.7%-56%, 95% CI]., When LVI=Present, 36 month survival is 27.3% [16.3%-46%, 95% CI].
+When LVI=Absent, 12 month survival is 61.0% [53.3%-69.8%, 95% CI]., When LVI=Absent, 36 month survival is 21.9% [15.2%-31.4%, 95% CI]., When LVI=Present, 12 month survival is 38.6% [28.9%-51.6%, 95% CI]., When LVI=Present, 36 month survival is 15.2% [8.1%-28.6%, 95% CI].
 
 }
 }
@@ -2784,7 +2779,7 @@ print(glue::glue("saved data after analysis to ", rownames(file.info(here::here(
 ```
 
 ```
-saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-28.xlsx : 2019-11-28 19:15:48
+saved data after analysis to /Users/serdarbalciold/histopathology-template/data/histopathology-template2019-11-28.xlsx : 2019-11-28 19:45:56
 ```
 
 
@@ -2957,30 +2952,7 @@ A BibTeX entry for LaTeX users is
 ```
 
 ```r
-citation("report")
-```
-
-```
-
-To cite in publications use:
-
-  Makowski, D. & Lüdecke, D. (2019). The report package for R: Ensuring
-  the use of best practices for results reporting. CRAN. Available from
-  https://github.com/easystats/report. doi: .
-
-A BibTeX entry for LaTeX users is
-
-  @Article{,
-    title = {The report package for R: Ensuring the use of best practices for results reporting},
-    author = {{Makowski} and {Dominique} and {Lüdecke} and {Daniel}},
-    journal = {CRAN},
-    year = {2019},
-    note = {R package},
-    url = {https://github.com/easystats/report},
-  }
-```
-
-```r
+# citation('report')
 citation("finalfit")
 ```
 
@@ -3123,7 +3095,7 @@ pacman::p_loaded(all = TRUE)
 
 ### Notes {.appendix}  
 
-Last update on 2019-11-28 19:15:49  
+Last update on 2019-11-28 19:45:57  
 
 Serdar Balci, MD, Pathologist  
 drserdarbalci@gmail.com  
@@ -4074,7 +4046,7 @@ report::show_packages(session = sessionInfo()) %>%
 citation("tidyverse")
 citation("readxl")
 citation("janitor")
-citation("report")
+# citation("report")
 citation("finalfit")
 # citation("ggstatsplot")
 if(!dir.exists(here::here("bib"))) {dir.create(here::here("bib"))}
