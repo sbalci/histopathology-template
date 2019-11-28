@@ -184,7 +184,71 @@ km_fit_median_df <- as.data.frame(km_fit_median_df$table) %>%
   tibble::rownames_to_column()
 ```
 
-```{r broom survival, eval=FALSE}
+
+
+
+```{r eval=FALSE, include=FALSE}
+km_fit_median_df <- summary(km_fit)
+            km_fit_median_df <- as.data.frame(km_fit_median_df$table) %>%
+                tibble::rownames_to_column()
+            
+            names(km_fit_median_df) <- paste0("m", 1:dim(km_fit_median_df)[2])
+
+            km_fit_median_definition <- 
+                
+            km_fit_median_df %>%
+                dplyr::mutate(
+                    description =
+                        glue::glue(
+                            "When {m1}, median survival is {m8} [{m9} - {m10}, 95% CI] months."
+                        )
+                ) %>%
+                dplyr::select(description) %>%
+                dplyr::pull() 
+```
+
+
+```{r eval=FALSE, include=FALSE}
+sTable <- summary(km_fit)$table
+            st <- data.frame()
+            
+            for (i in seq_len(nrow(km_fit))) {
+                if (nrow(km_fit) == 1)
+                    g <- sTable
+                else
+                    g <- sTable[i,]
+                nevents <- sum(g['events'])
+                n <- g['n.max']
+                ncensor <- n - nevents
+                median <- g['median']
+                mean <- g['*rmean']
+                prop <- nevents / n
+                
+                print(rowNo=i, list(
+                    censored=ncensor,
+                    events=nevents,
+                    n=n,
+                    prop=nevents/n,
+                    median=median,
+                    mean=mean))
+            }
+            
+            st$setStatus('complete')
+            
+            
+            results1 <- st
+```
+
+
+
+
+
+
+
+
+
+
+```{r broom survival, eval=FALSE, include=FALSE}
 km_fit
 broom::tidy(km_fit)
 ```
