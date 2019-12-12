@@ -432,6 +432,21 @@ survminer::pairwise_survdiff(
 
 
 
+```{r}
+km_fit
+print(km_fit, 
+      scale=1,
+      digits = max(options()$digits - 4,3),
+      print.rmean=getOption("survfit.print.rmean"),
+      rmean = getOption('survfit.rmean'),
+      print.median=getOption("survfit.print.median"),
+      median = getOption('survfit.median')
+      
+      )
+```
+
+
+
 
 ### Multivariate Analysis Survival
 

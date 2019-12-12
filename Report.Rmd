@@ -86,14 +86,14 @@ if (!require("here")) install.packages("here")
 
 # Introduction
 
-- **State the marker of interest, the study objectives, and hypotheses [@Knijn2015]**.^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3]
+- **State the marker of interest, the study objectives, and hypotheses [@Knijn2015]**.^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4460276/]
 
  
 
 
 # Materials & Methods
 
-**Describe Materials and Methods as highlighted in [@Knijn2015]**.^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3]
+**Describe Materials and Methods as highlighted in [@Knijn2015]**.^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4460276/]
 
 - Describe patient characteristics, and inclusion and exclusion criteria
 
@@ -195,7 +195,9 @@ if (!require("here")) install.packages("here")
 
 # Results
 
-**Write results as described in [@Knijn2015]**^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3]
+**Write results as described in [@Knijn2015]**^[From Table 1: Proposed items for reporting histopathology studies. Recommendations for reporting histopathology studies: a proposal Virchows Arch (2015) 466:611–615 DOI 10.1007/s00428-015-1762-3 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4460276/]
+
+
 
 - Describe the number of patients included in the analysis and reason for dropout
 

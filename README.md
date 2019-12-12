@@ -125,6 +125,12 @@ docker pull serdarbalci/clinicopathological
 
 <https://twitter.com/serdarbalci/status/1198348640294711296>
 
+<https://serdarbalci.gitbook.io/parapathology/computers/computers#deploying-a-shiny-app-as-a-desktop-application-with-electron>
+
+  - As a Shiny app:
+
+<https://github.com/sbalci/histopathRshiny>
+
 -----
 
 **Recommended Links for Reproducible Research**
