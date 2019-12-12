@@ -95,7 +95,7 @@ rmarkdown::draft(file = "myfile",
 
 **How to use**
 
-  - In RStudio:
+  - *In RStudio:*
     
       - Fork this repository. Then use this repository as template as
         described
@@ -109,7 +109,7 @@ rmarkdown::draft(file = "myfile",
       - This template contains packages using
         [renv](https://rstudio.github.io/renv/articles/renv.html).
 
-  - Via Docker:
+  - *Via Docker:*
 
 <https://hub.docker.com/r/serdarbalci/clinicopathological>
 
@@ -119,7 +119,7 @@ docker pull serdarbalci/clinicopathological
 
 <https://twitter.com/serdarbalci/status/1197849208302252032>
 
-  - As an app:
+  - *As a standalone app (for mac only):*
 
 <https://sourceforge.net/projects/histopathr/>
 
@@ -127,9 +127,28 @@ docker pull serdarbalci/clinicopathological
 
 <https://serdarbalci.gitbook.io/parapathology/computers/computers#deploying-a-shiny-app-as-a-desktop-application-with-electron>
 
-  - As a Shiny app:
+  - *As a Shiny app:*
 
-<https://github.com/sbalci/histopathRshiny>
+Launch here: <https://serdarbalci.shinyapps.io/histopathR/>
+
+Run in your own computer R session:
+
+``` r
+library(shiny)
+runUrl("https://github.com/sbalci/histopathRshiny/raw/master/histopathRshiny.tar")
+```
+
+Code here: <https://github.com/sbalci/histopathRshiny>
+
+  - *As a jamovi module:*
+
+Download module here:
+
+<https://github.com/sbalci/ClinicoPathJamoviModule/raw/master/ClinicoPath.jmo>
+
+<https://github.com/sbalci/ClinicoPathJamoviModule>
+
+<https://sourceforge.net/projects/clinicopathjamovimodule/>
 
 -----
 
