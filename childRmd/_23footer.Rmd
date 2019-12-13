@@ -105,12 +105,6 @@ Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Softwar
 Data processing was carried out with R (R Core Team, 2019) and the easystats ecosystem (Lüdecke, Waggoner, & Makowski, 2019; Makowski, Ben-Shachar, & Lüdecke, 2019)
 
 
-```{r}
-
-```
-
-
-
 
 ```{r library citation as report, results='asis'}
 report::cite_packages(session = sessionInfo())
