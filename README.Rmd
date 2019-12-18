@@ -65,6 +65,9 @@ https://sbalci.github.io/histopathology-template/
 <!-- badges: end -->
 
 
+https://github.com/sbalci/histopathology-template
+
+
 This repository is a template for the codes I use in [my and my friends' histopathology research](https://sbalci.github.io/cv/SerdarBalciMDPathologist.html).
 
 ---
@@ -134,8 +137,9 @@ Run in your own computer R session:
 
 ```r
 library(shiny)
-runUrl("https://github.com/sbalci/histopathRshiny/raw/master/histopathRshiny.tar")
+runUrl("https://github.com/sbalci/histopathRshiny/raw/master/histopathRshiny.tar.gz")
 ```
+
 
 
 Code here:
