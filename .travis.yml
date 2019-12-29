@@ -1,0 +1,55 @@
+language: r
+
+warnings_are_errors: false
+cache: packages
+sudo: required
+branches:
+    only:
+    - master
+
+r_packages:
+    - markdown
+    - devtools
+    - dplyr
+    - magrittr
+    - testthat
+    - rmarkdown
+    - knitr
+    - renv
+    - janitor
+    - jmv
+    - kableExtra
+    - magicfor
+    - pkgdown
+
+
+r_github_packages:
+    - rstudio/distill
+    - easystats/report
+    - r-lib/covr
+    - ropenscilabs/icon
+    - DataWookie/feedeR
+    - haozhu233/kableExtra
+    - ropensci/RefManageR
+
+before_script:
+    - Rscript -e 'print("before script")'
+
+script:
+    - Rscript -e 'rmarkdown::render("Report.Rmd")'
+
+deploy:
+    provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_PAT
+    on:
+        branch: master
+    local_dir: docs
+    target_branch: gh-pages
+addons:
+       apt:
+         update: true
+         sources:
+           - sourceline: 'ppa:opencpu/imagemagick'
+         packages:
+           - libmagick++-dev

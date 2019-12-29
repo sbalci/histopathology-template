@@ -21,6 +21,9 @@ header-includes:
 - \newcommand{\elandscape}{\end{landscape}}
 - \usepackage{xcolor}
 - \usepackage{afterpage}
+- \renewcommand{\linethickness}{0.05em}
+- \usepackage{booktabs}
+- \usepackage{sectsty} \allsectionsfont{\nohang\centering \emph}
 output:
   html_document: 
     toc: yes
@@ -72,6 +75,32 @@ if (!require("pacman")) install.packages("pacman")
 if (!require("pak")) install.packages("pak")
 if (!require("here")) install.packages("here")
 ```
+
+
+<style type="text/css">
+
+h1{
+  text-align: center;
+}
+h2{
+  text-align: center;
+}
+h3{
+  text-align: center;
+}
+h4{
+  text-align: center;
+}
+h4.date{
+  text-align: center;
+}
+
+</style>
+
+<!-- Open all links in new tab-->  
+<base target="_blank"/>  
+
+
 
 
 ---

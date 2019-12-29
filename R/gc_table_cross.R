@@ -12,7 +12,7 @@ for (i in 1:length(dependent)) {
 mydata %>%
     summary_factorlist(dependent = '", dependent_variable, "', 
                        explanatory = explanatory,
-                       column = TRUE,
+                       # column = TRUE,
                        total_col = TRUE,
                        p = TRUE,
                        add_dependent_label = TRUE,

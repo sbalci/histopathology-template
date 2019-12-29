@@ -75,3 +75,25 @@ Data were compiled with IBM SPSS Statistics 23 program. Categorical variables we
 
 
 
+
+Sürekli verilerin ortalama, standart sapma, median, minimum ve maksimum değerleri verildi. Kategorik veriler ve gruplanan sürekli veriler sayı ve yüzde olarak özetlenerek frekans tabloları oluşturuldu. Bağımsız iki grup karşılaştırılmalarında, sayısal değişkenlerin normal dağılım gösterdiği durumlarda Independent Samples t test, normal dağılım göstermediği durumlarda ise Mann Whitney U testi kullanıldı. Bağımsız ikiden fazla grup karşılaştırmalarında, sayısal değişkenlerin normal dağılım gösterdiği durumlarda One-Way ANOVA, normal dağılım göstermediği durumlarda ise Kruskall Wallis testi kullanıldı. Kategorik değişkenler arasındaki farklılık karşılaştırmalarında Pearson Ki-Kare ve Fisher's Exact Test kullanıldı.
+Genel sağkalım analizinde ölüm tarihi ve son başvuru tarihi hasta dosyalarından elde edildi. 
+Sağkalım analizinde Kaplan-Meier grafikleri, Log-rank testi ve Cox-Regresyon testleri uygulandı. Analizler R-project (version 3.6.0) ve RStudio ile survival ve finalfit paketleri kullanılarak yapıldı. p değeri 0.05 düzeyinde anlamlı olarak kabul edildi.
+
+
+R Core Team (2019). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+
+Therneau T (2015). A Package for Survival Analysis in S. version 2.38, https://CRAN.R-project.org/package=survival
+
+Terry M. Therneau, Patricia M. Grambsch (2000). Modeling Survival Data: Extending the Cox Model. Springer, New York. ISBN 0-387-98784-3.
+
+Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant Regression Results Tables and Plots when Modelling. R package version 0.9.6. https://github.com/ewenharrison/finalfit
+
+
+Çalışmadan elde edilen verilerin özetlenmesinde tanımlayıcı istatistikler sürekli değişkenler için dağılıma bağlı olarak ortalama ± standart sapma veya medyan ile çeyreklikler arası genişlik olarak tablo halinde verildi. Kategorik değişkenler sayı ve yüzde olarak özetlendi. Sayısal değişkenlerin normallik testi Kolmogorov Smirnov testi ile kontrol edildi. Bağımsız iki grup karşılaştırılmalarında, sayısal değişkenlerin normal dağılım gösterdiği durumlarda Independent Samples t test, normal dağılım göstermediği durumlarda ise Mann Whitney U testi kullanıldı. Bağımsız ikiden fazla grup karşılaştırmalarında, sayısal değişkenlerin normal dağılım gösterdiği durumlarda One-Way ANOVA, normal dağılım göstermediği durumlarda ise Kruskall Wallis testi kullanıldı. Gruplar arasındaki farklılıklar parametrik testlerin uygulandığı karşılaştırmalar için, verinin dağılımına göre homojen olduğu durumda Tukey testi, homojen olmadığı durum/durumlarda ise Games-Howell testi ile değerlendirildi. Parametrik olmayan testlerde gruplar arasındaki farklılıklar Dwass-Steel-Critchlow-Fligner testi ile değerlendirildi. Kategorik değişkenler arasındaki farklılık karşılaştırmalarında 2x2 tablolarda Pearson Ki-Kare, RxC tablolarda ise Fisher's Exact Test kullanıldı. ROC (Receiver operating characteristic) eğrisi analizi ile sağ kalımı ayırt etme değişkenleri ile ilişkisi incelenmiştir. MedCalc Statistical Software Trial version (MedCalc Software bvba, Ostend, Belgium; http://www.medcalc.org ; 2015) programı ile, DeLong yöntemi kullanılarak Youden's indeksi ile optimal kesim değeri, %95 güven aralığı, ve eğri altında kalan alan (AUC) hesaplanmıştır. İstatistiksel analizler, Jamovi project (2019). Jamovi (Version 1.0.1) [Computer Software]. (Retrieved from https://www.jamovi.org) programı ile yapılmış olup ve istatistik analizlerde anlamlılık düzeyi 0.05 (p-value) olarak dikkate alındı.
+
+
+
+
+
+

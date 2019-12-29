@@ -146,6 +146,9 @@ knitr::write_bib(x = c(.packages(), "knitr", "shiny"),
 sessionInfo()
 ```
 
+
+
+
 \pagebreak
 
 ---
@@ -155,6 +158,22 @@ sessionInfo()
 ```{r session info by pacman, echo=TRUE, eval=FALSE}
 pacman::p_loaded(all = TRUE)
 ```
+
+```{r eval=FALSE, include=FALSE}
+search()
+```
+
+```{r eval=FALSE, include=FALSE}
+library()
+```
+
+
+```{r eval=FALSE, include=FALSE}
+installed.packages()[1:5, c("Package", "Version")]
+installed.packages()
+```
+
+
 
 
 ---

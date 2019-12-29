@@ -21,6 +21,9 @@ explanatory <- c("explanatory1",
 
 
 
+Change `column = TRUE` argument to get row or column percentages.
+
+
 ```{r generate code for Cross Table, eval=FALSE, include=FALSE}
 source(here::here("R", "gc_table_cross.R"))
 ```
