@@ -28,14 +28,14 @@ tab1 <- arsenal::tableby(
     Group +
     Grade +
     TStage +
-    `Anti-X-intensity` +
-    `Anti-Y-intensity` +
+    # `Anti-X-intensity` +
+    # `Anti-Y-intensity` +
     LymphNodeMetastasis +
     Valid +
     Smoker +
     Grade_Level
   ,
-  data = mydata
+  data = mydata 
 )
 summary(tab1)
 ```

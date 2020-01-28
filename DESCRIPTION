@@ -56,6 +56,5 @@ Suggests:
     janitor,
     bayestestR    
 Remotes:
-    easystats/report,
-
+    easystats/report
 VignetteBuilder: knitr

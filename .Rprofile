@@ -1,4 +1,4 @@
-source("renv/activate.R")
+# source("renv/activate.R")
 
 .First <- function(){
 cat("\nWelcome to histopathology template project", date(), "\n")

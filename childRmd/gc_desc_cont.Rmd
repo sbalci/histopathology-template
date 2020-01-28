@@ -20,13 +20,13 @@ jmv::descriptives(
 
 \pagebreak
 
-**Descriptive Statistics Anti-X-intensity** 
+**Descriptive Statistics AntiX_intensity** 
 
-```{r Descriptive Statistics Anti-X-intensity}
+```{r Descriptive Statistics AntiX_intensity}
 mydata %>% 
 jmv::descriptives(
     data = .,
-    vars = 'Anti-X-intensity',
+    vars = 'AntiX_intensity',
     hist = TRUE,
     dens = TRUE,
     box = TRUE,
@@ -42,13 +42,13 @@ jmv::descriptives(
 
 \pagebreak
 
-**Descriptive Statistics Anti-Y-intensity** 
+**Descriptive Statistics AntiY_intensity** 
 
-```{r Descriptive Statistics Anti-Y-intensity}
+```{r Descriptive Statistics AntiY_intensity}
 mydata %>% 
 jmv::descriptives(
     data = .,
-    vars = 'Anti-Y-intensity',
+    vars = 'AntiY_intensity',
     hist = TRUE,
     dens = TRUE,
     box = TRUE,

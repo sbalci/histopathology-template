@@ -52,14 +52,14 @@ fakedata <-
     level(
       x = 1:3,
       prob = c("0.1", "0.4", "0.5"),
-      name = "Anti-X-intensity"
+      name = "AntiX_intensity"
     ),
     
     
     level(
       x = 1:3,
       prob = c("0.3", "0.4", "0.3"),
-      name = "Anti-Y-intensity"
+      name = "AntiY_intensity"
     ),
     
     
