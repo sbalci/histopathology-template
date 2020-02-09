@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/sbalci/histopathology-template) 
+
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
