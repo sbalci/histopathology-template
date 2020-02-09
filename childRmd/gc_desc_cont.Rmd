@@ -20,13 +20,13 @@ jmv::descriptives(
 
 \pagebreak
 
-**Descriptive Statistics AntiX_intensity** 
+**Descriptive Statistics LastFollowUpDate** 
 
-```{r Descriptive Statistics AntiX_intensity}
+```{r Descriptive Statistics LastFollowUpDate}
 mydata %>% 
 jmv::descriptives(
     data = .,
-    vars = 'AntiX_intensity',
+    vars = 'LastFollowUpDate',
     hist = TRUE,
     dens = TRUE,
     box = TRUE,
@@ -42,13 +42,57 @@ jmv::descriptives(
 
 \pagebreak
 
-**Descriptive Statistics AntiY_intensity** 
+**Descriptive Statistics Anti-X-intensity** 
 
-```{r Descriptive Statistics AntiY_intensity}
+```{r Descriptive Statistics Anti-X-intensity}
 mydata %>% 
 jmv::descriptives(
     data = .,
-    vars = 'AntiY_intensity',
+    vars = 'Anti-X-intensity',
+    hist = TRUE,
+    dens = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE,
+    mode = TRUE,
+    sd = TRUE,
+    variance = TRUE,
+    skew = TRUE,
+    kurt = TRUE,
+    quart = TRUE)
+```
+
+\pagebreak
+
+**Descriptive Statistics Anti-Y-intensity** 
+
+```{r Descriptive Statistics Anti-Y-intensity}
+mydata %>% 
+jmv::descriptives(
+    data = .,
+    vars = 'Anti-Y-intensity',
+    hist = TRUE,
+    dens = TRUE,
+    box = TRUE,
+    violin = TRUE,
+    dot = TRUE,
+    mode = TRUE,
+    sd = TRUE,
+    variance = TRUE,
+    skew = TRUE,
+    kurt = TRUE,
+    quart = TRUE)
+```
+
+\pagebreak
+
+**Descriptive Statistics SurgeryDate** 
+
+```{r Descriptive Statistics SurgeryDate}
+mydata %>% 
+jmv::descriptives(
+    data = .,
+    vars = 'SurgeryDate',
     hist = TRUE,
     dens = TRUE,
     box = TRUE,
