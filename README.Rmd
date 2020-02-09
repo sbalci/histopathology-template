@@ -38,6 +38,7 @@ https://sbalci.github.io/histopathology-template/
 
 
 <!-- badges: start -->
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/sbalci/histopathology-template)
 <!-- [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/histopathology-template)](https://CRAN.R-project.org/package=histopathology-template) -->
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3635430.svg)](https://doi.org/10.5281/zenodo.3635430)
 
