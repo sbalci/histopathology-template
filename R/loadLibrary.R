@@ -36,6 +36,7 @@ package_list <- c(
     "xml2",
     "modelr",
     "broom",
+    "tidylog",
     
     "glue",
     "rlang",

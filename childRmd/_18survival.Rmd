@@ -463,3 +463,73 @@ knitr::kable(tMultivariate, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r
 
 
 
+# parsnip
+
+
+```{r parsnip, eval=FALSE, include=FALSE}
+# https://tidymodels.github.io/parsnip/reference/surv_reg.html
+library(parsnip)
+surv_reg()
+#> Parametric Survival Regression Model Specification (regression)
+#> # Parameters can be represented by a placeholder:
+surv_reg(dist = varying())
+
+#> Parametric Survival Regression Model Specification (regression)
+#> 
+#> Main Arguments:
+#>   dist = varying()
+#> 
+model <- surv_reg(dist = "weibull")
+model
+#> Parametric Survival Regression Model Specification (regression)
+#> 
+#> Main Arguments:
+#>   dist = weibull
+#> update(model, dist = "lnorm")#> Parametric Survival Regression Model Specification (regression)
+#> 
+#> Main Arguments:
+#>   dist = lnorm
+#> 
+
+
+# From randomForest
+rf_1 <- randomForest(x, y, mtry = 12, ntree = 2000, importance = TRUE)
+
+# From ranger
+rf_2 <- ranger(
+  y ~ ., 
+  data = dat, 
+  mtry = 12, 
+  num.trees = 2000, 
+  importance = 'impurity'
+)
+
+# From sparklyr
+rf_3 <- ml_random_forest(
+  dat, 
+  intercept = FALSE, 
+  response = "y", 
+  features = names(dat)[names(dat) != "y"], 
+  col.sample.rate = 12,
+  num.trees = 2000
+)
+
+
+
+
+rand_forest(mtry = 12, trees = 2000) %>%
+  set_engine("ranger", importance = 'impurity') %>%
+  fit(y ~ ., data = dat)
+
+
+rand_forest(mtry = 12, trees = 2000) %>%
+  set_engine("spark") %>%
+  fit(y ~ ., data = dat)
+
+
+
+```
+
+
+
+

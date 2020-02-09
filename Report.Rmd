@@ -61,6 +61,7 @@ output:
     latex_engine: lualatex
     toc_depth: 5
     keep_tex: yes
+    urlcolor: blue
 vignette: >
   %\VignetteIndexEntry{Histopathology Research Template}
   %\VignetteEncoding{UTF-8}
@@ -105,6 +106,11 @@ h4.date{
 
 ---
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3635430.svg)](https://doi.org/10.5281/zenodo.3635430)
+
+https://doi.org/10.5281/zenodo.3635430
+
+https://osf.io/3tjfk/
 
 [Histopathology Research Template 🔬](https://sbalci.github.io/histopathology-template/)
 

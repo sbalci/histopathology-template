@@ -278,7 +278,7 @@ with(mydata,
 
 
 
-```{r SmartEDA category 1}
+```{r SmartEDA category 1, echo=TRUE, eval=FALSE, include=FALSE}
 SmartEDA::ExpCTable(
   mydata,
   Target = "Sex",

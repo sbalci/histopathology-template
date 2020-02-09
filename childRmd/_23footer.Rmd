@@ -41,6 +41,27 @@ print(glue::glue(
 ```
 
 
+```{r download button}
+mydata %>% 
+  downloadthis::download_this(
+    output_name = excelName,
+    output_extension = ".csv",
+    button_label = "Download data as csv",
+    button_type = "default"
+  )
+
+mydata %>% 
+  downloadthis::download_this(
+    output_name = excelName,
+    output_extension = ".xlsx",
+    button_label = "Download data as xlsx",
+    button_type = "primary"
+  )
+```
+
+
+
+
 ```{r save final data 2, eval=FALSE, include=FALSE}
 # pacman::p_load(here, lubridate, glue)
 # here::here("data", glue("{today()}_trends.csv"))
