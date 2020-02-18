@@ -152,7 +152,7 @@ fakedata <-
 fakedata <- fakedata %>%
   dplyr::mutate(
     DeathTime =
-      case_when(
+      dplyr::case_when(
         LastFollowUpDate - SurgeryDate <= 360 ~ "Within1Year",
         TRUE ~ "MoreThan1Year"
       )

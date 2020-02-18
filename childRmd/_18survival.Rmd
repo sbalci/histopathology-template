@@ -264,7 +264,7 @@ km_fit_median_df %>%
     )
   ) %>% 
   dplyr::select(description) %>% 
-  pull() -> km_fit_median_definition
+  dplyr::pull() -> km_fit_median_definition
 ```
 
 
@@ -312,7 +312,7 @@ km_fit_df %>%
     )
   ) %>% 
   dplyr::select(description) %>% 
-  pull() -> km_fit_definition
+  dplyr::pull() -> km_fit_definition
 ```
 
 <style>
@@ -358,12 +358,12 @@ explanatoryKM <- c("explanatory1",
 ```
 
 
-```{r generate Code, eval=FALSE, include=FALSE, eval=FALSE, include=FALSE}
+```{r generate Code}
 source(here::here("R", "gc_survival.R"))
 ```
 
 
-```{r generatedCode, child = here::here('childRmd', "generatedCodeSurvival.Rmd"), eval=FALSE, include=FALSE}
+```{r generatedCode, child=here::here('childRmd', "generatedCodeSurvival.Rmd")}
 ```
 
 
@@ -463,7 +463,7 @@ knitr::kable(tMultivariate, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r
 
 
 
-# parsnip
+<!-- # parsnip -->
 
 
 ```{r parsnip, eval=FALSE, include=FALSE}

@@ -61,7 +61,6 @@ output:
     latex_engine: lualatex
     toc_depth: 5
     keep_tex: yes
-    urlcolor: blue
 vignette: >
   %\VignetteIndexEntry{Histopathology Research Template}
   %\VignetteEncoding{UTF-8}
@@ -71,6 +70,9 @@ bibliography: bib/template.bib
 
 ```{r pacman, message=FALSE, warning=FALSE, include=FALSE}
 # installing necessary packages
+if (requireNamespace("magrittr", quietly = TRUE)) {
+  `%>%` <- magrittr::`%>%`
+}
 if (!require("remotes")) install.packages("remotes")
 if (!require("pacman")) install.packages("pacman")
 if (!require("pak")) install.packages("pak")
@@ -101,6 +103,19 @@ h4.date{
 <!-- Open all links in new tab-->  
 <base target="_blank"/>  
 
+
+```{r run all Rmd without knit, include=FALSE}
+source_rmd <- function(rmd_file){
+  knitr::knit(rmd_file, output = tempfile(), envir = globalenv())
+}
+
+list_of_Rmd <- list.files(path = here::here("childRmd"), pattern = "Rmd")
+
+list_of_Rmd <- list_of_Rmd[!list_of_Rmd %in% c("_19shinySurvival.Rmd")]
+
+purrr::map(.x = here::here("childRmd", list_of_Rmd), .f = source_rmd)
+
+```
 
 
 
@@ -287,13 +302,13 @@ https://osf.io/3tjfk/
 
 ---
 
-<!-- \newpage -->
-<!-- \blandscape -->
+\newpage
+\blandscape
 
-<!-- ```{r crossTables, child = here::here('childRmd', '_12crossTables.Rmd')} -->
-<!-- ``` -->
+```{r crossTables, child = here::here('childRmd', '_12crossTables.Rmd')}
+```
 
-<!-- \elandscape -->
+\elandscape
 
 
 <!-- ```{r plots, child = here::here('childRmd', '_13plots.Rmd')} -->

@@ -8,7 +8,7 @@
 ```{r dataframe report}
 # Dataframe report
 mydata %>% 
-  select(-contains("Date")) %>%
+  dplyr::select(-contains("Date")) %>%
   report::report(.)
 ```
 

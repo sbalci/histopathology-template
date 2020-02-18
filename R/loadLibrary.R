@@ -86,7 +86,7 @@ package_list <- c(
 
 # pak::pkg_install(package_list)
 
-# pacman::p_load(char = package_list)
+pacman::p_load(char = package_list)
 
 
 # github_packages <- c(

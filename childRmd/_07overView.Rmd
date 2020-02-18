@@ -27,7 +27,7 @@ reactable::reactable(data = mydata, sortable = TRUE, resizable = TRUE, filterabl
 
 
 ```{r summarytools, echo=TRUE, eval=FALSE}
-summarytools::view(summarytools::dfSummary(mydata %>% select(-keycolumns)))
+summarytools::view(summarytools::dfSummary(mydata %>% dplyr::select(-keycolumns)))
 ```
 
 
@@ -37,7 +37,7 @@ if(!dir.exists(here::here("out"))) {dir.create(here::here("out"))}
 summarytools::view(
   x = summarytools::dfSummary(
     mydata %>% 
-      select(-keycolumns)
+      dplyr::select(-keycolumns)
     ),
   file = here::here("out", "mydata_summary.html")
 )
@@ -66,7 +66,7 @@ dataMaid::makeDataReport(data = mydata,
 if(!dir.exists(here::here("out"))) {dir.create(here::here("out"))}
 
 mydata %>% 
-  select(
+  dplyr::select(
     -dateVariables
   ) %>% 
   explore::report(
@@ -82,7 +82,7 @@ mydata %>%
 
 
 ```{r glimpse}
-glimpse(mydata %>% select(-keycolumns, -dateVariables))
+dplyr::glimpse(mydata %>% dplyr::select(-keycolumns, -dateVariables))
 ```
 
 
@@ -381,23 +381,23 @@ iris %>% explore::explore(Sepal.Length, target = Petal.Length)
   explore::explore_all()
 
 iris %>%
-  select(Sepal.Length, Sepal.Width) %>%
+  dplyr::select(Sepal.Length, Sepal.Width) %>%
   explore::explore_all()
 
 iris %>%
-  select(Sepal.Length, Sepal.Width, is_versicolor) %>%
+  dplyr::select(Sepal.Length, Sepal.Width, is_versicolor) %>%
   explore::explore_all(target = is_versicolor)
 
 iris %>%
-  select(Sepal.Length, Sepal.Width, is_versicolor) %>%
+  dplyr::select(Sepal.Length, Sepal.Width, is_versicolor) %>%
   explore::explore_all(target = is_versicolor, split = FALSE)
 
 iris %>%
-  select(Sepal.Length, Sepal.Width, Species) %>%
+  dplyr::select(Sepal.Length, Sepal.Width, Species) %>%
   explore::explore_all(target = Species)
 
 iris %>%
-  select(Sepal.Length, Sepal.Width, Petal.Length) %>%
+  dplyr::select(Sepal.Length, Sepal.Width, Petal.Length) %>%
   explore::explore_all(target = Petal.Length)
 ```
 

@@ -29,7 +29,7 @@ iris %>%
 
 ```{r summary, eval=FALSE, include=FALSE}
 summarytools::view(summarytools::dfSummary(mydata))
-glimpse(mydata)
+dplyr::glimpse(mydata)
 ```
 
 
@@ -171,8 +171,8 @@ mydata$Mstage <- paste0("M",
 
 ```{r recode TNM2, eval=FALSE, include=FALSE}
 mydata <- mydata %>% 
-    mutate(
-        T_stage = case_when(
+    dplyr::mutate(
+        T_stage = dplyr::case_when(
             grepl(pattern = "T1", x = .$Tstage) == TRUE ~ "T1",
             grepl(pattern = "T2", x = .$Tstage) == TRUE ~ "T2",
             grepl(pattern = "T3", x = .$Tstage) == TRUE ~ "T3",
@@ -180,8 +180,8 @@ mydata <- mydata %>%
             TRUE ~ "Tx"
         )
     ) %>% 
-mutate(
-        N_stage = case_when(
+dplyr::mutate(
+        N_stage = dplyr::case_when(
             grepl(pattern = "N0", x = .$Nstage) == TRUE ~ "N0",
             grepl(pattern = "N1", x = .$Nstage) == TRUE ~ "N1",
             grepl(pattern = "N2", x = .$Nstage) == TRUE ~ "N2",
@@ -189,8 +189,8 @@ mutate(
             TRUE ~ "Nx"
         )
     ) %>% 
-mutate(
-        M_stage = case_when(
+dplyr::mutate(
+        M_stage = dplyr::case_when(
             grepl(pattern = "M0", x = .$Mstage) == TRUE ~ "M0",
             grepl(pattern = "M1", x = .$Mstage) == TRUE ~ "M1",
             TRUE ~ "Mx"
@@ -250,26 +250,26 @@ mydata$MMR2 <- factor(mydata$MMR2)
 
 ```{r, eval=FALSE, include=FALSE}
 mydata <- mydata %>% 
-    mutate(
-TumorPDL1gr1 = case_when(
+    dplyr::mutate(
+TumorPDL1gr1 = dplyr::case_when(
         t_pdl1 < 1 ~ "kucuk1",
         t_pdl1 >= 1 ~ "buyukesit1"
     )
     ) %>% 
-mutate(
-TumorPDL1gr5 = case_when(
+dplyr::mutate(
+TumorPDL1gr5 = dplyr::case_when(
         t_pdl1 < 5 ~ "kucuk5",
         t_pdl1 >= 5 ~ "buyukesit5"
     )
     )   %>% 
-mutate(
-inflPDL1gr1 = case_when(
+dplyr::mutate(
+inflPDL1gr1 = dplyr::case_when(
         i_pdl1 < 1 ~ "kucuk1",
         i_pdl1 >= 1 ~ "buyukesit1"
     )
     ) %>% 
-mutate(
-inflPDL1gr5 = case_when(
+dplyr::mutate(
+inflPDL1gr5 = dplyr::case_when(
         i_pdl1 < 5 ~ "kucuk5",
         i_pdl1 >= 5 ~ "buyukesit5"
     )
@@ -422,7 +422,7 @@ mydata <- mydata %>%
 
 ```{r summary 2, eval=FALSE, include=FALSE}
 # summarytools::view(summarytools::dfSummary(mydata))
-# glimpse(mydata)
+# dplyr::glimpse(mydata)
 # mydata %>%
 #   select(starts_with("Soru")) %>% 
 #   pivot_longer(everything()) %>% 

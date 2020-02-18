@@ -25,13 +25,13 @@ visdat::vis_miss(mydata)
 
 
 
-```{r visdat, eval=FALSE, include=FALSE}
+```{r visdat 2, eval=FALSE, include=FALSE}
 visdat::vis_miss(airquality,
                  cluster = TRUE)
 ```
 
 
-```{r visdat, eval=FALSE, include=FALSE}
+```{r visdat 3, eval=FALSE, include=FALSE}
 visdat::vis_miss(airquality,
          sort_miss = TRUE)
 ```

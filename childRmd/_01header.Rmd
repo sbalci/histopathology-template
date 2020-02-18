@@ -4,6 +4,7 @@
 
 **Setup global chunk settings**^[Change `echo = FALSE` to hide codes after knitting.]
 
+
 ```{r global_options}
 knitr::opts_chunk$set(
     eval = TRUE,
@@ -12,7 +13,7 @@ knitr::opts_chunk$set(
     message = FALSE,
     warning = FALSE,
     error = FALSE,
-    cache = FALSE,
+    cache = TRUE,
     comment = NA,
     tidy = TRUE,
     fig.width = 6,

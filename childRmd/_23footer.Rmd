@@ -139,7 +139,7 @@ report::show_packages(session = sessionInfo()) %>%
 
 
 ```{r library citations}
-citation("tidyverse")
+# citation("tidyverse")
 citation("readxl")
 citation("janitor")
 # citation("report")

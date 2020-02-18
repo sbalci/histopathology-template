@@ -53,7 +53,7 @@ summary(tab1)
 ```{r tableone}
 library(tableone)
 mydata %>% 
-  select(-keycolumns,
+  dplyr::select(-keycolumns,
          -dateVariables
          ) %>% 
 tableone::CreateTableOne(data = .)
@@ -102,7 +102,7 @@ tableone::CreateTableOne(data = .)
 
 ```{r summarytools descriptives 1, echo=TRUE, eval=FALSE}
 mydata %>% 
-  select(
+  dplyr::select(
     continiousVariables,
     numericVariables,
     integerVariables
@@ -185,7 +185,7 @@ source(here::here("R", "gc_desc_cat.R"))
 ```{r tableone categorical, eval=FALSE, include=FALSE}
 tab <- 
   mydata %>% 
-  select(
+  dplyr::select(
     -keycolumns
     ) %>% 
   tableone::CreateTableOne(data = .)
@@ -294,8 +294,8 @@ SmartEDA::ExpCTable(
 
 ```{r reactable groupby, echo=TRUE, eval = FALSE}
 mydata %>% 
-  select(characterVariables) %>% 
-  select(PreinvasiveComponent,
+  dplyr::select(characterVariables) %>% 
+  dplyr::select(PreinvasiveComponent,
          PNI,
          LVI
          ) %>% 
@@ -349,7 +349,7 @@ mydata %>% explore::describe(Age)
 
 ```{r SmartEDA, echo=TRUE, eval=FALSE}
 mydata %>% 
-  select(continiousVariables) %>% 
+  dplyr::select(continiousVariables) %>% 
 SmartEDA::ExpNumStat(
   data = .,
   by = "A",

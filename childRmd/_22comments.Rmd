@@ -43,10 +43,10 @@ my_text <- kableExtra::text_spec("Some Text",
                                  color = "red",
                                  background = "yellow"
                                  )
+# `r my_text`
 ```
 
 
-`r my_text`
 
 
 
@@ -72,6 +72,9 @@ Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant 
 
 
 mylongtext <- strwrap(mylongtext)
+
+# `r mylongtext`
+
 ```
 
 
@@ -81,7 +84,6 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 </style>
 <div class = "blue">
 
-`r mylongtext`
 
 </div>
 
@@ -89,7 +91,6 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 \noindent\colorbox{yellow}{
 \parbox{\dimexpr\linewidth-2\fboxsep}{
 
-`r mylongtext`
 
 }
 }

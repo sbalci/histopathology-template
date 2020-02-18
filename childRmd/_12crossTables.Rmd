@@ -1,15 +1,17 @@
+## Cross Tables
+
+
 **Codes for cross tables**.^[See [`childRmd/_12crossTables.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_12crossTables.Rmd) file for other codes]
 
 
-# Cross Tables
 
 
-```{r load finalfit, eval=FALSE, include=FALSE}
+```{r load finalfit}
 library(finalfit)
 ```
 
 
-```{r select dependent and explanatory variables, eval=FALSE, include=FALSE}
+```{r select dependent and explanatory variables}
 dependent <- c("dependent1",
                "dependent2"
               )
@@ -17,6 +19,11 @@ dependent <- c("dependent1",
 explanatory <- c("explanatory1",
                  "explanatory2"
                  )
+
+dependent <- "PreinvasiveComponent"
+
+explanatory <- c("Sex", "Age", "Grade", "TStage")
+
 ```
 
 
@@ -24,13 +31,13 @@ explanatory <- c("explanatory1",
 Change `column = TRUE` argument to get row or column percentages.
 
 
-```{r generate code for Cross Table, eval=FALSE, include=FALSE}
+```{r generate code for Cross Table}
 source(here::here("R", "gc_table_cross.R"))
 ```
 
 
 
-```{r generatedCode for Cross Table, child = here::here('childRmd', 'generatedCodeCrossTables.Rmd'), eval=FALSE, include=FALSE}
+```{r generatedCode for Cross Table, child=here::here('childRmd', 'generatedCodeCrossTables.Rmd')}
 ```
 
 
