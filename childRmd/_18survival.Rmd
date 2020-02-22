@@ -456,11 +456,21 @@ explanatoryMultivariate <- explanatoryKM
 dependentMultivariate <- dependentKM
 
 mydata %>%
-  finalfit(dependentMultivariate, explanatoryMultivariate) -> tMultivariate
+  finalfit(dependentMultivariate, explanatoryMultivariate, metrics=TRUE) -> tMultivariate
 
 knitr::kable(tMultivariate, row.names=FALSE, align=c("l", "l", "r", "r", "r", "r"))
 ```
 
+
+
+explanatory = c("age.factor", "sex.factor", 
+  "obstruct.factor", "perfor.factor")
+dependent = 'mort_5yr'
+colon_s %>%
+  hr_plot(dependent, explanatory)
+  
+  
+  
 
 
 <!-- # parsnip -->

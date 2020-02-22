@@ -143,6 +143,10 @@ https://neuropsychology.github.io/psycho.R/2018/05/20/correlation.html
 
 devtools::install_github("neuropsychology/psycho.R")  # Install the newest version
 
+remove.packages("psycho")
+renv::install("neuropsychology/psycho.R@0.4.0")
+# devtools::install_github("neuropsychology/psycho.R@0.4.0")
+
 library(psycho)
 <!-- library(tidyverse) -->
 

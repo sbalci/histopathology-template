@@ -24,6 +24,7 @@ header-includes:
 - \renewcommand{\linethickness}{0.05em}
 - \usepackage{booktabs}
 - \usepackage{sectsty} \allsectionsfont{\nohang\centering \emph}
+- \usepackage{float}
 output:
   html_document: 
     toc: yes

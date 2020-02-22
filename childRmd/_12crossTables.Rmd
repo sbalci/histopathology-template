@@ -117,6 +117,61 @@ datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5,
 ```
 
 
+### chi-square posthoc pairwise 
+
+#### rmngb
+
+
+```{r}
+library("rmngb")
+# rmngb::pairwise.chisq.test(mydata$StageGr2, mydata$Ki67Gr)
+rmngb::pairwise.fisher.test(mydata$StageGr2, mydata$Ki67Gr)
+
+```
+
+
+```{r}
+# rmngb::pairwise.chisq.test(mydata$LiverDistantMets, mydata$Ki67Gr, p.adj = "BH")
+rmngb::pairwise.fisher.test(mydata$LiverDistantMets, mydata$Ki67Gr, p.adj = "BH")
+```
+
+
+```{r}
+# rmngb::pairwise.chisq.test(mydata$PNI, mydata$Ki67Gr, p.adj = "BH")
+rmngb::pairwise.fisher.test(mydata$PNI, mydata$Ki67Gr, p.adj = "BH")
+```
+
+
+
+```{r}
+# rmngb::pairwise.chisq.test(mydata$LVI, mydata$Ki67Gr, p.adj = "BH")
+rmngb::pairwise.fisher.test(mydata$LVI, mydata$Ki67Gr, p.adj = "BH")
+```
+
+
+#### RVAideMemoire
+
+
+```{r}
+MBStudy <- 
+tibble::tribble(
+           ~Grup,                           ~Diagnosis,   ~Number,
+   "\"Grup1\"",           "\"Endometriosis\"", 1383L,
+  "\"Grup2A\"",           "\"Endometriosis\"",   58L,
+  "\"Grup2B\"",           "\"Endometriosis\"",  349L,
+   "\"Grup3\"",           "\"Endometriosis\"", 5217L,
+   "\"Grup1\"", "\"Stromal   endometriosis\"",   13L,
+  "\"Grup2A\"", "\"Stromal   endometriosis\"",    2L,
+  "\"Grup2B\"", "\"Stromal   endometriosis\"",   47L,
+   "\"Grup3\"", "\"Stromal   endometriosis\"",  476L,
+   "\"Grup1\"",   "\"Inflammation fibrosis\"",   56L,
+  "\"Grup2A\"",   "\"Inflammation fibrosis\"",   52L,
+  "\"Grup2B\"",   "\"Inflammation fibrosis\"",  267L,
+   "\"Grup3\"",   "\"Inflammation fibrosis\"", 1387L
+  )
+
+
+```
 
 
 
