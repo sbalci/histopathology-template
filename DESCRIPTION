@@ -24,7 +24,7 @@ RoxygenNote: 7.0.2
 URL: https://sbalci.github.io/histopathology-template
 BugReports: https://github.com/sbalci/histopathology-template
 Depends: 
-    R (>= 3.1.0),
+    R (>= 3.6.0),
     ggplot2,
     dplyr,
     tidyr,
