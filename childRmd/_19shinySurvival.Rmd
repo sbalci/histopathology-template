@@ -9,7 +9,7 @@ runtime: shiny
 **Codes for generating Shiny Survival Analysis**.^[See [`childRmd/_19shinySurvival.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_19shinySurvival.Rmd) file for other codes]
 
 
-```{r load library shiny, include = FALSE, cache=FALSE}
+```{r load library shiny, eval=FALSE, cache=FALSE, include=FALSE}
 library("shiny")
 library("dplyr")
 library("magrittr")
@@ -23,7 +23,7 @@ library("glue")
 
 
 
-```{r rad and recode data, echo = FALSE, cache=FALSE}
+```{r rad and recode data, eval=FALSE, cache=FALSE, include=FALSE}
 mydata <- readxl::read_excel(here::here("data", "mydata.xlsx"))
 mydata$int <- lubridate::interval(
   lubridate::ymd(mydata$SurgeryDate),
@@ -49,7 +49,7 @@ mydata %>%
 ```
 
 
-```{r shiny output, echo = FALSE, cache=FALSE}
+```{r shiny output, eval=FALSE, cache=FALSE, include=FALSE}
 selectInput(
   inputId = "Factor",
   label = "Choose a Factor Affecting Survival",

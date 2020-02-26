@@ -38,7 +38,8 @@ knit_hooks$set(output = function(x, options) {
 ```
 
 
-```{css}
+```{css, tidy=FALSE}
+# linewidth css
   pre:not([class]) {
     color: #333333;
     background-color: #cccccc;
@@ -46,7 +47,8 @@ knit_hooks$set(output = function(x, options) {
 ```
 
 
-```{r, linewidth=60, echo=TRUE}
+```{r, linewidth=60}
+# linewidth css
 ```
 
 
