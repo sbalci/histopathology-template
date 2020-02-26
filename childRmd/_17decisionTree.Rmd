@@ -19,7 +19,7 @@ iris %>% explain_tree(target = Sepal.Length)
 
 **Explore**
 
-```{r explore, echo=TRUE, eval=FALSE}
+```{r explore data, echo=TRUE, eval=FALSE}
 explore::explore(mydata)
 ```
 

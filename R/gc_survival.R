@@ -159,7 +159,7 @@ knitr::kable(results1html,
 
 "**Pairwise Comparisons**","\n", "\n",
       
-"```{r}  
+"```{r eval=FALSE, include=FALSE, echo=TRUE}  
 
     survminer::pairwise_survdiff(
     formula = formula_p,

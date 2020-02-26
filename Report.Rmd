@@ -25,6 +25,7 @@ header-includes:
 - \usepackage{booktabs}
 - \usepackage{sectsty} \allsectionsfont{\nohang\centering \emph}
 - \usepackage{float}
+- \usepackage{svg}
 output:
   html_document: 
     toc: yes
@@ -37,9 +38,6 @@ output:
     code_folding: "hide"
     includes:
       after_body: _footer.html
-  rmarkdown::html_vignette: 
-    css: 
-    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
   prettydoc::html_pretty:
     theme: leonids
     highlight: vignette
@@ -48,12 +46,15 @@ output:
     css: css/style.css
     includes:
       after_body: _footer.html
-  distill::distill_article:
-    toc: true
+  rmarkdown::html_vignette: 
+    css: 
+    - !expr system.file("rmarkdown/templates/html_vignette/resources/vignette.css", package = "rmarkdown")
   redoc::redoc:
     highlight_outputs: TRUE
     margins: 1 
     line_numbers: FALSE 
+  distill::distill_article:
+    toc: true
   pdf_document: 
     fig_caption: yes
     highlight: kate
@@ -62,6 +63,8 @@ output:
     latex_engine: lualatex
     toc_depth: 5
     keep_tex: yes
+    includes:
+      in_header: highlight_echo.tex    
 vignette: >
   %\VignetteIndexEntry{Histopathology Research Template}
   %\VignetteEncoding{UTF-8}
@@ -105,7 +108,7 @@ h4.date{
 <base target="_blank"/>  
 
 
-```{r run all Rmd without knit, include=FALSE}
+```{r run all Rmd without knit, eval=FALSE, include=FALSE}
 source_rmd <- function(rmd_file){
   knitr::knit(rmd_file, output = tempfile(), envir = globalenv())
 }
@@ -122,7 +125,7 @@ purrr::map(.x = here::here("childRmd", list_of_Rmd), .f = source_rmd)
 
 ---
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3635430.svg)](https://doi.org/10.5281/zenodo.3635430)
+$[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3635430.svg)](https://doi.org/10.5281/zenodo.3635430)$
 
 https://doi.org/10.5281/zenodo.3635430
 
@@ -269,29 +272,29 @@ https://osf.io/3tjfk/
 ---
 
 
-<!-- ## Data Dictionary -->
+## Data Dictionary
 
-<!-- ```{r data dictionary, child = here::here('childRmd', '_08dataDictionary.Rmd')} -->
-<!-- ``` -->
+```{r data dictionary, child = here::here('childRmd', '_08dataDictionary.Rmd')}
+```
 
-<!-- --- -->
+---
 
 
-<!-- ## Clean and Recode Data -->
+## Clean and Recode Data
 
-<!-- ```{r clean and recode, child = here::here('childRmd', '_09cleanRecode.Rmd')} -->
-<!-- ``` -->
+```{r clean and recode, child = here::here('childRmd', '_09cleanRecode.Rmd')}
+```
 
-<!-- --- -->
+---
 
-<!-- ## Impute Missing Data -->
+## Impute Missing Data
 
-<!-- ```{r impute, child = here::here('childRmd', '_10impute.Rmd')} -->
-<!-- ``` -->
+```{r impute, child = here::here('childRmd', '_10impute.Rmd')}
+```
 
-<!-- --- -->
+---
 
-<!-- \pagebreak -->
+\pagebreak
 
 
 ## Descriptive Statistics
@@ -312,31 +315,31 @@ https://osf.io/3tjfk/
 \elandscape
 
 
-<!-- ```{r plots, child = here::here('childRmd', '_13plots.Rmd')} -->
-<!-- ``` -->
+```{r plots, child = here::here('childRmd', '_13plots.Rmd')}
+```
 
 
 
 
-<!-- ```{r pairedTests, child = here::here('childRmd', '_14pairedTests.Rmd')} -->
-<!-- ``` -->
+```{r pairedTests, child = here::here('childRmd', '_14pairedTests.Rmd')}
+```
 
 
 
-<!-- ```{r hypothesisTests, child = here::here('childRmd', '_15hypothesisTests.Rmd')} -->
-<!-- ``` -->
+```{r hypothesisTests, child = here::here('childRmd', '_15hypothesisTests.Rmd')}
+```
 
-<!-- \newpage -->
-<!-- \blandscape -->
-
-
-
-<!-- ```{r ROC, child = here::here('childRmd', '_16ROC.Rmd')} -->
-<!-- ``` -->
+\newpage
+\blandscape
 
 
-<!-- ```{r Decision Tree, child = here::here('childRmd', '_17decisionTree.Rmd')} -->
-<!-- ``` -->
+
+```{r ROC, child = here::here('childRmd', '_16ROC.Rmd')}
+```
+
+
+```{r Decision Tree, child = here::here('childRmd', '_17decisionTree.Rmd')}
+```
 
 
 
@@ -349,39 +352,39 @@ https://osf.io/3tjfk/
 
 ---
 
-<!-- # Interactive Survival Analysis -->
+# Interactive Survival Analysis
 
-<!-- ```{r shiny survival, child = here::here('childRmd', '_19shinySurvival.Rmd')} -->
-<!-- ``` -->
-
-
-<!-- --- -->
-
-<!-- \elandscape -->
+```{r shiny survival, child = here::here('childRmd', '_19shinySurvival.Rmd')}
+```
 
 
-<!-- # Correlation -->
+---
+
+\elandscape
 
 
-<!-- ```{r correlation, child = here::here('childRmd', '_20correlation.Rmd')} -->
-<!-- ``` -->
+# Correlation
 
 
-<!-- # Models -->
+```{r correlation, child = here::here('childRmd', '_20correlation.Rmd')}
+```
 
 
-<!-- ```{r models, child = here::here('childRmd', '_21models.Rmd')} -->
-<!-- ``` -->
+# Models
 
 
-<!-- --- -->
-
-<!-- \pagebreak -->
-
+```{r models, child = here::here('childRmd', '_21models.Rmd')}
+```
 
 
-<!-- ```{r comments, child = here::here('childRmd', '_22comments.Rmd')} -->
-<!-- ``` -->
+---
+
+\pagebreak
+
+
+
+```{r comments, child = here::here('childRmd', '_22comments.Rmd')}
+```
 
 ---
 
@@ -407,14 +410,14 @@ https://osf.io/3tjfk/
 \pagebreak
 
 
-<!-- **push all changes to GitHub repository**  -->
+**push all changes to GitHub repository**
 
-<!-- ```{r git update} -->
-<!-- source(file = here::here("R", "force_git.R")) -->
-<!-- ``` -->
+```{r git update}
+source(file = here::here("R", "force_git.R"))
+```
 
 
-<!-- --- -->
+---
 
 
 # References

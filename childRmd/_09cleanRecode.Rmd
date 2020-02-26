@@ -11,7 +11,7 @@ mydata <- janitor::clean_names(mydata)
 
 
 
-```{r explore, eval=FALSE, include=FALSE}
+```{r explore describe iris , eval=FALSE, include=FALSE}
 iris %>% 
   explore::clean_var(data = ., 
                      var = Sepal.Length,  

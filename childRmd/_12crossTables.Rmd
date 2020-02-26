@@ -12,13 +12,13 @@ library(finalfit)
 
 
 ```{r select dependent and explanatory variables}
-dependent <- c("dependent1",
-               "dependent2"
-              )
+# dependent <- c("dependent1",
+#                "dependent2"
+#               )
 
-explanatory <- c("explanatory1",
-                 "explanatory2"
-                 )
+# explanatory <- c("explanatory1",
+#                  "explanatory2"
+#                  )
 
 dependent <- "PreinvasiveComponent"
 
@@ -122,7 +122,7 @@ datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5,
 #### rmngb
 
 
-```{r}
+```{r eval=FALSE, include=FALSE, echo=TRUE}
 library("rmngb")
 # rmngb::pairwise.chisq.test(mydata$StageGr2, mydata$Ki67Gr)
 rmngb::pairwise.fisher.test(mydata$StageGr2, mydata$Ki67Gr)
@@ -130,20 +130,20 @@ rmngb::pairwise.fisher.test(mydata$StageGr2, mydata$Ki67Gr)
 ```
 
 
-```{r}
+```{r eval=FALSE, include=FALSE, echo=TRUE}
 # rmngb::pairwise.chisq.test(mydata$LiverDistantMets, mydata$Ki67Gr, p.adj = "BH")
 rmngb::pairwise.fisher.test(mydata$LiverDistantMets, mydata$Ki67Gr, p.adj = "BH")
 ```
 
 
-```{r}
+```{r eval=FALSE, include=FALSE, echo=TRUE}
 # rmngb::pairwise.chisq.test(mydata$PNI, mydata$Ki67Gr, p.adj = "BH")
 rmngb::pairwise.fisher.test(mydata$PNI, mydata$Ki67Gr, p.adj = "BH")
 ```
 
 
 
-```{r}
+```{r eval=FALSE, include=FALSE, echo=TRUE}
 # rmngb::pairwise.chisq.test(mydata$LVI, mydata$Ki67Gr, p.adj = "BH")
 rmngb::pairwise.fisher.test(mydata$LVI, mydata$Ki67Gr, p.adj = "BH")
 ```
@@ -152,18 +152,18 @@ rmngb::pairwise.fisher.test(mydata$LVI, mydata$Ki67Gr, p.adj = "BH")
 #### RVAideMemoire
 
 
-```{r}
+```{r eval=FALSE, include=FALSE, echo=TRUE}
 MBStudy <- 
 tibble::tribble(
            ~Grup,                           ~Diagnosis,   ~Number,
-   "\"Grup1\"",           "\"Endometriosis\"", 1383L,
-  "\"Grup2A\"",           "\"Endometriosis\"",   58L,
-  "\"Grup2B\"",           "\"Endometriosis\"",  349L,
-   "\"Grup3\"",           "\"Endometriosis\"", 5217L,
-   "\"Grup1\"", "\"Stromal   endometriosis\"",   13L,
-  "\"Grup2A\"", "\"Stromal   endometriosis\"",    2L,
-  "\"Grup2B\"", "\"Stromal   endometriosis\"",   47L,
-   "\"Grup3\"", "\"Stromal   endometriosis\"",  476L,
+   "\"Grup1\"",           "\"Diseased\"", 1383L,
+  "\"Grup2A\"",           "\"Diseased\"",   58L,
+  "\"Grup2B\"",           "\"Diseased\"",  349L,
+   "\"Grup3\"",           "\"Diseased\"", 5217L,
+   "\"Grup1\"", "\"Stromal   Diseased\"",   13L,
+  "\"Grup2A\"", "\"Stromal   Diseased\"",    2L,
+  "\"Grup2B\"", "\"Stromal   Diseased\"",   47L,
+   "\"Grup3\"", "\"Stromal   Diseased\"",  476L,
    "\"Grup1\"",   "\"Inflammation fibrosis\"",   56L,
   "\"Grup2A\"",   "\"Inflammation fibrosis\"",   52L,
   "\"Grup2B\"",   "\"Inflammation fibrosis\"",  267L,
@@ -175,4 +175,101 @@ tibble::tribble(
 
 
 
+
+```{r eval=FALSE, include=FALSE, echo=TRUE}
+MBStudy <- 
+  tibble::tribble(
+    ~Grup,                           ~Diagnosis,   ~Number,
+    "\"Grup1\"",           "\"Diseased\"", 1383L,
+    "\"Grup2A\"",           "\"Diseased\"",   58L,
+    "\"Grup2B\"",           "\"Diseased\"",  349L,
+    "\"Grup3\"",           "\"Diseased\"", 5217L,
+    "\"Grup1\"", "\"Stromal   Diseased\"",   13L,
+    "\"Grup2A\"", "\"Stromal   Diseased\"",    2L,
+    "\"Grup2B\"", "\"Stromal   Diseased\"",   47L,
+    "\"Grup3\"", "\"Stromal   Diseased\"",  476L,
+    "\"Grup1\"",   "\"Inflammation fibrosis\"",   56L,
+    "\"Grup2A\"",   "\"Inflammation fibrosis\"",   52L,
+    "\"Grup2B\"",   "\"Inflammation fibrosis\"",  267L,
+    "\"Grup3\"",   "\"Inflammation fibrosis\"", 1387L
+  )
+
+
+MBStudy <- 
+data.frame(
+  stringsAsFactors = FALSE,
+                V1 = c("\"Grup1\"","\"Grup2A\"",
+                       "\"Grup2B\"","\"Grup3\"","\"Grup1\"","\"Grup2A\"",
+                       "\"Grup2B\"","\"Grup3\"","\"Grup1\"","\"Grup2A\"",
+                       "\"Grup2B\"","\"Grup3\""),
+                V2 = c("\"Diseased\"",
+                       "\"Diseased\"","\"Diseased\"","\"Diseased\"",
+                       "\"Stromal   Diseased\"","\"Stromal   Diseased\"",
+                       "\"Stromal   Diseased\"",
+                       "\"Stromal   Diseased\"","\"Inflammation fibrosis\"",
+                       "\"Inflammation fibrosis\"","\"Inflammation fibrosis\"",
+                       "\"Inflammation fibrosis\""),
+                V3 = c(1383L,58L,349L,5217L,13L,
+                       2L,47L,476L,56L,52L,267L,1387L)
+)
+
+MBStudy <- matrix(c(
+1383L,                    13L,                    56L,
+58L,                     2L,                    52L,
+349L,                    47L,                   267L,
+5217L,                   476L,                  1387L
+  ), byrow = TRUE, nrow = 4, dimnames = list(c("Grup1", "Grup2A", "Grup2B", "Grup3"), c("Diseased", "Stromal Diseased", "Inflammation")))
+
+
+RVAideMemoire::chisq.multcomp(MBStudy)
+```
+
+
+\newpage
+\blandscape
+
+```{r eval=FALSE, include=FALSE, echo=TRUE}
+MBStudy
+```
+
+
+```{r eval=FALSE, include=FALSE, echo=TRUE}
+MB_table <- RVAideMemoire::fisher.multcomp(tab.cont = MBStudy)
+
+MB_table$p.value %>% 
+  as.data.frame() %>%
+  tibble::rownames_to_column(var = "Grup") %>% 
+  gt::gt(.) %>% 
+  gt::fmt_number(., columns = dplyr::contains("Diseased"), decimals = 4)
+
+```
+
+
+\elandscape
+
+```{r eval=FALSE, include=FALSE, echo=TRUE}
+rmngb::pairwise.fisher.test.table(MBStudy)
+  
+```
+
+
+```{r eval=FALSE, include=FALSE, echo=TRUE}
+MBStudy2 <- matrix(c(
+13L, 	53L,
+9L,	5L,
+3L,	26L),
+byrow = TRUE,
+nrow = 3,
+dimnames = list(
+c("Diseased", "Inflammation", "Fibrosis"),
+c("sw", "cds")
+))
+
+MBStudy2
+
+MBStudy2_analysis <-  RVAideMemoire::fisher.multcomp(tab.cont = t(MBStudy2))
+
+MBStudy2_analysis$p.value
+
+```
 

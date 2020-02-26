@@ -3,7 +3,7 @@
 **Codes for generating correlation analysis**.^[See [`childRmd/_20correlation.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_20correlation.Rmd) file for other codes]
 
 
-```{r load library, eval=FALSE, include=FALSE}
+```{r load library correlation, eval=FALSE, include=FALSE}
 #  https://easystats.github.io/correlation/
 # install.packages("devtools")
 # devtools::install_github("easystats/correlation")
@@ -72,7 +72,7 @@ iris %>%
 
 
 
-```{r explore, eval=FALSE, include=FALSE}
+```{r correlation explore, eval=FALSE, include=FALSE}
 iris %>% explore(Sepal.Length, Petal.Length)
 
 iris$is_versicolor <- ifelse(iris$Species == "versicolor", 1, 0)

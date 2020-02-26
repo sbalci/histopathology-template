@@ -1,0 +1,23 @@
+\usepackage{xcolor}
+\definecolor{backgroundecho}{HTML}{cccccc}
+\definecolor{textecho}{HTML}{333333}
+
+\let\oldverbatim=\verbatim
+\let\oldendverbatim=\endverbatim
+
+\makeatletter
+\renewenvironment{verbatim}{
+    \def\FrameCommand{
+        \hskip-\fboxsep
+        \color{textecho}
+        \colorbox{backgroundecho}
+        }
+    \MakeFramed{\@setminipage}
+    \oldverbatim
+}
+{
+    \oldendverbatim
+    \vskip-2em\@minipagefalse % The size required for this negative space is probably in some variable
+    \endMakeFramed
+}
+\makeatother

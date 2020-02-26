@@ -23,7 +23,7 @@ mydata %>%
 explanatoryUni <- 'LVI'
 dependentUni <- 'Surv(OverallTime, Outcome)'
 mydata %>%
-finalfit(dependentUni, explanatoryUni) -> tUni
+finalfit(dependentUni, explanatoryUni, metrics=TRUE) -> tUni
 
 knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
 
@@ -154,23 +154,8 @@ knitr::kable(results1html,
 
 **Pairwise Comparisons**
 
-```{r, eval = FALSE, include = FALSE}  
+```{r eval=FALSE, include=FALSE, echo=TRUE}  
 
-     
-
-formula_p1 <- jmvcore::constructFormula(terms = self$options$overalltime)
-
-formula_p3 <- jmvcore::constructFormula(terms = LVI)
-
-formula_p2 <- jmvcore::constructFormula(terms = self$options$outcome)
-
-
-formula_p <- paste('Surv(', formula_p1, ',',  formula_p2, ') ~ ', formula_p3)
-
-formula_p <- as.formula(formula_p)
-
-
-results8 <-
     survminer::pairwise_survdiff(
     formula = formula_p,
     data = self$data,
