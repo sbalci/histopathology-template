@@ -38,6 +38,35 @@ carseats %>%
 
 
 
+## jamovi
+
+
+
+```{r}
+mytable <- jmv::ttestIS(
+    formula = HindexCTLA4 ~ PeritumoralTomurcukGr4,
+    data = mydata,
+    vars = HindexCTLA4,
+    students = FALSE,
+    mann = TRUE,
+    norm = TRUE,
+    meanDiff = TRUE,
+    desc = TRUE,
+    plots = TRUE)
+
+```
+
+
+
+
+```{r, results='asis'}
+cat("<pre class='jamovitable'>")
+print(jtable(mytable$ttest))
+cat("</pre>")
+```
+
+
+
 
 ## Categorical
 

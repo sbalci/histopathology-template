@@ -94,6 +94,10 @@ Ewen Harrison, Tom Drake and Riinu Ots (2019). finalfit: Quickly Create Elegant 
 
 
 
-
+In Cohort 1, three patients were excluded from the survival analyses; two with I-type adenocarcinomas who died within one month of surgery due to complications and one with PB-type adenocarcinoma who emigrated five months after surgery. Another two patients with PB-type adenocarcinomas who had received neoadjuvant chemotherapy were excluded from the survival analyses since the treatment might have affected the expression of PODXL. The Kaplan Meier analysis and log-rank test were applied to
+33
+. To remove the cell debris, the
+11
+illustrate differences in overall survival (OS) with respect to PODXL and EGFR expression. The p-value was based on a pairwise comparison. Cox regression proportional hazard models were used to estimate hazard ratios (HRs) for death in both univariable and multivariable analysis, adjusted for tumor grade, T-stage (T1-2 vs. T3-4), N-stage (N0 vs. N1), perineural growth, blood vessel invasion, lymphatic invasion, the invasion of peripancreatic fat, adjuvant treatment, and for morphological type in Cohort 1, and adjusted for tumor grade, T-stage (T1-2 vs. T3-4), N-stage (N0 vs. N1), perineural growth, blood vessel invasion, and adjuvant treatment in Cohort 2. The proportional hazard (PH) assumption was tested graphically by using log-minus- log plots. The PH assumption was also evaluated using the Cox regression analysis with a time-dependent covariate analysis, whereby the PH assumption was considered to be satisfied when the factor-by-time interaction was not significant. All statistical analyses were performed using IBM SPSS Statistics version 22.0 (SPSS Inc., Chicago, IL, USA). All tests were two-sided and we considered p-values <0.05 significant.
 
 

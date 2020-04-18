@@ -9,7 +9,7 @@ author:
     url: https://sbalci.github.io/histopathology-template/
     affiliation: serdarbalci.com
     affiliation_url: https://www.serdarbalci.com/
-date: "2020-02-26"
+date: "2020-04-18"
 mail: drserdarbalci@gmail.com
 linkedin: "serdar-balci-md-pathologist"
 twitter: "serdarbalci"
@@ -26,6 +26,7 @@ header-includes:
 - \usepackage{sectsty} \allsectionsfont{\nohang\centering \emph}
 - \usepackage{float}
 - \usepackage{svg}
+always_allow_html: yes
 output:
   html_document: 
     toc: yes
@@ -38,6 +39,7 @@ output:
     code_folding: "hide"
     includes:
       after_body: _footer.html
+    css: css/style.css
   prettydoc::html_pretty:
     theme: leonids
     highlight: vignette
@@ -151,6 +153,16 @@ https://osf.io/3tjfk/
 
 ---
 
+## Statistical Methods
+
+
+
+
+
+
+----
+
+
 ## Header Codes
 
 
@@ -199,6 +211,7 @@ knit_hooks$set(output = function(x, options) {
 
 
 
+
 ```css
 # linewidth css
   pre:not([class]) {
@@ -221,6 +234,66 @@ knit_hooks$set(output = function(x, options) {
 ```r
 # linewidth css
 ```
+
+
+
+```css
+pre.jamovitable{
+  color:black;
+  background-color: white;
+  margin-bottom: 35px;  
+}
+```
+
+
+<style type="text/css">
+pre.jamovitable{
+  color:black;
+  background-color: white;
+  margin-bottom: 35px;  
+}
+</style>
+
+
+
+
+```r
+jtable <- function(jobject, digits = 3) {
+    snames <- sapply(jobject$columns, function(a) a$title)
+    asDF <- jobject$asDF
+    tnames <- unlist(lapply(names(asDF), function(n) snames[[n]]))
+    names(asDF) <- tnames
+    kableExtra::kable(asDF, "html", table.attr = "class=\"jmv-results-table-table\"", 
+        row.names = F, digits = 3)
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+<div class="rmdnote">
+<p>Block rmdnote</p>
+</div>
+
+
+
+<div class="rmdtip">
+<p>Block rmdtip</p>
+</div>
+
+
+
+
+<div class="rmdwarning">
+<p>Block warning</p>
+</div>
 
 
 
@@ -2799,7 +2872,7 @@ datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5,
 
 
 
-# Plots
+## Plots
 
 **Codes for generating Plots**.^[See [`childRmd/_13plots.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_13plots.Rmd) file for other codes]
 
@@ -2961,7 +3034,7 @@ datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5,
 <!-- ``` -->
 
 
-# Plots
+### Plots
 
 <!-- ## Categorical Variables -->
 
@@ -3307,8 +3380,10 @@ datatable(mtcars, rownames = FALSE, filter="top", options = list(pageLength = 5,
 
 
 
-# Interactive graphics {#interactive}
+### Interactive graphics {#interactive}
+
 ***
+
 R allows to build any type of [interactive graphic](https://www.r-graph-gallery.com/interactive-charts/). My favourite library is [plotly](https://www.r-graph-gallery.com/get-the-best-from-ggplotly/) that will turn any of your ggplot2 graphic interactive in one supplementary line of code. Try to hover points, to select a zone, to click on the legend.
 <br><br>
 
@@ -3323,6 +3398,141 @@ p <- gapminder %>% filter(year == 1977) %>% ggplot(aes(gdpPercap, lifeExp, size 
 
 ggplotly(p)
 ```
+
+
+
+---
+
+
+```r
+scales::show_col(colours(), cex_label = 0.35)
+```
+
+![](/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-54-1.png)<!-- -->
+
+
+
+```r
+embedgist <- gistr::gist("https://gist.github.com/sbalci/834ebc154c0ffcb7d5899c42dd3ab75e") %>% 
+    gistr::embed()
+```
+
+
+<script src="https://gist.github.com/sbalci/834ebc154c0ffcb7d5899c42dd3ab75e.js"></script>
+
+
+<script src="https://gist.github.com/sbalci/834ebc154c0ffcb7d5899c42dd3ab75e.js"></script>
+
+
+
+---
+
+### Alluvial
+
+
+```r
+# https://stackoverflow.com/questions/43053375/weighted-sankey-alluvial-diagram-for-visualizing-discrete-and-continuous-panel/48133004
+
+library(tidyr)
+library(dplyr)
+library(alluvial)
+library(ggplot2)
+library(forcats)
+
+set.seed(42)
+individual <- rep(LETTERS[1:10], each = 2)
+timeperiod <- paste0("time_", rep(1:2, 10))
+discretechoice <- factor(paste0("choice_", sample(letters[1:3], 20, replace = T)))
+continuouschoice <- ceiling(runif(20, 0, 100))
+d <- data.frame(individual, timeperiod, discretechoice, continuouschoice)
+```
+
+
+```r
+# stacked bar diagram of discrete choice by individual
+g <- ggplot(data = d, aes(timeperiod, fill = fct_rev(discretechoice)))
+g + geom_bar(position = "stack") + guides(fill = guide_legend(title = NULL))
+```
+
+![](/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-56-1.png)<!-- -->
+
+
+
+```r
+# alluvial diagram of discrete choice by individual
+d_alluvial <- d %>% select(individual, timeperiod, discretechoice) %>% spread(timeperiod, 
+    discretechoice) %>% group_by(time_1, time_2) %>% summarize(count = n()) %>% ungroup()
+```
+
+```
+Error in UseMethod("ungroup"): no applicable method for 'ungroup' applied to an object of class "list"
+```
+
+```r
+alluvial(select(d_alluvial, -count), freq = d_alluvial$count)
+```
+
+```
+Error in log_select(.data, .fun = dplyr::select, .funname = "select", : object 'd_alluvial' not found
+```
+
+
+
+```r
+# stacked bar diagram of discrete choice, weighting by continuous choice
+g + geom_bar(position = "stack", aes(weight = continuouschoice))
+```
+
+![](/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-58-1.png)<!-- -->
+
+
+
+```r
+library(ggalluvial)
+ggplot(data = d, aes(x = timeperiod, stratum = discretechoice, alluvium = individual, 
+    y = continuouschoice)) + geom_stratum(aes(fill = discretechoice)) + geom_flow()
+```
+
+![](/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-59-1.png)<!-- -->
+
+
+
+
+
+
+
+
+
+  
+
+```r
+CD44changes <- mydata %>% dplyr::select(TumorCD44, TomurcukCD44, PeritumoralTomurcukGr4) %>% 
+    dplyr::filter(complete.cases(.)) %>% dplyr::group_by(TumorCD44, TomurcukCD44, 
+    PeritumoralTomurcukGr4) %>% dplyr::tally()
+```
+
+```
+Error: Can't subset columns that don't exist.
+[31mx[39m The column `TumorCD44` doesn't exist.
+```
+
+```r
+library(ggalluvial)
+
+ggplot(data = CD44changes, aes(axis1 = TumorCD44, axis2 = TomurcukCD44, y = n)) + 
+    scale_x_discrete(limits = c("TumorCD44", "TomurcukCD44"), expand = c(0.1, 0.05)) + 
+    xlab("Tumor Tomurcuk") + geom_alluvium(aes(fill = PeritumoralTomurcukGr4, colour = PeritumoralTomurcukGr4)) + 
+    geom_stratum(alpha = 0.5) + geom_text(stat = "stratum", infer.label = TRUE) + 
+    # geom_text(stat = 'alluvium', infer.label = TRUE) +
+theme_minimal() + ggtitle("Changes in CD44")
+```
+
+```
+Error in ggplot(data = CD44changes, aes(axis1 = TumorCD44, axis2 = TomurcukCD44, : object 'CD44changes' not found
+```
+
+  
+
 
 
 
@@ -3368,6 +3578,47 @@ ggplotly(p)
 
 
 
+
+
+
+## jamovi
+
+
+
+
+```r
+mytable <- jmv::ttestIS(formula = HindexCTLA4 ~ PeritumoralTomurcukGr4, data = mydata, 
+    vars = HindexCTLA4, students = FALSE, mann = TRUE, norm = TRUE, meanDiff = TRUE, 
+    desc = TRUE, plots = TRUE)
+```
+
+```
+Error: Argument 'vars' contains 'HindexCTLA4' which is not present in the dataset
+```
+
+
+
+
+
+```r
+cat("<pre class='jamovitable'>")
+```
+
+<pre class='jamovitable'>
+
+```r
+print(jtable(mytable$ttest))
+```
+
+```
+Error in lapply(X = X, FUN = FUN, ...): object 'mytable' not found
+```
+
+```r
+cat("</pre>")
+```
+
+</pre>
 
 
 
@@ -3618,6 +3869,10 @@ plot(km)
 
 
 
+
+
+
+
 **Kaplan-Meier Plot Log-Rank Test**
 
 
@@ -3678,15 +3933,15 @@ dependentUni <- "Surv(OverallTime, Outcome)"
 
 tUni <- mydata %>% finalfit::finalfit(dependentUni, explanatoryUni)
 
-knitr::kable(tUni, row.names = FALSE, align = c("l", "l", "r", "r", "r", "r"))
+knitr::kable(tUni[, 1:4], row.names = FALSE, align = c("l", "l", "r", "r", "r", "r"))
 ```
 
 
 
-Dependent: Surv(OverallTime, Outcome)                      all            HR (univariable)          HR (multivariable)
---------------------------------------  --------  ------------  --------------------------  --------------------------
-LVI                                     Absent     147 (100.0)                           -                           -
-                                        Present    102 (100.0)   1.59 (1.15-2.20, p=0.005)   1.59 (1.15-2.20, p=0.005)
+Dependent: Surv(OverallTime, Outcome)                      all            HR (univariable)
+--------------------------------------  --------  ------------  --------------------------
+LVI                                     Absent     147 (100.0)                           -
+                                        Present    102 (100.0)   1.59 (1.15-2.20, p=0.005)
 
 
 ```r
@@ -3711,7 +3966,7 @@ When LVI is Present, there is 1.59 (1.15-2.20, p=0.005) times risk than when LVI
 \noindent\colorbox{yellow}{
 \parbox{\dimexpr\linewidth-2\fboxsep}{
 
-When LVI is Present, there is 1.59 (1.15-2.20, p=0.005) times risk than when LVI is Absent.
+$ When LVI is Present, there is 1.59 (1.15-2.20, p=0.005) times risk than when LVI is Absent. $
 
 }
 }
@@ -3744,6 +3999,10 @@ plot(km_fit)
 ```r
 # summary(km_fit)
 ```
+
+
+
+
 
 
 
@@ -3909,32 +4168,12 @@ explanatoryUni <- "LVI"
 dependentUni <- "Surv(OverallTime, Outcome)"
 tUni <- mydata %>% finalfit(dependentUni, explanatoryUni, metrics = TRUE)
 
-knitr::kable(tUni, row.names = FALSE, align = c("l", "l", "r", "r", "r", "r"))
+knitr::kable(tUni[, 1:4], row.names = FALSE, align = c("l", "l", "r", "r", "r", "r"))
 ```
 
-
-
-<table class="kable_wrapper">
-<tbody>
-  <tr>
-   <td> 
-
-Dependent: Surv(OverallTime, Outcome)                      all            HR (univariable)          HR (multivariable)
---------------------------------------  --------  ------------  --------------------------  --------------------------
-LVI                                     Absent     147 (100.0)                           -                           -
-                                        Present    102 (100.0)   1.59 (1.15-2.20, p=0.005)   1.59 (1.15-2.20, p=0.005)
-
- </td>
-   <td> 
-
-|x                                                                                                                                                                                                                    |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|Number in dataframe = 250, Number in model = 246, Missing = 4, Number of events = 164, Concordance = 0.554 (SE = 0.021), R-squared = 0.031( Max possible = 0.998), Likelihood ratio test = 7.767 (df = 1, p = 0.005) |
-
- </td>
-  </tr>
-</tbody>
-</table>
+```
+Error in tUni[, 1:4]: incorrect number of dimensions
+```
 
 **Univariate Cox-Regression Summary**
 
@@ -4266,7 +4505,7 @@ explanatoryUni <- "Operation"
 dependentUni <- "Surv(OverallTime, Outcome)"
 tUni <- mb_followup %>% finalfit(dependentUni, explanatoryUni)
 
-knitr::kable(tUni, row.names = FALSE, align = c("l", "l", "r", "r", "r", "r"))
+knitr::kable(tUni[, 1:4], row.names = FALSE, align = c("l", "l", "r", "r", "r", "r"))
 ```
 
 **Univariate Cox-Regression Summary**
@@ -4357,6 +4596,26 @@ survminer::pairwise_survdiff(formula = Surv(OverallTime, Outcome) ~ Operation, d
 ```
 
 \pagebreak
+
+
+---
+
+
+```r
+library(gt)
+library(gtsummary)
+
+library(survival)
+fit1 <- survfit(Surv(ttdeath, death) ~ trt, trial)
+tbl_strata_ex1 <- tbl_survival(fit1, times = c(12, 24), label = "{time} Months")
+
+fit2 <- survfit(Surv(ttdeath, death) ~ 1, trial)
+tbl_nostrata_ex2 <- tbl_survival(fit2, probs = c(0.1, 0.2, 0.5), header_estimate = "**Months**")
+```
+
+
+
+
 
 
 
@@ -4836,7 +5095,7 @@ Text Here
 
 
 
-<img src="/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-61-1.png" width="50%" /><img src="/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-61-2.png" width="50%" />
+<img src="/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-77-1.png" width="50%" /><img src="/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-77-2.png" width="50%" />
 
 
 
@@ -4850,7 +5109,7 @@ Text Here
 <br><br>Here, I use 3 subunits of size 4 (4x3=12). The last column is used for a plot. You can read more about the grid system [here](bootstrap grid system). I got this result showing the following code in my R Markdown document.
 </div>
 <div class = "col-md-4">
-![](/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-62-1.png)<!-- -->
+![](/Users/serdarbalciold/histopathRprojects/histopathology-template/figs/unnamed-chunk-78-1.png)<!-- -->
 </div>
 </div>
 
@@ -4872,6 +5131,27 @@ content of sub-chapter #2
 ## Third
 
 content of sub-chapter #3
+
+
+
+
+
+<div class="rmdnote">
+<p>Block rmdnote</p>
+</div>
+
+
+
+<div class="rmdtip">
+<p>Block rmdtip</p>
+</div>
+
+
+
+<div class="warning">
+<p>Block warning</p>
+</div>
+
 
 ---
 
@@ -5303,11 +5583,17 @@ pacman::p_loaded(all = TRUE)
 
 ### Notes {.appendix}  
 
-Last update on 2020-02-26 20:51:12  
+Last update on $ 2020-04-18 13:58:57 $  
 
-Serdar Balci, MD, Pathologist  
-drserdarbalci@gmail.com  
+[Serdar Balci, MD, Pathologist](https://www.serdarbalci.com/)  
+serdarbalci@serdarbalci.com  
 https://rpubs.com/sbalci/CV   
+https://github.com/sbalci  
+https://sbalci.github.io/  
+[Patoloji Notları](http://www.patolojinotlari.com/)  
+[ParaPathology](http://www.parapathology.com/)  
+https://twitter.com/serdarbalci  
+
 
 ---
 
@@ -5375,8 +5661,29 @@ knit_hooks$set(output = function(x, options) {
     background-color: #cccccc;
   }
 # linewidth css
+pre.jamovitable{
+  color:black;
+  background-color: white;
+  margin-bottom: 35px;  
+}
+ jtable<-function(jobject,digits=3) {
+  snames<-sapply(jobject$columns,function(a) a$title)
+  asDF<-jobject$asDF
+  tnames<-unlist(lapply(names(asDF) ,function(n) snames[[n]]))
+  names(asDF)<-tnames
+  kableExtra::kable(asDF,"html",
+                    table.attr='class="jmv-results-table-table"',
+                    row.names = F,
+                    digits=3)
+}
 # https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html
 # exploreR::reset()
+Block rmdnote
+
+Block rmdtip
+
+Block warning
+
 source(file = here::here("R", "loadLibrary.R"))
 source(file = here::here("R", "gc_fake_data.R"))
 wakefield::table_heat(x = fakedata, palette = "Set1", flip = TRUE, print = TRUE)
@@ -6968,6 +7275,105 @@ p <- gapminder %>%
   theme_bw()
  
 ggplotly(p)
+scales::show_col(colours(), cex_label = .35)
+gistr::gist("https://gist.github.com/sbalci/834ebc154c0ffcb7d5899c42dd3ab75e") %>% 
+  gistr::embed() -> embedgist
+
+# https://stackoverflow.com/questions/43053375/weighted-sankey-alluvial-diagram-for-visualizing-discrete-and-continuous-panel/48133004
+
+library(tidyr)
+library(dplyr)
+library(alluvial)
+library(ggplot2)
+library(forcats)
+
+set.seed(42)
+individual <- rep(LETTERS[1:10],each=2)
+timeperiod <- paste0("time_",rep(1:2,10))
+discretechoice <- factor(paste0("choice_",sample(letters[1:3],20, replace=T)))
+continuouschoice <- ceiling(runif(20, 0, 100))
+d <- data.frame(individual, timeperiod, discretechoice, continuouschoice)
+
+# stacked bar diagram of discrete choice by individual
+g <- ggplot(data=d,aes(timeperiod,fill=fct_rev(discretechoice)))
+g + geom_bar(position="stack") + guides(fill=guide_legend(title=NULL))
+# alluvial diagram of discrete choice by individual
+d_alluvial <- d %>%
+  select(individual,timeperiod,discretechoice) %>%
+  spread(timeperiod,discretechoice) %>%
+  group_by(time_1,time_2) %>%
+  summarize(count=n()) %>%
+  ungroup()
+alluvial(select(d_alluvial,-count),freq=d_alluvial$count)
+# stacked bar diagram of discrete choice, weighting by continuous choice
+g + geom_bar(position="stack",aes(weight=continuouschoice))
+library(ggalluvial)
+ggplot(
+  data = d,
+  aes(
+    x = timeperiod,
+    stratum = discretechoice,
+    alluvium = individual,
+    y = continuouschoice
+  )
+) +
+  geom_stratum(aes(fill = discretechoice)) +
+  geom_flow()
+ # use of strata and labels
+ggplot(as.data.frame(Titanic),
+       aes(y = Freq,axis1 = Class, axis2 = Sex, axis3 = Age)) +
+  geom_flow() +
+  scale_x_discrete(limits = c("Class", "Sex", "Age")) +
+  geom_stratum() + 
+  geom_text(stat = "stratum", infer.label = TRUE) +
+  ggtitle("Alluvial plot of Titanic passenger demographic data")
+
+# use of facets
+ggplot(as.data.frame(Titanic),aes(y = Freq,axis1 = Class, axis2 = Sex)) +geom_flow(aes(fill = Age), width = .4) +geom_stratum(width = .4) +geom_text(stat = "stratum", infer.label = TRUE, size = 3) +scale_x_discrete(limits = c("Class", "Sex")) +facet_wrap(~ Survived, scales = "fixed")
+# time series alluvia of WorldPhones 
+wph <- as.data.frame(as.table(WorldPhones))
+names(wph) <- c("Year", "Region", "Telephones")
+ggplot(wph,aes(x = Year, alluvium = Region, y = Telephones)) +geom_flow(aes(fill = Region, colour = Region), width = 0)
+# rightward flow aesthetics for vaccine survey datad
+data(vaccinations)
+levels(vaccinations$response) <- rev(levels(vaccinations$response))
+
+ggplot(vaccinations,
+       aes(x = survey, 
+           stratum = response, 
+           alluvium = subject,
+           y = freq, 
+           fill = response 
+           label = round(a, 3)
+           )
+       ) +
+  geom_lode() + 
+  geom_flow() +
+  geom_stratum(alpha = 0) +
+  geom_text(stat = "stratum")
+
+CD44changes <- mydata %>%
+    dplyr::select(TumorCD44, TomurcukCD44, PeritumoralTomurcukGr4) %>% 
+    dplyr::filter(complete.cases(.)) %>%
+    dplyr::group_by(TumorCD44, TomurcukCD44, PeritumoralTomurcukGr4) %>% 
+    dplyr::tally()
+
+library(ggalluvial)
+
+ggplot(data = CD44changes,
+       aes(axis1 = TumorCD44, axis2 = TomurcukCD44,
+           y = n)) +
+  scale_x_discrete(limits = c("TumorCD44", "TomurcukCD44"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tumor Tomurcuk") +
+  geom_alluvium(aes(fill = PeritumoralTomurcukGr4,
+                    colour = PeritumoralTomurcukGr4                    )) +
+  geom_stratum(alpha = .5) +
+  geom_text(stat = "stratum", infer.label = TRUE) +
+  # geom_text(stat = 'alluvium', infer.label = TRUE) +
+  theme_minimal() +
+  ggtitle("Changes in CD44")
 library(arsenal)
 dat <- data.frame(
   tp = paste0("Time Point ", c(1, 2, 1, 2, 1, 2, 1, 2, 1, 2)),
@@ -7007,6 +7413,20 @@ carseats %>%
   group_by(US) %>%
   dlookr::plot_normality(Income)
 
+mytable <- jmv::ttestIS(
+    formula = HindexCTLA4 ~ PeritumoralTomurcukGr4,
+    data = mydata,
+    vars = HindexCTLA4,
+    students = FALSE,
+    mann = TRUE,
+    norm = TRUE,
+    meanDiff = TRUE,
+    desc = TRUE,
+    plots = TRUE)
+
+cat("<pre class='jamovitable'>")
+print(jtable(mytable$ttest))
+cat("</pre>")
 categ <- dlookr::target_by(carseats, US)
 cat_cat <- dlookr::relate(categ, ShelveLoc)
 cat_cat
@@ -7183,7 +7603,7 @@ dependentUni <- "Surv(OverallTime, Outcome)"
 mydata %>%
 finalfit::finalfit(dependentUni, explanatoryUni) -> tUni
 
-knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
+knitr::kable(tUni[, 1:4], row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
 tUni_df <- tibble::as_tibble(tUni, .name_repair = "minimal") %>% 
   janitor::clean_names() 
 
@@ -7445,7 +7865,7 @@ dependentUni <- 'Surv(OverallTime, Outcome)'
 mb_followup %>%
 finalfit(dependentUni, explanatoryUni) -> tUni
 
-knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
+knitr::kable(tUni[, 1:4], row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
 
 tUni_df <- tibble::as_tibble(tUni, .name_repair = 'minimal') %>%
 janitor::clean_names(dat = ., case = 'snake')
@@ -7542,6 +7962,30 @@ km_fit_definition
     data = mb_followup,
     p.adjust.method = 'BH'
 )
+library(gt)
+library(gtsummary)
+
+library(survival)
+fit1 <- survfit(Surv(ttdeath, death) ~ trt, trial)
+tbl_strata_ex1 <-
+  tbl_survival(
+    fit1,
+    times = c(12, 24),
+    label = "{time} Months"
+  )
+
+fit2 <- survfit(Surv(ttdeath, death) ~ 1, trial)
+tbl_nostrata_ex2 <-
+  tbl_survival(
+    fit2,
+    probs = c(0.1, 0.2, 0.5),
+    header_estimate = "**Months**"
+  )
+
+
+
+
+
 library(survival)
 library(survminer)
 library(finalfit)
@@ -7559,7 +8003,7 @@ dependentUni <- 'Surv(OverallTime, Outcome)'
 mydata %>%
 finalfit(dependentUni, explanatoryUni, metrics=TRUE) -> tUni
 
-knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
+knitr::kable(tUni[, 1:4], row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
 
 tUni_df <- tibble::as_tibble(tUni, .name_repair = 'minimal') %>%
 janitor::clean_names(dat = ., case = 'snake')
@@ -7745,7 +8189,7 @@ renderPrint({
   mydata %>%
     finalfit::finalfit(dependentKM, input$Factor) -> tUni
   
-  knitr::kable(tUni,
+  knitr::kable(tUni[, 1:4],
                row.names = FALSE,
                align = c('l', 'l', 'r', 'r', 'r', 'r'))
   
@@ -7941,6 +8385,12 @@ ggplot2::ggplot(mtcars,
                 ) + 
 ggplot2::geom_histogram(fill="skyblue", alpha=0.5) + 
 ggplot2::theme_minimal()
+Block rmdnote
+
+Block rmdtip
+
+Block warning
+
 projectName <- list.files(path = here::here(), pattern = "Rproj")
 projectName <- gsub(pattern = ".Rproj", replacement = "", x = projectName)
 

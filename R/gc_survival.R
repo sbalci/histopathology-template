@@ -33,7 +33,7 @@ explanatoryUni <- '", explanatoryKM_variable, "'\n",
 "mydata %>%
 finalfit(dependentUni, explanatoryUni, metrics=TRUE) -> tUni
 
-knitr::kable(tUni, row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
+knitr::kable(tUni[, 1:4], row.names=FALSE, align=c('l', 'l', 'r', 'r', 'r', 'r'))
 
 ```", "\n", "\n",
       

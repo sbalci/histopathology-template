@@ -1,4 +1,4 @@
-# Plots
+## Plots
 
 **Codes for generating Plots**.^[See [`childRmd/_13plots.Rmd`](https://github.com/sbalci/histopathology-template/blob/master/childRmd/_13plots.Rmd) file for other codes]
 
@@ -325,7 +325,7 @@ inspectdf::inspect_cat(star_1, star_2) %>% inspectdf::show_plot()
 <!-- ``` -->
 
 
-# Plots
+### Plots
 
 <!-- ## Categorical Variables -->
 
@@ -736,8 +736,10 @@ SmartEDA::ExpNumViz(mtcars, target = "am", scatter = TRUE)
 
 
 
-# Interactive graphics {#interactive}
+### Interactive graphics {#interactive}
+
 ***
+
 R allows to build any type of [interactive graphic](https://www.r-graph-gallery.com/interactive-charts/). My favourite library is [plotly](https://www.r-graph-gallery.com/get-the-best-from-ggplotly/) that will turn any of your ggplot2 graphic interactive in one supplementary line of code. Try to hover points, to select a zone, to click on the legend.
 <br><br>
 
@@ -755,5 +757,161 @@ p <- gapminder %>%
  
 ggplotly(p)
 ```
+
+
+
+---
+
+```{r}
+scales::show_col(colours(), cex_label = .35)
+```
+
+
+```{r gistr}
+gistr::gist("https://gist.github.com/sbalci/834ebc154c0ffcb7d5899c42dd3ab75e") %>% 
+  gistr::embed() -> embedgist
+```
+
+
+`r embedgist`
+
+
+<script src="https://gist.github.com/sbalci/834ebc154c0ffcb7d5899c42dd3ab75e.js"></script>
+
+
+
+---
+
+### Alluvial
+
+```{r}
+
+# https://stackoverflow.com/questions/43053375/weighted-sankey-alluvial-diagram-for-visualizing-discrete-and-continuous-panel/48133004
+
+library(tidyr)
+library(dplyr)
+library(alluvial)
+library(ggplot2)
+library(forcats)
+
+set.seed(42)
+individual <- rep(LETTERS[1:10],each=2)
+timeperiod <- paste0("time_",rep(1:2,10))
+discretechoice <- factor(paste0("choice_",sample(letters[1:3],20, replace=T)))
+continuouschoice <- ceiling(runif(20, 0, 100))
+d <- data.frame(individual, timeperiod, discretechoice, continuouschoice)
+
+```
+
+```{r}
+# stacked bar diagram of discrete choice by individual
+g <- ggplot(data=d,aes(timeperiod,fill=fct_rev(discretechoice)))
+g + geom_bar(position="stack") + guides(fill=guide_legend(title=NULL))
+```
+
+
+```{r}
+# alluvial diagram of discrete choice by individual
+d_alluvial <- d %>%
+  select(individual,timeperiod,discretechoice) %>%
+  spread(timeperiod,discretechoice) %>%
+  group_by(time_1,time_2) %>%
+  summarize(count=n()) %>%
+  ungroup()
+alluvial(select(d_alluvial,-count),freq=d_alluvial$count)
+```
+
+
+```{r}
+# stacked bar diagram of discrete choice, weighting by continuous choice
+g + geom_bar(position="stack",aes(weight=continuouschoice))
+```
+
+
+```{r}
+library(ggalluvial)
+ggplot(
+  data = d,
+  aes(
+    x = timeperiod,
+    stratum = discretechoice,
+    alluvium = individual,
+    y = continuouschoice
+  )
+) +
+  geom_stratum(aes(fill = discretechoice)) +
+  geom_flow()
+```
+
+
+
+
+
+
+```{r eval=FALSE, include=FALSE}
+ # use of strata and labels
+ggplot(as.data.frame(Titanic),
+       aes(y = Freq,axis1 = Class, axis2 = Sex, axis3 = Age)) +
+  geom_flow() +
+  scale_x_discrete(limits = c("Class", "Sex", "Age")) +
+  geom_stratum() + 
+  geom_text(stat = "stratum", infer.label = TRUE) +
+  ggtitle("Alluvial plot of Titanic passenger demographic data")
+
+# use of facets
+ggplot(as.data.frame(Titanic),aes(y = Freq,axis1 = Class, axis2 = Sex)) +geom_flow(aes(fill = Age), width = .4) +geom_stratum(width = .4) +geom_text(stat = "stratum", infer.label = TRUE, size = 3) +scale_x_discrete(limits = c("Class", "Sex")) +facet_wrap(~ Survived, scales = "fixed")
+# time series alluvia of WorldPhones 
+wph <- as.data.frame(as.table(WorldPhones))
+names(wph) <- c("Year", "Region", "Telephones")
+ggplot(wph,aes(x = Year, alluvium = Region, y = Telephones)) +geom_flow(aes(fill = Region, colour = Region), width = 0)
+# rightward flow aesthetics for vaccine survey datad
+data(vaccinations)
+levels(vaccinations$response) <- rev(levels(vaccinations$response))
+
+ggplot(vaccinations,
+       aes(x = survey, 
+           stratum = response, 
+           alluvium = subject,
+           y = freq, 
+           fill = response 
+           label = round(a, 3)
+           )
+       ) +
+  geom_lode() + 
+  geom_flow() +
+  geom_stratum(alpha = 0) +
+  geom_text(stat = "stratum")
+
+```
+
+
+  
+```{r}
+CD44changes <- mydata %>%
+    dplyr::select(TumorCD44, TomurcukCD44, PeritumoralTomurcukGr4) %>% 
+    dplyr::filter(complete.cases(.)) %>%
+    dplyr::group_by(TumorCD44, TomurcukCD44, PeritumoralTomurcukGr4) %>% 
+    dplyr::tally()
+
+library(ggalluvial)
+
+ggplot(data = CD44changes,
+       aes(axis1 = TumorCD44, axis2 = TomurcukCD44,
+           y = n)) +
+  scale_x_discrete(limits = c("TumorCD44", "TomurcukCD44"),
+                   expand = c(.1, .05)
+                   ) +
+  xlab("Tumor Tomurcuk") +
+  geom_alluvium(aes(fill = PeritumoralTomurcukGr4,
+                    colour = PeritumoralTomurcukGr4                    )) +
+  geom_stratum(alpha = .5) +
+  geom_text(stat = "stratum", infer.label = TRUE) +
+  # geom_text(stat = 'alluvium', infer.label = TRUE) +
+  theme_minimal() +
+  ggtitle("Changes in CD44")
+```
+
+  
+
 
 

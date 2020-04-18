@@ -99,7 +99,7 @@ renderPrint({
   mydata %>%
     finalfit::finalfit(dependentKM, input$Factor) -> tUni
   
-  knitr::kable(tUni,
+  knitr::kable(tUni[, 1:4],
                row.names = FALSE,
                align = c('l', 'l', 'r', 'r', 'r', 'r'))
   

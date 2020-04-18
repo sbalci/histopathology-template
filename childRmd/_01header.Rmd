@@ -38,6 +38,7 @@ knit_hooks$set(output = function(x, options) {
 ```
 
 
+
 ```{css, tidy=FALSE}
 # linewidth css
   pre:not([class]) {
@@ -52,10 +53,64 @@ knit_hooks$set(output = function(x, options) {
 ```
 
 
+```{css}
+pre.jamovitable{
+  color:black;
+  background-color: white;
+  margin-bottom: 35px;  
+}
+```
+
+
+
+```{r}
+ jtable<-function(jobject,digits=3) {
+  snames<-sapply(jobject$columns,function(a) a$title)
+  asDF<-jobject$asDF
+  tnames<-unlist(lapply(names(asDF) ,function(n) snames[[n]]))
+  names(asDF)<-tnames
+  kableExtra::kable(asDF,"html",
+                    table.attr='class="jmv-results-table-table"',
+                    row.names = F,
+                    digits=3)
+}
+```
+
+
+
+
+
+
 ```{r exploreR reset environment, eval=FALSE, include=FALSE}
 # https://cran.r-project.org/web/packages/exploreR/vignettes/exploreR.html
 # exploreR::reset()
 ```
+
+
+
+
+```{block, type = "rmdnote"}
+Block rmdnote
+
+```
+
+
+
+```{block, type = "rmdtip"}
+Block rmdtip
+
+```
+
+
+
+
+```{block, type = "rmdwarning"}
+Block warning
+
+```
+
+
+
 
 
 

@@ -205,11 +205,17 @@ installed.packages()
 
 ### Notes {.appendix}  
 
-Last update on `r as.character(Sys.time())`  
+Last update on $ `r as.character(Sys.time())` $  
 
-Serdar Balci, MD, Pathologist  
-drserdarbalci@gmail.com  
+[Serdar Balci, MD, Pathologist](https://www.serdarbalci.com/)  
+serdarbalci@serdarbalci.com  
 https://rpubs.com/sbalci/CV   
+https://github.com/sbalci  
+https://sbalci.github.io/  
+[Patoloji Notları](http://www.patolojinotlari.com/)  
+[ParaPathology](http://www.parapathology.com/)  
+https://twitter.com/serdarbalci  
+
 
 ---
 

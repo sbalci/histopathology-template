@@ -174,3 +174,27 @@ content of sub-chapter #2
 ## Third
 
 content of sub-chapter #3
+
+
+
+
+
+```{block, type = "rmdnote"}
+Block rmdnote
+
+```
+
+
+
+```{block, type = "rmdtip"}
+Block rmdtip
+
+```
+
+
+
+```{block, type = "warning"}
+Block warning
+
+```
+
