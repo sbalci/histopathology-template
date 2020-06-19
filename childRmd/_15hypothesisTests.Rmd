@@ -42,11 +42,11 @@ carseats %>%
 
 
 
-```{r}
+```{r include=FALSE, echo=TRUE}
 mytable <- jmv::ttestIS(
-    formula = HindexCTLA4 ~ PeritumoralTomurcukGr4,
+    formula = Age ~ Sex,
     data = mydata,
-    vars = HindexCTLA4,
+    vars = Age,
     students = FALSE,
     mann = TRUE,
     norm = TRUE,

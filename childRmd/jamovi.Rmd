@@ -1,0 +1,50 @@
+---
+title: "jamovi"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+```{css}
+pre.jamovitable{
+  color:black;
+  background-color: white;
+  margin-bottom: 35px;  
+}
+```
+
+```{r}
+ jtable<-function(jobject,digits=3) {
+  snames<-sapply(jobject$columns,function(a) a$title)
+  asDF<-jobject$asDF
+  tnames<-unlist(lapply(names(asDF) ,function(n) snames[[n]]))
+  names(asDF)<-tnames
+  kableExtra::kable(asDF,"html",
+                    table.attr='class="jmv-results-table-table"',
+                    row.names = F,
+                    digits=3)
+}
+```
+
+
+
+
+```{r}
+mytable <- jmv::anovaOneW(
+    formula = Sepal.Length ~ Species,
+    data = iris
+    )
+```
+
+
+
+
+```{r, results='asis'}
+cat("<pre class='jamovitable'>")
+print(jtable(mytable$anova))
+cat("</pre>")
+```
+
+
+

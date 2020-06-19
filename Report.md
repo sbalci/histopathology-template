@@ -9,7 +9,7 @@ author:
     url: https://sbalci.github.io/histopathology-template/
     affiliation: serdarbalci.com
     affiliation_url: https://www.serdarbalci.com/
-date: "2020-04-18"
+date: "2020-05-13"
 mail: drserdarbalci@gmail.com
 linkedin: "serdar-balci-md-pathologist"
 twitter: "serdarbalci"
@@ -5583,7 +5583,7 @@ pacman::p_loaded(all = TRUE)
 
 ### Notes {.appendix}  
 
-Last update on $ 2020-04-18 13:58:57 $  
+Last update on $ 2020-05-13 15:20:11 $  
 
 [Serdar Balci, MD, Pathologist](https://www.serdarbalci.com/)  
 serdarbalci@serdarbalci.com  

@@ -3,7 +3,7 @@
 
 ### Save Final Data  {.appendix}  
 
-```{r save final data}
+```{r save final data, cache=FALSE}
 projectName <- list.files(path = here::here(), pattern = "Rproj")
 projectName <- gsub(pattern = ".Rproj", replacement = "", x = projectName)
 
@@ -27,6 +27,25 @@ rio::export(
   format = "xlsx"
 )
 
+excelName2 <- paste0(projectName, "-2-", analysisDate, ".xlsx")
+
+si <- sessioninfo::session_info()
+writexl::write_xlsx(x = 
+  list(
+    maindata = mydata,
+    meta_platform = (as.data.frame(unclass(si$platform))),
+    meta_packages = si$packages
+  ),
+  path = here::here("data", excelName2)
+)
+
+
+
+
+
+
+
+
 # writexl::write_xlsx(mydata, here::here("data", excelName))
 
 print(glue::glue(
@@ -41,7 +60,7 @@ print(glue::glue(
 ```
 
 
-```{r download button}
+```{r download button, cache=FALSE}
 mydata %>% 
   downloadthis::download_this(
     output_name = excelName,
@@ -62,7 +81,7 @@ mydata %>%
 
 
 
-```{r save final data 2, eval=FALSE, include=FALSE}
+```{r save final data 2, eval=FALSE, include=FALSE, cache=FALSE}
 # pacman::p_load(here, lubridate, glue)
 # here::here("data", glue("{today()}_trends.csv"))
 ```
@@ -85,7 +104,7 @@ mydata %>%
 ```
 
 
-```{r summarytools final summary, eval=FALSE, error=FALSE, warning=FALSE, include=FALSE}
+```{r summarytools final summary, eval=FALSE, error=FALSE, warning=FALSE, include=FALSE, cache=FALSE}
 # mydata %>% select(
 #     -c(
 #         rapor_yil,
@@ -114,7 +133,7 @@ mydata %>%
 Why and how to cite software and packages?^[Smith AM, Katz DS, Niemeyer KE, FORCE11 Software Citation Working Group. (2016) Software Citation Principles. PeerJ Computer Science 2:e86. DOI: 10.7717/peerj-cs.86 https://www.force11.org/software-citation-principles]
 
 
-```{r citation}
+```{r citation, cache=FALSE}
 citation()
 ```
 
@@ -127,18 +146,18 @@ Data processing was carried out with R (R Core Team, 2019) and the easystats eco
 
 
 
-```{r library citation as report, results='asis'}
+```{r library citation as report, results='asis', cache=FALSE}
 report::cite_packages(session = sessionInfo())
 ```
 
 
-```{r show library citation as report, echo=TRUE, eval=FALSE, results='asis'}
+```{r show library citation as report, echo=TRUE, eval=FALSE, results='asis', cache=FALSE}
 report::show_packages(session = sessionInfo()) %>% 
     kableExtra::kable()
 ```
 
 
-```{r library citations}
+```{r library citations, cache=FALSE}
 # citation("tidyverse")
 citation("readxl")
 citation("janitor")
@@ -148,7 +167,7 @@ citation("finalfit")
 ```
 
 
-```{r write libraries as bib file}
+```{r write libraries as bib file, cache=FALSE}
 if(!dir.exists(here::here("bib"))) {dir.create(here::here("bib"))}
 
 knitr::write_bib(x = c(.packages(), "knitr", "shiny"),
@@ -163,10 +182,22 @@ knitr::write_bib(x = c(.packages(), "knitr", "shiny"),
 
 ### Session Info {.appendix} 
 
-```{r session info}
+```{r session info, cache=FALSE}
 sessionInfo()
 ```
 
+
+
+```{r session info 2, cache=FALSE}
+sessioninfo::os_name()
+
+sessioninfo::package_info()
+
+sessioninfo::platform_info()
+
+sessioninfo::session_info()
+
+```
 
 
 
@@ -176,24 +207,52 @@ sessionInfo()
 
 ### Loaded packages {.appendix} 
 
-```{r session info by pacman, echo=TRUE, eval=FALSE}
+```{r session info by pacman, echo=TRUE, eval=FALSE, cache=FALSE}
 pacman::p_loaded(all = TRUE)
 ```
 
-```{r eval=FALSE, include=FALSE}
+
+```{r eval=FALSE, include=FALSE, cache=FALSE}
 search()
 ```
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=FALSE, cache=FALSE}
 library()
 ```
 
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=FALSE, cache=FALSE}
 installed.packages()[1:5, c("Package", "Version")]
 installed.packages()
 ```
 
+
+---
+
+
+### Reproducibility
+
+
+<details><summary>Reproducibility receipt</summary>
+
+
+```{r, cache=FALSE}
+# https://twitter.com/MilesMcBain/status/1263272935197782016
+
+## datetime
+Sys.time()
+
+## repository
+git2r::repository()
+
+## sessionInfo
+sessionInfo()
+
+```
+
+
+
+</details>
 
 
 
@@ -231,6 +290,6 @@ https://twitter.com/serdarbalci
 
 
 
-```{r, echo=TRUE, eval=FALSE, ref.label=knitr::all_labels()}
+```{r, echo=TRUE, eval=FALSE, ref.label=knitr::all_labels(), cache=FALSE}
 ```
 

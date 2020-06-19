@@ -61,8 +61,6 @@ pre.jamovitable{
 }
 ```
 
-
-
 ```{r}
  jtable<-function(jobject,digits=3) {
   snames<-sapply(jobject$columns,function(a) a$title)
