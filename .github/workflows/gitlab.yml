@@ -1,4 +1,4 @@
-name: GitLab Pages Intranet
+name: GitLab Pages
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ jobs:
     - name: Mirror + trigger CI
       uses: SvanBoxel/gitlab-mirror-and-ci-action@master
       with:
-        args: "https://gitlab.com/MemorialPath/intranet"
+        args: "https://gitlab.com/sbalci/YYYYY"
       env:
         GITLAB_HOSTNAME: "gitlab.com"
         GITLAB_USERNAME: "sbalci"
