@@ -1,0 +1,42 @@
+project:
+  type: book
+  output-dir: public
+
+book:
+  title: "Histopathology Template"
+  author:
+   - name: "Serdar Balcı"
+     url: "https://www.serdarbalci.com"
+     affiliation: "Memorial Patoloji"
+     affiliation-url: "https://patoloji.memorial.com.tr/"
+     orcid: "0000-0002-7852-3851"
+  date: last-modified
+
+  chapters:
+    - index.qmd
+    - references.qmd
+
+  page-footer:
+    border: true
+    background: light
+    left: "[patolojiAI](https://www.patolojiai.com/) - [Serdar Balcı](https://www.serdarbalci.com/)"
+    right: "[Patoloji Atlası](https://www.patolojiatlasi.com/) - [Patoloji Notları](https://www.patolojinotlari.com/) - [ParaPathology](https://www.parapathology.com/)"
+
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 4
+  pdf:
+    documentclass: scrreprt
+  docx:
+    toc: true
+    number-sections: true
+
+
+editor: source
+
+freeze: false
